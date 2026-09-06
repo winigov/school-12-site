@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
 <title>Рим, варвары и Церковь</title>
+<meta name="paragraph" content="§ 1">
+<meta name="description" content="От Древности к Средневековью: Рим, варвары и христианская Церковь">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oranienbaum&family=Golos+Text:wght@400;500;600;700&display=swap">
 <style>
 :root{
@@ -39,135 +41,124 @@
   --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 28px rgba(0,0,0,.35);
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
-@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} *{transition:none!important;animation:none!important} }
+@media (prefers-reduced-motion: reduce){ *{transition:none!important;animation:none!important} }
 body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.55;-webkit-text-size-adjust:100%}
 h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1.1;text-wrap:balance;margin:0}
 p{margin:0}
+a{color:var(--lapis)}
 button{font:inherit;color:inherit;cursor:pointer}
 button:focus-visible,summary:focus-visible,a:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+[hidden]{display:none!important}
 
-/* ---------- header ---------- */
+/* ---------- top bar ---------- */
 .top{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
-.top-inner{max-width:760px;margin:0 auto;padding:10px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px}
-.top-name{font-family:var(--display);font-size:20px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.mosaic{display:flex;gap:4px;flex:none}
-.mosaic .tile{width:18px;height:18px;background:var(--tile);border-radius:2px;position:relative;transition:background .4s,transform .4s}
-.mosaic .tile.on{background:var(--gold);transform:rotate(45deg) scale(.82)}
-.mosaic-label{font-size:12px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin-right:8px}
+.top-inner{max-width:720px;margin:0 auto;padding:10px 16px;display:flex;align-items:center;gap:12px}
+.back{text-decoration:none;color:var(--ink-2);font-size:14px;white-space:nowrap;padding:6px 10px;border-radius:8px;background:var(--surface);border:1px solid var(--line)}
+.crumb{flex:1;min-width:0;font-size:14px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.crumb b{color:var(--ink);font-weight:600}
+.toc-btn{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:6px 10px;font-size:14px;color:var(--lapis);font-weight:600;white-space:nowrap}
+.stepbar{max-width:720px;margin:0 auto;padding:0 16px 10px;display:flex;gap:4px}
+.stepbar button{flex:1;height:8px;min-width:6px;padding:0;border:0;border-radius:2px;background:var(--tile);transition:background .3s,transform .3s}
+.stepbar button.visited{background:var(--lapis)}
+.stepbar button.done{background:var(--gold)}
+.stepbar button.current{transform:scaleY(1.6);background:var(--gold)}
 
-.hero{max-width:760px;margin:0 auto;padding:40px 20px 28px}
-.eyebrow{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--lapis);font-weight:600;display:flex;align-items:center;gap:10px}
+/* ---------- steps ---------- */
+main{max-width:720px;margin:0 auto;padding:20px 16px 120px}
+.step{display:flex;flex-direction:column;gap:16px}
+.eyebrow{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);font-weight:700;display:flex;align-items:center;gap:10px}
 .tess{display:inline-flex;gap:3px}
 .tess i{width:8px;height:8px;display:block;border-radius:1px}
 .tess i:nth-child(1){background:var(--lapis)} .tess i:nth-child(2){background:var(--gold)} .tess i:nth-child(3){background:var(--terra)}
-.hero h1{font-size:clamp(40px,8vw,64px);margin-top:12px;color:var(--ink)}
-.hero .lede{font-size:20px;color:var(--ink-2);margin-top:12px;max-width:34ch}
-.hero .meta{margin-top:18px;font-size:14px;color:var(--muted)}
-
-/* ---------- nav ---------- */
-.chips{max-width:760px;margin:0 auto;padding:0 20px 8px;display:flex;gap:8px;flex-wrap:wrap}
-.chips a{text-decoration:none;color:var(--ink-2);background:var(--surface);border:1px solid var(--line);padding:6px 12px;border-radius:999px;font-size:14px}
-.chips a:hover{border-color:var(--lapis);color:var(--lapis)}
-
-/* ---------- content ---------- */
-main{max-width:760px;margin:0 auto;padding:12px 20px 80px;display:flex;flex-direction:column;gap:56px}
-section{scroll-margin-top:70px}
-.sec-head{display:flex;flex-direction:column;gap:8px;margin-bottom:18px}
-.sec-head .num{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);font-weight:600}
-.sec-head h2{font-size:clamp(30px,5vw,40px)}
-.prose{display:flex;flex-direction:column;gap:14px;max-width:66ch}
-.prose h3{font-size:24px;margin-top:10px;color:var(--lapis)}
+.step h1{font-size:clamp(36px,8vw,56px)}
+.step h2{font-size:clamp(28px,6vw,38px)}
+.step h3{font-size:22px;color:var(--lapis);margin-top:4px}
+.lede{font-size:19px;color:var(--ink-2);max-width:34ch}
+.prose{display:flex;flex-direction:column;gap:12px;max-width:66ch}
 .prose ul{margin:0;padding-left:22px;display:flex;flex-direction:column;gap:6px}
 .prose li::marker{color:var(--gold)}
 b,strong{font-weight:600}
 .term{font-weight:600;color:var(--lapis);border-bottom:2px solid var(--gold-soft)}
-.aside{background:var(--lapis-soft);border-left:4px solid var(--lapis);padding:14px 18px;border-radius:0 8px 8px 0;font-size:16px;display:flex;flex-direction:column;gap:6px}
+.aside{background:var(--lapis-soft);border-left:4px solid var(--lapis);padding:12px 16px;border-radius:0 8px 8px 0;font-size:16px;display:flex;flex-direction:column;gap:6px}
 .aside .k{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--lapis);font-weight:700}
 .home{background:var(--gold-soft);border-left-color:var(--gold)}
 .home .k{color:var(--gold)}
-details{border:1px solid var(--line);border-radius:10px;background:var(--surface);padding:0}
+details{border:1px solid var(--line);border-radius:10px;background:var(--surface)}
 details summary{cursor:pointer;list-style:none;padding:12px 16px;font-weight:600;color:var(--lapis);display:flex;align-items:center;gap:10px}
 details summary::-webkit-details-marker{display:none}
 details summary::before{content:"";width:9px;height:9px;background:var(--gold);transform:rotate(45deg);flex:none;transition:transform .2s}
 details[open] summary::before{transform:rotate(45deg) scale(.6);background:var(--lapis)}
 details .body{padding:0 16px 14px;display:flex;flex-direction:column;gap:8px;color:var(--ink-2)}
 
-/* domino steps */
-.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:18px}
-.step{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:6px;box-shadow:var(--shadow)}
-.step .n{font-family:var(--display);font-size:30px;color:var(--gold);line-height:1}
-.step .t{font-weight:600;font-size:15px}
-.step .d{font-size:14px;color:var(--ink-2)}
-@media (max-width:640px){ .steps{grid-template-columns:1fr 1fr} }
+.steps4{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+@media (min-width:600px){ .steps4{grid-template-columns:repeat(4,1fr)} }
+.dom{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px;display:flex;flex-direction:column;gap:4px;box-shadow:var(--shadow)}
+.dom .n{font-family:var(--display);font-size:28px;color:var(--gold);line-height:1}
+.dom .t{font-weight:600;font-size:15px;line-height:1.25}
+.dom .d{font-size:13.5px;color:var(--ink-2);line-height:1.35}
 
-/* church ladder */
-.ladder{display:flex;flex-direction:column;align-items:center;gap:6px;margin:16px 0}
-.rung{background:var(--lapis);color:var(--on-lapis);padding:10px 14px;border-radius:8px;text-align:center;font-size:15px;line-height:1.3}
-.rung small{display:block;opacity:.85;font-size:13px}
-.rung.r1{width:42%} .rung.r2{width:58%} .rung.r3{width:74%} .rung.r4{width:90%;background:var(--surface-2);color:var(--ink)}
-@media (max-width:520px){ .rung.r1{width:70%} .rung.r2{width:80%} .rung.r3{width:90%} .rung.r4{width:100%} }
+.ladder{display:flex;flex-direction:column;align-items:center;gap:6px}
+.rung{background:var(--lapis);color:var(--on-lapis);padding:9px 12px;border-radius:8px;text-align:center;font-size:15px;line-height:1.3}
+.rung small{display:block;opacity:.85;font-size:12.5px}
+.rung.r1{width:60%} .rung.r2{width:74%} .rung.r3{width:88%} .rung.r4{width:100%;background:var(--surface-2);color:var(--ink)}
 
-/* ---------- timeline ---------- */
-.tl-wrap{overflow-x:auto;padding:8px 0 14px;margin:0 -20px;scrollbar-width:thin}
-.tl{display:flex;gap:0;padding:0 20px;min-width:max-content;position:relative}
-.tl::before{content:"";position:absolute;left:20px;right:20px;top:20px;height:3px;background:var(--line)}
-.tl-node{position:relative;width:132px;background:none;border:0;padding:36px 8px 6px;text-align:left;color:var(--ink)}
-.tl-node .dot{position:absolute;left:8px;top:13px;width:17px;height:17px;background:var(--surface);border:3px solid var(--lapis);border-radius:50%;transition:transform .2s,background .2s}
+/* timeline */
+.tl-wrap{overflow-x:auto;padding:6px 0 10px;margin:0 -16px;scrollbar-width:thin}
+.tl{display:flex;padding:0 16px;min-width:max-content;position:relative}
+.tl::before{content:"";position:absolute;left:16px;right:16px;top:20px;height:3px;background:var(--line)}
+.tl-node{position:relative;width:124px;background:none;border:0;padding:36px 6px 4px;text-align:left;color:var(--ink)}
+.tl-node .dot{position:absolute;left:6px;top:13px;width:17px;height:17px;background:var(--surface);border:3px solid var(--lapis);border-radius:50%;transition:transform .2s,background .2s}
 .tl-node.ru .dot{border-color:var(--terra)}
 .tl-node.active .dot{background:var(--gold);border-color:var(--gold);transform:scale(1.25)}
-.tl-node .y{font-family:var(--display);font-size:24px;line-height:1;font-variant-numeric:tabular-nums}
-.tl-node .t{font-size:13px;color:var(--ink-2);margin-top:4px;line-height:1.3}
+.tl-node .y{font-family:var(--display);font-size:22px;line-height:1;font-variant-numeric:tabular-nums}
+.tl-node .t{font-size:12.5px;color:var(--ink-2);margin-top:4px;line-height:1.3}
 .tl-node .era{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--lapis);font-weight:700;margin-top:6px}
 .tl-node.ru .era{color:var(--terra)}
-.tl-detail{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 20px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:6px;min-height:96px}
-.tl-detail .y{font-family:var(--display);font-size:32px;color:var(--gold);line-height:1}
+.tl-detail{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 18px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:6px;min-height:96px}
+.tl-detail .y{font-family:var(--display);font-size:30px;color:var(--gold);line-height:1}
 .tl-detail .t{font-weight:600;font-size:18px}
 .tl-detail .d{color:var(--ink-2)}
-.hint{font-size:14px;color:var(--muted);margin-top:8px}
+.hint{font-size:14px;color:var(--muted)}
 
-/* ---------- games ---------- */
-.game{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:22px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:14px}
-.game .g-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap}
-.game h3{font-size:26px}
-.game .task{color:var(--ink-2)}
+/* games */
+.game{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:12px}
+.g-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.game h3{margin:0}
+.task{color:var(--ink-2)}
 .badge{font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;padding:4px 10px;border-radius:999px;background:var(--gold-soft);color:var(--gold)}
 .badge.done{background:var(--moss-soft);color:var(--moss)}
-.btn{background:var(--lapis);color:var(--on-lapis);border:0;border-radius:10px;padding:10px 18px;font-weight:600;font-size:15px}
+.btn{background:var(--lapis);color:var(--on-lapis);border:0;border-radius:10px;padding:10px 18px;font-weight:600;font-size:15px;text-decoration:none;display:inline-block}
 .btn.ghost{background:transparent;color:var(--lapis);border:2px solid var(--lapis)}
 .btn:disabled{opacity:.45;cursor:default}
 .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
 .feedback{padding:12px 14px;border-radius:10px;font-size:15px;display:flex;flex-direction:column;gap:4px}
-.feedback.ok{background:var(--moss-soft);color:var(--ink);border-left:4px solid var(--moss)}
-.feedback.bad{background:var(--terra-soft);color:var(--ink);border-left:4px solid var(--terra)}
+.feedback.ok{background:var(--moss-soft);border-left:4px solid var(--moss)}
+.feedback.bad{background:var(--terra-soft);border-left:4px solid var(--terra)}
 .feedback .k{font-weight:700}
+.progress{font-size:13px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
 
-/* flip cards */
-.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
 .card{perspective:900px;height:150px;background:none;border:0;padding:0;text-align:left}
 .card .in{position:relative;width:100%;height:100%;transition:transform .5s;transform-style:preserve-3d}
 .card.flip .in{transform:rotateY(180deg)}
-.face{position:absolute;inset:0;backface-visibility:hidden;border-radius:12px;padding:14px;display:flex;flex-direction:column;justify-content:center;gap:6px;overflow:hidden}
-.face.f{background:var(--lapis);color:var(--on-lapis);border:1px solid var(--lapis)}
-.face.f .w{font-family:var(--display);font-size:24px;line-height:1.05}
-.face.f .tap{font-size:12px;opacity:.75;letter-spacing:.08em;text-transform:uppercase}
-.face.b{background:var(--surface-2);color:var(--ink);transform:rotateY(180deg);font-size:13.5px;line-height:1.35;justify-content:flex-start;overflow:auto}
-.face.b .w{font-weight:700;color:var(--lapis);font-size:14px}
+.face{position:absolute;inset:0;backface-visibility:hidden;border-radius:12px;padding:12px;display:flex;flex-direction:column;justify-content:center;gap:6px;overflow:hidden}
+.face.f{background:var(--lapis);color:var(--on-lapis)}
+.face.f .w{font-family:var(--display);font-size:21px;line-height:1.05}
+.face.f .tap{font-size:11px;opacity:.75;letter-spacing:.08em;text-transform:uppercase}
+.face.b{background:var(--surface-2);color:var(--ink);transform:rotateY(180deg);font-size:12.5px;line-height:1.3;justify-content:flex-start;overflow:auto}
+.face.b .w{font-weight:700;color:var(--lapis);font-size:13px}
 .face.b .e{color:var(--ink-2);font-style:italic}
 
-/* matching */
-.match{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.match{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .col{display:flex;flex-direction:column;gap:8px}
 .col .lbl{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:700}
 .opt{background:var(--surface-2);border:2px solid transparent;border-radius:10px;padding:10px 12px;text-align:left;font-weight:500;font-size:15px;transition:border-color .15s,background .15s}
 .opt:hover{border-color:var(--lapis)}
 .opt.sel{border-color:var(--gold);background:var(--gold-soft)}
-.opt.ok{background:var(--moss-soft);border-color:var(--moss);color:var(--ink)}
-.opt.ok:disabled{cursor:default}
+.opt.ok{background:var(--moss-soft);border-color:var(--moss)}
 .opt.bad{animation:shake .35s}
 @keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
 
-/* ordering */
 .pool{display:flex;flex-direction:column;gap:8px}
 .seq{display:flex;flex-direction:column;gap:8px;min-height:44px;padding:10px;border:2px dashed var(--line);border-radius:12px}
 .seq .slot{display:flex;align-items:center;gap:10px;background:var(--lapis-soft);border-radius:8px;padding:8px 12px;font-size:15px}
@@ -176,13 +167,10 @@ details .body{padding:0 16px 14px;display:flex;flex-direction:column;gap:8px;col
 .seq .slot .yr{margin-left:auto;font-weight:700;color:var(--ink-2);font-variant-numeric:tabular-nums}
 .seq .empty{color:var(--muted);font-size:14px}
 
-/* odd one out */
 .odd-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
-@media (min-width:560px){ .odd-grid{grid-template-columns:repeat(4,1fr)} }
 .odd-grid .opt{text-align:center;padding:16px 10px;font-size:16px}
 .odd-grid .opt.bad{background:var(--terra-soft);border-color:var(--terra)}
 
-/* quiz */
 .q{font-size:19px;font-weight:600;line-height:1.35}
 .q-opts{display:flex;flex-direction:column;gap:8px}
 .q-opts .opt{font-size:15.5px;line-height:1.35}
@@ -192,16 +180,35 @@ details .body{padding:0 16px 14px;display:flex;flex-direction:column;gap:8px;col
 .score-tiles{display:flex;gap:5px;flex-wrap:wrap}
 .score-tiles i{width:22px;height:22px;border-radius:3px;background:var(--tile)}
 .score-tiles i.on{background:var(--gold)}
-.progress{font-size:13px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
 
-/* main question */
 .bricks{display:flex;flex-direction:column;gap:10px}
 .brick{background:var(--surface-2);border-radius:10px;overflow:hidden}
 .brick button{width:100%;background:none;border:0;padding:12px 14px;text-align:left;font-weight:600;color:var(--lapis);display:flex;justify-content:space-between;gap:10px}
 .brick .b-body{padding:0 14px 12px;color:var(--ink-2);font-size:15.5px}
 
-footer{max-width:760px;margin:0 auto;padding:0 20px 60px;color:var(--muted);font-size:14px;display:flex;flex-direction:column;gap:8px}
-footer .k{color:var(--ink-2);font-weight:600}
+.mosaic{display:flex;gap:6px;align-items:center}
+.mosaic .tile{width:26px;height:26px;background:var(--tile);border-radius:3px;transition:background .4s,transform .4s}
+.mosaic .tile.on{background:var(--gold);transform:rotate(45deg) scale(.8)}
+.mosaic-list{display:flex;flex-direction:column;gap:6px;font-size:15px}
+.mosaic-list span.off{color:var(--muted)}
+
+/* pager */
+.pager{position:fixed;left:0;right:0;bottom:0;z-index:5;background:var(--bg);border-top:1px solid var(--line)}
+.pager-inner{max-width:720px;margin:0 auto;padding:10px 16px;display:flex;align-items:center;gap:10px}
+.pager .count{font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+.pager .btn{flex:1;text-align:center;padding:12px 14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pager .btn.ghost{flex:0 0 auto}
+
+/* toc overlay */
+.toc{position:fixed;inset:0;z-index:10;background:rgba(0,0,0,.35);display:flex;justify-content:flex-end}
+.toc-panel{width:min(360px,90vw);height:100%;background:var(--surface);overflow:auto;padding:16px;display:flex;flex-direction:column;gap:8px;box-shadow:var(--shadow)}
+.toc-panel h3{font-size:24px;margin-bottom:6px;display:flex;justify-content:space-between;align-items:center}
+.toc-close{background:none;border:1px solid var(--line);border-radius:8px;padding:4px 10px;font-size:14px}
+.toc-item{display:flex;align-items:center;gap:10px;background:none;border:0;border-radius:8px;padding:8px 10px;text-align:left;font-size:15px;color:var(--ink)}
+.toc-item:hover{background:var(--surface-2)}
+.toc-item.current{background:var(--gold-soft);font-weight:600}
+.toc-item .n{font-family:var(--display);font-size:18px;color:var(--muted);width:24px;font-variant-numeric:tabular-nums}
+.toc-item .m{margin-left:auto;font-size:12px;color:var(--moss);font-weight:700}
 </style>
 </head>
 <body>
@@ -209,102 +216,82 @@ footer .k{color:var(--ink-2);font-weight:600}
 
 <header class="top">
   <div class="top-inner">
-    <div class="top-name">Рим, варвары и Церковь</div>
-    <div class="mosaic" aria-label="Прогресс: сколько заданий пройдено">
-      <span class="mosaic-label">Мозаика</span>
-      <span class="tile" data-tile="terms" title="Словарик"></span>
-      <span class="tile" data-tile="map" title="Кто где поселился"></span>
-      <span class="tile" data-tile="order" title="Лента времени"></span>
-      <span class="tile" data-tile="odd" title="Найди лишнее"></span>
-      <span class="tile" data-tile="quiz" title="Проверь себя"></span>
-    </div>
+    <a class="back" href="./">← Темы</a>
+    <div class="crumb">История · § 1 · <b>Рим, варвары и Церковь</b></div>
+    <button class="toc-btn" id="toc-btn" type="button">Содержание</button>
   </div>
+  <div class="stepbar" id="stepbar" aria-label="Шаги темы"></div>
 </header>
 
-<div class="hero">
+<main id="deck">
+
+<!-- 1 -->
+<section class="step" data-step="za-minutu" data-name="За минуту" data-part="Самое главное">
   <div class="eyebrow"><span class="tess"><i></i><i></i><i></i></span> История · 6 класс · § 1</div>
   <h1>Рим, варвары и Церковь</h1>
   <p class="lede">Амина, это история о том, как закончился Древний мир, кто пришёл ему на смену и кто спас книги.</p>
-  <p class="meta">По учебнику «История Средних веков», с. 8–17. Пять глав, шесть дат, пять игр. Каждая пройденная игра зажигает золотую плитку в мозаике наверху.</p>
-</div>
-
-<nav class="chips" aria-label="Разделы">
-  <a href="#big">За минуту</a>
-  <a href="#timeline">Даты</a>
-  <a href="#barbarians">Варвары</a>
-  <a href="#church">Церковь</a>
-  <a href="#belief">Споры о вере</a>
-  <a href="#kingdoms">Королевства</a>
-  <a href="#heritage">Знания</a>
-  <a href="#terms">Словарик</a>
-  <a href="#quiz">Проверь себя</a>
-</nav>
-
-<main>
-
-<!-- ============ ЗА МИНУТУ ============ -->
-<section id="big">
-  <div class="sec-head">
-    <div class="num">Самое главное</div>
-    <h2>Вся история за одну минуту</h2>
-  </div>
+  <div id="resume" hidden></div>
   <div class="prose">
-    <p>Амина, представь огромный старый дом. Ему больше тысячи лет. Это <span class="term">Римская империя</span>. Крыша течёт, хозяева обеднели, армия ослабла. Дом уже поделили на две половины: Западную и Восточную.</p>
-    <p>Вокруг дома в лесах живут соседи, <span class="term">германские племена</span>. Римляне зовут их варварами и смотрят свысока. А далеко на востоке кочуют <span class="term">гунны</span>.</p>
-    <p>В IV веке гунны двинулись на запад. Они толкнули одни племена, те толкнули другие. Как костяшки домино. Это и есть <span class="term">Великое переселение народов</span>.</p>
+    <p>Представь огромный старый дом. Ему больше тысячи лет. Это <span class="term">Римская империя</span>. Крыша течёт, хозяева обеднели, армия ослабла. Дом уже поделили на две половины: Западную и Восточную.</p>
+    <p>Вокруг дома в лесах живут соседи, <span class="term">германские племена</span>. Римляне зовут их варварами. А далеко на востоке кочуют <span class="term">гунны</span>.</p>
+    <p>В IV веке гунны двинулись на запад и толкнули соседей, как костяшки домино. Это и есть <span class="term">Великое переселение народов</span>.</p>
   </div>
-  <div class="steps">
-    <div class="step"><div class="n">1</div><div class="t">Гунны идут на запад</div><div class="d">Кочевники с востока разбивают остготов у Чёрного моря.</div></div>
-    <div class="step"><div class="n">2</div><div class="t">Германцы бегут в империю</div><div class="d">Вестготы, вандалы, франки заходят в «старый дом» и занимают комнаты.</div></div>
-    <div class="step"><div class="n">3</div><div class="t">Запад падает</div><div class="d">476 год: последнего западного императора свергли. Древний мир закончился.</div></div>
-    <div class="step"><div class="n">4</div><div class="t">Церковь спасает книги</div><div class="d">Школы, латынь, календарь, строительство. Знания не пропали.</div></div>
+  <div class="steps4">
+    <div class="dom"><div class="n">1</div><div class="t">Гунны идут на запад</div><div class="d">Кочевники разбивают остготов у Чёрного моря.</div></div>
+    <div class="dom"><div class="n">2</div><div class="t">Германцы бегут в империю</div><div class="d">Занимают «комнаты» старого дома: свои королевства.</div></div>
+    <div class="dom"><div class="n">3</div><div class="t">Запад падает</div><div class="d">476 год: последнего западного императора свергли.</div></div>
+    <div class="dom"><div class="n">4</div><div class="t">Церковь спасает книги</div><div class="d">Школы, латынь, календарь, строительство.</div></div>
   </div>
 </section>
 
-<!-- ============ ЛЕНТА ВРЕМЕНИ ============ -->
-<section id="timeline">
-  <div class="sec-head">
-    <div class="num">Шесть дат</div>
-    <h2>Лента времени</h2>
-  </div>
-  <p class="task" style="color:var(--ink-2);margin-bottom:6px">Нажимай на точки. Красные точки помечены «Россия», как в учебнике: это события на наших землях.</p>
+<!-- 2 -->
+<section class="step" data-step="daty" data-name="Даты" data-part="Лента времени">
+  <div class="eyebrow">Шесть дат</div>
+  <h2>Лента времени</h2>
+  <p class="task">Нажимай на точки. Красные помечены «Россия», как в учебнике: это события на наших землях.</p>
   <div class="tl-wrap"><div class="tl" id="tl"></div></div>
   <div class="tl-detail" id="tl-detail"></div>
-  <p class="hint">Ленту можно двигать пальцем влево и вправо.</p>
+  <p class="hint">Ленту можно двигать пальцем влево и вправо. Потом эти даты пригодятся в игре.</p>
 </section>
 
-<!-- ============ 1. ВАРВАРЫ ============ -->
-<section id="barbarians">
-  <div class="sec-head">
-    <div class="num">Глава 1</div>
-    <h2>Мир варваров</h2>
-  </div>
+<!-- 3 -->
+<section class="step" data-step="germantsy" data-name="Как жили германцы" data-part="Глава 1 · Мир варваров">
+  <div class="eyebrow">Глава 1 · Мир варваров</div>
+  <h2>Как жили германцы?</h2>
   <div class="prose">
-    <p>Древние страны, Китай и Рим, сначала жили каждая сама по себе. Потом их связал <span class="term">Великий шёлковый путь</span>. По нему ехали купцы, шли войска, а вместе с ними путешествовали идеи и изобретения.</p>
-    <p>Севернее тянулись степи, где жили кочевники. Оттуда и пришли гунны.</p>
-
-    <h3>Как жили германцы?</h3>
+    <p>Древние страны, Китай и Рим, связал <span class="term">Великий шёлковый путь</span>. По нему ехали купцы и шли войска, а с ними путешествовали идеи. Севернее тянулись степи кочевников. Оттуда и пришли гунны.</p>
     <ul>
-      <li>Маленькие посёлки в лесах к востоку от реки Рейн. Вокруг посёлка частокол, за ним поля.</li>
+      <li>Германцы жили в маленьких посёлках в лесах к востоку от реки Рейн. Вокруг посёлка частокол, за ним поля.</li>
       <li>Занятия: охота, скот, ремесло, торговля и земледелие.</li>
-      <li><span class="term">Двуполье</span>. Поле делят пополам. Одну половину засевают, вторая год «отдыхает», чтобы земля набралась сил. На следующий год меняют местами.</li>
+      <li><span class="term">Двуполье</span>. Поле делят пополам. Одну половину засевают, вторая год «отдыхает», чтобы земля набралась сил. Потом меняют местами.</li>
       <li><span class="term">Соседская община</span>. Все семьи посёлка вместе решают общие дела: где пасти скот, как делить луга. Как жильцы одного двора решают, где поставить качели.</li>
       <li>Германцы были <span class="term">язычниками</span>: верили во многих богов.</li>
     </ul>
+  </div>
+</section>
 
-    <h3>Кто главный в племени?</h3>
+<!-- 4 -->
+<section class="step" data-step="vozhd" data-name="Кто главный в племени" data-part="Глава 1 · Мир варваров">
+  <div class="eyebrow">Глава 1 · Мир варваров</div>
+  <h2>Кто главный в племени?</h2>
+  <div class="prose">
     <p>Сначала все были равны. Потом появилась <span class="term">знать</span>, семьи побогаче и познатнее. Важные вопросы решало <span class="term">народное собрание</span>, но со временем оно просто соглашалось с вождями, жрецами и старейшинами.</p>
+    <p><span class="term">Вождь</span> в мирное время не мог ни приказывать, ни судить, ни издавать законы. Так племя защищалось от того, чтобы один человек стал слишком сильным. Зато на войне вождь получал почти безграничную власть: там нужен один командир.</p>
     <details>
-      <summary>Почему вождь в мирное время почти ничего не мог?</summary>
+      <summary>А потом?</summary>
       <div class="body">
-        <p>Вождь не мог ни приказывать, ни судить, ни издавать законы. Так племя защищало себя от того, чтобы один человек стал слишком сильным.</p>
-        <p>Зато на войне вождь получал почти безграничную власть: там нужен один командир. К IV–V векам власть вождей стала передаваться по наследству, от отца к сыну.</p>
-        <p>Рядом с вождём была <span class="term">дружина</span>, его воины. Они считали войну самым достойным занятием и мечтали о походах, славе и добыче.</p>
+        <p>К IV–V векам власть вождей стала передаваться по наследству, от отца к сыну. Рядом с вождём была <span class="term">дружина</span>, его воины. Они считали войну самым достойным занятием и мечтали о походах, славе и добыче.</p>
+        <p>С Римом германцы воевали много веков. Римляне презирали их и называли варварами. Но потом Риму пришлось нанимать одни германские племена, чтобы защищаться от других.</p>
       </div>
     </details>
-    <p>С Римом германцы воевали много веков. Римляне презирали их и называли варварами. Но потом Риму пришлось нанимать одни германские племена, чтобы защищаться от других.</p>
+  </div>
+</section>
 
-    <h3>Славяне, восточные соседи</h3>
+<!-- 5 -->
+<section class="step" data-step="slavyane" data-name="Славяне" data-part="Глава 1 · Мир варваров">
+  <div class="eyebrow">Глава 1 · Мир варваров</div>
+  <h2>Славяне, восточные соседи</h2>
+  <div class="prose">
     <p>Славяне жили от верховьев Эльбы до среднего Днепра и говорили на одном языке. Возможно, слово «славяне», «словене» значит «владеющие словом». То есть «те, кого мы понимаем».</p>
     <p>Расселяясь в разные стороны, славяне разделились на три ветви:</p>
     <ul>
@@ -316,240 +303,240 @@ footer .k{color:var(--ink-2);font-weight:600}
   </div>
 </section>
 
-<!-- ============ 2. ЦЕРКОВЬ ============ -->
-<section id="church">
-  <div class="sec-head">
-    <div class="num">Глава 2</div>
-    <h2>Рим и христианская Церковь</h2>
-  </div>
+<!-- 6 -->
+<section class="step" data-step="tserkov" data-name="Рим и Церковь" data-part="Глава 2 · Рим и Церковь">
+  <div class="eyebrow">Глава 2 · Рим и Церковь</div>
+  <h2>Как появилась Церковь</h2>
   <div class="prose">
     <p>Пока варвары набирали силу, Рим её терял. Жители обеднели, армия и власть императора ослабли. Империю разделили на Западную и Восточную.</p>
     <p>В <b>313 году</b> император <span class="term">Константин Великий</span> разрешил свободно исповедовать христианство. Очень быстро оно стало главной, а потом и единственной разрешённой религией.</p>
     <p>Общины христиан вместе составили <span class="term">Церковь</span>. Она устроена как лесенка:</p>
   </div>
-  <div class="ladder" aria-label="Устройство Церкви снизу вверх">
+  <div class="ladder" aria-label="Устройство Церкви сверху вниз">
     <div class="rung r1">Папа римский<small>епископ Рима, «паппас» значит «отец»</small></div>
     <div class="rung r2">Патриархи<small>епископы Рима, Константинополя, Александрии, Антиохии, Иерусалима</small></div>
     <div class="rung r3">Епископы<small>каждый ведёт много приходов</small></div>
     <div class="rung r4">Приходы со священниками<small>в них объединялись верующие</small></div>
   </div>
+  <details>
+    <summary>Почему папа римский не стал главным для всех?</summary>
+    <div class="body"><p>Епископ Рима считал, что у него особая роль, ведь Рим был столицей. Но на Востоке, в Константинополе, были свои патриархи, и они не хотели подчиняться Риму.</p></div>
+  </details>
+</section>
+
+<!-- 7 -->
+<section class="step" data-step="monahi" data-name="Монахи и миссионеры" data-part="Глава 2 · Рим и Церковь">
+  <div class="eyebrow">Глава 2 · Рим и Церковь</div>
+  <h2>Монахи и миссионеры</h2>
   <div class="prose">
-    <details>
-      <summary>Почему папа римский не стал главным для всех?</summary>
-      <div class="body">
-        <p>Епископ Рима считал, что у него особая роль, ведь Рим был столицей. Но на Востоке, в Константинополе, с этим не соглашались. Там были свои патриархи, и они не хотели подчиняться Риму.</p>
-      </div>
-    </details>
-
-    <h3>Монахи и монастыри</h3>
     <p><span class="term">Монахи</span>, по-гречески «одинокие», добровольно уходили от обычной жизни, чтобы молиться. Одни жили совсем одни, это <span class="term">отшельники</span>. Другие селились вместе и создавали <span class="term">монастыри</span>.</p>
-    <p>Когда варвары нападали, люди искали защиты за стенами монастырей. Там появились школы, библиотеки и мастерские, где книги переписывали от руки. Принтеров ведь не было! Страницы украшали маленькими рисунками, <span class="term">миниатюрами</span>.</p>
-
-    <h3>Миссионеры</h3>
+    <p>В монастырях появились школы, библиотеки и мастерские, где книги переписывали от руки. Принтеров ведь не было! Страницы украшали маленькими рисунками, <span class="term">миниатюрами</span>.</p>
     <p><span class="term">Миссионеры</span>. Так называли проповедников, которых посылали рассказывать о христианстве другим народам. Язычники часто не хотели их слушать, поэтому миссионеру приходилось учить чужой язык и уговаривать вождей.</p>
     <details>
       <summary>История святого Патрика</summary>
       <div class="body">
-        <p>Патрик родился в Британии. В 16 лет его похитили разбойники и продали в рабство в Ирландию. Через шесть лет он сбежал. А потом сам вернулся в Ирландию, чтобы проповедовать христианство.</p>
-        <p>Легенда говорит, что он изгнал из Ирландии всех змей. Только змей на этом острове никогда и не было. Ирландцы до сих пор празднуют день святого Патрика и одеваются в зелёное.</p>
+        <p>Патрик родился в Британии. В 16 лет его похитили разбойники и продали в рабство в Ирландию. Через шесть лет он сбежал. А потом сам вернулся в Ирландию проповедовать.</p>
+        <p>Легенда говорит, что он изгнал из Ирландии всех змей. Только змей на этом острове никогда и не было. Ирландцы до сих пор празднуют его день и одеваются в зелёное.</p>
       </div>
     </details>
     <details>
       <summary>Иоанн Златоуст, человек с золотым языком</summary>
-      <div class="body">
-        <p>Патриарх Константинополя с 398 по 404 год. Самый знаменитый оратор своего времени, отсюда и прозвище. Он призывал горожан заботиться о бедных, поспорил с императрицей Евдоксией, был несправедливо отправлен в ссылку и там умер. Вскоре его прославили как святого.</p>
-      </div>
+      <div class="body"><p>Патриарх Константинополя с 398 по 404 год. Самый знаменитый оратор своего времени, отсюда и прозвище. Призывал заботиться о бедных, поспорил с императрицей Евдоксией, был несправедливо отправлен в ссылку и там умер. Вскоре его прославили как святого.</p></div>
     </details>
   </div>
 </section>
 
-<!-- ============ 3. КАК ВЕРИТЬ ============ -->
-<section id="belief">
-  <div class="sec-head">
-    <div class="num">Глава 3</div>
-    <h2>Как верить? Споры и соборы</h2>
-  </div>
+<!-- 8 -->
+<section class="step" data-step="kak-verit" data-name="Как верить?" data-part="Глава 3 · Споры о вере">
+  <div class="eyebrow">Глава 3 · Споры о вере</div>
+  <h2>Как верить? Споры и соборы</h2>
   <div class="prose">
-    <p>Когда христиан стало очень много, они начали спорить: как правильно понимать веру? Спорили не только учёные, но и простые люди, и очень горячо.</p>
-    <p>Чтобы решить споры, императоры созывали <span class="term">Вселенские соборы</span>, большие собрания епископов и богословов. Как общее собрание всей школы, только для самых главных вопросов.</p>
-    <p>Запомни три слова, они в паре:</p>
+    <p>Когда христиан стало очень много, они начали спорить: как правильно понимать веру? Чтобы решить споры, императоры созывали <span class="term">Вселенские соборы</span>, большие собрания епископов и богословов. Как общее собрание всей школы, только для самых главных вопросов.</p>
+    <p>Запомни три слова, они всегда рядом:</p>
     <ul>
       <li><span class="term">Догмат</span>. То, что собор признал истиной. Сомневаться в нём нельзя.</li>
       <li><span class="term">Православие</span>. Вера в соответствии с догматами, «правильное славление».</li>
       <li><span class="term">Ересь</span>. Учение, которое собор отверг.</li>
     </ul>
     <details>
-      <summary>Что такое арианство и почему оно важно для этой темы?</summary>
+      <summary>Что такое арианство и почему оно важно?</summary>
       <div class="body">
-        <p>Священник Арий учил, что Христос не равен Богу Отцу, а лишь подобен ему. Первые два Вселенских собора это учение отвергли. Так <span class="term">арианство</span> стало ересью.</p>
-        <p>Соборы записали <span class="term">Символ веры</span>, короткое изложение того, во что верит Церковь. Его утвердили в 381 году.</p>
-        <p>А важно это вот почему: многие германцы, например остготы, приняли христианство именно в арианском виде. Когда они пришли править римлянами, вера их не объединила, а разделила. Об этом в следующей главе.</p>
+        <p>Священник Арий учил, что Христос не равен Богу Отцу, а лишь подобен ему. Первые два Вселенских собора это отвергли. Так <span class="term">арианство</span> стало ересью. Соборы записали <span class="term">Символ веры</span>, короткое изложение веры. Его утвердили в 381 году.</p>
+        <p>Важно вот почему: многие германцы, например остготы, приняли христианство именно в арианском виде. Когда они стали править римлянами, вера их не объединила, а разделила.</p>
       </div>
     </details>
   </div>
 </section>
 
-<!-- ============ 4. КОРОЛЕВСТВА ============ -->
-<section id="kingdoms">
-  <div class="sec-head">
-    <div class="num">Глава 4</div>
-    <h2>Германские королевства</h2>
-  </div>
+<!-- 9 -->
+<section class="step" data-step="korolevstva" data-name="Германские королевства" data-part="Глава 4 · Королевства">
+  <div class="eyebrow">Глава 4 · Королевства</div>
+  <h2>Германские королевства</h2>
   <div class="prose">
-    <p>Гунны напирали, и в конце IV века вестготы бежали от них прямо в Римскую империю. Сначала они подчинялись Риму, а потом создали на юге Галлии своё королевство. Первое германское королевство! Вслед за ними то же сделали другие племена.</p>
+    <p>Гунны напирали, и в конце IV века вестготы бежали от них прямо в Римскую империю. Потом они создали на юге Галлии своё королевство. Первое германское королевство! Вслед за ними то же сделали другие племена.</p>
     <p>Германцев везде было гораздо меньше, чем местных жителей. Поэтому королям приходилось считаться с римлянами и их законами.</p>
   </div>
-
-  <div class="game" id="g-map" style="margin-top:18px">
-    <div class="g-head">
-      <h3>Кто где поселился?</h3>
-      <span class="badge" id="b-map">Игра</span>
-    </div>
+  <div class="game" id="g-map">
+    <div class="g-head"><h3>Кто где поселился?</h3><span class="badge" id="b-map">Игра</span></div>
     <p class="task">Нажми на племя, потом на землю, где оно основало королевство.</p>
     <div class="match">
-      <div class="col"><div class="lbl">Племя</div><div id="tribes"></div></div>
-      <div class="col"><div class="lbl">Земля</div><div id="lands"></div></div>
+      <div class="col"><div class="lbl">Племя</div><div class="col" id="tribes"></div></div>
+      <div class="col"><div class="lbl">Земля</div><div class="col" id="lands"></div></div>
     </div>
     <div id="map-fb"></div>
     <details>
       <summary>Подсказка: народы спрятались в названиях стран</summary>
-      <div class="body">
-        <p>Франки дали имя Франции, англы Англии, бургунды Бургундии, лангобарды Ломбардии, а вандалы, возможно, Андалусии. Названия стран хранят память о Великом переселении народов.</p>
-      </div>
-    </details>
-  </div>
-
-  <div class="prose" style="margin-top:22px">
-    <h3>476 год: конец Древнего мира</h3>
-    <p>В 476 году был свергнут последний правитель Западной Римской империи <span class="term">Ромул Августул</span>. Забавно: первого царя Рима звали Ромул, первого императора Август, а последнего западного императора Ромул Августул. «Августул» значит «маленький Август». Древний мир закончился, но переселение народов продолжалось.</p>
-
-    <h3>Теодорих Великий</h3>
-    <p>Вождь остготов <span class="term">Теодорих</span> сначала служил Восточной Римской империи. По договору с её императором он повёл свой народ в Италию, разгромил противников и объявил себя её правителем.</p>
-    <p>Он правил 33 года, с 493 по 526, и вернул мир на разорённые земли. Теодорих понимал: чтобы удержать власть, нужно уважать местных. Он чтил римские законы, приближал знатных римлян, отстраивал Рим и свою столицу Равенну. Мозаика с его дворцом как раз открывает параграф в учебнике.</p>
-    <details>
-      <summary>Почему его королевство всё равно пало?</summary>
-      <div class="body">
-        <p>Остготы были арианами, а римляне нет. Вера не объединяла, а разделяла подданных. Через четверть века после смерти Теодориха королевство пало. Италию отвоевала Восточная империя, а потом большую её часть захватили другие германцы, лангобарды.</p>
-      </div>
-    </details>
-    <details>
-      <summary>Что общего у всех варварских королевств?</summary>
-      <div class="body">
-        <p>Германцы раньше не знали государства и учились управлять на ходу. Они брали римский опыт, но должны были считаться и со своими племенными обычаями. Разная вера мешала римлянам и варварам договориться.</p>
-        <p>Поэтому почти все германские королевства оказались недолгими. По-настоящему долгая жизнь была суждена только Франкскому королевству.</p>
-      </div>
+      <div class="body"><p>Франки дали имя Франции, англы Англии, бургунды Бургундии, лангобарды Ломбардии, а вандалы, возможно, Андалусии.</p></div>
     </details>
   </div>
 </section>
 
-<!-- ============ 5. ЗНАНИЯ ============ -->
-<section id="heritage">
-  <div class="sec-head">
-    <div class="num">Глава 5</div>
-    <h2>Кто спас знания Древнего мира</h2>
-  </div>
+<!-- 10 -->
+<section class="step" data-step="teodorih" data-name="476 год и Теодорих" data-part="Глава 4 · Королевства">
+  <div class="eyebrow">Глава 4 · Королевства</div>
+  <h2>476 год и Теодорих</h2>
   <div class="prose">
-    <p>На Востоке, в Византии, греко-римская культура сохранилась. А на Западе она начала приходить в упадок. Варвары выросли в деревнях. Они не умели содержать дороги, водопроводы, библиотеки, школы и театры, и всё это ветшало.</p>
-    <p>Победители не дорожили наследием Рима. Спасти его могла только Церковь, к которой прислушивались и римляне, и германцы.</p>
-    <p>Правда, многие служители Церкви считали, что христианам не нужна «языческая учёность». Но обойтись без античных знаний оказалось невозможно:</p>
+    <p>В <b>476 году</b> был свергнут последний правитель Западной Римской империи <span class="term">Ромул Августул</span>. Забавно: первого царя Рима звали Ромул, первого императора Август, а последнего западного императора Ромул Августул, «маленький Август». Древний мир закончился.</p>
+    <p>Вождь остготов <span class="term">Теодорих Великий</span> сначала служил Восточной империи. По договору с её императором он повёл свой народ в Италию и стал её правителем. Правил 33 года, с 493 по 526, и вернул мир на разорённые земли.</p>
+    <p>Теодорих понимал: чтобы удержать власть, нужно уважать местных. Он чтил римские законы, приближал знатных римлян, отстраивал Рим и свою столицу Равенну.</p>
+    <details>
+      <summary>Почему его королевство всё равно пало?</summary>
+      <div class="body"><p>Остготы были арианами, а римляне нет. Вера разделяла подданных. Через четверть века после смерти Теодориха королевство пало. Италию отвоевала Восточная империя, а потом большую часть захватили лангобарды.</p></div>
+    </details>
+    <details>
+      <summary>Что общего у всех варварских королевств?</summary>
+      <div class="body"><p>Германцы раньше не знали государства и учились управлять на ходу: брали римский опыт, но считались и со своими обычаями. Разная вера мешала договориться. Поэтому почти все королевства были недолгими. Долгая жизнь была суждена только Франкскому.</p></div>
+    </details>
+  </div>
+</section>
+
+<!-- 11 -->
+<section class="step" data-step="znaniya" data-name="Кто спас знания" data-part="Глава 5 · Знания">
+  <div class="eyebrow">Глава 5 · Знания</div>
+  <h2>Кто спас знания Древнего мира</h2>
+  <div class="prose">
+    <p>На Востоке, в Византии, греко-римская культура сохранилась. А на Западе варвары, выросшие в деревнях, не умели содержать дороги, водопроводы, библиотеки, школы и театры. Всё это ветшало.</p>
+    <p>Спасти наследие Рима могла только Церковь, к которой прислушивались и римляне, и германцы. Многие её служители считали, что «языческая учёность» христианам не нужна. Но обойтись без античных знаний оказалось невозможно:</p>
     <ul>
       <li><b>латынь и греческий</b> нужны для богослужения;</li>
       <li><b>астрономия и календарь</b> нужны, чтобы вычислять даты праздников;</li>
       <li><b>античная строительная техника</b> нужна, чтобы строить храмы;</li>
       <li><b>римская система образования</b> стала основой всех школ Средневековья.</li>
     </ul>
-    <p>Так в века войн и разорения Церковь незаметно заложила основу будущего расцвета средневековой культуры.</p>
   </div>
-  <div class="aside home" style="margin-top:18px">
+  <div class="aside home">
     <div class="k">Ближе к дому</div>
-    <p>В таблице дат учебника есть строка «Россия»: <b>середина V века, строительство стен из кирпича между Дербентом и Каспийским морем</b>. Дербент рядом с нами, в Дагестане. Стены закрывали узкий проход между горами и морем от кочевников с севера. Значит, Великое переселение народов дошло и до наших мест.</p>
+    <p>В таблице дат учебника есть строка «Россия»: <b>середина V века, стены между Дербентом и Каспийским морем</b>. Дербент рядом с нами, в Дагестане. Стены закрывали проход между горами и морем от кочевников с севера. Переселение народов дошло и до наших мест.</p>
   </div>
 </section>
 
-<!-- ============ СЛОВАРИК ============ -->
-<section id="terms">
+<!-- 12 -->
+<section class="step" data-step="slovar-1" data-name="Словарик: варвары" data-part="Словарик">
   <div class="game">
-    <div class="g-head">
-      <h3>Словарик-перевёртыш</h3>
-      <span class="badge" id="b-terms">Игра</span>
-    </div>
-    <p class="task">Нажми на карточку и она перевернётся. Открой все шестнадцать, и плитка в мозаике загорится.</p>
+    <div class="g-head"><h3>Словарик: варвары</h3><span class="badge" id="b-terms">Игра</span></div>
+    <p class="task">Нажми на карточку, и она перевернётся. Словарик из трёх частей, открой все карточки.</p>
     <div class="progress" id="terms-progress"></div>
-    <div class="cards" id="cards"></div>
+    <div class="cards" data-terms="0"></div>
   </div>
 </section>
 
-<!-- ============ ПОРЯДОК ============ -->
-<section id="order">
+<!-- 13 -->
+<section class="step" data-step="slovar-2" data-name="Словарик: Церковь" data-part="Словарик">
   <div class="game">
-    <div class="g-head">
-      <h3>Расставь по порядку</h3>
-      <span class="badge" id="b-order">Игра</span>
-    </div>
-    <p class="task">Нажимай на события в том порядке, в каком они происходили: от самого раннего к самому позднему. Даты спрятаны, вспоминай сама.</p>
+    <div class="g-head"><h3>Словарик: Церковь</h3><span class="badge" id="b-terms2">Игра</span></div>
+    <p class="task">Вторая часть. Люди и места Церкви.</p>
+    <div class="progress" id="terms-progress2"></div>
+    <div class="cards" data-terms="1"></div>
+  </div>
+</section>
+
+<!-- 14 -->
+<section class="step" data-step="slovar-3" data-name="Словарик: споры о вере" data-part="Словарик">
+  <div class="game">
+    <div class="g-head"><h3>Словарик: споры о вере</h3><span class="badge" id="b-terms3">Игра</span></div>
+    <p class="task">Третья часть. Самые трудные слова параграфа.</p>
+    <div class="progress" id="terms-progress3"></div>
+    <div class="cards" data-terms="2"></div>
+  </div>
+</section>
+
+<!-- 15 -->
+<section class="step" data-step="poryadok" data-name="Расставь по порядку" data-part="Игры">
+  <div class="game">
+    <div class="g-head"><h3>Расставь по порядку</h3><span class="badge" id="b-order">Игра</span></div>
+    <p class="task">Нажимай на события от самого раннего к самому позднему. Даты спрятаны, вспоминай сама.</p>
     <div class="pool" id="pool"></div>
-    <div class="seq" id="seq"><div class="empty">Сюда встанут события</div></div>
+    <div class="seq" id="seq"></div>
     <div class="row">
-      <button class="btn" id="order-check" disabled>Проверить</button>
-      <button class="btn ghost" id="order-reset">Сначала</button>
+      <button class="btn" id="order-check" type="button" disabled>Проверить</button>
+      <button class="btn ghost" id="order-reset" type="button">Сначала</button>
     </div>
     <div id="order-fb"></div>
   </div>
 </section>
 
-<!-- ============ ЛИШНЕЕ ============ -->
-<section id="odd">
+<!-- 16 -->
+<section class="step" data-step="lishnee" data-name="Найди лишнее" data-part="Игры">
   <div class="game">
-    <div class="g-head">
-      <h3>Найди лишнее</h3>
-      <span class="badge" id="b-odd">Игра</span>
-    </div>
+    <div class="g-head"><h3>Найди лишнее</h3><span class="badge" id="b-odd">Игра</span></div>
     <p class="task">Три слова из одной компании, одно чужое. Найди чужое.</p>
     <div class="progress" id="odd-progress"></div>
     <div class="odd-grid" id="odd-grid"></div>
     <div id="odd-fb"></div>
-    <div class="row"><button class="btn" id="odd-next" hidden>Дальше</button></div>
+    <div class="row"><button class="btn" id="odd-next" type="button" hidden>Дальше</button></div>
   </div>
 </section>
 
-<!-- ============ ТЕСТ ============ -->
-<section id="quiz">
-  <div class="sec-head">
-    <div class="num">Финал</div>
-    <h2>Проверь себя</h2>
-  </div>
+<!-- 17 -->
+<section class="step" data-step="test" data-name="Проверь себя" data-part="Финал">
+  <div class="eyebrow">Финал</div>
+  <h2>Проверь себя</h2>
   <div class="game">
     <div class="progress" id="quiz-progress"></div>
     <div id="quiz-box"></div>
   </div>
 </section>
 
-<!-- ============ ГЛАВНЫЙ ВОПРОС ============ -->
-<section id="main-q">
-  <div class="sec-head">
-    <div class="num">Главный вопрос параграфа</div>
-    <h2>Каковы были последствия Великого переселения народов для Рима и варваров?</h2>
-  </div>
+<!-- 18 -->
+<section class="step" data-step="itog" data-name="Главный вопрос" data-part="Финал">
+  <div class="eyebrow">Финал</div>
+  <h2>Каковы были последствия Великого переселения народов для Рима и варваров?</h2>
   <div class="prose">
-    <p>Учебник просит ответить на этот вопрос и привести два-три аргумента. Ниже три «кирпичика» для ответа. Открой их, а потом попробуй сказать ответ своими словами, не подглядывая.</p>
+    <p>Это главный вопрос параграфа. Вот три «кирпичика» для ответа. Открой их, а потом попробуй ответить своими словами, не подглядывая.</p>
   </div>
-  <div class="bricks" style="margin-top:14px">
+  <div class="bricks">
     <div class="brick"><button type="button" aria-expanded="false"><span>Что стало с Римом</span><span>+</span></button><div class="b-body" hidden>Западная Римская империя пала в 476 году. На её землях возникли германские королевства. Города, дороги и водопроводы пришли в упадок. Восточная империя, Византия, устояла.</div></div>
     <div class="brick"><button type="button" aria-expanded="false"><span>Что стало с варварами</span><span>+</span></button><div class="b-body" hidden>Германцы впервые создали свои государства. Они учились управлять по римскому образцу и принимали христианство, часто в виде арианства. Большинство их королевств оказались недолгими.</div></div>
     <div class="brick"><button type="button" aria-expanded="false"><span>Что стало со знаниями</span><span>+</span></button><div class="b-body" hidden>Античное наследие сохранила Церковь: языки, календарь, строительное искусство, школы. На этом фундаменте выросла культура Средневековья.</div></div>
   </div>
-  <div class="aside" style="margin-top:18px">
+  <div class="aside">
     <div class="k">Главное в одном предложении</div>
     <p>Гунны сдвинули германцев на запад, германцы разрушили Западную Римскую империю и создали свои королевства, а знания Древнего мира сберегла Церковь.</p>
+  </div>
+  <div class="game">
+    <div class="g-head"><h3>Твоя мозаика</h3></div>
+    <div class="mosaic" id="mosaic"></div>
+    <div class="mosaic-list" id="mosaic-list"></div>
+    <div class="row"><a class="btn" href="./">К списку тем</a></div>
   </div>
 </section>
 
 </main>
 
-<footer>
-  <div><span class="k">Для родителей.</span> Страница сделана для Амины по § 1 учебника истории Средних веков для 6 класса. Все термины и даты взяты из учебника, без добавлений. Прогресс игр хранится в браузере на этом устройстве.</div>
-  <div>Тема плотная. Удобно разбирать за два подхода: варвары и Церковь в первый день, споры о вере и королевства во второй.</div>
-</footer>
+<nav class="pager" aria-label="Навигация по шагам">
+  <div class="pager-inner">
+    <button class="btn ghost" id="prev" type="button">Назад</button>
+    <div class="count" id="count"></div>
+    <button class="btn" id="next" type="button">Дальше</button>
+  </div>
+</nav>
+
+<div class="toc" id="toc" hidden>
+  <div class="toc-panel" role="dialog" aria-label="Содержание">
+    <h3>Содержание <button class="toc-close" id="toc-close" type="button">Закрыть</button></h3>
+    <div id="toc-list" style="display:flex;flex-direction:column;gap:2px"></div>
+  </div>
+</div>
 
 <script>
 (function(){
@@ -558,19 +545,96 @@ footer .k{color:var(--ink-2);font-weight:600}
   var el = function(tag, cls, html){ var e=document.createElement(tag); if(cls) e.className=cls; if(html!=null) e.innerHTML=html; return e; };
   var shuffle = function(a){ a=a.slice(); for(var i=a.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=a[i]; a[i]=a[j]; a[j]=t; } return a; };
 
-  /* ---------- progress ---------- */
-  var KEY='rim-varvary-progress';
-  var done={};
-  try{ done=JSON.parse(localStorage.getItem(KEY)||'{}')||{}; }catch(e){ done={}; }
-  function save(){ try{ localStorage.setItem(KEY, JSON.stringify(done)); }catch(e){} }
+  /* ---------- state ---------- */
+  var KEY='rim-varvary-v2';
+  var state={visited:{},done:{},last:0};
+  try{ var s=JSON.parse(localStorage.getItem(KEY)||'null'); if(s && typeof s==='object'){ state.visited=s.visited||{}; state.done=s.done||{}; state.last=s.last||0; } }catch(e){}
+  function save(){ try{ localStorage.setItem(KEY, JSON.stringify(state)); }catch(e){} }
+
+  var GAMES=[
+    {k:'terms', name:'Словарик, все три части', step:'slovar-1'},
+    {k:'map', name:'Кто где поселился', step:'korolevstva'},
+    {k:'order', name:'Расставь по порядку', step:'poryadok'},
+    {k:'odd', name:'Найди лишнее', step:'lishnee'},
+    {k:'quiz', name:'Проверь себя', step:'test'}
+  ];
+  var GAME_STEPS={'korolevstva':'map','slovar-1':'terms','slovar-2':'terms','slovar-3':'terms','poryadok':'order','lishnee':'odd','test':'quiz'};
+
+  /* ---------- steps ---------- */
+  var steps=Array.prototype.slice.call(document.querySelectorAll('.step'));
+  var N=steps.length, cur=0;
+  var stepbar=$('#stepbar'), count=$('#count'), prevB=$('#prev'), nextB=$('#next'), tocList=$('#toc-list');
+
+  steps.forEach(function(s,i){
+    var b=el('button'); b.type='button'; b.setAttribute('aria-label','Шаг '+(i+1)+': '+s.getAttribute('data-name'));
+    b.addEventListener('click', function(){ go(i); });
+    stepbar.appendChild(b);
+    var t=el('button','toc-item','<span class="n">'+(i+1)+'</span><span>'+s.getAttribute('data-name')+'</span><span class="m"></span>');
+    t.type='button'; t.addEventListener('click', function(){ closeToc(); go(i); });
+    tocList.appendChild(t);
+  });
+
   function paint(){
-    var tiles=document.querySelectorAll('.mosaic .tile');
-    for(var i=0;i<tiles.length;i++){ tiles[i].classList.toggle('on', !!done[tiles[i].getAttribute('data-tile')]); }
-    var map={terms:'b-terms',map:'b-map',order:'b-order',odd:'b-odd'};
-    for(var k in map){ var b=document.getElementById(map[k]); if(b && done[k]){ b.textContent='Пройдено'; b.classList.add('done'); } }
+    var bars=stepbar.children, items=tocList.children;
+    for(var i=0;i<N;i++){
+      var key=steps[i].getAttribute('data-step'), g=GAME_STEPS[key];
+      var done = g && state.done[g];
+      bars[i].className=(i===cur?'current':'')+(state.visited[i]?' visited':'')+(done?' done':'');
+      items[i].className='toc-item'+(i===cur?' current':'');
+      items[i].lastElementChild.textContent = done ? 'пройдено' : (state.visited[i] ? '✓' : '');
+    }
+    count.textContent=(cur+1)+' / '+N;
+    prevB.disabled = cur===0;
+    if(cur===N-1){ nextB.textContent='Это последний шаг'; nextB.disabled=true; }
+    else { nextB.textContent='Дальше: '+steps[cur+1].getAttribute('data-name'); nextB.disabled=false; }
+    var badges={terms:['b-terms','b-terms2','b-terms3'],map:['b-map'],order:['b-order'],odd:['b-odd']};
+    for(var k in badges){ badges[k].forEach(function(id){ var b=document.getElementById(id); if(b && state.done[k]){ b.textContent='Пройдено'; b.classList.add('done'); } }); }
+    paintMosaic();
   }
-  function markDone(k){ if(!done[k]){ done[k]=true; save(); } paint(); }
-  paint();
+  function go(i, silent){
+    if(i<0||i>=N) return;
+    cur=i; steps.forEach(function(s,j){ s.hidden = j!==i; });
+    state.visited[i]=true; state.last=i; save();
+    if(!silent){ var h='#'+steps[i].getAttribute('data-step'); if(location.hash!==h) history.pushState(null,'',h); }
+    window.scrollTo(0,0);
+    paint();
+  }
+  function idxFromHash(){ var h=location.hash.replace('#',''); for(var i=0;i<N;i++) if(steps[i].getAttribute('data-step')===h) return i; return -1; }
+  window.addEventListener('popstate', function(){ var i=idxFromHash(); go(i<0?0:i, true); });
+  prevB.addEventListener('click', function(){ go(cur-1); });
+  nextB.addEventListener('click', function(){ go(cur+1); });
+  document.addEventListener('keydown', function(e){ if(e.target && /INPUT|TEXTAREA/.test(e.target.tagName)) return; if(e.key==='ArrowRight') go(cur+1); if(e.key==='ArrowLeft') go(cur-1); if(e.key==='Escape') closeToc(); });
+
+  var toc=$('#toc');
+  function openToc(){ toc.hidden=false; }
+  function closeToc(){ toc.hidden=true; }
+  $('#toc-btn').addEventListener('click', openToc);
+  $('#toc-close').addEventListener('click', closeToc);
+  toc.addEventListener('click', function(e){ if(e.target===toc) closeToc(); });
+
+  function markDone(k){ if(!state.done[k]){ state.done[k]=true; save(); } paint(); }
+
+  /* resume button on step 1 */
+  (function(){
+    var r=$('#resume');
+    if(state.last>0 && idxFromHash()<0){
+      r.hidden=false;
+      r.innerHTML='<button class="btn ghost" type="button">Продолжить с шага '+(state.last+1)+': '+steps[state.last].getAttribute('data-name')+'</button>';
+      r.firstChild.addEventListener('click', function(){ go(state.last); });
+    }
+  })();
+
+  /* ---------- mosaic on final step ---------- */
+  var mosaic=$('#mosaic'), mosaicList=$('#mosaic-list');
+  function paintMosaic(){
+    mosaic.innerHTML=''; mosaicList.innerHTML='';
+    GAMES.forEach(function(g){
+      var t=el('span','tile'+(state.done[g.k]?' on':'')); t.title=g.name; mosaic.appendChild(t);
+      var li=el('span', state.done[g.k]?'':'off', (state.done[g.k]?'★ ':'☆ ')+g.name);
+      if(!state.done[g.k]){ li.style.cursor='pointer'; li.addEventListener('click', function(){ for(var i=0;i<N;i++) if(steps[i].getAttribute('data-step')===g.step){ go(i); break; } }); }
+      mosaicList.appendChild(li);
+    });
+  }
 
   /* ---------- timeline ---------- */
   var TL=[
@@ -584,44 +648,59 @@ footer .k{color:var(--ink-2);font-weight:600}
   var tl=$('#tl'), tlDetail=$('#tl-detail');
   function showTl(i){
     var n=tl.children; for(var j=0;j<n.length;j++) n[j].classList.toggle('active', j===i);
-    var e=TL[i];
-    tlDetail.innerHTML='<div class="y">'+e.y+'</div><div class="t">'+e.t+'</div><div class="d">'+e.d+'</div>';
+    var e=TL[i]; tlDetail.innerHTML='<div class="y">'+e.y+'</div><div class="t">'+e.t+'</div><div class="d">'+e.d+'</div>';
   }
   TL.forEach(function(e,i){
-    var b=el('button','tl-node'+(e.ru?' ru':''));
-    b.type='button';
+    var b=el('button','tl-node'+(e.ru?' ru':'')); b.type='button';
     b.innerHTML='<span class="dot"></span><div class="y">'+e.y+'</div><div class="t">'+e.t+'</div><div class="era">'+e.era+'</div>';
     b.addEventListener('click', function(){ showTl(i); });
     tl.appendChild(b);
   });
   showTl(0);
 
-  /* ---------- flip cards ---------- */
+  /* ---------- glossary ---------- */
   var TERMS=[
-    {t:'Варвары', d:'Так римляне называли народы за границами империи, которые не говорили по-гречески и по-латыни.', e:'Германцы для римлян варвары.'},
-    {t:'Великое переселение народов', d:'Огромное движение племён по Европе, которое началось, когда гунны двинулись на запад.', e:'Как домино: гунны толкнули готов, готы других.'},
-    {t:'Двуполье', d:'Поле делят пополам. Одну половину засевают, другая год отдыхает. Потом меняют.', e:'Земле, как и человеку, нужен отдых.'},
-    {t:'Соседская община', d:'Все семьи посёлка вместе решают общие хозяйственные дела.', e:'Как жильцы одного двора.'},
-    {t:'Дружина', d:'Воины при вожде. Считали войну самым достойным делом и мечтали о походах и добыче.', e:'У славян тоже была дружина при князе.'},
-    {t:'Церковь', d:'Все христианские общины вместе, с единым устройством: приходы, епископы, патриархи.', e:'Не здание, а организация.'},
-    {t:'Патриарх', d:'«Отец-владыка». Епископ одного из пяти главных городов: Рима, Константинополя, Александрии, Антиохии, Иерусалима.', e:''},
-    {t:'Папа римский', d:'Епископ Рима. От греческого «паппас», отец. Претендовал на главную роль, но Восток не соглашался.', e:''},
-    {t:'Монах', d:'По-гречески «одинокий». Человек, который ушёл от обычной жизни, чтобы молиться.', e:'Отшельник живёт один, остальные в монастыре.'},
-    {t:'Монастырь', d:'Община монахов и место, где они живут. Там были школы, библиотеки и мастерские по переписке книг.', e:''},
-    {t:'Миссионер', d:'Проповедник, которого посылали рассказать о христианстве другим народам.', e:'Святой Патрик в Ирландии.'},
-    {t:'Вселенский собор', d:'Большое собрание епископов и богословов. Его созывал император, чтобы решить спорные вопросы веры.', e:''},
-    {t:'Догмат', d:'Утверждение, которое Церковь признала истиной. Сомневаться в нём нельзя.', e:''},
-    {t:'Ересь', d:'Учение, которое Церковь отвергла на соборе.', e:'Арианство стало ересью.'},
-    {t:'Арианство', d:'Учение священника Ария: Христос не равен Богу Отцу, а лишь подобен ему. Соборы его отвергли.', e:'Остготы были арианами.'},
-    {t:'Символ веры', d:'Короткое изложение христианского вероучения, принятое на первых двух Вселенских соборах.', e:'Утверждён в 381 году.'}
+    [
+      {t:'Варвары', d:'Так римляне называли народы за границами империи, которые не говорили по-гречески и по-латыни.', e:'Германцы для римлян варвары.'},
+      {t:'Гунны', d:'Кочевники, жившие к северо-западу от Китая. В IV веке двинулись на запад и дошли до Причерноморья.', e:'С них началось переселение народов.'},
+      {t:'Великое переселение народов', d:'Огромное движение племён по Европе, которое началось, когда гунны двинулись на запад.', e:'Как домино: гунны толкнули готов, готы других.'},
+      {t:'Двуполье', d:'Поле делят пополам. Одну половину засевают, другая год отдыхает. Потом меняют.', e:'Земле, как и человеку, нужен отдых.'},
+      {t:'Соседская община', d:'Все семьи посёлка вместе решают общие хозяйственные дела.', e:'Как жильцы одного двора.'},
+      {t:'Народное собрание', d:'Собрание всех свободных людей племени, где решали важные вопросы.', e:'Со временем стало лишь одобрять решения вождей.'},
+      {t:'Дружина', d:'Воины при вожде. Считали войну самым достойным делом и мечтали о походах и добыче.', e:'У славян тоже была дружина при князе.'},
+      {t:'Язычники', d:'Люди, которые верят во многих богов.', e:'Германцы и славяне были язычниками.'}
+    ],
+    [
+      {t:'Церковь', d:'Все христианские общины вместе, с единым устройством: приходы, епископы, патриархи.', e:'Не здание, а организация.'},
+      {t:'Патриарх', d:'«Отец-владыка». Епископ одного из пяти главных городов: Рима, Константинополя, Александрии, Антиохии, Иерусалима.', e:''},
+      {t:'Папа римский', d:'Епископ Рима. От греческого «паппас», отец. Претендовал на главную роль, но Восток не соглашался.', e:''},
+      {t:'Монах', d:'По-гречески «одинокий». Человек, который ушёл от обычной жизни, чтобы молиться.', e:'Отшельник живёт один, остальные в монастыре.'},
+      {t:'Монастырь', d:'Община монахов и место, где они живут. Там были школы, библиотеки и мастерские по переписке книг.', e:''},
+      {t:'Миссионер', d:'Проповедник, которого посылали рассказать о христианстве другим народам.', e:'Святой Патрик в Ирландии.'}
+    ],
+    [
+      {t:'Вселенский собор', d:'Большое собрание епископов и богословов. Его созывал император, чтобы решить спорные вопросы веры.', e:''},
+      {t:'Догмат', d:'Утверждение, которое Церковь признала истиной. Сомневаться в нём нельзя.', e:''},
+      {t:'Ересь', d:'Учение, которое Церковь отвергла на соборе.', e:'Арианство стало ересью.'},
+      {t:'Арианство', d:'Учение священника Ария: Христос не равен Богу Отцу, а лишь подобен ему. Соборы его отвергли.', e:'Остготы были арианами.'},
+      {t:'Символ веры', d:'Короткое изложение христианского вероучения, принятое на первых двух Вселенских соборах.', e:'Утверждён в 381 году.'}
+    ]
   ];
-  var cards=$('#cards'), flipped={}, tp=$('#terms-progress');
-  function termsProgress(){ var n=Object.keys(flipped).length; tp.textContent='Открыто '+n+' из '+TERMS.length; if(n===TERMS.length) markDone('terms'); }
-  TERMS.forEach(function(t,i){
-    var b=el('button','card'); b.type='button'; b.setAttribute('aria-label',t.t+'. Нажми, чтобы увидеть значение');
-    b.innerHTML='<div class="in"><div class="face f"><div class="w">'+t.t+'</div><div class="tap">Нажми</div></div><div class="face b"><div class="w">'+t.t+'</div><div>'+t.d+'</div>'+(t.e?'<div class="e">'+t.e+'</div>':'')+'</div></div>';
-    b.addEventListener('click', function(){ b.classList.toggle('flip'); flipped[i]=true; termsProgress(); });
-    cards.appendChild(b);
+  var flipped={}, total=0; TERMS.forEach(function(g){ total+=g.length; });
+  var progEls=[$('#terms-progress'),$('#terms-progress2'),$('#terms-progress3')];
+  function termsProgress(){
+    var n=Object.keys(flipped).length;
+    progEls.forEach(function(p,gi){ var got=0; TERMS[gi].forEach(function(t,i){ if(flipped[gi+'-'+i]) got++; }); p.textContent='Открыто '+got+' из '+TERMS[gi].length+' здесь, всего '+n+' из '+total; });
+    if(n===total) markDone('terms');
+  }
+  document.querySelectorAll('.cards').forEach(function(box){
+    var gi=+box.getAttribute('data-terms');
+    TERMS[gi].forEach(function(t,i){
+      var b=el('button','card'); b.type='button'; b.setAttribute('aria-label',t.t+'. Нажми, чтобы увидеть значение');
+      b.innerHTML='<div class="in"><div class="face f"><div class="w">'+t.t+'</div><div class="tap">Нажми</div></div><div class="face b"><div class="w">'+t.t+'</div><div>'+t.d+'</div>'+(t.e?'<div class="e">'+t.e+'</div>':'')+'</div></div>';
+      b.addEventListener('click', function(){ b.classList.toggle('flip'); flipped[gi+'-'+i]=true; termsProgress(); });
+      box.appendChild(b);
+    });
   });
   termsProgress();
 
@@ -633,9 +712,7 @@ footer .k{color:var(--ink-2);font-weight:600}
     {tribe:'Франки', land:'Галлия', why:'Отсюда название «Франция».'},
     {tribe:'Остготы', land:'Италия', why:'Королевство Теодориха со столицей в Равенне.'}
   ];
-  var tribesBox=$('#tribes'), landsBox=$('#lands'), mapFb=$('#map-fb');
-  var selTribe=null, matched=0;
-  tribesBox.className='col'; landsBox.className='col';
+  var tribesBox=$('#tribes'), landsBox=$('#lands'), mapFb=$('#map-fb'), selTribe=null, matched=0;
   PAIRS.forEach(function(p){
     var b=el('button','opt',p.tribe); b.type='button'; b.setAttribute('data-tribe',p.tribe);
     b.addEventListener('click', function(){
@@ -672,8 +749,7 @@ footer .k{color:var(--ink-2);font-weight:600}
     {y:476, t:'Свергнут Ромул Августул', ys:'476'},
     {y:493, t:'Теодорих стал правителем Италии', ys:'493'}
   ];
-  var pool=$('#pool'), seq=$('#seq'), orderCheck=$('#order-check'), orderFb=$('#order-fb');
-  var picked=[];
+  var pool=$('#pool'), seq=$('#seq'), orderCheck=$('#order-check'), orderFb=$('#order-fb'), picked=[], shuffledEvents=shuffle(EVENTS);
   function renderOrder(){
     pool.innerHTML='';
     shuffledEvents.forEach(function(e){
@@ -684,14 +760,10 @@ footer .k{color:var(--ink-2);font-weight:600}
     });
     seq.innerHTML='';
     if(!picked.length){ seq.appendChild(el('div','empty','Сюда встанут события')); }
-    picked.forEach(function(e,i){
-      var s=el('div','slot','<span class="i">'+(i+1)+'</span><span>'+e.t+'</span>');
-      seq.appendChild(s);
-    });
+    picked.forEach(function(e,i){ seq.appendChild(el('div','slot','<span class="i">'+(i+1)+'</span><span>'+e.t+'</span>')); });
     orderCheck.disabled = picked.length!==EVENTS.length;
     orderFb.innerHTML='';
   }
-  var shuffledEvents=shuffle(EVENTS);
   renderOrder();
   orderCheck.addEventListener('click', function(){
     var slots=seq.querySelectorAll('.slot'), wrong=0;
@@ -701,7 +773,7 @@ footer .k{color:var(--ink-2);font-weight:600}
       slots[i].insertAdjacentHTML('beforeend','<span class="yr">'+e.ys+'</span>');
       if(!ok) wrong++;
     });
-    if(!wrong){ orderFb.innerHTML='<div class="feedback ok"><span class="k">Всё по порядку!</span><span>313, 375, 381, 476, 493. Запомни: сначала Церковь получила свободу, потом пришли гунны, потом пал Рим.</span></div>'; markDone('order'); }
+    if(!wrong){ orderFb.innerHTML='<div class="feedback ok"><span class="k">Всё по порядку!</span><span>313, 375, 381, 476, 493. Сначала Церковь получила свободу, потом пришли гунны, потом пал Рим.</span></div>'; markDone('order'); }
     else orderFb.innerHTML='<div class="feedback bad"><span class="k">Не совсем. Красные события стоят не на своих местах.</span><span>Теперь даты видны. Нажми «Сначала» и попробуй ещё раз.</span></div>';
     orderCheck.disabled=true;
   });
@@ -722,10 +794,10 @@ footer .k{color:var(--ink-2);font-weight:600}
       b.addEventListener('click', function(){
         var all=oddGrid.querySelectorAll('.opt');
         if(w===r.odd){
-          for(var i=0;i<all.length;i++){ all[i].disabled=true; }
+          for(var i=0;i<all.length;i++) all[i].disabled=true;
           b.classList.add('ok');
           oddFb.innerHTML='<div class="feedback ok"><span class="k">Точно, лишнее слово «'+w+'».</span><span>'+r.why+'</span></div>';
-          if(oddRound<ODD.length-1){ oddNext.hidden=false; }
+          if(oddRound<ODD.length-1) oddNext.hidden=false;
           else { oddP.textContent='Все три раунда пройдены'; markDone('odd'); }
         } else {
           b.classList.add('bad'); b.disabled=true;
@@ -752,7 +824,7 @@ footer .k{color:var(--ink-2);font-weight:600}
   ];
   var qBox=$('#quiz-box'), qP=$('#quiz-progress'), qi=0, score=0;
   function renderQ(){
-    if(qi>=QUIZ.length){ return renderScore(); }
+    if(qi>=QUIZ.length) return renderScore();
     var q=QUIZ[qi];
     qP.textContent='Вопрос '+(qi+1)+' из '+QUIZ.length;
     qBox.innerHTML='';
@@ -769,8 +841,8 @@ footer .k{color:var(--ink-2);font-weight:600}
         for(var k=0;k<all.length;k++){ all[k].disabled=true; if(k===q.a) all[k].classList.add('ok'); }
         if(i===q.a){ score++; fb.innerHTML='<div class="feedback ok"><span class="k">Правильно!</span><span>'+q.why+'</span></div>'; }
         else { b.classList.add('bad'); fb.innerHTML='<div class="feedback bad"><span class="k">Нет, правильный ответ подсвечен зелёным.</span><span>'+q.why+'</span></div>'; }
-        var n=el('button','btn', qi<QUIZ.length-1?'Дальше':'Показать результат'); n.type='button';
-        n.addEventListener('click', function(){ qi++; renderQ(); });
+        var n=el('button','btn', qi<QUIZ.length-1?'Следующий вопрос':'Показать результат'); n.type='button';
+        n.addEventListener('click', function(){ qi++; renderQ(); window.scrollTo(0,0); });
         rowN.appendChild(n);
       });
       opts.appendChild(b);
@@ -779,7 +851,7 @@ footer .k{color:var(--ink-2);font-weight:600}
   function renderScore(){
     qP.textContent='Результат';
     var tiles=''; for(var i=0;i<QUIZ.length;i++) tiles+='<i class="'+(i<score?'on':'')+'"></i>';
-    var msg = score===QUIZ.length ? 'Идеально, Амина! Ты собрала всю мозаику.' : score>=7 ? 'Отлично! Ещё раз взгляни на вопросы, где ошиблась, и будет полный набор.' : score>=5 ? 'Хорошо. Перечитай главы, где было трудно, и пройди тест снова.' : 'Тема сложная, Амина, это нормально. Вернись к разделу «За минуту», потом к словарику, и попробуй ещё раз.';
+    var msg = score===QUIZ.length ? 'Идеально, Амина! Ни одной ошибки.' : score>=7 ? 'Отлично! Ещё раз взгляни на вопросы, где ошиблась, и будет полный набор.' : score>=5 ? 'Хорошо. Перечитай шаги, где было трудно, и пройди тест снова.' : 'Тема сложная, Амина, это нормально. Вернись к шагу «За минуту», потом к словарику, и попробуй ещё раз.';
     qBox.innerHTML='<div class="score"><div class="big">'+score+' из '+QUIZ.length+'</div><div class="score-tiles">'+tiles+'</div><p>'+msg+'</p><button class="btn ghost" type="button" id="quiz-again">Пройти ещё раз</button></div>';
     $('#quiz-again').addEventListener('click', function(){ qi=0; score=0; renderQ(); });
     markDone('quiz');
@@ -787,16 +859,16 @@ footer .k{color:var(--ink-2);font-weight:600}
   renderQ();
 
   /* ---------- bricks ---------- */
-  var bricks=document.querySelectorAll('.brick button');
-  for(var i=0;i<bricks.length;i++){
-    (function(b){
-      b.addEventListener('click', function(){
-        var body=b.nextElementSibling, open=body.hidden;
-        body.hidden=!open; b.setAttribute('aria-expanded', open?'true':'false');
-        b.lastElementChild.textContent = open?'−':'+';
-      });
-    })(bricks[i]);
-  }
+  Array.prototype.forEach.call(document.querySelectorAll('.brick button'), function(b){
+    b.addEventListener('click', function(){
+      var body=b.nextElementSibling, open=body.hidden;
+      body.hidden=!open; b.setAttribute('aria-expanded', open?'true':'false');
+      b.lastElementChild.textContent = open?'−':'+';
+    });
+  });
+
+  /* ---------- start ---------- */
+  var start=idxFromHash(); go(start<0?0:start, true);
 })();
 </script>
 
