@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Разборы для Амины и Арслана</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oranienbaum&family=Golos+Text:wght@400;500;600&display=swap">
+<style>
+:root{--bg:#EBE8DF;--surface:#F8F6F0;--ink:#1B2233;--ink-2:#4A5163;--muted:#7A8093;--lapis:#23448A;--gold:#B08A2E;--line:#D2CDBF;
+  --shadow:0 1px 2px rgba(27,34,51,.08),0 10px 28px rgba(27,34,51,.07)}
+@media (prefers-color-scheme: dark){:root{--bg:#0F1728;--surface:#182338;--ink:#EDE8DC;--ink-2:#C2BFB4;--muted:#8B93A8;--lapis:#7EA0E6;--gold:#E0B84A;--line:#2E3B57;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 28px rgba(0,0,0,.35)}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Golos Text","Segoe UI",system-ui,sans-serif;font-size:17px;line-height:1.5}
+main{max-width:720px;margin:0 auto;padding:44px 20px 80px;display:flex;flex-direction:column;gap:36px}
+.eyebrow{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--lapis);font-weight:600;display:flex;align-items:center;gap:10px}
+.tess{display:inline-flex;gap:3px}.tess i{width:8px;height:8px;display:block;border-radius:1px}
+.tess i:nth-child(1){background:var(--lapis)}.tess i:nth-child(2){background:var(--gold)}.tess i:nth-child(3){background:#B4552F}
+h1,h2{font-family:"Oranienbaum","Georgia",serif;font-weight:400;line-height:1.1;margin:0;text-wrap:balance}
+h1{font-size:clamp(36px,7vw,54px);margin-top:10px}
+.lede{color:var(--ink-2);margin:10px 0 0;max-width:40ch}
+h2{font-size:32px;margin-bottom:12px}
+ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+li a{display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:baseline;text-decoration:none;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 18px;box-shadow:var(--shadow)}
+li a:hover{border-color:var(--lapis)}
+.subj{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);font-weight:600}
+.ttl{font-weight:500}
+.date{font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+@media (max-width:520px){li a{grid-template-columns:1fr auto}.subj{grid-column:1/-1}}
+.empty{color:var(--muted)}
+</style>
+</head>
+<body>
+<main>
+<header>
+<div class="eyebrow"><span class="tess"><i></i><i></i><i></i></span> Школа №12 · Каспийск</div>
+<h1>Разборы для Амины и Арслана</h1>
+<p class="lede">Темы из учебников, объяснённые простыми словами, с играми и проверкой.</p>
+</header>
+<section><h2>Амина</h2><ul><li><a href="amina/istoriya/2026-09-06-p1-rim-varvary-cerkov.html"><span class="subj">История</span><span class="ttl">Рим, варвары и Церковь</span><span class="date">06.09.2026</span></a></li></ul></section>
+</main>
+</body>
+</html>
