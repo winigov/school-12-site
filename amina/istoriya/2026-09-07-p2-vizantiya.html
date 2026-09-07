@@ -1,0 +1,1234 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Византия и её соседи</title>
+<meta name="paragraph" content="§ 2">
+<meta name="description" content="Византийская империя и её соседи">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oranienbaum&family=Golos+Text:wght@400;500;600;700&display=swap">
+<style>
+:root{
+  --bg:#EBE8DF; --surface:#F8F6F0; --surface-2:#E2DED2; --ink:#1B2233; --ink-2:#4A5163; --muted:#7A8093;
+  --lapis:#23448A; --on-lapis:#FFFFFF; --lapis-soft:#D9E1F3;
+  --gold:#B08A2E; --gold-soft:#F1E6C2; --on-gold:#2A2107;
+  --terra:#B4552F; --terra-soft:#F3DCD2;
+  --moss:#4E7A3B; --moss-soft:#DCE8D2;
+  --line:#D2CDBF; --tile:#CFC9B9;
+  --shadow:0 1px 2px rgba(27,34,51,.08),0 10px 28px rgba(27,34,51,.07);
+  --display:"Oranienbaum","Georgia","Times New Roman",serif;
+  --body:"Golos Text","Segoe UI",system-ui,-apple-system,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0F1728; --surface:#182338; --surface-2:#21304B; --ink:#EDE8DC; --ink-2:#C2BFB4; --muted:#8B93A8;
+    --lapis:#7EA0E6; --on-lapis:#0F1728; --lapis-soft:#22345A;
+    --gold:#E0B84A; --gold-soft:#3E3419; --on-gold:#0F1728;
+    --terra:#E0825C; --terra-soft:#4A2A1D;
+    --moss:#8DBF74; --moss-soft:#243B1F;
+    --line:#2E3B57; --tile:#2A3856;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 28px rgba(0,0,0,.35);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0F1728; --surface:#182338; --surface-2:#21304B; --ink:#EDE8DC; --ink-2:#C2BFB4; --muted:#8B93A8;
+  --lapis:#7EA0E6; --on-lapis:#0F1728; --lapis-soft:#22345A;
+  --gold:#E0B84A; --gold-soft:#3E3419; --on-gold:#0F1728;
+  --terra:#E0825C; --terra-soft:#4A2A1D;
+  --moss:#8DBF74; --moss-soft:#243B1F;
+  --line:#2E3B57; --tile:#2A3856;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 28px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+@media (prefers-reduced-motion: reduce){ *{transition:none!important;animation:none!important} }
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.55;-webkit-text-size-adjust:100%}
+h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1.1;text-wrap:balance;margin:0}
+p{margin:0}
+a{color:var(--lapis)}
+button{font:inherit;color:inherit;cursor:pointer}
+button:focus-visible,summary:focus-visible,a:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+[hidden]{display:none!important}
+
+/* ---------- top bar ---------- */
+.top{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+.top-inner{max-width:720px;margin:0 auto;padding:10px 16px;display:flex;align-items:center;gap:12px}
+.back{text-decoration:none;color:var(--ink-2);font-size:14px;white-space:nowrap;padding:6px 10px;border-radius:8px;background:var(--surface);border:1px solid var(--line)}
+.crumb{flex:1;min-width:0;font-size:14px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.crumb b{color:var(--ink);font-weight:600}
+.toc-btn{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:6px 10px;font-size:14px;color:var(--lapis);font-weight:600;white-space:nowrap}
+.stepbar{max-width:720px;margin:0 auto;padding:0 16px 10px;display:flex;gap:4px}
+.stepbar button{flex:1;height:8px;min-width:6px;padding:0;border:0;border-radius:2px;background:var(--tile);transition:background .3s,transform .3s}
+.stepbar button.visited{background:var(--lapis)}
+.stepbar button.done{background:var(--gold)}
+.stepbar button.current{transform:scaleY(1.6);background:var(--gold)}
+
+/* ---------- steps ---------- */
+main{max-width:720px;margin:0 auto;padding:20px 16px 120px}
+.step{display:flex;flex-direction:column;gap:16px}
+.eyebrow{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);font-weight:700;display:flex;align-items:center;gap:10px}
+.tess{display:inline-flex;gap:3px}
+.tess i{width:8px;height:8px;display:block;border-radius:1px}
+.tess i:nth-child(1){background:var(--lapis)} .tess i:nth-child(2){background:var(--gold)} .tess i:nth-child(3){background:var(--terra)}
+.step h1{font-size:clamp(36px,8vw,56px)}
+.step h2{font-size:clamp(28px,6vw,38px)}
+.step h3{font-size:22px;color:var(--lapis);margin-top:4px}
+.lede{font-size:19px;color:var(--ink-2);max-width:34ch}
+.prose{display:flex;flex-direction:column;gap:12px;max-width:66ch}
+.prose ul{margin:0;padding-left:22px;display:flex;flex-direction:column;gap:6px}
+.prose li::marker{color:var(--gold)}
+b,strong{font-weight:600}
+.term{font-weight:600;color:var(--lapis);border-bottom:2px solid var(--gold-soft)}
+.aside{background:var(--lapis-soft);border-left:4px solid var(--lapis);padding:12px 16px;border-radius:0 8px 8px 0;font-size:16px;display:flex;flex-direction:column;gap:6px}
+.aside .k{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--lapis);font-weight:700}
+.home{background:var(--gold-soft);border-left-color:var(--gold)}
+.home .k{color:var(--gold)}
+details{border:1px solid var(--line);border-radius:10px;background:var(--surface)}
+details summary{cursor:pointer;list-style:none;padding:12px 16px;font-weight:600;color:var(--lapis);display:flex;align-items:center;gap:10px}
+details summary::-webkit-details-marker{display:none}
+details summary::before{content:"";width:9px;height:9px;background:var(--gold);transform:rotate(45deg);flex:none;transition:transform .2s}
+details[open] summary::before{transform:rotate(45deg) scale(.6);background:var(--lapis)}
+details .body{padding:0 16px 14px;display:flex;flex-direction:column;gap:8px;color:var(--ink-2)}
+
+.steps4{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+@media (min-width:600px){ .steps4{grid-template-columns:repeat(4,1fr)} }
+.dom{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px;display:flex;flex-direction:column;gap:4px;box-shadow:var(--shadow)}
+.dom .n{font-family:var(--display);font-size:28px;color:var(--gold);line-height:1}
+.dom .t{font-weight:600;font-size:15px;line-height:1.25}
+.dom .d{font-size:13.5px;color:var(--ink-2);line-height:1.35}
+
+.ladder{display:flex;flex-direction:column;align-items:center;gap:6px}
+.rung{background:var(--lapis);color:var(--on-lapis);padding:9px 12px;border-radius:8px;text-align:center;font-size:15px;line-height:1.3}
+.rung small{display:block;opacity:.85;font-size:12.5px}
+.rung.r1{width:60%} .rung.r2{width:74%} .rung.r3{width:88%} .rung.r4{width:100%;background:var(--surface-2);color:var(--ink)}
+
+/* timeline (вертикальная, все даты видны сразу) */
+.tl-v{display:flex;flex-direction:column;position:relative;padding-left:4px}
+.tl-v::before{content:"";position:absolute;left:16px;top:16px;bottom:16px;width:3px;background:var(--line);border-radius:2px}
+.tl-item{position:relative;padding-left:36px;display:flex;flex-direction:column}
+.tl-btn{background:none;border:0;padding:8px 0;text-align:left;display:flex;align-items:baseline;gap:8px 12px;flex-wrap:wrap;color:var(--ink);width:100%}
+.tl-btn .dot{position:absolute;left:5px;top:12px;width:17px;height:17px;background:var(--surface);border:3px solid var(--lapis);border-radius:50%;transition:transform .2s,background .2s}
+.tl-item.ru .dot{border-color:var(--terra)}
+.tl-item.open .dot{background:var(--gold);border-color:var(--gold);transform:scale(1.2)}
+.tl-btn .y{font-family:var(--display);font-size:26px;line-height:1;font-variant-numeric:tabular-nums;min-width:96px}
+.tl-btn .t{font-weight:600;font-size:16px}
+.tl-btn .era{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--lapis);font-weight:700;margin-left:auto}
+.tl-item.ru .era{color:var(--terra)}
+.tl-d{color:var(--ink-2);font-size:15.5px;padding:0 0 12px;line-height:1.45}
+.hint{font-size:14px;color:var(--muted)}
+
+/* «как в учебнике» и вопросы учебника */
+details.book{border-color:var(--gold-soft)}
+details.book summary{color:var(--gold)}
+details.book summary::before{background:var(--gold)}
+details.book[open] summary::before{background:var(--gold)}
+details.book .body{font-size:15px;color:var(--ink)}
+details.book .body ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:7px}
+details.book .body li::marker{color:var(--gold)}
+details.book .body .pic{color:var(--ink-2);font-style:italic}
+.qlist{display:flex;flex-direction:column;gap:10px}
+.qi{display:grid;grid-template-columns:auto 1fr;gap:12px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.qi .qn{font-family:var(--display);font-size:24px;color:var(--gold);line-height:1;min-width:20px}
+.qi p{font-size:15.5px}
+.qi .src{font-size:14.5px;color:var(--ink-2);margin-top:6px}
+.qi a{font-size:13.5px;font-weight:600;text-decoration:none;display:inline-block;margin-top:8px;background:var(--lapis-soft);padding:4px 10px;border-radius:999px}
+
+/* games */
+.game{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:12px}
+.g-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.game h3{margin:0}
+.task{color:var(--ink-2)}
+.badge{font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;padding:4px 10px;border-radius:999px;background:var(--gold-soft);color:var(--gold)}
+.badge.done{background:var(--moss-soft);color:var(--moss)}
+.btn{background:var(--lapis);color:var(--on-lapis);border:0;border-radius:10px;padding:10px 18px;font-weight:600;font-size:15px;text-decoration:none;display:inline-block}
+.btn.ghost{background:transparent;color:var(--lapis);border:2px solid var(--lapis)}
+.btn:disabled{opacity:.45;cursor:default}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.feedback{padding:12px 14px;border-radius:10px;font-size:15px;display:flex;flex-direction:column;gap:4px}
+.feedback.ok{background:var(--moss-soft);border-left:4px solid var(--moss)}
+.feedback.bad{background:var(--terra-soft);border-left:4px solid var(--terra)}
+.feedback .k{font-weight:700}
+.progress{font-size:13px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.card{perspective:900px;height:150px;background:none;border:0;padding:0;text-align:left}
+.card .in{position:relative;width:100%;height:100%;transition:transform .5s;transform-style:preserve-3d}
+.card.flip .in{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;border-radius:12px;padding:12px;display:flex;flex-direction:column;justify-content:center;gap:6px;overflow:hidden}
+.face.f{background:var(--lapis);color:var(--on-lapis)}
+.face.f .w{font-family:var(--display);font-size:21px;line-height:1.05}
+.face.f .tap{font-size:11px;opacity:.75;letter-spacing:.08em;text-transform:uppercase}
+.face.b{background:var(--surface-2);color:var(--ink);transform:rotateY(180deg);font-size:12.5px;line-height:1.3;justify-content:flex-start;overflow:auto}
+.face.b .w{font-weight:700;color:var(--lapis);font-size:13px}
+.face.b .e{color:var(--ink-2);font-style:italic}
+
+.match{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.col{display:flex;flex-direction:column;gap:8px}
+.col .lbl{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.opt{background:var(--surface-2);border:2px solid transparent;border-radius:10px;padding:10px 12px;text-align:left;font-weight:500;font-size:15px;transition:border-color .15s,background .15s}
+.opt:hover{border-color:var(--lapis)}
+.opt.sel{border-color:var(--gold);background:var(--gold-soft)}
+.opt.ok{background:var(--moss-soft);border-color:var(--moss)}
+.opt.bad{animation:shake .35s}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+
+.pool{display:flex;flex-direction:column;gap:8px}
+.seq{display:flex;flex-direction:column;gap:8px;min-height:44px;padding:10px;border:2px dashed var(--line);border-radius:12px}
+.seq .slot{display:flex;align-items:center;gap:10px;background:var(--lapis-soft);border-radius:8px;padding:8px 12px;font-size:15px}
+.seq .slot .i{font-family:var(--display);font-size:20px;color:var(--lapis);width:22px;font-variant-numeric:tabular-nums}
+.seq .slot.ok{background:var(--moss-soft)} .seq .slot.bad{background:var(--terra-soft)}
+.seq .slot .yr{margin-left:auto;font-weight:700;color:var(--ink-2);font-variant-numeric:tabular-nums}
+.seq .empty{color:var(--muted);font-size:14px}
+
+.odd-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.odd-grid .opt{text-align:center;padding:16px 10px;font-size:16px}
+.odd-grid .opt.bad{background:var(--terra-soft);border-color:var(--terra)}
+
+.q{font-size:19px;font-weight:600;line-height:1.35}
+.q-opts{display:flex;flex-direction:column;gap:8px}
+.q-opts .opt{font-size:15.5px;line-height:1.35}
+.q-opts .opt.bad{background:var(--terra-soft);border-color:var(--terra)}
+.score{display:flex;flex-direction:column;gap:12px;align-items:flex-start}
+.score .big{font-family:var(--display);font-size:56px;line-height:1;color:var(--gold)}
+.score-tiles{display:flex;gap:5px;flex-wrap:wrap}
+.score-tiles i{width:22px;height:22px;border-radius:3px;background:var(--tile)}
+.score-tiles i.on{background:var(--gold)}
+
+.bricks{display:flex;flex-direction:column;gap:10px}
+.brick{background:var(--surface-2);border-radius:10px;overflow:hidden}
+.brick button{width:100%;background:none;border:0;padding:12px 14px;text-align:left;font-weight:600;color:var(--lapis);display:flex;justify-content:space-between;gap:10px}
+.brick .b-body{padding:0 14px 12px;color:var(--ink-2);font-size:15.5px}
+
+.mosaic{display:flex;gap:6px;align-items:center}
+.mosaic .tile{width:26px;height:26px;background:var(--tile);border-radius:3px;transition:background .4s,transform .4s}
+.mosaic .tile.on{background:var(--gold);transform:rotate(45deg) scale(.8)}
+.mosaic-list{display:flex;flex-direction:column;gap:6px;font-size:15px}
+.mosaic-list span.off{color:var(--muted)}
+
+/* pager */
+.pager{position:fixed;left:0;right:0;bottom:0;z-index:5;background:var(--bg);border-top:1px solid var(--line)}
+.pager-inner{max-width:720px;margin:0 auto;padding:10px 16px;display:flex;align-items:center;gap:10px}
+.pager .count{font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+.pager .btn{flex:1;text-align:center;padding:12px 14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pager .btn.ghost{flex:0 0 auto}
+
+/* toc overlay */
+.toc{position:fixed;inset:0;z-index:10;background:rgba(0,0,0,.35);display:flex;justify-content:flex-end}
+.toc-panel{width:min(360px,90vw);height:100%;background:var(--surface);overflow:auto;padding:16px;display:flex;flex-direction:column;gap:8px;box-shadow:var(--shadow)}
+.toc-panel h3{font-size:24px;margin-bottom:6px;display:flex;justify-content:space-between;align-items:center}
+.toc-close{background:none;border:1px solid var(--line);border-radius:8px;padding:4px 10px;font-size:14px}
+.toc-item{display:flex;align-items:center;gap:10px;background:none;border:0;border-radius:8px;padding:8px 10px;text-align:left;font-size:15px;color:var(--ink)}
+.toc-item:hover{background:var(--surface-2)}
+.toc-item.current{background:var(--gold-soft);font-weight:600}
+.toc-item .n{font-family:var(--display);font-size:18px;color:var(--muted);width:24px;font-variant-numeric:tabular-nums}
+.toc-item .m{margin-left:auto;font-size:12px;color:var(--moss);font-weight:700}
+
+/* схема управления (§ 2) */
+.org{display:flex;flex-direction:column;gap:8px}
+.org .lvl{display:grid;gap:8px;grid-template-columns:repeat(2,1fr)}
+@media (min-width:600px){ .org .lvl{grid-template-columns:repeat(4,1fr)} }
+.org .box{background:var(--surface-2);border-radius:8px;padding:9px 10px;font-size:14px;text-align:center;line-height:1.3}
+.org .box small{display:block;font-size:12px;color:var(--ink-2)}
+.org .box.top{background:var(--lapis);color:var(--on-lapis);font-weight:600;font-size:16px}
+.org .box.sub{background:var(--gold-soft)}
+.org .lbl{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:700;text-align:center}
+</style>
+</head>
+<body>
+
+
+<header class="top">
+  <div class="top-inner">
+    <a class="back" href="./">← Темы</a>
+    <div class="crumb">История · § 2 · <b>Византия и её соседи</b></div>
+    <button class="toc-btn" id="toc-btn" type="button">Содержание</button>
+  </div>
+  <div class="stepbar" id="stepbar" aria-label="Шаги темы"></div>
+</header>
+
+<main id="deck">
+
+<!-- 1 -->
+<section class="step" data-step="za-minutu" data-name="За минуту" data-part="Самое главное">
+  <div class="eyebrow"><span class="tess"><i></i><i></i><i></i></span> История · 6 класс · § 2</div>
+  <h1>Византия и её соседи</h1>
+  <p class="lede">Амина, это история о половине старого дома, которая устояла и тысячу лет была самой богатой в округе.</p>
+  <div id="resume" hidden></div>
+  <div class="prose">
+    <p>Помнишь дом из § 1, Римскую империю, поделённую на две половины? Западную заняли варвары, и она развалилась. А восточная половина не просто устояла. Она простояла ещё <b>тысячу лет</b> и стала самым богатым и красивым домом во всей округе. Это <span class="term">Византия</span>.</p>
+    <p>Соседи заглядывались на её сокровища: персы, арабы, болгары, русы, турки. Византия отбивалась не только мечом. Она платила золотом, договаривалась, крестила соседей, а иногда и подкупала их вождей.</p>
+    <p>И всё это время в доме берегли книги и знания Древнего мира. Главный вопрос параграфа: <b>что привлекало в Византии другие страны и народы?</b></p>
+  </div>
+  <div class="steps4">
+    <div class="dom"><div class="n">1</div><div class="t">Ромеи</div><div class="d">Сильный император, а Церковь с ним в «симфонии».</div></div>
+    <div class="dom"><div class="n">2</div><div class="t">Богатство</div><div class="d">Города, шёлк, золотой безант, конец Шёлкового пути.</div></div>
+    <div class="dom"><div class="n">3</div><div class="t">Юстиниан</div><div class="d">Законы, собор Святой Софии, завоевания.</div></div>
+    <div class="dom"><div class="n">4</div><div class="t">Соседи и культура</div><div class="d">Тысяча лет борьбы и сохранённые античные знания.</div></div>
+  </div>
+  <div class="aside">
+    <div class="k">Как этим пользоваться</div>
+    <p>У каждого шага написано, какая это страница учебника. Внизу шага есть «Подробнее, как в учебнике»: там всё, что есть на этих страницах, ничего не пропущено. Сначала учи по коротким шагам, а перед уроком открой «подробнее».</p>
+  </div>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 18</summary>
+    <div class="body"><ul>
+      <li>Главный вопрос параграфа: что привлекало в Византии другие страны и народы?</li>
+      <li class="pic">Иллюстрация: Юстиниан I со свитой. Мозаика базилики Сан-Витале, 545 год. Подпись: мозаика считается одним из древнейших видов искусства. Маленькие кусочки стекла в мозаиках впервые использовали ещё древние египтяне. В V–VI веках создаются мозаичные композиции, настоящие образцы монументальной живописи, в Равенне на севере Италии. На этой мозаике видно, что кусочки смальты (цветного стекла) выкладывали под разным углом, чтобы свет отражался в них живописно и сиял особенно таинственно и торжественно.</li>
+      <li>Слова параграфа: василевс, Великий шёлковый путь, кодекс, титул. Люди: Юстиниан I, Лев Математик. Все они есть в словарике.</li>
+      <li>Таблица дат параграфа разобрана на следующем шаге.</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 2 -->
+<section class="step" data-step="daty" data-name="Даты" data-part="Лента времени">
+  <div class="eyebrow">Шесть дат · Учебник, с. 18</div>
+  <h2>Лента времени</h2>
+  <p class="task">Это все даты из таблицы в начале параграфа, сверху вниз от ранних к поздним. Нажми на дату, чтобы прочитать, что случилось. Красные помечены «Россия», как в учебнике.</p>
+  <div class="tl-v" id="tl"></div>
+  <details class="book">
+    <summary>Ещё даты, которые встречаются в тексте параграфа</summary>
+    <div class="body"><ul>
+      <li>324 г. — Константин заложил Константинополь (с. 19).</li>
+      <li>527–565 гг. — правление Юстиниана I (с. 22).</li>
+      <li>790–870 гг. — годы жизни Льва Математика (с. 25).</li>
+      <li>843 г. — Торжество Православия, конец иконоборчества (с. 24).</li>
+      <li>860 г. — набег русов на Константинополь отбит (с. 24).</li>
+      <li>867 г. — начало Македонской династии (с. 24).</li>
+      <li>957 г. — княгиня Ольга крестилась в Константинополе (с. 24).</li>
+      <li>1046 г. — последняя русско-византийская война закончилась миром (с. 24).</li>
+      <li>1054 г. — Византийская Церковь разорвала отношения с Римскими папами (с. 25).</li>
+      <li>1081 г. — к власти пришла династия Комнинов (с. 25).</li>
+    </ul></div>
+  </details>
+  <p class="hint">Эти даты потом пригодятся в игре «Расставь по порядку».</p>
+</section>
+
+<!-- 3 -->
+<section class="step" data-step="romei" data-name="Страна ромеев" data-part="Глава 1 · Государство и Церковь">
+  <div class="eyebrow">Глава 1 · Государство и Церковь · Учебник, с. 19</div>
+  <h2>Страна ромеев</h2>
+  <div class="prose">
+    <p>Представь, что твой дом переименовали, а ты продолжаешь называть его по-старому. Так и здесь. Сами жители называли себя <span class="term">ромеями</span>, то есть римлянами, а страну — Восточной Римской империей. Слово «Византия» придумали позже, по имени греческой колонии <b>Византий</b>.</p>
+    <p>На месте этой колонии в <b>324 году</b> император Константин заложил новую столицу. Город назвали в его честь: <span class="term">Константинополь</span>.</p>
+    <ul>
+      <li>Государственный язык до VII века — латынь, но большинство людей говорило по-гречески.</li>
+      <li>В VI веке империя лежала сразу на трёх континентах: в Европе, Азии и Африке.</li>
+      <li>Народов было много, а скрепляли их две вещи: христианская вера и власть императора.</li>
+    </ul>
+  </div>
+  <details>
+    <summary>А почему «ромеи», если говорили по-гречески?</summary>
+    <div class="body"><p>Потому что важно было не то, на каком языке говоришь, а чьи ты наследники. Ромеи считали себя единственным продолжением Римской империи: Западная половина пала, значит, настоящий Рим теперь здесь.</p></div>
+  </details>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 19</summary>
+    <div class="body"><ul>
+      <li>В отличие от Западной Римской империи, павшей под ударами варваров, её восточная «сестра» просуществовала более 1000 лет.</li>
+      <li>Современники называли Восточную Римскую империю страной ромеев (римлян). Позже государство стали именовать Византией, по названию греческой колонии Византий, на месте которой в 324 году римский император Константин заложил новую столицу своего государства. Город был назван в честь императора — Константинополь.</li>
+      <li>Хотя государственным языком в империи вплоть до VII века была латынь, большинство населения говорило на греческом языке.</li>
+      <li>В период максимального расширения границ, в VI веке, Византийская империя располагалась на трёх континентах: в Европе, Азии и Африке. Многочисленные народы, входившие в её состав, объединялись христианской религией и государственной властью.</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 4 -->
+<section class="step" data-step="vasilevs" data-name="Василевс" data-part="Глава 1 · Государство и Церковь">
+  <div class="eyebrow">Глава 1 · Государство и Церковь · Учебник, с. 19</div>
+  <h2>Василевс: кому принадлежала власть</h2>
+  <div class="prose">
+    <p>Императора подданные звали <span class="term">василевс</span>, то есть царь, и <span class="term">автократор</span>, самодержец. Его власть считали священной, идущей от Бога.</p>
+    <p>Самое интересное: почитали не человека, а <span class="term">титул</span>, то есть само звание императора. Как повязка капитана в команде: кто её надел, тот и капитан. Поэтому власть не передавалась по наследству. Императора избирали народ (на деле знать) и войско. Правда, со временем всё же появились <b>династии</b>, когда трон переходил от отца к сыну.</p>
+    <p>Что делал василевс:</p>
+    <ul>
+      <li>решал главные вопросы жизни империи;</li>
+      <li>назначал чиновников и военачальников;</li>
+      <li>следил за сбором налогов и распоряжался казной;</li>
+      <li>был высшим судьёй и сам командовал армией.</li>
+    </ul>
+    <p>Свою волю он передавал через огромный <b>государственный аппарат</b>, целую армию чиновников.</p>
+  </div>
+  <details>
+    <summary>Пурпур, золото и как простолюдин мог стать императором</summary>
+    <div class="body">
+      <p>Особое положение василевса подчёркивал пышный <b>церемониал</b>. Перед подданными и послами он появлялся в пурпурных одеждах, вытканных золотом и украшенных драгоценными камнями. Пурпурную ткань могли носить только члены его семьи. На приёме нельзя было поворачиваться к императору спиной и говорить без его приказа.</p>
+      <p>Но вот что необычно: знатность рода мало значила для карьеры. Простолюдин и даже варвар благодаря талантам и образованию мог дослужиться до самых высоких должностей и стать императором. Иногда трон просто захватывал удачливый и решительный военачальник.</p>
+    </div>
+  </details>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 19</summary>
+    <div class="body"><ul>
+      <li>Византийских императоров подданные именовали василевсами, царями, и автократорами, самодержцами. Ромеи считали власть императора священной, исходящей от Бога. Именно императорский титул, а не конкретного человека в короне почитали византийцы.</li>
+      <li>Власть императора не передавалась по наследству, императоры избирались народом (на практике правящей элитой) и войском, но постепенно стали формироваться династии с преемственностью монархов от отца к сыну.</li>
+      <li>Василевс решал важнейшие вопросы жизни в империи, назначал чиновников и военачальников, контролировал сбор налогов, распоряжался государственной казной, был высшим судьёй. Он лично командовал армией. Свою волю император проводил через разветвлённый государственный аппарат.</li>
+      <li>Особое положение василевса подчёркивал пышный придворный церемониал. Перед своими подданными и иноземными послами император представал в пурпурных одеждах, вытканных золотыми нитями и украшенных драгоценными камнями. Ткани пурпурного цвета могли носить только члены императорской семьи. Все приглашённые на приём не имели права поворачиваться к правителю спиной и говорили только по его приказу.</li>
+      <li>В отличие от других стран, знатность рода, из которого происходил человек, не имела большого значения для продвижения по службе. Простолюдин и варвар благодаря своим талантам и образованию мог достичь самых высоких должностей и даже стать императором. Порой власть захватывал удачливый и решительный военачальник.</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 5 -->
+<section class="step" data-step="patriarh" data-name="Император и патриарх" data-part="Глава 1 · Государство и Церковь">
+  <div class="eyebrow">Глава 1 · Государство и Церковь · Учебник, с. 20 и 27</div>
+  <h2>Император и патриарх</h2>
+  <div class="prose">
+    <p>Главой Церкви в Византии был епископ Константинополя, <span class="term">патриарх</span>. Но выбрать патриархом могли только того, кто нравился императору.</p>
+    <p>Власть делили так: император распоряжался земной жизнью людей, а патриарх вёл их души к спасению. Как два музыканта, которые играют одну мелодию. Византийцы так и называли это: <span class="term">«симфония»</span>, согласие священства и царства. Когда император уезжал из столицы, патриарх обычно замещал его.</p>
+    <p>Помнишь из § 1: папа римский хотел быть главным над всеми. В Византии наоборот: Церковь подчинялась императору.</p>
+    <p><b>Кто помогал императору управлять.</b> Схема из учебника (с. 27), она понадобится для первого вопроса в конце параграфа:</p>
+  </div>
+  <div class="org" aria-label="Управление Византийской империей в IV–VI веках">
+    <div class="box top">Император (василевс)</div>
+    <div class="lbl">Ему подчинялись</div>
+    <div class="lvl">
+      <div class="box">Тайный совет<small>консисторий</small></div>
+      <div class="box">Сенат<small>как в Древнем Риме</small></div>
+      <div class="box">Префекты, викарии, наместники<small>правители областей</small></div>
+      <div class="box">Императорский дворец<small>с канцеляриями</small></div>
+    </div>
+    <div class="lbl">Канцелярии при дворце</div>
+    <div class="lvl">
+      <div class="box sub">налоговая</div>
+      <div class="box sub">императорских имуществ</div>
+      <div class="box sub">внешних сношений</div>
+      <div class="box sub">военная</div>
+    </div>
+  </div>
+  <details>
+    <summary>Подсказка: что здесь осталось от Древнего Рима?</summary>
+    <div class="body"><p>Сенат и префекты были ещё в Древнем Риме. Вспомни, что ты знаешь о Риме из 5 класса, и найди в схеме знакомые слова.</p></div>
+  </details>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 20 и 27</summary>
+    <div class="body"><ul>
+      <li class="pic">Иллюстрация на с. 20: византийский император со слугой и священнослужители. Реконструкция XIX века. Задание учебника: рассмотрите рисунки и попробуйте определить, где изображён византийский император, а где епископ. Какие элементы в их облачении помогли вам? Что общего в одеянии императора и епископа? О чём это может свидетельствовать? Подсказка: у императора корона и пурпурный плащ, у епископа посох и крест, а общее у них богатство и торжественность одежды, знак того, что и власть, и Церковь считались священными.</li>
+      <li>Главой христианской Церкви в Византии был епископ Константинополя — патриарх. Константинопольским патриархом мог быть избран только тот, кто был угоден императору.</li>
+      <li>Власть над подданными император делил с патриархом: один повелевал их земными судьбами, другой направлял души к спасению. Империя, по сути, не отделяла себя от Церкви. В основе управления лежала идея согласия («симфонии») священства и царства.</li>
+      <li>Патриархи чаще всего жили в согласии с василевсами. Когда правитель отсутствовал в столице, именно патриарх обычно замещал его.</li>
+      <li>Вопросы учебника после пункта 1: как называли своё государство подданные Византийской империи? Каковы были взаимоотношения императоров и христианской Церкви в Византии?</li>
+      <li>Схема «Управление Византийской империей в IV–VI вв.» на с. 27: во главе император (василевс). Ему подчиняются Тайный совет (консисторий), Сенат, префекты, викарии и наместники, а также Императорский дворец с канцеляриями: налоговой, императорских имуществ, внешних сношений и военной.</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 6 -->
+<section class="step" data-step="hozyaystvo" data-name="Чем жила империя" data-part="Глава 2 · Хозяйство">
+  <div class="eyebrow">Глава 2 · Хозяйство · Учебник, с. 20–21</div>
+  <h2>Чем жила империя</h2>
+  <div class="prose">
+    <p>Вся земля в Византии принадлежала государству. Оно давало её в пользование знати, горожанам и крестьянским общинам. За это все платили налоги, а на войну выставляли воинов: богатые шли в конницу, бедные в пехоту.</p>
+    <p>У Византии был мощный флот с секретным оружием. <span class="term">«Греческий огонь»</span> — горючая жидкость, которую под давлением выстреливали из труб по вражеским кораблям. Что-то вроде огнемёта, только тысячу лет назад.</p>
+    <ul>
+      <li>Большинство жителей — <b>свободные крестьяне</b>. Климат мягкий: растили пшеницу, ячмень, овощи и фрукты, виноград, оливки. Разводили скот и птицу, ловили рыбу.</li>
+      <li>Рабов использовали недолго, потом рабство запретили: оно противоречило христианству.</li>
+      <li>Византия — <b>страна городов</b>: Константинополь, Фессалоники, Антиохия и сотни других. В них ремесло и торговля.</li>
+      <li>Золотую монету <span class="term">безант</span> с радостью принимали и в Европе, и в Азии.</li>
+      <li>Здесь заканчивался <span class="term">Великий шёлковый путь</span> из Китая.</li>
+    </ul>
+  </div>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 20–21</summary>
+    <div class="body"><ul>
+      <li>Пункт 2 «Хозяйственная жизнь империи». Земля в империи находилась в собственности государства, которое передавало её в пользование знатным людям, горожанам и крестьянским общинам. Все они платили налоги и в случае военных действий выставляли отряды воинов. Богатые служили в коннице, а люди победнее — в пехоте.</li>
+      <li>Византия имела мощный военный флот. Её моряки поражали врага «греческим огнём» — горючей жидкостью, которой из труб под давлением «выстреливали» в направлении судов противника.</li>
+      <li>Основную часть населения Восточной Римской империи составляли свободные крестьяне. Мягкий средиземноморский климат благоприятствовал занятию земледелием. Византийцы выращивали пшеницу, ячмень, садово-огородные культуры, виноград, оливки. Разводили скот и домашнюю птицу, занимались рыболовством.</li>
+      <li>В хозяйствах богатых землевладельцев и в государственных мастерских некоторое время использовали труд рабов. Впоследствии рабство было запрещено как противоречившее христианству.</li>
+      <li>Византия была страной городов. Константинополь, Фессалоники, Антиохия, сотни других городов были центрами ремесла и торговли. Золотая византийская монета «безант» с удовольствием принималась торговцами и в Европе, и в Азии. Здесь заканчивался Великий шёлковый путь, ведший от границ Китая до самого сердца империи ромеев.</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 7 -->
+<section class="step" data-step="konstantinopol" data-name="Царственный город" data-part="Глава 2 · Хозяйство">
+  <div class="eyebrow">Глава 2 · Хозяйство · Учебник, с. 21–22</div>
+  <h2>Константинополь, «золотой мост»</h2>
+  <div class="prose">
+    <p>Столица была огромной: сотни тысяч жителей, когда в других городах Европы жили тысячи. Город стоял на перекрёстке главных торговых путей. В гавань <span class="term">Золотой Рог</span> заходили тысячи кораблей, по суше шли сотни караванов. Купцы увозили отсюда и товары со всего света, и изделия византийских мастеров.</p>
+    <p>Город украшали дворцы, парки и памятники. Его звали <b>«золотым мостом»</b> между Европой и Азией, <b>«царственным городом»</b> и <b>«мастерской вселенной»</b>.</p>
+    <p>В учебнике на с. 21 есть рисунок центра города с восемью номерами. Вот что там:</p>
+  </div>
+  <div class="steps4" aria-label="Центральная часть Константинополя">
+    <div class="dom"><div class="n">1</div><div class="t">Маяк</div></div>
+    <div class="dom"><div class="n">2</div><div class="t">Императорский дворец</div></div>
+    <div class="dom"><div class="n">3</div><div class="t">Ипподром</div><div class="d">скачки на колесницах, как в Риме</div></div>
+    <div class="dom"><div class="n">4</div><div class="t">Бани Зевксиппа</div><div class="d">общественные бани, тоже римская привычка</div></div>
+    <div class="dom"><div class="n">5</div><div class="t">Августеон</div><div class="d">главная площадь</div></div>
+    <div class="dom"><div class="n">6</div><div class="t">Собор Святой Софии</div><div class="d">главный храм</div></div>
+    <div class="dom"><div class="n">7</div><div class="t">Поле для конной игры в мяч</div></div>
+    <div class="dom"><div class="n">8</div><div class="t">Городские укрепления</div></div>
+  </div>
+  <details>
+    <summary>Как два монаха украли секрет шёлка</summary>
+    <div class="body">
+      <p>Караван с шёлком шёл от границ Китая до Византии больше 200 дней. Шёлк ткут из нитей кокона тутового шелкопряда, и китайцы хранили это в строжайшем секрете: продавали только готовую ткань. В Европе рулон шёлка стоил столько же золота, сколько весил.</p>
+      <p>По преданию, два византийских монаха вывезли из Китая личинки шелкопряда, спрятав их в посохах. После этого Византия стала делать шёлк сама, и только в императорских мастерских.</p>
+    </div>
+  </details>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 21–22</summary>
+    <div class="body"><ul>
+      <li class="pic">Иллюстрация на с. 21: центральная часть Константинополя, реконструкция. 1 — маяк; 2 — императорский дворец; 3 — ипподром; 4 — бани Зевксиппа; 5 — Августеон (главная площадь); 6 — собор Святой Софии; 7 — поле для конной игры в мяч; 8 — городские укрепления. Задание учебника: какие здания свидетельствуют о том, что Константинополь был городом с античным прошлым, а какие о том, что он был одним из центров христианства? Подсказка: ипподром и бани были в каждом римском городе, а собор это христианство.</li>
+      <li>Любопытные детали (с. 22): более 200 дней занимал путь гружённого тюками с шёлком каравана от границ Китая до Византии. Производство шёлка, мягкой ткани, сотканной из нитей, добываемых из кокона тутового шелкопряда, было государственным секретом Китая. Китайцы строго хранили тайну изготовления шёлка, продавая за границу только готовую ткань. В Европе цена рулона шёлковой ткани была равна его весу золотом. По преданию, украсть секрет удалось двум византийским монахам. Они вывезли из Китая личинки тутового шелкопряда, спрятав их в своих посохах. Налаженное византийцами собственное производство шёлка быстро стало государственным делом. Шёлк изготавливали только в императорских мастерских.</li>
+      <li>Столица Византии, Константинополь, был огромным городом, насчитывавшим сотни тысяч жителей. Он бесперебойно снабжался всеми необходимыми товарами. Византия имела выгодное географическое положение, а её столица располагалась на пересечении важнейших торговых путей. В гавань Золотой Рог заходили тысячи кораблей. По сухопутным путям к городу шли сотни караванов. Из Константинополя купцы увозили как товары, прибывшие в город со всего света, так и изделия искусных византийских ремесленников.</li>
+      <li>Город украшали дворцы императоров и знати, парки и многочисленные памятники. Константинополь именовали «золотым мостом» между Европой и Азией, «царственным городом», «мастерской вселенной».</li>
+      <li>Вопросы учебника после пункта 2: назовите хозяйственные занятия византийцев. Как природные условия и географическое положение влияли на экономическое развитие империи?</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 8 -->
+<section class="step" data-step="yustinian" data-name="Юстиниан и Феодора" data-part="Глава 3 · Юстиниан">
+  <div class="eyebrow">Глава 3 · Юстиниан · Учебник, с. 22</div>
+  <h2>Юстиниан и Феодора</h2>
+  <div class="prose">
+    <p>Вершины славы Византия достигла при императоре <span class="term">Юстиниане I</span>, который правил в <b>527–565 годах</b>. Это тот самый человек в короне на мозаике в начале параграфа.</p>
+    <p>Он не был знатным. Его дядя, простой крестьянин, благодаря удаче и военному таланту дослужился от солдата до командира императорской гвардии, а потом захватил трон. Дядя позвал племянника в советники и соправители, а после смерти дяди Юстиниан стал править сам, «железной рукой». Помнишь шаг про василевса: простолюдин мог стать императором? Вот живой пример.</p>
+    <p>Современник писал, что император был «одарён быстрым и изобретательным умом, неутомимым в исполнении своих намерений».</p>
+    <p>Жена императора, <span class="term">Феодора</span>, была простой актрисой. Юстиниан женился на ней, не обращая внимания на правила двора. Феодора была красива, умна и всегда умела поддержать мужа мудрым советом. Скоро увидишь, как это спасло ему трон.</p>
+  </div>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 22</summary>
+    <div class="body"><ul>
+      <li>Пункт 3 «Византия при императоре Юстиниане I. Правовой Кодекс»: зенита своей славы и могущества Византия достигла в правление императора Юстиниана I (527–565).</li>
+      <li>Исторический портрет. Юстиниан I, один из выдающихся правителей раннего Средневековья, происходил из незнатной семьи. Дядя Юстиниана был простым крестьянином, который благодаря удаче и военным талантам прошёл путь от солдата до командира императорской гвардии. Захватив императорский трон, дядя пригласил к себе племянника, Юстиниана, в советники и соправители.</li>
+      <li>Получив после смерти дяди полную власть, Юстиниан железной рукой стал править империей. По свидетельству современника, император был «одарён быстрым и изобретательным умом, неутомимым в исполнении своих намерений».</li>
+      <li>Под стать Юстиниану была и его супруга Феодора. Презрев условности, Юстиниан взял в жёны простую актрису. Феодора была красива, умна и всегда умела поддержать своего мужа мудрым советом.</li>
+      <li class="pic">Рядом с портретом: мозаичное изображение Юстиниана I.</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 9 -->
+<section class="step" data-step="kodeks" data-name="Кодекс и восстание «Ника»" data-part="Глава 3 · Юстиниан">
+  <div class="eyebrow">Глава 3 · Юстиниан · Учебник, с. 23</div>
+  <h2>Кодекс и восстание «Ника»</h2>
+  <div class="prose">
+    <p>Огромной страной нельзя управлять «на глазок», нужны чёткие законы. По приказу Юстиниана лучшие юристы собрали и переработали старые римские законы. Получился <span class="term">Кодекс Юстиниана</span>. Его торжественно поднесли императору. Статьи Кодекса защищали жизнь и достоинство людей и решали споры об имуществе.</p>
+    <p>Но через пять лет после начала правления случилась беда. Налоги росли, чиновники творили произвол, и горожане подняли большое восстание. Его назвали <span class="term">«Ника»</span>: по-гречески «побеждай», так кричали восставшие.</p>
+  </div>
+  <details>
+    <summary>Как Феодора спасла трон</summary>
+    <div class="body">
+      <p>Мятежники захватили почти весь город. Вельможи советовали императору бежать из столицы под защиту армии. Но Феодора наотрез отказалась: «Если ты хочешь бежать, иди: средства в твоих руках, суда готовы, море открыто. Но я остаюсь. Я люблю старое изречение, что пурпур — лучший саван!»</p>
+      <p>Саван — ткань, в которую заворачивают умершего. То есть Феодора сказала: лучше умереть императрицей, чем жить беглянкой. Юстиниан собрался с духом и стянул в столицу войска. Мятежников заманили на ипподром и перебили.</p>
+    </div>
+  </details>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 23</summary>
+    <div class="body"><ul>
+      <li>Для управления огромной страной нужны были рациональные и чёткие законы. По приказу Юстиниана лучшие византийские юристы собрали и переработали римские законы. Так был создан Кодекс Юстиниана, который торжественно представили императору. Статьи Кодекса защищали жизнь и достоинство людей, регулировали имущественные отношения между ними.</li>
+      <li>Через пять лет после восшествия на престол Юстиниан столкнулся с серьёзной угрозой своему царствованию. Рост налогов и произвол чиновников вызвали крупное восстание горожан. Движение получило название «Ника» (от греческого «побеждай», таков был лозунг восставших).</li>
+      <li>Врезка «Подробнее»: мятежники захватили почти весь город. Вельможи советовали императору бежать из столицы под защиту армии. Но императрица Феодора наотрез отказалась следовать за ним. «Если ты хочешь бежать, — заявила она мужу, — иди: средства в твоих руках; суда готовы, море открыто. Но я остаюсь. Я люблю старое изречение, что пурпур — лучший саван!» Вдохновлённый её непреклонностью, Юстиниан предпринял решительные действия. В столицу были стянуты войска. Мятежников заманили на ипподром и перебили.</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 10 -->
+<section class="step" data-step="kreposti" data-name="Крепости и завоевания" data-part="Глава 3 · Юстиниан">
+  <div class="eyebrow">Глава 3 · Юстиниан · Учебник, с. 23</div>
+  <h2>Крепости, дороги и завоевания</h2>
+  <div class="prose">
+    <p>После восстания Юстиниан навёл порядок:</p>
+    <ul>
+      <li>запретил знати и крупным землевладельцам захватывать земли свободных крестьян и заставлять их идти «под покровительство»;</li>
+      <li>уменьшил число провинций (областей), но дал их правителям больше прав.</li>
+    </ul>
+    <p>Много сил он тратил на оборону. Его полководцы вернули земли, потерянные при прежних императорах, и даже завоевали часть бывшей <b>Западной</b> Римской империи. Ромеи считали: раз мы и есть Рим, значит, это наши земли.</p>
+    <p>Вдоль границ выросли крепости. А внутри страны строили дороги, перекидывали мосты через горные реки, копали колодцы в пустынях: всё, чтобы товары без помех доходили до столицы и других городов.</p>
+    <p>Но эпоха расширения была недолгой. После смерти Юстиниана даже удержать завоёванное оказалось трудно.</p>
+  </div>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 23</summary>
+    <div class="body"><ul>
+      <li>После подавления восстания император запретил знати и крупным землевладельцам захватывать земли свободных крестьян и принуждать их переходить под своё покровительство. Юстиниан уменьшил количество провинций, но расширил полномочия их правителей.</li>
+      <li>Много внимания Юстиниан уделял обороноспособности империи. Его полководцам удалось не только вернуть утраченные при его предшественниках византийские земли, но и завоевать часть территорий бывшей Западной Римской империи.</li>
+      <li>Вдоль границ были выстроены крепости. Императором принимались меры по поощрению торговли. В провинциях строились дороги, через горные реки перебрасывались мосты, в пустынной местности выкапывались колодцы, то есть всё делалось для того, чтобы товары беспрепятственно доставлялись в столицу и другие города империи.</li>
+      <li>Но эпоха расширения Византии была недолгой. После смерти Юстиниана даже удержать завоёванные территории стало непростой задачей.</li>
+      <li>Вопросы учебника после пункта 3: с какой целью был создан Кодекс Юстиниана? Каким образом Юстиниан укрепил империю? Покажите на карте 2 (см. Приложение), как изменились границы Византийской империи к концу правления Юстиниана I. Какие государства были завоёваны империей? Для третьего вопроса открой карту в конце учебника и вспомни королевства из § 1: остготов в Италии и вандалов в Африке.</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 11 -->
+<section class="step" data-step="sosedi" data-name="Кольцо соседей" data-part="Глава 4 · Соседи">
+  <div class="eyebrow">Глава 4 · Соседи в VII–XI веках · Учебник, с. 24</div>
+  <h2>Кольцо соседей</h2>
+  <div class="prose">
+    <p>Византия была самой богатой и образованной страной своего времени. А на богатый дом всегда найдутся желающие. Соседи нападали постоянно, и империя защищалась всеми способами:</p>
+  </div>
+  <div class="steps4">
+    <div class="dom"><div class="n">1</div><div class="t">Дипломатия</div><div class="d">переговоры и договоры</div></div>
+    <div class="dom"><div class="n">2</div><div class="t">Христианство</div><div class="d">крестить соседей, чтобы стали друзьями</div></div>
+    <div class="dom"><div class="n">3</div><div class="t">Война</div><div class="d">решительные военные действия</div></div>
+    <div class="dom"><div class="n">4</div><div class="t">Подкуп</div><div class="d">и даже убийства вражеских вождей</div></div>
+  </div>
+  <div class="prose">
+    <ul>
+      <li><b>Славяне.</b> Через Дунай шли переселенцы-славяне, их подталкивали кочевники-<b>авары</b>. Славяне трижды осаждали Фессалонику и расселились в Греции. Но империя сумела сделать их своими подданными.</li>
+      <li><b>Персы.</b> Самый опасный враг, доставшийся ещё от Рима: <b>держава Сасанидов</b>. Против неё помогали армяне и грузины, которые рано приняли христианство. В начале VII века персы нанесли ослабевшей империи сильные удары, но энергичный император <b>Ираклий</b> их разгромил.</li>
+      <li><b>Арабы.</b> Едва разбили персов, появились новые враги. Арабы захватили Сирию, Палестину, Египет и Африку.</li>
+    </ul>
+  </div>
+  <div class="aside home">
+    <div class="k">Ближе к дому</div>
+    <p>Персы-Сасаниды — те самые, чьи цари строили стены Дербента: помнишь строку «Россия» в датах § 1? А армяне и грузины — соседи Дагестана по Кавказу. Получается, наш край лежал прямо между двумя великими державами того времени.</p>
+  </div>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 24</summary>
+    <div class="body"><ul>
+      <li>Пункт 4 «Византия и её соседи в VII–XI вв.». Будучи самым богатым и цивилизованным государством тогдашнего мира, Византия была вынуждена вести постоянную борьбу с соседями, покушавшимися на её сокровища. Для сохранения империи использовались все средства: дипломатия, распространение христианства среди варварских народов, решительные военные действия, подкуп и убийства вражеских вождей.</li>
+      <li>Дунайскую границу империи преодолевали переселенцы-славяне, подталкиваемые кочевниками-аварами. Они трижды осаждали Фессалонику, расселились в Греции. Однако империи удалось интегрировать славян и сделать их своими подданными.</li>
+      <li>Самым опасным врагом, унаследованным ещё от Рима, была Персидская держава Сасанидов. Бороться против неё помогали рано принявшие христианство армяне и грузины. В начале VII века персы нанесли ослабленной империи мощные удары.</li>
+      <li>Энергичный император Ираклий сумел разгромить персов, но на горизонте появились новые грозные противники — арабы, захватившие Сирию, Палестину, Египет и Африку.</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 12 -->
+<section class="step" data-step="ikony" data-name="Спор об иконах" data-part="Глава 4 · Соседи">
+  <div class="eyebrow">Глава 4 · Соседи в VII–XI веках · Учебник, с. 24</div>
+  <h2>Греческий огонь и спор об иконах</h2>
+  <div class="prose">
+    <p>Император <b>Лев Исавр</b> отбил нашествия арабов с помощью флота, вооружённого греческим огнём. Но он сделал странный вывод: решил, что сила арабов в том, что ислам запрещает изображения. И сам начал борьбу с иконами.</p>
+    <p>Так возникла ересь <span class="term">иконоборчества</span>. Помнишь из § 1: ересь — учение, которое Церковь отвергла. Спор о том, можно ли молиться перед иконами, тянулся полтора столетия. Защитники икон окончательно победили в <b>843 году</b>, когда объявили о <span class="term">Торжестве Православия</span>.</p>
+    <p>Тем временем на севере выросла новая угроза: <b>Болгарское царство</b>. Оно объединило славян и кочевников-болгар и не раз тяжело било империю.</p>
+  </div>
+  <details>
+    <summary>А почему спор об иконах длился так долго?</summary>
+    <div class="body"><p>Потому что спорили не только о картинках. Одни считали, что молиться перед изображением нельзя, это почти как поклоняться идолу. Другие отвечали, что икона — окно, через которое человек смотрит на Бога и святых. За полтора века императоры несколько раз меняли решение, и только в 843 году Церковь поставила точку.</p></div>
+  </details>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 24</summary>
+    <div class="body"><ul>
+      <li>Император Лев Исавр отбил арабские нашествия с помощью флота, вооружённого греческим огнём. Однако он решил, что сила арабов в том, что ислам запрещает изображения. Император инициировал ересь иконоборчества, вылившуюся в длившееся полтора столетия религиозное противостояние.</li>
+      <li>На севере угрозу представляло Болгарское царство, объединившее славян и кочевников-болгар и нанёсшее империи немало тяжёлых поражений.</li>
+      <li>Защитники икон окончательно победили в 843 году, когда было объявлено о Торжестве Православия.</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 13 -->
+<section class="step" data-step="rus" data-name="Византия и Русь" data-part="Глава 4 · Соседи">
+  <div class="eyebrow">Глава 4 · Соседи в VII–XI веках · Учебник, с. 24</div>
+  <h2>Византия, Болгария и Русь</h2>
+  <div class="prose">
+    <p>Здесь история Византии встречается с историей нашей страны. Смотри, как работало «крещение соседей»:</p>
+    <ul>
+      <li><b>860 год.</b> При императоре Михаиле III и патриархе Фотии Константинополь отбил набег <b>русов</b> и добился их крещения.</li>
+      <li><b>865 год.</b> Крестилась Болгария во главе с царём Борисом.</li>
+      <li><b>957 год.</b> Княгиня <b>Ольга</b> приехала в Константинополь и крестилась там.</li>
+      <li><b>988 год.</b> <b>Крещение Руси</b> при князе Владимире. Очень важное событие: с этого времени Русь и Византия связаны одной верой.</li>
+    </ul>
+    <p>В <b>867 году</b> к власти пришла <span class="term">Македонская династия</span>. Среди её императоров были и большие учёные (Лев Мудрый, Константин Багрянородный), и славные воины (Никифор Фока, Иоанн Цимисхий, Василий II). Византия вернула многие земли на Востоке и в Италии, мирными договорами уладила походы русских князей Олега, Игоря и Святослава, а потом покорила Болгарию (<b>1018 год</b>).</p>
+    <p>Последняя война Руси с Византией закончилась в <b>1046 году</b> миром и свадьбой: дочь императора Константина Мономаха вышла за Всеволода, сына Ярослава Мудрого.</p>
+  </div>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 24</summary>
+    <div class="body"><ul>
+      <li>При Михаиле III и патриархе Фотии Константинополь отразил набег русов в 860 году и добился их крещения, а в 865 году крестилась Болгария во главе с царём Борисом.</li>
+      <li>В 867 году на престол взошла Македонская династия, многие императоры которой были глубокими учёными (Лев Мудрый, Константин Багрянородный) или успешными воинами (Никифор Фока, Иоанн Цимисхий, Василий II).</li>
+      <li>Византия сумела вернуть многие земли на Востоке и в Италии, уладить мирными договорами нашествия Руси при Олеге, Игоре и Святославе, а затем покорить Болгарию (по таблице дат: 1018 год, завоевание Болгарии византийцами).</li>
+      <li>В 957 году посетила Константинополь и крестилась там княгиня Ольга. Большое значение имело Крещение Руси в 988 году при князе Владимире.</li>
+      <li>Последняя русско-византийская война закончилась в 1046 году миром и браком дочери императора Константина Мономаха и сына Ярослава Мудрого, Всеволода.</li>
+      <li>Из таблицы дат (строка «Россия»): 1097 год, княжеский съезд в Любече, раздел Руси между потомками Ярослава Мудрого. В тексте параграфа об этом не рассказано, дата дана для связи с историей России.</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 14 -->
+<section class="step" data-step="krizis" data-name="Кризис XI века" data-part="Глава 4 · Соседи">
+  <div class="eyebrow">Глава 4 · Соседи в VII–XI веках · Учебник, с. 25</div>
+  <h2>Кризис XI века</h2>
+  <div class="prose">
+    <p>В середине XI века удача отвернулась. На троне сменялись слабые императоры, военные враждовали с придворными чиновниками.</p>
+    <ul>
+      <li><b>1054 год.</b> Византийская Церковь окончательно разорвала отношения с Римскими папами: она осудила их стремление к власти. С этого времени Запад стал смотреть на Византию как на врага.</li>
+      <li><b>1071 год.</b> Битва при <b>Манцикерте</b>. Войско императора Романа Диогена разбили <b>турки-сельджуки</b>, сам василевс попал в плен. Враг захватил большую часть <b>Малой Азии</b>, а это была опора всей мощи империи.</li>
+      <li><b>1081 год.</b> К власти пришла династия <b>Комнинов</b> и сумела вернуть Византии престиж.</li>
+    </ul>
+  </div>
+  <details>
+    <summary>Почему Малая Азия была «опорой могущества»?</summary>
+    <div class="body"><p>Малая Азия — большой полуостров, где сейчас Турция. Оттуда империя брала хлеб, налоги и солдат. Потеряв её, Византия лишилась главного источника денег и войска. Это и есть подсказка к вопросу учебника о том, когда начался хозяйственный упадок.</p></div>
+  </details>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 25</summary>
+    <div class="body"><ul>
+      <li>В середине XI века наступил кризис: на престоле сменялись малоспособные императоры, враждовали между собой военные и придворные чиновники.</li>
+      <li>В 1054 году Византийская Церковь окончательно разорвала отношения с Римскими папами, осудив их властолюбивые притязания. Запад начал рассматривать Византию как врага.</li>
+      <li>В 1071 году войско императора Романа Диогена было разбито турками-сельджуками при Манцикерте, василевс попал в плен. Большая часть Малой Азии, опора могущества империи, была захвачена врагом.</li>
+      <li>Однако престиж Византии удалось восстановить династии Комнинов, пришедшей к власти в 1081 году.</li>
+      <li>Вопросы учебника после пункта 4: перечислите врагов, с которыми вела войны Византия. Как вы думаете, чем Византия была привлекательна для русских князей, совершавших военные походы в Константинополь? К каким последствиям это привело? Покажите на карте 3 (см. Приложение), какие земли Византия приобрела и какие утратила с IX по XI век; опираясь на текст учебника, найдите противников Византии, осаждавших границы империи.</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 15 -->
+<section class="step" data-step="shkoly" data-name="Школы и Лев Математик" data-part="Глава 5 · Культура">
+  <div class="eyebrow">Глава 5 · Культура · Учебник, с. 25</div>
+  <h2>Школы и Лев Математик</h2>
+  <div class="prose">
+    <p>В Западной Европе после варваров многие знания Древнего мира пропали. А Византия их берегла и приумножала: в искусстве, науке, технике и военном деле.</p>
+    <p>Образованных людей здесь было гораздо больше, чем на Западе. Родители старались выучить детей грамоте, ведь хорошее образование открывало дорогу к высоким должностям. Школ было множество, а в середине IX века прямо в императорском дворце открыли <b>высшую школу</b>. Несколько столетий она готовила чиновников и военачальников.</p>
+    <p>Основал её учёный <span class="term">Лев Математик</span> (790–870). Прозвище он получил за математику, но интересовался всем: философией, литературой, астрономией, механикой. Писал книги и изобретал. Его главное изобретение — <b>оптический телеграф</b>: цепь огневых маяков, по которой сигнал с восточной границы за считаные часы долетал до столицы. Зажгли первый костёр — и в Константинополе уже знают, что на границе беда.</p>
+  </div>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 25</summary>
+    <div class="body"><ul>
+      <li>Пункт 5 «Культура Византии». В отличие от Европы, где многие античные достижения были утрачены, Византия бережно сохраняла и приумножала традиции античной цивилизации: в искусстве, науке, технологии и военном деле.</li>
+      <li>В Византии образованных людей было гораздо больше, чем в Западной Европе. Многие жители империи стремились обучить грамоте своих детей, ведь хорошее образование открывало дорогу к высоким должностям. В империи действовало множество школ, а в середине IX века в императорском дворце была открыта высшая школа. Несколько столетий она готовила чиновников и военачальников. Инициатором её создания был византийский учёный Лев Математик (790–870).</li>
+      <li class="pic">Иллюстрация: иконописное изображение Льва Математика, современная икона. Подпись: прозвище Математик учёный получил из-за своих познаний в этой науке. Но круг его интересов был огромным: философия, литература, астрономия, механика. Он был автором книг и изобретений, пользовался уважением у современников за высокую учёность и благочестивую жизнь. Именно он изобрёл оптический телеграф, позволявший передавать с восточных границ в столицу сигналы с помощью цепи огневых маяков.</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 16 -->
+<section class="step" data-step="sofiya" data-name="Собор Святой Софии" data-part="Глава 5 · Культура">
+  <div class="eyebrow">Глава 5 · Культура · Учебник, с. 26</div>
+  <h2>Собор Святой Софии</h2>
+  <div class="prose">
+    <p>Гордостью византийцев были храмы. Сначала строили <span class="term">базилики</span>: прямоугольные здания, вытянутые с запада на восток.</p>
+    <p>А потом Юстиниан построил чудо. Собор <span class="term">Святой Софии</span> в Константинополе возводили в <b>532–537 годах</b>. В его огромном куполе прорезано 40 окон, и свет из них делает купол будто невесомым. Византийцы говорили, что купол подвешен к небу на золотых цепях.</p>
+  </div>
+  <div class="steps4">
+    <div class="dom"><div class="n">5</div><div class="t">лет строили</div><div class="d">532–537</div></div>
+    <div class="dom"><div class="n">40</div><div class="t">окон в куполе</div><div class="d">свет делает купол «невесомым»</div></div>
+    <div class="dom"><div class="n">55,6</div><div class="t">метров высота</div><div class="d">как дом в 18 этажей</div></div>
+    <div class="dom"><div class="n">33</div><div class="t">метра купол</div><div class="d">диаметр главного купола</div></div>
+  </div>
+  <div class="prose">
+    <p>Больше тысячи лет это был самый большой христианский храм в мире. По преданию, войдя в готовый собор, Юстиниан воскликнул: <b>«Я победил тебя, Соломон!»</b> Он имел в виду, что построил здание грандиознее, чем храм царя Соломона в Иерусалиме, описанный в Библии.</p>
+    <p>Позже архитекторы стали строить <span class="term">крестово-купольные храмы</span>: если посмотреть на чертёж сверху, здание похоже на крест, а в его центре круглый купол.</p>
+  </div>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 26</summary>
+    <div class="body"><ul>
+      <li>Предметом гордости византийцев были христианские храмы, украшавшие города и монастыри. На заре Средневековья строители возводили базилики — прямоугольные, вытянутые с запада на восток постройки.</li>
+      <li>Настоящим средневековым чудом света стал собор Святой Софии в Константинополе, возведённый в 532–537 годах. В огромном куполе величественного храма было прорезано 40 окон, свет из которых создавал впечатление его невесомости. Восхищённые византийцы поговаривали, что купол собора подвешен на золотых цепях к самому небу.</li>
+      <li class="pic">Иллюстрация: внешний вид собора Святой Софии, современная реконструкция.</li>
+      <li>Любопытные детали: более 1000 лет собор Святой Софии оставался самым крупным христианским храмом в мире. Высота здания составляет 55,6 м (как современный 18-этажный дом), диаметр центрального купола — 33 м. Храм производил ошеломляющее впечатление. «В высоту он поднимается как будто до неба, и, как корабль на высоких волнах моря, он выделяется среди других строений, как бы склоняясь над остальным городом», — писал о постройке современник. По преданию, войдя в только что построенный собор, император Юстиниан I воскликнул: «Я победил тебя, Соломон!» Этим он хотел сказать, что по его приказу было построено здание более грандиозное, чем описанный в Библии Иерусалимский храм, возведённый царём Соломоном.</li>
+      <li>Впоследствии архитекторы стали строить крестово-купольные храмы. На чертежах они напоминали крест, центр которого перекрывал полукруглый купол.</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 17 -->
+<section class="step" data-step="zhivopis" data-name="Мозаика, фреска, икона" data-part="Глава 5 · Культура">
+  <div class="eyebrow">Глава 5 · Культура · Учебник, с. 26 и 18</div>
+  <h2>Мозаика, фреска, икона</h2>
+  <div class="prose">
+    <p>Внутри храмы украшала живопись: сцены из жизни Христа, пророков и святых. Делали её тремя способами:</p>
+  </div>
+  <div class="steps4">
+    <div class="dom"><div class="n">1</div><div class="t">Мозаика</div><div class="d">картина, выложенная из кусочков цветного стекла (смальты)</div></div>
+    <div class="dom"><div class="n">2</div><div class="t">Фреска</div><div class="d">роспись красками по сырой штукатурке на стене</div></div>
+    <div class="dom"><div class="n">3</div><div class="t">Икона</div><div class="d">картина особыми красками на деревянной доске</div></div>
+  </div>
+  <div class="prose">
+    <p>Главным для художника была не внешняя красота, а <b>«образ души»</b>. Поэтому с фресок, икон и мозаик смотрят одухотворённые лица Христа, Богоматери и святых, а фон у них золотой: золото означает нездешний, Божественный мир.</p>
+    <p>Кстати, цвета этой страницы, лазурь, золото и терракота, взяты как раз с мозаик Равенны, того самого города, где на стене базилики Сан-Витале стоит Юстиниан со свитой.</p>
+  </div>
+  <details>
+    <summary>Как мастера заставляли мозаику сиять</summary>
+    <div class="body"><p>Мозаика — один из самых древних видов искусства: кусочки стекла использовали ещё древние египтяне. В V–VI веках в Равенне на севере Италии создали настоящие шедевры. Секрет сияния простой: кусочки смальты выкладывали под разным углом, чтобы свет отражался в них по-разному. Из-за этого мозаика будто мерцает и кажется таинственной и торжественной.</p></div>
+  </details>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 26 и 27</summary>
+    <div class="body"><ul>
+      <li>Храмы украшала религиозная живопись: эпизоды из жизни Христа, пророков и святых. Эти изображения были исполнены разными способами. Мозаики представляли собой картины, выложенные из кусочков цветного стекла. Другим видом живописи были фрески — росписи красками по сырой штукатурке, и иконы — картины, написанные специальными красками на деревянных досках.</li>
+      <li>Для церковной живописи важна была не внешняя красота. Художники стремились показать «образ души». Именно поэтому с фресок, икон и мозаик на нас смотрят одухотворённые лица Христа, Богоматери и святых, изображённые на золотом фоне, символизирующем нездешний, Божественный мир.</li>
+      <li>Вопросы учебника после пункта 5: почему византийские храмы называли крестово-купольными? Назовите три вида храмовой живописи Византии. Чем они отличались друг от друга?</li>
+      <li class="pic">Подпись к мозаике на с. 18 (Юстиниан I со свитой, базилика Сан-Витале, 545 год) пересказана в шаге «За минуту» и в раскрывашке выше.</li>
+      <li>«Подведём итоги» из учебника (с. 27): Восточная Римская империя (Византия) была наследницей античной цивилизации. Для неё были характерны сильная императорская власть и подчинение Церкви императору. Многие века Византия, находившаяся на границе Европы и Азии, успешно противостояла натиску своих врагов.</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 18 -->
+<section class="step" data-step="slovar-1" data-name="Словарик: государство" data-part="Словарик">
+  <div class="game">
+    <div class="g-head"><h3>Словарик: государство</h3><span class="badge" id="b-terms">Игра</span></div>
+    <p class="task">Нажми на карточку, и она перевернётся. Словарик из трёх частей, открой все карточки.</p>
+    <div class="progress" id="terms-progress"></div>
+    <div class="cards" data-terms="0"></div>
+  </div>
+</section>
+
+<!-- 19 -->
+<section class="step" data-step="slovar-2" data-name="Словарик: хозяйство и Юстиниан" data-part="Словарик">
+  <div class="game">
+    <div class="g-head"><h3>Словарик: хозяйство и Юстиниан</h3><span class="badge" id="b-terms2">Игра</span></div>
+    <p class="task">Вторая часть. Деньги, оружие и законы.</p>
+    <div class="progress" id="terms-progress2"></div>
+    <div class="cards" data-terms="1"></div>
+  </div>
+</section>
+
+<!-- 20 -->
+<section class="step" data-step="slovar-3" data-name="Словарик: соседи и культура" data-part="Словарик">
+  <div class="game">
+    <div class="g-head"><h3>Словарик: соседи и культура</h3><span class="badge" id="b-terms3">Игра</span></div>
+    <p class="task">Третья часть. Споры о вере и храмы.</p>
+    <div class="progress" id="terms-progress3"></div>
+    <div class="cards" data-terms="2"></div>
+  </div>
+</section>
+
+<!-- 21 -->
+<section class="step" data-step="protivniki" data-name="Соперники Византии" data-part="Игры">
+  <div class="game" id="g-match">
+    <div class="g-head"><h3>Соперники Византии</h3><span class="badge" id="b-match">Игра</span></div>
+    <p class="task">Нажми на соседа слева, потом на то, чем закончилась встреча с ним. В учебнике есть похожая таблица, после игры её будет легко заполнить самой.</p>
+    <div class="match">
+      <div class="col"><div class="lbl">Сосед</div><div class="col" id="foes"></div></div>
+      <div class="col"><div class="lbl">Чем закончилось</div><div class="col" id="outcomes"></div></div>
+    </div>
+    <div id="match-fb"></div>
+  </div>
+</section>
+
+<!-- 22 -->
+<section class="step" data-step="poryadok" data-name="Расставь по порядку" data-part="Игры">
+  <div class="game">
+    <div class="g-head"><h3>Расставь по порядку</h3><span class="badge" id="b-order">Игра</span></div>
+    <p class="task">Нажимай на события от самого раннего к самому позднему. Даты спрятаны, вспоминай сама.</p>
+    <div class="pool" id="pool"></div>
+    <div class="seq" id="seq"></div>
+    <div class="row">
+      <button class="btn" id="order-check" type="button" disabled>Проверить</button>
+      <button class="btn ghost" id="order-reset" type="button">Сначала</button>
+    </div>
+    <div id="order-fb"></div>
+  </div>
+</section>
+
+<!-- 23 -->
+<section class="step" data-step="lishnee" data-name="Найди лишнее" data-part="Игры">
+  <div class="game">
+    <div class="g-head"><h3>Найди лишнее</h3><span class="badge" id="b-odd">Игра</span></div>
+    <p class="task">Три слова из одной компании, одно чужое. Найди чужое.</p>
+    <div class="progress" id="odd-progress"></div>
+    <div class="odd-grid" id="odd-grid"></div>
+    <div id="odd-fb"></div>
+    <div class="row"><button class="btn" id="odd-next" type="button" hidden>Дальше</button></div>
+  </div>
+</section>
+
+<!-- 24 -->
+<section class="step" data-step="test" data-name="Проверь себя" data-part="Финал">
+  <div class="eyebrow">Финал</div>
+  <h2>Проверь себя</h2>
+  <div class="game">
+    <div class="progress" id="quiz-progress"></div>
+    <div id="quiz-box"></div>
+  </div>
+</section>
+
+<!-- 25 -->
+<section class="step" data-step="voprosy" data-name="Вопросы учебника" data-part="Финал">
+  <div class="eyebrow">Финал · Учебник, с. 27–28</div>
+  <h2>Вопросы из учебника</h2>
+  <div class="prose">
+    <p>Это вопросы и задания в конце параграфа. Рядом с каждым написано, на каком шаге искать ответ. Отвечай своими словами: так лучше запоминается, и учитель услышит, что ты поняла, а не заучила.</p>
+  </div>
+  <div class="qlist">
+<div class="qi"><span class="qn">1</span><div><p>Изучите схему и назовите органы управления, которые сохранились в Византии со времён античного Рима.</p><a href="#patriarh">Шаг 5 · схема и подсказка</a></div></div>
+<div class="qi"><span class="qn">2</span><div><p>Рассмотрите иллюстрацию в начале параграфа. По каким признакам вы можете определить, где на мозаике император Юстиниан? Кто окружает императора?</p><p class="src">Подсказка: вспомни, кто один имел право носить пурпур, и посмотри, кто стоит в центре. Вокруг него воины, чиновники и священники.</p><a href="#vasilevs">Шаг 4 · Василевс</a></div></div>
+<div class="qi"><span class="qn">3</span><div><p>Назовите не менее трёх причин, обусловивших сильную императорскую власть и сохранение единства Византийской империи.</p><p class="src">Подсказка: власть от Бога, Церковь под императором, чёткие законы, единая вера у разных народов.</p><a href="#romei">Шаги 3–5 · Государство и Церковь</a></div></div>
+<div class="qi"><span class="qn">4</span><div><p>Прочитайте п. 3 параграфа и заполните таблицу «Византия и её соседи»: век или год; соперник Византии; средства борьбы (дипломатия, война, распространение христианства); результат борьбы.</p><p class="src">В учебнике написано «п. 3», но про соседей рассказывает п. 4 на с. 24–25. Ищи там.</p><a href="#sosedi">Шаги 11–14 и игра «Соперники»</a></div></div>
+<div class="qi"><span class="qn">5</span><div><p>В чём заключались причины процветания Византии? Когда и почему в стране наступил хозяйственный упадок?</p><p class="src">Процветание: шаги 6–7. Упадок: шаг 14, потеря Малой Азии.</p><a href="#hozyaystvo">Шаг 6 · Чем жила империя</a></div></div>
+<div class="qi"><span class="qn">6</span><div><p>Когда Византия достигла наивысших военных успехов? Какое событие означало закат военной славы империи?</p><p class="src">Успехи: при Юстиниане (шаг 10). Закат: шаг 14, битва 1071 года.</p><a href="#kreposti">Шаг 10 · Крепости и завоевания</a></div></div>
+<div class="qi"><span class="qn">7</span><div><p>Охарактеризуйте деятельность императора Юстиниана. Приведите 3–4 факта из его биографии.</p><a href="#yustinian">Шаги 8–10 · Юстиниан</a></div></div>
+<div class="qi"><span class="qn">8</span><div><p>Почему византийцы считали, что имеют право установить свою власть над Италией, Африкой и Испанией?</p><p class="src">Подсказка: как называли себя жители Византии и чьими наследниками они себя считали?</p><a href="#romei">Шаг 3 · Страна ромеев</a></div></div>
+<div class="qi"><span class="qn">9</span><div><p>Узнайте содержание одного из житий византийских святых. Предположите, почему простые люди любили читать произведения этого жанра.</p><p class="src">Житие — рассказ о жизни святого. Этого нет в параграфе: спроси у родителей или поищи в библиотеке, например житие святого Николая. Подумай, чем такой рассказ похож на приключенческую книгу.</p></div></div>
+<div class="qi"><span class="qn">⏳</span><div><p>Работаем с хронологией. Сколько лет прошло от завершения строительства собора Святой Софии до поражения Византии в битве при Манцикерте?</p><p class="src">Обе даты есть на ленте времени. Вычти из большего года меньший.</p><a href="#daty">Шаг 2 · Даты</a></div></div>
+<div class="qi"><span class="qn">📜</span><div><p>Работаем с источником. Указ Юстиниана I: «Любой ценой прекрати незаконное покровительство, которое имеет место, как мы об этом узнали, в наших провинциях. Не позволяй никому эксплуатировать другого, присваивать себе земли, которые ему не принадлежат, обещать покровительство тем, кто претерпел ущерб, использовать свою власть для уничтожения государства». Вопросы: против кого был направлен указ? Почему речь идёт об ущербе делам государства? При каких обстоятельствах и когда предупреждение Юстиниана было отвергнуто правителями Византии и к чему это привело?</p><p class="src">О чём указ простыми словами: император велит правителям провинций прекратить «покровительство», когда знатные люди отбирают земли у свободных крестьян и заставляют их идти под свою защиту. Государству от этого ущерб: крестьяне перестают платить налоги и служить в войске. Для третьего вопроса вспомни, что случилось в XI веке, когда слабые императоры перестали сдерживать знать (шаг 14).</p><a href="#kreposti">Шаг 10 · что запретил Юстиниан</a></div></div>
+<div class="qi"><span class="qn">А–Я</span><div><p>Работаем с понятиями. Какие из приведённых в тексте параграфа терминов характеризуют императорскую власть в Византии?</p><p class="src">Подсказка: вспомни слова из шага 4: василевс, автократор, титул, церемониал. А «шёлковый путь» точно про другое.</p><a href="#slovar-1">Словарик: государство</a></div></div>
+<div class="qi"><span class="qn">?</span><div><p>Сформулируйте ответ на главный вопрос параграфа и обоснуйте его двумя-тремя аргументами.</p><a href="#itog">Шаг 26 · Главный вопрос</a></div></div>
+  </div>
+</section>
+
+<!-- 26 -->
+<section class="step" data-step="itog" data-name="Главный вопрос" data-part="Финал">
+  <div class="eyebrow">Финал</div>
+  <h2>Что привлекало в Византии другие страны и народы?</h2>
+  <div class="prose">
+    <p>Это главный вопрос параграфа (учебник, с. 18 и 28). Вот три «кирпичика» для ответа. Открой их, а потом попробуй ответить своими словами, не подглядывая.</p>
+  </div>
+  <div class="bricks">
+    <div class="brick"><button type="button" aria-expanded="false"><span>Богатство</span><span>+</span></button><div class="b-body" hidden>Византия была самой богатой страной своего времени: сотни городов, огромная столица на перекрёстке торговых путей, золотой безант, который принимали везде, шёлк из императорских мастерских. На такие сокровища зарились и персы, и арабы, и болгары, и русы.</div></div>
+    <div class="brick"><button type="button" aria-expanded="false"><span>Порядок и сила</span><span>+</span></button><div class="b-body" hidden>Сильная власть василевса, чёткие законы Кодекса Юстиниана, армия, флот с греческим огнём и умелая дипломатия. Соседи то воевали с Византией, то учились у неё управлять государством.</div></div>
+    <div class="brick"><button type="button" aria-expanded="false"><span>Вера и красота</span><span>+</span></button><div class="b-body" hidden>Византия сберегла античные знания, открыла множество школ и построила храмы, каких не было нигде: собор Святой Софии, мозаики, иконы. Болгары и Русь приняли отсюда христианство, а с ним книги и искусство.</div></div>
+  </div>
+  <div class="aside">
+    <div class="k">Главное в одном предложении</div>
+    <p>Византия тысячу лет притягивала соседей богатством, сильной властью императора и красотой христианской культуры, а отбивалась от них мечом, золотом, дипломатией и крещением.</p>
+  </div>
+  <div class="game">
+    <div class="g-head"><h3>Твоя мозаика</h3></div>
+    <div class="mosaic" id="mosaic"></div>
+    <div class="mosaic-list" id="mosaic-list"></div>
+    <div class="row"><a class="btn" href="./">К списку тем</a></div>
+  </div>
+</section>
+
+</main>
+
+<nav class="pager" aria-label="Навигация по шагам">
+  <div class="pager-inner">
+    <button class="btn ghost" id="prev" type="button">Назад</button>
+    <div class="count" id="count"></div>
+    <button class="btn" id="next" type="button">Дальше</button>
+  </div>
+</nav>
+
+<div class="toc" id="toc" hidden>
+  <div class="toc-panel" role="dialog" aria-label="Содержание">
+    <h3>Содержание <button class="toc-close" id="toc-close" type="button">Закрыть</button></h3>
+    <div id="toc-list" style="display:flex;flex-direction:column;gap:2px"></div>
+  </div>
+</div>
+
+<script>
+(function(){
+  'use strict';
+  var $ = function(s, r){ return (r||document).querySelector(s); };
+  var el = function(tag, cls, html){ var e=document.createElement(tag); if(cls) e.className=cls; if(html!=null) e.innerHTML=html; return e; };
+  var shuffle = function(a){ a=a.slice(); for(var i=a.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=a[i]; a[i]=a[j]; a[j]=t; } return a; };
+
+  /* ---------- state ---------- */
+  var KEY='vizantiya-v1';
+  var state={visited:{},done:{},last:0};
+  try{ var s=JSON.parse(localStorage.getItem(KEY)||'null'); if(s && typeof s==='object'){ state.visited=s.visited||{}; state.done=s.done||{}; state.last=s.last||0; } }catch(e){}
+  function save(){ try{ localStorage.setItem(KEY, JSON.stringify(state)); }catch(e){} }
+
+  var GAMES=[
+    {k:'terms', name:'Словарик, все три части', step:'slovar-1'},
+    {k:'match', name:'Соперники Византии', step:'protivniki'},
+    {k:'order', name:'Расставь по порядку', step:'poryadok'},
+    {k:'odd', name:'Найди лишнее', step:'lishnee'},
+    {k:'quiz', name:'Проверь себя', step:'test'}
+  ];
+  var GAME_STEPS={'slovar-1':'terms','slovar-2':'terms','slovar-3':'terms','protivniki':'match','poryadok':'order','lishnee':'odd','test':'quiz'};
+
+  /* ---------- steps ---------- */
+  var steps=Array.prototype.slice.call(document.querySelectorAll('.step'));
+  var N=steps.length, cur=0;
+  var stepbar=$('#stepbar'), count=$('#count'), prevB=$('#prev'), nextB=$('#next'), tocList=$('#toc-list');
+
+  steps.forEach(function(s,i){
+    var b=el('button'); b.type='button'; b.setAttribute('aria-label','Шаг '+(i+1)+': '+s.getAttribute('data-name'));
+    b.addEventListener('click', function(){ go(i); });
+    stepbar.appendChild(b);
+    var t=el('button','toc-item','<span class="n">'+(i+1)+'</span><span>'+s.getAttribute('data-name')+'</span><span class="m"></span>');
+    t.type='button'; t.addEventListener('click', function(){ closeToc(); go(i); });
+    tocList.appendChild(t);
+  });
+
+  function paint(){
+    var bars=stepbar.children, items=tocList.children;
+    for(var i=0;i<N;i++){
+      var key=steps[i].getAttribute('data-step'), g=GAME_STEPS[key];
+      var done = g && state.done[g];
+      bars[i].className=(i===cur?'current':'')+(state.visited[i]?' visited':'')+(done?' done':'');
+      items[i].className='toc-item'+(i===cur?' current':'');
+      items[i].lastElementChild.textContent = done ? 'пройдено' : (state.visited[i] ? '✓' : '');
+    }
+    count.textContent=(cur+1)+' / '+N;
+    prevB.disabled = cur===0;
+    if(cur===N-1){ nextB.textContent='Это последний шаг'; nextB.disabled=true; }
+    else { nextB.textContent='Дальше: '+steps[cur+1].getAttribute('data-name'); nextB.disabled=false; }
+    var badges={terms:['b-terms','b-terms2','b-terms3'],match:['b-match'],order:['b-order'],odd:['b-odd']};
+    for(var k in badges){ badges[k].forEach(function(id){ var b=document.getElementById(id); if(b && state.done[k]){ b.textContent='Пройдено'; b.classList.add('done'); } }); }
+    paintMosaic();
+  }
+  function go(i, silent){
+    if(i<0||i>=N) return;
+    cur=i; steps.forEach(function(s,j){ s.hidden = j!==i; });
+    state.visited[i]=true; state.last=i; save();
+    if(!silent){ var h='#'+steps[i].getAttribute('data-step'); if(location.hash!==h) history.pushState(null,'',h); }
+    window.scrollTo(0,0);
+    paint();
+  }
+  function idxFromHash(){ var h=location.hash.replace('#',''); for(var i=0;i<N;i++) if(steps[i].getAttribute('data-step')===h) return i; return -1; }
+  function onHash(){ var i=idxFromHash(); if(i>=0 && i!==cur) go(i, true); }
+  window.addEventListener('popstate', onHash);
+  window.addEventListener('hashchange', onHash);
+  prevB.addEventListener('click', function(){ go(cur-1); });
+  nextB.addEventListener('click', function(){ go(cur+1); });
+  document.addEventListener('keydown', function(e){ if(e.target && /INPUT|TEXTAREA/.test(e.target.tagName)) return; if(e.key==='ArrowRight') go(cur+1); if(e.key==='ArrowLeft') go(cur-1); if(e.key==='Escape') closeToc(); });
+
+  var toc=$('#toc');
+  function openToc(){ toc.hidden=false; }
+  function closeToc(){ toc.hidden=true; }
+  $('#toc-btn').addEventListener('click', openToc);
+  $('#toc-close').addEventListener('click', closeToc);
+  toc.addEventListener('click', function(e){ if(e.target===toc) closeToc(); });
+
+  function markDone(k){ if(!state.done[k]){ state.done[k]=true; save(); } paint(); }
+
+  /* resume button on step 1 */
+  (function(){
+    var r=$('#resume');
+    if(state.last>0 && idxFromHash()<0){
+      r.hidden=false;
+      r.innerHTML='<button class="btn ghost" type="button">Продолжить с шага '+(state.last+1)+': '+steps[state.last].getAttribute('data-name')+'</button>';
+      r.firstChild.addEventListener('click', function(){ go(state.last); });
+    }
+  })();
+
+  /* ---------- mosaic on final step ---------- */
+  var mosaic=$('#mosaic'), mosaicList=$('#mosaic-list');
+  function paintMosaic(){
+    mosaic.innerHTML=''; mosaicList.innerHTML='';
+    GAMES.forEach(function(g){
+      var t=el('span','tile'+(state.done[g.k]?' on':'')); t.title=g.name; mosaic.appendChild(t);
+      var li=el('span', state.done[g.k]?'':'off', (state.done[g.k]?'★ ':'☆ ')+g.name);
+      if(!state.done[g.k]){ li.style.cursor='pointer'; li.addEventListener('click', function(){ for(var i=0;i<N;i++) if(steps[i].getAttribute('data-step')===g.step){ go(i); break; } }); }
+      mosaicList.appendChild(li);
+    });
+  }
+
+  /* ---------- timeline ---------- */
+  var TL=[
+    {y:'532–537', era:'Мир', t:'Собор Святой Софии', d:'В Константинополе построили собор Святой Софии, главный храм империи и чудо света Средневековья. Купол с 40 окнами казался подвешенным к небу.'},
+    {y:'865', era:'Мир', t:'Крещение Болгарии', d:'Болгария во главе с царём Борисом приняла христианство от Византии. Так империя превращала опасных соседей в единоверцев.'},
+    {y:'988', era:'Россия', ru:true, t:'Крещение Руси', d:'Князь Владимир крестил Русь. С этого времени Русь и Византия связаны одной верой, книгами и искусством.'},
+    {y:'1018', era:'Мир', t:'Завоевание Болгарии', d:'Византия при Македонской династии покорила Болгарское царство, которое много раз наносило ей поражения.'},
+    {y:'1071', era:'Мир', t:'Битва при Манцикерте', d:'Турки-сельджуки разбили войско императора Романа Диогена, сам он попал в плен. Византия потеряла большую часть Малой Азии.'},
+    {y:'1097', era:'Россия', ru:true, t:'Съезд в Любече', d:'Русские князья, потомки Ярослава Мудрого, собрались в Любече и разделили Русь между собой. В тексте параграфа об этом нет, дата дана для связи с историей России.'}
+  ];
+  var tl=$('#tl');
+  TL.forEach(function(e,i){
+    var it=el('div','tl-item'+(e.ru?' ru':''));
+    var b=el('button','tl-btn'); b.type='button';
+    b.innerHTML='<span class="dot"></span><span class="y">'+e.y+'</span><span class="t">'+e.t+'</span><span class="era">'+e.era+'</span>';
+    var d=el('div','tl-d',e.d); d.hidden=(i!==0); if(i===0) it.classList.add('open');
+    b.setAttribute('aria-expanded', i===0?'true':'false');
+    b.addEventListener('click', function(){ var open=d.hidden; d.hidden=!open; it.classList.toggle('open',open); b.setAttribute('aria-expanded',open?'true':'false'); });
+    it.appendChild(b); it.appendChild(d); tl.appendChild(it);
+  });
+
+  /* ---------- glossary ---------- */
+  var TERMS=[
+    [
+      {t:'Ромеи', d:'Так называли себя жители Византии: «римляне». Они считали себя наследниками Рима.', e:'Страна ромеев = Восточная Римская империя.'},
+      {t:'Византия', d:'Позднее название Восточной Римской империи, от греческой колонии Византий, где Константин в 324 году заложил столицу.', e:'Столица — Константинополь.'},
+      {t:'Василевс', d:'Титул византийского императора, по-гречески «царь».', e:'Ещё его звали автократор, самодержец.'},
+      {t:'Автократор', d:'«Самодержец», тот, кто держит всю власть сам. Второй титул императора.', e:''},
+      {t:'Титул', d:'Звание правителя. Византийцы почитали сам титул, а не человека, который его носит.', e:'Как повязка капитана: кто надел, тот и главный.'},
+      {t:'Династия', d:'Правители из одной семьи, когда трон переходит от отца к сыну.', e:'Македонская династия с 867 года.'},
+      {t:'Церемониал', d:'Строгие правила придворных приёмов: пурпур, золото, нельзя поворачиваться спиной и говорить без приказа.', e:'Показывал, что император выше всех.'},
+      {t:'Патриарх', d:'Епископ Константинополя, глава Церкви в Византии. Избирался с одобрения императора.', e:'«Симфония» — согласие царя и патриарха.'}
+    ],
+    [
+      {t:'Греческий огонь', d:'Горючая жидкость, которую из труб под давлением выстреливали по вражеским кораблям.', e:'Главное оружие византийского флота.'},
+      {t:'Безант', d:'Золотая монета Византии, которую принимали торговцы и в Европе, и в Азии.', e:''},
+      {t:'Великий шёлковый путь', d:'Торговая дорога от Китая до Византии, по которой везли шёлк и другие товары.', e:'Караван шёл больше 200 дней.'},
+      {t:'Золотой Рог', d:'Гавань Константинополя, куда заходили тысячи кораблей.', e:''},
+      {t:'Кодекс', d:'Собрание законов. Кодекс Юстиниана составили лучшие юристы из переработанных римских законов.', e:'Защищал жизнь и достоинство людей.'},
+      {t:'«Ника»', d:'Восстание горожан против Юстиниана из-за налогов и произвола чиновников. По-гречески «побеждай».', e:'Феодора: «Пурпур — лучший саван!»'},
+      {t:'Провинция', d:'Область империи со своим правителем. Юстиниан уменьшил число провинций, но дал их правителям больше прав.', e:''}
+    ],
+    [
+      {t:'Дипломатия', d:'Переговоры и договоры с другими странами вместо войны.', e:'Одно из средств борьбы Византии с соседями.'},
+      {t:'Иконоборчество', d:'Ересь, начатая Львом Исавром: борьба против икон. Спор длился полтора века.', e:'Закончился в 843 году.'},
+      {t:'Торжество Православия', d:'Окончательная победа защитников икон в 843 году.', e:''},
+      {t:'Базилика', d:'Прямоугольный храм, вытянутый с запада на восток. Так строили в начале Средневековья.', e:''},
+      {t:'Крестово-купольный храм', d:'Храм, который на чертеже похож на крест, а в центре купол.', e:'Так строили после Святой Софии.'},
+      {t:'Мозаика', d:'Картина из кусочков цветного стекла (смальты).', e:'Юстиниан со свитой в Равенне.'},
+      {t:'Фреска', d:'Роспись красками по сырой штукатурке на стене.', e:''},
+      {t:'Икона', d:'Картина особыми красками на деревянной доске. Изображает Христа, Богоматерь, святых.', e:'Золотой фон — Божественный мир.'}
+    ]
+  ];
+  var flipped={}, total=0; TERMS.forEach(function(g){ total+=g.length; });
+  var progEls=[$('#terms-progress'),$('#terms-progress2'),$('#terms-progress3')];
+  function termsProgress(){
+    var n=Object.keys(flipped).length;
+    progEls.forEach(function(p,gi){ var got=0; TERMS[gi].forEach(function(t,i){ if(flipped[gi+'-'+i]) got++; }); p.textContent='Открыто '+got+' из '+TERMS[gi].length+' здесь, всего '+n+' из '+total; });
+    if(n===total) markDone('terms');
+  }
+  document.querySelectorAll('.cards').forEach(function(box){
+    var gi=+box.getAttribute('data-terms');
+    TERMS[gi].forEach(function(t,i){
+      var b=el('button','card'); b.type='button'; b.setAttribute('aria-label',t.t+'. Нажми, чтобы увидеть значение');
+      b.innerHTML='<div class="in"><div class="face f"><div class="w">'+t.t+'</div><div class="tap">Нажми</div></div><div class="face b"><div class="w">'+t.t+'</div><div>'+t.d+'</div>'+(t.e?'<div class="e">'+t.e+'</div>':'')+'</div></div>';
+      b.addEventListener('click', function(){ b.classList.toggle('flip'); flipped[gi+'-'+i]=true; termsProgress(); });
+      box.appendChild(b);
+    });
+  });
+  termsProgress();
+
+  /* ---------- matching ---------- */
+  var PAIRS=[
+    {foe:'Персы (Сасаниды)', res:'Разгромил император Ираклий', why:'Самый опасный враг ещё со времён Рима. Помогали армяне и грузины.'},
+    {foe:'Арабы', res:'Отбиты флотом с греческим огнём', why:'Это сделал император Лев Исавр.'},
+    {foe:'Славяне на Дунае', res:'Стали подданными империи', why:'Трижды осаждали Фессалонику, но Византия сумела сделать их своими.'},
+    {foe:'Болгары', res:'Крещены в 865 году, завоёваны в 1018 году', why:'Сначала крещение при царе Борисе, потом покорение при Македонской династии.'},
+    {foe:'Русы', res:'Мирные договоры и Крещение Руси в 988 году', why:'Походы Олега, Игоря и Святослава закончились договорами, а при Владимире Русь крестилась.'},
+    {foe:'Турки-сельджуки', res:'Разбили византийцев при Манцикерте в 1071 году', why:'Император Роман Диоген попал в плен, потеряна большая часть Малой Азии.'}
+  ];
+  var foesBox=$('#foes'), outBox=$('#outcomes'), matchFb=$('#match-fb'), selFoe=null, matched=0;
+  PAIRS.forEach(function(p){
+    var b=el('button','opt',p.foe); b.type='button'; b.setAttribute('data-foe',p.foe);
+    b.addEventListener('click', function(){
+      if(b.classList.contains('ok')) return;
+      var all=foesBox.querySelectorAll('.opt'); for(var i=0;i<all.length;i++) all[i].classList.remove('sel');
+      b.classList.add('sel'); selFoe=p; matchFb.innerHTML='';
+    });
+    foesBox.appendChild(b);
+  });
+  shuffle(PAIRS).forEach(function(p){
+    var b=el('button','opt',p.res); b.type='button';
+    b.addEventListener('click', function(){
+      if(b.classList.contains('ok')) return;
+      if(!selFoe){ matchFb.innerHTML='<div class="feedback bad"><span class="k">Сначала выбери соседа слева.</span></div>'; return; }
+      if(selFoe.res===p.res){
+        b.classList.add('ok'); b.disabled=true;
+        var fb=foesBox.querySelector('[data-foe="'+selFoe.foe+'"]'); fb.classList.remove('sel'); fb.classList.add('ok'); fb.disabled=true;
+        matchFb.innerHTML='<div class="feedback ok"><span class="k">Верно! '+selFoe.foe+'.</span><span>'+selFoe.why+'</span></div>';
+        selFoe=null; matched++;
+        if(matched===PAIRS.length){ matchFb.innerHTML='<div class="feedback ok"><span class="k">Все шесть соседей на месте!</span><span>Персов и арабов отбили, славян и болгар подчинили, Русь крестили, а туркам проиграли.</span></div>'; markDone('match'); }
+      } else {
+        b.classList.add('bad'); setTimeout(function(){ b.classList.remove('bad'); },400);
+        matchFb.innerHTML='<div class="feedback bad"><span class="k">Не туда.</span><span>С этим соседом всё закончилось иначе. Попробуй другой вариант.</span></div>';
+      }
+    });
+    outBox.appendChild(b);
+  });
+
+  /* ---------- ordering ---------- */
+  var EVENTS=[
+    {y:324, t:'Константин заложил Константинополь', ys:'324'},
+    {y:537, t:'Достроен собор Святой Софии', ys:'537'},
+    {y:843, t:'Торжество Православия', ys:'843'},
+    {y:988, t:'Крещение Руси', ys:'988'},
+    {y:1054, t:'Разрыв Церкви с Римскими папами', ys:'1054'},
+    {y:1071, t:'Битва при Манцикерте', ys:'1071'}
+  ];
+  var pool=$('#pool'), seq=$('#seq'), orderCheck=$('#order-check'), orderFb=$('#order-fb'), picked=[], shuffledEvents=shuffle(EVENTS);
+  function renderOrder(){
+    pool.innerHTML='';
+    shuffledEvents.forEach(function(e){
+      if(picked.indexOf(e)>=0) return;
+      var b=el('button','opt',e.t); b.type='button';
+      b.addEventListener('click', function(){ picked.push(e); renderOrder(); });
+      pool.appendChild(b);
+    });
+    seq.innerHTML='';
+    if(!picked.length){ seq.appendChild(el('div','empty','Сюда встанут события')); }
+    picked.forEach(function(e,i){ seq.appendChild(el('div','slot','<span class="i">'+(i+1)+'</span><span>'+e.t+'</span>')); });
+    orderCheck.disabled = picked.length!==EVENTS.length;
+    orderFb.innerHTML='';
+  }
+  renderOrder();
+  orderCheck.addEventListener('click', function(){
+    var slots=seq.querySelectorAll('.slot'), wrong=0;
+    picked.forEach(function(e,i){
+      var ok = e.y===EVENTS[i].y;
+      slots[i].classList.add(ok?'ok':'bad');
+      slots[i].insertAdjacentHTML('beforeend','<span class="yr">'+e.ys+'</span>');
+      if(!ok) wrong++;
+    });
+    if(!wrong){ orderFb.innerHTML='<div class="feedback ok"><span class="k">Всё по порядку!</span><span>324, 537, 843, 988, 1054, 1071. Сначала столица и собор, потом мир с иконами, крещение Руси, ссора с Римом и поражение от турок.</span></div>'; markDone('order'); }
+    else orderFb.innerHTML='<div class="feedback bad"><span class="k">Не совсем. Красные события стоят не на своих местах.</span><span>Теперь даты видны. Нажми «Сначала» и попробуй ещё раз.</span></div>';
+    orderCheck.disabled=true;
+  });
+  $('#order-reset').addEventListener('click', function(){ picked=[]; shuffledEvents=shuffle(EVENTS); renderOrder(); });
+
+  /* ---------- odd one out ---------- */
+  var ODD=[
+    {items:['Мозаика','Фреска','Икона','Базилика'], odd:'Базилика', why:'Базилика — это здание храма. Остальные три слова — виды живописи, которой храм украшали внутри.'},
+    {items:['Персы','Арабы','Грузины','Турки-сельджуки'], odd:'Грузины', why:'Грузины вместе с армянами помогали Византии против персов. Остальные три — враги, с которыми империя воевала.'},
+    {items:['Ираклий','Лев Исавр','Юстиниан','Лев Математик'], odd:'Лев Математик', why:'Лев Математик — учёный, основатель высшей школы. Остальные трое — императоры.'}
+  ];
+  var oddGrid=$('#odd-grid'), oddFb=$('#odd-fb'), oddNext=$('#odd-next'), oddP=$('#odd-progress'), oddRound=0;
+  function renderOdd(){
+    var r=ODD[oddRound]; oddGrid.innerHTML=''; oddFb.innerHTML=''; oddNext.hidden=true;
+    oddP.textContent='Раунд '+(oddRound+1)+' из '+ODD.length;
+    shuffle(r.items).forEach(function(w){
+      var b=el('button','opt',w); b.type='button';
+      b.addEventListener('click', function(){
+        var all=oddGrid.querySelectorAll('.opt');
+        if(w===r.odd){
+          for(var i=0;i<all.length;i++) all[i].disabled=true;
+          b.classList.add('ok');
+          oddFb.innerHTML='<div class="feedback ok"><span class="k">Точно, лишнее слово «'+w+'».</span><span>'+r.why+'</span></div>';
+          if(oddRound<ODD.length-1) oddNext.hidden=false;
+          else { oddP.textContent='Все три раунда пройдены'; markDone('odd'); }
+        } else {
+          b.classList.add('bad'); b.disabled=true;
+          oddFb.innerHTML='<div class="feedback bad"><span class="k">«'+w+'» из той же компании, что и остальные.</span><span>Подумай, какое слово про другое.</span></div>';
+        }
+      });
+      oddGrid.appendChild(b);
+    });
+  }
+  oddNext.addEventListener('click', function(){ oddRound++; renderOdd(); });
+  renderOdd();
+
+  /* ---------- quiz ---------- */
+  var QUIZ=[
+    {q:'Как называли себя жители Византии?', o:['Византийцами','Ромеями, то есть римлянами','Греками'], a:1, why:'Они считали себя наследниками Рима. Слово «Византия» появилось позже.'},
+    {q:'Что почитали византийцы: человека или титул?', o:['Конкретного человека в короне','Титул императора, само звание','Только патриарха'], a:1, why:'Поэтому власть не передавалась по наследству, а императора избирали.'},
+    {q:'Кто такой патриарх в Византии?', o:['Главный чиновник дворца','Епископ Константинополя, глава Церкви','Командир императорской гвардии'], a:1, why:'Император правил земной жизнью, патриарх вёл души к спасению. Это называли «симфонией».'},
+    {q:'Что такое «греческий огонь»?', o:['Костры-маяки Льва Математика','Горючая жидкость, которой стреляли из труб по кораблям','Праздник в Константинополе'], a:1, why:'Маяки — это оптический телеграф, другое изобретение. А греческий огонь — оружие флота.'},
+    {q:'Зачем Юстиниан создал Кодекс?', o:['Чтобы управлять страной по чётким законам','Чтобы собрать больше налогов','Чтобы описать восстание «Ника»'], a:0, why:'Лучшие юристы собрали и переработали римские законы. Кодекс защищал жизнь и достоинство людей.'},
+    {q:'Что означает название восстания «Ника»?', o:['«Побеждай»','«Свобода»','«Пурпур»'], a:0, why:'Это был лозунг восставших. А про пурпур сказала Феодора: «Пурпур — лучший саван!»'},
+    {q:'Как Византия справлялась с соседями?', o:['Только войной','Дипломатией, крещением соседей, войной и подкупом','Платила дань всем подряд'], a:1, why:'Империя использовала все средства сразу, вплоть до убийства вражеских вождей.'},
+    {q:'Что случилось в 843 году?', o:['Крещение Руси','Торжество Православия: победа защитников икон','Битва при Манцикерте'], a:1, why:'Спор об иконах длился полтора века и закончился победой их защитников.'},
+    {q:'Что произошло при Манцикерте в 1071 году?', o:['Византия завоевала Болгарию','Турки-сельджуки разбили войско императора, он попал в плен','Юстиниан построил собор'], a:1, why:'Империя потеряла большую часть Малой Азии, опору своего могущества.'},
+    {q:'Чем фреска отличается от иконы?', o:['Фреска на стене по сырой штукатурке, икона на доске','Фреска из стекла, икона из золота','Ничем, это одно и то же'], a:0, why:'Из стекла делают мозаику. Фреска на стене, икона на деревянной доске.'}
+  ];
+  var qBox=$('#quiz-box'), qP=$('#quiz-progress'), qi=0, score=0;
+  function renderQ(){
+    if(qi>=QUIZ.length) return renderScore();
+    var q=QUIZ[qi];
+    qP.textContent='Вопрос '+(qi+1)+' из '+QUIZ.length;
+    qBox.innerHTML='';
+    qBox.appendChild(el('div','q',q.q));
+    var opts=el('div','q-opts'); qBox.appendChild(opts);
+    var fb=el('div'); qBox.appendChild(fb);
+    var rowN=el('div','row'); qBox.appendChild(rowN);
+    var answered=false;
+    q.o.forEach(function(o,i){
+      var b=el('button','opt',o); b.type='button';
+      b.addEventListener('click', function(){
+        if(answered) return; answered=true;
+        var all=opts.querySelectorAll('.opt');
+        for(var k=0;k<all.length;k++){ all[k].disabled=true; if(k===q.a) all[k].classList.add('ok'); }
+        if(i===q.a){ score++; fb.innerHTML='<div class="feedback ok"><span class="k">Правильно!</span><span>'+q.why+'</span></div>'; }
+        else { b.classList.add('bad'); fb.innerHTML='<div class="feedback bad"><span class="k">Нет, правильный ответ подсвечен зелёным.</span><span>'+q.why+'</span></div>'; }
+        var n=el('button','btn', qi<QUIZ.length-1?'Следующий вопрос':'Показать результат'); n.type='button';
+        n.addEventListener('click', function(){ qi++; renderQ(); window.scrollTo(0,0); });
+        rowN.appendChild(n);
+      });
+      opts.appendChild(b);
+    });
+  }
+  function renderScore(){
+    qP.textContent='Результат';
+    var tiles=''; for(var i=0;i<QUIZ.length;i++) tiles+='<i class="'+(i<score?'on':'')+'"></i>';
+    var msg = score===QUIZ.length ? 'Идеально, Амина! Ни одной ошибки.' : score>=8 ? 'Отлично! Ещё раз взгляни на вопросы, где ошиблась, и будет полный набор.' : score>=6 ? 'Хорошо. Перечитай шаги, где было трудно, и пройди тест снова.' : 'Тема большая, Амина, это нормально. Вернись к шагу «За минуту», потом к словарику, и попробуй ещё раз.';
+    qBox.innerHTML='<div class="score"><div class="big">'+score+' из '+QUIZ.length+'</div><div class="score-tiles">'+tiles+'</div><p>'+msg+'</p><button class="btn ghost" type="button" id="quiz-again">Пройти ещё раз</button></div>';
+    $('#quiz-again').addEventListener('click', function(){ qi=0; score=0; renderQ(); });
+    markDone('quiz');
+  }
+  renderQ();
+
+  /* ---------- bricks ---------- */
+  Array.prototype.forEach.call(document.querySelectorAll('.brick button'), function(b){
+    b.addEventListener('click', function(){
+      var body=b.nextElementSibling, open=body.hidden;
+      body.hidden=!open; b.setAttribute('aria-expanded', open?'true':'false');
+      b.lastElementChild.textContent = open?'−':'+';
+    });
+  });
+
+  /* ---------- start ---------- */
+  var start=idxFromHash(); go(start<0?0:start, true);
+})();
+</script>
+
+</body>
+</html>
