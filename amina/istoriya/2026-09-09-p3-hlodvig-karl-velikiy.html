@@ -1,0 +1,1104 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>От Хлодвига к Карлу Великому</title>
+<meta name="paragraph" content="§ 3">
+<meta name="description" content="От королевства Хлодвига к империи Карла Великого">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oranienbaum&family=Golos+Text:wght@400;500;600;700&display=swap">
+<style>
+:root{
+  --bg:#EBE8DF; --surface:#F8F6F0; --surface-2:#E2DED2; --ink:#1B2233; --ink-2:#4A5163; --muted:#7A8093;
+  --lapis:#23448A; --on-lapis:#FFFFFF; --lapis-soft:#D9E1F3;
+  --gold:#B08A2E; --gold-soft:#F1E6C2; --on-gold:#2A2107;
+  --terra:#B4552F; --terra-soft:#F3DCD2;
+  --moss:#4E7A3B; --moss-soft:#DCE8D2;
+  --line:#D2CDBF; --tile:#CFC9B9;
+  --shadow:0 1px 2px rgba(27,34,51,.08),0 10px 28px rgba(27,34,51,.07);
+  --display:"Oranienbaum","Georgia","Times New Roman",serif;
+  --body:"Golos Text","Segoe UI",system-ui,-apple-system,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0F1728; --surface:#182338; --surface-2:#21304B; --ink:#EDE8DC; --ink-2:#C2BFB4; --muted:#8B93A8;
+    --lapis:#7EA0E6; --on-lapis:#0F1728; --lapis-soft:#22345A;
+    --gold:#E0B84A; --gold-soft:#3E3419; --on-gold:#0F1728;
+    --terra:#E0825C; --terra-soft:#4A2A1D;
+    --moss:#8DBF74; --moss-soft:#243B1F;
+    --line:#2E3B57; --tile:#2A3856;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 28px rgba(0,0,0,.35);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0F1728; --surface:#182338; --surface-2:#21304B; --ink:#EDE8DC; --ink-2:#C2BFB4; --muted:#8B93A8;
+  --lapis:#7EA0E6; --on-lapis:#0F1728; --lapis-soft:#22345A;
+  --gold:#E0B84A; --gold-soft:#3E3419; --on-gold:#0F1728;
+  --terra:#E0825C; --terra-soft:#4A2A1D;
+  --moss:#8DBF74; --moss-soft:#243B1F;
+  --line:#2E3B57; --tile:#2A3856;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 28px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+@media (prefers-reduced-motion: reduce){ *{transition:none!important;animation:none!important} }
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.55;-webkit-text-size-adjust:100%}
+h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1.1;text-wrap:balance;margin:0}
+p{margin:0}
+a{color:var(--lapis)}
+button{font:inherit;color:inherit;cursor:pointer}
+button:focus-visible,summary:focus-visible,a:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+[hidden]{display:none!important}
+
+/* ---------- top bar ---------- */
+.top{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+.top-inner{max-width:720px;margin:0 auto;padding:10px 16px;display:flex;align-items:center;gap:12px}
+.back{text-decoration:none;color:var(--ink-2);font-size:14px;white-space:nowrap;padding:6px 10px;border-radius:8px;background:var(--surface);border:1px solid var(--line)}
+.crumb{flex:1;min-width:0;font-size:14px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.crumb b{color:var(--ink);font-weight:600}
+.toc-btn{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:6px 10px;font-size:14px;color:var(--lapis);font-weight:600;white-space:nowrap}
+.stepbar{max-width:720px;margin:0 auto;padding:0 16px 10px;display:flex;gap:4px}
+.stepbar button{flex:1;height:8px;min-width:6px;padding:0;border:0;border-radius:2px;background:var(--tile);transition:background .3s,transform .3s}
+.stepbar button.visited{background:var(--lapis)}
+.stepbar button.done{background:var(--gold)}
+.stepbar button.current{transform:scaleY(1.6);background:var(--gold)}
+
+/* ---------- steps ---------- */
+main{max-width:720px;margin:0 auto;padding:20px 16px 120px}
+.step{display:flex;flex-direction:column;gap:16px}
+.eyebrow{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);font-weight:700;display:flex;align-items:center;gap:10px}
+.tess{display:inline-flex;gap:3px}
+.tess i{width:8px;height:8px;display:block;border-radius:1px}
+.tess i:nth-child(1){background:var(--lapis)} .tess i:nth-child(2){background:var(--gold)} .tess i:nth-child(3){background:var(--terra)}
+.step h1{font-size:clamp(36px,8vw,56px)}
+.step h2{font-size:clamp(28px,6vw,38px)}
+.step h3{font-size:22px;color:var(--lapis);margin-top:4px}
+.lede{font-size:19px;color:var(--ink-2);max-width:34ch}
+.prose{display:flex;flex-direction:column;gap:12px;max-width:66ch}
+.prose ul{margin:0;padding-left:22px;display:flex;flex-direction:column;gap:6px}
+.prose li::marker{color:var(--gold)}
+b,strong{font-weight:600}
+.term{font-weight:600;color:var(--lapis);border-bottom:2px solid var(--gold-soft)}
+.aside{background:var(--lapis-soft);border-left:4px solid var(--lapis);padding:12px 16px;border-radius:0 8px 8px 0;font-size:16px;display:flex;flex-direction:column;gap:6px}
+.aside .k{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--lapis);font-weight:700}
+.home{background:var(--gold-soft);border-left-color:var(--gold)}
+.home .k{color:var(--gold)}
+details{border:1px solid var(--line);border-radius:10px;background:var(--surface)}
+details summary{cursor:pointer;list-style:none;padding:12px 16px;font-weight:600;color:var(--lapis);display:flex;align-items:center;gap:10px}
+details summary::-webkit-details-marker{display:none}
+details summary::before{content:"";width:9px;height:9px;background:var(--gold);transform:rotate(45deg);flex:none;transition:transform .2s}
+details[open] summary::before{transform:rotate(45deg) scale(.6);background:var(--lapis)}
+details .body{padding:0 16px 14px;display:flex;flex-direction:column;gap:8px;color:var(--ink-2)}
+
+.steps4{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+@media (min-width:600px){ .steps4{grid-template-columns:repeat(4,1fr)} }
+.dom{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px;display:flex;flex-direction:column;gap:4px;box-shadow:var(--shadow)}
+.dom .n{font-family:var(--display);font-size:28px;color:var(--gold);line-height:1}
+.dom .t{font-weight:600;font-size:15px;line-height:1.25}
+.dom .d{font-size:13.5px;color:var(--ink-2);line-height:1.35}
+
+.ladder{display:flex;flex-direction:column;align-items:center;gap:6px}
+.rung{background:var(--lapis);color:var(--on-lapis);padding:9px 12px;border-radius:8px;text-align:center;font-size:15px;line-height:1.3}
+.rung small{display:block;opacity:.85;font-size:12.5px}
+.rung.r1{width:60%} .rung.r2{width:74%} .rung.r3{width:88%} .rung.r4{width:100%;background:var(--surface-2);color:var(--ink)}
+
+/* timeline (вертикальная, все даты видны сразу) */
+.tl-v{display:flex;flex-direction:column;position:relative;padding-left:4px}
+.tl-v::before{content:"";position:absolute;left:16px;top:16px;bottom:16px;width:3px;background:var(--line);border-radius:2px}
+.tl-item{position:relative;padding-left:36px;display:flex;flex-direction:column}
+.tl-btn{background:none;border:0;padding:8px 0;text-align:left;display:flex;align-items:baseline;gap:8px 12px;flex-wrap:wrap;color:var(--ink);width:100%}
+.tl-btn .dot{position:absolute;left:5px;top:12px;width:17px;height:17px;background:var(--surface);border:3px solid var(--lapis);border-radius:50%;transition:transform .2s,background .2s}
+.tl-item.ru .dot{border-color:var(--terra)}
+.tl-item.open .dot{background:var(--gold);border-color:var(--gold);transform:scale(1.2)}
+.tl-btn .y{font-family:var(--display);font-size:26px;line-height:1;font-variant-numeric:tabular-nums;min-width:96px}
+.tl-btn .t{font-weight:600;font-size:16px}
+.tl-btn .era{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--lapis);font-weight:700;margin-left:auto}
+.tl-item.ru .era{color:var(--terra)}
+.tl-d{color:var(--ink-2);font-size:15.5px;padding:0 0 12px;line-height:1.45}
+.hint{font-size:14px;color:var(--muted)}
+
+/* «как в учебнике» и вопросы учебника */
+details.book{border-color:var(--gold-soft)}
+details.book summary{color:var(--gold)}
+details.book summary::before{background:var(--gold)}
+details.book[open] summary::before{background:var(--gold)}
+details.book .body{font-size:15px;color:var(--ink)}
+details.book .body ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:7px}
+details.book .body li::marker{color:var(--gold)}
+details.book .body .pic{color:var(--ink-2);font-style:italic}
+.qlist{display:flex;flex-direction:column;gap:10px}
+.qi{display:grid;grid-template-columns:auto 1fr;gap:12px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.qi .qn{font-family:var(--display);font-size:24px;color:var(--gold);line-height:1;min-width:20px}
+.qi p{font-size:15.5px}
+.qi .src{font-size:14.5px;color:var(--ink-2);margin-top:6px}
+.qi a{font-size:13.5px;font-weight:600;text-decoration:none;display:inline-block;margin-top:8px;background:var(--lapis-soft);padding:4px 10px;border-radius:999px}
+
+/* games */
+.game{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:12px}
+.g-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.game h3{margin:0}
+.task{color:var(--ink-2)}
+.badge{font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;padding:4px 10px;border-radius:999px;background:var(--gold-soft);color:var(--gold)}
+.badge.done{background:var(--moss-soft);color:var(--moss)}
+.btn{background:var(--lapis);color:var(--on-lapis);border:0;border-radius:10px;padding:10px 18px;font-weight:600;font-size:15px;text-decoration:none;display:inline-block}
+.btn.ghost{background:transparent;color:var(--lapis);border:2px solid var(--lapis)}
+.btn:disabled{opacity:.45;cursor:default}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.feedback{padding:12px 14px;border-radius:10px;font-size:15px;display:flex;flex-direction:column;gap:4px}
+.feedback.ok{background:var(--moss-soft);border-left:4px solid var(--moss)}
+.feedback.bad{background:var(--terra-soft);border-left:4px solid var(--terra)}
+.feedback .k{font-weight:700}
+.progress{font-size:13px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.card{perspective:900px;height:150px;background:none;border:0;padding:0;text-align:left}
+.card .in{position:relative;width:100%;height:100%;transition:transform .5s;transform-style:preserve-3d}
+.card.flip .in{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;border-radius:12px;padding:12px;display:flex;flex-direction:column;justify-content:center;gap:6px;overflow:hidden}
+.face.f{background:var(--lapis);color:var(--on-lapis)}
+.face.f .w{font-family:var(--display);font-size:21px;line-height:1.05}
+.face.f .tap{font-size:11px;opacity:.75;letter-spacing:.08em;text-transform:uppercase}
+.face.b{background:var(--surface-2);color:var(--ink);transform:rotateY(180deg);font-size:12.5px;line-height:1.3;justify-content:flex-start;overflow:auto}
+.face.b .w{font-weight:700;color:var(--lapis);font-size:13px}
+.face.b .e{color:var(--ink-2);font-style:italic}
+
+.match{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.col{display:flex;flex-direction:column;gap:8px}
+.col .lbl{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.opt{background:var(--surface-2);border:2px solid transparent;border-radius:10px;padding:10px 12px;text-align:left;font-weight:500;font-size:15px;transition:border-color .15s,background .15s}
+.opt:hover{border-color:var(--lapis)}
+.opt.sel{border-color:var(--gold);background:var(--gold-soft)}
+.opt.ok{background:var(--moss-soft);border-color:var(--moss)}
+.opt.bad{animation:shake .35s}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+
+.pool{display:flex;flex-direction:column;gap:8px}
+.seq{display:flex;flex-direction:column;gap:8px;min-height:44px;padding:10px;border:2px dashed var(--line);border-radius:12px}
+.seq .slot{display:flex;align-items:center;gap:10px;background:var(--lapis-soft);border-radius:8px;padding:8px 12px;font-size:15px}
+.seq .slot .i{font-family:var(--display);font-size:20px;color:var(--lapis);width:22px;font-variant-numeric:tabular-nums}
+.seq .slot.ok{background:var(--moss-soft)} .seq .slot.bad{background:var(--terra-soft)}
+.seq .slot .yr{margin-left:auto;font-weight:700;color:var(--ink-2);font-variant-numeric:tabular-nums}
+.seq .empty{color:var(--muted);font-size:14px}
+
+.odd-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.odd-grid .opt{text-align:center;padding:16px 10px;font-size:16px}
+.odd-grid .opt.bad{background:var(--terra-soft);border-color:var(--terra)}
+
+.q{font-size:19px;font-weight:600;line-height:1.35}
+.q-opts{display:flex;flex-direction:column;gap:8px}
+.q-opts .opt{font-size:15.5px;line-height:1.35}
+.q-opts .opt.bad{background:var(--terra-soft);border-color:var(--terra)}
+.score{display:flex;flex-direction:column;gap:12px;align-items:flex-start}
+.score .big{font-family:var(--display);font-size:56px;line-height:1;color:var(--gold)}
+.score-tiles{display:flex;gap:5px;flex-wrap:wrap}
+.score-tiles i{width:22px;height:22px;border-radius:3px;background:var(--tile)}
+.score-tiles i.on{background:var(--gold)}
+
+.bricks{display:flex;flex-direction:column;gap:10px}
+.brick{background:var(--surface-2);border-radius:10px;overflow:hidden}
+.brick button{width:100%;background:none;border:0;padding:12px 14px;text-align:left;font-weight:600;color:var(--lapis);display:flex;justify-content:space-between;gap:10px}
+.brick .b-body{padding:0 14px 12px;color:var(--ink-2);font-size:15.5px}
+
+.mosaic{display:flex;gap:6px;align-items:center}
+.mosaic .tile{width:26px;height:26px;background:var(--tile);border-radius:3px;transition:background .4s,transform .4s}
+.mosaic .tile.on{background:var(--gold);transform:rotate(45deg) scale(.8)}
+.mosaic-list{display:flex;flex-direction:column;gap:6px;font-size:15px}
+.mosaic-list span.off{color:var(--muted)}
+
+/* pager */
+.pager{position:fixed;left:0;right:0;bottom:0;z-index:5;background:var(--bg);border-top:1px solid var(--line)}
+.pager-inner{max-width:720px;margin:0 auto;padding:10px 16px;display:flex;align-items:center;gap:10px}
+.pager .count{font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+.pager .btn{flex:1;text-align:center;padding:12px 14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pager .btn.ghost{flex:0 0 auto}
+
+/* toc overlay */
+.toc{position:fixed;inset:0;z-index:10;background:rgba(0,0,0,.35);display:flex;justify-content:flex-end}
+.toc-panel{width:min(360px,90vw);height:100%;background:var(--surface);overflow:auto;padding:16px;display:flex;flex-direction:column;gap:8px;box-shadow:var(--shadow)}
+.toc-panel h3{font-size:24px;margin-bottom:6px;display:flex;justify-content:space-between;align-items:center}
+.toc-close{background:none;border:1px solid var(--line);border-radius:8px;padding:4px 10px;font-size:14px}
+.toc-item{display:flex;align-items:center;gap:10px;background:none;border:0;border-radius:8px;padding:8px 10px;text-align:left;font-size:15px;color:var(--ink)}
+.toc-item:hover{background:var(--surface-2)}
+.toc-item.current{background:var(--gold-soft);font-weight:600}
+.toc-item .n{font-family:var(--display);font-size:18px;color:var(--muted);width:24px;font-variant-numeric:tabular-nums}
+.toc-item .m{margin-left:auto;font-size:12px;color:var(--moss);font-weight:700}
+
+/* схема управления (§ 2) */
+.org{display:flex;flex-direction:column;gap:8px}
+.org .lvl{display:grid;gap:8px;grid-template-columns:repeat(2,1fr)}
+@media (min-width:600px){ .org .lvl{grid-template-columns:repeat(4,1fr)} }
+.org .box{background:var(--surface-2);border-radius:8px;padding:9px 10px;font-size:14px;text-align:center;line-height:1.3}
+.org .box small{display:block;font-size:12px;color:var(--ink-2)}
+.org .box.top{background:var(--lapis);color:var(--on-lapis);font-weight:600;font-size:16px}
+.org .box.sub{background:var(--gold-soft)}
+.org .lbl{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:700;text-align:center}
+</style>
+</head>
+<body>
+
+
+<header class="top">
+  <div class="top-inner">
+    <a class="back" href="./">← Темы</a>
+    <div class="crumb">История · § 3 · <b>От Хлодвига к Карлу Великому</b></div>
+    <button class="toc-btn" id="toc-btn" type="button">Содержание</button>
+  </div>
+  <div class="stepbar" id="stepbar" aria-label="Шаги темы"></div>
+</header>
+
+<main id="deck">
+
+<!-- 1 -->
+<section class="step" data-step="za-minutu" data-name="За минуту" data-part="Самое главное">
+  <div class="eyebrow"><span class="tess"><i></i><i></i><i></i></span> История · 6 класс · § 3</div>
+  <h1>От Хлодвига к Карлу Великому</h1>
+  <p class="lede">Амина, это история о единственном германском королевстве, которое не развалилось, а выросло в империю.</p>
+  <div id="resume" hidden></div>
+  <div class="prose">
+    <p>Помнишь из § 1: германцы заняли комнаты в старом римском доме, и почти все их королевства быстро развалились? Все, кроме одного. <span class="term">Франки</span> построили на месте римской Галлии королевство, которое стояло сотни лет и выросло в целую империю.</p>
+    <p>Почему у них получилось? Три вещи. Франки приняли ту же веру, что и местные жители, и слились с ними в один народ. Они записали законы и посадили в областях своих людей, графов. И придумали, как содержать конное войско: давать воинам землю за службу.</p>
+    <p>Главный вопрос параграфа: <b>почему Франкское королевство оказалось самым прочным из германских королевств?</b> Запомни четыре имени:</p>
+  </div>
+  <div class="steps4">
+    <div class="dom"><div class="n">1</div><div class="t">Хлодвиг</div><div class="d">Захватил Галлию и крестился по римскому образцу.</div></div>
+    <div class="dom"><div class="n">2</div><div class="t">Карл Мартелл</div><div class="d">Остановил арабов при Пуатье, дал воинам землю за службу.</div></div>
+    <div class="dom"><div class="n">3</div><div class="t">Пипин Короткий</div><div class="d">Стал королём с помощью папы римского.</div></div>
+    <div class="dom"><div class="n">4</div><div class="t">Карл Великий</div><div class="d">Создал империю. А внуки поделили её в Вердене.</div></div>
+  </div>
+  <div class="aside">
+    <div class="k">Как этим пользоваться</div>
+    <p>У каждого шага написано, какой это пункт параграфа. Внизу шага есть «Подробнее, как в учебнике»: там всё, что есть в этом пункте, ничего не пропущено. Сначала учи по коротким шагам, а перед уроком открой «подробнее».</p>
+  </div>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · начало § 3</summary>
+    <div class="body"><ul>
+      <li>Главный вопрос параграфа: почему Франкское королевство оказалось самым прочным из германских королевств?</li>
+      <li class="pic">Иллюстрация в начале параграфа: крещение Хлодвига. Резьба по слоновой кости, IX век, фрагмент.</li>
+      <li>Слова параграфа: герцог, граф, династия, Каролингское возрождение, майордом, феод. Люди: Хлодвиг, Карл Мартелл, Пипин Короткий, Карл Великий. Все они есть в словарике.</li>
+      <li>Таблица дат параграфа разобрана на следующем шаге.</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 2 -->
+<section class="step" data-step="daty" data-name="Даты" data-part="Лента времени">
+  <div class="eyebrow">Шесть дат · Таблица в начале § 3</div>
+  <h2>Лента времени</h2>
+  <p class="task">Это все даты из таблицы в начале параграфа, сверху вниз от ранних к поздним. Нажми на дату, чтобы прочитать, что случилось. Красные помечены «Россия», как в учебнике.</p>
+  <div class="tl-v" id="tl"></div>
+  <div class="aside home">
+    <div class="k">Ближе к дому</div>
+    <p>Оба события «Россия» здесь про Крым и хазар. Хазарский каганат — государство между Каспием и Чёрным морем, и его ранняя столица Семендер стояла на землях нынешнего Дагестана, у Каспия.</p>
+  </div>
+  <details class="book">
+    <summary>Ещё даты, которые встречаются в тексте параграфа</summary>
+    <div class="body"><ul>
+      <li>481–511 гг. — правление Хлодвига (п. 1).</li>
+      <li>Конец V в. — у Хлодвига не осталось соперников (п. 1).</li>
+      <li>VI–VII вв. — раздоры потомков Хлодвига, «ленивые короли» (п. 2).</li>
+      <li>Начало VIII в. — арабы перешли Пиренеи (п. 2).</li>
+      <li>715–741 гг. — Карл Мартелл майордом (п. 2).</li>
+      <li>741–768 гг. — Пипин Короткий; в середине VIII в. провозглашён королём (п. 2).</li>
+      <li>768–814 гг. — Карл Великий (п. 3). 30 лет он воевал с саксами.</li>
+      <li>VI в. — авары поселились на Дунае (п. 3).</li>
+    </ul></div>
+  </details>
+  <p class="hint">Эти даты потом пригодятся в игре «Расставь по порядку».</p>
+</section>
+
+<!-- 3 -->
+<section class="step" data-step="hlodvig" data-name="Хлодвиг берёт Галлию" data-part="Глава 1 · Хлодвиг">
+  <div class="eyebrow">Глава 1 · Хлодвиг · Учебник, § 3, п. 1</div>
+  <h2>Хлодвиг берёт Галлию</h2>
+  <div class="prose">
+    <p>Франки жили по нижнему течению Рейна. Во время Великого переселения народов они вошли в римскую провинцию Галлию. В <b>486 году</b> их вождь <span class="term">Хлодвиг</span> (481–511) из рода <span class="term">Меровингов</span> разбил галло-римлян в битве при Суассоне и захватил большую часть Галлии.</p>
+    <p>Франков было в десятки раз меньше, чем местных. Каждый воин получил участок земли и сам его обрабатывал. Франки остались свободными, ходили в походы и на суд, жили по старым обычаям.</p>
+    <p>Но король брал себе самую большую долю добычи и щедро одаривал слуг и дружинников. Так рядом с маленькими хозяйствами простых франков и галло-римлян выросли большие владения короля и его приближённых.</p>
+    <p>Хлодвиг хотел править один. Он приказал истребить всех, кто мог претендовать на трон: других вождей и даже собственных родственников. К концу V века соперников не осталось.</p>
+  </div>
+  <details>
+    <summary>Хитрость Хлодвига</summary>
+    <div class="body"><p>Когда все родственники были истреблены, Хлодвиг хитростью искал тех, кто мог быть его дальней роднёй. Он жаловался соплеменникам: «Горе мне, я остался, как странник среди чужой земли, и не имею родственников, которые могли бы мне помочь в случае несчастья!» Он надеялся, что кто-нибудь пожалеет его и признается в родстве. А значит, выдаст себя.</p></div>
+  </details>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · § 3, п. 1</summary>
+    <div class="body"><ul>
+      <li>Пункт 1 «Франки и их король Хлодвиг». Во время Великого переселения народов франки, жившие по нижнему течению Рейна, вторглись на территорию римской провинции Галлия. В 486 году, разгромив галло-римские войска в битве при Суассоне (город на севере современной Франции), они во главе со своим вождём Хлодвигом (481–511) из рода Меровингов захватили большую часть Галлии.</li>
+      <li>Франков было в десятки раз меньше, чем местных жителей. Каждый завоеватель получил земельный участок, который сам и обрабатывал. Франки сохраняли свою свободу и старинные обычаи, участвовали в военных походах и в судебных заседаниях.</li>
+      <li>Имея наибольшую долю в военной добыче, Хлодвиг щедро одаривал своих слуг и дружинников. Так рядом с мелкими хозяйствами простых франков и галло-римлян появлялись крупные владения короля и его приближённых.</li>
+      <li>Хлодвиг мечтал стать единственным правителем всех франков. С этой целью он приказал истребить всех тех, кто мог претендовать на трон: военных вождей и своих родственников. К концу V века соперников у него не осталось.</li>
+      <li>Врезка «Подробнее»: когда были истреблены все родственники Хлодвига, он, одержимый жаждой единоличной власти, пытался с помощью хитрости выявить тех, кто в силу дальнего родства с ним мог претендовать на трон. В надежде, что кто-то выдаст себя, он говорил своим соплеменникам: «Горе мне, я остался, как странник среди чужой земли, и не имею родственников, которые могли бы мне помочь в случае несчастья!»</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 4 -->
+<section class="step" data-step="salicheskaya" data-name="Законы и графы" data-part="Глава 1 · Хлодвиг">
+  <div class="eyebrow">Глава 1 · Хлодвиг · Учебник, § 3, п. 1</div>
+  <h2>«Салическая правда» и графы</h2>
+  <div class="prose">
+    <p>Судили франки по старым обычаям. Чтобы их не забыли и не переиначили, Хлодвиг приказал записать судебные правила. Так появилась <span class="term">«Салическая правда»</span>. Название от салических, то есть западных, франков: по-латыни «salis» значит «морское побережье».</p>
+    <p>Управлять целой Галлией как племенем уже не получалось. Что изменилось:</p>
+    <ul>
+      <li>центром власти стал <b>королевский двор</b>;</li>
+      <li>народные собрания больше не созывали, франки съезжались только раз в год на военный смотр;</li>
+      <li>на войну собирали <b>ополчение</b>, но постоянной силой была преданная королю <b>дружина</b>;</li>
+      <li>областями управляли доверенные люди короля, <span class="term">графы</span>.</li>
+    </ul>
+    <p>Сравни с § 1: у германцев вождь в мирное время ничего не мог приказать. А Хлодвиг уже настоящий король с двором, законами и наместниками.</p>
+  </div>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · § 3, п. 1</summary>
+    <div class="body"><ul>
+      <li class="pic">Иллюстрация: «Салическая правда». Рукопись, VIII век.</li>
+      <li>Суд франков по-прежнему происходил в соответствии с древними обычаями. Чтобы закрепить их, Хлодвиг приказал записать судебные правила. Они получили название «Салическая правда» (по названию германского племени западных (салических) франков, обитавшего на территории современных Франции и Бельгии; от латинского salis — морское побережье).</li>
+      <li>Управлять Галлией так же, как племенем, вождь франков уже не мог. Центром власти стал королевский двор. Народные собрания уже не созывались, и только раз в году франки съезжались на военные смотры. В случае войны собиралось ополчение, а многочисленные и преданные королю дружинники были постоянной военной силой. Отдельными областями управляли доверенные люди Хлодвига — графы.</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 5 -->
+<section class="step" data-step="kreschenie" data-name="Крещение Хлодвига" data-part="Глава 1 · Хлодвиг">
+  <div class="eyebrow">Глава 1 · Хлодвиг · Учебник, § 3, п. 1</div>
+  <h2>Крещение Хлодвига: главный ход</h2>
+  <div class="prose">
+    <p>Когда Хлодвиг завоёвывал Галлию, он был язычником. Потом он принял христианство. За ним крестилась дружина, а потом и все франки.</p>
+    <p>И вот самое важное. Помнишь из § 1: остготы и другие германцы были арианами, а римляне нет, и вера их разделяла? Франки поступили иначе: они приняли христианство <b>по римскому образцу</b>, как местные жители.</p>
+    <p>Что это дало:</p>
+    <ul>
+      <li>Церковь стала верной союзницей франкских королей;</li>
+      <li>епископы учили, что всякая власть от Бога, и это укрепило власть Хлодвига над франками и галло-римлянами;</li>
+      <li>жителей Галлии больше не разделяла вера, и они постепенно слились в <b>один народ</b>.</li>
+    </ul>
+    <p>Это первый кирпичик ответа на главный вопрос параграфа.</p>
+  </div>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · § 3, п. 1</summary>
+    <div class="body"><ul>
+      <li>Когда Хлодвиг завоёвывал Галлию, он был ещё язычником, но позже принял христианство. Примеру короля последовала дружина, а затем и остальные франки.</li>
+      <li>В отличие от других германцев, франки приняли христианство не в форме арианства, а по римскому образцу. Так Хлодвиг добился поддержки Церкви, которая стала верной союзницей франкских королей. Поскольку, как учили епископы, всякая власть дана от Бога, принятие христианства укрепило господство Хлодвига над соплеменниками и галло-римлянами. Жители Галлии, которых теперь не разделяла вера, постепенно слились в один народ.</li>
+      <li>Вопросы учебника после пункта 1: какие изменения в управлении франками произошли при Хлодвиге? Что такое «Салическая правда»? Зачем королю потребовалось её создавать?</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 6 -->
+<section class="step" data-step="lenivye" data-name="«Ленивые короли»" data-part="Глава 2 · Майордомы">
+  <div class="eyebrow">Глава 2 · Майордомы · Учебник, § 3, п. 2</div>
+  <h2>«Ленивые короли» и майордомы</h2>
+  <div class="prose">
+    <p>VI–VII века стали для королевства тяжёлым временем. Потомки Хлодвига делили власть и устраивали кровавые раздоры, страна разорялась. Власть последних Меровингов слабела, а знать усиливалась и забирала земли, которые раньше принадлежали королям.</p>
+    <p>Самыми влиятельными людьми стали <span class="term">майордомы</span>, управляющие королевским дворцом. Представь: у хозяина дома есть управляющий, который решает все дела, а хозяин только сидит на троне. Постепенно вся власть перешла к майордомам, а Меровингов современники прозвали <b>«ленивыми королями»</b>.</p>
+  </div>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · § 3, п. 2</summary>
+    <div class="body"><ul>
+      <li>Пункт 2 «„Ленивые короли“ и энергичные майордомы». VI–VII века стали для Франкского королевства тяжёлым временем. Кровавые раздоры между потомками Хлодвига разоряли страну. Власть последних Меровингов слабела, зато усиливалась знать. К ней перешли многие земли, прежде принадлежавшие королям.</li>
+      <li>Наиболее влиятельными лицами стали управляющие королевским дворцом — майордомы. Постепенно вся власть в государстве оказалась в их руках, а лишённых всякого влияния Меровингов современники стали называть «ленивыми королями».</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 7 -->
+<section class="step" data-step="puatie" data-name="Битва при Пуатье" data-part="Глава 2 · Майордомы">
+  <div class="eyebrow">Глава 2 · Майордомы · Учебник, § 3, п. 2</div>
+  <h2>732 год: битва при Пуатье</h2>
+  <div class="prose">
+    <p>В начале VIII века пришла беда. Арабы, о которых ты читала в § 2, завоевали почти всю Испанию, перешли Пиренейские горы и вторглись во Франкское королевство.</p>
+    <p>В <b>732 году</b> при Пуатье войско франков во главе с майордомом Карлом разгромило арабов. Хронист писал, что франки стояли стеной, «словно воедино смёрзшиеся фигуры, изваянные изо льда», и лёд этот не таял, даже когда они рубили арабов мечами. За победу Карл получил прозвище <span class="term">Мартелл</span>, «Молот».</p>
+    <p>Но догнать и добить арабов франки не смогли. У арабов была многочисленная конница, а у франков — тяжёлая пехота из свободных общинников. Ополчение собирали от случая к случаю, и оно теряло боевые навыки. Карлу Мартеллу (715–741) нужно было новое, хорошо вооружённое <b>конное войско</b>.</p>
+  </div>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · § 3, п. 2</summary>
+    <div class="body"><ul>
+      <li>В начале VIII века над Франкским королевством нависла грозная опасность. Арабы, завоевавшие почти всю Испанию, перешли Пиренеи и вторглись в пределы Франкского королевства. В 732 году при Пуатье состоялась битва, где войско франков во главе с майордомом Карлом разгромило арабов.</li>
+      <li>Любопытные детали: хронист так описывал события битвы при Пуатье: «Северяне замерли стеной, словно воедино смёрзшиеся фигуры, изваянные изо льда; лёд этот не способен был растаять, даже когда своими мечами они разили арабов». За эту победу над врагами Карл получил прозвище Мартелл, что означало «Молот».</li>
+      <li>Однако догнать отступавших врагов и истребить их окончательно франки не смогли, поскольку, в отличие от арабов, не имели многочисленной конницы. Основу франкского войска составляла тяжеловооружённая пехота, состоявшая из свободных общинников. Но ополчение, собиравшееся от случая к случаю, постепенно теряло боеспособность. Карлу Мартеллу (715–741) необходимо было создать новое, хорошо вооружённое конное войско.</li>
+      <li class="pic">Иллюстрация: битва при Пуатье. Гравюра XIX века. Вопрос учебника: какой исторический деятель изображён в центре гравюры? Что даёт основание так думать? Подсказка: в центре всадник с поднятым оружием, который ведёт франков в бой; подумай, кто командовал войском и что означает его прозвище.</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 8 -->
+<section class="step" data-step="feod" data-name="Земля за службу: феод" data-part="Глава 2 · Майордомы">
+  <div class="eyebrow">Глава 2 · Майордомы · Учебник, § 3, п. 2</div>
+  <h2>Земля за службу: феод</h2>
+  <div class="prose">
+    <p>Конь и доспехи стоят дорого, а воину некогда пахать. Как быть? Карл Мартелл придумал: раздавать воинам землю вместе с крестьянами, которые её обрабатывают. С дохода воин покупает коня и оружие и занимается только военным делом.</p>
+    <p>Но землю давали не насовсем, а в <span class="term">условную собственность</span>: при условии, что воин служит. Не служишь — землю отбирают. Как школьный ноутбук: пользуешься, пока учишься.</p>
+    <p>Со временем воины захотели передавать землю детям. Правителям пришлось согласиться, лишь бы наследник тоже служил. Такое пожалование назвали <span class="term">феод</span>. Реформа укрепила власть майордома: теперь у него было своё конное войско.</p>
+  </div>
+  <details>
+    <summary>Зачем нужно было именно конное войско?</summary>
+    <div class="body"><p>Пехота хороша, чтобы стоять стеной, как при Пуатье. Но арабы ускакали, и догнать их пешком было невозможно. Всадник быстрее, сильнее в атаке и может преследовать врага. Только содержать всадника дорого, поэтому и понадобилась земля за службу.</p></div>
+  </details>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · § 3, п. 2</summary>
+    <div class="body"><ul>
+      <li>Чтобы содержать конное войско, майордом стал раздавать воинам земли вместе с обрабатывавшими их крестьянами. На получаемый с земли доход владелец мог приобрести боевого коня, вооружение и заниматься военным делом, не отвлекаясь на ведение хозяйства.</li>
+      <li>Но земля передавалась новым хозяевам не насовсем, а лишь в условную собственность, то есть при условии несения военной службы. У тех, кто не выполнял условий, землю отбирали.</li>
+      <li>На первых порах воины-землевладельцы были удовлетворены таким положением дел. Но со временем они всё чаще стремились передать свои земли по наследству, и правителям приходилось с этим соглашаться — лишь бы новый владелец продолжал нести воинскую службу. Такие земельные пожалования получили название феод. Проведённые реформы укрепили власть майордома.</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 9 -->
+<section class="step" data-step="pipin" data-name="Пипин и Папское государство" data-part="Глава 2 · Майордомы">
+  <div class="eyebrow">Глава 2 · Майордомы · Учебник, § 3, п. 2</div>
+  <h2>Пипин Короткий и Папское государство</h2>
+  <div class="prose">
+    <p>Сын Карла Мартелла, <span class="term">Пипин</span> (741–768), прозванный за малый рост Коротким, не хотел оставаться майордомом при «ленивом короле». В середине VIII века при поддержке папы римского его провозгласили королём франков. Последнего Меровинга отправили в монастырь. Так началась новая династия.</p>
+    <p>Пипин отблагодарил папу: помог ему в борьбе с лангобардами, которые напали на Рим, и отдал папе часть отнятых у них земель. Так возникло <span class="term">Папское государство</span> (Папская область). Оно просуществовало больше тысячи лет, а его часть, <b>Ватикан</b> в Риме, есть и сегодня.</p>
+    <p>Смотри, как всё связано: папа помог Пипину стать королём, Пипин подарил папе государство. Союз королей франков с Церковью стал ещё крепче.</p>
+  </div>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · § 3, п. 2</summary>
+    <div class="body"><ul>
+      <li>Сын Карла Мартелла Пипин (741–768), прозванный за малый рост Коротким, уже не хотел довольствоваться титулом майордома. При поддержке папы римского в середине VIII века он был провозглашён королём франков. Последний из Меровингов был отправлен в монастырь.</li>
+      <li>Новый король отблагодарил папу, оказав ему помощь в борьбе с племенем лангобардов, напавших на Рим. Часть земель, отнятых у варваров, Пипин передал папе римскому. Так возникло Папское государство (или Папская область), просуществовавшее более тысячелетия. Его часть — Ватикан в Риме — сохранилась до наших дней.</li>
+      <li>Вопросы учебника после пункта 2: кого называли «ленивыми королями»? Какова была их судьба? Когда состоялась битва при Пуатье и какие результаты она имела?</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 10 -->
+<section class="step" data-step="pohody" data-name="Войны Карла Великого" data-part="Глава 3 · Карл Великий">
+  <div class="eyebrow">Глава 3 · Карл Великий · Учебник, § 3, п. 3</div>
+  <h2>Войны Карла Великого</h2>
+  <div class="prose">
+    <p>Сын Пипина, <span class="term">Карл Великий</span> (768–814), почти всю жизнь провёл в войнах и совершил десятки удачных походов. С кем он воевал:</p>
+    <ul>
+      <li><b>Лангобарды</b> в Италии: разбил окончательно и присоединил их королевство.</li>
+      <li><b>Авары</b>, кочевники на Дунае с VI века: разгромил, их держава исчезла, а сокровища, награбленные за несколько веков, ушли в казну Карла.</li>
+      <li><b>Арабы</b> в Испании: поход вглубь страны не удался, а на обратном пути в Пиренеях разгромили отряд, прикрывавший отход войска. Об этом сложили <b>«Песнь о Роланде»</b>. Позже Карл всё же присоединил небольшую область на северо-востоке Испании.</li>
+      <li><b>Саксы</b>, язычники на северо-востоке: 30 лет войны. В открытом бою саксы проигрывали, но стоило франкам уйти, как они восставали и возвращались к язычеству. Карл покорил их самыми суровыми мерами.</li>
+    </ul>
+    <p>В походах участвовала знать и получала большую часть земель и добычи. Королевство выросло почти вдвое, Карл стал владыкой почти всего христианского Запада.</p>
+  </div>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · § 3, п. 3</summary>
+    <div class="body"><ul>
+      <li>Пункт 3 «Карл Великий: создание империи». Сын Пипина Короткого Карл Великий (768–814) почти всю жизнь провёл в войнах и стал одним из самых известных правителей средневековой Европы. Во главе своего войска он совершил десятки успешных походов. Сначала Карл окончательно разбил в Италии лангобардов и присоединил их королевство. Затем разгромил кочевников-аваров, которые с VI века жили на Дунае, совершая набеги на соседей. Держава аваров перестала существовать, а награбленные ими за несколько веков сокровища пополнили королевскую казну.</li>
+      <li class="pic">Иллюстрация: франкские воины. Миниатюра, IX век. Задание учебника: опишите вооружение франкских воинов.</li>
+      <li>Много лет Карл воевал с арабами, захватившими Испанию, бывшую римскую провинцию. Однако его поход вглубь этой страны оказался неудачным, а на обратном пути отряд, прикрывавший отход королевского войска, был разгромлен в Пиренейских горах. Это событие легло в основу произведения средневековой литературы — «Песни о Роланде». Позже Карл всё же смог присоединить к своим владениям небольшую область на северо-востоке Испании.</li>
+      <li>Карл хотел объединить под своей властью все германские племена. Для этого на протяжении 30 лет он вёл войны с саксами — язычниками, жившими на северо-востоке от Франкского королевства. Противостоять франкам в открытом сражении саксы не могли. Но как только франкские войска покидали земли саксов, те, казалось бы, усмирённые и обращённые в христианство, восставали и возвращались к язычеству. Карл прибег к самым суровым мерам, с огромным трудом сумев покорить саксов.</li>
+      <li>Во всех походах Карла активно участвовала франкская знать. В её руки попадала значительная часть захваченных земель и добычи. В результате завоеваний королевство Карла Великого выросло едва ли не вдвое. Он стал владыкой почти всего христианского Запада.</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 11 -->
+<section class="step" data-step="imperator" data-name="800 год: император" data-part="Глава 3 · Карл Великий">
+  <div class="eyebrow">Глава 3 · Карл Великий · Учебник, § 3, п. 3</div>
+  <h2>800 год: снова император</h2>
+  <div class="prose">
+    <p>О Карле сложили множество легенд как о могучем воине и мудром правителе. От его имени пошло название династии, <span class="term">Каролинги</span>, и само слово «король» в славянских языках. Да-да, «король» — это «Карл».</p>
+    <p>В <b>800 году</b> папа римский провозгласил Карла <b>императором</b>. Это событие мирового значения: после перерыва в три с лишним века (вспомни 476 год из § 1) в Европе возродилось государство-преемник Западной Римской империи.</p>
+    <p>На печатях Карла написали «восстановление Римской империи». Но на деле его держава была мало похожа на Древний Рим. Карл строил <b>христианское государство</b>, которое объединило бы все народы Европы. Собрать в одно целое совершенно разные земли, завоёванные предками и им самим, оказалось очень трудно.</p>
+  </div>
+  <details>
+    <summary>Статуэтка и монета: чем Карл подражал Риму</summary>
+    <div class="body">
+      <p>В учебнике есть бронзовая статуэтка Карла на коне (IX век). Такие конные статуи делали ещё в Древнем Риме. В левой руке у Карла держава, шар, который означает власть над миром; меч из правой руки не сохранился.</p>
+      <p>А на серебряной монете написано KAROLUS IMP AVG: «Карл император август». «Август» — так называли себя римские императоры. Значит, монету отчеканили не раньше 800 года, когда Карл получил титул, и не позже 814 года, когда он умер. И само слово «август» показывает, что Карл равнялся на Рим.</p>
+    </div>
+  </details>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · § 3, п. 3</summary>
+    <div class="body"><ul>
+      <li class="pic">Иллюстрация: Карл Великий, бронзовая статуэтка IX века. Подпись: на создание этой статуэтки повлияла античная традиция конных статуй. Меч, который находился в правой руке Карла, не сохранился. В левой руке у него держава, то есть шар, символизировавший власть над миром.</li>
+      <li class="pic">Иллюстрация: серебряная монета с изображением Карла Великого. Надпись на ней KAROLUS IMP AVG означает «Карл император август». Задание учебника: определите промежуток времени, в который была отчеканена эта монета, аргументируйте свою точку зрения. Как монета свидетельствует о том, что Карл Великий восхищался античностью? Подсказка в раскрывашке выше.</li>
+      <li>Со временем сложилось множество легенд о Карле как о могучем воине и мудром правителе. От его имени происходит и название династии королей — Каролинги, и слово «король» в славянских языках.</li>
+      <li>Расширение авторитета и власти государя франков было закреплено титулом императора, которым в 800 году Карла провозгласил папа римский. Свершилось событие мирового значения: после более чем трёхвекового перерыва в Европе возродилось государство — преемник Западной Римской империи.</li>
+      <li>На печатях Карла появились слова «восстановление Римской империи», но, по сути, его держава имела мало общего с Древним Римом. Карл стремился к созданию христианского государства, которое бы объединило под его властью все народы Европы. Он энергично занялся обустройством империи, пытаясь создать единое целое из совершенно разных земель, когда-то завоёванных его предками и им самим. Но эта задача оказалась слишком сложной.</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 12 -->
+<section class="step" data-step="upravlenie" data-name="Как управлялась империя" data-part="Глава 3 · Карл Великий">
+  <div class="eyebrow">Глава 3 · Карл Великий · Учебник, § 3, п. 3 и схема в заданиях</div>
+  <h2>Как управлялась империя</h2>
+  <div class="prose">
+    <p>Главным органом управления оставался <b>двор правителя</b>. На местах правили <b>графы</b>, которых назначал император; с ростом территории графств стало больше. Чтобы графы не своевольничали, Карл рассылал по областям <span class="term">«государевых посланцев»</span>, ревизоров-проверяющих.</p>
+    <p>Союз с Церковью стал ещё крепче: Карл ей покровительствовал и давал поручения епископам, священникам и настоятелям монастырей, они тоже участвовали в управлении.</p>
+    <p><b>Схема из заданий учебника.</b> Она понадобится для восьмого вопроса, где её надо сравнить со схемой Византии из § 2:</p>
+  </div>
+  <div class="org" aria-label="Управление империей Карла Великого">
+    <div class="box top">Император</div>
+    <div class="lbl">Ему подчинялись</div>
+    <div class="lvl">
+      <div class="box">Императорский дворец<small>палаций</small></div>
+      <div class="box">Королевские посланцы<small>проверяли графов</small></div>
+      <div class="box">Графы и маркграфы<small>правили областями</small></div>
+      <div class="box">Ежегодный съезд франкской знати</div>
+    </div>
+    <div class="lbl">Внутри дворца</div>
+    <div class="lvl">
+      <div class="box sub">суд</div>
+      <div class="box sub">канцелярия</div>
+      <div class="box sub">казна</div>
+      <div class="box sub">конница</div>
+    </div>
+  </div>
+  <details>
+    <summary>Подсказка к сравнению с Византией</summary>
+    <div class="body"><p>Открой схему Византии на шаге 5 из § 2. Там Сенат и префекты, то есть органы из Древнего Рима, и канцелярии для налогов и казны. У Карла вместо Сената — съезд франкской знати, а вместо префектов — графы, то есть племенные германские порядки. Подумай, у кого больше похоже на античную державу.</p></div>
+  </details>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · § 3, п. 3</summary>
+    <div class="body"><ul>
+      <li>Центральным органом управления оставался двор правителя. На местах власть по-прежнему находилась в руках графов, которых назначал император. С расширением территории число графств увеличилось. Контролировать графов императору помогали «государевы посланцы» — ревизоры, которых Карл рассылал во все области.</li>
+      <li>Упрочился союз императора с Церковью. Карл ей покровительствовал и давал поручения епископам, священникам и настоятелям монастырей, которые тоже участвовали в управлении.</li>
+      <li>Вопросы учебника после пункта 3: с кем воевал Карл Великий? С помощью карты 5 (см. Приложение) выделите этапы расширения королевства франков: какие территории оказались в зависимости или были завоёваны Карлом Великим? Почему военные походы Карла Великого поддерживала знать? Вспомните, когда прекратила своё существование Западная Римская империя. Почему принятие Карлом Великим императорского титула было важным?</li>
+      <li>Схема «Управление империей Карла Великого» из заданий в конце параграфа: император; ему подчиняются императорский дворец (палаций) с судом, канцелярией, казной и конницей, королевские посланцы, графы и маркграфы, ежегодный съезд франкской знати.</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 13 -->
+<section class="step" data-step="vozrozhdenie" data-name="Каролингское возрождение" data-part="Глава 4 · Культура">
+  <div class="eyebrow">Глава 4 · Культура · Учебник, § 3, п. 4</div>
+  <h2>«Каролингское возрождение»</h2>
+  <div class="prose">
+    <p>Подъём культуры при Карле Великом и его ближайших преемниках назвали <span class="term">«Каролингским возрождением»</span>. Возрождали то, что почти погибло после падения Рима: школы, книги, интерес к Античности.</p>
+    <p>Сам Карл для своего времени был хорошо образован: читал и говорил по-латыни, понимал греческий, знал труды Отцов Церкви. Но вот писать так и не выучился! Он звал ко двору лучших учёных и поэтов Европы и мечтал создать вокруг себя «Новые Афины».</p>
+    <ul>
+      <li>При дворе Карл организовал <span class="term">Академию</span>: учёные, придворные, сам император и его семья беседовали о Библии и об Античности.</li>
+      <li>Один из приближённых Карла, подражая античным авторам, написал книгу <b>«Жизнь Карла Великого»</b>. Это главный источник наших знаний об императоре.</li>
+      <li>Карл велел <b>исправить богослужебные книги</b>: за века малограмотные писцы наделали в них ошибок, а без правильных книг нельзя правильно служить Богу.</li>
+      <li>При дворе и в больших монастырях открыли школы. В монастырях переписывали не только церковные книги, но и античных авторов.</li>
+    </ul>
+    <p>Возрождение было недолгим. Но благодаря ему сохранились многие античные знания, и на них выросла культура Средневековья.</p>
+  </div>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · § 3, п. 4</summary>
+    <div class="body"><ul>
+      <li>Пункт 4 «„Каролингское возрождение“». Подъём культуры во Франкском королевстве во время правления Карла Великого и его ближайших преемников получил название «Каролингское возрождение». Оставаясь верующим христианином, Карл Великий проявлял интерес к античной культуре. Для правителя той эпохи он был хорошо образован: читал и говорил по-латыни, понимал греческую речь, знал труды Отцов Церкви, хотя писать так и не выучился. Император поощрял развитие наук и искусств, приглашал к своему двору лучших учёных и поэтов со всей Европы, мечтая создать вокруг себя «Новые Афины».</li>
+      <li>При императорском дворе Карл организовал Академию, которая объединила учёных, придворных, самого императора и членов его семьи. Члены Академии вели беседы на разные темы. Их интересовали и Библия, и Античность. Один из приближённых Карла, подражая античным авторам, написал позже книгу «Жизнь Карла Великого» — главный источник наших сведений об императоре.</li>
+      <li>Большое внимание император уделял переписыванию богослужебных книг. На протяжении веков при копировании малограмотные писцы делали в них много ошибок. Карл считал исправление книг необходимым, ведь иначе нельзя было правильно служить Богу. При дворе франкского государя и в крупных монастырях были устроены школы для обучения грамоте и основам наук. Кроме богослужебных книг, в монастырях переписывали труды античных авторов.</li>
+      <li>«Каролингское возрождение» оказалось недолгим. Однако благодаря ему были сохранены многие античные знания и традиции. Достижения этого периода стали основой дальнейшего развития средневековой культуры.</li>
+      <li>Вопросы учебника после пункта 4: что такое «Каролингское возрождение»? Почему Карл Великий считал важным делом исправление богослужебных книг?</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 14 -->
+<section class="step" data-step="ahen" data-name="Ахен" data-part="Глава 4 · Культура">
+  <div class="eyebrow">Глава 4 · Культура · Учебник, § 3, п. 4, «Любопытные детали»</div>
+  <h2>Ахен: столица с горячими источниками</h2>
+  <div class="prose">
+    <p>Долгое время у Карла вообще не было столицы: он вместе со всем двором разъезжал по владениям. Потом выбрал <span class="term">Ахен</span>, город на западе нынешней Германии. Туда вели торговые пути, а ещё там были горячие минеральные источники, в которых император любил купаться.</p>
+    <p>В Ахене Карл построил большой дворец: зал для приёмов, покои императора и семьи, боковое крыло со школой, библиотекой и архивом, и дворцовую церковь. Она стоит до сих пор, хоть и с изменениями.</p>
+    <p>А теперь связь с § 2. Образцом для церкви послужил византийский храм <b>Сан-Витале в Равенне</b>, тот самый, где на стене мозаика с Юстинианом. Папа римский разрешил Карлу вывезти из Равенны в Ахен античные мраморные колонны и мозаики. Современники называли постройки в Ахене «чудом дивной и высокой красоты».</p>
+  </div>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · § 3, п. 4</summary>
+    <div class="body"><ul>
+      <li>Любопытные детали: долгое время у Карла Великого не было столицы, и он вместе с королевским двором разъезжал по своим владениям. Позже император выбрал своей главной резиденцией Ахен (город на западе современной Германии). И не только из-за его выгодного расположения, куда вели многие торговые пути. Здесь имелись горячие минеральные источники, в которых император любил купаться.</li>
+      <li>Карл выстроил в Ахене большой дворец. В его центре находились зал для приёмов, покои императора и его семьи. Боковое крыло, где размещались школа, библиотека и архив, соединяло зал с дворцовой церковью, сохранившейся, хотя и с изменениями, до наших дней. Образцом для неё послужил византийский храм Сан-Витале в Равенне. Папа римский разрешил Карлу перевезти в Ахен античные мраморные колонны и мозаики из Равенны. Современники называли постройки в Ахене «чудом дивной и высокой красоты».</li>
+      <li class="pic">Иллюстрация: капелла Ахенского собора, сохранившаяся часть дворца Карла Великого. Современная фотография.</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 15 -->
+<section class="step" data-step="verden" data-name="Верденский раздел" data-part="Глава 5 · Верден">
+  <div class="eyebrow">Глава 5 · Верден · Учебник, § 3, п. 5</div>
+  <h2>843 год: внуки делят империю</h2>
+  <div class="prose">
+    <p>Империя ненадолго пережила своего создателя. В <b>843 году</b> в Вердене три внука Карла заключили договор о разделе:</p>
+  </div>
+  <div class="steps4">
+    <div class="dom"><div class="n">1</div><div class="t">Лотарь, старший</div><div class="d">титул императора и узкая полоса от Северного моря до Средиземного: Италия, Прованс, Бургундия, Нидерланды</div></div>
+    <div class="dom"><div class="n">2</div><div class="t">Средний внук</div><div class="d">земли к востоку: Восточно-Франкское королевство, будущая Германия</div></div>
+    <div class="dom"><div class="n">3</div><div class="t">Младший внук</div><div class="d">земли к западу: Западно-Франкское королевство, будущая Франция</div></div>
+  </div>
+  <div class="prose">
+    <p>Потомки Лотаря не удержали наследство: часть поделили между собой, остальное завоевали соседи. Империи не стало, и титул императора вышел из употребления.</p>
+    <p><b>Почему распад был закономерным.</b> Три причины из учебника:</p>
+    <ul>
+      <li>огромную территорию объединила сила оружия, а жили там племена и народы, у которых не было почти ничего общего, даже язык разный;</li>
+      <li>между частями страны почти не было хозяйственных связей: не торговали друг с другом;</li>
+      <li>короли раздавали знати новые земли и тем самым ослабляли свою власть.</li>
+    </ul>
+  </div>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · § 3, п. 5 и «Подведём итоги»</summary>
+    <div class="body"><ul>
+      <li>Пункт 5 «Верденский раздел». Империя Карла Великого ненадолго пережила своего создателя. В 843 году в Вердене (город на востоке современной Франции) три внука императора заключили договор о её разделе. Старший внук, Лотарь, стал императором. Он получил богатые земли, протянувшиеся длинной, но довольно узкой полосой от Северного моря до Средиземного: Италию, Прованс, Бургундию и территорию современных Нидерландов. Средний внук получил земли к востоку от владений старшего — Восточно-Франкское королевство (будущая Германия), младший — к западу, Западно-Франкское королевство (будущая Франция).</li>
+      <li>Потомки Лотаря не смогли сохранить его наследство: часть империи была поделена между ними, а остальные территории завоевали соседи. Империи не стало, и императорский титул тоже вышел из употребления.</li>
+      <li>Распад империи Карла Великого был закономерным. Огромная территория, объединённая силой оружия, была населена племенами и народами, не имевшими между собой почти ничего общего. Они говорили на разных языках. Между отдельными частями страны практически отсутствовали хозяйственные связи. Наконец, короли, жалуя знати новые земли, тем самым постепенно ослабляли свою власть.</li>
+      <li>Вопросы учебника после пункта 5: сколько лет просуществовала империя Карла Великого? Покажите на карте 3 (см. Приложение) и оцените преимущества и недостатки владений старшего из внуков Карла — Лотаря.</li>
+      <li>«Подведём итоги»: в ходе завоевания Галлии франками возникло Франкское королевство. Оно оказалось наиболее прочным из всех германских государств. Наивысшего могущества государство достигло при Карле Великом, который значительно расширил его границы и был провозглашён императором. Однако империя оказалась непрочной и была разделена между внуками Карла Великого.</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 16 -->
+<section class="step" data-step="slovar-1" data-name="Словарик: короли и их люди" data-part="Словарик">
+  <div class="game">
+    <div class="g-head"><h3>Словарик: короли и их люди</h3><span class="badge" id="b-terms">Игра</span></div>
+    <p class="task">Нажми на карточку, и она перевернётся. Словарик из двух частей, открой все карточки.</p>
+    <div class="progress" id="terms-progress"></div>
+    <div class="cards" data-terms="0"></div>
+  </div>
+</section>
+
+<!-- 17 -->
+<section class="step" data-step="slovar-2" data-name="Словарик: земля и империя" data-part="Словарик">
+  <div class="game">
+    <div class="g-head"><h3>Словарик: земля и империя</h3><span class="badge" id="b-terms2">Игра</span></div>
+    <p class="task">Вторая часть. Феод, посланцы и возрождение.</p>
+    <div class="progress" id="terms-progress2"></div>
+    <div class="cards" data-terms="1"></div>
+  </div>
+</section>
+
+<!-- 18 -->
+<section class="step" data-step="praviteli" data-name="Кто что сделал" data-part="Игры">
+  <div class="game" id="g-match">
+    <div class="g-head"><h3>Кто что сделал</h3><span class="badge" id="b-match">Игра</span></div>
+    <p class="task">Нажми на имя слева, потом на дело справа.</p>
+    <div class="match">
+      <div class="col"><div class="lbl">Кто</div><div class="col" id="foes"></div></div>
+      <div class="col"><div class="lbl">Что сделал</div><div class="col" id="outcomes"></div></div>
+    </div>
+    <div id="match-fb"></div>
+  </div>
+</section>
+
+<!-- 19 -->
+<section class="step" data-step="poryadok" data-name="Расставь по порядку" data-part="Игры">
+  <div class="game">
+    <div class="g-head"><h3>Расставь по порядку</h3><span class="badge" id="b-order">Игра</span></div>
+    <p class="task">Нажимай на события от самого раннего к самому позднему. Даты спрятаны, вспоминай сама.</p>
+    <div class="pool" id="pool"></div>
+    <div class="seq" id="seq"></div>
+    <div class="row">
+      <button class="btn" id="order-check" type="button" disabled>Проверить</button>
+      <button class="btn ghost" id="order-reset" type="button">Сначала</button>
+    </div>
+    <div id="order-fb"></div>
+  </div>
+</section>
+
+<!-- 20 -->
+<section class="step" data-step="lishnee" data-name="Найди лишнее" data-part="Игры">
+  <div class="game">
+    <div class="g-head"><h3>Найди лишнее</h3><span class="badge" id="b-odd">Игра</span></div>
+    <p class="task">Три слова из одной компании, одно чужое. Найди чужое.</p>
+    <div class="progress" id="odd-progress"></div>
+    <div class="odd-grid" id="odd-grid"></div>
+    <div id="odd-fb"></div>
+    <div class="row"><button class="btn" id="odd-next" type="button" hidden>Дальше</button></div>
+  </div>
+</section>
+
+<!-- 21 -->
+<section class="step" data-step="test" data-name="Проверь себя" data-part="Финал">
+  <div class="eyebrow">Финал</div>
+  <h2>Проверь себя</h2>
+  <div class="game">
+    <div class="progress" id="quiz-progress"></div>
+    <div id="quiz-box"></div>
+  </div>
+</section>
+
+<!-- 22 -->
+<section class="step" data-step="voprosy" data-name="Вопросы учебника" data-part="Финал">
+  <div class="eyebrow">Финал · Вопросы и задания в конце § 3</div>
+  <h2>Вопросы из учебника</h2>
+  <div class="prose">
+    <p>Это вопросы и задания в конце параграфа. Рядом с каждым написано, на каком шаге искать ответ. Отвечай своими словами: так лучше запоминается, и учитель услышит, что ты поняла, а не заучила.</p>
+  </div>
+  <div class="qlist">
+<div class="qi"><span class="qn">1</span><div><p>Рассмотрите изображение в начале параграфа. С помощью ресурсов Интернета выясните, какая легенда появилась благодаря этому событию. Предположите, какую роль она сыграла в восприятии королевской власти людьми Средневековья. Почему крещение Хлодвига изображали спустя много веков после этого события?</p><p class="src">Что искать: «легенда о крещении Хлодвига» и «святая стклянка» (сосуд с маслом для помазания королей). Подумай: если короля помазали маслом, посланным с неба, чьей считали его власть?</p><a href="#kreschenie">Шаг 5 · Крещение Хлодвига</a></div></div>
+<div class="qi"><span class="qn">2</span><div><p>Какие последствия для Франкского королевства имело принятие Хлодвигом христианства по римскому образцу?</p><a href="#kreschenie">Шаг 5 · Крещение Хлодвига</a></div></div>
+<div class="qi"><span class="qn">3</span><div><p>В чём заключалась суть реформы Карла Мартелла? Усилила или ослабила центральную власть эта реформа?</p><p class="src">Подсказка: в учебнике сказано, что реформы укрепили власть майордома. Но вспомни и шаг 15: чем закончилась раздача земель знати через сто лет.</p><a href="#feod">Шаг 8 · Земля за службу</a></div></div>
+<div class="qi"><span class="qn">4</span><div><p>Каким образом была создана империя Карла Великого? Чем держава франков напоминала Западную Римскую империю и чем отличалась от неё?</p><p class="src">Похоже: титул императора, печати «восстановление Римской империи», земли бывшей Западной империи. Отличие: христианское государство разных народов, графы вместо римских порядков.</p><a href="#pohody">Шаги 10–12 · Карл Великий</a></div></div>
+<div class="qi"><span class="qn">5</span><div><p>Почему возрождение Античности сыграло важную роль в развитии европейской культуры?</p><a href="#vozrozhdenie">Шаг 13 · Каролингское возрождение</a></div></div>
+<div class="qi"><span class="qn">6</span><div><p>Найдите в параграфе несколько примеров интереса франков к Античности и стремления подражать её образцам.</p><p class="src">Подсказка: статуэтка и монета (шаг 11), «Новые Афины» и Академия (шаг 13), колонны из Равенны (шаг 14).</p><a href="#imperator">Шаги 11, 13, 14</a></div></div>
+<div class="qi"><span class="qn">7</span><div><p>Выделите причины распада империи Карла Великого. Назовите не менее трёх причин. Можно ли было сохранить империю?</p><a href="#verden">Шаг 15 · Верденский раздел</a></div></div>
+<div class="qi"><span class="qn">8</span><div><p>Изучите схему. Как было организовано управление империей Карла Великого? Сравните схемы управления империей Карла Великого и Византийской империей. Какое из государств более напоминало античную державу и почему?</p><a href="#upravlenie">Шаг 12 · схема и подсказка</a></div></div>
+<div class="qi"><span class="qn">⏳</span><div><p>Работаем с хронологией. Расположите в хронологической последовательности: провозглашение империи Карла Великого; битва при Пуатье; Верденский раздел; принятие Хлодвигом христианства.</p><p class="src">Подсказка: Хлодвиг крестился после 486 года, ещё при своей жизни. Остальные три даты есть на ленте времени.</p><a href="#daty">Шаг 2 и игра «Расставь по порядку»</a></div></div>
+<div class="qi"><span class="qn">📜</span><div><p>Работаем с источником. Отрывок из сочинения историка начала IX века Эйнгарда о войнах Карла с саксами. Вопросы: можно ли назвать Эйнгарда беспристрастным историком? Какие методы использовал Карл? Почему сопротивление саксов было таким ожесточённым?</p><p class="src">О чём отрывок простыми словами: война шла 33 года; саксы много раз сдавались, давали заложников, обещали креститься и снова нарушали слово. Карл мстил за измену, наказывал, а в конце переселил десять тысяч саксов с семьями в разные области Галлии и Германии. После этого саксы приняли христианство и слились с франками в один народ. Подумай: Эйнгард служил Карлу и во всём винит саксов. Беспристрастен ли он?</p><a href="#pohody">Шаг 10 · Войны Карла Великого</a></div></div>
+<div class="qi"><span class="qn">А–Я</span><div><p>Работаем с понятиями. Раскройте смысл понятий «условная собственность на землю» и «феод». Что их объединяет и чем они различаются?</p><p class="src">Подсказка: общее — земля за военную службу. Различие — можно ли передать её по наследству.</p><a href="#feod">Шаг 8 и словарик</a></div></div>
+<div class="qi"><span class="qn">?</span><div><p>Сформулируйте ответ на главный вопрос параграфа и обоснуйте его двумя-тремя аргументами.</p><a href="#itog">Шаг 23 · Главный вопрос</a></div></div>
+  </div>
+</section>
+
+<!-- 23 -->
+<section class="step" data-step="itog" data-name="Главный вопрос" data-part="Финал">
+  <div class="eyebrow">Финал</div>
+  <h2>Почему Франкское королевство оказалось самым прочным?</h2>
+  <div class="prose">
+    <p>Это главный вопрос параграфа. Вот три «кирпичика» для ответа. Открой их, а потом попробуй ответить своими словами, не подглядывая.</p>
+  </div>
+  <div class="bricks">
+    <div class="brick"><button type="button" aria-expanded="false"><span>Одна вера, один народ</span><span>+</span></button><div class="b-body" hidden>Хлодвиг принял христианство по римскому образцу, как местные жители, а не арианство, как другие германцы. Церковь стала союзницей королей, а франки и галло-римляне слились в один народ. Остготов Теодориха вера разделяла, франков объединила.</div></div>
+    <div class="brick"><button type="button" aria-expanded="false"><span>Законы и графы</span><span>+</span></button><div class="b-body" hidden>Хлодвиг записал законы («Салическая правда»), сделал центром власти королевский двор и поставил в областях графов. Карл Великий добавил «государевых посланцев», которые проверяли графов. Королевство держалось не только на силе вождя.</div></div>
+    <div class="brick"><button type="button" aria-expanded="false"><span>Земля за службу</span><span>+</span></button><div class="b-body" hidden>Карл Мартелл дал воинам землю с крестьянами при условии службы (феод) и получил сильное конное войско. Оно остановило арабов при Пуатье, а при Карле Великом расширило королевство почти вдвое, до империи.</div></div>
+  </div>
+  <div class="aside">
+    <div class="k">Главное в одном предложении</div>
+    <p>Франкское королевство оказалось самым прочным, потому что франки приняли римское христианство и слились с местными жителями в один народ, записали законы и поставили графов, а Карл Мартелл дал воинам землю за службу; на этой основе Карл Великий создал империю, которую его внуки разделили в 843 году.</p>
+  </div>
+  <div class="game">
+    <div class="g-head"><h3>Твоя мозаика</h3></div>
+    <div class="mosaic" id="mosaic"></div>
+    <div class="mosaic-list" id="mosaic-list"></div>
+    <div class="row"><a class="btn" href="./">К списку тем</a></div>
+  </div>
+</section>
+
+</main>
+
+<nav class="pager" aria-label="Навигация по шагам">
+  <div class="pager-inner">
+    <button class="btn ghost" id="prev" type="button">Назад</button>
+    <div class="count" id="count"></div>
+    <button class="btn" id="next" type="button">Дальше</button>
+  </div>
+</nav>
+
+<div class="toc" id="toc" hidden>
+  <div class="toc-panel" role="dialog" aria-label="Содержание">
+    <h3>Содержание <button class="toc-close" id="toc-close" type="button">Закрыть</button></h3>
+    <div id="toc-list" style="display:flex;flex-direction:column;gap:2px"></div>
+  </div>
+</div>
+
+<script>
+(function(){
+  'use strict';
+  var $ = function(s, r){ return (r||document).querySelector(s); };
+  var el = function(tag, cls, html){ var e=document.createElement(tag); if(cls) e.className=cls; if(html!=null) e.innerHTML=html; return e; };
+  var shuffle = function(a){ a=a.slice(); for(var i=a.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=a[i]; a[i]=a[j]; a[j]=t; } return a; };
+
+  /* ---------- state ---------- */
+  var KEY='franki-karl-v1';
+  var state={visited:{},done:{},last:0};
+  try{ var s=JSON.parse(localStorage.getItem(KEY)||'null'); if(s && typeof s==='object'){ state.visited=s.visited||{}; state.done=s.done||{}; state.last=s.last||0; } }catch(e){}
+  function save(){ try{ localStorage.setItem(KEY, JSON.stringify(state)); }catch(e){} }
+
+  var GAMES=[
+    {k:'terms', name:'Словарик, обе части', step:'slovar-1'},
+    {k:'match', name:'Кто что сделал', step:'praviteli'},
+    {k:'order', name:'Расставь по порядку', step:'poryadok'},
+    {k:'odd', name:'Найди лишнее', step:'lishnee'},
+    {k:'quiz', name:'Проверь себя', step:'test'}
+  ];
+  var GAME_STEPS={'slovar-1':'terms','slovar-2':'terms','praviteli':'match','poryadok':'order','lishnee':'odd','test':'quiz'};
+
+  /* ---------- steps ---------- */
+  var steps=Array.prototype.slice.call(document.querySelectorAll('.step'));
+  var N=steps.length, cur=0;
+  var stepbar=$('#stepbar'), count=$('#count'), prevB=$('#prev'), nextB=$('#next'), tocList=$('#toc-list');
+
+  steps.forEach(function(s,i){
+    var b=el('button'); b.type='button'; b.setAttribute('aria-label','Шаг '+(i+1)+': '+s.getAttribute('data-name'));
+    b.addEventListener('click', function(){ go(i); });
+    stepbar.appendChild(b);
+    var t=el('button','toc-item','<span class="n">'+(i+1)+'</span><span>'+s.getAttribute('data-name')+'</span><span class="m"></span>');
+    t.type='button'; t.addEventListener('click', function(){ closeToc(); go(i); });
+    tocList.appendChild(t);
+  });
+
+  function paint(){
+    var bars=stepbar.children, items=tocList.children;
+    for(var i=0;i<N;i++){
+      var key=steps[i].getAttribute('data-step'), g=GAME_STEPS[key];
+      var done = g && state.done[g];
+      bars[i].className=(i===cur?'current':'')+(state.visited[i]?' visited':'')+(done?' done':'');
+      items[i].className='toc-item'+(i===cur?' current':'');
+      items[i].lastElementChild.textContent = done ? 'пройдено' : (state.visited[i] ? '✓' : '');
+    }
+    count.textContent=(cur+1)+' / '+N;
+    prevB.disabled = cur===0;
+    if(cur===N-1){ nextB.textContent='Это последний шаг'; nextB.disabled=true; }
+    else { nextB.textContent='Дальше: '+steps[cur+1].getAttribute('data-name'); nextB.disabled=false; }
+    var badges={terms:['b-terms','b-terms2'],match:['b-match'],order:['b-order'],odd:['b-odd']};
+    for(var k in badges){ badges[k].forEach(function(id){ var b=document.getElementById(id); if(b && state.done[k]){ b.textContent='Пройдено'; b.classList.add('done'); } }); }
+    paintMosaic();
+  }
+  function go(i, silent){
+    if(i<0||i>=N) return;
+    cur=i; steps.forEach(function(s,j){ s.hidden = j!==i; });
+    state.visited[i]=true; state.last=i; save();
+    if(!silent){ var h='#'+steps[i].getAttribute('data-step'); if(location.hash!==h) history.pushState(null,'',h); }
+    window.scrollTo(0,0);
+    paint();
+  }
+  function idxFromHash(){ var h=location.hash.replace('#',''); for(var i=0;i<N;i++) if(steps[i].getAttribute('data-step')===h) return i; return -1; }
+  function onHash(){ var i=idxFromHash(); if(i>=0 && i!==cur) go(i, true); }
+  window.addEventListener('popstate', onHash);
+  window.addEventListener('hashchange', onHash);
+  prevB.addEventListener('click', function(){ go(cur-1); });
+  nextB.addEventListener('click', function(){ go(cur+1); });
+  document.addEventListener('keydown', function(e){ if(e.target && /INPUT|TEXTAREA/.test(e.target.tagName)) return; if(e.key==='ArrowRight') go(cur+1); if(e.key==='ArrowLeft') go(cur-1); if(e.key==='Escape') closeToc(); });
+
+  var toc=$('#toc');
+  function openToc(){ toc.hidden=false; }
+  function closeToc(){ toc.hidden=true; }
+  $('#toc-btn').addEventListener('click', openToc);
+  $('#toc-close').addEventListener('click', closeToc);
+  toc.addEventListener('click', function(e){ if(e.target===toc) closeToc(); });
+
+  function markDone(k){ if(!state.done[k]){ state.done[k]=true; save(); } paint(); }
+
+  /* resume button on step 1 */
+  (function(){
+    var r=$('#resume');
+    if(state.last>0 && idxFromHash()<0){
+      r.hidden=false;
+      r.innerHTML='<button class="btn ghost" type="button">Продолжить с шага '+(state.last+1)+': '+steps[state.last].getAttribute('data-name')+'</button>';
+      r.firstChild.addEventListener('click', function(){ go(state.last); });
+    }
+  })();
+
+  /* ---------- mosaic on final step ---------- */
+  var mosaic=$('#mosaic'), mosaicList=$('#mosaic-list');
+  function paintMosaic(){
+    mosaic.innerHTML=''; mosaicList.innerHTML='';
+    GAMES.forEach(function(g){
+      var t=el('span','tile'+(state.done[g.k]?' on':'')); t.title=g.name; mosaic.appendChild(t);
+      var li=el('span', state.done[g.k]?'':'off', (state.done[g.k]?'★ ':'☆ ')+g.name);
+      if(!state.done[g.k]){ li.style.cursor='pointer'; li.addEventListener('click', function(){ for(var i=0;i<N;i++) if(steps[i].getAttribute('data-step')===g.step){ go(i); break; } }); }
+      mosaicList.appendChild(li);
+    });
+  }
+
+  /* ---------- timeline ---------- */
+  var TL=[
+    {y:'486', era:'Мир', t:'Франки берут Галлию', d:'Хлодвиг разбил галло-римлян при Суассоне. Началось завоевание франками Галлии, будущей Франции.'},
+    {y:'732', era:'Мир', t:'Битва при Пуатье', d:'Майордом Карл разбил арабов, перешедших Пиренеи, и получил прозвище Мартелл, «Молот».'},
+    {y:'787', era:'Россия', ru:true, t:'Восстание в Крыму', d:'Христиане в Крыму восстали против хазар, которые тогда владели полуостровом. Хазарский каганат подавил восстание.'},
+    {y:'800', era:'Мир', t:'Карл император', d:'Папа римский провозгласил Карла Великого императором. Впервые за три с лишним века в Европе снова появилась империя.'},
+    {y:'843', era:'Мир', t:'Верденский раздел', d:'Три внука Карла Великого договорились в Вердене и разделили империю на три части.'},
+    {y:'861', era:'Россия', ru:true, t:'Кирилл и Мефодий в Крыму', d:'Будущие создатели славянской азбуки нашли в Крыму мощи (останки) святого Климента, римского епископа I века, сосланного туда.'}
+  ];
+  var tl=$('#tl');
+  TL.forEach(function(e,i){
+    var it=el('div','tl-item'+(e.ru?' ru':''));
+    var b=el('button','tl-btn'); b.type='button';
+    b.innerHTML='<span class="dot"></span><span class="y">'+e.y+'</span><span class="t">'+e.t+'</span><span class="era">'+e.era+'</span>';
+    var d=el('div','tl-d',e.d); d.hidden=(i!==0); if(i===0) it.classList.add('open');
+    b.setAttribute('aria-expanded', i===0?'true':'false');
+    b.addEventListener('click', function(){ var open=d.hidden; d.hidden=!open; it.classList.toggle('open',open); b.setAttribute('aria-expanded',open?'true':'false'); });
+    it.appendChild(b); it.appendChild(d); tl.appendChild(it);
+  });
+
+  /* ---------- glossary ---------- */
+  var TERMS=[
+    [
+      {t:'Франки', d:'Германское племя с нижнего Рейна. В 486 году во главе с Хлодвигом захватили Галлию.', e:'От них название «Франция».'},
+      {t:'Меровинги', d:'Род Хлодвига, первая династия франкских королей. Последних из них звали «ленивыми королями».', e:''},
+      {t:'Династия', d:'Правители из одной семьи, у которых трон переходит по наследству.', e:'Меровинги, потом Каролинги.'},
+      {t:'«Салическая правда»', d:'Записанные по приказу Хлодвига судебные обычаи франков. Названа по племени салических франков.', e:''},
+      {t:'Граф', d:'Доверенный человек короля, который управлял отдельной областью. При Карле Великом графов назначал император.', e:'Маркграф — граф пограничной области.'},
+      {t:'Герцог', d:'У германцев военный вождь племени, позже правитель большой области, выше графа.', e:'Слово из списка терминов параграфа.'},
+      {t:'Майордом', d:'Управляющий королевским дворцом. При «ленивых королях» вся власть перешла к майордомам.', e:'Карл Мартелл был майордомом.'},
+      {t:'Каролинги', d:'Династия королей, названная по имени Карла Великого. От его имени и слово «король».', e:''}
+    ],
+    [
+      {t:'Феод', d:'Земля с крестьянами, которую воин получал при условии военной службы, а потом передавал по наследству.', e:'Ввёл Карл Мартелл.'},
+      {t:'Условная собственность', d:'Владение землёй при условии: служишь — владеешь, не служишь — землю отбирают.', e:''},
+      {t:'Ополчение', d:'Войско из свободных общинников, которое собирали только на время войны.', e:'Основа войска до реформы Мартелла.'},
+      {t:'Папское государство', d:'Земли в Италии, которые Пипин Короткий отдал папе римскому. Просуществовало больше тысячи лет.', e:'Его часть, Ватикан, есть и сейчас.'},
+      {t:'«Государевы посланцы»', d:'Ревизоры, которых Карл Великий рассылал по областям, чтобы проверять графов.', e:''},
+      {t:'Каролингское возрождение', d:'Подъём культуры при Карле Великом и его ближайших преемниках: школы, книги, интерес к Античности.', e:''},
+      {t:'Академия', d:'Кружок учёных и придворных при дворе Карла, где беседовали о Библии и Античности.', e:''},
+      {t:'Верденский раздел', d:'Договор 843 года, по которому три внука Карла разделили империю на три части.', e:'Будущие Франция, Германия и «полоса» Лотаря.'}
+    ]
+  ];
+  var flipped={}, total=0; TERMS.forEach(function(g){ total+=g.length; });
+  var progEls=[$('#terms-progress'),$('#terms-progress2')];
+  function termsProgress(){
+    var n=Object.keys(flipped).length;
+    progEls.forEach(function(p,gi){ var got=0; TERMS[gi].forEach(function(t,i){ if(flipped[gi+'-'+i]) got++; }); p.textContent='Открыто '+got+' из '+TERMS[gi].length+' здесь, всего '+n+' из '+total; });
+    if(n===total) markDone('terms');
+  }
+  document.querySelectorAll('.cards').forEach(function(box){
+    var gi=+box.getAttribute('data-terms');
+    TERMS[gi].forEach(function(t,i){
+      var b=el('button','card'); b.type='button'; b.setAttribute('aria-label',t.t+'. Нажми, чтобы увидеть значение');
+      b.innerHTML='<div class="in"><div class="face f"><div class="w">'+t.t+'</div><div class="tap">Нажми</div></div><div class="face b"><div class="w">'+t.t+'</div><div>'+t.d+'</div>'+(t.e?'<div class="e">'+t.e+'</div>':'')+'</div></div>';
+      b.addEventListener('click', function(){ b.classList.toggle('flip'); flipped[gi+'-'+i]=true; termsProgress(); });
+      box.appendChild(b);
+    });
+  });
+  termsProgress();
+
+  /* ---------- matching ---------- */
+  var PAIRS=[
+    {foe:'Хлодвиг', res:'Завоевал Галлию и крестился по римскому образцу', why:'Битва при Суассоне в 486 году, «Салическая правда», союз с Церковью.'},
+    {foe:'Карл Мартелл', res:'Разбил арабов при Пуатье и раздал воинам земли', why:'732 год. За победу прозван «Молотом», а земля за службу называется феод.'},
+    {foe:'Пипин Короткий', res:'Стал королём с помощью папы и создал Папское государство', why:'Середина VIII века. Последнего Меровинга отправили в монастырь.'},
+    {foe:'Карл Великий', res:'Разбил лангобардов, аваров, саксов и стал императором', why:'Провозглашён императором папой римским в 800 году.'},
+    {foe:'Лотарь', res:'Получил титул императора и полосу земель от Северного моря до Средиземного', why:'Старший внук Карла, Верденский раздел 843 года.'},
+    {foe:'Эйнгард', res:'Написал книгу «Жизнь Карла Великого»', why:'Приближённый Карла и историк начала IX века. Его отрывок о войне с саксами есть в заданиях учебника.'}
+  ];
+  var foesBox=$('#foes'), outBox=$('#outcomes'), matchFb=$('#match-fb'), selFoe=null, matched=0;
+  PAIRS.forEach(function(p){
+    var b=el('button','opt',p.foe); b.type='button'; b.setAttribute('data-foe',p.foe);
+    b.addEventListener('click', function(){
+      if(b.classList.contains('ok')) return;
+      var all=foesBox.querySelectorAll('.opt'); for(var i=0;i<all.length;i++) all[i].classList.remove('sel');
+      b.classList.add('sel'); selFoe=p; matchFb.innerHTML='';
+    });
+    foesBox.appendChild(b);
+  });
+  shuffle(PAIRS).forEach(function(p){
+    var b=el('button','opt',p.res); b.type='button';
+    b.addEventListener('click', function(){
+      if(b.classList.contains('ok')) return;
+      if(!selFoe){ matchFb.innerHTML='<div class="feedback bad"><span class="k">Сначала выбери имя слева.</span></div>'; return; }
+      if(selFoe.res===p.res){
+        b.classList.add('ok'); b.disabled=true;
+        var fb=foesBox.querySelector('[data-foe="'+selFoe.foe+'"]'); fb.classList.remove('sel'); fb.classList.add('ok'); fb.disabled=true;
+        matchFb.innerHTML='<div class="feedback ok"><span class="k">Верно! '+selFoe.foe+'.</span><span>'+selFoe.why+'</span></div>';
+        selFoe=null; matched++;
+        if(matched===PAIRS.length){ matchFb.innerHTML='<div class="feedback ok"><span class="k">Все шестеро на месте!</span><span>Хлодвиг, Мартелл, Пипин, Карл, Лотарь и Эйнгард: вся история от королевства до империи.</span></div>'; markDone('match'); }
+      } else {
+        b.classList.add('bad'); setTimeout(function(){ b.classList.remove('bad'); },400);
+        matchFb.innerHTML='<div class="feedback bad"><span class="k">Не туда.</span><span>Это сделал кто-то другой. Попробуй другой вариант.</span></div>';
+      }
+    });
+    outBox.appendChild(b);
+  });
+
+  /* ---------- ordering ---------- */
+  var EVENTS=[
+    {y:486, t:'Битва при Суассоне: франки берут Галлию', ys:'486'},
+    {y:732, t:'Битва при Пуатье', ys:'732'},
+    {y:751, t:'Пипин Короткий провозглашён королём', ys:'сер. VIII в.'},
+    {y:800, t:'Карл провозглашён императором', ys:'800'},
+    {y:843, t:'Верденский раздел', ys:'843'}
+  ];
+  var pool=$('#pool'), seq=$('#seq'), orderCheck=$('#order-check'), orderFb=$('#order-fb'), picked=[], shuffledEvents=shuffle(EVENTS);
+  function renderOrder(){
+    pool.innerHTML='';
+    shuffledEvents.forEach(function(e){
+      if(picked.indexOf(e)>=0) return;
+      var b=el('button','opt',e.t); b.type='button';
+      b.addEventListener('click', function(){ picked.push(e); renderOrder(); });
+      pool.appendChild(b);
+    });
+    seq.innerHTML='';
+    if(!picked.length){ seq.appendChild(el('div','empty','Сюда встанут события')); }
+    picked.forEach(function(e,i){ seq.appendChild(el('div','slot','<span class="i">'+(i+1)+'</span><span>'+e.t+'</span>')); });
+    orderCheck.disabled = picked.length!==EVENTS.length;
+    orderFb.innerHTML='';
+  }
+  renderOrder();
+  orderCheck.addEventListener('click', function(){
+    var slots=seq.querySelectorAll('.slot'), wrong=0;
+    picked.forEach(function(e,i){
+      var ok = e.y===EVENTS[i].y;
+      slots[i].classList.add(ok?'ok':'bad');
+      slots[i].insertAdjacentHTML('beforeend','<span class="yr">'+e.ys+'</span>');
+      if(!ok) wrong++;
+    });
+    if(!wrong){ orderFb.innerHTML='<div class="feedback ok"><span class="k">Всё по порядку!</span><span>486, 732, середина VIII века, 800, 843. Хлодвиг взял Галлию, Мартелл остановил арабов, Пипин стал королём, Карл императором, а внуки всё поделили.</span></div>'; markDone('order'); }
+    else orderFb.innerHTML='<div class="feedback bad"><span class="k">Не совсем. Красные события стоят не на своих местах.</span><span>Теперь даты видны. Нажми «Сначала» и попробуй ещё раз.</span></div>';
+    orderCheck.disabled=true;
+  });
+  $('#order-reset').addEventListener('click', function(){ picked=[]; shuffledEvents=shuffle(EVENTS); renderOrder(); });
+
+  /* ---------- odd one out ---------- */
+  var ODD=[
+    {items:['Меровинги','Каролинги','Лангобарды','Македонская династия'], odd:'Лангобарды', why:'Лангобарды — народ, с которым воевали Пипин и Карл. Остальные три слова — династии правителей (Македонская — из § 2 про Византию).'},
+    {items:['Лангобарды','Авары','Саксы','Франки'], odd:'Франки', why:'Франки — это народ Карла Великого. Остальные три — те, с кем он воевал.'},
+    {items:['Суд','Канцелярия','Казна','Графы'], odd:'Графы', why:'Графы управляли областями на местах. Суд, канцелярия и казна — части императорского дворца на схеме управления.'}
+  ];
+  var oddGrid=$('#odd-grid'), oddFb=$('#odd-fb'), oddNext=$('#odd-next'), oddP=$('#odd-progress'), oddRound=0;
+  function renderOdd(){
+    var r=ODD[oddRound]; oddGrid.innerHTML=''; oddFb.innerHTML=''; oddNext.hidden=true;
+    oddP.textContent='Раунд '+(oddRound+1)+' из '+ODD.length;
+    shuffle(r.items).forEach(function(w){
+      var b=el('button','opt',w); b.type='button';
+      b.addEventListener('click', function(){
+        var all=oddGrid.querySelectorAll('.opt');
+        if(w===r.odd){
+          for(var i=0;i<all.length;i++) all[i].disabled=true;
+          b.classList.add('ok');
+          oddFb.innerHTML='<div class="feedback ok"><span class="k">Точно, лишнее слово «'+w+'».</span><span>'+r.why+'</span></div>';
+          if(oddRound<ODD.length-1) oddNext.hidden=false;
+          else { oddP.textContent='Все три раунда пройдены'; markDone('odd'); }
+        } else {
+          b.classList.add('bad'); b.disabled=true;
+          oddFb.innerHTML='<div class="feedback bad"><span class="k">«'+w+'» из той же компании, что и остальные.</span><span>Подумай, какое слово про другое.</span></div>';
+        }
+      });
+      oddGrid.appendChild(b);
+    });
+  }
+  oddNext.addEventListener('click', function(){ oddRound++; renderOdd(); });
+  renderOdd();
+
+  /* ---------- quiz ---------- */
+  var QUIZ=[
+    {q:'В каком году франки разбили галло-римлян при Суассоне и начали завоевание Галлии?', o:['476','486','800'], a:1, why:'476 — падение Западной Римской империи из § 1, а через десять лет, в 486-м, Хлодвиг взял Галлию.'},
+    {q:'Почему крещение Хлодвига по римскому образцу было так важно?', o:['Франки стали арианами, как остготы','Церковь стала союзницей королей, а франки и галло-римляне слились в один народ','Хлодвиг стал папой римским'], a:1, why:'Арианами были как раз другие германцы, и вера их разделяла с римлянами. Франков вера объединила.'},
+    {q:'Что такое «Салическая правда»?', o:['Записанные судебные обычаи франков','Песня о походе Карла в Испанию','Договор о разделе империи'], a:0, why:'Хлодвиг приказал записать судебные правила. Песня — «Песнь о Роланде», договор — Верденский.'},
+    {q:'Кто такие майордомы?', o:['Управляющие королевским дворцом, к которым перешла власть','Вожди саксов','Ревизоры, проверявшие графов'], a:0, why:'Ревизоры — это «государевы посланцы» Карла Великого. А майордомы правили за «ленивых королей».'},
+    {q:'Что произошло в 732 году?', o:['Карл Великий стал императором','Карл Мартелл разбил арабов при Пуатье','Внуки Карла разделили империю'], a:1, why:'Император — 800 год, Верден — 843. Пуатье — 732.'},
+    {q:'Что такое феод?', o:['Земля, которую дают воину при условии военной службы','Налог с крестьян','Титул императора'], a:0, why:'Так Карл Мартелл создал конное войско: земля с крестьянами в обмен на службу.'},
+    {q:'Как возникло Папское государство?', o:['Папа купил земли у арабов','Пипин Короткий отдал папе земли, отнятые у лангобардов','Карл Великий подарил папе Ахен'], a:1, why:'Пипин отблагодарил папу за поддержку, когда стал королём.'},
+    {q:'Кто и когда провозгласил Карла императором?', o:['Папа римский в 800 году','Франкская знать в 843 году','Византийский василевс в 732 году'], a:0, why:'Титул императора дал папа римский. Так возродилось государство-преемник Западной Римской империи.'},
+    {q:'Что такое «Каролингское возрождение»?', o:['Восстание саксов против Карла','Подъём культуры при Карле Великом и его преемниках','Возвращение Меровингов на трон'], a:1, why:'Школы, исправленные книги, Академия, интерес к Античности.'},
+    {q:'Что случилось в Вердене в 843 году?', o:['Три внука Карла разделили империю','Карл разбил аваров','Хлодвиг принял христианство'], a:0, why:'Лотарь получил середину и титул императора, средний внук — будущую Германию, младший — будущую Францию.'}
+  ];
+  var qBox=$('#quiz-box'), qP=$('#quiz-progress'), qi=0, score=0;
+  function renderQ(){
+    if(qi>=QUIZ.length) return renderScore();
+    var q=QUIZ[qi];
+    qP.textContent='Вопрос '+(qi+1)+' из '+QUIZ.length;
+    qBox.innerHTML='';
+    qBox.appendChild(el('div','q',q.q));
+    var opts=el('div','q-opts'); qBox.appendChild(opts);
+    var fb=el('div'); qBox.appendChild(fb);
+    var rowN=el('div','row'); qBox.appendChild(rowN);
+    var answered=false;
+    q.o.forEach(function(o,i){
+      var b=el('button','opt',o); b.type='button';
+      b.addEventListener('click', function(){
+        if(answered) return; answered=true;
+        var all=opts.querySelectorAll('.opt');
+        for(var k=0;k<all.length;k++){ all[k].disabled=true; if(k===q.a) all[k].classList.add('ok'); }
+        if(i===q.a){ score++; fb.innerHTML='<div class="feedback ok"><span class="k">Правильно!</span><span>'+q.why+'</span></div>'; }
+        else { b.classList.add('bad'); fb.innerHTML='<div class="feedback bad"><span class="k">Нет, правильный ответ подсвечен зелёным.</span><span>'+q.why+'</span></div>'; }
+        var n=el('button','btn', qi<QUIZ.length-1?'Следующий вопрос':'Показать результат'); n.type='button';
+        n.addEventListener('click', function(){ qi++; renderQ(); window.scrollTo(0,0); });
+        rowN.appendChild(n);
+      });
+      opts.appendChild(b);
+    });
+  }
+  function renderScore(){
+    qP.textContent='Результат';
+    var tiles=''; for(var i=0;i<QUIZ.length;i++) tiles+='<i class="'+(i<score?'on':'')+'"></i>';
+    var msg = score===QUIZ.length ? 'Идеально, Амина! Ни одной ошибки.' : score>=8 ? 'Отлично! Ещё раз взгляни на вопросы, где ошиблась, и будет полный набор.' : score>=6 ? 'Хорошо. Перечитай шаги, где было трудно, и пройди тест снова.' : 'Тема большая, Амина, это нормально. Вернись к шагу «За минуту», потом к словарику, и попробуй ещё раз.';
+    qBox.innerHTML='<div class="score"><div class="big">'+score+' из '+QUIZ.length+'</div><div class="score-tiles">'+tiles+'</div><p>'+msg+'</p><button class="btn ghost" type="button" id="quiz-again">Пройти ещё раз</button></div>';
+    $('#quiz-again').addEventListener('click', function(){ qi=0; score=0; renderQ(); });
+    markDone('quiz');
+  }
+  renderQ();
+
+  /* ---------- bricks ---------- */
+  Array.prototype.forEach.call(document.querySelectorAll('.brick button'), function(b){
+    b.addEventListener('click', function(){
+      var body=b.nextElementSibling, open=body.hidden;
+      body.hidden=!open; b.setAttribute('aria-expanded', open?'true':'false');
+      b.lastElementChild.textContent = open?'−':'+';
+    });
+  });
+
+  /* ---------- start ---------- */
+  var start=idxFromHash(); go(start<0?0:start, true);
+})();
+</script>
+
+</body>
+</html>
