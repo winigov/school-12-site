@@ -28,6 +28,24 @@ h1{font-family:"PT Sans Narrow","Arial Narrow",sans-serif;font-weight:700;color:
 .card .name{font-family:"PT Sans Narrow","Arial Narrow",sans-serif;font-weight:700;font-size:36px;line-height:1;color:var(--lapis)}
 .card .sub{color:var(--ink-2);font-size:16px}
 .card .cnt{font-family:"PT Sans","Segoe UI",system-ui,sans-serif;font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--terra);font-weight:700;margin-top:4px}
+.shelf{display:grid;gap:24px;grid-template-columns:minmax(0,1fr)}
+@media (min-width:560px){.shelf{grid-template-columns:1fr 1fr}}
+.book{display:grid;grid-template-columns:132px minmax(0,1fr);gap:16px;align-items:end;text-decoration:none;color:var(--ink)}
+.book:focus-visible{outline:3px solid var(--gold);outline-offset:4px}
+.bk-cover{position:relative;display:block;border-radius:2px 5px 5px 2px;overflow:hidden;box-shadow:0 1px 1px rgba(0,0,0,.22),0 6px 14px rgba(20,30,50,.24),0 16px 30px rgba(20,30,50,.12);transition:transform .15s}
+.bk-cover img{display:block;width:100%;height:auto}
+.bk-cover::after{content:"";position:absolute;top:0;bottom:0;left:0;width:9px;background:linear-gradient(90deg,rgba(0,0,0,.3),rgba(255,255,255,.2) 45%,rgba(0,0,0,0))}
+.book:hover .bk-cover{transform:translateY(-3px)}
+@media (prefers-reduced-motion: reduce){.bk-cover{transition:none}}
+.bk-gen{aspect-ratio:3/4;background:var(--lapis);color:var(--on-lapis);display:flex;flex-direction:column;padding:14px 12px 12px 18px}
+.bk-gen-subj{font:700 22px/1.05 "PT Sans Narrow","Arial Narrow",sans-serif;text-transform:uppercase}
+.bk-gen-grade{font:700 58px/1 "PT Sans Narrow","Arial Narrow",sans-serif;margin-top:auto}
+.bk-gen-kl{font:700 12px/1 "PT Sans",sans-serif;letter-spacing:.22em}
+.bk-info{display:flex;flex-direction:column;gap:5px;padding-bottom:4px}
+.bk-subj{font:700 34px/1 "PT Sans Narrow","Arial Narrow",sans-serif;color:var(--lapis)}
+.bk-title{font-size:16px;line-height:1.35;color:var(--ink-2)}
+.bk-auth{font-family:"PT Sans","Segoe UI",system-ui,sans-serif;font-size:13px;line-height:1.4;color:var(--muted)}
+.book .cnt{font-family:"PT Sans","Segoe UI",system-ui,sans-serif;font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--terra);font-weight:700;margin-top:4px}
 .toc-list{display:flex;flex-direction:column;border-top:1px solid var(--line)}
 .toc-row{display:flex;align-items:baseline;gap:8px;padding:12px 2px;border-bottom:1px solid var(--line);text-decoration:none;color:var(--ink)}
 .toc-row .par{font:700 18px/1 "PT Sans Narrow","Arial Narrow",sans-serif;color:var(--lapis);width:2em;flex:none;white-space:nowrap}
