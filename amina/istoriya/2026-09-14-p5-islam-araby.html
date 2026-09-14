@@ -7,7 +7,7 @@
 <title>Ислам и государство арабов</title>
 <meta name="paragraph" content="§ 5">
 <meta name="description" content="Возникновение ислама и государства у арабов">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oranienbaum&family=Golos+Text:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=PT+Sans+Narrow:wght@400;700&family=PT+Sans:wght@400;700&display=swap">
 <style>
 :root{
   --bg:#EBE8DF; --surface:#F8F6F0; --surface-2:#E2DED2; --ink:#1B2233; --ink-2:#4A5163; --muted:#7A8093;
@@ -274,7 +274,7 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 .ans-table th{font-size:13px;color:var(--ink-2);font-weight:700}
 .ans-table td:first-child{white-space:nowrap}
 
-/* виды шагов: из учебника / задания учебника / придумали мы */
+/* виды шагов: из учебника / задания учебника / сверх учебника */
 .kind-tag{display:flex;gap:10px;align-items:flex-start;border-radius:10px;padding:8px 12px;font-size:13px;line-height:1.35}
 .kind-tag .ic{font-size:18px;line-height:1.1}
 .kind-tag b{font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:700}
@@ -296,6 +296,87 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 .toc-head .ic{font-size:15px;letter-spacing:0}
 .toc-item .pg{margin-left:auto;font-size:12px;color:var(--muted);white-space:nowrap;font-variant-numeric:tabular-nums}
 .toc-item .pg + .m{margin-left:8px}
+
+/* ===== Книжное оформление (выбрано 14.09.2026): как учебник — синяя шапка, PT Serif / PT Sans Narrow / PT Sans ===== */
+:root{
+  --bg:#FBFAF6; --surface:#FFFFFF; --surface-2:#EAF0F8; --ink:#1A1A1A; --ink-2:#393939; --muted:#6B6B6B;
+  --lapis:#2D63A6; --on-lapis:#FFFFFF; --lapis-soft:#DCE7F5; --gold:#8B6B22; --gold-soft:#F3EBD3; --on-gold:#1A1A1A;
+  --terra:#C24E1E; --terra-soft:#FBE3D6; --moss:#3E7A3A; --moss-soft:#E1EEDC; --line:#D9DDE3; --tile:#D5DCE6; --shadow:none;
+  --band-ink:#FFFFFF; --tb:rgba(255,255,255,.32); --tbv:#FFFFFF; --to:rgba(255,190,160,.5); --tov:#F6A37E; --tt:rgba(255,230,160,.5); --ttv:#F2D27A; --tdone:#A6DB93;
+  --display:"PT Sans Narrow","Arial Narrow",sans-serif; --body:"PT Serif",Georgia,serif; --ui:"PT Sans","Segoe UI",system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){ --bg:#141516; --surface:#1C1E21; --surface-2:#1E2936; --ink:#EDEBE6; --ink-2:#CFCBC3; --muted:#9A968F;
+    --lapis:#79A6E0; --on-lapis:#10141A; --lapis-soft:#1F3350; --gold:#D9B45A; --gold-soft:#3A3120; --on-gold:#10141A;
+    --terra:#F0875A; --terra-soft:#43261A; --moss:#8CC47F; --moss-soft:#22381F; --line:#30343A; --tile:#2C3440; --shadow:none;
+    --band-ink:#10141A; --tb:rgba(16,20,26,.28); --tbv:#10141A; --to:rgba(120,40,10,.4); --tov:#8A2E0C; --tt:rgba(110,80,10,.4); --ttv:#6B4E0E; --tdone:#1F5A1A; } }
+:root[data-theme="dark"]{ --bg:#141516; --surface:#1C1E21; --surface-2:#1E2936; --ink:#EDEBE6; --ink-2:#CFCBC3; --muted:#9A968F;
+    --lapis:#79A6E0; --on-lapis:#10141A; --lapis-soft:#1F3350; --gold:#D9B45A; --gold-soft:#3A3120; --on-gold:#10141A;
+    --terra:#F0875A; --terra-soft:#43261A; --moss:#8CC47F; --moss-soft:#22381F; --line:#30343A; --tile:#2C3440; --shadow:none;
+    --band-ink:#10141A; --tb:rgba(16,20,26,.28); --tbv:#10141A; --to:rgba(120,40,10,.4); --tov:#8A2E0C; --tt:rgba(110,80,10,.4); --ttv:#6B4E0E; --tdone:#1F5A1A; }
+body{font-family:var(--body);font-size:18px;line-height:1.62}
+h1,h2,h3{font-family:var(--display);font-weight:700}
+.step h1{color:var(--lapis);font-size:clamp(34px,8.5vw,52px);line-height:1.02}
+.step h2{color:var(--lapis);font-size:clamp(28px,7vw,36px);line-height:1.08}
+.step h3{font-size:23px}
+.pnum{display:inline-flex;align-items:center;justify-content:center;background:var(--lapis);color:var(--on-lapis);font:700 .72em/1 var(--display);width:1.08em;height:1.08em;margin-right:.3em;vertical-align:.08em}
+.lede{font-size:20px}
+.top{background:var(--lapis);border-bottom:0}
+.back{background:transparent;border-color:var(--band-ink);color:var(--band-ink);font-family:var(--ui);border-radius:3px}
+.crumb{color:var(--band-ink);opacity:.88;font-family:var(--ui)}
+.crumb b{color:var(--band-ink)}
+.toc-btn{background:var(--band-ink);color:var(--lapis);border-color:var(--band-ink);font-family:var(--ui);font-weight:700;border-radius:3px}
+.stepbar button{border-radius:1px}
+.stepbar button.k-book{background:var(--tb)} .stepbar button.k-book.visited{background:var(--tbv)}
+.stepbar button.k-ours{background:var(--to)} .stepbar button.k-ours.visited{background:var(--tov)}
+.stepbar button.k-task{background:var(--tt)} .stepbar button.k-task.visited{background:var(--ttv)}
+.stepbar button.visited.done{background:var(--tdone)}
+.stepbar button.current{box-shadow:0 0 0 1.5px var(--band-ink)}
+.eyebrow{font-family:var(--ui);color:var(--muted);letter-spacing:.08em}
+.tess{display:none}
+.term{font-weight:700;font-style:italic;color:var(--ink);border-bottom:0}
+.kind-tag{border-radius:0;padding:6px 0 0;border-top:2px solid currentColor;font-family:var(--ui);align-items:center}
+.kind-tag.book,.kind-tag.task,.kind-tag.ours{background:transparent}
+.kind-tag .ic{display:flex}
+.kind-tag b{font-size:12.5px;letter-spacing:.08em}
+.kind-tag small{font-family:var(--body);font-style:italic;font-size:14.5px}
+details{border-radius:0}
+details summary{font-family:var(--ui)}
+details.book{border:0;border-top:3px solid var(--lapis);background:var(--surface-2)}
+details.book summary{color:var(--lapis)}
+details.book summary::before,details.book[open] summary::before{background:var(--lapis)}
+details.book .body{font-size:16px}
+.aside{border-radius:0}
+.aside .k{font-family:var(--ui)}
+.dom{border-radius:0;box-shadow:none;border-top:3px solid var(--lapis)}
+.dom .n{font-family:var(--display);font-weight:700;color:var(--lapis)}
+.dom .t{font-family:var(--ui)}
+.rung{border-radius:0}
+.tl-btn .y{font-family:var(--display);font-weight:700;color:var(--lapis)}
+.tl-btn .era{font-family:var(--ui)}
+.fig img{border-radius:0;box-shadow:none}
+.fig figcaption{font-family:var(--ui)}
+.org .box{border-radius:0}
+.qi{border-radius:0}
+.qi .qn{font-family:var(--display);font-weight:700;color:var(--terra)}
+.qi a{border-radius:0;font-family:var(--ui)}
+.game{border-radius:0;box-shadow:none;border-top:4px solid var(--terra)}
+.game h3{color:var(--terra)}
+.badge{border-radius:0;font-family:var(--ui)}
+.btn{border-radius:3px;font-family:var(--ui);font-weight:700}
+.opt{border-radius:0;background:var(--surface);border-color:var(--line);font-family:var(--body)}
+.feedback{border-radius:0}
+.progress{font-family:var(--ui)}
+.q{font-family:var(--body);font-weight:700}
+.face{border-radius:0}
+.face.f .w{font-family:var(--display);font-weight:700}
+.seq,.seq .slot,.sort-card,.brick,.qtext,.way,.six span,.mosaic .tile,.score-tiles i,.toc-panel,.toc-item{border-radius:0}
+.brick button{font-family:var(--ui)}
+.pager{background:var(--surface)}
+.count{font-family:var(--ui)}
+.toc-panel h3{font-family:var(--display)}
+.toc-head{font-family:var(--ui)}
+.toc-head .ic{display:flex}
+.score .big{font-family:var(--display);font-weight:700;color:var(--lapis)}
 </style>
 </head>
 <body>
@@ -314,7 +395,7 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 
 <!-- 1 -->
 <section class="step" data-step="za-minutu" data-name="За минуту" data-part="Самое главное" data-kind="ours">
-  <div class="kind-tag ours"><span class="ic">🎲</span><div><b>Придумали мы</b><small>Короткий пересказ своими словами, для разгона. Всё, как в учебнике, — в следующих шагах.</small></div></div>
+  <div class="kind-tag ours"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 6h14"></path><path d="M5 12h14"></path><path d="M5 18h9"></path></svg></span><div><b>Коротко о главном</b><small>Пересказ для разгона. Подробно, как в учебнике, — в следующих шагах.</small></div></div>
   <div class="eyebrow"><span class="tess"><i></i><i></i><i></i></span> История · 6 класс · § 5</div>
   <h1>Возникновение ислама и государства у арабов</h1>
   <p class="lede">Амина, это история о том, как разрозненные племена пустыни за несколько десятков лет стали одним сильным государством.</p>
@@ -334,7 +415,7 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
   <div class="aside">
     <div class="k">Как этим пользоваться</div>
     <p>У каждого шага написано, на какой странице учебника искать. Внизу шага есть «Подробнее, как в учебнике»: там всё, что есть на этих страницах, ничего не пропущено. Сначала учи по коротким шагам, а перед уроком открой «подробнее».</p>
-    <p>Плашка вверху шага подскажет, откуда он: синяя 📖 — из учебника, золотая ✎ — задание учебника, терракотовая 🎲 — придумали мы для тренировки. В «Содержании» шаги так же разбиты на группы.</p>
+    <p>Надпись вверху шага подскажет, откуда он: синяя — из учебника, золотая — задание учебника, оранжевая — сверх учебника (пересказ, словарик, игры, самопроверка). В «Содержании» шаги так же разбиты на группы.</p>
   </div>
   <details class="book">
     <summary>Подробнее, как в учебнике · с. 52</summary>
@@ -349,7 +430,7 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 
 <!-- 2 -->
 <section class="step" data-step="daty" data-name="Даты" data-part="Лента времени" data-kind="book" data-pages="с. 52">
-  <div class="kind-tag book"><span class="ic">📖</span><div><b>Из учебника</b><span class="pg">с. 52</span></div></div>
+  <div class="kind-tag book"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.5c2.6-1 5.6-.8 9 1.2v13c-3.4-2-6.4-2.2-9-1.2z"></path><path d="M21 5.5c-2.6-1-5.6-.8-9 1.2v13c3.4-2 6.4-2.2 9-1.2z"></path></svg></span><div><b>Из учебника</b><span class="pg">с. 52</span></div></div>
   <div class="eyebrow">Пять дат</div>
   <h2>Лента времени</h2>
   <p class="task">Это все даты из таблицы в начале параграфа, сверху вниз от ранних к поздним. Нажми на дату, чтобы прочитать, что случилось. Красные помечены «Россия», как в учебнике.</p>
@@ -382,9 +463,9 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 
 <!-- 3 -->
 <section class="step" data-step="araviya" data-name="Пустыня и бедуины" data-part="Глава 1 · Аравия" data-kind="book" data-pages="с. 52–53, п. 1">
-  <div class="kind-tag book"><span class="ic">📖</span><div><b>Из учебника</b><span class="pg">с. 52–53, п. 1</span></div></div>
+  <div class="kind-tag book"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.5c2.6-1 5.6-.8 9 1.2v13c-3.4-2-6.4-2.2-9-1.2z"></path><path d="M21 5.5c-2.6-1-5.6-.8-9 1.2v13c3.4-2 6.4-2.2 9-1.2z"></path></svg></span><div><b>Из учебника</b><span class="pg">с. 52–53, п. 1</span></div></div>
   <div class="eyebrow">Глава 1 · Аравия</div>
-  <h2>Пустыня и бедуины</h2>
+  <h2><span class="pnum">1</span>Пустыня и бедуины</h2>
   <div class="prose">
     <p>Между Азией и Африкой лежит <b>Аравийский полуостров</b>, его омывает Аравийское море. Это одно из самых жарких мест на Земле: большую часть полуострова занимают степи и пустыни.</p>
     <p>Здесь жили арабы. Они делились на племена, во главе каждого стоял вождь — <span class="term">шейх</span>. Шейх получал доходы от продажи скота, от пастбищ и плодородных земель.</p>
@@ -409,9 +490,9 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 
 <!-- 4 -->
 <section class="step" data-step="oazisy" data-name="Оазисы, караваны, Мекка" data-part="Глава 1 · Аравия" data-kind="book" data-pages="с. 53–54, п. 1">
-  <div class="kind-tag book"><span class="ic">📖</span><div><b>Из учебника</b><span class="pg">с. 53–54, п. 1</span></div></div>
+  <div class="kind-tag book"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.5c2.6-1 5.6-.8 9 1.2v13c-3.4-2-6.4-2.2-9-1.2z"></path><path d="M21 5.5c-2.6-1-5.6-.8-9 1.2v13c3.4-2 6.4-2.2 9-1.2z"></path></svg></span><div><b>Из учебника</b><span class="pg">с. 53–54, п. 1</span></div></div>
   <div class="eyebrow">Глава 1 · Аравия</div>
-  <h2>Оазисы, караваны и Мекка</h2>
+  <h2><span class="pnum">1</span>Оазисы, караваны и Мекка</h2>
   <div class="prose">
     <p>На юге и западе Аравии были <span class="term">оазисы</span> — места, где есть небольшие реки и озёра. Там в глиняных домиках жили оседлые арабы-земледельцы: выращивали пшеницу, хлопок, овощи, виноград и финики.</p>
     <p>Через Аравию шёл старинный торговый путь. Караваны верблюдов везли товары из Византии в Африку и Азию и обратно, а арабы и сами становились торговцами и снаряжали караваны.</p>
@@ -443,9 +524,9 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 
 <!-- 5 -->
 <section class="step" data-step="do-islama" data-name="Аравия перед исламом" data-part="Глава 2 · Пророк" data-kind="book" data-pages="с. 54, п. 2">
-  <div class="kind-tag book"><span class="ic">📖</span><div><b>Из учебника</b><span class="pg">с. 54, п. 2</span></div></div>
+  <div class="kind-tag book"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.5c2.6-1 5.6-.8 9 1.2v13c-3.4-2-6.4-2.2-9-1.2z"></path><path d="M21 5.5c-2.6-1-5.6-.8-9 1.2v13c3.4-2 6.4-2.2 9-1.2z"></path></svg></span><div><b>Из учебника</b><span class="pg">с. 54, п. 2</span></div></div>
   <div class="eyebrow">Глава 2 · Пророк</div>
-  <h2>Аравия перед исламом</h2>
+  <h2><span class="pnum">2</span>Аравия перед исламом</h2>
   <div class="prose">
     <p>Большинство арабов тогда были язычниками, то есть почитали многих богов. Их святое место было в Мекке — древнее святилище в форме куба, <span class="term">Кааба</span> (по-арабски «кубический дом»). Арабы приезжали сюда поклониться «чёрному камню», вделанному в его стену.</p>
     <p>Обряды проводила знать и получала доходы и от паломников, и от торговли.</p>
@@ -468,9 +549,9 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 
 <!-- 6 -->
 <section class="step" data-step="prorok" data-name="Пророк Мухаммед" data-part="Глава 2 · Пророк" data-kind="book" data-pages="с. 54–55, п. 2">
-  <div class="kind-tag book"><span class="ic">📖</span><div><b>Из учебника</b><span class="pg">с. 54–55, п. 2</span></div></div>
+  <div class="kind-tag book"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.5c2.6-1 5.6-.8 9 1.2v13c-3.4-2-6.4-2.2-9-1.2z"></path><path d="M21 5.5c-2.6-1-5.6-.8-9 1.2v13c3.4-2 6.4-2.2 9-1.2z"></path></svg></span><div><b>Из учебника</b><span class="pg">с. 54–55, п. 2</span></div></div>
   <div class="eyebrow">Глава 2 · Пророк</div>
-  <h2>Пророк Мухаммед</h2>
+  <h2><span class="pnum">2</span>Пророк Мухаммед</h2>
   <div class="prose">
     <p>В это трудное время появился человек, который гневно осуждал ростовщичество и порабощение соплеменников. Он призывал богатых проявлять милосердие и помогать бедным, а всех арабов — прекратить вражду и объединиться на основе единой веры. Это был <span class="term">Мухаммед</span> (в арабской традиции — Мухаммад).</p>
   </div>
@@ -496,9 +577,9 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 
 <!-- 7 -->
 <section class="step" data-step="hidzhra" data-name="Хиджра: 622 год" data-part="Глава 3 · Победа ислама" data-kind="book" data-pages="с. 55, п. 3">
-  <div class="kind-tag book"><span class="ic">📖</span><div><b>Из учебника</b><span class="pg">с. 55, п. 3</span></div></div>
+  <div class="kind-tag book"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.5c2.6-1 5.6-.8 9 1.2v13c-3.4-2-6.4-2.2-9-1.2z"></path><path d="M21 5.5c-2.6-1-5.6-.8-9 1.2v13c3.4-2 6.4-2.2 9-1.2z"></path></svg></span><div><b>Из учебника</b><span class="pg">с. 55, п. 3</span></div></div>
   <div class="eyebrow">Глава 3 · Победа ислама</div>
-  <h2>Хиджра: 622 год</h2>
+  <h2><span class="pnum">3</span>Хиджра: 622 год</h2>
   <div class="prose">
     <p>Многие соплеменники Мухаммеда выступили против нового учения. Особенно возмущались богатые жители Мекки: они боялись, что Кааба потеряет значение, а их доходы от паломников уменьшатся.</p>
     <p>Противники решили убить Мухаммеда. Узнав об этом, пророк со сподвижниками покинул Мекку и ушёл в город Ясриб, где получил кров и защиту. Позже Ясриб назвали <b>Медина</b> — «Город пророка».</p>
@@ -519,9 +600,9 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 
 <!-- 8 -->
 <section class="step" data-step="mekka" data-name="Возвращение в Мекку" data-part="Глава 3 · Победа ислама" data-kind="book" data-pages="с. 55–56, п. 3">
-  <div class="kind-tag book"><span class="ic">📖</span><div><b>Из учебника</b><span class="pg">с. 55–56, п. 3</span></div></div>
+  <div class="kind-tag book"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.5c2.6-1 5.6-.8 9 1.2v13c-3.4-2-6.4-2.2-9-1.2z"></path><path d="M21 5.5c-2.6-1-5.6-.8-9 1.2v13c3.4-2 6.4-2.2 9-1.2z"></path></svg></span><div><b>Из учебника</b><span class="pg">с. 55–56, п. 3</span></div></div>
   <div class="eyebrow">Глава 3 · Победа ислама</div>
-  <h2>630 год: возвращение в Мекку</h2>
+  <h2><span class="pnum">3</span>630 год: возвращение в Мекку</h2>
   <div class="prose">
     <p>В Медине у Мухаммеда оказалось больше сторонников, многие бедуины охотно приняли ислам. Между арабами-язычниками и арабами-мусульманами началась война.</p>
     <p>Уже в первом сражении небольшой отряд во главе с пророком разгромил противника, которого было намного больше. Многие увидели в этом божественный знак и встали под знамя Мухаммеда. В <b>630 году</b> пророк во главе войска вступил в Мекку.</p>
@@ -552,9 +633,9 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 
 <!-- 9 -->
 <section class="step" data-step="koran" data-name="Коран и Сунна" data-part="Глава 4 · Основы веры" data-kind="book" data-pages="с. 56, п. 4">
-  <div class="kind-tag book"><span class="ic">📖</span><div><b>Из учебника</b><span class="pg">с. 56, п. 4</span></div></div>
+  <div class="kind-tag book"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.5c2.6-1 5.6-.8 9 1.2v13c-3.4-2-6.4-2.2-9-1.2z"></path><path d="M21 5.5c-2.6-1-5.6-.8-9 1.2v13c3.4-2 6.4-2.2 9-1.2z"></path></svg></span><div><b>Из учебника</b><span class="pg">с. 56, п. 4</span></div></div>
   <div class="eyebrow">Глава 4 · Основы веры</div>
-  <h2>Коран и Сунна</h2>
+  <h2><span class="pnum">4</span>Коран и Сунна</h2>
   <div class="prose">
     <p>Откровения, полученные Мухаммедом от Аллаха, составили священную книгу мусульман — <span class="term">Коран</span> (по-арабски «чтение»). Коран призывает правоверных быть послушными властям и честно вести дела с единоверцами. Для мусульман Коран — сборник нравственных правил и законов.</p>
     <p>Второй источник вероучения — <span class="term">Сунна</span> (по-арабски «образ действий, поведение»). В ней собраны рассказы о делах Мухаммеда и его изречения.</p>
@@ -578,9 +659,9 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 
 <!-- 10 -->
 <section class="step" data-step="stolpy" data-name="Пять столпов и шариат" data-part="Глава 4 · Основы веры" data-kind="book" data-pages="с. 56–57, п. 4">
-  <div class="kind-tag book"><span class="ic">📖</span><div><b>Из учебника</b><span class="pg">с. 56–57, п. 4</span></div></div>
+  <div class="kind-tag book"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.5c2.6-1 5.6-.8 9 1.2v13c-3.4-2-6.4-2.2-9-1.2z"></path><path d="M21 5.5c-2.6-1-5.6-.8-9 1.2v13c3.4-2 6.4-2.2 9-1.2z"></path></svg></span><div><b>Из учебника</b><span class="pg">с. 56–57, п. 4</span></div></div>
   <div class="eyebrow">Глава 4 · Основы веры</div>
-  <h2>Пять столпов и шариат</h2>
+  <h2><span class="pnum">4</span>Пять столпов и шариат</h2>
   <div class="prose">
     <p>Ислам возложил на мусульман пять главных обязанностей. Их называют <span class="term">«пять столпов»</span> ислама. Как дом стоит на опорах, так вера мусульманина держится на этих пяти обязанностях.</p>
     <p><b>Схема из учебника (с. 57) «Главные обязанности мусульманина»:</b></p>
@@ -611,9 +692,9 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 
 <!-- 11 -->
 <section class="step" data-step="halify" data-name="Праведные халифы" data-part="Глава 5 · Халифы" data-kind="book" data-pages="с. 57–58, п. 5">
-  <div class="kind-tag book"><span class="ic">📖</span><div><b>Из учебника</b><span class="pg">с. 57–58, п. 5</span></div></div>
+  <div class="kind-tag book"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.5c2.6-1 5.6-.8 9 1.2v13c-3.4-2-6.4-2.2-9-1.2z"></path><path d="M21 5.5c-2.6-1-5.6-.8-9 1.2v13c3.4-2 6.4-2.2 9-1.2z"></path></svg></span><div><b>Из учебника</b><span class="pg">с. 57–58, п. 5</span></div></div>
   <div class="eyebrow">Глава 5 · Халифы</div>
-  <h2>Праведные халифы</h2>
+  <h2><span class="pnum">5</span>Праведные халифы</h2>
   <div class="prose">
     <p>После смерти Мухаммеда правителями арабского государства и ревностными проповедниками новой веры стали <span class="term">халифы</span> — «заместители» пророка. Сначала это были его сподвижники и родственники.</p>
     <p>Первым халифом стал <b>Абу Бакр</b> — ближайший сподвижник и тесть пророка. Ещё незадолго до смерти Мухаммед передал ему обязанности имама, то есть того, кто ведёт общую молитву. После Абу Бакра правили <b>Умар</b>, <b>Усман</b> и <b>Али</b> (двоюродный брат Мухаммеда).</p>
@@ -632,9 +713,9 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 
 <!-- 12 -->
 <section class="step" data-step="voysko" data-name="Джихад и войско" data-part="Глава 5 · Халифы" data-kind="book" data-pages="с. 58, п. 5">
-  <div class="kind-tag book"><span class="ic">📖</span><div><b>Из учебника</b><span class="pg">с. 58, п. 5</span></div></div>
+  <div class="kind-tag book"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.5c2.6-1 5.6-.8 9 1.2v13c-3.4-2-6.4-2.2-9-1.2z"></path><path d="M21 5.5c-2.6-1-5.6-.8-9 1.2v13c3.4-2 6.4-2.2 9-1.2z"></path></svg></span><div><b>Из учебника</b><span class="pg">с. 58, п. 5</span></div></div>
   <div class="eyebrow">Глава 5 · Халифы</div>
-  <h2>Джихад и арабское войско</h2>
+  <h2><span class="pnum">5</span>Джихад и арабское войско</h2>
   <div class="prose">
     <p>Объединённые новой верой арабы стремились распространить её среди других народов. Ислам распространялся и мирным путём, и через завоевания.</p>
     <p>Войну за веру называли <span class="term">джихад</span>. У этого слова есть и другое, более широкое значение — духовное самосовершенствование мусульманина, то есть работа над собой.</p>
@@ -665,9 +746,9 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 
 <!-- 13 -->
 <section class="step" data-step="yarmuk" data-name="Ярмук и Иерусалим" data-part="Глава 5 · Халифы" data-kind="book" data-pages="с. 58–59, п. 5">
-  <div class="kind-tag book"><span class="ic">📖</span><div><b>Из учебника</b><span class="pg">с. 58–59, п. 5</span></div></div>
+  <div class="kind-tag book"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.5c2.6-1 5.6-.8 9 1.2v13c-3.4-2-6.4-2.2-9-1.2z"></path><path d="M21 5.5c-2.6-1-5.6-.8-9 1.2v13c3.4-2 6.4-2.2 9-1.2z"></path></svg></span><div><b>Из учебника</b><span class="pg">с. 58–59, п. 5</span></div></div>
   <div class="eyebrow">Глава 5 · Халифы</div>
-  <h2>636 год: Ярмук и Иерусалим</h2>
+  <h2><span class="pnum">5</span>636 год: Ярмук и Иерусалим</h2>
   <div class="prose">
     <p>При праведных халифах арабы расширили своё государство и разбили византийцев и персов.</p>
     <p>Решающая битва с византийским войском произошла при <b>Ярмуке в 636 году</b>. Сражение шло несколько дней, и долго было непонятно, кто победит: византийцы не раз прорывали строй арабов и заставляли их отступать к своему лагерю.</p>
@@ -690,9 +771,9 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 
 <!-- 14 -->
 <section class="step" data-step="poddannye" data-name="Подданные халифа" data-part="Глава 5 · Халифы" data-kind="book" data-pages="с. 59, п. 5 и «Подведём итоги»">
-  <div class="kind-tag book"><span class="ic">📖</span><div><b>Из учебника</b><span class="pg">с. 59, п. 5 и «Подведём итоги»</span></div></div>
+  <div class="kind-tag book"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.5c2.6-1 5.6-.8 9 1.2v13c-3.4-2-6.4-2.2-9-1.2z"></path><path d="M21 5.5c-2.6-1-5.6-.8-9 1.2v13c3.4-2 6.4-2.2 9-1.2z"></path></svg></span><div><b>Из учебника</b><span class="pg">с. 59, п. 5 и «Подведём итоги»</span></div></div>
   <div class="eyebrow">Глава 5 · Халифы</div>
-  <h2>Подданные халифа</h2>
+  <h2><span class="pnum">5</span>Подданные халифа</h2>
   <div class="prose">
     <p>Жители завоёванных земель стали подданными халифа. Каждый земледелец платил поземельный налог — от трети до двух пятых урожая. Налоги платили и горожане.</p>
     <p>Язычников преследовали. А иудеи и христиане могли по-прежнему держаться веры предков, но за это платили в казну особый налог. Кто переходил в ислам, от этого налога освобождался.</p>
@@ -718,7 +799,7 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 
 <!-- 15 -->
 <section class="step" data-step="slovar-1" data-name="Словарик: Аравия и новая вера" data-part="Словарик" data-kind="ours">
-  <div class="kind-tag ours"><span class="ic">🎲</span><div><b>Придумали мы</b><small>В учебнике такого нет — это тренировка.</small></div></div>
+  <div class="kind-tag ours"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="6" width="12" height="14" rx="1.5"></rect><path d="M8.5 3.5h10.5a1.5 1.5 0 0 1 1.5 1.5v12.5"></path></svg></span><div><b>Словарик</b><small>Сверх учебника — чтобы запомнить слова параграфа.</small></div></div>
   <div class="game">
     <div class="g-head"><h3>Словарик: Аравия и новая вера</h3><span class="badge" id="b-terms">Игра</span></div>
     <p class="task">Нажми на карточку, и она перевернётся. Словарик из двух частей, открой все карточки.</p>
@@ -729,7 +810,7 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 
 <!-- 16 -->
 <section class="step" data-step="slovar-2" data-name="Словарик: Коран и халифы" data-part="Словарик" data-kind="ours">
-  <div class="kind-tag ours"><span class="ic">🎲</span><div><b>Придумали мы</b><small>В учебнике такого нет — это тренировка.</small></div></div>
+  <div class="kind-tag ours"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="6" width="12" height="14" rx="1.5"></rect><path d="M8.5 3.5h10.5a1.5 1.5 0 0 1 1.5 1.5v12.5"></path></svg></span><div><b>Словарик</b><small>Сверх учебника — чтобы запомнить слова параграфа.</small></div></div>
   <div class="game">
     <div class="g-head"><h3>Словарик: Коран и халифы</h3><span class="badge" id="b-terms2">Игра</span></div>
     <p class="task">Вторая часть: основы веры и время халифов.</p>
@@ -740,7 +821,7 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 
 <!-- 17 -->
 <section class="step" data-step="perevod" data-name="Перевод с арабского" data-part="Игры" data-kind="ours">
-  <div class="kind-tag ours"><span class="ic">🎲</span><div><b>Придумали мы</b><small>В учебнике такого нет — это тренировка.</small></div></div>
+  <div class="kind-tag ours"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="3"></rect><circle cx="9" cy="9" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="15" cy="15" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="15" cy="9" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="9" cy="15" r="1.3" fill="currentColor" stroke="none"></circle></svg></span><div><b>Игра</b><small>Сверх учебника — чтобы закрепить тему.</small></div></div>
   <div class="game" id="g-match">
     <div class="g-head"><h3>Перевод с арабского</h3><span class="badge" id="b-match">Игра</span></div>
     <p class="task">Многие слова этого параграфа пришли из арабского языка. Нажми на слово слева, потом на его перевод справа.</p>
@@ -754,7 +835,7 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 
 <!-- 18 -->
 <section class="step" data-step="kto-tak" data-name="Кто так жил?" data-part="Игры" data-kind="ours">
-  <div class="kind-tag ours"><span class="ic">🎲</span><div><b>Придумали мы</b><small>В учебнике такого нет — это тренировка.</small></div></div>
+  <div class="kind-tag ours"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="3"></rect><circle cx="9" cy="9" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="15" cy="15" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="15" cy="9" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="9" cy="15" r="1.3" fill="currentColor" stroke="none"></circle></svg></span><div><b>Игра</b><small>Сверх учебника — чтобы закрепить тему.</small></div></div>
   <div class="game">
     <div class="g-head"><h3>Кто так жил?</h3><span class="badge" id="b-sort">Игра</span></div>
     <p class="task">В Аравии жили по-разному бедуины, земледельцы оазисов и горожане. Прочитай карточку и выбери, про кого она.</p>
@@ -765,7 +846,7 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 
 <!-- 19 -->
 <section class="step" data-step="poryadok" data-name="Расставь по порядку" data-part="Игры" data-kind="ours">
-  <div class="kind-tag ours"><span class="ic">🎲</span><div><b>Придумали мы</b><small>В учебнике такого нет — это тренировка.</small></div></div>
+  <div class="kind-tag ours"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="3"></rect><circle cx="9" cy="9" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="15" cy="15" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="15" cy="9" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="9" cy="15" r="1.3" fill="currentColor" stroke="none"></circle></svg></span><div><b>Игра</b><small>Сверх учебника — чтобы закрепить тему.</small></div></div>
   <div class="game">
     <div class="g-head"><h3>Расставь по порядку</h3><span class="badge" id="b-order">Игра</span></div>
     <p class="task">Нажимай на события от самого раннего к самому позднему. Даты спрятаны, вспоминай сама.</p>
@@ -781,7 +862,7 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 
 <!-- 20 -->
 <section class="step" data-step="lishnee" data-name="Найди лишнее" data-part="Игры" data-kind="ours">
-  <div class="kind-tag ours"><span class="ic">🎲</span><div><b>Придумали мы</b><small>В учебнике такого нет — это тренировка.</small></div></div>
+  <div class="kind-tag ours"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="3"></rect><circle cx="9" cy="9" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="15" cy="15" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="15" cy="9" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="9" cy="15" r="1.3" fill="currentColor" stroke="none"></circle></svg></span><div><b>Игра</b><small>Сверх учебника — чтобы закрепить тему.</small></div></div>
   <div class="game">
     <div class="g-head"><h3>Найди лишнее</h3><span class="badge" id="b-odd">Игра</span></div>
     <p class="task">Три из одной компании, одно чужое. Найди чужое.</p>
@@ -794,7 +875,7 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 
 <!-- 21 -->
 <section class="step" data-step="test" data-name="Проверь себя" data-part="Финал" data-kind="ours">
-  <div class="kind-tag ours"><span class="ic">🎲</span><div><b>Придумали мы</b><small>Вопросы для самопроверки придумали мы. Задания из учебника — дальше.</small></div></div>
+  <div class="kind-tag ours"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"></circle><path d="M8 12.3l2.8 2.8L16.2 9.6"></path></svg></span><div><b>Самопроверка</b><small>Сверх учебника — вопросы, чтобы проверить себя. Задания из учебника — дальше.</small></div></div>
   <div class="eyebrow">Финал</div>
   <h2>Проверь себя</h2>
   <div class="game">
@@ -805,7 +886,7 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 
 <!-- 22 -->
 <section class="step" data-step="voprosy" data-name="Вопросы учебника" data-part="Финал" data-kind="task" data-pages="с. 60">
-  <div class="kind-tag task"><span class="ic">✎</span><div><b>Задание учебника</b><span class="pg">с. 60</span><small>Вопросы из книги. Где искать ответ и подсказки — наши.</small></div></div>
+  <div class="kind-tag task"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l4.2-1L19 8.2 15.8 5 5 15.8z"></path><path d="M13.8 7l3.2 3.2"></path></svg></span><div><b>Задание учебника</b><span class="pg">с. 60</span><small>Вопросы из книги. Где искать ответ и подсказки — наши.</small></div></div>
   <div class="eyebrow">Финал · Вопросы и задания в конце § 5</div>
   <h2>Вопросы из учебника</h2>
   <div class="prose">
@@ -835,7 +916,7 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 
 <!-- 23 -->
 <section class="step" data-step="itog" data-name="Главный вопрос" data-part="Финал" data-kind="task">
-  <div class="kind-tag task"><span class="ic">✎</span><div><b>Задание учебника</b><small>Главный вопрос из книги, кирпичики-подсказки — наши.</small></div></div>
+  <div class="kind-tag task"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l4.2-1L19 8.2 15.8 5 5 15.8z"></path><path d="M13.8 7l3.2 3.2"></path></svg></span><div><b>Задание учебника</b><small>Главный вопрос из книги, кирпичики-подсказки — наши.</small></div></div>
   <div class="eyebrow">Финал</div>
   <h2>Чем арабы отличались от германцев?</h2>
   <div class="prose">
@@ -904,8 +985,8 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
   var N=steps.length, cur=0;
   var stepbar=$('#stepbar'), count=$('#count'), prevB=$('#prev'), nextB=$('#next'), tocList=$('#toc-list');
 
-  /* содержание по группам: из учебника / задания учебника / придумали мы */
-  var KIND={book:['📖','Из учебника'],task:['✎','Задания учебника'],ours:['🎲','Придумали мы']};
+  /* содержание по группам: из учебника / задания учебника / сверх учебника */
+  var KIND={book:['<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.5c2.6-1 5.6-.8 9 1.2v13c-3.4-2-6.4-2.2-9-1.2z"></path><path d="M21 5.5c-2.6-1-5.6-.8-9 1.2v13c3.4-2 6.4-2.2 9-1.2z"></path></svg>','Из учебника'],task:['<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l4.2-1L19 8.2 15.8 5 5 15.8z"></path><path d="M13.8 7l3.2 3.2"></path></svg>','Задания учебника'],ours:['<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="3"></rect><circle cx="9" cy="9" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="15" cy="15" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="15" cy="9" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="9" cy="15" r="1.3" fill="currentColor" stroke="none"></circle></svg>','Сверх учебника']};
   var tocItems=[], groups=[], prevKind=null, grp=null;
   steps.forEach(function(s,i){
     var kind=s.getAttribute('data-kind')||'book', pg=(s.getAttribute('data-pages')||'').replace(/,\s*п\..*$/,'');
@@ -915,7 +996,7 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
     b.addEventListener('click', function(){ go(i); });
     stepbar.appendChild(b);
     if(start){
-      var label = kind==='ours' ? (i===0?'Для разгона · придумали мы':'Тренировка · придумали мы') : KIND[kind][1];
+      var label = kind==='ours' ? (i===0?'Коротко о главном':'Словарик и игры · сверх учебника') : KIND[kind][1];
       grp=el('div','toc-group k-'+kind,'<div class="toc-head"><span class="ic">'+KIND[kind][0]+'</span><span>'+label+'</span></div>');
       grp.pages=[]; groups.push(grp); tocList.appendChild(grp); prevKind=kind;
     }

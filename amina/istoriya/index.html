@@ -4,46 +4,43 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>История · Амина</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oranienbaum&family=Golos+Text:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400&family=PT+Sans+Narrow:wght@700&family=PT+Sans:wght@400;700&display=swap">
 <style>
-:root{--bg:#EBE8DF;--surface:#F8F6F0;--surface-2:#E2DED2;--ink:#1B2233;--ink-2:#4A5163;--muted:#7A8093;--lapis:#23448A;--gold:#B08A2E;--gold-soft:#F1E6C2;--terra:#B4552F;--line:#D2CDBF;
-  --shadow:0 1px 2px rgba(27,34,51,.08),0 10px 28px rgba(27,34,51,.07)}
-@media (prefers-color-scheme: dark){:root{--bg:#0F1728;--surface:#182338;--surface-2:#21304B;--ink:#EDE8DC;--ink-2:#C2BFB4;--muted:#8B93A8;--lapis:#7EA0E6;--gold:#E0B84A;--gold-soft:#3E3419;--terra:#E0825C;--line:#2E3B57;
-  --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 28px rgba(0,0,0,.35)}}
+:root{--bg:#FBFAF6;--surface:#FFFFFF;--surface-2:#EAF0F8;--ink:#1A1A1A;--ink-2:#393939;--muted:#6B6B6B;--lapis:#2D63A6;--on-lapis:#FFFFFF;--gold:#8B6B22;--terra:#C24E1E;--line:#D9DDE3;--band-ink:#FFFFFF}
+@media (prefers-color-scheme: dark){:root{--bg:#141516;--surface:#1C1E21;--surface-2:#1E2936;--ink:#EDEBE6;--ink-2:#CFCBC3;--muted:#9A968F;--lapis:#79A6E0;--on-lapis:#10141A;--gold:#D9B45A;--terra:#F0875A;--line:#30343A;--band-ink:#10141A}}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:"Golos Text","Segoe UI",system-ui,sans-serif;font-size:17px;line-height:1.5}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"PT Serif",Georgia,serif;font-size:18px;line-height:1.55}
 a{color:var(--lapis)}
 a:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
-.top{border-bottom:1px solid var(--line);background:var(--bg)}
-.top-inner{max-width:720px;margin:0 auto;padding:10px 16px;display:flex;align-items:center;gap:8px;font-size:14px;color:var(--muted);flex-wrap:wrap}
-.top-inner a{color:var(--ink-2);text-decoration:none;background:var(--surface);border:1px solid var(--line);padding:5px 10px;border-radius:8px}
-.top-inner b{color:var(--ink);font-weight:600}
+.top{background:var(--lapis)}
+.top-inner{max-width:720px;margin:0 auto;padding:10px 16px;display:flex;align-items:center;gap:8px;font-family:"PT Sans","Segoe UI",system-ui,sans-serif;font-size:14px;color:var(--band-ink);flex-wrap:wrap}
+.top-inner a{color:var(--band-ink);text-decoration:none;border:1px solid var(--band-ink);padding:5px 10px;border-radius:3px}
+.top-inner b{color:var(--band-ink);font-weight:700}
 main{max-width:720px;margin:0 auto;padding:36px 16px 80px;display:flex;flex-direction:column;gap:28px}
-.eyebrow{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);font-weight:700;display:flex;align-items:center;gap:10px}
-.tess{display:inline-flex;gap:3px}.tess i{width:8px;height:8px;display:block;border-radius:1px}
-.tess i:nth-child(1){background:var(--lapis)}.tess i:nth-child(2){background:var(--gold)}.tess i:nth-child(3){background:var(--terra)}
-h1{font-family:"Oranienbaum","Georgia",serif;font-weight:400;line-height:1.05;margin:8px 0 0;font-size:clamp(36px,8vw,56px);text-wrap:balance}
+.eyebrow{font-family:"PT Sans","Segoe UI",system-ui,sans-serif;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.tess{display:none}
+h1{font-family:"PT Sans Narrow","Arial Narrow",sans-serif;font-weight:700;color:var(--lapis);line-height:1.02;margin:8px 0 0;font-size:clamp(38px,9vw,56px);text-wrap:balance}
 .lede{color:var(--ink-2);margin:10px 0 0;max-width:40ch}
 .grid{display:grid;gap:12px;grid-template-columns:1fr}
 @media (min-width:520px){.grid.two{grid-template-columns:1fr 1fr}}
-.card{display:flex;flex-direction:column;gap:6px;text-decoration:none;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px 20px;box-shadow:var(--shadow);transition:border-color .15s,transform .15s}
-.card:hover{border-color:var(--lapis);transform:translateY(-1px)}
-.card .name{font-family:"Oranienbaum","Georgia",serif;font-size:36px;line-height:1}
-.card .sub{color:var(--ink-2);font-size:15px}
-.card .cnt{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-top:4px}
-.topic{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;align-items:baseline;text-decoration:none;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px 18px;box-shadow:var(--shadow)}
+.card{display:flex;flex-direction:column;gap:6px;text-decoration:none;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--lapis);padding:18px 20px;transition:border-color .15s}
+.card:hover{border-color:var(--lapis)}
+.card .name{font-family:"PT Sans Narrow","Arial Narrow",sans-serif;font-weight:700;font-size:36px;line-height:1;color:var(--lapis)}
+.card .sub{color:var(--ink-2);font-size:16px}
+.card .cnt{font-family:"PT Sans","Segoe UI",system-ui,sans-serif;font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--terra);font-weight:700;margin-top:4px}
+.topic{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;align-items:baseline;text-decoration:none;color:var(--ink);background:var(--surface);border:1px solid var(--line);padding:16px 18px}
 .topic:hover{border-color:var(--lapis)}
-.topic .par{font-family:"Oranienbaum","Georgia",serif;font-size:30px;color:var(--gold);line-height:1;grid-row:1/3}
-.topic .ttl{font-weight:600;font-size:18px;line-height:1.25}
-.topic .desc{color:var(--ink-2);font-size:14.5px;line-height:1.35}
-.topic .meta{grid-column:2;font-size:12.5px;color:var(--muted);font-variant-numeric:tabular-nums;margin-top:4px}
-.empty{color:var(--muted);background:var(--surface);border:1px dashed var(--line);border-radius:14px;padding:18px 20px}
+.topic .par{font:700 19px/1 "PT Sans Narrow","Arial Narrow",sans-serif;color:var(--on-lapis);background:var(--lapis);padding:6px 8px;grid-row:1/3;align-self:start}
+.topic .ttl{font-family:"PT Sans Narrow","Arial Narrow",sans-serif;font-weight:700;font-size:21px;line-height:1.2}
+.topic .desc{color:var(--ink-2);font-size:15.5px;line-height:1.4}
+.topic .meta{grid-column:2;font-family:"PT Sans","Segoe UI",system-ui,sans-serif;font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums;margin-top:4px}
+.empty{color:var(--muted);background:var(--surface);border:1px dashed var(--line);padding:18px 20px}
 </style>
 </head>
 <body>
 <header class="top"><div class="top-inner"><a href="../../">Школа №12</a> <span>·</span> <a href="../">Амина</a> <span>·</span> <b>История</b></div></header>
 <main>
-<header><div class="eyebrow"><span class="tess"><i></i><i></i><i></i></span> Амина · 6 класс</div><h1>История</h1><p class="lede">Выбери тему. Каждая разбита на короткие шаги, можно вернуться к любому.</p></header><div class="grid"><a class="topic" href="2026-09-06-p1-rim-varvary-cerkov.html"><span class="par">§ 1</span><span class="ttl">Рим, варвары и Церковь</span><span class="desc">От Древности к Средневековью: Рим, варвары и христианская Церковь</span><span class="meta">19 шагов · 06.09.2026</span></a><a class="topic" href="2026-09-07-p2-vizantiya.html"><span class="par">§ 2</span><span class="ttl">Византия и её соседи</span><span class="desc">Византийская империя и её соседи</span><span class="meta">26 шагов · 07.09.2026</span></a><a class="topic" href="2026-09-09-p3-hlodvig-karl-velikiy.html"><span class="par">§ 3</span><span class="ttl">От Хлодвига к Карлу Великому</span><span class="desc">От королевства Хлодвига к империи Карла Великого</span><span class="meta">23 шагов · 09.09.2026</span></a><a class="topic" href="2026-09-14-p4-evropa-ix-xi.html"><span class="par">§ 4</span><span class="ttl">Викинги, короли и славяне</span><span class="desc">Европа в IX—XI вв.</span><span class="meta">32 шагов · 14.09.2026</span></a><a class="topic" href="2026-09-14-p5-islam-araby.html"><span class="par">§ 5</span><span class="ttl">Ислам и государство арабов</span><span class="desc">Возникновение ислама и государства у арабов</span><span class="meta">23 шагов · 14.09.2026</span></a></div>
+<header><div class="eyebrow"><span class="tess"><i></i><i></i><i></i></span> Амина · 6 класс</div><h1>История</h1><p class="lede">Выбери тему. Каждая разбита на короткие шаги, можно вернуться к любому.</p></header><div class="grid"><a class="topic" href="2026-09-06-p1-rim-varvary-cerkov.html"><span class="par">§ 1</span><span class="ttl">Рим, варвары и Церковь</span><span class="desc">От Древности к Средневековью: Рим, варвары и христианская Церковь</span><span class="meta">19 шагов · 06.09.2026</span></a><a class="topic" href="2026-09-07-p2-vizantiya.html"><span class="par">§ 2</span><span class="ttl">Византия и её соседи</span><span class="desc">Византийская империя и её соседи</span><span class="meta">26 шагов · 07.09.2026</span></a><a class="topic" href="2026-09-09-p3-hlodvig-karl-velikiy.html"><span class="par">§ 3</span><span class="ttl">От Хлодвига к Карлу Великому</span><span class="desc">От королевства Хлодвига к империи Карла Великого</span><span class="meta">23 шага · 09.09.2026</span></a><a class="topic" href="2026-09-14-p4-evropa-ix-xi.html"><span class="par">§ 4</span><span class="ttl">Викинги, короли и славяне</span><span class="desc">Европа в IX—XI вв.</span><span class="meta">32 шага · 14.09.2026</span></a><a class="topic" href="2026-09-14-p5-islam-araby.html"><span class="par">§ 5</span><span class="ttl">Ислам и государство арабов</span><span class="desc">Возникновение ислама и государства у арабов</span><span class="meta">23 шага · 14.09.2026</span></a></div>
 </main>
 </body>
 </html>

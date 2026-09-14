@@ -7,7 +7,7 @@
 <title>Рим, варвары и Церковь</title>
 <meta name="paragraph" content="§ 1">
 <meta name="description" content="От Древности к Средневековью: Рим, варвары и христианская Церковь">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oranienbaum&family=Golos+Text:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=PT+Sans+Narrow:wght@400;700&family=PT+Sans:wght@400;700&display=swap">
 <style>
 :root{
   --bg:#EBE8DF; --surface:#F8F6F0; --surface-2:#E2DED2; --ink:#1B2233; --ink-2:#4A5163; --muted:#7A8093;
@@ -223,7 +223,7 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 .toc-item .n{font-family:var(--display);font-size:18px;color:var(--muted);width:24px;font-variant-numeric:tabular-nums}
 .toc-item .m{margin-left:auto;font-size:12px;color:var(--moss);font-weight:700}
 
-/* виды шагов: из учебника / задания учебника / придумали мы */
+/* виды шагов: из учебника / задания учебника / сверх учебника */
 .kind-tag{display:flex;gap:10px;align-items:flex-start;border-radius:10px;padding:8px 12px;font-size:13px;line-height:1.35}
 .kind-tag .ic{font-size:18px;line-height:1.1}
 .kind-tag b{font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:700}
@@ -245,6 +245,87 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 .toc-head .ic{font-size:15px;letter-spacing:0}
 .toc-item .pg{margin-left:auto;font-size:12px;color:var(--muted);white-space:nowrap;font-variant-numeric:tabular-nums}
 .toc-item .pg + .m{margin-left:8px}
+
+/* ===== Книжное оформление (выбрано 14.09.2026): как учебник — синяя шапка, PT Serif / PT Sans Narrow / PT Sans ===== */
+:root{
+  --bg:#FBFAF6; --surface:#FFFFFF; --surface-2:#EAF0F8; --ink:#1A1A1A; --ink-2:#393939; --muted:#6B6B6B;
+  --lapis:#2D63A6; --on-lapis:#FFFFFF; --lapis-soft:#DCE7F5; --gold:#8B6B22; --gold-soft:#F3EBD3; --on-gold:#1A1A1A;
+  --terra:#C24E1E; --terra-soft:#FBE3D6; --moss:#3E7A3A; --moss-soft:#E1EEDC; --line:#D9DDE3; --tile:#D5DCE6; --shadow:none;
+  --band-ink:#FFFFFF; --tb:rgba(255,255,255,.32); --tbv:#FFFFFF; --to:rgba(255,190,160,.5); --tov:#F6A37E; --tt:rgba(255,230,160,.5); --ttv:#F2D27A; --tdone:#A6DB93;
+  --display:"PT Sans Narrow","Arial Narrow",sans-serif; --body:"PT Serif",Georgia,serif; --ui:"PT Sans","Segoe UI",system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){ --bg:#141516; --surface:#1C1E21; --surface-2:#1E2936; --ink:#EDEBE6; --ink-2:#CFCBC3; --muted:#9A968F;
+    --lapis:#79A6E0; --on-lapis:#10141A; --lapis-soft:#1F3350; --gold:#D9B45A; --gold-soft:#3A3120; --on-gold:#10141A;
+    --terra:#F0875A; --terra-soft:#43261A; --moss:#8CC47F; --moss-soft:#22381F; --line:#30343A; --tile:#2C3440; --shadow:none;
+    --band-ink:#10141A; --tb:rgba(16,20,26,.28); --tbv:#10141A; --to:rgba(120,40,10,.4); --tov:#8A2E0C; --tt:rgba(110,80,10,.4); --ttv:#6B4E0E; --tdone:#1F5A1A; } }
+:root[data-theme="dark"]{ --bg:#141516; --surface:#1C1E21; --surface-2:#1E2936; --ink:#EDEBE6; --ink-2:#CFCBC3; --muted:#9A968F;
+    --lapis:#79A6E0; --on-lapis:#10141A; --lapis-soft:#1F3350; --gold:#D9B45A; --gold-soft:#3A3120; --on-gold:#10141A;
+    --terra:#F0875A; --terra-soft:#43261A; --moss:#8CC47F; --moss-soft:#22381F; --line:#30343A; --tile:#2C3440; --shadow:none;
+    --band-ink:#10141A; --tb:rgba(16,20,26,.28); --tbv:#10141A; --to:rgba(120,40,10,.4); --tov:#8A2E0C; --tt:rgba(110,80,10,.4); --ttv:#6B4E0E; --tdone:#1F5A1A; }
+body{font-family:var(--body);font-size:18px;line-height:1.62}
+h1,h2,h3{font-family:var(--display);font-weight:700}
+.step h1{color:var(--lapis);font-size:clamp(34px,8.5vw,52px);line-height:1.02}
+.step h2{color:var(--lapis);font-size:clamp(28px,7vw,36px);line-height:1.08}
+.step h3{font-size:23px}
+.pnum{display:inline-flex;align-items:center;justify-content:center;background:var(--lapis);color:var(--on-lapis);font:700 .72em/1 var(--display);width:1.08em;height:1.08em;margin-right:.3em;vertical-align:.08em}
+.lede{font-size:20px}
+.top{background:var(--lapis);border-bottom:0}
+.back{background:transparent;border-color:var(--band-ink);color:var(--band-ink);font-family:var(--ui);border-radius:3px}
+.crumb{color:var(--band-ink);opacity:.88;font-family:var(--ui)}
+.crumb b{color:var(--band-ink)}
+.toc-btn{background:var(--band-ink);color:var(--lapis);border-color:var(--band-ink);font-family:var(--ui);font-weight:700;border-radius:3px}
+.stepbar button{border-radius:1px}
+.stepbar button.k-book{background:var(--tb)} .stepbar button.k-book.visited{background:var(--tbv)}
+.stepbar button.k-ours{background:var(--to)} .stepbar button.k-ours.visited{background:var(--tov)}
+.stepbar button.k-task{background:var(--tt)} .stepbar button.k-task.visited{background:var(--ttv)}
+.stepbar button.visited.done{background:var(--tdone)}
+.stepbar button.current{box-shadow:0 0 0 1.5px var(--band-ink)}
+.eyebrow{font-family:var(--ui);color:var(--muted);letter-spacing:.08em}
+.tess{display:none}
+.term{font-weight:700;font-style:italic;color:var(--ink);border-bottom:0}
+.kind-tag{border-radius:0;padding:6px 0 0;border-top:2px solid currentColor;font-family:var(--ui);align-items:center}
+.kind-tag.book,.kind-tag.task,.kind-tag.ours{background:transparent}
+.kind-tag .ic{display:flex}
+.kind-tag b{font-size:12.5px;letter-spacing:.08em}
+.kind-tag small{font-family:var(--body);font-style:italic;font-size:14.5px}
+details{border-radius:0}
+details summary{font-family:var(--ui)}
+details.book{border:0;border-top:3px solid var(--lapis);background:var(--surface-2)}
+details.book summary{color:var(--lapis)}
+details.book summary::before,details.book[open] summary::before{background:var(--lapis)}
+details.book .body{font-size:16px}
+.aside{border-radius:0}
+.aside .k{font-family:var(--ui)}
+.dom{border-radius:0;box-shadow:none;border-top:3px solid var(--lapis)}
+.dom .n{font-family:var(--display);font-weight:700;color:var(--lapis)}
+.dom .t{font-family:var(--ui)}
+.rung{border-radius:0}
+.tl-btn .y{font-family:var(--display);font-weight:700;color:var(--lapis)}
+.tl-btn .era{font-family:var(--ui)}
+.fig img{border-radius:0;box-shadow:none}
+.fig figcaption{font-family:var(--ui)}
+.org .box{border-radius:0}
+.qi{border-radius:0}
+.qi .qn{font-family:var(--display);font-weight:700;color:var(--terra)}
+.qi a{border-radius:0;font-family:var(--ui)}
+.game{border-radius:0;box-shadow:none;border-top:4px solid var(--terra)}
+.game h3{color:var(--terra)}
+.badge{border-radius:0;font-family:var(--ui)}
+.btn{border-radius:3px;font-family:var(--ui);font-weight:700}
+.opt{border-radius:0;background:var(--surface);border-color:var(--line);font-family:var(--body)}
+.feedback{border-radius:0}
+.progress{font-family:var(--ui)}
+.q{font-family:var(--body);font-weight:700}
+.face{border-radius:0}
+.face.f .w{font-family:var(--display);font-weight:700}
+.seq,.seq .slot,.sort-card,.brick,.qtext,.way,.six span,.mosaic .tile,.score-tiles i,.toc-panel,.toc-item{border-radius:0}
+.brick button{font-family:var(--ui)}
+.pager{background:var(--surface)}
+.count{font-family:var(--ui)}
+.toc-panel h3{font-family:var(--display)}
+.toc-head{font-family:var(--ui)}
+.toc-head .ic{display:flex}
+.score .big{font-family:var(--display);font-weight:700;color:var(--lapis)}
 </style>
 </head>
 <body>
@@ -263,7 +344,7 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 
 <!-- 1 -->
 <section class="step" data-step="za-minutu" data-name="За минуту" data-part="Самое главное" data-kind="ours">
-  <div class="kind-tag ours"><span class="ic">🎲</span><div><b>Придумали мы</b><small>Короткий пересказ своими словами, для разгона. Всё, как в учебнике, — в следующих шагах.</small></div></div>
+  <div class="kind-tag ours"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 6h14"></path><path d="M5 12h14"></path><path d="M5 18h9"></path></svg></span><div><b>Коротко о главном</b><small>Пересказ для разгона. Подробно, как в учебнике, — в следующих шагах.</small></div></div>
   <div class="eyebrow"><span class="tess"><i></i><i></i><i></i></span> История · 6 класс · § 1</div>
   <h1>Рим, варвары и Церковь</h1>
   <p class="lede">Амина, это история о том, как закончился Древний мир, кто пришёл ему на смену и кто спас книги.</p>
@@ -282,13 +363,13 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
   <div class="aside">
     <div class="k">Как этим пользоваться</div>
     <p>У каждого шага написано, какая это страница учебника. Внизу шага есть «Подробнее, как в учебнике»: там всё, что есть на этих страницах, ничего не пропущено. Сначала учи по коротким шагам, а перед уроком открой «подробнее».</p>
-    <p>Плашка вверху шага подскажет, откуда он: синяя 📖 — из учебника, золотая ✎ — задание учебника, терракотовая 🎲 — придумали мы для тренировки. В «Содержании» шаги так же разбиты на группы.</p>
+    <p>Надпись вверху шага подскажет, откуда он: синяя — из учебника, золотая — задание учебника, оранжевая — сверх учебника (пересказ, словарик, игры, самопроверка). В «Содержании» шаги так же разбиты на группы.</p>
   </div>
 </section>
 
 <!-- 2 -->
 <section class="step" data-step="daty" data-name="Даты" data-part="Лента времени" data-kind="book" data-pages="с. 8">
-  <div class="kind-tag book"><span class="ic">📖</span><div><b>Из учебника</b><span class="pg">с. 8</span></div></div>
+  <div class="kind-tag book"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.5c2.6-1 5.6-.8 9 1.2v13c-3.4-2-6.4-2.2-9-1.2z"></path><path d="M21 5.5c-2.6-1-5.6-.8-9 1.2v13c3.4-2 6.4-2.2 9-1.2z"></path></svg></span><div><b>Из учебника</b><span class="pg">с. 8</span></div></div>
   <div class="eyebrow">Шесть дат</div>
   <h2>Лента времени</h2>
   <p class="task">Это все даты из таблицы в начале параграфа, сверху вниз от ранних к поздним. Нажми на дату, чтобы прочитать, что случилось. Красные помечены «Россия», как в учебнике.</p>
@@ -298,7 +379,7 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 
 <!-- 3 -->
 <section class="step" data-step="germantsy" data-name="Как жили германцы" data-part="Глава 1 · Мир варваров" data-kind="book" data-pages="с. 9">
-  <div class="kind-tag book"><span class="ic">📖</span><div><b>Из учебника</b><span class="pg">с. 9</span></div></div>
+  <div class="kind-tag book"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.5c2.6-1 5.6-.8 9 1.2v13c-3.4-2-6.4-2.2-9-1.2z"></path><path d="M21 5.5c-2.6-1-5.6-.8-9 1.2v13c3.4-2 6.4-2.2 9-1.2z"></path></svg></span><div><b>Из учебника</b><span class="pg">с. 9</span></div></div>
   <div class="eyebrow">Глава 1 · Мир варваров</div>
   <h2>Как жили германцы?</h2>
   <div class="prose">
@@ -325,7 +406,7 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 
 <!-- 4 -->
 <section class="step" data-step="vozhd" data-name="Кто главный в племени" data-part="Глава 1 · Мир варваров" data-kind="book" data-pages="с. 10">
-  <div class="kind-tag book"><span class="ic">📖</span><div><b>Из учебника</b><span class="pg">с. 10</span></div></div>
+  <div class="kind-tag book"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.5c2.6-1 5.6-.8 9 1.2v13c-3.4-2-6.4-2.2-9-1.2z"></path><path d="M21 5.5c-2.6-1-5.6-.8-9 1.2v13c3.4-2 6.4-2.2 9-1.2z"></path></svg></span><div><b>Из учебника</b><span class="pg">с. 10</span></div></div>
   <div class="eyebrow">Глава 1 · Мир варваров</div>
   <h2>Кто главный в племени?</h2>
   <div class="prose">
@@ -354,7 +435,7 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 
 <!-- 5 -->
 <section class="step" data-step="slavyane" data-name="Славяне" data-part="Глава 1 · Мир варваров" data-kind="book" data-pages="с. 10–11">
-  <div class="kind-tag book"><span class="ic">📖</span><div><b>Из учебника</b><span class="pg">с. 10–11</span></div></div>
+  <div class="kind-tag book"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.5c2.6-1 5.6-.8 9 1.2v13c-3.4-2-6.4-2.2-9-1.2z"></path><path d="M21 5.5c-2.6-1-5.6-.8-9 1.2v13c3.4-2 6.4-2.2 9-1.2z"></path></svg></span><div><b>Из учебника</b><span class="pg">с. 10–11</span></div></div>
   <div class="eyebrow">Глава 1 · Мир варваров</div>
   <h2>Славяне, восточные соседи</h2>
   <div class="prose">
@@ -382,7 +463,7 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 
 <!-- 6 -->
 <section class="step" data-step="tserkov" data-name="Рим и Церковь" data-part="Глава 2 · Рим и Церковь" data-kind="book" data-pages="с. 11">
-  <div class="kind-tag book"><span class="ic">📖</span><div><b>Из учебника</b><span class="pg">с. 11</span></div></div>
+  <div class="kind-tag book"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.5c2.6-1 5.6-.8 9 1.2v13c-3.4-2-6.4-2.2-9-1.2z"></path><path d="M21 5.5c-2.6-1-5.6-.8-9 1.2v13c3.4-2 6.4-2.2 9-1.2z"></path></svg></span><div><b>Из учебника</b><span class="pg">с. 11</span></div></div>
   <div class="eyebrow">Глава 2 · Рим и Церковь</div>
   <h2>Как появилась Церковь</h2>
   <div class="prose">
@@ -414,7 +495,7 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 
 <!-- 7 -->
 <section class="step" data-step="monahi" data-name="Монахи и миссионеры" data-part="Глава 2 · Рим и Церковь" data-kind="book" data-pages="с. 11–12">
-  <div class="kind-tag book"><span class="ic">📖</span><div><b>Из учебника</b><span class="pg">с. 11–12</span></div></div>
+  <div class="kind-tag book"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.5c2.6-1 5.6-.8 9 1.2v13c-3.4-2-6.4-2.2-9-1.2z"></path><path d="M21 5.5c-2.6-1-5.6-.8-9 1.2v13c3.4-2 6.4-2.2 9-1.2z"></path></svg></span><div><b>Из учебника</b><span class="pg">с. 11–12</span></div></div>
   <div class="eyebrow">Глава 2 · Рим и Церковь</div>
   <h2>Монахи и миссионеры</h2>
   <div class="prose">
@@ -449,7 +530,7 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 
 <!-- 8 -->
 <section class="step" data-step="kak-verit" data-name="Как верить?" data-part="Глава 3 · Споры о вере" data-kind="book" data-pages="с. 13">
-  <div class="kind-tag book"><span class="ic">📖</span><div><b>Из учебника</b><span class="pg">с. 13</span></div></div>
+  <div class="kind-tag book"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.5c2.6-1 5.6-.8 9 1.2v13c-3.4-2-6.4-2.2-9-1.2z"></path><path d="M21 5.5c-2.6-1-5.6-.8-9 1.2v13c3.4-2 6.4-2.2 9-1.2z"></path></svg></span><div><b>Из учебника</b><span class="pg">с. 13</span></div></div>
   <div class="eyebrow">Глава 3 · Споры о вере</div>
   <h2>Как верить? Споры и соборы</h2>
   <div class="prose">
@@ -484,7 +565,7 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 
 <!-- 9 -->
 <section class="step" data-step="korolevstva" data-name="Германские королевства" data-part="Глава 4 · Королевства" data-kind="book" data-pages="с. 14">
-  <div class="kind-tag book"><span class="ic">📖</span><div><b>Из учебника</b><span class="pg">с. 14</span></div></div>
+  <div class="kind-tag book"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.5c2.6-1 5.6-.8 9 1.2v13c-3.4-2-6.4-2.2-9-1.2z"></path><path d="M21 5.5c-2.6-1-5.6-.8-9 1.2v13c3.4-2 6.4-2.2 9-1.2z"></path></svg></span><div><b>Из учебника</b><span class="pg">с. 14</span></div></div>
   <div class="eyebrow">Глава 4 · Королевства</div>
   <h2>Германские королевства</h2>
   <div class="prose">
@@ -523,7 +604,7 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 
 <!-- 10 -->
 <section class="step" data-step="teodorih" data-name="476 год и Теодорих" data-part="Глава 4 · Королевства" data-kind="book" data-pages="с. 14–15">
-  <div class="kind-tag book"><span class="ic">📖</span><div><b>Из учебника</b><span class="pg">с. 14–15</span></div></div>
+  <div class="kind-tag book"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.5c2.6-1 5.6-.8 9 1.2v13c-3.4-2-6.4-2.2-9-1.2z"></path><path d="M21 5.5c-2.6-1-5.6-.8-9 1.2v13c3.4-2 6.4-2.2 9-1.2z"></path></svg></span><div><b>Из учебника</b><span class="pg">с. 14–15</span></div></div>
   <div class="eyebrow">Глава 4 · Королевства</div>
   <h2>476 год и Теодорих</h2>
   <div class="prose">
@@ -556,7 +637,7 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 
 <!-- 11 -->
 <section class="step" data-step="znaniya" data-name="Кто спас знания" data-part="Глава 5 · Знания" data-kind="book" data-pages="с. 15–16">
-  <div class="kind-tag book"><span class="ic">📖</span><div><b>Из учебника</b><span class="pg">с. 15–16</span></div></div>
+  <div class="kind-tag book"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.5c2.6-1 5.6-.8 9 1.2v13c-3.4-2-6.4-2.2-9-1.2z"></path><path d="M21 5.5c-2.6-1-5.6-.8-9 1.2v13c3.4-2 6.4-2.2 9-1.2z"></path></svg></span><div><b>Из учебника</b><span class="pg">с. 15–16</span></div></div>
   <div class="eyebrow">Глава 5 · Знания</div>
   <h2>Кто спас знания Древнего мира</h2>
   <div class="prose">
@@ -589,7 +670,7 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 
 <!-- 12 -->
 <section class="step" data-step="slovar-1" data-name="Словарик: варвары" data-part="Словарик" data-kind="ours">
-  <div class="kind-tag ours"><span class="ic">🎲</span><div><b>Придумали мы</b><small>В учебнике такого нет — это тренировка.</small></div></div>
+  <div class="kind-tag ours"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="6" width="12" height="14" rx="1.5"></rect><path d="M8.5 3.5h10.5a1.5 1.5 0 0 1 1.5 1.5v12.5"></path></svg></span><div><b>Словарик</b><small>Сверх учебника — чтобы запомнить слова параграфа.</small></div></div>
   <div class="game">
     <div class="g-head"><h3>Словарик: варвары</h3><span class="badge" id="b-terms">Игра</span></div>
     <p class="task">Нажми на карточку, и она перевернётся. Словарик из трёх частей, открой все карточки.</p>
@@ -600,7 +681,7 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 
 <!-- 13 -->
 <section class="step" data-step="slovar-2" data-name="Словарик: Церковь" data-part="Словарик" data-kind="ours">
-  <div class="kind-tag ours"><span class="ic">🎲</span><div><b>Придумали мы</b><small>В учебнике такого нет — это тренировка.</small></div></div>
+  <div class="kind-tag ours"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="6" width="12" height="14" rx="1.5"></rect><path d="M8.5 3.5h10.5a1.5 1.5 0 0 1 1.5 1.5v12.5"></path></svg></span><div><b>Словарик</b><small>Сверх учебника — чтобы запомнить слова параграфа.</small></div></div>
   <div class="game">
     <div class="g-head"><h3>Словарик: Церковь</h3><span class="badge" id="b-terms2">Игра</span></div>
     <p class="task">Вторая часть. Люди и места Церкви.</p>
@@ -611,7 +692,7 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 
 <!-- 14 -->
 <section class="step" data-step="slovar-3" data-name="Словарик: споры о вере" data-part="Словарик" data-kind="ours">
-  <div class="kind-tag ours"><span class="ic">🎲</span><div><b>Придумали мы</b><small>В учебнике такого нет — это тренировка.</small></div></div>
+  <div class="kind-tag ours"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="6" width="12" height="14" rx="1.5"></rect><path d="M8.5 3.5h10.5a1.5 1.5 0 0 1 1.5 1.5v12.5"></path></svg></span><div><b>Словарик</b><small>Сверх учебника — чтобы запомнить слова параграфа.</small></div></div>
   <div class="game">
     <div class="g-head"><h3>Словарик: споры о вере</h3><span class="badge" id="b-terms3">Игра</span></div>
     <p class="task">Третья часть. Самые трудные слова параграфа.</p>
@@ -622,7 +703,7 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 
 <!-- 15 -->
 <section class="step" data-step="poryadok" data-name="Расставь по порядку" data-part="Игры" data-kind="ours">
-  <div class="kind-tag ours"><span class="ic">🎲</span><div><b>Придумали мы</b><small>В учебнике такого нет — это тренировка.</small></div></div>
+  <div class="kind-tag ours"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="3"></rect><circle cx="9" cy="9" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="15" cy="15" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="15" cy="9" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="9" cy="15" r="1.3" fill="currentColor" stroke="none"></circle></svg></span><div><b>Игра</b><small>Сверх учебника — чтобы закрепить тему.</small></div></div>
   <div class="game">
     <div class="g-head"><h3>Расставь по порядку</h3><span class="badge" id="b-order">Игра</span></div>
     <p class="task">Нажимай на события от самого раннего к самому позднему. Даты спрятаны, вспоминай сама.</p>
@@ -638,7 +719,7 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 
 <!-- 16 -->
 <section class="step" data-step="lishnee" data-name="Найди лишнее" data-part="Игры" data-kind="ours">
-  <div class="kind-tag ours"><span class="ic">🎲</span><div><b>Придумали мы</b><small>В учебнике такого нет — это тренировка.</small></div></div>
+  <div class="kind-tag ours"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="3"></rect><circle cx="9" cy="9" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="15" cy="15" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="15" cy="9" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="9" cy="15" r="1.3" fill="currentColor" stroke="none"></circle></svg></span><div><b>Игра</b><small>Сверх учебника — чтобы закрепить тему.</small></div></div>
   <div class="game">
     <div class="g-head"><h3>Найди лишнее</h3><span class="badge" id="b-odd">Игра</span></div>
     <p class="task">Три слова из одной компании, одно чужое. Найди чужое.</p>
@@ -651,7 +732,7 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 
 <!-- 17 -->
 <section class="step" data-step="test" data-name="Проверь себя" data-part="Финал" data-kind="ours">
-  <div class="kind-tag ours"><span class="ic">🎲</span><div><b>Придумали мы</b><small>Вопросы для самопроверки придумали мы. Задания из учебника — дальше.</small></div></div>
+  <div class="kind-tag ours"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"></circle><path d="M8 12.3l2.8 2.8L16.2 9.6"></path></svg></span><div><b>Самопроверка</b><small>Сверх учебника — вопросы, чтобы проверить себя. Задания из учебника — дальше.</small></div></div>
   <div class="eyebrow">Финал</div>
   <h2>Проверь себя</h2>
   <div class="game">
@@ -662,7 +743,7 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 
 <!-- 18 -->
 <section class="step" data-step="voprosy" data-name="Вопросы учебника" data-part="Финал" data-kind="task" data-pages="с. 16–17">
-  <div class="kind-tag task"><span class="ic">✎</span><div><b>Задание учебника</b><span class="pg">с. 16–17</span><small>Вопросы из книги. Где искать ответ и подсказки — наши.</small></div></div>
+  <div class="kind-tag task"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l4.2-1L19 8.2 15.8 5 5 15.8z"></path><path d="M13.8 7l3.2 3.2"></path></svg></span><div><b>Задание учебника</b><span class="pg">с. 16–17</span><small>Вопросы из книги. Где искать ответ и подсказки — наши.</small></div></div>
   <div class="eyebrow">Финал</div>
   <h2>Вопросы из учебника</h2>
   <div class="prose">
@@ -685,7 +766,7 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 
 <!-- 19 -->
 <section class="step" data-step="itog" data-name="Главный вопрос" data-part="Финал" data-kind="task">
-  <div class="kind-tag task"><span class="ic">✎</span><div><b>Задание учебника</b><small>Главный вопрос из книги, кирпичики-подсказки — наши.</small></div></div>
+  <div class="kind-tag task"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l4.2-1L19 8.2 15.8 5 5 15.8z"></path><path d="M13.8 7l3.2 3.2"></path></svg></span><div><b>Задание учебника</b><small>Главный вопрос из книги, кирпичики-подсказки — наши.</small></div></div>
   <div class="eyebrow">Финал</div>
   <h2>Каковы были последствия Великого переселения народов для Рима и варваров?</h2>
   <div class="prose">
@@ -752,8 +833,8 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
   var N=steps.length, cur=0;
   var stepbar=$('#stepbar'), count=$('#count'), prevB=$('#prev'), nextB=$('#next'), tocList=$('#toc-list');
 
-  /* содержание по группам: из учебника / задания учебника / придумали мы */
-  var KIND={book:['📖','Из учебника'],task:['✎','Задания учебника'],ours:['🎲','Придумали мы']};
+  /* содержание по группам: из учебника / задания учебника / сверх учебника */
+  var KIND={book:['<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.5c2.6-1 5.6-.8 9 1.2v13c-3.4-2-6.4-2.2-9-1.2z"></path><path d="M21 5.5c-2.6-1-5.6-.8-9 1.2v13c3.4-2 6.4-2.2 9-1.2z"></path></svg>','Из учебника'],task:['<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l4.2-1L19 8.2 15.8 5 5 15.8z"></path><path d="M13.8 7l3.2 3.2"></path></svg>','Задания учебника'],ours:['<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="3"></rect><circle cx="9" cy="9" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="15" cy="15" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="15" cy="9" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="9" cy="15" r="1.3" fill="currentColor" stroke="none"></circle></svg>','Сверх учебника']};
   var tocItems=[], groups=[], prevKind=null, grp=null;
   steps.forEach(function(s,i){
     var kind=s.getAttribute('data-kind')||'book', pg=(s.getAttribute('data-pages')||'').replace(/,\s*п\..*$/,'');
@@ -763,7 +844,7 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
     b.addEventListener('click', function(){ go(i); });
     stepbar.appendChild(b);
     if(start){
-      var label = kind==='ours' ? (i===0?'Для разгона · придумали мы':'Тренировка · придумали мы') : KIND[kind][1];
+      var label = kind==='ours' ? (i===0?'Коротко о главном':'Словарик и игры · сверх учебника') : KIND[kind][1];
       grp=el('div','toc-group k-'+kind,'<div class="toc-head"><span class="ic">'+KIND[kind][0]+'</span><span>'+label+'</span></div>');
       grp.pages=[]; groups.push(grp); tocList.appendChild(grp); prevKind=kind;
     }
