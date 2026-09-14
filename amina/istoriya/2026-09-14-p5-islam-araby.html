@@ -1,0 +1,1281 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Ислам и государство арабов</title>
+<meta name="paragraph" content="§ 5">
+<meta name="description" content="Возникновение ислама и государства у арабов">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oranienbaum&family=Golos+Text:wght@400;500;600;700&display=swap">
+<style>
+:root{
+  --bg:#EBE8DF; --surface:#F8F6F0; --surface-2:#E2DED2; --ink:#1B2233; --ink-2:#4A5163; --muted:#7A8093;
+  --lapis:#23448A; --on-lapis:#FFFFFF; --lapis-soft:#D9E1F3;
+  --gold:#B08A2E; --gold-soft:#F1E6C2; --on-gold:#2A2107;
+  --terra:#B4552F; --terra-soft:#F3DCD2;
+  --moss:#4E7A3B; --moss-soft:#DCE8D2;
+  --line:#D2CDBF; --tile:#CFC9B9;
+  --shadow:0 1px 2px rgba(27,34,51,.08),0 10px 28px rgba(27,34,51,.07);
+  --display:"Oranienbaum","Georgia","Times New Roman",serif;
+  --body:"Golos Text","Segoe UI",system-ui,-apple-system,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0F1728; --surface:#182338; --surface-2:#21304B; --ink:#EDE8DC; --ink-2:#C2BFB4; --muted:#8B93A8;
+    --lapis:#7EA0E6; --on-lapis:#0F1728; --lapis-soft:#22345A;
+    --gold:#E0B84A; --gold-soft:#3E3419; --on-gold:#0F1728;
+    --terra:#E0825C; --terra-soft:#4A2A1D;
+    --moss:#8DBF74; --moss-soft:#243B1F;
+    --line:#2E3B57; --tile:#2A3856;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 28px rgba(0,0,0,.35);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0F1728; --surface:#182338; --surface-2:#21304B; --ink:#EDE8DC; --ink-2:#C2BFB4; --muted:#8B93A8;
+  --lapis:#7EA0E6; --on-lapis:#0F1728; --lapis-soft:#22345A;
+  --gold:#E0B84A; --gold-soft:#3E3419; --on-gold:#0F1728;
+  --terra:#E0825C; --terra-soft:#4A2A1D;
+  --moss:#8DBF74; --moss-soft:#243B1F;
+  --line:#2E3B57; --tile:#2A3856;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 28px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+@media (prefers-reduced-motion: reduce){ *{transition:none!important;animation:none!important} }
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.55;-webkit-text-size-adjust:100%}
+h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1.1;text-wrap:balance;margin:0}
+p{margin:0}
+a{color:var(--lapis)}
+button{font:inherit;color:inherit;cursor:pointer}
+button:focus-visible,summary:focus-visible,a:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+[hidden]{display:none!important}
+
+/* ---------- top bar ---------- */
+.top{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+.top-inner{max-width:720px;margin:0 auto;padding:10px 16px;display:flex;align-items:center;gap:12px}
+.back{text-decoration:none;color:var(--ink-2);font-size:14px;white-space:nowrap;padding:6px 10px;border-radius:8px;background:var(--surface);border:1px solid var(--line)}
+.crumb{flex:1;min-width:0;font-size:14px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.crumb b{color:var(--ink);font-weight:600}
+.toc-btn{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:6px 10px;font-size:14px;color:var(--lapis);font-weight:600;white-space:nowrap}
+.stepbar{max-width:720px;margin:0 auto;padding:0 16px 10px;display:flex;gap:4px}
+.stepbar button{flex:1;height:8px;min-width:6px;padding:0;border:0;border-radius:2px;background:var(--tile);transition:background .3s,transform .3s}
+.stepbar button.visited{background:var(--lapis)}
+.stepbar button.done{background:var(--gold)}
+.stepbar button.current{transform:scaleY(1.6);background:var(--gold)}
+
+/* ---------- steps ---------- */
+main{max-width:720px;margin:0 auto;padding:20px 16px 120px}
+.step{display:flex;flex-direction:column;gap:16px}
+.eyebrow{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);font-weight:700;display:flex;align-items:center;gap:10px}
+.tess{display:inline-flex;gap:3px}
+.tess i{width:8px;height:8px;display:block;border-radius:1px}
+.tess i:nth-child(1){background:var(--lapis)} .tess i:nth-child(2){background:var(--gold)} .tess i:nth-child(3){background:var(--terra)}
+.step h1{font-size:clamp(36px,8vw,56px)}
+.step h2{font-size:clamp(28px,6vw,38px)}
+.step h3{font-size:22px;color:var(--lapis);margin-top:4px}
+.lede{font-size:19px;color:var(--ink-2);max-width:34ch}
+.prose{display:flex;flex-direction:column;gap:12px;max-width:66ch}
+.prose ul{margin:0;padding-left:22px;display:flex;flex-direction:column;gap:6px}
+.prose li::marker{color:var(--gold)}
+b,strong{font-weight:600}
+.term{font-weight:600;color:var(--lapis);border-bottom:2px solid var(--gold-soft)}
+.aside{background:var(--lapis-soft);border-left:4px solid var(--lapis);padding:12px 16px;border-radius:0 8px 8px 0;font-size:16px;display:flex;flex-direction:column;gap:6px}
+.aside .k{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--lapis);font-weight:700}
+.home{background:var(--gold-soft);border-left-color:var(--gold)}
+.home .k{color:var(--gold)}
+details{border:1px solid var(--line);border-radius:10px;background:var(--surface)}
+details summary{cursor:pointer;list-style:none;padding:12px 16px;font-weight:600;color:var(--lapis);display:flex;align-items:center;gap:10px}
+details summary::-webkit-details-marker{display:none}
+details summary::before{content:"";width:9px;height:9px;background:var(--gold);transform:rotate(45deg);flex:none;transition:transform .2s}
+details[open] summary::before{transform:rotate(45deg) scale(.6);background:var(--lapis)}
+details .body{padding:0 16px 14px;display:flex;flex-direction:column;gap:8px;color:var(--ink-2)}
+
+.steps4{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+@media (min-width:600px){ .steps4{grid-template-columns:repeat(4,1fr)} }
+.dom{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px;display:flex;flex-direction:column;gap:4px;box-shadow:var(--shadow)}
+.dom .n{font-family:var(--display);font-size:28px;color:var(--gold);line-height:1}
+.dom .t{font-weight:600;font-size:15px;line-height:1.25}
+.dom .d{font-size:13.5px;color:var(--ink-2);line-height:1.35}
+
+.ladder{display:flex;flex-direction:column;align-items:center;gap:6px}
+.rung{background:var(--lapis);color:var(--on-lapis);padding:9px 12px;border-radius:8px;text-align:center;font-size:15px;line-height:1.3}
+.rung small{display:block;opacity:.85;font-size:12.5px}
+.rung.r1{width:60%} .rung.r2{width:74%} .rung.r3{width:88%} .rung.r4{width:100%;background:var(--surface-2);color:var(--ink)}
+
+/* timeline (вертикальная, все даты видны сразу) */
+.tl-v{display:flex;flex-direction:column;position:relative;padding-left:4px}
+.tl-v::before{content:"";position:absolute;left:16px;top:16px;bottom:16px;width:3px;background:var(--line);border-radius:2px}
+.tl-item{position:relative;padding-left:36px;display:flex;flex-direction:column}
+.tl-btn{background:none;border:0;padding:8px 0;text-align:left;display:flex;align-items:baseline;gap:8px 12px;flex-wrap:wrap;color:var(--ink);width:100%}
+.tl-btn .dot{position:absolute;left:5px;top:12px;width:17px;height:17px;background:var(--surface);border:3px solid var(--lapis);border-radius:50%;transition:transform .2s,background .2s}
+.tl-item.ru .dot{border-color:var(--terra)}
+.tl-item.open .dot{background:var(--gold);border-color:var(--gold);transform:scale(1.2)}
+.tl-btn .y{font-family:var(--display);font-size:26px;line-height:1;font-variant-numeric:tabular-nums;min-width:96px}
+.tl-btn .t{font-weight:600;font-size:16px}
+.tl-btn .era{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--lapis);font-weight:700;margin-left:auto}
+.tl-item.ru .era{color:var(--terra)}
+.tl-d{color:var(--ink-2);font-size:15.5px;padding:0 0 12px;line-height:1.45}
+.hint{font-size:14px;color:var(--muted)}
+
+/* «как в учебнике» и вопросы учебника */
+details.book{border-color:var(--gold-soft)}
+details.book summary{color:var(--gold)}
+details.book summary::before{background:var(--gold)}
+details.book[open] summary::before{background:var(--gold)}
+details.book .body{font-size:15px;color:var(--ink)}
+details.book .body ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:7px}
+details.book .body li::marker{color:var(--gold)}
+details.book .body .pic{color:var(--ink-2);font-style:italic}
+.qlist{display:flex;flex-direction:column;gap:10px}
+.qi{display:grid;grid-template-columns:auto 1fr;gap:12px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.qi .qn{font-family:var(--display);font-size:24px;color:var(--gold);line-height:1;min-width:20px}
+.qi p{font-size:15.5px}
+.qi .src{font-size:14.5px;color:var(--ink-2);margin-top:6px}
+.qi a{font-size:13.5px;font-weight:600;text-decoration:none;display:inline-block;margin-top:8px;background:var(--lapis-soft);padding:4px 10px;border-radius:999px}
+
+/* games */
+.game{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:12px}
+.g-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.game h3{margin:0}
+.task{color:var(--ink-2)}
+.badge{font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;padding:4px 10px;border-radius:999px;background:var(--gold-soft);color:var(--gold)}
+.badge.done{background:var(--moss-soft);color:var(--moss)}
+.btn{background:var(--lapis);color:var(--on-lapis);border:0;border-radius:10px;padding:10px 18px;font-weight:600;font-size:15px;text-decoration:none;display:inline-block}
+.btn.ghost{background:transparent;color:var(--lapis);border:2px solid var(--lapis)}
+.btn:disabled{opacity:.45;cursor:default}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.feedback{padding:12px 14px;border-radius:10px;font-size:15px;display:flex;flex-direction:column;gap:4px}
+.feedback.ok{background:var(--moss-soft);border-left:4px solid var(--moss)}
+.feedback.bad{background:var(--terra-soft);border-left:4px solid var(--terra)}
+.feedback .k{font-weight:700}
+.progress{font-size:13px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.card{perspective:900px;height:150px;background:none;border:0;padding:0;text-align:left}
+.card .in{position:relative;width:100%;height:100%;transition:transform .5s;transform-style:preserve-3d}
+.card.flip .in{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;border-radius:12px;padding:12px;display:flex;flex-direction:column;justify-content:center;gap:6px;overflow:hidden}
+.face.f{background:var(--lapis);color:var(--on-lapis)}
+.face.f .w{font-family:var(--display);font-size:21px;line-height:1.05}
+.face.f .tap{font-size:11px;opacity:.75;letter-spacing:.08em;text-transform:uppercase}
+.face.b{background:var(--surface-2);color:var(--ink);transform:rotateY(180deg);font-size:12.5px;line-height:1.3;justify-content:flex-start;overflow:auto}
+.face.b .w{font-weight:700;color:var(--lapis);font-size:13px}
+.face.b .e{color:var(--ink-2);font-style:italic}
+
+.match{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.col{display:flex;flex-direction:column;gap:8px}
+.col .lbl{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.opt{background:var(--surface-2);border:2px solid transparent;border-radius:10px;padding:10px 12px;text-align:left;font-weight:500;font-size:15px;transition:border-color .15s,background .15s}
+.opt:hover{border-color:var(--lapis)}
+.opt.sel{border-color:var(--gold);background:var(--gold-soft)}
+.opt.ok{background:var(--moss-soft);border-color:var(--moss)}
+.opt.bad{animation:shake .35s}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+
+.pool{display:flex;flex-direction:column;gap:8px}
+.seq{display:flex;flex-direction:column;gap:8px;min-height:44px;padding:10px;border:2px dashed var(--line);border-radius:12px}
+.seq .slot{display:flex;align-items:center;gap:10px;background:var(--lapis-soft);border-radius:8px;padding:8px 12px;font-size:15px}
+.seq .slot .i{font-family:var(--display);font-size:20px;color:var(--lapis);width:22px;font-variant-numeric:tabular-nums}
+.seq .slot.ok{background:var(--moss-soft)} .seq .slot.bad{background:var(--terra-soft)}
+.seq .slot .yr{margin-left:auto;font-weight:700;color:var(--ink-2);font-variant-numeric:tabular-nums}
+.seq .empty{color:var(--muted);font-size:14px}
+
+.odd-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.odd-grid .opt{text-align:center;padding:16px 10px;font-size:16px}
+.odd-grid .opt.bad{background:var(--terra-soft);border-color:var(--terra)}
+
+.q{font-size:19px;font-weight:600;line-height:1.35}
+.q-opts{display:flex;flex-direction:column;gap:8px}
+.q-opts .opt{font-size:15.5px;line-height:1.35}
+.q-opts .opt.bad{background:var(--terra-soft);border-color:var(--terra)}
+.score{display:flex;flex-direction:column;gap:12px;align-items:flex-start}
+.score .big{font-family:var(--display);font-size:56px;line-height:1;color:var(--gold)}
+.score-tiles{display:flex;gap:5px;flex-wrap:wrap}
+.score-tiles i{width:22px;height:22px;border-radius:3px;background:var(--tile)}
+.score-tiles i.on{background:var(--gold)}
+
+.bricks{display:flex;flex-direction:column;gap:10px}
+.brick{background:var(--surface-2);border-radius:10px;overflow:hidden}
+.brick button{width:100%;background:none;border:0;padding:12px 14px;text-align:left;font-weight:600;color:var(--lapis);display:flex;justify-content:space-between;gap:10px}
+.brick .b-body{padding:0 14px 12px;color:var(--ink-2);font-size:15.5px}
+
+.mosaic{display:flex;gap:6px;align-items:center}
+.mosaic .tile{width:26px;height:26px;background:var(--tile);border-radius:3px;transition:background .4s,transform .4s}
+.mosaic .tile.on{background:var(--gold);transform:rotate(45deg) scale(.8)}
+.mosaic-list{display:flex;flex-direction:column;gap:6px;font-size:15px}
+.mosaic-list span.off{color:var(--muted)}
+
+/* pager */
+.pager{position:fixed;left:0;right:0;bottom:0;z-index:5;background:var(--bg);border-top:1px solid var(--line)}
+.pager-inner{max-width:720px;margin:0 auto;padding:10px 16px;display:flex;align-items:center;gap:10px}
+.pager .count{font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+.pager .btn{flex:1;text-align:center;padding:12px 14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pager .btn.ghost{flex:0 0 auto}
+
+/* toc overlay */
+.toc{position:fixed;inset:0;z-index:10;background:rgba(0,0,0,.35);display:flex;justify-content:flex-end}
+.toc-panel{width:min(360px,90vw);height:100%;background:var(--surface);overflow:auto;padding:16px;display:flex;flex-direction:column;gap:8px;box-shadow:var(--shadow)}
+.toc-panel h3{font-size:24px;margin-bottom:6px;display:flex;justify-content:space-between;align-items:center}
+.toc-close{background:none;border:1px solid var(--line);border-radius:8px;padding:4px 10px;font-size:14px}
+.toc-item{display:flex;align-items:center;gap:10px;background:none;border:0;border-radius:8px;padding:8px 10px;text-align:left;font-size:15px;color:var(--ink)}
+.toc-item:hover{background:var(--surface-2)}
+.toc-item.current{background:var(--gold-soft);font-weight:600}
+.toc-item .n{font-family:var(--display);font-size:18px;color:var(--muted);width:24px;font-variant-numeric:tabular-nums}
+.toc-item .m{margin-left:auto;font-size:12px;color:var(--moss);font-weight:700}
+
+/* схема управления (§ 2) */
+.org{display:flex;flex-direction:column;gap:8px}
+.org .lvl{display:grid;gap:8px;grid-template-columns:repeat(2,1fr)}
+@media (min-width:600px){ .org .lvl{grid-template-columns:repeat(4,1fr)} }
+.org .box{background:var(--surface-2);border-radius:8px;padding:9px 10px;font-size:14px;text-align:center;line-height:1.3}
+.org .box small{display:block;font-size:12px;color:var(--ink-2)}
+.org .box.top{background:var(--lapis);color:var(--on-lapis);font-weight:600;font-size:16px}
+.org .box.sub{background:var(--gold-soft)}
+.org .lbl{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:700;text-align:center}
+
+/* иллюстрации (§ 3) */
+.fig{margin:0;display:flex;flex-direction:column;gap:6px;align-items:flex-start}
+.fig img{width:100%;max-width:360px;height:auto;border-radius:10px;border:1px solid var(--line);background:var(--surface);box-shadow:var(--shadow)}
+.fig.wide img{max-width:100%}
+.fig figcaption{font-size:14px;color:var(--ink-2);line-height:1.35;max-width:60ch}
+.fig-row{display:flex;gap:12px;flex-wrap:wrap;align-items:flex-start}
+.fig-row .fig{flex:1 1 150px;max-width:220px}
+
+/* § 4: «каждый шестой», два пути крещения, игра «Где это было?» */
+.six{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;max-width:380px}
+.six span{height:64px;border-radius:8px;background:var(--surface-2);color:var(--ink-2);display:flex;align-items:flex-end;justify-content:center;padding-bottom:6px;font-size:11.5px;font-weight:600;position:relative}
+.six span::before{content:"";position:absolute;top:10px;left:50%;width:14px;height:14px;margin-left:-7px;border-radius:50%;background:var(--tile)}
+.six span::after{content:"";position:absolute;top:27px;left:50%;width:22px;height:14px;margin-left:-11px;border-radius:8px 8px 3px 3px;background:var(--tile)}
+.six span.w{background:var(--lapis);color:var(--on-lapis)}
+.six span.w::before,.six span.w::after{background:var(--gold)}
+.ways{display:grid;grid-template-columns:1fr;gap:10px}
+@media (min-width:560px){ .ways{grid-template-columns:1fr 1fr} }
+.way{background:var(--surface);border:1px solid var(--line);border-top:5px solid var(--lapis);border-radius:12px;padding:12px 14px;display:flex;flex-direction:column;gap:6px;box-shadow:var(--shadow)}
+.way.const{border-top-color:var(--terra)}
+.way.const h3{color:var(--terra)}
+.way .cn{font-weight:600;font-size:17px}
+.way p{font-size:15.5px;color:var(--ink-2)}
+.sort-card{background:var(--lapis-soft);border-radius:12px;padding:16px;font-size:18px;font-weight:600;line-height:1.35}
+.tri{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.tri .opt{text-align:center;padding:12px 4px;font-size:15px}
+.tri .opt.bad{background:var(--terra-soft);border-color:var(--terra)}
+.sort-sum{display:flex;flex-direction:column;gap:8px;font-size:15px}
+.sort-sum b{color:var(--lapis)}
+/* § 4: разбор вопросов учебника с подсказками и ответом */
+.qtext{font-size:18px;font-weight:600;line-height:1.35;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.aside ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:5px}
+.aside.ans{background:var(--moss-soft);border-left-color:var(--moss)}
+.aside.ans .k{color:var(--moss)}
+.answer{display:flex;flex-direction:column;gap:12px;align-items:stretch}
+.answer .btn{text-align:center}
+.ans-body{display:flex;flex-direction:column;gap:12px}
+.ans-table{width:100%;border-collapse:collapse;font-size:15px;background:var(--surface)}
+.ans-table th,.ans-table td{border:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top;line-height:1.3}
+.ans-table th{font-size:13px;color:var(--ink-2);font-weight:700}
+.ans-table td:first-child{white-space:nowrap}
+
+/* виды шагов: из учебника / задания учебника / придумали мы */
+.kind-tag{display:flex;gap:10px;align-items:flex-start;border-radius:10px;padding:8px 12px;font-size:13px;line-height:1.35}
+.kind-tag .ic{font-size:18px;line-height:1.1}
+.kind-tag b{font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:700}
+.kind-tag .pg{font-weight:600;margin-left:6px;font-size:13px}
+.kind-tag small{display:block;font-size:13px;color:var(--ink-2);margin-top:2px}
+.kind-tag.book{background:var(--lapis-soft);color:var(--lapis)}
+.kind-tag.task{background:var(--gold-soft);color:var(--gold)}
+.kind-tag.ours{background:var(--terra-soft);color:var(--terra)}
+.stepbar button.k-book{background:var(--lapis-soft)} .stepbar button.k-task{background:var(--gold-soft)} .stepbar button.k-ours{background:var(--terra-soft)}
+.stepbar button.k-book.visited{background:var(--lapis)} .stepbar button.k-task.visited{background:var(--gold)} .stepbar button.k-ours.visited{background:var(--terra)}
+.stepbar button.visited.done{background:var(--moss)}
+.stepbar{gap:3px} .stepbar button{min-width:3px}
+.stepbar button.gstart{margin-left:5px}
+.stepbar button.current{transform:scaleY(1.9);box-shadow:0 0 0 1.5px var(--ink)}
+.toc-group{display:flex;flex-direction:column;gap:2px;border-left:4px solid var(--lapis);padding-left:8px;margin-top:10px}
+.toc-group.k-task{border-left-color:var(--gold)} .toc-group.k-ours{border-left-color:var(--terra)}
+.toc-head{display:flex;align-items:center;gap:8px;font-size:12px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;color:var(--lapis);padding:4px 2px}
+.toc-group.k-task .toc-head{color:var(--gold)} .toc-group.k-ours .toc-head{color:var(--terra)}
+.toc-head .ic{font-size:15px;letter-spacing:0}
+.toc-item .pg{margin-left:auto;font-size:12px;color:var(--muted);white-space:nowrap;font-variant-numeric:tabular-nums}
+.toc-item .pg + .m{margin-left:8px}
+</style>
+</head>
+<body>
+
+
+<header class="top">
+  <div class="top-inner">
+    <a class="back" href="./">← Темы</a>
+    <div class="crumb">История · § 5 · <b>Ислам и государство арабов</b></div>
+    <button class="toc-btn" id="toc-btn" type="button">Содержание</button>
+  </div>
+  <div class="stepbar" id="stepbar" aria-label="Шаги темы"></div>
+</header>
+
+<main id="deck">
+
+<!-- 1 -->
+<section class="step" data-step="za-minutu" data-name="За минуту" data-part="Самое главное" data-kind="ours">
+  <div class="kind-tag ours"><span class="ic">🎲</span><div><b>Придумали мы</b><small>Короткий пересказ своими словами, для разгона. Всё, как в учебнике, — в следующих шагах.</small></div></div>
+  <div class="eyebrow"><span class="tess"><i></i><i></i><i></i></span> История · 6 класс · § 5</div>
+  <h1>Возникновение ислама и государства у арабов</h1>
+  <p class="lede">Амина, это история о том, как разрозненные племена пустыни за несколько десятков лет стали одним сильным государством.</p>
+  <div id="resume" hidden></div>
+  <div class="prose">
+    <p>Представь огромную жаркую пустыню. По ней кочуют племена, у каждого свой вождь и свои пастбища, а в городах-оазисах живут совсем по-другому. Какое уж тут одно государство!</p>
+    <p>И вот в Мекке появляется проповедник — Мухаммед. Он призывает верить в Единого Бога, помогать бедным и прекратить вражду. Новая вера, ислам, объединяет арабов, и в Аравии впервые возникает единое государство.</p>
+    <p>А после смерти Мухаммеда его сподвижники, халифы, быстро расширяют державу: побеждают Византию и Персию.</p>
+    <p>Главный вопрос параграфа: <b>чем создание государства у арабов отличалось от того, что происходило у германцев?</b> Вспомни § 1 и § 3. Вот четыре этапа:</p>
+  </div>
+  <div class="steps4">
+    <div class="dom"><div class="n">1</div><div class="t">Пустыня и оазисы</div><div class="d">Бедуины, земледельцы и торговцы жили по-разному.</div></div>
+    <div class="dom"><div class="n">2</div><div class="t">Новая вера</div><div class="d">Мухаммед проповедует ислам.</div></div>
+    <div class="dom"><div class="n">3</div><div class="t">Одно государство</div><div class="d">622 — хиджра, 630 — Мекка.</div></div>
+    <div class="dom"><div class="n">4</div><div class="t">Халифы</div><div class="d">632–661: победы над Византией и Персией.</div></div>
+  </div>
+  <div class="aside">
+    <div class="k">Как этим пользоваться</div>
+    <p>У каждого шага написано, на какой странице учебника искать. Внизу шага есть «Подробнее, как в учебнике»: там всё, что есть на этих страницах, ничего не пропущено. Сначала учи по коротким шагам, а перед уроком открой «подробнее».</p>
+    <p>Плашка вверху шага подскажет, откуда он: синяя 📖 — из учебника, золотая ✎ — задание учебника, терракотовая 🎲 — придумали мы для тренировки. В «Содержании» шаги так же разбиты на группы.</p>
+  </div>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 52</summary>
+    <div class="body"><ul>
+      <li>Главный вопрос параграфа: чем процесс создания государства у арабов отличался от того, что происходило у германцев?</li>
+      <li>Слова параграфа: ислам, мусульмане, Коран, Сунна, шариат, халиф. Человек: Мухаммед (в арабской традиции — Мухаммад). Все слова есть в словарике.</li>
+      <li class="pic">Иллюстрация в начале параграфа: «Бедуины в походе». Миниатюра, XIII век. Картинка и подпись к ней — на шаге 3.</li>
+      <li>Таблица дат параграфа разобрана на следующем шаге.</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 2 -->
+<section class="step" data-step="daty" data-name="Даты" data-part="Лента времени" data-kind="book" data-pages="с. 52">
+  <div class="kind-tag book"><span class="ic">📖</span><div><b>Из учебника</b><span class="pg">с. 52</span></div></div>
+  <div class="eyebrow">Пять дат</div>
+  <h2>Лента времени</h2>
+  <p class="task">Это все даты из таблицы в начале параграфа, сверху вниз от ранних к поздним. Нажми на дату, чтобы прочитать, что случилось. Красные помечены «Россия», как в учебнике.</p>
+  <div class="tl-v" id="tl"></div>
+  <div class="aside home">
+    <div class="k">Ближе к дому</div>
+    <p>650 год — снова хазары! Хазарский каганат образовался на Северном Кавказе и в Нижнем Поволжье. Его ранняя столица Семендер стояла на землях нынешнего Дагестана, у Каспия, — ты читала об этом в § 3.</p>
+  </div>
+  <details class="book">
+    <summary>Ещё даты, которые встречаются в тексте параграфа</summary>
+    <div class="body"><ul>
+      <li>Около 570 г. — родился Мухаммед (п. 2).</li>
+      <li>Конец VI — начало VII в. — затяжная война Византии и Ирана, торговля в Аравии пришла в упадок (п. 2).</li>
+      <li>610 г. — по преданию, Мухаммеду явился архангел Джабраил; Мухаммед стал проповедовать (п. 2).</li>
+      <li>622 г. — хиджра, начало мусульманского летоисчисления (п. 3).</li>
+      <li>630 г. — Мухаммед во главе войска вступил в Мекку (п. 3).</li>
+      <li>632 г. — смерть Мухаммеда (п. 3).</li>
+      <li>632–661 гг. — время праведных халифов (п. 5).</li>
+      <li>636 г. — битва при Ярмуке (п. 5).</li>
+      <li>638 г. — вокруг Каабы начали строить мечеть аль-Харам (с. 55).</li>
+      <li>К 651 г. — арабы покорили Персидскую державу (п. 5).</li>
+      <li>VII в. — самая древняя сохранившаяся рукопись Корана (с. 56).</li>
+      <li>XI в. — первые арабские скакуны в Европе, во времена Крестовых походов (с. 58).</li>
+      <li>1787 г. — в Санкт-Петербурге по указу Екатерины II напечатан полный текст Корана на арабском (с. 56).</li>
+      <li>1871 г. — печатный лист Корана из Елабужского музея (с. 56).</li>
+    </ul></div>
+  </details>
+  <p class="hint">Эти даты потом пригодятся в игре «Расставь по порядку».</p>
+</section>
+
+<!-- 3 -->
+<section class="step" data-step="araviya" data-name="Пустыня и бедуины" data-part="Глава 1 · Аравия" data-kind="book" data-pages="с. 52–53, п. 1">
+  <div class="kind-tag book"><span class="ic">📖</span><div><b>Из учебника</b><span class="pg">с. 52–53, п. 1</span></div></div>
+  <div class="eyebrow">Глава 1 · Аравия</div>
+  <h2>Пустыня и бедуины</h2>
+  <div class="prose">
+    <p>Между Азией и Африкой лежит <b>Аравийский полуостров</b>, его омывает Аравийское море. Это одно из самых жарких мест на Земле: большую часть полуострова занимают степи и пустыни.</p>
+    <p>Здесь жили арабы. Они делились на племена, во главе каждого стоял вождь — <span class="term">шейх</span>. Шейх получал доходы от продажи скота, от пастбищ и плодородных земель.</p>
+    <p>Большинство жителей Аравии разводили скот. <span class="term">Бедуины</span> — арабы-кочевники: жили в войлочных шатрах и перегоняли стада овец, лошадей и верблюдов по степям и пустыням. Само слово «бедуин» значит «житель пустыни».</p>
+  </div>
+  <div class="aside">
+    <div class="k">Любопытные детали</div>
+    <p>Верблюд несёт больше 250 кг груза, проходит за день 160 км и может до 8 суток обходиться без питья. Благодаря верблюдам племена стали хозяевами полуострова.</p>
+    <p>А ещё верблюды давали молоко, которое заменяло редкую в пустыне воду. Из их кожи делали обувь и сёдла, из шерсти — одежду и войлок.</p>
+  </div>
+  <figure class="fig"><img src="img/2026-09-14-p5/01-beduiny-v-pohode.jpg" width="650" height="490" loading="lazy" alt="Миниатюра: всадники на верблюдах в ярких одеждах, рядом пальма и человек в плаще"><figcaption>Бедуины в походе. Миниатюра XIII века. Этой картинкой начинается параграф (с. 52).</figcaption></figure>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 52–53, п. 1</summary>
+    <div class="body"><ul>
+      <li class="pic">Иллюстрация на с. 52: «Бедуины в походе». Миниатюра, XIII век. Подпись: бедуин дословно означает «житель пустыни». Сегодня к ним относят кочевников, разводящих одногорбых верблюдов и живущих в войлочных шатрах; полукочевников в степях, долинах и горах, сочетающих скотоводство с земледелием, а также часть оседлого населения, сохранившего память о своих предках-кочевниках.</li>
+      <li>Пункт 1 «Территория Аравии и занятия её жителей». Между Азией и Африкой располагается часть суши, омываемая Аравийским морем, — Аравийский полуостров. Это одна из самых жарких территорий на Земле. Значительную часть полуострова составляют степи и пустыни. Здесь проживали арабы, объединённые в племена и возглавляемые вождями — шейхами. Шейхи получали доходы от продажи скота, использования пастбищ и плодородных земель.</li>
+      <li>Значительная часть жителей Аравии занималась скотоводством. Бедуины — арабы, ведущие кочевой образ жизни, — жили в войлочных шатрах, перегоняя свои стада по степям и пустыням. Они разводили овец, лошадей и верблюдов.</li>
+      <li>Любопытные детали: одни из самых почитаемых арабами животных — верблюды. Их способность нести груз более 250 кг, проходить в день 160 км и обходиться без питья до 8 суток позволила местным племенам стать хозяевами полуострова. Кроме того, верблюды давали молоко, которое дополняло столь редкую в пустыне воду. Из кожи верблюдов арабы изготавливали обувь и сёдла, а из шерсти — одежду и войлок.</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 4 -->
+<section class="step" data-step="oazisy" data-name="Оазисы, караваны, Мекка" data-part="Глава 1 · Аравия" data-kind="book" data-pages="с. 53–54, п. 1">
+  <div class="kind-tag book"><span class="ic">📖</span><div><b>Из учебника</b><span class="pg">с. 53–54, п. 1</span></div></div>
+  <div class="eyebrow">Глава 1 · Аравия</div>
+  <h2>Оазисы, караваны и Мекка</h2>
+  <div class="prose">
+    <p>На юге и западе Аравии были <span class="term">оазисы</span> — места, где есть небольшие реки и озёра. Там в глиняных домиках жили оседлые арабы-земледельцы: выращивали пшеницу, хлопок, овощи, виноград и финики.</p>
+    <p>Через Аравию шёл старинный торговый путь. Караваны верблюдов везли товары из Византии в Африку и Азию и обратно, а арабы и сами становились торговцами и снаряжали караваны.</p>
+    <p>В оазисах на пути караванов торговцы останавливались отдохнуть. Такие места разрастались в города с базарами, мастерскими, лавками менял и постоялыми дворами — <span class="term">караван-сараями</span>.</p>
+    <p>Самым большим городом полуострова была <b>Мекка</b>. Мекканцы разбогатели, давая караванщикам воду, еду и охрану. Здесь встречались бедуины, земледельцы и купцы.</p>
+  </div>
+  <div class="aside">
+    <div class="k">Почему не было одного государства?</div>
+    <p>Бедуины, земледельцы и горожане жили и работали слишком по-разному. Эти различия мешали создать в Аравии единое государство.</p>
+  </div>
+  <figure class="fig"><img src="img/2026-09-14-p5/02-okraina-goroda.jpg" width="414" height="221" loading="lazy" alt="Рисунок: колодец, торговцы с весами, всадник на верблюде, шатёр и дома города вдали"><figcaption>На окраине аравийского города. Современный рисунок (с. 53). Задание учебника: сравни занятия и образ жизни бедуинов и горожан.</figcaption></figure>
+  <details>
+    <summary>Подсказка к заданию у рисунка</summary>
+    <div class="body"><p>Найди на рисунке шатёр и дома города, верблюдов, колодец и весы торговца. Кто где живёт и чем занят? Кто всё время в пути, а кто на одном месте?</p></div>
+  </details>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 53–54, п. 1</summary>
+    <div class="body"><ul>
+      <li>На юге и на западе Аравии располагались оазисы — места, где имелись небольшие реки и озёра. Здесь в домиках из глины проживали оседлые арабы. Они занимались земледелием: выращивали пшеницу, хлопок, овощи, виноград, финики.</li>
+      <li>Через Аравию проходил старинный торговый путь. По нему из Византии в Африку и Азию и в обратном направлении караваны верблюдов перевозили различные товары. Торговцами становились и сами арабы, снаряжавшие караваны в соседние страны.</li>
+      <li>В оазисах, располагавшихся на пути движения караванов, торговцы останавливались на отдых. Со временем такие поселения расширялись и превращались в города с базарами, ремесленными мастерскими, лавками денежных менял, постоялыми и торговыми дворами — караван-сараями.</li>
+      <li>Самым большим городом Аравийского полуострова была Мекка. Её жители разбогатели, предоставляя караванщикам воду, еду и охрану. Город стал центром, где встречались бедуины, арабы-земледельцы и караванные торговцы.</li>
+      <li class="pic">Иллюстрация на с. 53: «На окраине аравийского города». Современный рисунок. Задание: сравните занятия и образ жизни бедуинов и горожан.</li>
+      <li>Значительные различия в образе жизни и занятиях горожан и бедуинов препятствовали созданию в Аравии единого государства.</li>
+      <li>Вопросы учебника после пункта 1: какие занятия были характерны для арабов в тот период? Кого называли шейхами в среде арабов?</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 5 -->
+<section class="step" data-step="do-islama" data-name="Аравия перед исламом" data-part="Глава 2 · Пророк" data-kind="book" data-pages="с. 54, п. 2">
+  <div class="kind-tag book"><span class="ic">📖</span><div><b>Из учебника</b><span class="pg">с. 54, п. 2</span></div></div>
+  <div class="eyebrow">Глава 2 · Пророк</div>
+  <h2>Аравия перед исламом</h2>
+  <div class="prose">
+    <p>Большинство арабов тогда были язычниками, то есть почитали многих богов. Их святое место было в Мекке — древнее святилище в форме куба, <span class="term">Кааба</span> (по-арабски «кубический дом»). Арабы приезжали сюда поклониться «чёрному камню», вделанному в его стену.</p>
+    <p>Обряды проводила знать и получала доходы и от паломников, и от торговли.</p>
+    <p>В оазисах жило немало чужеземцев — иудеев и христиан. Они верили в единого Бога и старались распространить свою веру среди местных. Многие арабы разочаровались в многобожии, но чужим религиям не доверяли.</p>
+    <p>А в конце VI — начале VII века из-за долгой войны Византии и Ирана торговля в Аравии пришла в упадок. Горожане беднели и брали деньги в долг у <span class="term">ростовщиков</span> под большие проценты. Кто не мог расплатиться, отдавал имущество, а иногда и свободу, попадая в долговое рабство. В обществе зрело недовольство.</p>
+  </div>
+  <details>
+    <summary>Что такое долговое рабство?</summary>
+    <div class="body"><p>Представь: человек занял 10 монет, а вернуть должен 20. Не может — отдаёт дом и скот. А если и этого мало, сам становится рабом того, кто дал ему в долг. Так беднели и теряли свободу многие жители аравийских городов.</p></div>
+  </details>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 54, п. 2</summary>
+    <div class="body"><ul>
+      <li>Пункт 2 «Мухаммед — основатель новой религии». Большинство арабов были язычниками. В Мекке находилось святое для них место. Они приезжали сюда поклониться «чёрному камню», вделанному в стену древнего святилища кубической формы — Каабы (от араб. «кубический дом»). Проведением обрядов занимались знатные люди, которые получали доходы и от посещения арабами Каабы, и от торговли.</li>
+      <li>В оазисах Аравии проживало немало иностранцев, исповедовавших иудаизм и христианство. Они верили в единого Бога и пытались распространить свою религию среди местного населения. Всё большее число арабов разочаровывалось в многобожии, но религии чужестранцев не вызывали у них доверия.</li>
+      <li>В конце VI — начале VII века в результате затяжной войны между Византией и Ираном торговля в Аравии пришла в упадок. Многие горожане обеднели. Ростовщики давали нуждавшимся деньги в долг под большие проценты. Не в силах расплатиться, заёмщики отдавали им часть своего имущества, а иногда даже теряли свободу, попадая в долговое рабство. В арабском обществе зрело недовольство.</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 6 -->
+<section class="step" data-step="prorok" data-name="Пророк Мухаммед" data-part="Глава 2 · Пророк" data-kind="book" data-pages="с. 54–55, п. 2">
+  <div class="kind-tag book"><span class="ic">📖</span><div><b>Из учебника</b><span class="pg">с. 54–55, п. 2</span></div></div>
+  <div class="eyebrow">Глава 2 · Пророк</div>
+  <h2>Пророк Мухаммед</h2>
+  <div class="prose">
+    <p>В это трудное время появился человек, который гневно осуждал ростовщичество и порабощение соплеменников. Он призывал богатых проявлять милосердие и помогать бедным, а всех арабов — прекратить вражду и объединиться на основе единой веры. Это был <span class="term">Мухаммед</span> (в арабской традиции — Мухаммад).</p>
+  </div>
+  <div class="aside">
+    <div class="k">Исторический портрет (учебник, с. 54)</div>
+    <p>Мухаммед родился около 570 года. Он рано остался сиротой и рос в доме дяди. Юношей пас скот и ходил с караванами в дальние страны. Женился на богатой вдове, но много времени проводил в одиночестве и размышлениях.</p>
+    <p>По преданию, в 610 году ему явился архангел Джабраил и объявил, что Единый Бог — Аллах — избрал его своим посланником, пророком. Мухаммед стал проповедовать: прежние боги арабов не имеют силы, истинный Творец всего — Аллах. Уверовавшие попадут в рай, а грешники, поклоняющиеся идолам, — в ад.</p>
+    <p>Мухаммед говорил, что до него были и другие пророки: Нух (Ной), Муса (Моисей), Иса (Иисус), а он — последний пророк, посланный людям. Для мусульман его жизнь — образец для подражания.</p>
+  </div>
+  <div class="prose">
+    <p>Новая религия получила название <span class="term">ислам</span> — по-арабски «покорность Богу». Её сторонники стали называть себя <span class="term">мусульманами</span>, то есть «приверженцами ислама».</p>
+  </div>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 54–55, п. 2</summary>
+    <div class="body"><ul>
+      <li>В это трудное время появился человек, который гневно осуждал ростовщичество и порабощение соплеменников. Он призывал богатых людей проявлять милосердие и помогать бедным. В его проповедях звучали призывы прекратить вражду между арабами и объединиться на основе единой веры. Проповедника звали Мухаммед.</li>
+      <li>Исторический портрет «Мухаммед»: Мухаммед родился около 570 года. Он рано остался сиротой и воспитывался в доме дяди. Юноша пас скот, ходил с торговыми караванами в дальние страны. Он женился на богатой вдове, но много времени проводил в одиночестве и размышлениях. Его посещали видения. Однажды Мухаммеду явился архангел Джабраил и объявил, что Единый Бог (Аллах) избрал его своим посланником (пророком), чтобы направлять людей на путь, ведущий к спасению. По преданию, это событие, в дальнейшем изменившее судьбу многих народов, произошло в 610 году. Мухаммед стал проповедовать. Он говорил, что прежние боги арабов не имеют силы. Истинным Творцом, Создателем и Устроителем всего сущего является Аллах. Уверовавшие в него попадут в рай — цветущий сад, где бьют из земли источники свежей воды и текут реки; грешники же, поклоняющиеся идолам, окажутся в аду, где их ждут страшные мучения. Мухаммед объяснял, что он не первый человек, которому явил себя Бог. До него были Нух (Ной), Муса (Моисей), Иса (Иисус) и другие, но Мухаммед — последний пророк, посланный людям. В исламе Мухаммед олицетворяет совершенного человека, его жизнь считается образцом для подражания мусульман.</li>
+      <li>Новая религия получила название ислам, что в переводе с арабского языка означает «покорность Богу». Сторонники новой веры стали называть себя мусульманами, то есть «приверженцами ислама».</li>
+      <li>Вопросы учебника после пункта 2: что вызвало недовольство арабов в конце VI — начале VII века? Как стала называться основанная Мухаммедом религия?</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 7 -->
+<section class="step" data-step="hidzhra" data-name="Хиджра: 622 год" data-part="Глава 3 · Победа ислама" data-kind="book" data-pages="с. 55, п. 3">
+  <div class="kind-tag book"><span class="ic">📖</span><div><b>Из учебника</b><span class="pg">с. 55, п. 3</span></div></div>
+  <div class="eyebrow">Глава 3 · Победа ислама</div>
+  <h2>Хиджра: 622 год</h2>
+  <div class="prose">
+    <p>Многие соплеменники Мухаммеда выступили против нового учения. Особенно возмущались богатые жители Мекки: они боялись, что Кааба потеряет значение, а их доходы от паломников уменьшатся.</p>
+    <p>Противники решили убить Мухаммеда. Узнав об этом, пророк со сподвижниками покинул Мекку и ушёл в город Ясриб, где получил кров и защиту. Позже Ясриб назвали <b>Медина</b> — «Город пророка».</p>
+    <p>Это переселение по-арабски называется <span class="term">хиджра</span>. Оно произошло в <b>622 году</b>, и с этой даты начинается мусульманское летоисчисление.</p>
+  </div>
+  <div class="aside">
+    <div class="k">Как это — своё летоисчисление?</div>
+    <p>Счёт лет всегда начинают от какого-то важного события. Годы, к которым ты привыкла, отсчитывают от Рождества Христова. А мусульмане считают годы от хиджры: для них 622 год — начало счёта.</p>
+  </div>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 55, п. 3</summary>
+    <div class="body"><ul>
+      <li>Пункт 3 «Победа ислама в Аравии». Многие соплеменники Мухаммеда выступили против нового вероучения. Особенно возмущены были богатые жители Мекки. Они опасались, что Кааба потеряет своё значение и их доходы, связанные с обслуживанием паломников, сократятся.</li>
+      <li>Противники Мухаммеда решили его убить. Узнав об этом, пророк покинул Мекку и отправился со своими сподвижниками в город Ясриб, где получил кров и защиту. Позже Ясриб получил название Медина, то есть «Город пророка». Само переселение (по-арабски «хиджра») Мухаммеда в Медину состоялось в 622 году. С этой даты начинается мусульманское летоисчисление.</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 8 -->
+<section class="step" data-step="mekka" data-name="Возвращение в Мекку" data-part="Глава 3 · Победа ислама" data-kind="book" data-pages="с. 55–56, п. 3">
+  <div class="kind-tag book"><span class="ic">📖</span><div><b>Из учебника</b><span class="pg">с. 55–56, п. 3</span></div></div>
+  <div class="eyebrow">Глава 3 · Победа ислама</div>
+  <h2>630 год: возвращение в Мекку</h2>
+  <div class="prose">
+    <p>В Медине у Мухаммеда оказалось больше сторонников, многие бедуины охотно приняли ислам. Между арабами-язычниками и арабами-мусульманами началась война.</p>
+    <p>Уже в первом сражении небольшой отряд во главе с пророком разгромил противника, которого было намного больше. Многие увидели в этом божественный знак и встали под знамя Мухаммеда. В <b>630 году</b> пророк во главе войска вступил в Мекку.</p>
+    <p>Мухаммед не тронул Каабу, но очистил святилище: уничтожил всех языческих идолов вокруг него. Большинство мекканцев приняли ислам, а Мекку объявили священным городом для всех мусульман.</p>
+    <p>Так в Аравии возникло <b>единое государство</b>. До своей смерти в 632 году его возглавлял Мухаммед, и в его руках были сразу две власти: <b>духовная</b> (религиозная) и <b>светская</b> (государственная).</p>
+  </div>
+  <details>
+    <summary>Две власти в одних руках — что это значит?</summary>
+    <div class="body"><p>Вспомни франков из § 3: страной правил король, а делами веры ведали папа римский и епископы. У арабов было иначе: Мухаммед был и пророком, и главой государства. Это пригодится для главного вопроса параграфа.</p></div>
+  </details>
+  <figure class="fig"><img src="img/2026-09-14-p5/03-kaaba.jpg" width="355" height="266" loading="lazy" alt="Кааба — чёрное кубическое здание во дворе мечети, вокруг множество паломников"><figcaption>Главная святыня мусульман — Кааба. Современная фотография (с. 55).</figcaption></figure>
+  <div class="aside">
+    <div class="k">Мечеть аль-Харам (учебник, с. 55)</div>
+    <p>В 638 году вокруг Каабы начали строить мечеть аль-Харам — Заповедную мечеть. «Харам» по-арабски значит «запретное деяние», «неприкосновенный», «заповедный». Вокруг мечети есть заповедная зона радиусом 15 км, где запрещено проливать кровь.</p>
+    <p>По мусульманскому преданию, Каабу возвёл пророк Ибрахим (библейский Авраам) при помощи ангелов.</p>
+  </div>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 55–56, п. 3</summary>
+    <div class="body"><ul>
+      <li>В Медине Мухаммед продолжал проповедовать новую религию. Здесь у него оказалось больше сторонников. Многие бедуины охотно приняли ислам. Между арабами-язычниками и арабами-мусульманами началась война. Но уже в первом сражении небольшой отряд во главе с пророком разгромил численно превосходящие силы противника. Увидев в этом божественный знак, под знамя Мухаммеда устремилось множество арабов. В 630 году во главе армии своих сторонников пророк вступил в Мекку.</li>
+      <li class="pic">Иллюстрация на с. 55: «Главная святыня мусульман — Кааба». Современная фотография. Подпись: в 638 году вокруг Каабы началось возведение мечети аль-Харам (Заповедной мечети). Такое название не случайно. Слово «харам» на арабском означает «запретное деяние», «неприкосновенный», «заповедный». Вокруг мечети действует особая заповедная зона радиусом 15 км, на которой запрещается проливать кровь. По мусульманскому преданию, Кааба на территории аль-Харам была возведена пророком Ибрахимом (библейским Авраамом) при помощи ангелов.</li>
+      <li>Мухаммед не тронул Каабу, но очистил святилище, уничтожив всех окружавших его языческих идолов. Большинство жителей Мекки приняли ислам, а сам город был объявлен священным для всех мусульман местом.</li>
+      <li>Так в Аравии возникло единое государство. Его главой, до своей смерти в 632 году, стал Мухаммед, который соединял в своих руках две власти — религиозную (духовную) и светскую (государственную).</li>
+      <li>Вопросы учебника после пункта 3: какие положения новой веры вызвали неприятие у богатых жителей Мекки? Что такое хиджра? Какое значение она имеет для мусульман?</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 9 -->
+<section class="step" data-step="koran" data-name="Коран и Сунна" data-part="Глава 4 · Основы веры" data-kind="book" data-pages="с. 56, п. 4">
+  <div class="kind-tag book"><span class="ic">📖</span><div><b>Из учебника</b><span class="pg">с. 56, п. 4</span></div></div>
+  <div class="eyebrow">Глава 4 · Основы веры</div>
+  <h2>Коран и Сунна</h2>
+  <div class="prose">
+    <p>Откровения, полученные Мухаммедом от Аллаха, составили священную книгу мусульман — <span class="term">Коран</span> (по-арабски «чтение»). Коран призывает правоверных быть послушными властям и честно вести дела с единоверцами. Для мусульман Коран — сборник нравственных правил и законов.</p>
+    <p>Второй источник вероучения — <span class="term">Сунна</span> (по-арабски «образ действий, поведение»). В ней собраны рассказы о делах Мухаммеда и его изречения.</p>
+    <p>В основе ислама — единобожие и признание Мухаммеда пророком. Это выражено словами: «Нет Бога, кроме Аллаха, и Мухаммед — пророк его».</p>
+  </div>
+  <figure class="fig"><img src="img/2026-09-14-p5/04-list-korana-1871.jpg" width="414" height="327" loading="lazy" alt="Разворот печатного листа с арабским текстом в узорной рамке"><figcaption>Печатный лист Корана. 1871 год. Елабужский музей-заповедник, Республика Татарстан (с. 56).</figcaption></figure>
+  <div class="aside">
+    <div class="k">Первый Коран, напечатанный для мусульман, — из России</div>
+    <p>Самая древняя сохранившаяся рукопись Корана относится к VII веку. Первые печатные издания делали европейцы: в них было много ошибок, и в исламском мире их не приняли.</p>
+    <p>А первое печатное издание, подготовленное самими мусульманами, вышло в России. В 1787 году по указу Екатерины II в типографии Академии наук в Санкт-Петербурге напечатали полный текст Корана на арабском. Его высоко оценили и мусульмане, и европейские учёные, а по указу Павла I его рассылали в губернии, где жили мусульмане.</p>
+  </div>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 56, п. 4</summary>
+    <div class="body"><ul>
+      <li>Пункт 4 «Основы новой религии». Откровения, полученные Мухаммедом от Аллаха, составили Священную книгу мусульман — Коран (от араб. «чтение»). Коран призывает правоверных быть послушными властям и честно вести дела с единоверцами. Для мусульман Коран — это сборник моральных правил и законов. Другим источником вероучения мусульмане считают Сунну (от араб. «образ действий, поведение»). Она содержит рассказы о деяниях Мухаммеда и его изречения.</li>
+      <li>Ислам основывается на единобожии и признании пророческой миссии Мухаммеда, выраженной в словах: «Нет Бога, кроме Аллаха, и Мухаммед — пророк его».</li>
+      <li class="pic">Иллюстрация на с. 56: печатный лист Корана, 1871 год. Елабужский государственный историко-архитектурный и художественный музей-заповедник, Республика Татарстан. Подпись: самая древняя сохранившаяся до наших дней рукопись Корана датируется VII веком. Первые печатные издания этой Священной книги появились гораздо позже. Они издавались европейцами, содержали большое количество ошибок и не получили распространения в исламском мире. Первое печатное издание Корана, подготовленное самими мусульманами, было издано в России. По указу императрицы Екатерины II в 1787 году в типографии Академии наук в Санкт-Петербурге был напечатан полный текст Корана на арабском языке. Он был высоко оценён как мусульманами, так и европейскими учёными. По указу Павла I его направляли для распространения в те губернии, где проживали мусульмане.</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 10 -->
+<section class="step" data-step="stolpy" data-name="Пять столпов и шариат" data-part="Глава 4 · Основы веры" data-kind="book" data-pages="с. 56–57, п. 4">
+  <div class="kind-tag book"><span class="ic">📖</span><div><b>Из учебника</b><span class="pg">с. 56–57, п. 4</span></div></div>
+  <div class="eyebrow">Глава 4 · Основы веры</div>
+  <h2>Пять столпов и шариат</h2>
+  <div class="prose">
+    <p>Ислам возложил на мусульман пять главных обязанностей. Их называют <span class="term">«пять столпов»</span> ислама. Как дом стоит на опорах, так вера мусульманина держится на этих пяти обязанностях.</p>
+    <p><b>Схема из учебника (с. 57) «Главные обязанности мусульманина»:</b></p>
+  </div>
+  <div class="org" aria-label="Пять столпов ислама">
+    <div class="box top">Столпы ислама</div>
+    <div class="lvl">
+      <div class="box">Признание Единого Бога Аллаха и его пророка Мухаммеда<small>шахада</small></div>
+      <div class="box">Ежедневная молитва<small>намаз</small></div>
+      <div class="box">Пост в священный месяц Рамадан</div>
+      <div class="box">Денежный налог в пользу бедных<small>закят</small></div>
+      <div class="box">Паломничество в Мекку<small>хадж</small></div>
+    </div>
+  </div>
+  <div class="prose">
+    <p>Кто принял ислам, должен жить по предписаниям, установленным Аллахом. Правила поведения, которым мусульманин следует каждый день и всю жизнь, называются <span class="term">шариат</span> (по-арабски «правильный путь»).</p>
+  </div>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 56–57, п. 4</summary>
+    <div class="body"><ul>
+      <li>Новая религия возлагала на мусульман пять главных обязанностей; опиралась на «пять столпов» ислама.</li>
+      <li class="pic">Схема на с. 57 «Главные обязанности мусульманина» (столпы ислама): признание Единого Бога Аллаха и его пророка Мухаммеда (шахада); ежедневная молитва (намаз); пост в священный месяц Рамадан; денежный налог в пользу бедных (закят); паломничество в Мекку (хадж).</li>
+      <li>Принявшие ислам должны были жить по предписаниям, установленным Аллахом. Правила поведения, которым должен следовать мусульманин каждый день и всю жизнь, получили название шариат (от араб. «правильный путь»).</li>
+      <li>Вопросы учебника после пункта 4: назовите «пять столпов» ислама. Что такое шариат?</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 11 -->
+<section class="step" data-step="halify" data-name="Праведные халифы" data-part="Глава 5 · Халифы" data-kind="book" data-pages="с. 57–58, п. 5">
+  <div class="kind-tag book"><span class="ic">📖</span><div><b>Из учебника</b><span class="pg">с. 57–58, п. 5</span></div></div>
+  <div class="eyebrow">Глава 5 · Халифы</div>
+  <h2>Праведные халифы</h2>
+  <div class="prose">
+    <p>После смерти Мухаммеда правителями арабского государства и ревностными проповедниками новой веры стали <span class="term">халифы</span> — «заместители» пророка. Сначала это были его сподвижники и родственники.</p>
+    <p>Первым халифом стал <b>Абу Бакр</b> — ближайший сподвижник и тесть пророка. Ещё незадолго до смерти Мухаммед передал ему обязанности имама, то есть того, кто ведёт общую молитву. После Абу Бакра правили <b>Умар</b>, <b>Усман</b> и <b>Али</b> (двоюродный брат Мухаммеда).</p>
+    <p>Жили они почти как простые мусульмане: носили недорогую одежду, ели простую пищу, справедливо делили добычу между воинами. Время их правления, с 632 по 661 год, современники назвали <b>временем праведных халифов</b>.</p>
+  </div>
+  <figure class="fig"><img src="img/2026-09-14-p5/06-imena-halifov.jpg" width="398" height="388" loading="lazy" alt="Четыре зелёных медальона с золотыми надписями арабской вязью"><figcaption>Имена праведных халифов на арабском языке: Абу Бакр, Умар, Усман, Али. Современное изображение (с. 57).</figcaption></figure>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 57–58, п. 5</summary>
+    <div class="body"><ul>
+      <li>Пункт 5 «Время праведных халифов». После смерти Мухаммеда правителями арабского государства и ревностными проповедниками новой веры стали халифы — «заместители» пророка. Сначала это были сподвижники и родственники Мухаммеда.</li>
+      <li class="pic">Иллюстрация на с. 57: имена праведных халифов на арабском языке: Абу Бакр, Умар, Усман, Али. Современное изображение. Подпись: первым халифом стал Абу Бакр — ближайший сподвижник и тесть пророка. Незадолго до смерти Мухаммед передал ему функции имама. За ним правили Умар, Усман и Али (двоюродный брат Мухаммеда).</li>
+      <li>Их образ жизни и поведение мало чем отличались от быта рядовых мусульман: они носили недорогую одежду, ели простую пищу, справедливо делили добычу между своими воинами. Период правления сподвижников Мухаммеда, продолжавшийся с 632 по 661 год, был назван современниками временем праведных халифов.</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 12 -->
+<section class="step" data-step="voysko" data-name="Джихад и войско" data-part="Глава 5 · Халифы" data-kind="book" data-pages="с. 58, п. 5">
+  <div class="kind-tag book"><span class="ic">📖</span><div><b>Из учебника</b><span class="pg">с. 58, п. 5</span></div></div>
+  <div class="eyebrow">Глава 5 · Халифы</div>
+  <h2>Джихад и арабское войско</h2>
+  <div class="prose">
+    <p>Объединённые новой верой арабы стремились распространить её среди других народов. Ислам распространялся и мирным путём, и через завоевания.</p>
+    <p>Войну за веру называли <span class="term">джихад</span>. У этого слова есть и другое, более широкое значение — духовное самосовершенствование мусульманина, то есть работа над собой.</p>
+    <p>Арабское войско отличали строгая дисциплина и слаженность. Воины не пили вина, не играли в азартные игры, не жаловались на усталость, голод и жажду.</p>
+    <p>Пехоту сажали на верблюдов, и она проходила огромные расстояния. Отборные кони могли везти двух седоков, а воины метко стреляли из луков прямо на скаку. Быстрая конница начинала бой, прикрывала пехоту с боков и преследовала врага, а воины верили, что погибших в боях за ислам ждёт рай.</p>
+  </div>
+  <figure class="fig"><img src="img/2026-09-14-p5/05-arabskiy-voin.jpg" width="291" height="436" loading="lazy" alt="Рисунок: всадник на коне с копьём, круглым щитом, луком и колчаном, в шлеме"><figcaption>Арабский воин. Современный рисунок (с. 58). Задание учебника: опиши снаряжение и вооружение арабского воина.</figcaption></figure>
+  <details>
+    <summary>Подсказка к заданию и история про скакунов</summary>
+    <div class="body">
+      <p>Рассмотри воина: что у него в руке, что висит на боку и за спиной, чем он защищается, что на голове? А ещё посмотри, как украшен конь.</p>
+      <p>У бедуинов есть легенда, будто сам Аллах создал арабских скакунов из быстрого южного ветра. Эти лошади были небольшими, но очень красивыми, резвыми и выносливыми. В Европе они появились в XI веке, во времена Крестовых походов, и помогли улучшить многие европейские породы.</p>
+    </div>
+  </details>
+  <div class="aside home">
+    <div class="k">Ближе к дому</div>
+    <p>Ислам пришёл и в Дагестан — раньше, чем в другие земли нынешней России. В Дербенте стоит Джума-мечеть, построенная в VIII веке. Это одна из самых древних мечетей в нашей стране.</p>
+  </div>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 58, п. 5</summary>
+    <div class="body"><ul>
+      <li>Объединённые новой религией арабы стремились распространить её среди других народов. Ислам распространялся как мирным путём, так и в результате завоеваний. Война за веру получила название «джихад». Другое, более широкое значение этого слова — духовное самосовершенствование мусульманина.</li>
+      <li>Войско арабов отличала жёсткая дисциплина и слаженность действий. Никто не пил вина, не играл в азартные игры, не жаловался на усталость, голод и жажду. Пехота, посаженная на верблюдов, преодолевала большие расстояния. Отобранные для походов кони могли везти двух седоков. Воины умели на ходу, прямо с коней, метко стрелять из луков. Стремительная конница завязывала бой, прикрывала фланги пехотинцев, а затем преследовала побеждённого врага до полного его уничтожения. Одной из причин военных успехов арабов была вера в то, что погибших в боях за торжество ислама ожидает рай.</li>
+      <li class="pic">Иллюстрация на с. 58: «Арабский воин». Современный рисунок. Подпись: у бедуинов существует легенда, будто сам Аллах создал арабских скакунов из быстрого южного ветра. Несмотря на относительно небольшие размеры, эти лошади были необыкновенно красивы, резвы и выносливы. Первые арабские скакуны появились в Европе в XI веке, во времена Крестовых походов. Благодаря этому удалось улучшить многие европейские породы лошадей. Задание: опишите снаряжение и вооружение арабского воина.</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 13 -->
+<section class="step" data-step="yarmuk" data-name="Ярмук и Иерусалим" data-part="Глава 5 · Халифы" data-kind="book" data-pages="с. 58–59, п. 5">
+  <div class="kind-tag book"><span class="ic">📖</span><div><b>Из учебника</b><span class="pg">с. 58–59, п. 5</span></div></div>
+  <div class="eyebrow">Глава 5 · Халифы</div>
+  <h2>636 год: Ярмук и Иерусалим</h2>
+  <div class="prose">
+    <p>При праведных халифах арабы расширили своё государство и разбили византийцев и персов.</p>
+    <p>Решающая битва с византийским войском произошла при <b>Ярмуке в 636 году</b>. Сражение шло несколько дней, и долго было непонятно, кто победит: византийцы не раз прорывали строй арабов и заставляли их отступать к своему лагерю.</p>
+    <p>Но арабы стояли упорно, а их полководец <b>Халид ибн аль-Валид</b>, прозванный «Мечом Аллаха», искусно вёл бой. Мусульмане победили, византийцы отступили.</p>
+    <p>Византия (Восточная Римская империя из § 2) потеряла большую часть своих земель в Азии и Африке, в том числе Иерусалим. А к 651 году арабы покорили и Персидскую державу.</p>
+  </div>
+  <div class="aside">
+    <div class="k">Иерусалим (учебник, с. 59)</div>
+    <p>Иерусалим был важен для мусульман: по преданию, пророк Мухаммед за одну ночь совершил чудесное путешествие из Мекки в Иерусалим, а оттуда на небеса. Но при жизни Мухаммеда город не был под властью мусульман.</p>
+    <p>Войска халифата осаждали Иерусалим пять месяцев, и жители согласились сдаться лично халифу Умару. Умар отправился туда один, с единственным слугой, и патриарх сам вручил ему ключи от города.</p>
+  </div>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 58–59, п. 5</summary>
+    <div class="body"><ul>
+      <li>При праведных халифах арабы расширили территорию своего государства и нанесли поражение византийцам и персам. Решающая битва между армиями мусульман и византийским войском состоялась при Ярмуке в 636 году. Сражение длилось несколько дней, но его исход оставался неясен. Византийцы несколько раз прорывали боевые порядки арабов, заставляя их отступать к собственному лагерю. Однако упорство арабов и полководческое искусство Халида ибн аль-Валида, прозванного «Мечом Аллаха», обеспечило мусульманам победу. Византийцы потерпели поражение и отступили. Восточная Римская империя утратила большую часть своих азиатских и африканских владений, в том числе Иерусалим. К 651 году арабы покорили и Персидскую державу.</li>
+      <li class="pic">Иллюстрация на с. 59: «Халиф Умар входит в завоёванный им Иерусалим». Гравюра, XIX век. Подпись: Иерусалим был важным местом для мусульман. По преданию, пророк Мухаммед в одну ночь совершил чудесное путешествие из Мекки в Иерусалим, а оттуда на небеса. Однако при жизни Мухаммеда город не был под контролем мусульман. Войска Праведного халифата осаждали Иерусалим в течение пяти месяцев, после чего жители согласились сдаться лично халифу Умару. Он отправился в путь один, в сопровождении единственного слуги. Патриарх сам вручил ему ключи от города.</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 14 -->
+<section class="step" data-step="poddannye" data-name="Подданные халифа" data-part="Глава 5 · Халифы" data-kind="book" data-pages="с. 59, п. 5 и «Подведём итоги»">
+  <div class="kind-tag book"><span class="ic">📖</span><div><b>Из учебника</b><span class="pg">с. 59, п. 5 и «Подведём итоги»</span></div></div>
+  <div class="eyebrow">Глава 5 · Халифы</div>
+  <h2>Подданные халифа</h2>
+  <div class="prose">
+    <p>Жители завоёванных земель стали подданными халифа. Каждый земледелец платил поземельный налог — от трети до двух пятых урожая. Налоги платили и горожане.</p>
+    <p>Язычников преследовали. А иудеи и христиане могли по-прежнему держаться веры предков, но за это платили в казну особый налог. Кто переходил в ислам, от этого налога освобождался.</p>
+    <p>Сами арабы налогов не платили, но вносили в казну благотворительную милостыню.</p>
+  </div>
+  <details>
+    <summary>Сколько это — от трети до двух пятых урожая?</summary>
+    <div class="body"><p>Представь, что земледелец собрал 15 мешков зерна. Треть — это 5 мешков, две пятых — 6 мешков. Значит, отдать нужно было от 5 до 6 мешков из 15.</p></div>
+  </details>
+  <div class="aside">
+    <div class="k">Подведём итоги (учебник, с. 59)</div>
+    <p>В середине VII века арабы Аравийского полуострова приняли ислам. Единая религия помогла создать единое государство и одержать военные победы: арабы завоевали Персию и восточные провинции Византии.</p>
+  </div>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 59, п. 5 и «Подведём итоги»</summary>
+    <div class="body"><ul>
+      <li>Жители покорённых территорий стали подданными халифа. Каждый земледелец обязан был платить поземельный налог — от 1/3 до 2/5 урожая. Налогами были обложены и горожане. Сторонники языческих верований преследовались. Жившие же на завоёванных землях иудеи и христиане могли по-прежнему придерживаться веры предков, но за это должны были платить в казну особый налог. Те же, кто перешёл в ислам, от этого налога освобождались. Сами арабы налогов не платили, но вносили в казну благотворительную милостыню.</li>
+      <li>Вопросы учебника после пункта 5: каковы были результаты войн арабов с Византией и Персидской державой? Как мусульмане относились к сторонникам других религий?</li>
+      <li>«Подведём итоги»: в середине VII века арабы, проживающие на Аравийском полуострове, приняли ислам. Единая религия способствовала образованию единого государства и военным успехам арабов, которые расширили свою державу, завоевав Персию и восточные провинции Византии.</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 15 -->
+<section class="step" data-step="slovar-1" data-name="Словарик: Аравия и новая вера" data-part="Словарик" data-kind="ours">
+  <div class="kind-tag ours"><span class="ic">🎲</span><div><b>Придумали мы</b><small>В учебнике такого нет — это тренировка.</small></div></div>
+  <div class="game">
+    <div class="g-head"><h3>Словарик: Аравия и новая вера</h3><span class="badge" id="b-terms">Игра</span></div>
+    <p class="task">Нажми на карточку, и она перевернётся. Словарик из двух частей, открой все карточки.</p>
+    <div class="progress" id="terms-progress"></div>
+    <div class="cards" data-terms="0"></div>
+  </div>
+</section>
+
+<!-- 16 -->
+<section class="step" data-step="slovar-2" data-name="Словарик: Коран и халифы" data-part="Словарик" data-kind="ours">
+  <div class="kind-tag ours"><span class="ic">🎲</span><div><b>Придумали мы</b><small>В учебнике такого нет — это тренировка.</small></div></div>
+  <div class="game">
+    <div class="g-head"><h3>Словарик: Коран и халифы</h3><span class="badge" id="b-terms2">Игра</span></div>
+    <p class="task">Вторая часть: основы веры и время халифов.</p>
+    <div class="progress" id="terms-progress2"></div>
+    <div class="cards" data-terms="1"></div>
+  </div>
+</section>
+
+<!-- 17 -->
+<section class="step" data-step="perevod" data-name="Перевод с арабского" data-part="Игры" data-kind="ours">
+  <div class="kind-tag ours"><span class="ic">🎲</span><div><b>Придумали мы</b><small>В учебнике такого нет — это тренировка.</small></div></div>
+  <div class="game" id="g-match">
+    <div class="g-head"><h3>Перевод с арабского</h3><span class="badge" id="b-match">Игра</span></div>
+    <p class="task">Многие слова этого параграфа пришли из арабского языка. Нажми на слово слева, потом на его перевод справа.</p>
+    <div class="match">
+      <div class="col"><div class="lbl">Слово</div><div class="col" id="foes"></div></div>
+      <div class="col"><div class="lbl">Что значит</div><div class="col" id="outcomes"></div></div>
+    </div>
+    <div id="match-fb"></div>
+  </div>
+</section>
+
+<!-- 18 -->
+<section class="step" data-step="kto-tak" data-name="Кто так жил?" data-part="Игры" data-kind="ours">
+  <div class="kind-tag ours"><span class="ic">🎲</span><div><b>Придумали мы</b><small>В учебнике такого нет — это тренировка.</small></div></div>
+  <div class="game">
+    <div class="g-head"><h3>Кто так жил?</h3><span class="badge" id="b-sort">Игра</span></div>
+    <p class="task">В Аравии жили по-разному бедуины, земледельцы оазисов и горожане. Прочитай карточку и выбери, про кого она.</p>
+    <div class="progress" id="sort-progress"></div>
+    <div id="sort-box"></div>
+  </div>
+</section>
+
+<!-- 19 -->
+<section class="step" data-step="poryadok" data-name="Расставь по порядку" data-part="Игры" data-kind="ours">
+  <div class="kind-tag ours"><span class="ic">🎲</span><div><b>Придумали мы</b><small>В учебнике такого нет — это тренировка.</small></div></div>
+  <div class="game">
+    <div class="g-head"><h3>Расставь по порядку</h3><span class="badge" id="b-order">Игра</span></div>
+    <p class="task">Нажимай на события от самого раннего к самому позднему. Даты спрятаны, вспоминай сама.</p>
+    <div class="pool" id="pool"></div>
+    <div class="seq" id="seq"></div>
+    <div class="row">
+      <button class="btn" id="order-check" type="button" disabled>Проверить</button>
+      <button class="btn ghost" id="order-reset" type="button">Сначала</button>
+    </div>
+    <div id="order-fb"></div>
+  </div>
+</section>
+
+<!-- 20 -->
+<section class="step" data-step="lishnee" data-name="Найди лишнее" data-part="Игры" data-kind="ours">
+  <div class="kind-tag ours"><span class="ic">🎲</span><div><b>Придумали мы</b><small>В учебнике такого нет — это тренировка.</small></div></div>
+  <div class="game">
+    <div class="g-head"><h3>Найди лишнее</h3><span class="badge" id="b-odd">Игра</span></div>
+    <p class="task">Три из одной компании, одно чужое. Найди чужое.</p>
+    <div class="progress" id="odd-progress"></div>
+    <div class="odd-grid" id="odd-grid"></div>
+    <div id="odd-fb"></div>
+    <div class="row"><button class="btn" id="odd-next" type="button" hidden>Дальше</button></div>
+  </div>
+</section>
+
+<!-- 21 -->
+<section class="step" data-step="test" data-name="Проверь себя" data-part="Финал" data-kind="ours">
+  <div class="kind-tag ours"><span class="ic">🎲</span><div><b>Придумали мы</b><small>Вопросы для самопроверки придумали мы. Задания из учебника — дальше.</small></div></div>
+  <div class="eyebrow">Финал</div>
+  <h2>Проверь себя</h2>
+  <div class="game">
+    <div class="progress" id="quiz-progress"></div>
+    <div id="quiz-box"></div>
+  </div>
+</section>
+
+<!-- 22 -->
+<section class="step" data-step="voprosy" data-name="Вопросы учебника" data-part="Финал" data-kind="task" data-pages="с. 60">
+  <div class="kind-tag task"><span class="ic">✎</span><div><b>Задание учебника</b><span class="pg">с. 60</span><small>Вопросы из книги. Где искать ответ и подсказки — наши.</small></div></div>
+  <div class="eyebrow">Финал · Вопросы и задания в конце § 5</div>
+  <h2>Вопросы из учебника</h2>
+  <div class="prose">
+    <p>Это вопросы и задания в конце параграфа, номера такие же, как в твоём учебнике. Рядом с каждым написано, на каком шаге искать ответ. Отвечай своими словами: так лучше запоминается, и учитель услышит, что ты поняла, а не заучила.</p>
+  </div>
+  <div class="qlist">
+<div class="qi"><span class="qn">1</span><div><p>Рассмотрите иллюстрацию в начале параграфа. Какой образ жизни был характерен для бедуинов? С чем это связано?</p><p class="src">Подсказка: посмотри, на ком они едут и куда. А «с чем связано» — вспомни, какая природа в Аравии.</p><a href="#araviya">Шаг 3 · Пустыня и бедуины</a></div></div>
+<div class="qi"><span class="qn">2</span><div><p>Как природа и климат Аравийского полуострова повлияли на занятия и образ жизни его жителей? Что препятствовало созданию единого государства?</p><p class="src">Подсказка: в пустыне — одно занятие, в оазисе с водой — другое, на торговом пути — третье. Про препятствие сказано в конце п. 1.</p><a href="#araviya">Шаги 3–4</a></div></div>
+<div class="qi"><span class="qn">3</span><div><p>Почему проповедь пророка Мухаммеда не сразу была принята всем населением Аравийского полуострова? Кто стал сторонниками, а кто — противниками новой религии?</p><p class="src">Подсказка: чего боялись богатые мекканцы? И кто охотно принял ислам в Медине?</p><a href="#hidzhra">Шаги 7–8</a></div></div>
+<div class="qi"><span class="qn">4</span><div><p>В чём различие Корана и Сунны? Чем они стали для мусульман?</p><a href="#koran">Шаг 9 · Коран и Сунна</a></div></div>
+<div class="qi"><span class="qn">5</span><div><p>В чём заключалась особенность организации власти в созданном Мухаммедом арабском государстве?</p><p class="src">Подсказка: сколько властей было в руках Мухаммеда и какие? Сравни с франками.</p><a href="#mekka">Шаг 8 · Возвращение в Мекку</a></div></div>
+<div class="qi"><span class="qn">6</span><div><p>Почему первых халифов называли праведными?</p><a href="#halify">Шаг 11 · Праведные халифы</a></div></div>
+<div class="qi"><span class="qn">7</span><div><p>В чём заключались причины военных побед арабов? Назовите не менее трёх причин.</p><p class="src">Подсказка: причины ищи в описании войска и в том, во что верили воины. Загляни и в «Подведём итоги».</p><a href="#voysko">Шаги 12–14</a></div></div>
+<div class="qi"><span class="qn">8</span><div><p>В чём причина разного отношения мусульман к язычеству, иудаизму и христианству, распространённым среди жителей завоёванных ими территорий?</p><p class="src">Подсказка: во что верили иудеи и христиане (шаг 5) и каких пророков называл Мухаммед (шаг 6)? Чем они похожи на ислам, а чем от него отличается язычество?</p><a href="#poddannye">Шаги 5, 6, 14</a></div></div>
+<div class="qi"><span class="qn">⏳</span><div><p>Работаем с хронологией. Посчитайте, в каком году по мусульманскому летоисчислению состоялась битва арабов и франков при Пуатье.</p><p class="src">Подсказка: с какого года начинается мусульманское летоисчисление — на шаге 7, год битвы при Пуатье — в § 3. Подумай, какое действие сделать с этими числами.</p><a href="#hidzhra">Шаг 7 · Хиджра</a></div></div>
+<div class="qi"><span class="qn">📜</span><div><p>Работаем с источником. Слова Абу Бакра, обращённые к присягнувшим ему арабам: «На меня возложили обязанности управлять вами; если поступаю хорошо, помогайте мне, если плохо — исправьте меня; …я хочу оставаться беспристрастным по отношению к любому, и если я когда-либо нарушу закон Аллаха и его Пророка, то я потеряю право требовать от вас послушания». Вопросы: кто такой Абу Бакр? Когда и почему арабы должны были присягнуть ему на верность? О каких особенностях мусульманского государства при первых халифах свидетельствуют эти слова?</p><p class="src">Простыми словами Абу Бакр говорит: мне поручили вами управлять; делаю хорошо — помогайте, плохо — поправьте меня; я хочу быть справедливым ко всем, а если нарушу закон Аллаха и Пророка, вы можете меня больше не слушаться. Кто такой Абу Бакр и когда он стал правителем — шаг 11. Подумай: сказал бы так правитель, который считает себя выше всех и всегда правым?</p><a href="#halify">Шаг 11 · Праведные халифы</a></div></div>
+<div class="qi"><span class="qn">А–Я</span><div><p>Работаем с понятиями. Объясните значения понятий: мусульманин, хадж, шариат, намаз.</p><p class="src">Подсказка: мусульмане — шаг 6, хадж и намаз — на схеме «пяти столпов», шариат — там же, на шаге 10.</p><a href="#stolpy">Шаги 6 и 10</a></div></div>
+<div class="qi"><span class="qn">?</span><div><p>Сформулируйте ответ на главный вопрос параграфа, обоснуйте его двумя-тремя аргументами.</p><a href="#itog">Шаг 23 · Главный вопрос</a></div></div>
+  </div>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 60</summary>
+    <div class="body"><ul>
+      <li>Все вопросы и задания страницы 60 перечислены выше. В конце страницы — «Дополнительные материалы. Учителю и ученику»: материалы к параграфу на портале «История.РФ».</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 23 -->
+<section class="step" data-step="itog" data-name="Главный вопрос" data-part="Финал" data-kind="task">
+  <div class="kind-tag task"><span class="ic">✎</span><div><b>Задание учебника</b><small>Главный вопрос из книги, кирпичики-подсказки — наши.</small></div></div>
+  <div class="eyebrow">Финал</div>
+  <h2>Чем арабы отличались от германцев?</h2>
+  <div class="prose">
+    <p>Это главный вопрос параграфа: чем процесс создания государства у арабов отличался от того, что происходило у германцев? Вот четыре «кирпичика» для ответа. Открой их, а потом попробуй ответить своими словами, не подглядывая.</p>
+  </div>
+  <div class="bricks">
+    <div class="brick"><button type="button" aria-expanded="false"><span>Где возникло государство</span><span>+</span></button><div class="b-body" hidden>Германцы (§ 1, § 3) создавали королевства на чужой земле, в завоёванных римских провинциях, среди местных жителей. Арабы создали государство у себя дома, в Аравии, объединив свои же племена.</div></div>
+    <div class="brick"><button type="button" aria-expanded="false"><span>Что объединило</span><span>+</span></button><div class="b-body" hidden>Германские королевства держались на силе вождей и дружин, а христианство германцы приняли от римлян. Арабов объединила новая, их собственная религия — ислам.</div></div>
+    <div class="brick"><button type="button" aria-expanded="false"><span>Кто правил</span><span>+</span></button><div class="b-body" hidden>У франков король правил страной, а делами веры ведали папа римский и епископы. У арабов Мухаммед, а потом халифы соединяли в своих руках духовную и светскую власть.</div></div>
+    <div class="brick"><button type="button" aria-expanded="false"><span>Что было дальше</span><span>+</span></button><div class="b-body" hidden>Многие германские королевства быстро распались (§ 1). А арабы сразу после объединения стали расширять державу: разбили Византию при Ярмуке и завоевали Персию.</div></div>
+  </div>
+  <div class="aside">
+    <div class="k">Главное в одном предложении</div>
+    <p>В отличие от германцев, которые создавали королевства на завоёванных римских землях, арабы создали государство у себя в Аравии: разрозненные племена объединила новая религия — ислам, а Мухаммед и халифы соединяли в своих руках духовную и светскую власть и быстро расширили державу.</p>
+  </div>
+  <div class="game">
+    <div class="g-head"><h3>Твоя мозаика</h3></div>
+    <div class="mosaic" id="mosaic"></div>
+    <div class="mosaic-list" id="mosaic-list"></div>
+    <div class="row"><a class="btn" href="./">К списку тем</a></div>
+  </div>
+</section>
+
+</main>
+
+<nav class="pager" aria-label="Навигация по шагам">
+  <div class="pager-inner">
+    <button class="btn ghost" id="prev" type="button">Назад</button>
+    <div class="count" id="count"></div>
+    <button class="btn" id="next" type="button">Дальше</button>
+  </div>
+</nav>
+
+<div class="toc" id="toc" hidden>
+  <div class="toc-panel" role="dialog" aria-label="Содержание">
+    <h3>Содержание <button class="toc-close" id="toc-close" type="button">Закрыть</button></h3>
+    <div id="toc-list" style="display:flex;flex-direction:column;gap:2px"></div>
+  </div>
+</div>
+
+<script>
+(function(){
+  'use strict';
+  var $ = function(s, r){ return (r||document).querySelector(s); };
+  var el = function(tag, cls, html){ var e=document.createElement(tag); if(cls) e.className=cls; if(html!=null) e.innerHTML=html; return e; };
+  var shuffle = function(a){ a=a.slice(); for(var i=a.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=a[i]; a[i]=a[j]; a[j]=t; } return a; };
+
+  /* ---------- state ---------- */
+  var KEY='islam-araby-v1';
+  var state={visited:{},done:{},last:0};
+  try{ var s=JSON.parse(localStorage.getItem(KEY)||'null'); if(s && typeof s==='object'){ state.visited=s.visited||{}; state.done=s.done||{}; state.last=s.last||0; } }catch(e){}
+  function save(){ try{ localStorage.setItem(KEY, JSON.stringify(state)); }catch(e){} }
+
+  var GAMES=[
+    {k:'terms', name:'Словарик, обе части', step:'slovar-1'},
+    {k:'match', name:'Перевод с арабского', step:'perevod'},
+    {k:'sort', name:'Кто так жил?', step:'kto-tak'},
+    {k:'order', name:'Расставь по порядку', step:'poryadok'},
+    {k:'odd', name:'Найди лишнее', step:'lishnee'},
+    {k:'quiz', name:'Проверь себя', step:'test'}
+  ];
+  var GAME_STEPS={'slovar-1':'terms','slovar-2':'terms','perevod':'match','kto-tak':'sort','poryadok':'order','lishnee':'odd','test':'quiz'};
+
+  /* ---------- steps ---------- */
+  var steps=Array.prototype.slice.call(document.querySelectorAll('.step'));
+  var N=steps.length, cur=0;
+  var stepbar=$('#stepbar'), count=$('#count'), prevB=$('#prev'), nextB=$('#next'), tocList=$('#toc-list');
+
+  /* содержание по группам: из учебника / задания учебника / придумали мы */
+  var KIND={book:['📖','Из учебника'],task:['✎','Задания учебника'],ours:['🎲','Придумали мы']};
+  var tocItems=[], groups=[], prevKind=null, grp=null;
+  steps.forEach(function(s,i){
+    var kind=s.getAttribute('data-kind')||'book', pg=(s.getAttribute('data-pages')||'').replace(/,\s*п\..*$/,'');
+    var start=kind!==prevKind;
+    var b=el('button'); b.type='button'; b.setAttribute('aria-label','Шаг '+(i+1)+': '+s.getAttribute('data-name'));
+    b.setAttribute('data-base','k-'+kind+(start&&i>0?' gstart':'')); b.className=b.getAttribute('data-base');
+    b.addEventListener('click', function(){ go(i); });
+    stepbar.appendChild(b);
+    if(start){
+      var label = kind==='ours' ? (i===0?'Для разгона · придумали мы':'Тренировка · придумали мы') : KIND[kind][1];
+      grp=el('div','toc-group k-'+kind,'<div class="toc-head"><span class="ic">'+KIND[kind][0]+'</span><span>'+label+'</span></div>');
+      grp.pages=[]; groups.push(grp); tocList.appendChild(grp); prevKind=kind;
+    }
+    var t=el('button','toc-item','<span class="n">'+(i+1)+'</span><span>'+s.getAttribute('data-name')+'</span>'+(pg?'<span class="pg">'+pg+'</span>':'')+'<span class="m"></span>');
+    t.type='button'; t.addEventListener('click', function(){ closeToc(); go(i); });
+    grp.appendChild(t); tocItems.push(t);
+    (pg.match(/\d+/g)||[]).forEach(function(n){ grp.pages.push(+n); });
+  });
+  groups.forEach(function(g){ if(g.pages.length){ var a=Math.min.apply(null,g.pages), z=Math.max.apply(null,g.pages); g.firstChild.lastChild.textContent+=' · с. '+(a===z?a:a+'–'+z); } });
+
+  function paint(){
+    var bars=stepbar.children, items=tocItems;
+    for(var i=0;i<N;i++){
+      var key=steps[i].getAttribute('data-step'), g=GAME_STEPS[key];
+      var done = g && state.done[g];
+      bars[i].className=bars[i].getAttribute('data-base')+(i===cur?' current':'')+(state.visited[i]?' visited':'')+(done?' done':'');
+      items[i].className='toc-item'+(i===cur?' current':'');
+      items[i].lastElementChild.textContent = done ? 'пройдено' : (state.visited[i] ? '✓' : '');
+    }
+    count.textContent=(cur+1)+' / '+N;
+    prevB.disabled = cur===0;
+    if(cur===N-1){ nextB.textContent='Это последний шаг'; nextB.disabled=true; }
+    else { nextB.textContent='Дальше: '+steps[cur+1].getAttribute('data-name'); nextB.disabled=false; }
+    var badges={terms:['b-terms','b-terms2'],match:['b-match'],sort:['b-sort'],order:['b-order'],odd:['b-odd']};
+    for(var k in badges){ badges[k].forEach(function(id){ var b=document.getElementById(id); if(b && state.done[k]){ b.textContent='Пройдено'; b.classList.add('done'); } }); }
+    paintMosaic();
+  }
+  function go(i, silent){
+    if(i<0||i>=N) return;
+    cur=i; steps.forEach(function(s,j){ s.hidden = j!==i; });
+    state.visited[i]=true; state.last=i; save();
+    if(!silent){ var h='#'+steps[i].getAttribute('data-step'); if(location.hash!==h) history.pushState(null,'',h); }
+    window.scrollTo(0,0);
+    paint();
+  }
+  function idxFromHash(){ var h=location.hash.replace('#',''); for(var i=0;i<N;i++) if(steps[i].getAttribute('data-step')===h) return i; return -1; }
+  function onHash(){ var i=idxFromHash(); if(i>=0 && i!==cur) go(i, true); }
+  window.addEventListener('popstate', onHash);
+  window.addEventListener('hashchange', onHash);
+  prevB.addEventListener('click', function(){ go(cur-1); });
+  nextB.addEventListener('click', function(){ go(cur+1); });
+  document.addEventListener('keydown', function(e){ if(e.target && /INPUT|TEXTAREA/.test(e.target.tagName)) return; if(e.key==='ArrowRight') go(cur+1); if(e.key==='ArrowLeft') go(cur-1); if(e.key==='Escape') closeToc(); });
+
+  var toc=$('#toc');
+  function openToc(){ toc.hidden=false; }
+  function closeToc(){ toc.hidden=true; }
+  $('#toc-btn').addEventListener('click', openToc);
+  $('#toc-close').addEventListener('click', closeToc);
+  toc.addEventListener('click', function(e){ if(e.target===toc) closeToc(); });
+
+  function markDone(k){ if(!state.done[k]){ state.done[k]=true; save(); } paint(); }
+
+  /* resume button on step 1 */
+  (function(){
+    var r=$('#resume');
+    if(state.last>0 && idxFromHash()<0){
+      r.hidden=false;
+      r.innerHTML='<button class="btn ghost" type="button">Продолжить с шага '+(state.last+1)+': '+steps[state.last].getAttribute('data-name')+'</button>';
+      r.firstChild.addEventListener('click', function(){ go(state.last); });
+    }
+  })();
+
+  /* ---------- mosaic on final step ---------- */
+  var mosaic=$('#mosaic'), mosaicList=$('#mosaic-list');
+  function paintMosaic(){
+    mosaic.innerHTML=''; mosaicList.innerHTML='';
+    GAMES.forEach(function(g){
+      var t=el('span','tile'+(state.done[g.k]?' on':'')); t.title=g.name; mosaic.appendChild(t);
+      var li=el('span', state.done[g.k]?'':'off', (state.done[g.k]?'★ ':'☆ ')+g.name);
+      if(!state.done[g.k]){ li.style.cursor='pointer'; li.addEventListener('click', function(){ for(var i=0;i<N;i++) if(steps[i].getAttribute('data-step')===g.step){ go(i); break; } }); }
+      mosaicList.appendChild(li);
+    });
+  }
+
+  /* ---------- timeline ---------- */
+  var TL=[
+    {y:'VI–VII вв.', era:'Россия', ru:true, t:'Восточные славяне', d:'Начало обособления восточной ветви славян: восточные славяне стали жить отдельно от западных и южных. Это предки русских, украинцев и белорусов.'},
+    {y:'622', era:'Мир', t:'Хиджра', d:'Пророк Мухаммед и его сторонники переселились из Мекки в Медину. С этого года начинается мусульманское летоисчисление.'},
+    {y:'636', era:'Мир', t:'Битва при Ярмуке', d:'Арабы разбили византийское войско. Византия потеряла большую часть своих земель в Азии и Африке, в том числе Иерусалим.'},
+    {y:'650', era:'Россия', ru:true, t:'Хазарский каганат', d:'На Северном Кавказе и в Нижнем Поволжье образовался Хазарский каганат — тот самый, который в 965 году разгромит князь Святослав (§ 4).'},
+    {y:'652', era:'Мир', t:'Завоевание Персии', d:'Арабы завоевали Персию (Иран) — одну из самых могучих держав того времени.'}
+  ];
+  var tl=$('#tl');
+  TL.forEach(function(e,i){
+    var it=el('div','tl-item'+(e.ru?' ru':''));
+    var b=el('button','tl-btn'); b.type='button';
+    b.innerHTML='<span class="dot"></span><span class="y">'+e.y+'</span><span class="t">'+e.t+'</span><span class="era">'+e.era+'</span>';
+    var d=el('div','tl-d',e.d); d.hidden=(i!==0); if(i===0) it.classList.add('open');
+    b.setAttribute('aria-expanded', i===0?'true':'false');
+    b.addEventListener('click', function(){ var open=d.hidden; d.hidden=!open; it.classList.toggle('open',open); b.setAttribute('aria-expanded',open?'true':'false'); });
+    it.appendChild(b); it.appendChild(d); tl.appendChild(it);
+  });
+
+  /* ---------- glossary ---------- */
+  var TERMS=[
+    [
+      {t:'Бедуины', d:'Арабы-кочевники, «жители пустыни». Жили в войлочных шатрах, разводили овец, лошадей и верблюдов.', e:''},
+      {t:'Шейх', d:'Вождь арабского племени. Получал доходы от продажи скота, от пастбищ и плодородных земель.', e:''},
+      {t:'Оазис', d:'Место в пустыне, где есть вода: небольшие реки и озёра. Там жили земледельцы.', e:''},
+      {t:'Караван-сарай', d:'Постоялый и торговый двор в городе, где останавливались караваны.', e:''},
+      {t:'Кааба', d:'Святилище в Мекке в форме куба, «кубический дом». Главная святыня мусульман.', e:''},
+      {t:'Ислам', d:'«Покорность Богу». Религия, которую проповедовал пророк Мухаммед.', e:''},
+      {t:'Мусульмане', d:'«Приверженцы ислама», те, кто исповедует ислам.', e:''},
+      {t:'Хиджра', d:'Переселение Мухаммеда из Мекки в Медину в 622 году. С него начинается мусульманское летоисчисление.', e:''}
+    ],
+    [
+      {t:'Коран', d:'Священная книга мусульман, по-арабски «чтение».', e:''},
+      {t:'Сунна', d:'Рассказы о делах и изречениях пророка Мухаммеда, «образ действий, поведение».', e:''},
+      {t:'Пять столпов', d:'Пять главных обязанностей мусульманина.', e:'Шахада, намаз, пост в Рамадан, закят, хадж.'},
+      {t:'Шариат', d:'Правила поведения мусульманина на каждый день и на всю жизнь, «правильный путь».', e:''},
+      {t:'Халиф', d:'«Заместитель» пророка, правитель арабского государства после Мухаммеда.', e:''},
+      {t:'Праведные халифы', d:'Абу Бакр, Умар, Усман и Али. Правили с 632 по 661 год.', e:''},
+      {t:'Джихад', d:'Война за веру. Более широкое значение — духовное самосовершенствование мусульманина.', e:''},
+      {t:'Ростовщик', d:'Тот, кто даёт деньги в долг под большие проценты.', e:''}
+    ]
+  ];
+  var flipped={}, total=0; TERMS.forEach(function(g){ total+=g.length; });
+  var progEls=[$('#terms-progress'),$('#terms-progress2')];
+  function termsProgress(){
+    var n=Object.keys(flipped).length;
+    progEls.forEach(function(p,gi){ var got=0; TERMS[gi].forEach(function(t,i){ if(flipped[gi+'-'+i]) got++; }); p.textContent='Открыто '+got+' из '+TERMS[gi].length+' здесь, всего '+n+' из '+total; });
+    if(n===total) markDone('terms');
+  }
+  document.querySelectorAll('.cards').forEach(function(box){
+    var gi=+box.getAttribute('data-terms');
+    TERMS[gi].forEach(function(t,i){
+      var b=el('button','card'); b.type='button'; b.setAttribute('aria-label',t.t+'. Нажми, чтобы увидеть значение');
+      b.innerHTML='<div class="in"><div class="face f"><div class="w">'+t.t+'</div><div class="tap">Нажми</div></div><div class="face b"><div class="w">'+t.t+'</div><div>'+t.d+'</div>'+(t.e?'<div class="e">'+t.e+'</div>':'')+'</div></div>';
+      b.addEventListener('click', function(){ b.classList.toggle('flip'); flipped[gi+'-'+i]=true; termsProgress(); });
+      box.appendChild(b);
+    });
+  });
+  termsProgress();
+
+  /* ---------- matching: перевод с арабского ---------- */
+  var PAIRS=[
+    {foe:'Ислам', res:'«Покорность Богу»', why:'Так называется религия, которую проповедовал Мухаммед.'},
+    {foe:'Коран', res:'«Чтение»', why:'Священная книга мусульман.'},
+    {foe:'Шариат', res:'«Правильный путь»', why:'Правила поведения мусульманина на каждый день и на всю жизнь.'},
+    {foe:'Медина', res:'«Город пророка»', why:'Так стали называть город Ясриб, куда переселился Мухаммед.'},
+    {foe:'Кааба', res:'«Кубический дом»', why:'Святилище в Мекке в форме куба.'},
+    {foe:'Халиф', res:'«Заместитель» пророка', why:'Так называли правителей после смерти Мухаммеда.'},
+    {foe:'Бедуин', res:'«Житель пустыни»', why:'Так называют арабов-кочевников.'}
+  ];
+  var foesBox=$('#foes'), outBox=$('#outcomes'), matchFb=$('#match-fb'), selFoe=null, matched=0;
+  PAIRS.forEach(function(p){
+    var b=el('button','opt',p.foe); b.type='button'; b.setAttribute('data-foe',p.foe);
+    b.addEventListener('click', function(){
+      if(b.classList.contains('ok')) return;
+      var all=foesBox.querySelectorAll('.opt'); for(var i=0;i<all.length;i++) all[i].classList.remove('sel');
+      b.classList.add('sel'); selFoe=p; matchFb.innerHTML='';
+    });
+    foesBox.appendChild(b);
+  });
+  shuffle(PAIRS).forEach(function(p){
+    var b=el('button','opt',p.res); b.type='button';
+    b.addEventListener('click', function(){
+      if(b.classList.contains('ok')) return;
+      if(!selFoe){ matchFb.innerHTML='<div class="feedback bad"><span class="k">Сначала выбери слово слева.</span></div>'; return; }
+      if(selFoe.res===p.res){
+        b.classList.add('ok'); b.disabled=true;
+        var fb=foesBox.querySelector('[data-foe="'+selFoe.foe+'"]'); fb.classList.remove('sel'); fb.classList.add('ok'); fb.disabled=true;
+        matchFb.innerHTML='<div class="feedback ok"><span class="k">Верно! '+selFoe.foe+' — '+selFoe.res+'.</span><span>'+selFoe.why+'</span></div>';
+        selFoe=null; matched++;
+        if(matched===PAIRS.length){ matchFb.innerHTML='<div class="feedback ok"><span class="k">Все семь слов переведены!</span><span>Теперь ты знаешь, что эти арабские слова значат на самом деле.</span></div>'; markDone('match'); }
+      } else {
+        b.classList.add('bad'); setTimeout(function(){ b.classList.remove('bad'); },400);
+        matchFb.innerHTML='<div class="feedback bad"><span class="k">Не то.</span><span>Это перевод другого слова. Попробуй ещё.</span></div>';
+      }
+    });
+    outBox.appendChild(b);
+  });
+
+  /* ---------- sort: кто так жил ---------- */
+  var COUNTRIES=['Бедуины','Земледельцы','Горожане'];
+  var SORT=[
+    {t:'Живут в войлочных шатрах', c:'Бедуины', why:'Шатёр легко свернуть и увезти с собой: бедуины всё время в пути.'},
+    {t:'Перегоняют стада по степям и пустыням', c:'Бедуины', why:'Бедуины — кочевники, они ищут пастбища для скота.'},
+    {t:'Разводят верблюдов, овец и лошадей', c:'Бедуины', why:'Скотоводство — главное занятие бедуинов.'},
+    {t:'Живут в домиках из глины в оазисе', c:'Земледельцы', why:'Оседлые арабы жили там, где есть вода.'},
+    {t:'Выращивают пшеницу, хлопок и финики', c:'Земледельцы', why:'А ещё овощи и виноград.'},
+    {t:'Торгуют на базаре и меняют деньги в лавках', c:'Горожане', why:'В городах на пути караванов были базары и лавки менял.'},
+    {t:'Дают караванщикам воду, еду и охрану', c:'Горожане', why:'Так разбогатели жители Мекки.'},
+    {t:'Держат постоялые дворы — караван-сараи', c:'Горожане', why:'Там останавливались торговые караваны.'}
+  ];
+  var sortBox=$('#sort-box'), sortP=$('#sort-progress'), sortList=shuffle(SORT), si=0;
+  function renderSort(){
+    if(si>=sortList.length){ return sortDone(); }
+    var it=sortList[si];
+    sortP.textContent='Карточка '+(si+1)+' из '+sortList.length;
+    sortBox.innerHTML='';
+    sortBox.appendChild(el('div','sort-card',it.t));
+    var tri=el('div','tri'); sortBox.appendChild(tri);
+    var fb=el('div'); sortBox.appendChild(fb);
+    var rowN=el('div','row'); sortBox.appendChild(rowN);
+    COUNTRIES.forEach(function(c){
+      var b=el('button','opt',c); b.type='button';
+      b.addEventListener('click', function(){
+        if(c===it.c){
+          var all=tri.querySelectorAll('.opt'); for(var k=0;k<all.length;k++) all[k].disabled=true;
+          b.classList.add('ok');
+          fb.innerHTML='<div class="feedback ok"><span class="k">Да, это '+c.toLowerCase()+'.</span><span>'+it.why+'</span></div>';
+          var n=el('button','btn', si<sortList.length-1?'Следующая карточка':'Показать итог'); n.type='button';
+          n.addEventListener('click', function(){ si++; renderSort(); });
+          rowN.appendChild(n);
+        } else {
+          b.classList.add('bad'); b.disabled=true;
+          fb.innerHTML='<div class="feedback bad"><span class="k">Нет, это не '+c.toLowerCase()+'.</span><span>Подумай, кто так жил, и попробуй ещё.</span></div>';
+        }
+      });
+      tri.appendChild(b);
+    });
+  }
+  function sortDone(){
+    sortP.textContent='Все карточки разложены';
+    var html='<div class="feedback ok"><span class="k">Готово! Вот что получилось:</span></div><div class="sort-sum">';
+    COUNTRIES.forEach(function(c){
+      var items=SORT.filter(function(x){ return x.c===c; }).map(function(x){ return x.t.toLowerCase(); });
+      html+='<div><b>'+c+':</b> '+items.join('; ')+'.</div>';
+    });
+    html+='</div><p>Такие разные жизни и мешали создать в Аравии единое государство, пока арабов не объединила новая вера.</p><div class="row"><button class="btn ghost" type="button" id="sort-again">Ещё раз</button></div>';
+    sortBox.innerHTML=html;
+    $('#sort-again').addEventListener('click', function(){ sortList=shuffle(SORT); si=0; renderSort(); });
+    markDone('sort');
+  }
+  renderSort();
+
+  /* ---------- ordering ---------- */
+  var EVENTS=[
+    {y:570, t:'Рождение Мухаммеда', ys:'ок. 570'},
+    {y:622, t:'Хиджра: переселение в Медину', ys:'622'},
+    {y:630, t:'Мухаммед вступает в Мекку', ys:'630'},
+    {y:632, t:'Абу Бакр становится первым халифом', ys:'632'},
+    {y:636, t:'Битва при Ярмуке', ys:'636'},
+    {y:661, t:'Конец времени праведных халифов', ys:'661'}
+  ];
+  var pool=$('#pool'), seq=$('#seq'), orderCheck=$('#order-check'), orderFb=$('#order-fb'), picked=[], shuffledEvents=shuffle(EVENTS);
+  function renderOrder(){
+    pool.innerHTML='';
+    shuffledEvents.forEach(function(e){
+      if(picked.indexOf(e)>=0) return;
+      var b=el('button','opt',e.t); b.type='button';
+      b.addEventListener('click', function(){ picked.push(e); renderOrder(); });
+      pool.appendChild(b);
+    });
+    seq.innerHTML='';
+    if(!picked.length){ seq.appendChild(el('div','empty','Сюда встанут события')); }
+    picked.forEach(function(e,i){ seq.appendChild(el('div','slot','<span class="i">'+(i+1)+'</span><span>'+e.t+'</span>')); });
+    orderCheck.disabled = picked.length!==EVENTS.length;
+    orderFb.innerHTML='';
+  }
+  renderOrder();
+  orderCheck.addEventListener('click', function(){
+    var slots=seq.querySelectorAll('.slot'), wrong=0;
+    picked.forEach(function(e,i){
+      var ok = e.y===EVENTS[i].y;
+      slots[i].classList.add(ok?'ok':'bad');
+      slots[i].insertAdjacentHTML('beforeend','<span class="yr">'+e.ys+'</span>');
+      if(!ok) wrong++;
+    });
+    if(!wrong){ orderFb.innerHTML='<div class="feedback ok"><span class="k">Всё по порядку!</span><span>Около 570, 622, 630, 632, 636, 661. От рождения пророка до конца времени праведных халифов прошло меньше ста лет.</span></div>'; markDone('order'); }
+    else orderFb.innerHTML='<div class="feedback bad"><span class="k">Не совсем. Красные события стоят не на своих местах.</span><span>Теперь даты видны. Нажми «Сначала» и попробуй ещё раз.</span></div>';
+    orderCheck.disabled=true;
+  });
+  $('#order-reset').addEventListener('click', function(){ picked=[]; shuffledEvents=shuffle(EVENTS); renderOrder(); });
+
+  /* ---------- odd one out ---------- */
+  var ODD=[
+    {items:['Коран','Сунна','Шариат','Кааба'], odd:'Кааба', why:'Коран, Сунна и шариат — священная книга и правила веры. А Кааба — святилище в Мекке.'},
+    {items:['Абу Бакр','Умар','Усман','Халид ибн аль-Валид'], odd:'Халид ибн аль-Валид', why:'Абу Бакр, Умар и Усман — праведные халифы. Халид ибн аль-Валид — полководец, «Меч Аллаха», победитель при Ярмуке.'},
+    {items:['Пшеница','Финики','Хлопок','Верблюды'], odd:'Верблюды', why:'Пшеницу, финики и хлопок выращивали земледельцы оазисов. А верблюдов разводили бедуины.'},
+    {items:['Не пили вина','Стреляли с коней','Не жаловались на голод','Платили особый налог'], odd:'Платили особый налог', why:'Первые три — про арабское войско. А особый налог платили иудеи и христиане на завоёванных землях.'}
+  ];
+  var oddGrid=$('#odd-grid'), oddFb=$('#odd-fb'), oddNext=$('#odd-next'), oddP=$('#odd-progress'), oddRound=0;
+  function renderOdd(){
+    var r=ODD[oddRound]; oddGrid.innerHTML=''; oddFb.innerHTML=''; oddNext.hidden=true;
+    oddP.textContent='Раунд '+(oddRound+1)+' из '+ODD.length;
+    shuffle(r.items).forEach(function(w){
+      var b=el('button','opt',w); b.type='button';
+      b.addEventListener('click', function(){
+        var all=oddGrid.querySelectorAll('.opt');
+        if(w===r.odd){
+          for(var i=0;i<all.length;i++) all[i].disabled=true;
+          b.classList.add('ok');
+          oddFb.innerHTML='<div class="feedback ok"><span class="k">Точно, лишнее — «'+w+'».</span><span>'+r.why+'</span></div>';
+          if(oddRound<ODD.length-1) oddNext.hidden=false;
+          else { oddP.textContent='Все четыре раунда пройдены'; markDone('odd'); }
+        } else {
+          b.classList.add('bad'); b.disabled=true;
+          oddFb.innerHTML='<div class="feedback bad"><span class="k">«'+w+'» из той же компании, что и остальные.</span><span>Подумай, что здесь про другое.</span></div>';
+        }
+      });
+      oddGrid.appendChild(b);
+    });
+  }
+  oddNext.addEventListener('click', function(){ oddRound++; renderOdd(); });
+  renderOdd();
+
+  /* ---------- quiz ---------- */
+  var QUIZ=[
+    {q:'Где жили арабы?', o:['На Аравийском полуострове','На Балканском полуострове','В Галлии'], a:0, why:'Аравийский полуостров лежит между Азией и Африкой. Это одно из самых жарких мест на Земле.'},
+    {q:'Кто такие бедуины?', o:['Торговцы из Мекки','Арабы-кочевники, «жители пустыни»','Жители Византии'], a:1, why:'Бедуины жили в войлочных шатрах и перегоняли стада по степям и пустыням.'},
+    {q:'Кто такой шейх?', o:['Вождь арабского племени','«Заместитель» пророка','Хозяин караван-сарая'], a:0, why:'«Заместитель» пророка — это халиф.'},
+    {q:'Почему в Аравии долго не было единого государства?', o:['Там почти никто не жил','Бедуины, земледельцы и горожане жили слишком по-разному','Аравией правили франки'], a:1, why:'Большие различия в образе жизни и занятиях мешали объединиться.'},
+    {q:'Что значит слово «ислам»?', o:['«Покорность Богу»','«Чтение»','«Правильный путь»'], a:0, why:'«Чтение» — это Коран, «правильный путь» — шариат.'},
+    {q:'Что такое хиджра?', o:['Паломничество в Мекку','Переселение Мухаммеда из Мекки в Медину в 622 году','Пост в месяц Рамадан'], a:1, why:'Паломничество в Мекку — хадж, пост в Рамадан — один из пяти столпов.'},
+    {q:'Какие две власти соединял в своих руках Мухаммед?', o:['Духовную и светскую','Военную и морскую','Власть шейха и власть купца'], a:0, why:'Он был и пророком, и главой государства.'},
+    {q:'Что такое Сунна?', o:['Святилище в Мекке','Рассказы о делах и изречениях пророка Мухаммеда','Налог в пользу бедных'], a:1, why:'Святилище — Кааба, налог в пользу бедных — закят.'},
+    {q:'Кого называли праведными халифами?', o:['Первых правителей после Мухаммеда: Абу Бакра, Умара, Усмана и Али','Всех богатых жителей Мекки','Византийских императоров'], a:0, why:'Они жили скромно и справедливо делили добычу. Правили с 632 по 661 год.'},
+    {q:'Как мусульмане относились к иудеям и христианам на завоёванных землях?', o:['Сразу заставляли всех принять ислам','Разрешали сохранить веру, но брали особый налог','Освобождали от всех налогов'], a:1, why:'Язычников преследовали, а иудеи и христиане могли сохранить веру предков за особый налог.'}
+  ];
+  var qBox=$('#quiz-box'), qP=$('#quiz-progress'), qi=0, score=0;
+  function renderQ(){
+    if(qi>=QUIZ.length) return renderScore();
+    var q=QUIZ[qi];
+    qP.textContent='Вопрос '+(qi+1)+' из '+QUIZ.length;
+    qBox.innerHTML='';
+    qBox.appendChild(el('div','q',q.q));
+    var opts=el('div','q-opts'); qBox.appendChild(opts);
+    var fb=el('div'); qBox.appendChild(fb);
+    var rowN=el('div','row'); qBox.appendChild(rowN);
+    var answered=false;
+    q.o.forEach(function(o,i){
+      var b=el('button','opt',o); b.type='button';
+      b.addEventListener('click', function(){
+        if(answered) return; answered=true;
+        var all=opts.querySelectorAll('.opt');
+        for(var k=0;k<all.length;k++){ all[k].disabled=true; if(k===q.a) all[k].classList.add('ok'); }
+        if(i===q.a){ score++; fb.innerHTML='<div class="feedback ok"><span class="k">Правильно!</span><span>'+q.why+'</span></div>'; }
+        else { b.classList.add('bad'); fb.innerHTML='<div class="feedback bad"><span class="k">Нет, правильный ответ подсвечен зелёным.</span><span>'+q.why+'</span></div>'; }
+        var n=el('button','btn', qi<QUIZ.length-1?'Следующий вопрос':'Показать результат'); n.type='button';
+        n.addEventListener('click', function(){ qi++; renderQ(); window.scrollTo(0,0); });
+        rowN.appendChild(n);
+      });
+      opts.appendChild(b);
+    });
+  }
+  function renderScore(){
+    qP.textContent='Результат';
+    var tiles=''; for(var i=0;i<QUIZ.length;i++) tiles+='<i class="'+(i<score?'on':'')+'"></i>';
+    var msg = score===QUIZ.length ? 'Идеально, Амина! Ни одной ошибки.' : score>=8 ? 'Отлично! Ещё раз взгляни на вопросы, где ошиблась, и будет полный набор.' : score>=6 ? 'Хорошо. Перечитай шаги, где было трудно, и пройди тест снова.' : 'Тема большая, Амина, это нормально. Вернись к шагу «За минуту», потом к словарику, и попробуй ещё раз.';
+    qBox.innerHTML='<div class="score"><div class="big">'+score+' из '+QUIZ.length+'</div><div class="score-tiles">'+tiles+'</div><p>'+msg+'</p><button class="btn ghost" type="button" id="quiz-again">Пройти ещё раз</button></div>';
+    $('#quiz-again').addEventListener('click', function(){ qi=0; score=0; renderQ(); });
+    markDone('quiz');
+  }
+  renderQ();
+
+  /* ---------- bricks ---------- */
+  Array.prototype.forEach.call(document.querySelectorAll('.brick button'), function(b){
+    b.addEventListener('click', function(){
+      var body=b.nextElementSibling, open=body.hidden;
+      body.hidden=!open; b.setAttribute('aria-expanded', open?'true':'false');
+      b.lastElementChild.textContent = open?'−':'+';
+    });
+  });
+
+  /* ---------- start ---------- */
+  var start=idxFromHash(); go(start<0?0:start, true);
+})();
+</script>
+
+</body>
+</html>
