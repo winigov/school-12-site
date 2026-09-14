@@ -28,19 +28,20 @@ h1{font-family:"PT Sans Narrow","Arial Narrow",sans-serif;font-weight:700;color:
 .card .name{font-family:"PT Sans Narrow","Arial Narrow",sans-serif;font-weight:700;font-size:36px;line-height:1;color:var(--lapis)}
 .card .sub{color:var(--ink-2);font-size:16px}
 .card .cnt{font-family:"PT Sans","Segoe UI",system-ui,sans-serif;font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--terra);font-weight:700;margin-top:4px}
-.topic{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;align-items:baseline;text-decoration:none;color:var(--ink);background:var(--surface);border:1px solid var(--line);padding:16px 18px}
-.topic:hover{border-color:var(--lapis)}
-.topic .par{font:700 19px/1 "PT Sans Narrow","Arial Narrow",sans-serif;color:var(--on-lapis);background:var(--lapis);padding:6px 8px;grid-row:1/3;align-self:start}
-.topic .ttl{font-family:"PT Sans Narrow","Arial Narrow",sans-serif;font-weight:700;font-size:21px;line-height:1.2}
-.topic .desc{color:var(--ink-2);font-size:15.5px;line-height:1.4}
-.topic .meta{grid-column:2;font-family:"PT Sans","Segoe UI",system-ui,sans-serif;font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums;margin-top:4px}
+.toc-list{display:flex;flex-direction:column;border-top:1px solid var(--line)}
+.toc-row{display:flex;align-items:baseline;gap:8px;padding:12px 2px;border-bottom:1px solid var(--line);text-decoration:none;color:var(--ink)}
+.toc-row .par{font:700 18px/1 "PT Sans Narrow","Arial Narrow",sans-serif;color:var(--lapis);width:2em;flex:none;white-space:nowrap}
+.toc-row .ttl{flex:1;min-width:0;color:var(--lapis);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;font-size:16.5px;line-height:1.35}
+.toc-row:hover .ttl{text-decoration-thickness:2px}
+.toc-row:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.toc-row .pg{font-family:"PT Sans","Segoe UI",system-ui,sans-serif;font-size:13px;color:var(--muted);white-space:nowrap;font-variant-numeric:tabular-nums}
 .empty{color:var(--muted);background:var(--surface);border:1px dashed var(--line);padding:18px 20px}
 </style>
 </head>
 <body>
 <header class="top"><div class="top-inner"><a href="../../">Школа №12</a> <span>·</span> <a href="../">Амина</a> <span>·</span> <b>История</b></div></header>
 <main>
-<header><div class="eyebrow"><span class="tess"><i></i><i></i><i></i></span> Амина · 6 класс</div><h1>История</h1><p class="lede">Выбери тему. Каждая разбита на короткие шаги, можно вернуться к любому.</p></header><div class="grid"><a class="topic" href="2026-09-06-p1-rim-varvary-cerkov.html"><span class="par">§ 1</span><span class="ttl">Рим, варвары и Церковь</span><span class="desc">От Древности к Средневековью: Рим, варвары и христианская Церковь</span><span class="meta">19 шагов · 06.09.2026</span></a><a class="topic" href="2026-09-07-p2-vizantiya.html"><span class="par">§ 2</span><span class="ttl">Византия и её соседи</span><span class="desc">Византийская империя и её соседи</span><span class="meta">26 шагов · 07.09.2026</span></a><a class="topic" href="2026-09-09-p3-hlodvig-karl-velikiy.html"><span class="par">§ 3</span><span class="ttl">От Хлодвига к Карлу Великому</span><span class="desc">От королевства Хлодвига к империи Карла Великого</span><span class="meta">23 шага · 09.09.2026</span></a><a class="topic" href="2026-09-14-p4-evropa-ix-xi.html"><span class="par">§ 4</span><span class="ttl">Викинги, короли и славяне</span><span class="desc">Европа в IX—XI вв.</span><span class="meta">32 шага · 14.09.2026</span></a><a class="topic" href="2026-09-14-p5-islam-araby.html"><span class="par">§ 5</span><span class="ttl">Ислам и государство арабов</span><span class="desc">Возникновение ислама и государства у арабов</span><span class="meta">23 шага · 14.09.2026</span></a></div>
+<header><div class="eyebrow"><span class="tess"><i></i><i></i><i></i></span> Амина · 6 класс</div><h1>История</h1><p class="lede">Выбери тему. Каждая разбита на короткие шаги, можно вернуться к любому.</p></header><nav class="toc-list" aria-label="Темы"><a class="toc-row" href="2026-09-06-p1-rim-varvary-cerkov.html" title="От Древности к Средневековью: Рим, варвары и христианская Церковь"><span class="par">§ 1</span><span class="ttl">Рим, варвары и Церковь</span><span class="pg">с. 8</span></a><a class="toc-row" href="2026-09-07-p2-vizantiya.html" title="Византийская империя и её соседи"><span class="par">§ 2</span><span class="ttl">Византия и её соседи</span><span class="pg">с. 18</span></a><a class="toc-row" href="2026-09-09-p3-hlodvig-karl-velikiy.html" title="От королевства Хлодвига к империи Карла Великого"><span class="par">§ 3</span><span class="ttl">От Хлодвига к Карлу Великому</span><span class="pg">с. 29</span></a><a class="toc-row" href="2026-09-14-p4-evropa-ix-xi.html" title="Европа в IX—XI вв."><span class="par">§ 4</span><span class="ttl">Викинги, короли и славяне</span><span class="pg">с. 39</span></a><a class="toc-row" href="2026-09-14-p5-islam-araby.html" title="Возникновение ислама и государства у арабов"><span class="par">§ 5</span><span class="ttl">Ислам и государство арабов</span><span class="pg">с. 52</span></a></nav>
 </main>
 </body>
 </html>
