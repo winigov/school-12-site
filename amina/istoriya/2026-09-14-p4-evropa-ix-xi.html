@@ -273,6 +273,29 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 .ans-table th,.ans-table td{border:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top;line-height:1.3}
 .ans-table th{font-size:13px;color:var(--ink-2);font-weight:700}
 .ans-table td:first-child{white-space:nowrap}
+
+/* виды шагов: из учебника / задания учебника / придумали мы */
+.kind-tag{display:flex;gap:10px;align-items:flex-start;border-radius:10px;padding:8px 12px;font-size:13px;line-height:1.35}
+.kind-tag .ic{font-size:18px;line-height:1.1}
+.kind-tag b{font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:700}
+.kind-tag .pg{font-weight:600;margin-left:6px;font-size:13px}
+.kind-tag small{display:block;font-size:13px;color:var(--ink-2);margin-top:2px}
+.kind-tag.book{background:var(--lapis-soft);color:var(--lapis)}
+.kind-tag.task{background:var(--gold-soft);color:var(--gold)}
+.kind-tag.ours{background:var(--terra-soft);color:var(--terra)}
+.stepbar button.k-book{background:var(--lapis-soft)} .stepbar button.k-task{background:var(--gold-soft)} .stepbar button.k-ours{background:var(--terra-soft)}
+.stepbar button.k-book.visited{background:var(--lapis)} .stepbar button.k-task.visited{background:var(--gold)} .stepbar button.k-ours.visited{background:var(--terra)}
+.stepbar button.visited.done{background:var(--moss)}
+.stepbar{gap:3px} .stepbar button{min-width:3px}
+.stepbar button.gstart{margin-left:5px}
+.stepbar button.current{transform:scaleY(1.9);box-shadow:0 0 0 1.5px var(--ink)}
+.toc-group{display:flex;flex-direction:column;gap:2px;border-left:4px solid var(--lapis);padding-left:8px;margin-top:10px}
+.toc-group.k-task{border-left-color:var(--gold)} .toc-group.k-ours{border-left-color:var(--terra)}
+.toc-head{display:flex;align-items:center;gap:8px;font-size:12px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;color:var(--lapis);padding:4px 2px}
+.toc-group.k-task .toc-head{color:var(--gold)} .toc-group.k-ours .toc-head{color:var(--terra)}
+.toc-head .ic{font-size:15px;letter-spacing:0}
+.toc-item .pg{margin-left:auto;font-size:12px;color:var(--muted);white-space:nowrap;font-variant-numeric:tabular-nums}
+.toc-item .pg + .m{margin-left:8px}
 </style>
 </head>
 <body>
@@ -290,7 +313,8 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 <main id="deck">
 
 <!-- 1 -->
-<section class="step" data-step="za-minutu" data-name="За минуту" data-part="Самое главное">
+<section class="step" data-step="za-minutu" data-name="За минуту" data-part="Самое главное" data-kind="ours">
+  <div class="kind-tag ours"><span class="ic">🎲</span><div><b>Придумали мы</b><small>Короткий пересказ своими словами, для разгона. Всё, как в учебнике, — в следующих шагах.</small></div></div>
   <div class="eyebrow"><span class="tess"><i></i><i></i><i></i></span> История · 6 класс · § 4</div>
   <h1>Европа в IX–XI веках</h1>
   <p class="lede">Амина, это история о том, как на Европу со всех сторон нападали чужаки, а каждая страна отбивалась по-своему.</p>
@@ -310,6 +334,7 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
   <div class="aside">
     <div class="k">Как этим пользоваться</div>
     <p>У каждого шага написано, какой это пункт параграфа. Внизу шага есть «Подробнее, как в учебнике»: там всё, что есть в этом пункте, ничего не пропущено. Сначала учи по коротким шагам, а перед уроком открой «подробнее».</p>
+    <p>Плашка вверху шага подскажет, откуда он: синяя 📖 — из учебника, золотая ✎ — задание учебника, терракотовая 🎲 — придумали мы для тренировки. В «Содержании» шаги так же разбиты на группы.</p>
   </div>
   <details class="book">
     <summary>Подробнее, как в учебнике · с. 39</summary>
@@ -324,8 +349,9 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 </section>
 
 <!-- 2 -->
-<section class="step" data-step="daty" data-name="Даты" data-part="Лента времени">
-  <div class="eyebrow">Три даты · Учебник, с. 39</div>
+<section class="step" data-step="daty" data-name="Даты" data-part="Лента времени" data-kind="book" data-pages="с. 39">
+  <div class="kind-tag book"><span class="ic">📖</span><div><b>Из учебника</b><span class="pg">с. 39</span></div></div>
+  <div class="eyebrow">Три даты</div>
   <h2>Лента времени</h2>
   <p class="task">Это все даты из таблицы в начале параграфа, сверху вниз от ранних к поздним. Нажми на дату, чтобы прочитать, что случилось. Красные помечены «Россия», как в учебнике.</p>
   <div class="tl-v" id="tl"></div>
@@ -366,8 +392,9 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 </section>
 
 <!-- 3 -->
-<section class="step" data-step="kto-takie" data-name="Кто такие норманны" data-part="Глава 1 · Викинги">
-  <div class="eyebrow">Глава 1 · Викинги · Учебник, с. 40, п. 1</div>
+<section class="step" data-step="kto-takie" data-name="Кто такие норманны" data-part="Глава 1 · Викинги" data-kind="book" data-pages="с. 40, п. 1">
+  <div class="kind-tag book"><span class="ic">📖</span><div><b>Из учебника</b><span class="pg">с. 40, п. 1</span></div></div>
+  <div class="eyebrow">Глава 1 · Викинги</div>
   <h2>Кто такие норманны</h2>
   <div class="prose">
     <p>В IX веке во всех храмах Европы священники молились: «Господи, защити нас от ярости норманнов!» Кого так боялись?</p>
@@ -399,8 +426,9 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 </section>
 
 <!-- 4 -->
-<section class="step" data-step="nabegi" data-name="Быстрые корабли" data-part="Глава 1 · Викинги">
-  <div class="eyebrow">Глава 1 · Викинги · Учебник, с. 40–41, п. 1</div>
+<section class="step" data-step="nabegi" data-name="Быстрые корабли" data-part="Глава 1 · Викинги" data-kind="book" data-pages="с. 40–41, п. 1">
+  <div class="kind-tag book"><span class="ic">📖</span><div><b>Из учебника</b><span class="pg">с. 40–41, п. 1</span></div></div>
+  <div class="eyebrow">Глава 1 · Викинги</div>
   <h2>Быстрые корабли и внезапные набеги</h2>
   <div class="prose">
     <p>С конца VIII до середины XI века набеги норманнов шли один за другим. На быстрых кораблях приплывали хорошо вооружённые и опытные воины.</p>
@@ -428,8 +456,9 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 </section>
 
 <!-- 5 -->
-<section class="step" data-step="normandiya" data-name="Нормандия и путь к грекам" data-part="Глава 1 · Викинги">
-  <div class="eyebrow">Глава 1 · Викинги · Учебник, с. 41, п. 1</div>
+<section class="step" data-step="normandiya" data-name="Нормандия и путь к грекам" data-part="Глава 1 · Викинги" data-kind="book" data-pages="с. 41, п. 1">
+  <div class="kind-tag book"><span class="ic">📖</span><div><b>Из учебника</b><span class="pg">с. 41, п. 1</span></div></div>
+  <div class="eyebrow">Глава 1 · Викинги</div>
   <h2>Нормандия и путь «из варяг в греки»</h2>
   <div class="prose">
     <p>Со временем норманны стали не только грабить, но и захватывать прибрежные земли других стран и основывать там свои государства.</p>
@@ -453,8 +482,9 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 </section>
 
 <!-- 6 -->
-<section class="step" data-step="otkrytiya" data-name="Исландия, Гренландия, Винланд" data-part="Глава 1 · Викинги">
-  <div class="eyebrow">Глава 1 · Викинги · Учебник, с. 41, п. 1</div>
+<section class="step" data-step="otkrytiya" data-name="Исландия, Гренландия, Винланд" data-part="Глава 1 · Викинги" data-kind="book" data-pages="с. 41, п. 1">
+  <div class="kind-tag book"><span class="ic">📖</span><div><b>Из учебника</b><span class="pg">с. 41, п. 1</span></div></div>
+  <div class="eyebrow">Глава 1 · Викинги</div>
   <h2>Исландия, Гренландия, Винланд</h2>
   <div class="prose">
     <p>Норманны были лучшими мореходами своего времени. Их быстрые корабли легко проходили по узким рекам и выдерживали океанские штормы.</p>
@@ -486,8 +516,9 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 </section>
 
 <!-- 7 -->
-<section class="step" data-step="alfred" data-name="Альфред Великий" data-part="Глава 2 · Англия">
-  <div class="eyebrow">Глава 2 · Англия · Учебник, с. 42, п. 2</div>
+<section class="step" data-step="alfred" data-name="Альфред Великий" data-part="Глава 2 · Англия" data-kind="book" data-pages="с. 42, п. 2">
+  <div class="kind-tag book"><span class="ic">📖</span><div><b>Из учебника</b><span class="pg">с. 42, п. 2</span></div></div>
+  <div class="eyebrow">Глава 2 · Англия</div>
   <h2>Альфред Великий собирает Англию</h2>
   <div class="prose">
     <p>Когда в конце VIII века у берегов Англии появились корабли викингов, там было несколько королевств. Их основали ещё в V–VI веках германские племена англов и саксов, поэтому жителей называют <b>англосаксами</b>. Их правители уже были христианами.</p>
@@ -516,8 +547,9 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 </section>
 
 <!-- 8 -->
-<section class="step" data-step="harald" data-name="Харальд против Гарольда" data-part="Глава 2 · Англия">
-  <div class="eyebrow">Глава 2 · Англия · Учебник, с. 42, п. 2</div>
+<section class="step" data-step="harald" data-name="Харальд против Гарольда" data-part="Глава 2 · Англия" data-kind="book" data-pages="с. 42, п. 2">
+  <div class="kind-tag book"><span class="ic">📖</span><div><b>Из учебника</b><span class="pg">с. 42, п. 2</span></div></div>
+  <div class="eyebrow">Глава 2 · Англия</div>
   <h2>1066 год: Харальд против Гарольда</h2>
   <div class="prose">
     <p>Последний раз норманны напали на Англию в <b>1066 году</b>. Норвежский король <b>Харальд III Суровый</b> заявил, что трон Англии должен быть его, и высадился с войском в Британии.</p>
@@ -544,8 +576,9 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 </section>
 
 <!-- 9 -->
-<section class="step" data-step="gastings" data-name="Гастингс и Вильгельм" data-part="Глава 2 · Англия">
-  <div class="eyebrow">Глава 2 · Англия · Учебник, с. 42–43, п. 2</div>
+<section class="step" data-step="gastings" data-name="Гастингс и Вильгельм" data-part="Глава 2 · Англия" data-kind="book" data-pages="с. 42–43, п. 2">
+  <div class="kind-tag book"><span class="ic">📖</span><div><b>Из учебника</b><span class="pg">с. 42–43, п. 2</span></div></div>
+  <div class="eyebrow">Глава 2 · Англия</div>
   <h2>Гастингс: Вильгельм Завоеватель</h2>
   <div class="prose">
     <p>Англосаксы праздновали победу. Но через три дня на юге Англии высадился новый претендент на трон — нормандский герцог <span class="term">Вильгельм</span>.</p>
@@ -573,8 +606,9 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 </section>
 
 <!-- 10 -->
-<section class="step" data-step="razdroblennost" data-name="Почему Франция рассыпалась" data-part="Глава 3 · Франция">
-  <div class="eyebrow">Глава 3 · Франция · Учебник, с. 43, п. 3</div>
+<section class="step" data-step="razdroblennost" data-name="Почему Франция рассыпалась" data-part="Глава 3 · Франция" data-kind="book" data-pages="с. 43, п. 3">
+  <div class="kind-tag book"><span class="ic">📖</span><div><b>Из учебника</b><span class="pg">с. 43, п. 3</span></div></div>
+  <div class="eyebrow">Глава 3 · Франция</div>
   <h2>Почему Франция рассыпалась</h2>
   <div class="prose">
     <p>Представь класс, где учитель разрешил старостам рядов самим ставить оценки и собирать деньги. Скоро старосты решают всё сами, а учителя почти не слушают. Примерно так вышло во Франции.</p>
@@ -597,8 +631,9 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 </section>
 
 <!-- 11 -->
-<section class="step" data-step="kapet" data-name="Гуго Капет и Анна" data-part="Глава 3 · Франция">
-  <div class="eyebrow">Глава 3 · Франция · Учебник, с. 43–44, п. 3</div>
+<section class="step" data-step="kapet" data-name="Гуго Капет и Анна" data-part="Глава 3 · Франция" data-kind="book" data-pages="с. 43–44, п. 3">
+  <div class="kind-tag book"><span class="ic">📖</span><div><b>Из учебника</b><span class="pg">с. 43–44, п. 3</span></div></div>
+  <div class="eyebrow">Глава 3 · Франция</div>
   <h2>Гуго Капет и Анна Ярославна</h2>
   <div class="prose">
     <p>Последние Каролинги во Франции почти не имели власти. В конце X века знать отдала корону могущественному графу Парижскому <span class="term">Гуго Капету</span>, который успешно воевал с норманнами. Его потомков называют <b>Капетингами</b>, они правили Францией до XIV века. А потом, до середины XIX века, на троне (с небольшими перерывами) сидели их родственники из младших ветвей той же династии.</p>
@@ -631,8 +666,9 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 </section>
 
 <!-- 12 -->
-<section class="step" data-step="perviy" data-name="«Первый среди равных»" data-part="Глава 3 · Франция">
-  <div class="eyebrow">Глава 3 · Франция · Учебник, с. 44, п. 3</div>
+<section class="step" data-step="perviy" data-name="«Первый среди равных»" data-part="Глава 3 · Франция" data-kind="book" data-pages="с. 44, п. 3">
+  <div class="kind-tag book"><span class="ic">📖</span><div><b>Из учебника</b><span class="pg">с. 44, п. 3</span></div></div>
+  <div class="eyebrow">Глава 3 · Франция</div>
   <h2>Король — «первый среди равных»</h2>
   <div class="prose">
     <p>Что мог король Франции? Вести французское войско в больших войнах с соседями и мирить тех, кто спорит. И почти всё.</p>
@@ -660,8 +696,9 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 </section>
 
 <!-- 13 -->
-<section class="step" data-step="vengry" data-name="Германия и венгры" data-part="Глава 4 · Империя">
-  <div class="eyebrow">Глава 4 · Империя · Учебник, с. 44–45, п. 4</div>
+<section class="step" data-step="vengry" data-name="Германия и венгры" data-part="Глава 4 · Империя" data-kind="book" data-pages="с. 44–45, п. 4">
+  <div class="kind-tag book"><span class="ic">📖</span><div><b>Из учебника</b><span class="pg">с. 44–45, п. 4</span></div></div>
+  <div class="eyebrow">Глава 4 · Империя</div>
   <h2>Германия против венгров</h2>
   <div class="prose">
     <p>Теперь другая часть Верденского раздела, Восточно-Франкское королевство. В начале X века династия Каролингов там прервалась. Власть короля ослабла и здесь, но меньше, чем во Франции. Знать выбрала королём одного из герцогов. Так появилось <b>Германское королевство</b>.</p>
@@ -679,8 +716,9 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 </section>
 
 <!-- 14 -->
-<section class="step" data-step="otton" data-name="962: Оттон император" data-part="Глава 4 · Империя">
-  <div class="eyebrow">Глава 4 · Империя · Учебник, с. 45, п. 4</div>
+<section class="step" data-step="otton" data-name="962: Оттон император" data-part="Глава 4 · Империя" data-kind="book" data-pages="с. 45, п. 4">
+  <div class="kind-tag book"><span class="ic">📖</span><div><b>Из учебника</b><span class="pg">с. 45, п. 4</span></div></div>
+  <div class="eyebrow">Глава 4 · Империя</div>
   <h2>962 год: снова империя</h2>
   <div class="prose">
     <p>Победив венгров, Оттон I стал самым могущественным королём Европы. Титул императора на Западе к тому времени уже не употреблялся (помнишь, в § 3 после Лотаря он вышел из употребления). И Оттон решил ещё раз восстановить империю.</p>
@@ -707,8 +745,9 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 </section>
 
 <!-- 15 -->
-<section class="step" data-step="imperiya-cerkov" data-name="Империя и Церковь" data-part="Глава 4 · Империя">
-  <div class="eyebrow">Глава 4 · Империя · Учебник, с. 45, п. 4</div>
+<section class="step" data-step="imperiya-cerkov" data-name="Империя и Церковь" data-part="Глава 4 · Империя" data-kind="book" data-pages="с. 45, п. 4">
+  <div class="kind-tag book"><span class="ic">📖</span><div><b>Из учебника</b><span class="pg">с. 45, п. 4</span></div></div>
+  <div class="eyebrow">Глава 4 · Империя</div>
   <h2>Империя и Церковь: быть ссоре</h2>
   <div class="prose">
     <p>В Священную Римскую империю вошли Германия, север Италии и некоторые другие земли. Но в Италии власть императоров была непрочной. Каждому новому императору приходилось идти туда в поход.</p>
@@ -730,8 +769,9 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 </section>
 
 <!-- 16 -->
-<section class="step" data-step="kirill" data-name="Кирилл и Мефодий" data-part="Глава 5 · Славяне">
-  <div class="eyebrow">Глава 5 · Славяне · Учебник, с. 45–46, п. 5</div>
+<section class="step" data-step="kirill" data-name="Кирилл и Мефодий" data-part="Глава 5 · Славяне" data-kind="book" data-pages="с. 45–46, п. 5">
+  <div class="kind-tag book"><span class="ic">📖</span><div><b>Из учебника</b><span class="pg">с. 45–46, п. 5</span></div></div>
+  <div class="eyebrow">Глава 5 · Славяне</div>
   <h2>Кирилл и Мефодий</h2>
   <div class="prose">
     <p>В IX–XI веках появились первые государства западных славян. Вокруг них соперничали две силы: Франкская держава (позже Священная Римская империя) и Византия. Каждая хотела, чтобы славяне слушали именно её.</p>
@@ -759,8 +799,9 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 </section>
 
 <!-- 17 -->
-<section class="step" data-step="chehiya" data-name="Чехия и Польша" data-part="Глава 5 · Славяне">
-  <div class="eyebrow">Глава 5 · Славяне · Учебник, с. 46–47, п. 5</div>
+<section class="step" data-step="chehiya" data-name="Чехия и Польша" data-part="Глава 5 · Славяне" data-kind="book" data-pages="с. 46–47, п. 5">
+  <div class="kind-tag book"><span class="ic">📖</span><div><b>Из учебника</b><span class="pg">с. 46–47, п. 5</span></div></div>
+  <div class="eyebrow">Глава 5 · Славяне</div>
   <h2>Чехия и Польша</h2>
   <div class="prose">
     <p>Племя чехов было под властью Великой Моравии. В конце IX века чешский князь крестился. А в начале X века Великая Моравия погибла под ударами венгров (тех самых, из шага 13).</p>
@@ -787,8 +828,9 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 </section>
 
 <!-- 18 -->
-<section class="step" data-step="vybor" data-name="Рим или Константинополь" data-part="Глава 5 · Славяне">
-  <div class="eyebrow">Глава 5 · Славяне · Учебник, с. 47, п. 5 и «Подведём итоги»</div>
+<section class="step" data-step="vybor" data-name="Рим или Константинополь" data-part="Глава 5 · Славяне" data-kind="book" data-pages="с. 47, п. 5 и «Подведём итоги»">
+  <div class="kind-tag book"><span class="ic">📖</span><div><b>Из учебника</b><span class="pg">с. 47, п. 5 и «Подведём итоги»</span></div></div>
+  <div class="eyebrow">Глава 5 · Славяне</div>
   <h2>Рим или Константинополь?</h2>
   <div class="prose">
     <p>Что дало славянам крещение? Три вещи:</p>
@@ -826,7 +868,8 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 </section>
 
 <!-- 19 -->
-<section class="step" data-step="slovar-1" data-name="Словарик: северные гости" data-part="Словарик">
+<section class="step" data-step="slovar-1" data-name="Словарик: северные гости" data-part="Словарик" data-kind="ours">
+  <div class="kind-tag ours"><span class="ic">🎲</span><div><b>Придумали мы</b><small>В учебнике такого нет — это тренировка.</small></div></div>
   <div class="game">
     <div class="g-head"><h3>Словарик: северные гости</h3><span class="badge" id="b-terms">Игра</span></div>
     <p class="task">Нажми на карточку, и она перевернётся. Словарик из двух частей, открой все карточки.</p>
@@ -836,7 +879,8 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 </section>
 
 <!-- 20 -->
-<section class="step" data-step="slovar-2" data-name="Словарик: короли и державы" data-part="Словарик">
+<section class="step" data-step="slovar-2" data-name="Словарик: короли и державы" data-part="Словарик" data-kind="ours">
+  <div class="kind-tag ours"><span class="ic">🎲</span><div><b>Придумали мы</b><small>В учебнике такого нет — это тренировка.</small></div></div>
   <div class="game">
     <div class="g-head"><h3>Словарик: короли и державы</h3><span class="badge" id="b-terms2">Игра</span></div>
     <p class="task">Вторая часть. Раздробленность, империя и кириллица.</p>
@@ -846,7 +890,8 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 </section>
 
 <!-- 21 -->
-<section class="step" data-step="kto-chto" data-name="Кто что сделал" data-part="Игры">
+<section class="step" data-step="kto-chto" data-name="Кто что сделал" data-part="Игры" data-kind="ours">
+  <div class="kind-tag ours"><span class="ic">🎲</span><div><b>Придумали мы</b><small>В учебнике такого нет — это тренировка.</small></div></div>
   <div class="game" id="g-match">
     <div class="g-head"><h3>Кто что сделал</h3><span class="badge" id="b-match">Игра</span></div>
     <p class="task">Нажми на имя слева, потом на дело справа.</p>
@@ -859,7 +904,8 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 </section>
 
 <!-- 22 -->
-<section class="step" data-step="gde" data-name="Где это было?" data-part="Игры">
+<section class="step" data-step="gde" data-name="Где это было?" data-part="Игры" data-kind="ours">
+  <div class="kind-tag ours"><span class="ic">🎲</span><div><b>Придумали мы</b><small>В учебнике такого нет — это тренировка.</small></div></div>
   <div class="game">
     <div class="g-head"><h3>Где это было?</h3><span class="badge" id="b-sort">Игра</span></div>
     <p class="task">Три страны отбивались от нападений по-разному. Прочитай карточку и выбери, в какой стране это было.</p>
@@ -869,7 +915,8 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 </section>
 
 <!-- 23 -->
-<section class="step" data-step="poryadok" data-name="Расставь по порядку" data-part="Игры">
+<section class="step" data-step="poryadok" data-name="Расставь по порядку" data-part="Игры" data-kind="ours">
+  <div class="kind-tag ours"><span class="ic">🎲</span><div><b>Придумали мы</b><small>В учебнике такого нет — это тренировка.</small></div></div>
   <div class="game">
     <div class="g-head"><h3>Расставь по порядку</h3><span class="badge" id="b-order">Игра</span></div>
     <p class="task">Нажимай на события от самого раннего к самому позднему. Даты спрятаны, вспоминай сама.</p>
@@ -884,7 +931,8 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 </section>
 
 <!-- 24 -->
-<section class="step" data-step="lishnee" data-name="Найди лишнее" data-part="Игры">
+<section class="step" data-step="lishnee" data-name="Найди лишнее" data-part="Игры" data-kind="ours">
+  <div class="kind-tag ours"><span class="ic">🎲</span><div><b>Придумали мы</b><small>В учебнике такого нет — это тренировка.</small></div></div>
   <div class="game">
     <div class="g-head"><h3>Найди лишнее</h3><span class="badge" id="b-odd">Игра</span></div>
     <p class="task">Три слова из одной компании, одно чужое. Найди чужое.</p>
@@ -896,7 +944,8 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 </section>
 
 <!-- 25 -->
-<section class="step" data-step="test" data-name="Проверь себя" data-part="Финал">
+<section class="step" data-step="test" data-name="Проверь себя" data-part="Финал" data-kind="ours">
+  <div class="kind-tag ours"><span class="ic">🎲</span><div><b>Придумали мы</b><small>Вопросы для самопроверки придумали мы. Задания из учебника — дальше.</small></div></div>
   <div class="eyebrow">Финал</div>
   <h2>Проверь себя</h2>
   <div class="game">
@@ -906,8 +955,9 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 </section>
 
 <!-- 26 -->
-<section class="step" data-step="voprosy" data-name="Вопросы учебника" data-part="Финал">
-  <div class="eyebrow">Финал · Вопросы и задания в конце § 4 · Учебник, с. 47–48</div>
+<section class="step" data-step="voprosy" data-name="Вопросы учебника" data-part="Финал" data-kind="task" data-pages="с. 47–48">
+  <div class="kind-tag task"><span class="ic">✎</span><div><b>Задание учебника</b><span class="pg">с. 47–48</span><small>Вопросы из книги. Где искать ответ и подсказки — наши.</small></div></div>
+  <div class="eyebrow">Финал · Вопросы и задания в конце § 4</div>
   <h2>Вопросы из учебника</h2>
   <div class="prose">
     <p>Это вопросы и задания в конце параграфа. Рядом с каждым написано, на каком шаге искать ответ. Номера такие же, как в твоём учебнике. А вопросы 4–8 разобраны на следующих шагах: сначала подсказки, потом ответ. Отвечай своими словами: так лучше запоминается, и учитель услышит, что ты поняла, а не заучила.</p>
@@ -929,8 +979,9 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 </section>
 
 <!-- 27 -->
-<section class="step" data-step="razbor-4" data-name="Разбор вопроса 4" data-part="Финал">
-  <div class="eyebrow">Финал · Вопрос 4 из конца § 4 · Учебник, с. 47</div>
+<section class="step" data-step="razbor-4" data-name="Разбор вопроса 4" data-part="Финал" data-kind="task" data-pages="с. 47">
+  <div class="kind-tag task"><span class="ic">✎</span><div><b>Задание учебника</b><span class="pg">с. 47</span><small>Вопрос из книги, подсказки и образец ответа — наши.</small></div></div>
+  <div class="eyebrow">Финал · Вопрос 4 из конца § 4</div>
   <h2>Что стало с тремя королевствами?</h2>
   <p class="qtext">Как сложилась в IX–XI вв. судьба трёх государств, образовавшихся после распада империи Карла Великого?</p>
   <div class="aside">
@@ -960,8 +1011,9 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 </section>
 
 <!-- 28 -->
-<section class="step" data-step="razbor-5" data-name="Разбор вопроса 5" data-part="Финал">
-  <div class="eyebrow">Финал · Вопрос 5 из конца § 4 · Учебник, с. 47</div>
+<section class="step" data-step="razbor-5" data-name="Разбор вопроса 5" data-part="Финал" data-kind="task" data-pages="с. 47">
+  <div class="kind-tag task"><span class="ic">✎</span><div><b>Задание учебника</b><span class="pg">с. 47</span><small>Вопрос из книги, подсказки и образец ответа — наши.</small></div></div>
+  <div class="eyebrow">Финал · Вопрос 5 из конца § 4</div>
   <h2>Добился ли Оттон своего?</h2>
   <p class="qtext">Какую цель преследовал германский король Оттон I? Удалось ли её реализовать? Обоснуйте свой ответ.</p>
   <div class="aside">
@@ -991,8 +1043,9 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 </section>
 
 <!-- 29 -->
-<section class="step" data-step="razbor-6" data-name="Разбор вопроса 6" data-part="Финал">
-  <div class="eyebrow">Финал · Вопрос 6 из конца § 4 · Учебник, с. 47</div>
+<section class="step" data-step="razbor-6" data-name="Разбор вопроса 6" data-part="Финал" data-kind="task" data-pages="с. 47">
+  <div class="kind-tag task"><span class="ic">✎</span><div><b>Задание учебника</b><span class="pg">с. 47</span><small>Вопрос из книги, подсказки и образец ответа — наши.</small></div></div>
+  <div class="eyebrow">Финал · Вопрос 6 из конца § 4</div>
   <h2>Главный вклад Кирилла и Мефодия</h2>
   <p class="qtext">Каков главный вклад Кирилла и Мефодия в развитие славянской культуры?</p>
   <div class="aside">
@@ -1022,8 +1075,9 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 </section>
 
 <!-- 30 -->
-<section class="step" data-step="razbor-7" data-name="Разбор вопроса 7*" data-part="Финал">
-  <div class="eyebrow">Финал · Вопрос 7* из конца § 4 · Учебник, с. 47</div>
+<section class="step" data-step="razbor-7" data-name="Разбор вопроса 7*" data-part="Финал" data-kind="task" data-pages="с. 47">
+  <div class="kind-tag task"><span class="ic">✎</span><div><b>Задание учебника</b><span class="pg">с. 47</span><small>Вопрос из книги, подсказки и образец ответа — наши.</small></div></div>
+  <div class="eyebrow">Финал · Вопрос 7* из конца § 4</div>
   <h2>Рим или Константинополь: что это изменило?</h2>
   <p class="qtext">Как на судьбе славян сказалось то, что одни славянские государства приняли христианство из Рима, а другие — из Константинополя?</p>
   <div class="aside">
@@ -1053,8 +1107,9 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 </section>
 
 <!-- 31 -->
-<section class="step" data-step="razbor-8" data-name="Разбор вопроса 8" data-part="Финал">
-  <div class="eyebrow">Финал · Вопрос 8 из конца § 4 · Учебник, с. 48</div>
+<section class="step" data-step="razbor-8" data-name="Разбор вопроса 8" data-part="Финал" data-kind="task" data-pages="с. 48">
+  <div class="kind-tag task"><span class="ic">✎</span><div><b>Задание учебника</b><span class="pg">с. 48</span><small>Вопрос из книги, подсказки и образец ответа — наши.</small></div></div>
+  <div class="eyebrow">Финал · Вопрос 8 из конца § 4</div>
   <h2>Таблица: новые государства Европы</h2>
   <p class="qtext">Пользуясь картой 6 (см. Приложение) и материалом параграфа, заполните таблицу: «Год или век» — «Название нового государства Европы».</p>
   <div class="aside">
@@ -1084,7 +1139,8 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 </section>
 
 <!-- 32 -->
-<section class="step" data-step="itog" data-name="Главный вопрос" data-part="Финал">
+<section class="step" data-step="itog" data-name="Главный вопрос" data-part="Финал" data-kind="task">
+  <div class="kind-tag task"><span class="ic">✎</span><div><b>Задание учебника</b><small>Главный вопрос из книги, кирпичики-подсказки — наши.</small></div></div>
   <div class="eyebrow">Финал</div>
   <h2>Как нападения изменили Европу?</h2>
   <div class="prose">
@@ -1154,21 +1210,34 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
   var N=steps.length, cur=0;
   var stepbar=$('#stepbar'), count=$('#count'), prevB=$('#prev'), nextB=$('#next'), tocList=$('#toc-list');
 
+  /* содержание по группам: из учебника / задания учебника / придумали мы */
+  var KIND={book:['📖','Из учебника'],task:['✎','Задания учебника'],ours:['🎲','Придумали мы']};
+  var tocItems=[], groups=[], prevKind=null, grp=null;
   steps.forEach(function(s,i){
+    var kind=s.getAttribute('data-kind')||'book', pg=(s.getAttribute('data-pages')||'').replace(/,\s*п\..*$/,'');
+    var start=kind!==prevKind;
     var b=el('button'); b.type='button'; b.setAttribute('aria-label','Шаг '+(i+1)+': '+s.getAttribute('data-name'));
+    b.setAttribute('data-base','k-'+kind+(start&&i>0?' gstart':'')); b.className=b.getAttribute('data-base');
     b.addEventListener('click', function(){ go(i); });
     stepbar.appendChild(b);
-    var t=el('button','toc-item','<span class="n">'+(i+1)+'</span><span>'+s.getAttribute('data-name')+'</span><span class="m"></span>');
+    if(start){
+      var label = kind==='ours' ? (i===0?'Для разгона · придумали мы':'Тренировка · придумали мы') : KIND[kind][1];
+      grp=el('div','toc-group k-'+kind,'<div class="toc-head"><span class="ic">'+KIND[kind][0]+'</span><span>'+label+'</span></div>');
+      grp.pages=[]; groups.push(grp); tocList.appendChild(grp); prevKind=kind;
+    }
+    var t=el('button','toc-item','<span class="n">'+(i+1)+'</span><span>'+s.getAttribute('data-name')+'</span>'+(pg?'<span class="pg">'+pg+'</span>':'')+'<span class="m"></span>');
     t.type='button'; t.addEventListener('click', function(){ closeToc(); go(i); });
-    tocList.appendChild(t);
+    grp.appendChild(t); tocItems.push(t);
+    (pg.match(/\d+/g)||[]).forEach(function(n){ grp.pages.push(+n); });
   });
+  groups.forEach(function(g){ if(g.pages.length){ var a=Math.min.apply(null,g.pages), z=Math.max.apply(null,g.pages); g.firstChild.lastChild.textContent+=' · с. '+(a===z?a:a+'–'+z); } });
 
   function paint(){
-    var bars=stepbar.children, items=tocList.children;
+    var bars=stepbar.children, items=tocItems;
     for(var i=0;i<N;i++){
       var key=steps[i].getAttribute('data-step'), g=GAME_STEPS[key];
       var done = g && state.done[g];
-      bars[i].className=(i===cur?'current':'')+(state.visited[i]?' visited':'')+(done?' done':'');
+      bars[i].className=bars[i].getAttribute('data-base')+(i===cur?' current':'')+(state.visited[i]?' visited':'')+(done?' done':'');
       items[i].className='toc-item'+(i===cur?' current':'');
       items[i].lastElementChild.textContent = done ? 'пройдено' : (state.visited[i] ? '✓' : '');
     }

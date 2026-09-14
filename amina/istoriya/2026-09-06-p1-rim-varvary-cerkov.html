@@ -222,6 +222,29 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 .toc-item.current{background:var(--gold-soft);font-weight:600}
 .toc-item .n{font-family:var(--display);font-size:18px;color:var(--muted);width:24px;font-variant-numeric:tabular-nums}
 .toc-item .m{margin-left:auto;font-size:12px;color:var(--moss);font-weight:700}
+
+/* виды шагов: из учебника / задания учебника / придумали мы */
+.kind-tag{display:flex;gap:10px;align-items:flex-start;border-radius:10px;padding:8px 12px;font-size:13px;line-height:1.35}
+.kind-tag .ic{font-size:18px;line-height:1.1}
+.kind-tag b{font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:700}
+.kind-tag .pg{font-weight:600;margin-left:6px;font-size:13px}
+.kind-tag small{display:block;font-size:13px;color:var(--ink-2);margin-top:2px}
+.kind-tag.book{background:var(--lapis-soft);color:var(--lapis)}
+.kind-tag.task{background:var(--gold-soft);color:var(--gold)}
+.kind-tag.ours{background:var(--terra-soft);color:var(--terra)}
+.stepbar button.k-book{background:var(--lapis-soft)} .stepbar button.k-task{background:var(--gold-soft)} .stepbar button.k-ours{background:var(--terra-soft)}
+.stepbar button.k-book.visited{background:var(--lapis)} .stepbar button.k-task.visited{background:var(--gold)} .stepbar button.k-ours.visited{background:var(--terra)}
+.stepbar button.visited.done{background:var(--moss)}
+.stepbar{gap:3px} .stepbar button{min-width:3px}
+.stepbar button.gstart{margin-left:5px}
+.stepbar button.current{transform:scaleY(1.9);box-shadow:0 0 0 1.5px var(--ink)}
+.toc-group{display:flex;flex-direction:column;gap:2px;border-left:4px solid var(--lapis);padding-left:8px;margin-top:10px}
+.toc-group.k-task{border-left-color:var(--gold)} .toc-group.k-ours{border-left-color:var(--terra)}
+.toc-head{display:flex;align-items:center;gap:8px;font-size:12px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;color:var(--lapis);padding:4px 2px}
+.toc-group.k-task .toc-head{color:var(--gold)} .toc-group.k-ours .toc-head{color:var(--terra)}
+.toc-head .ic{font-size:15px;letter-spacing:0}
+.toc-item .pg{margin-left:auto;font-size:12px;color:var(--muted);white-space:nowrap;font-variant-numeric:tabular-nums}
+.toc-item .pg + .m{margin-left:8px}
 </style>
 </head>
 <body>
@@ -239,7 +262,8 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 <main id="deck">
 
 <!-- 1 -->
-<section class="step" data-step="za-minutu" data-name="За минуту" data-part="Самое главное">
+<section class="step" data-step="za-minutu" data-name="За минуту" data-part="Самое главное" data-kind="ours">
+  <div class="kind-tag ours"><span class="ic">🎲</span><div><b>Придумали мы</b><small>Короткий пересказ своими словами, для разгона. Всё, как в учебнике, — в следующих шагах.</small></div></div>
   <div class="eyebrow"><span class="tess"><i></i><i></i><i></i></span> История · 6 класс · § 1</div>
   <h1>Рим, варвары и Церковь</h1>
   <p class="lede">Амина, это история о том, как закончился Древний мир, кто пришёл ему на смену и кто спас книги.</p>
@@ -258,12 +282,14 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
   <div class="aside">
     <div class="k">Как этим пользоваться</div>
     <p>У каждого шага написано, какая это страница учебника. Внизу шага есть «Подробнее, как в учебнике»: там всё, что есть на этих страницах, ничего не пропущено. Сначала учи по коротким шагам, а перед уроком открой «подробнее».</p>
+    <p>Плашка вверху шага подскажет, откуда он: синяя 📖 — из учебника, золотая ✎ — задание учебника, терракотовая 🎲 — придумали мы для тренировки. В «Содержании» шаги так же разбиты на группы.</p>
   </div>
 </section>
 
 <!-- 2 -->
-<section class="step" data-step="daty" data-name="Даты" data-part="Лента времени">
-  <div class="eyebrow">Шесть дат · Учебник, с. 8</div>
+<section class="step" data-step="daty" data-name="Даты" data-part="Лента времени" data-kind="book" data-pages="с. 8">
+  <div class="kind-tag book"><span class="ic">📖</span><div><b>Из учебника</b><span class="pg">с. 8</span></div></div>
+  <div class="eyebrow">Шесть дат</div>
   <h2>Лента времени</h2>
   <p class="task">Это все даты из таблицы в начале параграфа, сверху вниз от ранних к поздним. Нажми на дату, чтобы прочитать, что случилось. Красные помечены «Россия», как в учебнике.</p>
   <div class="tl-v" id="tl"></div>
@@ -271,8 +297,9 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 </section>
 
 <!-- 3 -->
-<section class="step" data-step="germantsy" data-name="Как жили германцы" data-part="Глава 1 · Мир варваров">
-  <div class="eyebrow">Глава 1 · Мир варваров · Учебник, с. 9</div>
+<section class="step" data-step="germantsy" data-name="Как жили германцы" data-part="Глава 1 · Мир варваров" data-kind="book" data-pages="с. 9">
+  <div class="kind-tag book"><span class="ic">📖</span><div><b>Из учебника</b><span class="pg">с. 9</span></div></div>
+  <div class="eyebrow">Глава 1 · Мир варваров</div>
   <h2>Как жили германцы?</h2>
   <div class="prose">
     <p>Древние страны, Китай и Рим, связал <span class="term">Великий шёлковый путь</span>. По нему ехали купцы и шли войска, а с ними путешествовали идеи. Севернее тянулись степи кочевников. Оттуда и пришли гунны.</p>
@@ -297,8 +324,9 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 </section>
 
 <!-- 4 -->
-<section class="step" data-step="vozhd" data-name="Кто главный в племени" data-part="Глава 1 · Мир варваров">
-  <div class="eyebrow">Глава 1 · Мир варваров · Учебник, с. 10</div>
+<section class="step" data-step="vozhd" data-name="Кто главный в племени" data-part="Глава 1 · Мир варваров" data-kind="book" data-pages="с. 10">
+  <div class="kind-tag book"><span class="ic">📖</span><div><b>Из учебника</b><span class="pg">с. 10</span></div></div>
+  <div class="eyebrow">Глава 1 · Мир варваров</div>
   <h2>Кто главный в племени?</h2>
   <div class="prose">
     <p>Сначала все были равны. Потом появилась <span class="term">знать</span>, семьи побогаче и познатнее. Важные вопросы решало <span class="term">народное собрание</span>, но со временем оно просто соглашалось с вождями, жрецами и старейшинами.</p>
@@ -325,8 +353,9 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 </section>
 
 <!-- 5 -->
-<section class="step" data-step="slavyane" data-name="Славяне" data-part="Глава 1 · Мир варваров">
-  <div class="eyebrow">Глава 1 · Мир варваров · Учебник, с. 10–11</div>
+<section class="step" data-step="slavyane" data-name="Славяне" data-part="Глава 1 · Мир варваров" data-kind="book" data-pages="с. 10–11">
+  <div class="kind-tag book"><span class="ic">📖</span><div><b>Из учебника</b><span class="pg">с. 10–11</span></div></div>
+  <div class="eyebrow">Глава 1 · Мир варваров</div>
   <h2>Славяне, восточные соседи</h2>
   <div class="prose">
     <p>Славяне жили от верховьев Эльбы до среднего Днепра и говорили на одном языке. Возможно, слово «славяне», «словене» значит «владеющие словом». То есть «те, кого мы понимаем».</p>
@@ -352,8 +381,9 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 </section>
 
 <!-- 6 -->
-<section class="step" data-step="tserkov" data-name="Рим и Церковь" data-part="Глава 2 · Рим и Церковь">
-  <div class="eyebrow">Глава 2 · Рим и Церковь · Учебник, с. 11</div>
+<section class="step" data-step="tserkov" data-name="Рим и Церковь" data-part="Глава 2 · Рим и Церковь" data-kind="book" data-pages="с. 11">
+  <div class="kind-tag book"><span class="ic">📖</span><div><b>Из учебника</b><span class="pg">с. 11</span></div></div>
+  <div class="eyebrow">Глава 2 · Рим и Церковь</div>
   <h2>Как появилась Церковь</h2>
   <div class="prose">
     <p>Пока варвары набирали силу, Рим её терял. Жители обеднели, армия и власть императора ослабли. Империю разделили на Западную и Восточную.</p>
@@ -383,8 +413,9 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 </section>
 
 <!-- 7 -->
-<section class="step" data-step="monahi" data-name="Монахи и миссионеры" data-part="Глава 2 · Рим и Церковь">
-  <div class="eyebrow">Глава 2 · Рим и Церковь · Учебник, с. 11–12</div>
+<section class="step" data-step="monahi" data-name="Монахи и миссионеры" data-part="Глава 2 · Рим и Церковь" data-kind="book" data-pages="с. 11–12">
+  <div class="kind-tag book"><span class="ic">📖</span><div><b>Из учебника</b><span class="pg">с. 11–12</span></div></div>
+  <div class="eyebrow">Глава 2 · Рим и Церковь</div>
   <h2>Монахи и миссионеры</h2>
   <div class="prose">
     <p><span class="term">Монахи</span>, по-гречески «одинокие», добровольно уходили от обычной жизни, чтобы молиться. Одни жили совсем одни, это <span class="term">отшельники</span>. Другие селились вместе и создавали <span class="term">монастыри</span>.</p>
@@ -417,8 +448,9 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 </section>
 
 <!-- 8 -->
-<section class="step" data-step="kak-verit" data-name="Как верить?" data-part="Глава 3 · Споры о вере">
-  <div class="eyebrow">Глава 3 · Споры о вере · Учебник, с. 13</div>
+<section class="step" data-step="kak-verit" data-name="Как верить?" data-part="Глава 3 · Споры о вере" data-kind="book" data-pages="с. 13">
+  <div class="kind-tag book"><span class="ic">📖</span><div><b>Из учебника</b><span class="pg">с. 13</span></div></div>
+  <div class="eyebrow">Глава 3 · Споры о вере</div>
   <h2>Как верить? Споры и соборы</h2>
   <div class="prose">
     <p>Когда христиан стало очень много, они начали спорить: как правильно понимать веру? Чтобы решить споры, императоры созывали <span class="term">Вселенские соборы</span>, большие собрания епископов и богословов. Как общее собрание всей школы, только для самых главных вопросов.</p>
@@ -451,8 +483,9 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 </section>
 
 <!-- 9 -->
-<section class="step" data-step="korolevstva" data-name="Германские королевства" data-part="Глава 4 · Королевства">
-  <div class="eyebrow">Глава 4 · Королевства · Учебник, с. 14</div>
+<section class="step" data-step="korolevstva" data-name="Германские королевства" data-part="Глава 4 · Королевства" data-kind="book" data-pages="с. 14">
+  <div class="kind-tag book"><span class="ic">📖</span><div><b>Из учебника</b><span class="pg">с. 14</span></div></div>
+  <div class="eyebrow">Глава 4 · Королевства</div>
   <h2>Германские королевства</h2>
   <div class="prose">
     <p>Гунны напирали, и в конце IV века вестготы бежали от них прямо в Римскую империю. Потом они создали на юге Галлии, около нынешней Тулузы, своё королевство. Первое германское королевство! Позже вестготы захватили Испанию. Вслед за ними то же сделали другие племена:</p>
@@ -489,8 +522,9 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 </section>
 
 <!-- 10 -->
-<section class="step" data-step="teodorih" data-name="476 год и Теодорих" data-part="Глава 4 · Королевства">
-  <div class="eyebrow">Глава 4 · Королевства · Учебник, с. 14–15</div>
+<section class="step" data-step="teodorih" data-name="476 год и Теодорих" data-part="Глава 4 · Королевства" data-kind="book" data-pages="с. 14–15">
+  <div class="kind-tag book"><span class="ic">📖</span><div><b>Из учебника</b><span class="pg">с. 14–15</span></div></div>
+  <div class="eyebrow">Глава 4 · Королевства</div>
   <h2>476 год и Теодорих</h2>
   <div class="prose">
     <p>В <b>476 году</b> был свергнут последний правитель Западной Римской империи <span class="term">Ромул Августул</span>. Забавно: первого царя Рима звали Ромул, первого императора Август, а последнего западного императора Ромул Августул, «маленький Август». Древний мир закончился.</p>
@@ -521,8 +555,9 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 </section>
 
 <!-- 11 -->
-<section class="step" data-step="znaniya" data-name="Кто спас знания" data-part="Глава 5 · Знания">
-  <div class="eyebrow">Глава 5 · Знания · Учебник, с. 15–16</div>
+<section class="step" data-step="znaniya" data-name="Кто спас знания" data-part="Глава 5 · Знания" data-kind="book" data-pages="с. 15–16">
+  <div class="kind-tag book"><span class="ic">📖</span><div><b>Из учебника</b><span class="pg">с. 15–16</span></div></div>
+  <div class="eyebrow">Глава 5 · Знания</div>
   <h2>Кто спас знания Древнего мира</h2>
   <div class="prose">
     <p>На Востоке, в Византии, греко-римская культура сохранилась. А на Западе варвары, выросшие в деревнях, не умели содержать дороги, водопроводы, библиотеки, школы и театры. Всё это ветшало.</p>
@@ -553,7 +588,8 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 </section>
 
 <!-- 12 -->
-<section class="step" data-step="slovar-1" data-name="Словарик: варвары" data-part="Словарик">
+<section class="step" data-step="slovar-1" data-name="Словарик: варвары" data-part="Словарик" data-kind="ours">
+  <div class="kind-tag ours"><span class="ic">🎲</span><div><b>Придумали мы</b><small>В учебнике такого нет — это тренировка.</small></div></div>
   <div class="game">
     <div class="g-head"><h3>Словарик: варвары</h3><span class="badge" id="b-terms">Игра</span></div>
     <p class="task">Нажми на карточку, и она перевернётся. Словарик из трёх частей, открой все карточки.</p>
@@ -563,7 +599,8 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 </section>
 
 <!-- 13 -->
-<section class="step" data-step="slovar-2" data-name="Словарик: Церковь" data-part="Словарик">
+<section class="step" data-step="slovar-2" data-name="Словарик: Церковь" data-part="Словарик" data-kind="ours">
+  <div class="kind-tag ours"><span class="ic">🎲</span><div><b>Придумали мы</b><small>В учебнике такого нет — это тренировка.</small></div></div>
   <div class="game">
     <div class="g-head"><h3>Словарик: Церковь</h3><span class="badge" id="b-terms2">Игра</span></div>
     <p class="task">Вторая часть. Люди и места Церкви.</p>
@@ -573,7 +610,8 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 </section>
 
 <!-- 14 -->
-<section class="step" data-step="slovar-3" data-name="Словарик: споры о вере" data-part="Словарик">
+<section class="step" data-step="slovar-3" data-name="Словарик: споры о вере" data-part="Словарик" data-kind="ours">
+  <div class="kind-tag ours"><span class="ic">🎲</span><div><b>Придумали мы</b><small>В учебнике такого нет — это тренировка.</small></div></div>
   <div class="game">
     <div class="g-head"><h3>Словарик: споры о вере</h3><span class="badge" id="b-terms3">Игра</span></div>
     <p class="task">Третья часть. Самые трудные слова параграфа.</p>
@@ -583,7 +621,8 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 </section>
 
 <!-- 15 -->
-<section class="step" data-step="poryadok" data-name="Расставь по порядку" data-part="Игры">
+<section class="step" data-step="poryadok" data-name="Расставь по порядку" data-part="Игры" data-kind="ours">
+  <div class="kind-tag ours"><span class="ic">🎲</span><div><b>Придумали мы</b><small>В учебнике такого нет — это тренировка.</small></div></div>
   <div class="game">
     <div class="g-head"><h3>Расставь по порядку</h3><span class="badge" id="b-order">Игра</span></div>
     <p class="task">Нажимай на события от самого раннего к самому позднему. Даты спрятаны, вспоминай сама.</p>
@@ -598,7 +637,8 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 </section>
 
 <!-- 16 -->
-<section class="step" data-step="lishnee" data-name="Найди лишнее" data-part="Игры">
+<section class="step" data-step="lishnee" data-name="Найди лишнее" data-part="Игры" data-kind="ours">
+  <div class="kind-tag ours"><span class="ic">🎲</span><div><b>Придумали мы</b><small>В учебнике такого нет — это тренировка.</small></div></div>
   <div class="game">
     <div class="g-head"><h3>Найди лишнее</h3><span class="badge" id="b-odd">Игра</span></div>
     <p class="task">Три слова из одной компании, одно чужое. Найди чужое.</p>
@@ -610,7 +650,8 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 </section>
 
 <!-- 17 -->
-<section class="step" data-step="test" data-name="Проверь себя" data-part="Финал">
+<section class="step" data-step="test" data-name="Проверь себя" data-part="Финал" data-kind="ours">
+  <div class="kind-tag ours"><span class="ic">🎲</span><div><b>Придумали мы</b><small>Вопросы для самопроверки придумали мы. Задания из учебника — дальше.</small></div></div>
   <div class="eyebrow">Финал</div>
   <h2>Проверь себя</h2>
   <div class="game">
@@ -620,8 +661,9 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 </section>
 
 <!-- 18 -->
-<section class="step" data-step="voprosy" data-name="Вопросы учебника" data-part="Финал">
-  <div class="eyebrow">Финал · Учебник, с. 16–17</div>
+<section class="step" data-step="voprosy" data-name="Вопросы учебника" data-part="Финал" data-kind="task" data-pages="с. 16–17">
+  <div class="kind-tag task"><span class="ic">✎</span><div><b>Задание учебника</b><span class="pg">с. 16–17</span><small>Вопросы из книги. Где искать ответ и подсказки — наши.</small></div></div>
+  <div class="eyebrow">Финал</div>
   <h2>Вопросы из учебника</h2>
   <div class="prose">
     <p>Это вопросы и задания в конце параграфа. Рядом с каждым написано, на каком шаге искать ответ. Отвечай своими словами: так лучше запоминается, и учитель услышит, что ты поняла, а не заучила.</p>
@@ -642,7 +684,8 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 </section>
 
 <!-- 19 -->
-<section class="step" data-step="itog" data-name="Главный вопрос" data-part="Финал">
+<section class="step" data-step="itog" data-name="Главный вопрос" data-part="Финал" data-kind="task">
+  <div class="kind-tag task"><span class="ic">✎</span><div><b>Задание учебника</b><small>Главный вопрос из книги, кирпичики-подсказки — наши.</small></div></div>
   <div class="eyebrow">Финал</div>
   <h2>Каковы были последствия Великого переселения народов для Рима и варваров?</h2>
   <div class="prose">
@@ -709,21 +752,34 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
   var N=steps.length, cur=0;
   var stepbar=$('#stepbar'), count=$('#count'), prevB=$('#prev'), nextB=$('#next'), tocList=$('#toc-list');
 
+  /* содержание по группам: из учебника / задания учебника / придумали мы */
+  var KIND={book:['📖','Из учебника'],task:['✎','Задания учебника'],ours:['🎲','Придумали мы']};
+  var tocItems=[], groups=[], prevKind=null, grp=null;
   steps.forEach(function(s,i){
+    var kind=s.getAttribute('data-kind')||'book', pg=(s.getAttribute('data-pages')||'').replace(/,\s*п\..*$/,'');
+    var start=kind!==prevKind;
     var b=el('button'); b.type='button'; b.setAttribute('aria-label','Шаг '+(i+1)+': '+s.getAttribute('data-name'));
+    b.setAttribute('data-base','k-'+kind+(start&&i>0?' gstart':'')); b.className=b.getAttribute('data-base');
     b.addEventListener('click', function(){ go(i); });
     stepbar.appendChild(b);
-    var t=el('button','toc-item','<span class="n">'+(i+1)+'</span><span>'+s.getAttribute('data-name')+'</span><span class="m"></span>');
+    if(start){
+      var label = kind==='ours' ? (i===0?'Для разгона · придумали мы':'Тренировка · придумали мы') : KIND[kind][1];
+      grp=el('div','toc-group k-'+kind,'<div class="toc-head"><span class="ic">'+KIND[kind][0]+'</span><span>'+label+'</span></div>');
+      grp.pages=[]; groups.push(grp); tocList.appendChild(grp); prevKind=kind;
+    }
+    var t=el('button','toc-item','<span class="n">'+(i+1)+'</span><span>'+s.getAttribute('data-name')+'</span>'+(pg?'<span class="pg">'+pg+'</span>':'')+'<span class="m"></span>');
     t.type='button'; t.addEventListener('click', function(){ closeToc(); go(i); });
-    tocList.appendChild(t);
+    grp.appendChild(t); tocItems.push(t);
+    (pg.match(/\d+/g)||[]).forEach(function(n){ grp.pages.push(+n); });
   });
+  groups.forEach(function(g){ if(g.pages.length){ var a=Math.min.apply(null,g.pages), z=Math.max.apply(null,g.pages); g.firstChild.lastChild.textContent+=' · с. '+(a===z?a:a+'–'+z); } });
 
   function paint(){
-    var bars=stepbar.children, items=tocList.children;
+    var bars=stepbar.children, items=tocItems;
     for(var i=0;i<N;i++){
       var key=steps[i].getAttribute('data-step'), g=GAME_STEPS[key];
       var done = g && state.done[g];
-      bars[i].className=(i===cur?'current':'')+(state.visited[i]?' visited':'')+(done?' done':'');
+      bars[i].className=bars[i].getAttribute('data-base')+(i===cur?' current':'')+(state.visited[i]?' visited':'')+(done?' done':'');
       items[i].className='toc-item'+(i===cur?' current':'');
       items[i].lastElementChild.textContent = done ? 'пройдено' : (state.visited[i] ? '✓' : '');
     }

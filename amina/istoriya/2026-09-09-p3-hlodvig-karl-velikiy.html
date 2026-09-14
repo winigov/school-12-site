@@ -240,6 +240,29 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 .fig figcaption{font-size:14px;color:var(--ink-2);line-height:1.35;max-width:60ch}
 .fig-row{display:flex;gap:12px;flex-wrap:wrap;align-items:flex-start}
 .fig-row .fig{flex:1 1 150px;max-width:220px}
+
+/* виды шагов: из учебника / задания учебника / придумали мы */
+.kind-tag{display:flex;gap:10px;align-items:flex-start;border-radius:10px;padding:8px 12px;font-size:13px;line-height:1.35}
+.kind-tag .ic{font-size:18px;line-height:1.1}
+.kind-tag b{font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:700}
+.kind-tag .pg{font-weight:600;margin-left:6px;font-size:13px}
+.kind-tag small{display:block;font-size:13px;color:var(--ink-2);margin-top:2px}
+.kind-tag.book{background:var(--lapis-soft);color:var(--lapis)}
+.kind-tag.task{background:var(--gold-soft);color:var(--gold)}
+.kind-tag.ours{background:var(--terra-soft);color:var(--terra)}
+.stepbar button.k-book{background:var(--lapis-soft)} .stepbar button.k-task{background:var(--gold-soft)} .stepbar button.k-ours{background:var(--terra-soft)}
+.stepbar button.k-book.visited{background:var(--lapis)} .stepbar button.k-task.visited{background:var(--gold)} .stepbar button.k-ours.visited{background:var(--terra)}
+.stepbar button.visited.done{background:var(--moss)}
+.stepbar{gap:3px} .stepbar button{min-width:3px}
+.stepbar button.gstart{margin-left:5px}
+.stepbar button.current{transform:scaleY(1.9);box-shadow:0 0 0 1.5px var(--ink)}
+.toc-group{display:flex;flex-direction:column;gap:2px;border-left:4px solid var(--lapis);padding-left:8px;margin-top:10px}
+.toc-group.k-task{border-left-color:var(--gold)} .toc-group.k-ours{border-left-color:var(--terra)}
+.toc-head{display:flex;align-items:center;gap:8px;font-size:12px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;color:var(--lapis);padding:4px 2px}
+.toc-group.k-task .toc-head{color:var(--gold)} .toc-group.k-ours .toc-head{color:var(--terra)}
+.toc-head .ic{font-size:15px;letter-spacing:0}
+.toc-item .pg{margin-left:auto;font-size:12px;color:var(--muted);white-space:nowrap;font-variant-numeric:tabular-nums}
+.toc-item .pg + .m{margin-left:8px}
 </style>
 </head>
 <body>
@@ -257,7 +280,8 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 <main id="deck">
 
 <!-- 1 -->
-<section class="step" data-step="za-minutu" data-name="За минуту" data-part="Самое главное">
+<section class="step" data-step="za-minutu" data-name="За минуту" data-part="Самое главное" data-kind="ours">
+  <div class="kind-tag ours"><span class="ic">🎲</span><div><b>Придумали мы</b><small>Короткий пересказ своими словами, для разгона. Всё, как в учебнике, — в следующих шагах.</small></div></div>
   <div class="eyebrow"><span class="tess"><i></i><i></i><i></i></span> История · 6 класс · § 3</div>
   <h1>От Хлодвига к Карлу Великому</h1>
   <p class="lede">Амина, это история о единственном германском королевстве, которое не развалилось, а выросло в империю.</p>
@@ -276,6 +300,7 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
   <div class="aside">
     <div class="k">Как этим пользоваться</div>
     <p>У каждого шага написано, какой это пункт параграфа. Внизу шага есть «Подробнее, как в учебнике»: там всё, что есть в этом пункте, ничего не пропущено. Сначала учи по коротким шагам, а перед уроком открой «подробнее».</p>
+    <p>Плашка вверху шага подскажет, откуда он: синяя 📖 — из учебника, золотая ✎ — задание учебника, терракотовая 🎲 — придумали мы для тренировки. В «Содержании» шаги так же разбиты на группы.</p>
   </div>
   <details class="book">
     <summary>Подробнее, как в учебнике · с. 29</summary>
@@ -290,8 +315,9 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 </section>
 
 <!-- 2 -->
-<section class="step" data-step="daty" data-name="Даты" data-part="Лента времени">
-  <div class="eyebrow">Шесть дат · Учебник, с. 29</div>
+<section class="step" data-step="daty" data-name="Даты" data-part="Лента времени" data-kind="book" data-pages="с. 29">
+  <div class="kind-tag book"><span class="ic">📖</span><div><b>Из учебника</b><span class="pg">с. 29</span></div></div>
+  <div class="eyebrow">Шесть дат</div>
   <h2>Лента времени</h2>
   <p class="task">Это все даты из таблицы в начале параграфа, сверху вниз от ранних к поздним. Нажми на дату, чтобы прочитать, что случилось. Красные помечены «Россия», как в учебнике.</p>
   <div class="tl-v" id="tl"></div>
@@ -317,8 +343,9 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 </section>
 
 <!-- 3 -->
-<section class="step" data-step="hlodvig" data-name="Хлодвиг берёт Галлию" data-part="Глава 1 · Хлодвиг">
-  <div class="eyebrow">Глава 1 · Хлодвиг · Учебник, с. 30, п. 1</div>
+<section class="step" data-step="hlodvig" data-name="Хлодвиг берёт Галлию" data-part="Глава 1 · Хлодвиг" data-kind="book" data-pages="с. 30, п. 1">
+  <div class="kind-tag book"><span class="ic">📖</span><div><b>Из учебника</b><span class="pg">с. 30, п. 1</span></div></div>
+  <div class="eyebrow">Глава 1 · Хлодвиг</div>
   <h2>Хлодвиг берёт Галлию</h2>
   <div class="prose">
     <p>Франки жили по нижнему течению Рейна. Во время Великого переселения народов они вошли в римскую провинцию Галлию. В <b>486 году</b> их вождь <span class="term">Хлодвиг</span> (481–511) из рода <span class="term">Меровингов</span> разбил галло-римлян в битве при Суассоне и захватил большую часть Галлии.</p>
@@ -343,8 +370,9 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 </section>
 
 <!-- 4 -->
-<section class="step" data-step="salicheskaya" data-name="Законы и графы" data-part="Глава 1 · Хлодвиг">
-  <div class="eyebrow">Глава 1 · Хлодвиг · Учебник, с. 30–31, п. 1</div>
+<section class="step" data-step="salicheskaya" data-name="Законы и графы" data-part="Глава 1 · Хлодвиг" data-kind="book" data-pages="с. 30–31, п. 1">
+  <div class="kind-tag book"><span class="ic">📖</span><div><b>Из учебника</b><span class="pg">с. 30–31, п. 1</span></div></div>
+  <div class="eyebrow">Глава 1 · Хлодвиг</div>
   <h2>«Салическая правда» и графы</h2>
   <div class="prose">
     <p>Судили франки по старым обычаям. Чтобы их не забыли и не переиначили, Хлодвиг приказал записать судебные правила. Так появилась <span class="term">«Салическая правда»</span>. Название от салических, то есть западных, франков: по-латыни «salis» значит «морское побережье».</p>
@@ -369,8 +397,9 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 </section>
 
 <!-- 5 -->
-<section class="step" data-step="kreschenie" data-name="Крещение Хлодвига" data-part="Глава 1 · Хлодвиг">
-  <div class="eyebrow">Глава 1 · Хлодвиг · Учебник, с. 31, п. 1</div>
+<section class="step" data-step="kreschenie" data-name="Крещение Хлодвига" data-part="Глава 1 · Хлодвиг" data-kind="book" data-pages="с. 31, п. 1">
+  <div class="kind-tag book"><span class="ic">📖</span><div><b>Из учебника</b><span class="pg">с. 31, п. 1</span></div></div>
+  <div class="eyebrow">Глава 1 · Хлодвиг</div>
   <h2>Крещение Хлодвига: главный ход</h2>
   <div class="prose">
     <p>Когда Хлодвиг завоёвывал Галлию, он был язычником. Потом он принял христианство. За ним крестилась дружина, а потом и все франки.</p>
@@ -402,8 +431,9 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 </section>
 
 <!-- 6 -->
-<section class="step" data-step="lenivye" data-name="«Ленивые короли»" data-part="Глава 2 · Майордомы">
-  <div class="eyebrow">Глава 2 · Майордомы · Учебник, с. 31, п. 2</div>
+<section class="step" data-step="lenivye" data-name="«Ленивые короли»" data-part="Глава 2 · Майордомы" data-kind="book" data-pages="с. 31, п. 2">
+  <div class="kind-tag book"><span class="ic">📖</span><div><b>Из учебника</b><span class="pg">с. 31, п. 2</span></div></div>
+  <div class="eyebrow">Глава 2 · Майордомы</div>
   <h2>«Ленивые короли» и майордомы</h2>
   <div class="prose">
     <p>VI–VII века стали для королевства тяжёлым временем. Потомки Хлодвига делили власть и устраивали кровавые раздоры, страна разорялась. Власть последних Меровингов слабела, а знать усиливалась и забирала земли, которые раньше принадлежали королям.</p>
@@ -419,8 +449,9 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 </section>
 
 <!-- 7 -->
-<section class="step" data-step="puatie" data-name="Битва при Пуатье" data-part="Глава 2 · Майордомы">
-  <div class="eyebrow">Глава 2 · Майордомы · Учебник, с. 31–32, п. 2</div>
+<section class="step" data-step="puatie" data-name="Битва при Пуатье" data-part="Глава 2 · Майордомы" data-kind="book" data-pages="с. 31–32, п. 2">
+  <div class="kind-tag book"><span class="ic">📖</span><div><b>Из учебника</b><span class="pg">с. 31–32, п. 2</span></div></div>
+  <div class="eyebrow">Глава 2 · Майордомы</div>
   <h2>732 год: битва при Пуатье</h2>
   <div class="prose">
     <p>В начале VIII века пришла беда. Арабы, о которых ты читала в § 2, завоевали почти всю Испанию, перешли Пиренейские горы и вторглись во Франкское королевство.</p>
@@ -440,8 +471,9 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 </section>
 
 <!-- 8 -->
-<section class="step" data-step="feod" data-name="Земля за службу: феод" data-part="Глава 2 · Майордомы">
-  <div class="eyebrow">Глава 2 · Майордомы · Учебник, с. 32, п. 2</div>
+<section class="step" data-step="feod" data-name="Земля за службу: феод" data-part="Глава 2 · Майордомы" data-kind="book" data-pages="с. 32, п. 2">
+  <div class="kind-tag book"><span class="ic">📖</span><div><b>Из учебника</b><span class="pg">с. 32, п. 2</span></div></div>
+  <div class="eyebrow">Глава 2 · Майордомы</div>
   <h2>Земля за службу: феод</h2>
   <div class="prose">
     <p>Конь и доспехи стоят дорого, а воину некогда пахать. Как быть? Карл Мартелл придумал: раздавать воинам землю вместе с крестьянами, которые её обрабатывают. С дохода воин покупает коня и оружие и занимается только военным делом.</p>
@@ -463,8 +495,9 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 </section>
 
 <!-- 9 -->
-<section class="step" data-step="pipin" data-name="Пипин и Папское государство" data-part="Глава 2 · Майордомы">
-  <div class="eyebrow">Глава 2 · Майордомы · Учебник, с. 32, п. 2</div>
+<section class="step" data-step="pipin" data-name="Пипин и Папское государство" data-part="Глава 2 · Майордомы" data-kind="book" data-pages="с. 32, п. 2">
+  <div class="kind-tag book"><span class="ic">📖</span><div><b>Из учебника</b><span class="pg">с. 32, п. 2</span></div></div>
+  <div class="eyebrow">Глава 2 · Майордомы</div>
   <h2>Пипин Короткий и Папское государство</h2>
   <div class="prose">
     <p>Сын Карла Мартелла, <span class="term">Пипин</span> (741–768), прозванный за малый рост Коротким, не хотел оставаться майордомом при «ленивом короле». В середине VIII века при поддержке папы римского его провозгласили королём франков. Последнего Меровинга отправили в монастырь. Так началась новая династия.</p>
@@ -482,8 +515,9 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 </section>
 
 <!-- 10 -->
-<section class="step" data-step="pohody" data-name="Войны Карла Великого" data-part="Глава 3 · Карл Великий">
-  <div class="eyebrow">Глава 3 · Карл Великий · Учебник, с. 32–33, п. 3</div>
+<section class="step" data-step="pohody" data-name="Войны Карла Великого" data-part="Глава 3 · Карл Великий" data-kind="book" data-pages="с. 32–33, п. 3">
+  <div class="kind-tag book"><span class="ic">📖</span><div><b>Из учебника</b><span class="pg">с. 32–33, п. 3</span></div></div>
+  <div class="eyebrow">Глава 3 · Карл Великий</div>
   <h2>Войны Карла Великого</h2>
   <div class="prose">
     <p>Сын Пипина, <span class="term">Карл Великий</span> (768–814), почти всю жизнь провёл в войнах и совершил десятки удачных походов. С кем он воевал:</p>
@@ -509,8 +543,9 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 </section>
 
 <!-- 11 -->
-<section class="step" data-step="imperator" data-name="800 год: император" data-part="Глава 3 · Карл Великий">
-  <div class="eyebrow">Глава 3 · Карл Великий · Учебник, с. 33–34, п. 3</div>
+<section class="step" data-step="imperator" data-name="800 год: император" data-part="Глава 3 · Карл Великий" data-kind="book" data-pages="с. 33–34, п. 3">
+  <div class="kind-tag book"><span class="ic">📖</span><div><b>Из учебника</b><span class="pg">с. 33–34, п. 3</span></div></div>
+  <div class="eyebrow">Глава 3 · Карл Великий</div>
   <h2>800 год: снова император</h2>
   <div class="prose">
     <p>О Карле сложили множество легенд как о могучем воине и мудром правителе. От его имени пошло название династии, <span class="term">Каролинги</span>, и само слово «король» в славянских языках. Да-да, «король» — это «Карл».</p>
@@ -538,8 +573,9 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 </section>
 
 <!-- 12 -->
-<section class="step" data-step="upravlenie" data-name="Как управлялась империя" data-part="Глава 3 · Карл Великий">
-  <div class="eyebrow">Глава 3 · Карл Великий · Учебник, с. 34, п. 3 и схема на с. 37</div>
+<section class="step" data-step="upravlenie" data-name="Как управлялась империя" data-part="Глава 3 · Карл Великий" data-kind="book" data-pages="с. 34, п. 3 и схема на с. 37">
+  <div class="kind-tag book"><span class="ic">📖</span><div><b>Из учебника</b><span class="pg">с. 34, п. 3 и схема на с. 37</span></div></div>
+  <div class="eyebrow">Глава 3 · Карл Великий</div>
   <h2>Как управлялась империя</h2>
   <div class="prose">
     <p>Главным органом управления оставался <b>двор правителя</b>. На местах правили <b>графы</b>, которых назначал император; с ростом территории графств стало больше. Чтобы графы не своевольничали, Карл рассылал по областям <span class="term">«государевых посланцев»</span>, ревизоров-проверяющих.</p>
@@ -580,8 +616,9 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 </section>
 
 <!-- 13 -->
-<section class="step" data-step="vozrozhdenie" data-name="Каролингское возрождение" data-part="Глава 4 · Культура">
-  <div class="eyebrow">Глава 4 · Культура · Учебник, с. 35–36, п. 4</div>
+<section class="step" data-step="vozrozhdenie" data-name="Каролингское возрождение" data-part="Глава 4 · Культура" data-kind="book" data-pages="с. 35–36, п. 4">
+  <div class="kind-tag book"><span class="ic">📖</span><div><b>Из учебника</b><span class="pg">с. 35–36, п. 4</span></div></div>
+  <div class="eyebrow">Глава 4 · Культура</div>
   <h2>«Каролингское возрождение»</h2>
   <div class="prose">
     <p>Подъём культуры при Карле Великом и его ближайших преемниках назвали <span class="term">«Каролингским возрождением»</span>. Возрождали то, что почти погибло после падения Рима: школы, книги, интерес к Античности.</p>
@@ -607,8 +644,9 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 </section>
 
 <!-- 14 -->
-<section class="step" data-step="ahen" data-name="Ахен" data-part="Глава 4 · Культура">
-  <div class="eyebrow">Глава 4 · Культура · Учебник, с. 35, п. 4, «Любопытные детали»</div>
+<section class="step" data-step="ahen" data-name="Ахен" data-part="Глава 4 · Культура" data-kind="book" data-pages="с. 35, п. 4, «Любопытные детали»">
+  <div class="kind-tag book"><span class="ic">📖</span><div><b>Из учебника</b><span class="pg">с. 35, п. 4, «Любопытные детали»</span></div></div>
+  <div class="eyebrow">Глава 4 · Культура</div>
   <h2>Ахен: столица с горячими источниками</h2>
   <div class="prose">
     <p>Долгое время у Карла вообще не было столицы: он вместе со всем двором разъезжал по владениям. Потом выбрал <span class="term">Ахен</span>, город на западе нынешней Германии. Он удобно стоял в центре торговых путей, а ещё там были горячие минеральные источники, в которых император любил купаться.</p>
@@ -627,8 +665,9 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 </section>
 
 <!-- 15 -->
-<section class="step" data-step="verden" data-name="Верденский раздел" data-part="Глава 5 · Верден">
-  <div class="eyebrow">Глава 5 · Верден · Учебник, с. 36, п. 5</div>
+<section class="step" data-step="verden" data-name="Верденский раздел" data-part="Глава 5 · Верден" data-kind="book" data-pages="с. 36, п. 5">
+  <div class="kind-tag book"><span class="ic">📖</span><div><b>Из учебника</b><span class="pg">с. 36, п. 5</span></div></div>
+  <div class="eyebrow">Глава 5 · Верден</div>
   <h2>843 год: внуки делят империю</h2>
   <div class="prose">
     <p>Империя ненадолго пережила своего создателя. В <b>843 году</b> в Вердене три внука Карла заключили договор о разделе:</p>
@@ -660,7 +699,8 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 </section>
 
 <!-- 16 -->
-<section class="step" data-step="slovar-1" data-name="Словарик: короли и их люди" data-part="Словарик">
+<section class="step" data-step="slovar-1" data-name="Словарик: короли и их люди" data-part="Словарик" data-kind="ours">
+  <div class="kind-tag ours"><span class="ic">🎲</span><div><b>Придумали мы</b><small>В учебнике такого нет — это тренировка.</small></div></div>
   <div class="game">
     <div class="g-head"><h3>Словарик: короли и их люди</h3><span class="badge" id="b-terms">Игра</span></div>
     <p class="task">Нажми на карточку, и она перевернётся. Словарик из двух частей, открой все карточки.</p>
@@ -670,7 +710,8 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 </section>
 
 <!-- 17 -->
-<section class="step" data-step="slovar-2" data-name="Словарик: земля и империя" data-part="Словарик">
+<section class="step" data-step="slovar-2" data-name="Словарик: земля и империя" data-part="Словарик" data-kind="ours">
+  <div class="kind-tag ours"><span class="ic">🎲</span><div><b>Придумали мы</b><small>В учебнике такого нет — это тренировка.</small></div></div>
   <div class="game">
     <div class="g-head"><h3>Словарик: земля и империя</h3><span class="badge" id="b-terms2">Игра</span></div>
     <p class="task">Вторая часть. Феод, посланцы и возрождение.</p>
@@ -680,7 +721,8 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 </section>
 
 <!-- 18 -->
-<section class="step" data-step="praviteli" data-name="Кто что сделал" data-part="Игры">
+<section class="step" data-step="praviteli" data-name="Кто что сделал" data-part="Игры" data-kind="ours">
+  <div class="kind-tag ours"><span class="ic">🎲</span><div><b>Придумали мы</b><small>В учебнике такого нет — это тренировка.</small></div></div>
   <div class="game" id="g-match">
     <div class="g-head"><h3>Кто что сделал</h3><span class="badge" id="b-match">Игра</span></div>
     <p class="task">Нажми на имя слева, потом на дело справа.</p>
@@ -693,7 +735,8 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 </section>
 
 <!-- 19 -->
-<section class="step" data-step="poryadok" data-name="Расставь по порядку" data-part="Игры">
+<section class="step" data-step="poryadok" data-name="Расставь по порядку" data-part="Игры" data-kind="ours">
+  <div class="kind-tag ours"><span class="ic">🎲</span><div><b>Придумали мы</b><small>В учебнике такого нет — это тренировка.</small></div></div>
   <div class="game">
     <div class="g-head"><h3>Расставь по порядку</h3><span class="badge" id="b-order">Игра</span></div>
     <p class="task">Нажимай на события от самого раннего к самому позднему. Даты спрятаны, вспоминай сама.</p>
@@ -708,7 +751,8 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 </section>
 
 <!-- 20 -->
-<section class="step" data-step="lishnee" data-name="Найди лишнее" data-part="Игры">
+<section class="step" data-step="lishnee" data-name="Найди лишнее" data-part="Игры" data-kind="ours">
+  <div class="kind-tag ours"><span class="ic">🎲</span><div><b>Придумали мы</b><small>В учебнике такого нет — это тренировка.</small></div></div>
   <div class="game">
     <div class="g-head"><h3>Найди лишнее</h3><span class="badge" id="b-odd">Игра</span></div>
     <p class="task">Три слова из одной компании, одно чужое. Найди чужое.</p>
@@ -720,7 +764,8 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 </section>
 
 <!-- 21 -->
-<section class="step" data-step="test" data-name="Проверь себя" data-part="Финал">
+<section class="step" data-step="test" data-name="Проверь себя" data-part="Финал" data-kind="ours">
+  <div class="kind-tag ours"><span class="ic">🎲</span><div><b>Придумали мы</b><small>Вопросы для самопроверки придумали мы. Задания из учебника — дальше.</small></div></div>
   <div class="eyebrow">Финал</div>
   <h2>Проверь себя</h2>
   <div class="game">
@@ -730,8 +775,9 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 </section>
 
 <!-- 22 -->
-<section class="step" data-step="voprosy" data-name="Вопросы учебника" data-part="Финал">
-  <div class="eyebrow">Финал · Вопросы и задания в конце § 3 · Учебник, с. 37–38</div>
+<section class="step" data-step="voprosy" data-name="Вопросы учебника" data-part="Финал" data-kind="task" data-pages="с. 37–38">
+  <div class="kind-tag task"><span class="ic">✎</span><div><b>Задание учебника</b><span class="pg">с. 37–38</span><small>Вопросы из книги. Где искать ответ и подсказки — наши.</small></div></div>
+  <div class="eyebrow">Финал · Вопросы и задания в конце § 3</div>
   <h2>Вопросы из учебника</h2>
   <div class="prose">
     <p>Это вопросы и задания в конце параграфа. Рядом с каждым написано, на каком шаге искать ответ. Отвечай своими словами: так лучше запоминается, и учитель услышит, что ты поняла, а не заучила.</p>
@@ -753,7 +799,8 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
 </section>
 
 <!-- 23 -->
-<section class="step" data-step="itog" data-name="Главный вопрос" data-part="Финал">
+<section class="step" data-step="itog" data-name="Главный вопрос" data-part="Финал" data-kind="task">
+  <div class="kind-tag task"><span class="ic">✎</span><div><b>Задание учебника</b><small>Главный вопрос из книги, кирпичики-подсказки — наши.</small></div></div>
   <div class="eyebrow">Финал</div>
   <h2>Почему Франкское королевство оказалось самым прочным?</h2>
   <div class="prose">
@@ -820,21 +867,34 @@ details.book .body .pic{color:var(--ink-2);font-style:italic}
   var N=steps.length, cur=0;
   var stepbar=$('#stepbar'), count=$('#count'), prevB=$('#prev'), nextB=$('#next'), tocList=$('#toc-list');
 
+  /* содержание по группам: из учебника / задания учебника / придумали мы */
+  var KIND={book:['📖','Из учебника'],task:['✎','Задания учебника'],ours:['🎲','Придумали мы']};
+  var tocItems=[], groups=[], prevKind=null, grp=null;
   steps.forEach(function(s,i){
+    var kind=s.getAttribute('data-kind')||'book', pg=(s.getAttribute('data-pages')||'').replace(/,\s*п\..*$/,'');
+    var start=kind!==prevKind;
     var b=el('button'); b.type='button'; b.setAttribute('aria-label','Шаг '+(i+1)+': '+s.getAttribute('data-name'));
+    b.setAttribute('data-base','k-'+kind+(start&&i>0?' gstart':'')); b.className=b.getAttribute('data-base');
     b.addEventListener('click', function(){ go(i); });
     stepbar.appendChild(b);
-    var t=el('button','toc-item','<span class="n">'+(i+1)+'</span><span>'+s.getAttribute('data-name')+'</span><span class="m"></span>');
+    if(start){
+      var label = kind==='ours' ? (i===0?'Для разгона · придумали мы':'Тренировка · придумали мы') : KIND[kind][1];
+      grp=el('div','toc-group k-'+kind,'<div class="toc-head"><span class="ic">'+KIND[kind][0]+'</span><span>'+label+'</span></div>');
+      grp.pages=[]; groups.push(grp); tocList.appendChild(grp); prevKind=kind;
+    }
+    var t=el('button','toc-item','<span class="n">'+(i+1)+'</span><span>'+s.getAttribute('data-name')+'</span>'+(pg?'<span class="pg">'+pg+'</span>':'')+'<span class="m"></span>');
     t.type='button'; t.addEventListener('click', function(){ closeToc(); go(i); });
-    tocList.appendChild(t);
+    grp.appendChild(t); tocItems.push(t);
+    (pg.match(/\d+/g)||[]).forEach(function(n){ grp.pages.push(+n); });
   });
+  groups.forEach(function(g){ if(g.pages.length){ var a=Math.min.apply(null,g.pages), z=Math.max.apply(null,g.pages); g.firstChild.lastChild.textContent+=' · с. '+(a===z?a:a+'–'+z); } });
 
   function paint(){
-    var bars=stepbar.children, items=tocList.children;
+    var bars=stepbar.children, items=tocItems;
     for(var i=0;i<N;i++){
       var key=steps[i].getAttribute('data-step'), g=GAME_STEPS[key];
       var done = g && state.done[g];
-      bars[i].className=(i===cur?'current':'')+(state.visited[i]?' visited':'')+(done?' done':'');
+      bars[i].className=bars[i].getAttribute('data-base')+(i===cur?' current':'')+(state.visited[i]?' visited':'')+(done?' done':'');
       items[i].className='toc-item'+(i===cur?' current':'');
       items[i].lastElementChild.textContent = done ? 'пройдено' : (state.visited[i] ? '✓' : '');
     }
