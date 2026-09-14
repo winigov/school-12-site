@@ -1,0 +1,1348 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Викинги, короли и славяне</title>
+<meta name="paragraph" content="§ 4">
+<meta name="description" content="Европа в IX—XI вв.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oranienbaum&family=Golos+Text:wght@400;500;600;700&display=swap">
+<style>
+:root{
+  --bg:#EBE8DF; --surface:#F8F6F0; --surface-2:#E2DED2; --ink:#1B2233; --ink-2:#4A5163; --muted:#7A8093;
+  --lapis:#23448A; --on-lapis:#FFFFFF; --lapis-soft:#D9E1F3;
+  --gold:#B08A2E; --gold-soft:#F1E6C2; --on-gold:#2A2107;
+  --terra:#B4552F; --terra-soft:#F3DCD2;
+  --moss:#4E7A3B; --moss-soft:#DCE8D2;
+  --line:#D2CDBF; --tile:#CFC9B9;
+  --shadow:0 1px 2px rgba(27,34,51,.08),0 10px 28px rgba(27,34,51,.07);
+  --display:"Oranienbaum","Georgia","Times New Roman",serif;
+  --body:"Golos Text","Segoe UI",system-ui,-apple-system,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0F1728; --surface:#182338; --surface-2:#21304B; --ink:#EDE8DC; --ink-2:#C2BFB4; --muted:#8B93A8;
+    --lapis:#7EA0E6; --on-lapis:#0F1728; --lapis-soft:#22345A;
+    --gold:#E0B84A; --gold-soft:#3E3419; --on-gold:#0F1728;
+    --terra:#E0825C; --terra-soft:#4A2A1D;
+    --moss:#8DBF74; --moss-soft:#243B1F;
+    --line:#2E3B57; --tile:#2A3856;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 28px rgba(0,0,0,.35);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0F1728; --surface:#182338; --surface-2:#21304B; --ink:#EDE8DC; --ink-2:#C2BFB4; --muted:#8B93A8;
+  --lapis:#7EA0E6; --on-lapis:#0F1728; --lapis-soft:#22345A;
+  --gold:#E0B84A; --gold-soft:#3E3419; --on-gold:#0F1728;
+  --terra:#E0825C; --terra-soft:#4A2A1D;
+  --moss:#8DBF74; --moss-soft:#243B1F;
+  --line:#2E3B57; --tile:#2A3856;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 28px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+@media (prefers-reduced-motion: reduce){ *{transition:none!important;animation:none!important} }
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.55;-webkit-text-size-adjust:100%}
+h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1.1;text-wrap:balance;margin:0}
+p{margin:0}
+a{color:var(--lapis)}
+button{font:inherit;color:inherit;cursor:pointer}
+button:focus-visible,summary:focus-visible,a:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+[hidden]{display:none!important}
+
+/* ---------- top bar ---------- */
+.top{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+.top-inner{max-width:720px;margin:0 auto;padding:10px 16px;display:flex;align-items:center;gap:12px}
+.back{text-decoration:none;color:var(--ink-2);font-size:14px;white-space:nowrap;padding:6px 10px;border-radius:8px;background:var(--surface);border:1px solid var(--line)}
+.crumb{flex:1;min-width:0;font-size:14px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.crumb b{color:var(--ink);font-weight:600}
+.toc-btn{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:6px 10px;font-size:14px;color:var(--lapis);font-weight:600;white-space:nowrap}
+.stepbar{max-width:720px;margin:0 auto;padding:0 16px 10px;display:flex;gap:4px}
+.stepbar button{flex:1;height:8px;min-width:6px;padding:0;border:0;border-radius:2px;background:var(--tile);transition:background .3s,transform .3s}
+.stepbar button.visited{background:var(--lapis)}
+.stepbar button.done{background:var(--gold)}
+.stepbar button.current{transform:scaleY(1.6);background:var(--gold)}
+
+/* ---------- steps ---------- */
+main{max-width:720px;margin:0 auto;padding:20px 16px 120px}
+.step{display:flex;flex-direction:column;gap:16px}
+.eyebrow{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);font-weight:700;display:flex;align-items:center;gap:10px}
+.tess{display:inline-flex;gap:3px}
+.tess i{width:8px;height:8px;display:block;border-radius:1px}
+.tess i:nth-child(1){background:var(--lapis)} .tess i:nth-child(2){background:var(--gold)} .tess i:nth-child(3){background:var(--terra)}
+.step h1{font-size:clamp(36px,8vw,56px)}
+.step h2{font-size:clamp(28px,6vw,38px)}
+.step h3{font-size:22px;color:var(--lapis);margin-top:4px}
+.lede{font-size:19px;color:var(--ink-2);max-width:34ch}
+.prose{display:flex;flex-direction:column;gap:12px;max-width:66ch}
+.prose ul{margin:0;padding-left:22px;display:flex;flex-direction:column;gap:6px}
+.prose li::marker{color:var(--gold)}
+b,strong{font-weight:600}
+.term{font-weight:600;color:var(--lapis);border-bottom:2px solid var(--gold-soft)}
+.aside{background:var(--lapis-soft);border-left:4px solid var(--lapis);padding:12px 16px;border-radius:0 8px 8px 0;font-size:16px;display:flex;flex-direction:column;gap:6px}
+.aside .k{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--lapis);font-weight:700}
+.home{background:var(--gold-soft);border-left-color:var(--gold)}
+.home .k{color:var(--gold)}
+details{border:1px solid var(--line);border-radius:10px;background:var(--surface)}
+details summary{cursor:pointer;list-style:none;padding:12px 16px;font-weight:600;color:var(--lapis);display:flex;align-items:center;gap:10px}
+details summary::-webkit-details-marker{display:none}
+details summary::before{content:"";width:9px;height:9px;background:var(--gold);transform:rotate(45deg);flex:none;transition:transform .2s}
+details[open] summary::before{transform:rotate(45deg) scale(.6);background:var(--lapis)}
+details .body{padding:0 16px 14px;display:flex;flex-direction:column;gap:8px;color:var(--ink-2)}
+
+.steps4{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+@media (min-width:600px){ .steps4{grid-template-columns:repeat(4,1fr)} }
+.dom{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px;display:flex;flex-direction:column;gap:4px;box-shadow:var(--shadow)}
+.dom .n{font-family:var(--display);font-size:28px;color:var(--gold);line-height:1}
+.dom .t{font-weight:600;font-size:15px;line-height:1.25}
+.dom .d{font-size:13.5px;color:var(--ink-2);line-height:1.35}
+
+.ladder{display:flex;flex-direction:column;align-items:center;gap:6px}
+.rung{background:var(--lapis);color:var(--on-lapis);padding:9px 12px;border-radius:8px;text-align:center;font-size:15px;line-height:1.3}
+.rung small{display:block;opacity:.85;font-size:12.5px}
+.rung.r1{width:60%} .rung.r2{width:74%} .rung.r3{width:88%} .rung.r4{width:100%;background:var(--surface-2);color:var(--ink)}
+
+/* timeline (вертикальная, все даты видны сразу) */
+.tl-v{display:flex;flex-direction:column;position:relative;padding-left:4px}
+.tl-v::before{content:"";position:absolute;left:16px;top:16px;bottom:16px;width:3px;background:var(--line);border-radius:2px}
+.tl-item{position:relative;padding-left:36px;display:flex;flex-direction:column}
+.tl-btn{background:none;border:0;padding:8px 0;text-align:left;display:flex;align-items:baseline;gap:8px 12px;flex-wrap:wrap;color:var(--ink);width:100%}
+.tl-btn .dot{position:absolute;left:5px;top:12px;width:17px;height:17px;background:var(--surface);border:3px solid var(--lapis);border-radius:50%;transition:transform .2s,background .2s}
+.tl-item.ru .dot{border-color:var(--terra)}
+.tl-item.open .dot{background:var(--gold);border-color:var(--gold);transform:scale(1.2)}
+.tl-btn .y{font-family:var(--display);font-size:26px;line-height:1;font-variant-numeric:tabular-nums;min-width:96px}
+.tl-btn .t{font-weight:600;font-size:16px}
+.tl-btn .era{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--lapis);font-weight:700;margin-left:auto}
+.tl-item.ru .era{color:var(--terra)}
+.tl-d{color:var(--ink-2);font-size:15.5px;padding:0 0 12px;line-height:1.45}
+.hint{font-size:14px;color:var(--muted)}
+
+/* «как в учебнике» и вопросы учебника */
+details.book{border-color:var(--gold-soft)}
+details.book summary{color:var(--gold)}
+details.book summary::before{background:var(--gold)}
+details.book[open] summary::before{background:var(--gold)}
+details.book .body{font-size:15px;color:var(--ink)}
+details.book .body ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:7px}
+details.book .body li::marker{color:var(--gold)}
+details.book .body .pic{color:var(--ink-2);font-style:italic}
+.qlist{display:flex;flex-direction:column;gap:10px}
+.qi{display:grid;grid-template-columns:auto 1fr;gap:12px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.qi .qn{font-family:var(--display);font-size:24px;color:var(--gold);line-height:1;min-width:20px}
+.qi p{font-size:15.5px}
+.qi .src{font-size:14.5px;color:var(--ink-2);margin-top:6px}
+.qi a{font-size:13.5px;font-weight:600;text-decoration:none;display:inline-block;margin-top:8px;background:var(--lapis-soft);padding:4px 10px;border-radius:999px}
+
+/* games */
+.game{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:12px}
+.g-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.game h3{margin:0}
+.task{color:var(--ink-2)}
+.badge{font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;padding:4px 10px;border-radius:999px;background:var(--gold-soft);color:var(--gold)}
+.badge.done{background:var(--moss-soft);color:var(--moss)}
+.btn{background:var(--lapis);color:var(--on-lapis);border:0;border-radius:10px;padding:10px 18px;font-weight:600;font-size:15px;text-decoration:none;display:inline-block}
+.btn.ghost{background:transparent;color:var(--lapis);border:2px solid var(--lapis)}
+.btn:disabled{opacity:.45;cursor:default}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.feedback{padding:12px 14px;border-radius:10px;font-size:15px;display:flex;flex-direction:column;gap:4px}
+.feedback.ok{background:var(--moss-soft);border-left:4px solid var(--moss)}
+.feedback.bad{background:var(--terra-soft);border-left:4px solid var(--terra)}
+.feedback .k{font-weight:700}
+.progress{font-size:13px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.card{perspective:900px;height:150px;background:none;border:0;padding:0;text-align:left}
+.card .in{position:relative;width:100%;height:100%;transition:transform .5s;transform-style:preserve-3d}
+.card.flip .in{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;border-radius:12px;padding:12px;display:flex;flex-direction:column;justify-content:center;gap:6px;overflow:hidden}
+.face.f{background:var(--lapis);color:var(--on-lapis)}
+.face.f .w{font-family:var(--display);font-size:21px;line-height:1.05}
+.face.f .tap{font-size:11px;opacity:.75;letter-spacing:.08em;text-transform:uppercase}
+.face.b{background:var(--surface-2);color:var(--ink);transform:rotateY(180deg);font-size:12.5px;line-height:1.3;justify-content:flex-start;overflow:auto}
+.face.b .w{font-weight:700;color:var(--lapis);font-size:13px}
+.face.b .e{color:var(--ink-2);font-style:italic}
+
+.match{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.col{display:flex;flex-direction:column;gap:8px}
+.col .lbl{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.opt{background:var(--surface-2);border:2px solid transparent;border-radius:10px;padding:10px 12px;text-align:left;font-weight:500;font-size:15px;transition:border-color .15s,background .15s}
+.opt:hover{border-color:var(--lapis)}
+.opt.sel{border-color:var(--gold);background:var(--gold-soft)}
+.opt.ok{background:var(--moss-soft);border-color:var(--moss)}
+.opt.bad{animation:shake .35s}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+
+.pool{display:flex;flex-direction:column;gap:8px}
+.seq{display:flex;flex-direction:column;gap:8px;min-height:44px;padding:10px;border:2px dashed var(--line);border-radius:12px}
+.seq .slot{display:flex;align-items:center;gap:10px;background:var(--lapis-soft);border-radius:8px;padding:8px 12px;font-size:15px}
+.seq .slot .i{font-family:var(--display);font-size:20px;color:var(--lapis);width:22px;font-variant-numeric:tabular-nums}
+.seq .slot.ok{background:var(--moss-soft)} .seq .slot.bad{background:var(--terra-soft)}
+.seq .slot .yr{margin-left:auto;font-weight:700;color:var(--ink-2);font-variant-numeric:tabular-nums}
+.seq .empty{color:var(--muted);font-size:14px}
+
+.odd-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.odd-grid .opt{text-align:center;padding:16px 10px;font-size:16px}
+.odd-grid .opt.bad{background:var(--terra-soft);border-color:var(--terra)}
+
+.q{font-size:19px;font-weight:600;line-height:1.35}
+.q-opts{display:flex;flex-direction:column;gap:8px}
+.q-opts .opt{font-size:15.5px;line-height:1.35}
+.q-opts .opt.bad{background:var(--terra-soft);border-color:var(--terra)}
+.score{display:flex;flex-direction:column;gap:12px;align-items:flex-start}
+.score .big{font-family:var(--display);font-size:56px;line-height:1;color:var(--gold)}
+.score-tiles{display:flex;gap:5px;flex-wrap:wrap}
+.score-tiles i{width:22px;height:22px;border-radius:3px;background:var(--tile)}
+.score-tiles i.on{background:var(--gold)}
+
+.bricks{display:flex;flex-direction:column;gap:10px}
+.brick{background:var(--surface-2);border-radius:10px;overflow:hidden}
+.brick button{width:100%;background:none;border:0;padding:12px 14px;text-align:left;font-weight:600;color:var(--lapis);display:flex;justify-content:space-between;gap:10px}
+.brick .b-body{padding:0 14px 12px;color:var(--ink-2);font-size:15.5px}
+
+.mosaic{display:flex;gap:6px;align-items:center}
+.mosaic .tile{width:26px;height:26px;background:var(--tile);border-radius:3px;transition:background .4s,transform .4s}
+.mosaic .tile.on{background:var(--gold);transform:rotate(45deg) scale(.8)}
+.mosaic-list{display:flex;flex-direction:column;gap:6px;font-size:15px}
+.mosaic-list span.off{color:var(--muted)}
+
+/* pager */
+.pager{position:fixed;left:0;right:0;bottom:0;z-index:5;background:var(--bg);border-top:1px solid var(--line)}
+.pager-inner{max-width:720px;margin:0 auto;padding:10px 16px;display:flex;align-items:center;gap:10px}
+.pager .count{font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+.pager .btn{flex:1;text-align:center;padding:12px 14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pager .btn.ghost{flex:0 0 auto}
+
+/* toc overlay */
+.toc{position:fixed;inset:0;z-index:10;background:rgba(0,0,0,.35);display:flex;justify-content:flex-end}
+.toc-panel{width:min(360px,90vw);height:100%;background:var(--surface);overflow:auto;padding:16px;display:flex;flex-direction:column;gap:8px;box-shadow:var(--shadow)}
+.toc-panel h3{font-size:24px;margin-bottom:6px;display:flex;justify-content:space-between;align-items:center}
+.toc-close{background:none;border:1px solid var(--line);border-radius:8px;padding:4px 10px;font-size:14px}
+.toc-item{display:flex;align-items:center;gap:10px;background:none;border:0;border-radius:8px;padding:8px 10px;text-align:left;font-size:15px;color:var(--ink)}
+.toc-item:hover{background:var(--surface-2)}
+.toc-item.current{background:var(--gold-soft);font-weight:600}
+.toc-item .n{font-family:var(--display);font-size:18px;color:var(--muted);width:24px;font-variant-numeric:tabular-nums}
+.toc-item .m{margin-left:auto;font-size:12px;color:var(--moss);font-weight:700}
+
+/* схема управления (§ 2) */
+.org{display:flex;flex-direction:column;gap:8px}
+.org .lvl{display:grid;gap:8px;grid-template-columns:repeat(2,1fr)}
+@media (min-width:600px){ .org .lvl{grid-template-columns:repeat(4,1fr)} }
+.org .box{background:var(--surface-2);border-radius:8px;padding:9px 10px;font-size:14px;text-align:center;line-height:1.3}
+.org .box small{display:block;font-size:12px;color:var(--ink-2)}
+.org .box.top{background:var(--lapis);color:var(--on-lapis);font-weight:600;font-size:16px}
+.org .box.sub{background:var(--gold-soft)}
+.org .lbl{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:700;text-align:center}
+
+/* иллюстрации (§ 3) */
+.fig{margin:0;display:flex;flex-direction:column;gap:6px;align-items:flex-start}
+.fig img{width:100%;max-width:360px;height:auto;border-radius:10px;border:1px solid var(--line);background:var(--surface);box-shadow:var(--shadow)}
+.fig.wide img{max-width:100%}
+.fig figcaption{font-size:14px;color:var(--ink-2);line-height:1.35;max-width:60ch}
+.fig-row{display:flex;gap:12px;flex-wrap:wrap;align-items:flex-start}
+.fig-row .fig{flex:1 1 150px;max-width:220px}
+
+/* § 4: «каждый шестой», два пути крещения, игра «Где это было?» */
+.six{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;max-width:380px}
+.six span{height:64px;border-radius:8px;background:var(--surface-2);color:var(--ink-2);display:flex;align-items:flex-end;justify-content:center;padding-bottom:6px;font-size:11.5px;font-weight:600;position:relative}
+.six span::before{content:"";position:absolute;top:10px;left:50%;width:14px;height:14px;margin-left:-7px;border-radius:50%;background:var(--tile)}
+.six span::after{content:"";position:absolute;top:27px;left:50%;width:22px;height:14px;margin-left:-11px;border-radius:8px 8px 3px 3px;background:var(--tile)}
+.six span.w{background:var(--lapis);color:var(--on-lapis)}
+.six span.w::before,.six span.w::after{background:var(--gold)}
+.ways{display:grid;grid-template-columns:1fr;gap:10px}
+@media (min-width:560px){ .ways{grid-template-columns:1fr 1fr} }
+.way{background:var(--surface);border:1px solid var(--line);border-top:5px solid var(--lapis);border-radius:12px;padding:12px 14px;display:flex;flex-direction:column;gap:6px;box-shadow:var(--shadow)}
+.way.const{border-top-color:var(--terra)}
+.way.const h3{color:var(--terra)}
+.way .cn{font-weight:600;font-size:17px}
+.way p{font-size:15.5px;color:var(--ink-2)}
+.sort-card{background:var(--lapis-soft);border-radius:12px;padding:16px;font-size:18px;font-weight:600;line-height:1.35}
+.tri{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.tri .opt{text-align:center;padding:12px 4px;font-size:15px}
+.tri .opt.bad{background:var(--terra-soft);border-color:var(--terra)}
+.sort-sum{display:flex;flex-direction:column;gap:8px;font-size:15px}
+.sort-sum b{color:var(--lapis)}
+</style>
+</head>
+<body>
+
+
+<header class="top">
+  <div class="top-inner">
+    <a class="back" href="./">← Темы</a>
+    <div class="crumb">История · § 4 · <b>Европа в IX–XI веках</b></div>
+    <button class="toc-btn" id="toc-btn" type="button">Содержание</button>
+  </div>
+  <div class="stepbar" id="stepbar" aria-label="Шаги темы"></div>
+</header>
+
+<main id="deck">
+
+<!-- 1 -->
+<section class="step" data-step="za-minutu" data-name="За минуту" data-part="Самое главное">
+  <div class="eyebrow"><span class="tess"><i></i><i></i><i></i></span> История · 6 класс · § 4</div>
+  <h1>Европа в IX–XI веках</h1>
+  <p class="lede">Амина, это история о том, как на Европу со всех сторон нападали чужаки, а каждая страна отбивалась по-своему.</p>
+  <div id="resume" hidden></div>
+  <div class="prose">
+    <p>Представь большой дом, который построил Карл Великий. В § 3 его поделили три внука, и каждая часть зажила сама по себе. И тут в окна полезли непрошеные гости: с севера на кораблях приплыли <span class="term">норманны</span>, с востока прискакали кочевники-венгры, с юга нападали арабы.</p>
+    <p>Каждый «жилец» ответил по-своему. Англия собралась в один кулак вокруг одного короля. Франция рассыпалась на куски: каждый знатный сосед защищал только свой двор. А Германия разбила венгров и сама стала новой империей.</p>
+    <p>И самое неожиданное: сами разбойники тоже изменились. Норманны и венгры осели на земле, крестились и создали свои государства. А рядом появились первые государства славян.</p>
+    <p>Главный вопрос параграфа: <b>как нападения норманнов и венгров повлияли на разные страны Европы и что они дали самим норманнам и венграм?</b> Запомни четыре имени из начала параграфа:</p>
+  </div>
+  <div class="steps4">
+    <div class="dom"><div class="n">1</div><div class="t">Альфред Великий</div><div class="d">Остановил викингов и стал первым королём Англии.</div></div>
+    <div class="dom"><div class="n">2</div><div class="t">Вильгельм Завоеватель</div><div class="d">Нормандский герцог, в 1066 году завоевал Англию.</div></div>
+    <div class="dom"><div class="n">3</div><div class="t">Оттон I</div><div class="d">Разбил венгров, в 962 году стал императором.</div></div>
+    <div class="dom"><div class="n">4</div><div class="t">Кирилл и Мефодий</div><div class="d">Создали славянскую азбуку, кириллицу.</div></div>
+  </div>
+  <div class="aside">
+    <div class="k">Как этим пользоваться</div>
+    <p>У каждого шага написано, какой это пункт параграфа. Внизу шага есть «Подробнее, как в учебнике»: там всё, что есть в этом пункте, ничего не пропущено. Сначала учи по коротким шагам, а перед уроком открой «подробнее».</p>
+  </div>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · начало § 4</summary>
+    <div class="body"><ul>
+      <li>Главный вопрос параграфа: как нападения норманнов и венгров в IX–XI вв. повлияли на развитие разных стран Европы? Какие последствия они имели для самих норманнов и венгров?</li>
+      <li class="pic">Иллюстрация в начале параграфа: «Набег викингов». Художник Ф. Лике, 1906 год.</li>
+      <li>Слова параграфа: кириллица, норманны, путь «из варяг в греки», раздробленность. Люди: Альфред Великий, Вильгельм Завоеватель, Кирилл и Мефодий, Оттон I. Всё это есть в словарике и в игре «Кто что сделал».</li>
+      <li>Таблица дат параграфа разобрана на следующем шаге.</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 2 -->
+<section class="step" data-step="daty" data-name="Даты" data-part="Лента времени">
+  <div class="eyebrow">Пять дат · Таблица в начале § 4</div>
+  <h2>Лента времени</h2>
+  <p class="task">Это все даты из таблицы в начале параграфа, сверху вниз от ранних к поздним. Нажми на дату, чтобы прочитать, что случилось. Красные помечены «Россия», как в учебнике.</p>
+  <div class="tl-v" id="tl"></div>
+  <div class="aside home">
+    <div class="k">Ближе к дому</div>
+    <p>965 год — снова хазары. В § 3 ты читала, что ранняя столица Хазарского каганата, Семендер, стояла на землях нынешнего Дагестана, у Каспия. Арабский географ того времени писал, что русы разорили хазарские города, и Семендер тоже.</p>
+  </div>
+  <details class="book">
+    <summary>Ещё даты, которые встречаются в тексте параграфа</summary>
+    <div class="body"><ul>
+      <li>Конец VIII — середина XI в. — набеги норманнов (п. 1).</li>
+      <li>Середина IX в. — могильный холм с кораблём в Осеберге (п. 1).</li>
+      <li>Конец IX в. — норманны открыли Исландию (п. 1).</li>
+      <li>X в. — возникло герцогство Нормандия; норманны открыли Гренландию (п. 1).</li>
+      <li>Около 1000 г. — Лейф Счастливый доплыл до Северной Америки, Винланд (п. 1).</li>
+      <li>XI в. — нормандцы захватили Сицилию и Южную Италию (п. 1).</li>
+      <li>V–VI вв. — англы и саксы основали королевства в Англии (п. 2).</li>
+      <li>871–900 гг. — Альфред Великий (п. 2).</li>
+      <li>1066 г. — разгром Харальда Сурового, через три дня битва при Гастингсе (п. 2).</li>
+      <li>1066–1087 гг. — Вильгельм I Завоеватель (п. 2).</li>
+      <li>Конец XI в. — государства в Скандинавии, конец «эпохи викингов» (п. 2).</li>
+      <li>IX–X вв. — раздробленность в Западно-Франкском королевстве, его стали называть Францией (п. 3).</li>
+      <li>Конец X в. — королём Франции стал Гуго Капет; Капетинги правили до XIV в. (п. 3).</li>
+      <li>Вторая половина XI в. — все короли Франции потомки Ярослава Мудрого (п. 3).</li>
+      <li>Конец IX в. — венгры поселились на среднем Дунае (п. 4).</li>
+      <li>Начало X в. — в Восточно-Франкском королевстве пресеклись Каролинги, появилось Германское королевство (п. 4).</li>
+      <li>936–973 гг. — Оттон I (п. 4).</li>
+      <li>Конец X в. — Венгерское королевство (п. 4).</li>
+      <li>Начало IX в. — Великая Моравия (п. 5).</li>
+      <li>VIII в. — Пржемысл, основатель чешской династии, по легенде (п. 5).</li>
+      <li>Конец IX в. — крестился чешский князь; начало X в. — Великая Моравия погибла от венгров (п. 5).</li>
+      <li>X в. — Чехия вошла в Священную Римскую империю; XI–XII вв. — чешские князья стали королями (п. 5).</li>
+      <li>X в. — Польское государство; 966 г. — поляки приняли христианство; 1025 г. — Болеслав I Храбрый получил королевский титул (п. 5).</li>
+    </ul></div>
+  </details>
+  <p class="hint">Эти даты потом пригодятся в игре «Расставь по порядку».</p>
+</section>
+
+<!-- 3 -->
+<section class="step" data-step="kto-takie" data-name="Кто такие норманны" data-part="Глава 1 · Викинги">
+  <div class="eyebrow">Глава 1 · Викинги · Учебник, § 4, п. 1</div>
+  <h2>Кто такие норманны</h2>
+  <div class="prose">
+    <p>В IX веке во всех храмах Европы священники молились: «Господи, защити нас от ярости норманнов!» Кого так боялись?</p>
+    <p><span class="term">Норманны</span> — это «северные люди». Так в Западной Европе звали жителей Скандинавии, предков датчан, шведов, норвежцев и исландцев.</p>
+    <p>Почему они пустились за море? В Скандинавии суровый климат и мало земли, которую можно пахать. Зато есть море, а по морю можно доплыть в любую страну.</p>
+    <p>А ещё в VIII–X веках у них случилось то же, что у германцев в Великое переселение народов из § 1. Вожди усилились, вокруг них собрались дружины, которые хотели славы и добычи. Итог — нападения, завоевания и переселение на новые земли.</p>
+    <p>Одних и тех же людей называли по-разному:</p>
+  </div>
+  <div class="steps4">
+    <div class="dom"><div class="t">Викинги</div><div class="d">так называли себя сами скандинавы, участники морских походов</div></div>
+    <div class="dom"><div class="t">Норманны</div><div class="d">так их звали в Западной Европе</div></div>
+    <div class="dom"><div class="t">Варяги</div><div class="d">так их звали на Руси</div></div>
+  </div>
+  <figure class="fig"><img src="img/2026-09-14-p4/02-topor-vikingov.jpg" width="242" height="186" loading="lazy" alt="Железный наконечник топора, покрытый узорами"><figcaption>Топор эпохи викингов. Современная фотография. Вопрос учебника: как понять, что это боевой топор, а не топор лесоруба?</figcaption></figure>
+  <details>
+    <summary>Подсказка к вопросу про топор</summary>
+    <div class="body"><p>Рассмотри топор внимательно: весь металл покрыт узорами. Рядом в учебнике написано, что оружие стоило очень дорого, его ценили и украшали, а воины верили в его волшебную силу. Стал бы лесоруб так украшать рабочий инструмент?</p></div>
+  </details>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · § 4, п. 1</summary>
+    <div class="body"><ul>
+      <li class="pic">Иллюстрация: топор эпохи викингов, современная фотография. Подпись: оружие в это время стоило очень дорого, высоко ценилось и часто украшалось орнаментами и другими изображениями. Нередко воины считали, что оно обладает магической силой. Вопрос: по каким признакам можно определить, что перед нами наконечник боевого топора, а не орудие лесоруба?</li>
+      <li>Пункт 1 «Походы викингов». В IX веке во всех храмах Европы священники возносили молитвы: «Господи, защити нас от ярости норманнов!» Норманнами, то есть «северными людьми», в Западной Европе называли жителей Скандинавии, предков современных датчан, шведов, норвежцев и исландцев.</li>
+      <li>Скандинавия отличается суровым климатом. Земель, удобных для обработки, здесь мало, поэтому огромную роль в жизни скандинавов играло море, по которому можно было попасть в другие страны.</li>
+      <li>То, что происходило в Скандинавии в VIII–X веках, напоминало перемены в жизни германцев в эпоху Великого переселения народов: усиление влияния вождей, образование дружин, стремившихся к славе и добыче. И как следствие — нападения, завоевания и переселение на новые земли. Участников морских походов сами скандинавы называли викингами. На Руси их называли варягами.</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 4 -->
+<section class="step" data-step="nabegi" data-name="Быстрые корабли" data-part="Глава 1 · Викинги">
+  <div class="eyebrow">Глава 1 · Викинги · Учебник, § 4, п. 1</div>
+  <h2>Быстрые корабли и внезапные набеги</h2>
+  <div class="prose">
+    <p>С конца VIII до середины XI века набеги норманнов шли один за другим. На быстрых кораблях приплывали хорошо вооружённые и опытные воины.</p>
+    <p>Они опустошали берега, а по рекам заплывали далеко вглубь материка. Разорили Лондон, Париж и даже Ахен, столицу Карла Великого из § 3.</p>
+    <p>Нападали так внезапно, что отряды местных правителей не успевали прийти на помощь мирным жителям. Как молния: пока соберёшь войско, викингов уже и след простыл.</p>
+  </div>
+  <figure class="fig"><img src="img/2026-09-14-p4/01-nabeg-vikingov.jpg" width="480" height="395" loading="lazy" alt="Корабль викингов с драконьей головой у берега, воины выносят добычу"><figcaption>Набег викингов. Художник Ф. Лике, 1906 год. Этой картиной начинается параграф в учебнике.</figcaption></figure>
+  <figure class="fig"><img src="img/2026-09-14-p4/03-korabl-oseberg.jpg" width="243" height="165" loading="lazy" alt="Длинный деревянный корабль с высоким завитым носом в музейном зале"><figcaption>Корабль из Осеберга. Длина 21,6 метра, почти как два городских автобуса.</figcaption></figure>
+  <div class="aside">
+    <div class="k">Находка археологов</div>
+    <p>В 1904 году у селения Осеберг в Южной Норвегии раскопали могильный холм середины IX века. Внутри был корабль с мачтой и вёслами, повозка, сани, деревянные кровати и другие вещи для дома. Там же похоронили двух женщин, нескольких собак и лошадей.</p>
+  </div>
+  <details>
+    <summary>Подсказка: каким норвежцы представляли загробный мир?</summary>
+    <div class="body"><p>Это вопрос учебника. Подумай: зачем умершим корабль, сани, повозка, кровати и лошади? Если люди клали всё это в могилу, какой они представляли жизнь после смерти?</p></div>
+  </details>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · § 4, п. 1</summary>
+    <div class="body"><ul>
+      <li>С конца VIII до середины XI века нападения норманнов следовали одно за другим. На своих быстроходных кораблях хорошо вооружённые и опытные воины опустошали побережье, по рекам проникали далеко вглубь континента, разоряя Лондон, Париж, Ахен. Набеги викингов были столь внезапны, что отряды местных правителей не успевали приходить на помощь мирным жителям.</li>
+      <li class="pic">Иллюстрация и врезка «Корабль из Осеберга»: археологи, начавшие раскопки в 1904 году у селения Осеберг в Южной Норвегии, обнаружили могильный холм середины IX века. Внутри него находился корабль с мачтой и вёслами, повозка, сани, деревянные кровати и другие предметы домашнего обихода. Длина корабля составляла 21,6 метра. Также в кургане были похоронены две женщины, несколько собак и лошадей.</li>
+      <li>Задание учебника: на основе информации об Осебергском погребении определите, каким представляли себе жители Норвегии IX века загробный мир.</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 5 -->
+<section class="step" data-step="normandiya" data-name="Нормандия и путь к грекам" data-part="Глава 1 · Викинги">
+  <div class="eyebrow">Глава 1 · Викинги · Учебник, § 4, п. 1</div>
+  <h2>Нормандия и путь «из варяг в греки»</h2>
+  <div class="prose">
+    <p>Со временем норманны стали не только грабить, но и захватывать прибрежные земли других стран и основывать там свои государства.</p>
+    <p>В X веке французский король был вынужден отдать норманнам большие земли на севере страны. Так появилось герцогство <span class="term">Нормандия</span>. Поселившиеся там скандинавы крестились, заговорили на местном языке и переняли местные обычаи. А в XI веке выходцы из Нормандии захватили Сицилию и Южную Италию.</p>
+  </div>
+  <div class="aside">
+    <div class="k">Не перепутай</div>
+    <p><b>Норманны</b> — «северные люди», скандинавы. <b>Нормандцы</b> — выходцы из Нормандии, их потомки, которые уже крестились и живут по-местному. Запомни по названию: нормандцы из Нормандии, как москвичи из Москвы.</p>
+  </div>
+  <div class="prose">
+    <p>Там, где лёгкой победы не ждали, норманны осторожничали. Откладывали мечи, выдавали себя за купцов, а бывало, и правда торговали.</p>
+    <p>Через земли Руси по рекам шёл торговый <span class="term">путь «из варяг в греки»</span>. Варяги — это скандинавы, греки — жители Византии из § 2. По этому пути викинги попадали в Византию и часто нанимались туда на военную службу.</p>
+  </div>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · § 4, п. 1</summary>
+    <div class="body"><ul>
+      <li>Со временем норманны стали захватывать прибрежные области других стран и основывать там свои государства. В X веке французский король вынужден был уступить норманнам обширные земли на севере страны. Так возникло герцогство Нормандия. Поселившиеся там скандинавы приняли христианство, переняли местный язык и обычаи. Позже, в XI веке, выходцы из Нормандии — нормандцы — захватили Сицилию и Южную Италию.</li>
+      <li>Там же, где норманны не рассчитывали на лёгкую победу, они проявляли осторожность и, отложив мечи в сторону, выдавали себя за купцов, а при случае и в самом деле занимались торговлей. По торговому пути «из варяг в греки», пролегавшему по рекам через земли Руси, викинги попадали в Византию, где нередко нанимались на военную службу.</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 6 -->
+<section class="step" data-step="otkrytiya" data-name="Исландия, Гренландия, Винланд" data-part="Глава 1 · Викинги">
+  <div class="eyebrow">Глава 1 · Викинги · Учебник, § 4, п. 1</div>
+  <h2>Исландия, Гренландия, Винланд</h2>
+  <div class="prose">
+    <p>Норманны были лучшими мореходами своего времени. Их быстрые корабли легко проходили по узким рекам и выдерживали океанские штормы.</p>
+    <p>В конце IX века норманны открыли остров и назвали его Страной льда, <b>Исландией</b>. И начали его заселять.</p>
+  </div>
+  <div class="aside">
+    <div class="k">Любопытные детали</div>
+    <p>Чтобы заманить поселенцев в суровые края, норманны называли новые земли по самому лучшему, что там видели. Землю к северо-западу от Исландии, открытую в X веке, назвали Зелёной страной, <b>Гренландией</b>, хотя зелени там мало.</p>
+    <p>Около 1000 года исландец <b>Лейф Счастливый</b> доплыл до Северной Америки. В лесах он нашёл дикий виноград и назвал это место <b>Винланд</b>, Страна винограда. Норманны побывали в Америке первыми из европейцев, за 500 лет до Колумба!</p>
+    <p>Археологи уже в наше время раскопали их поселение на острове Ньюфаундленд. Но надолго норманны там не остались. Рассказы о Винланде передавали из поколения в поколение, но за пределами Скандинавии о нём никто не узнал.</p>
+  </div>
+  <div class="prose">
+    <p>Норманны были язычниками, но с богатой и своеобразной культурой. Писали особыми знаками, <span class="term">рунами</span>. Их сказания, <span class="term">саги</span>, рассказывали о жестоких битвах и дальних плаваниях, например в Гренландию и Винланд.</p>
+  </div>
+  <details>
+    <summary>Подсказка к заданию с картой 7</summary>
+    <div class="body"><p>В учебнике просят по карте 7 назвать острова на пути в Винланд. Открой карту в конце учебника и проследи путь от Норвегии на запад. Три острова из этого пути уже встречались на этом шаге.</p></div>
+  </details>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · § 4, п. 1</summary>
+    <div class="body"><ul>
+      <li>Норманны были лучшими мореходами своего времени. Их быстроходные корабли не только легко передвигались по узким рекам, но и выдерживали океанские штормы. В конце IX века норманны открыли остров, названный ими Страной льда — Исландией, и начали его заселять.</li>
+      <li>Любопытные детали: чтобы привлечь в суровые места поселенцев, норманны старались называть открытые земли по лучшему, что они там увидели. Обнаружив в X веке землю к северо-западу от Исландии, они окрестили её Зелёной страной — Гренландией, хотя зелени там было мало. А когда около 1000 года выходец из Исландии Лейф Счастливый достиг Северной Америки, то, обнаружив там в лесах дикий виноград, назвал это место Винланд — Страна винограда. Норманны побывали в Новом Свете первыми из европейцев — за 500 лет до Колумба. Уже в наше время археологи раскопали их поселение на острове Ньюфаундленд. Правда, надолго закрепиться в Америке норманнам не удалось. Рассказы о Винланде передавались из поколения в поколение, но за пределами Скандинавии о нём никто не узнал.</li>
+      <li>Задание учебника: с помощью карты 7 (см. Приложение) назовите острова, которые встречались норманнам по пути следования в Винланд.</li>
+      <li>Норманны были варварами-язычниками с богатой и самобытной культурой. Они пользовались особой письменностью — рунами. Скандинавские сказания — саги — повествовали о жестоких сражениях и о дальних путешествиях, таких как плавания в Гренландию и Винланд.</li>
+      <li>Вопросы учебника после пункта 1: на какие страны нападали норманны? Какие новые земли они открыли? В чём разница между норманнами и нормандцами? Предположите, как торговый путь «из варяг в греки» повлиял на развитие русских городов, находившихся на его протяжении.</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 7 -->
+<section class="step" data-step="alfred" data-name="Альфред Великий" data-part="Глава 2 · Англия">
+  <div class="eyebrow">Глава 2 · Англия · Учебник, § 4, п. 2</div>
+  <h2>Альфред Великий собирает Англию</h2>
+  <div class="prose">
+    <p>Когда в конце VIII века у берегов Англии появились корабли викингов, там было несколько королевств. Их основали ещё в V–VI веках германские племена англов и саксов, поэтому жителей называют <b>англосаксами</b>. Их правители уже были христианами.</p>
+    <p>В IX веке нападения викингов (в Англии их звали <b>датчанами</b>) становились всё опаснее. Скоро под их властью оказалась большая часть страны. Казалось, их не остановить.</p>
+    <p>Но король англосаксов <span class="term">Альфред Великий</span> (871–900) сумел дать отпор. Он укрепил границу новыми крепостями, построил флот и переделал армию.</p>
+  </div>
+  <h3>Каждый шестой</h3>
+  <div class="prose">
+    <p>Раньше основой армии было народное ополчение. Альфред сделал так: служит только каждый шестой, кто годен к службе, а остальные пятеро его содержат. На эти средства воин покупает оружие, всё время учится военному делу и может биться с викингами на равных.</p>
+  </div>
+  <div class="six" aria-label="Один воин из шести, пятеро его содержат">
+    <span class="w">воин</span><span>кормит</span><span>кормит</span><span>кормит</span><span>кормит</span><span>кормит</span>
+  </div>
+  <div class="prose">
+    <p>Сравни с Карлом Мартеллом из § 3. Он тоже понял, что ополчение не справляется, но содержал воинов за счёт земли с крестьянами. Мысль одна: нужен воин, которого кормят другие, чтобы он занимался только войной.</p>
+    <p>С новым войском Альфред переломил войну с датчанами. Он объединил англосаксонские королевства и стал <b>первым королём Англии</b>. А его преемники полностью выгнали датчан из страны.</p>
+  </div>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · § 4, п. 2</summary>
+    <div class="body"><ul>
+      <li>Пункт 2 «Норманны и Англия». Когда в конце VIII века у берегов Англии появились корабли викингов, там существовали королевства, основанные ещё в V–VI веках германскими племенами англов и саксов. Их правители приняли христианство. В IX веке нападения викингов (в Англии их называли датчанами) становились всё опаснее. Вскоре под их властью оказалась большая часть страны. Казалось, остановить их невозможно.</li>
+      <li>Но король англосаксов Альфред Великий (871–900) сумел организовать сопротивление норманнам. Он укрепил границу новыми крепостями, создал флот и реформировал армию, основу которой прежде составляло народное ополчение. В новом войске стал служить лишь каждый шестой годный к службе. Остальные пять его содержали, чтобы он мог приобрести оружие, усердно заниматься военным делом и сражаться с завоевателями на равных.</li>
+      <li>Опираясь на новое войско, Альфред добился перелома в борьбе с датчанами. На фоне этих успехов ему удалось объединить англосаксонские королевства и стать первым королём Англии. Его преемники полностью вытеснили датчан из страны.</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 8 -->
+<section class="step" data-step="harald" data-name="Харальд против Гарольда" data-part="Глава 2 · Англия">
+  <div class="eyebrow">Глава 2 · Англия · Учебник, § 4, п. 2</div>
+  <h2>1066 год: Харальд против Гарольда</h2>
+  <div class="prose">
+    <p>Последний раз норманны напали на Англию в <b>1066 году</b>. Норвежский король <b>Харальд III Суровый</b> заявил, что трон Англии должен быть его, и высадился с войском в Британии.</p>
+    <p>Но ополчение англосаксов во главе с их королём <b>Гарольдом</b> разгромило норманнов. Сам Харальд погиб в бою.</p>
+  </div>
+  <div class="aside">
+    <div class="k">Не перепутай</div>
+    <p>Имена похожи, а люди разные. <b>Харальд</b> — норвежец, он нападал. <b>Гарольд</b> — англосакс, король Англии, он защищался.</p>
+  </div>
+  <details>
+    <summary>Харальд и Ярослав Мудрый: история со свадьбой</summary>
+    <div class="body">
+      <p>В молодости Харальд служил на Руси, при дворе князя Ярослава Мудрого. Он посватался к дочери Ярослава, Елизавете, но получил отказ: жених был слишком беден.</p>
+      <p>Тогда Харальд с отрядом поступил на службу к византийскому императору, прославился и разбогател. Вернулся на Русь и наконец женился на Елизавете. Что стало с ней после гибели Харальда, неизвестно. А их дочь потом стала королевой Дании.</p>
+    </div>
+  </details>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · § 4, п. 2</summary>
+    <div class="body"><ul>
+      <li>В последний раз норманны напали на Англию в 1066 году, когда норвежский король Харальд III Суровый заявил о своих претензиях на английский трон и высадился с войском в Британии. Однако ополчение во главе с королём англосаксов Гарольдом сумело разгромить норманнов, король которых пал в бою.</li>
+      <li>Любопытные детали: претендент на английский трон — норвежский король Харальд III Суровый — в молодости служил при дворе древнерусского князя Ярослава Мудрого. Харальд сватался за дочь Ярослава, Елизавету, но получил отказ из-за своей бедности. Чтобы заработать деньги, Харальд со своим отрядом поступил на службу к византийскому императору. Прославившись и разбогатев, норвежец вернулся на Русь и наконец женился на Елизавете. После гибели Харальда о судьбе его жены ничего неизвестно. Но дочь Елизаветы и Харальда впоследствии стала королевой Дании.</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 9 -->
+<section class="step" data-step="gastings" data-name="Гастингс и Вильгельм" data-part="Глава 2 · Англия">
+  <div class="eyebrow">Глава 2 · Англия · Учебник, § 4, п. 2</div>
+  <h2>Гастингс: Вильгельм Завоеватель</h2>
+  <div class="prose">
+    <p>Англосаксы праздновали победу. Но через три дня на юге Англии высадился новый претендент на трон — нормандский герцог <span class="term">Вильгельм</span>.</p>
+    <p>В жестокой <b>битве при Гастингсе</b> тяжеловооружённая конница Вильгельма победила пехоту Гарольда. Последний англосаксонский король бился до конца и погиб. Его дочь Гита убежала из Англии и позже стала женой русского князя Владимира Мономаха.</p>
+    <p>Вильгельм вошёл в Лондон, и там его короновали. Он стал <b>Вильгельмом I Завоевателем</b> (1066–1087). Лучшие земли он раздал своим дружинникам и приближённым, но потребовал, чтобы все поклялись ему в верности.</p>
+  </div>
+  <figure class="fig"><img src="img/2026-09-14-p4/04-kover-iz-baie.jpg" width="291" height="201" loading="lazy" alt="Вышитая сцена битвы: всадники с копьями и пешие воины со щитами"><figcaption>Битва при Гастингсе. Ковёр из Байё, XI век, фрагмент. На самом деле это длинная вышитая лента, почти 70 метров.</figcaption></figure>
+  <details>
+    <summary>Подсказка: где нормандцы, а где англосаксы?</summary>
+    <div class="body"><p>Это задание учебника. Вспомни, у кого в этой битве была конница, а у кого пехота. Потом найди на вышивке всадников и пеших воинов и опиши, чем они вооружены: копья, щиты, мечи, топоры, шлемы.</p></div>
+  </details>
+  <div class="prose">
+    <p>События 1066 года считают концом <b>«эпохи викингов»</b>. К концу XI века в самой Скандинавии появились государства, и их жители крестились. Викинги, осевшие в других странах, тоже создали свои королевства. Набеги и дальние плавания остались в прошлом.</p>
+  </div>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · § 4, п. 2</summary>
+    <div class="body"><ul>
+      <li>Англосаксы торжествовали победу, но спустя три дня на юге Англии высадился новый претендент на престол — нормандский герцог Вильгельм. На этот раз удача отвернулась от англосаксов. В ожесточённой битве при Гастингсе тяжеловооружённая конница Вильгельма взяла верх над пехотой Гарольда. Последний англосаксонский король сражался до конца и погиб в бою. Дочь Гарольда, Гита, после смерти отца бежала из Англии и позже стала женой русского князя Владимира Мономаха.</li>
+      <li>Нормандский герцог вступил в Лондон, где и был коронован как Вильгельм I Завоеватель (1066–1087). Новый правитель раздал лучшие земли своим дружинникам и приближённым, но потребовал принесения ему клятвы верности.</li>
+      <li class="pic">Иллюстрация: битва при Гастингсе. Ковёр из Байё, XI век, фрагмент. Задание: определите, где на иллюстрации нормандцы, а где англосаксы. Опишите вооружение воинов обеих армий.</li>
+      <li>События 1066 года считаются завершением «эпохи викингов». К концу XI века в Скандинавии образовались государства, население которых приняло христианство. Викинги, осевшие в других странах, также создали свои королевства. Набеги и дальние плавания остались в прошлом.</li>
+      <li>Вопросы учебника после пункта 2: что важного произошло в Англии при Альфреде Великом? Чем для Англии завершилась «эпоха викингов»?</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 10 -->
+<section class="step" data-step="razdroblennost" data-name="Почему Франция рассыпалась" data-part="Глава 3 · Франция">
+  <div class="eyebrow">Глава 3 · Франция · Учебник, § 4, п. 3</div>
+  <h2>Почему Франция рассыпалась</h2>
+  <div class="prose">
+    <p>Представь класс, где учитель разрешил старостам рядов самим ставить оценки и собирать деньги. Скоро старосты решают всё сами, а учителя почти не слушают. Примерно так вышло во Франции.</p>
+    <p>Викингам так везло во многом потому, что их противники были слабыми, особенно Франция. На то было три причины:</p>
+    <ul>
+      <li>земли, которые короли когда-то раздали, постепенно превращались в <b>феоды</b> (помнишь из § 3: земля за службу, которую передают по наследству). Их владельцы всё меньше зависели от короля и старались служить ему поменьше;</li>
+      <li>короли сами, чтобы привлечь знать на свою сторону, давали ей новые права: <b>судить и собирать налоги</b>;</li>
+      <li>когда нападали враги, люди могли надеяться только на местную знать, а не на далёкого короля. От этого знать становилась ещё сильнее.</li>
+    </ul>
+    <p>Наступил период <span class="term">раздробленности</span>: страна распалась на много владений, и каждое жило само по себе. Как пазл, который рассыпался: картинка вроде бы одна, а кусочки лежат отдельно.</p>
+    <p>Быстрее всего в IX–X веках это шло в Западно-Франкском королевстве, одной из трёх частей Верденского раздела. Как раз тогда его стали называть <b>Францией</b>. Сравни: Англию викинги заставили объединиться, а Францию — наоборот.</p>
+  </div>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · § 4, п. 3</summary>
+    <div class="body"><ul>
+      <li>Пункт 3 «Раздробленность во Франции». Успехи викингов во многом объясняются военной слабостью их противников, особенно во Франции. На то имелись свои причины.</li>
+      <li>Земли, когда-то пожалованные королями, постепенно превращались в феоды. Их владельцы всё меньше зависели от короля и стремились сократить службу в его пользу. Да и сами правители, желая привлечь знать на свою сторону, жаловали ей новые привилегии: вершить суд, собирать налоги. Могущество местной знати росло ещё и потому, что только на неё местное население могло рассчитывать при нападении врагов. Наступил период раздробленности. В IX–X веках быстрее всего это происходило в Западно-Франкском королевстве, которое как раз в это время стало называться Францией.</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 11 -->
+<section class="step" data-step="kapet" data-name="Гуго Капет и Анна" data-part="Глава 3 · Франция">
+  <div class="eyebrow">Глава 3 · Франция · Учебник, § 4, п. 3</div>
+  <h2>Гуго Капет и Анна Ярославна</h2>
+  <div class="prose">
+    <p>Последние Каролинги во Франции почти не имели власти. В конце X века знать отдала корону могущественному графу Парижскому <span class="term">Гуго Капету</span>, который успешно воевал с норманнами. Его потомков называют <b>Капетингами</b>, они правили Францией до XIV века.</p>
+    <p>А теперь связь с Русью. Внук Гуго Капета женился на <b>Анне</b>, дочери князя Ярослава Мудрого. Поэтому со второй половины XI века все короли Франции — потомки Ярослава Мудрого!</p>
+    <p>Когда муж умер, Анна участвовала в управлении королевством. Это видно по документам с её подписью, и одна подпись сделана кириллицей.</p>
+  </div>
+  <div class="fig-row">
+    <figure class="fig"><img src="img/2026-09-14-p4/05-koronaciya-gugo-kapeta.jpg" width="293" height="229" loading="lazy" alt="Миниатюра: короля в синей мантии с лилиями коронуют епископы"><figcaption>Коронация Гуго Капета. Миниатюра XIV века.</figcaption></figure>
+    <figure class="fig"><img src="img/2026-09-14-p4/06-podpis-anny-yaroslavny.jpg" width="245" height="83" loading="lazy" alt="Надпись старинными буквами на пергаменте"><figcaption>Подпись королевы Анны Ярославны.</figcaption></figure>
+  </div>
+  <details>
+    <summary>Что написала Анна и при чём тут Данте</summary>
+    <div class="body">
+      <p>На подписи написано «АНА РЪИНА». Это латинские слова «Anna regina», «Анна королева», только русскими буквами.</p>
+      <p>Через триста лет, в XIV веке, итальянский поэт Данте написал поэму «Божественная комедия». В ней Гуго Капет встречается в Чистилище (у католиков это место между раем и адом) и говорит о себе: «Я был Гугон, Капетом наречённый, И не один Филипп и Людовик Над Францией владычил, мной рождённый...» То есть многие короли Франции по имени Филипп и Людовик — его потомки.</p>
+    </div>
+  </details>
+  <details>
+    <summary>Подсказка: почему король Франции женился на русской княжне?</summary>
+    <div class="body"><p>Это вопрос учебника. Подумай, какой была Русь при Ярославе Мудром: сильной или слабой, бедной или богатой? И вспомни Харальда из шага 8: многие хотели породниться с Ярославом.</p></div>
+  </details>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · § 4, п. 3</summary>
+    <div class="body"><ul>
+      <li class="pic">Иллюстрация: коронация Гуго Капета. Миниатюра, XIV век. Подпись: в XIV веке итальянский поэт Данте Алигьери, описывая Чистилище (в католицизме — промежуточное место между раем и адом) в своей поэме «Божественная комедия», использует образ Гуго Капета. В поэме основатель французского королевского дома, обращаясь к потомкам с обличительной речью, говорит о себе так: «Я был Гугон, Капетом наречённый, И не один Филипп и Людовик Над Францией владычил, мной рождённый...»</li>
+      <li class="pic">Иллюстрация: подпись королевы Анны Ярославны. Подпись: после смерти мужа Анна участвовала в управлении королевством, что удостоверяется рядом документов с её подписью, в том числе одной на кириллице. Вопрос: как вы думаете, почему французский король взял в жёны дочь русского князя?</li>
+      <li>Последние Каролинги не обладали во Франции большой властью, и в конце X века знать передала корону могущественному графу Парижскому Гуго Капету, который успешно боролся с норманнами. Его потомки — Капетинги — правили Францией до XIV века.</li>
+      <li>Любопытно, что со второй половины XI века все короли Франции являлись потомками русского князя Ярослава Мудрого, поскольку внук Гуго Капета женился на дочери Ярослава Анне.</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 12 -->
+<section class="step" data-step="perviy" data-name="«Первый среди равных»" data-part="Глава 3 · Франция">
+  <div class="eyebrow">Глава 3 · Франция · Учебник, § 4, п. 3</div>
+  <h2>Король — «первый среди равных»</h2>
+  <div class="prose">
+    <p>Что мог король Франции? Вести французское войско в больших войнах с соседями и мирить тех, кто спорит. И почти всё.</p>
+    <p>Его собственные земли — узкая полоса от реки Сены до реки Луары с городами Париж и Орлеан. Они достались ему как наследнику графов Парижских. Но и там он не был полным хозяином: местная знать засела в королевских крепостях и не хотела подчиняться.</p>
+    <p>Франция делилась на множество крупных и мелких владений. У некоторых герцогов и графов, например у герцогов Нормандии и графов Шампани, было больше земель и богатства, чем у самого короля. Они сами собирали налоги, чеканили монету и вели войны.</p>
+    <p>Короля они считали не повелителем, а лишь <span class="term">«первым среди равных»</span>. Как старший в компании друзей: его зовут первым, но приказывать он не может.</p>
+  </div>
+  <div class="org" aria-label="Франция в X–XI веках: все на одном уровне">
+    <div class="lbl">Франция: все на одном уровне</div>
+    <div class="lvl">
+      <div class="box sub">Король<small>полоса от Сены до Луары, Париж и Орлеан</small></div>
+      <div class="box">Герцог Нормандии<small>земель больше, чем у короля</small></div>
+      <div class="box">Граф Шампани<small>сам чеканит монету</small></div>
+      <div class="box">Другие герцоги и графы<small>сами собирают налоги и воюют</small></div>
+    </div>
+  </div>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · § 4, п. 3</summary>
+    <div class="body"><ul>
+      <li>Король возглавлял французское войско в больших войнах с соседями, выступал посредником в спорах. В остальном его власть ограничивалась узкой полосой земель от Сены до Луары с городами Париж и Орлеан, принадлежавшими ему как наследнику графов Парижских. Но и там он не был полным хозяином: местная знать, укрепившись в королевских крепостях, не желала ему подчиняться.</li>
+      <li>Франция делилась тогда на множество крупных и мелких владений. Некоторые представители высшей знати — герцоги Нормандии, графы Шампани и другие — имели больше земель и богатств, чем сам король. Они фактически не зависели от монарха, считая его не верховным властителем, но лишь «первым среди равных». Они самостоятельно собирали налоги, чеканили монеты, вели войны.</li>
+      <li>Вопрос учебника после пункта 3: почему во Франции наступил период раздробленности?</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 13 -->
+<section class="step" data-step="vengry" data-name="Германия и венгры" data-part="Глава 4 · Империя">
+  <div class="eyebrow">Глава 4 · Империя · Учебник, § 4, п. 4</div>
+  <h2>Германия против венгров</h2>
+  <div class="prose">
+    <p>Теперь другая часть Верденского раздела, Восточно-Франкское королевство. В начале X века династия Каролингов там прервалась. Власть короля ослабла и здесь, но меньше, чем во Франции. Знать выбрала королём одного из герцогов. Так появилось <b>Германское королевство</b>.</p>
+    <p>Германию били с двух сторон. С севера нападали норманны, а с юга — кочевники-<b>венгры</b>. С конца IX века они жили по среднему течению Дуная, там, где раньше жили авары, которых разгромил Карл Великий.</p>
+    <p>Против венгров по указу короля вдоль границы строили крепости и создали сильное конное войско. Король <span class="term">Оттон I</span> (936–973) нанёс венграм решающее поражение.</p>
+    <p>После этого венгры перестали ходить в набеги и понемногу перешли к оседлой жизни. Позже они крестились, и в конце X века возникло <b>Венгерское королевство</b>. Вот и ответ на вторую часть главного вопроса: разбойники сами стали королевством.</p>
+  </div>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · § 4, п. 4</summary>
+    <div class="body"><ul>
+      <li>Пункт 4 «Создание Священной Римской империи». В Восточно-Франкском королевстве династия Каролингов пресеклась в начале X века. К тому времени королевская власть здесь тоже ослабла, хотя и меньше, чем во Франции. Знать избрала королём одного из герцогов. Так появилось Германское королевство.</li>
+      <li>Германия подвергалась ударам с двух сторон. С севера на неё совершали набеги норманны, а с юга — кочевники-венгры, которые с конца IX века жили по среднему течению Дуная. Для борьбы с венграми по указу короля вдоль границы строились крепости, было создано сильное конное войско. Оттону I (936–973) удалось нанести венграм решающее поражение, после чего они прекратили свои набеги и постепенно перешли к оседлому образу жизни. Позже венгры приняли христианство, и в конце X века возникло Венгерское королевство.</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 14 -->
+<section class="step" data-step="otton" data-name="962: Оттон император" data-part="Глава 4 · Империя">
+  <div class="eyebrow">Глава 4 · Империя · Учебник, § 4, п. 4</div>
+  <h2>962 год: снова империя</h2>
+  <div class="prose">
+    <p>Победив венгров, Оттон I стал самым могущественным королём Европы. Титул императора на Западе к тому времени уже не употреблялся (помнишь, в § 3 после Лотаря он вышел из употребления). И Оттон решил ещё раз восстановить империю.</p>
+    <p>В <b>962 году</b> папа римский попросил о помощи. Оттон пришёл с войском в Италию, чтобы напугать врагов Церкви. Благодарный папа провозгласил Оттона <b>императором</b>.</p>
+    <p>Как и Карл Великий, Оттон считал свою империю продолжением Римской и назвал её тоже Римской, а позже её стали называть <span class="term">Священной Римской империей</span>. Императоры хотели объединить под своей властью весь христианский мир.</p>
+    <p>Придумали пышные придворные церемонии и знаки императорской власти: <b>корону, скипетр</b> (жезл) и <b>державу</b> (шар с крестом, как у статуэтки Карла из § 3).</p>
+  </div>
+  <figure class="fig"><img src="img/2026-09-14-p4/07-korona-sri.jpg" width="197" height="201" loading="lazy" alt="Золотая корона из пластин с драгоценными камнями и эмалевыми картинками, сверху крест"><figcaption>Корона Священной Римской империи. X–XI века.</figcaption></figure>
+  <details>
+    <summary>Как устроена корона и подсказка к вопросу</summary>
+    <div class="body">
+      <p>Корона собрана из золотых пластин, сверху крест, а на его обороте распятие. На передней пластине 12 крупных драгоценных камней, по числу апостолов. На других пластинах картинки из цветной эмали, как в Византии: библейские цари Давид и Соломон и сам Христос.</p>
+      <p>Вопрос учебника: почему корону так украсили и что значат эти картинки? Подумай: кого изображали — царей из Библии и Христа. Что хотел показать император, надевая такую корону? От кого, по его мнению, его власть? Вспомни из § 3, чему учили епископы.</p>
+    </div>
+  </details>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · § 4, п. 4</summary>
+    <div class="body"><ul>
+      <li>Победив венгров, Оттон I стал самым могущественным королём Европы. К тому времени титул императора на Западе уже не употреблялся, но Оттон решил ещё раз восстановить империю. В 962 году он откликнулся на просьбу папы римского и для устрашения врагов Церкви с войском пришёл в Италию. Благодарный папа провозгласил Оттона императором.</li>
+      <li>Вслед за Карлом Великим Оттон считал свою империю продолжением Римской, и называлась она тоже Римской (позже — Священной Римской). Императоры хотели объединить под своей властью весь христианский мир. Был разработан пышный придворный церемониал, созданы знаки императорской власти: корона, скипетр, держава.</li>
+      <li class="pic">Иллюстрация: корона Священной Римской империи, X–XI века. Подпись: переднюю пластину золотой короны, увенчанной крестом с распятием на обороте, украшают 12 крупных драгоценных камней (по числу апостолов). На других пластинах в технике византийской перегородчатой эмали изображены библейские цари Давид и Соломон и сам Христос. Вопрос: почему корона украшена таким образом? Что символизировали эти изображения?</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 15 -->
+<section class="step" data-step="imperiya-cerkov" data-name="Империя и Церковь" data-part="Глава 4 · Империя">
+  <div class="eyebrow">Глава 4 · Империя · Учебник, § 4, п. 4</div>
+  <h2>Империя и Церковь: быть ссоре</h2>
+  <div class="prose">
+    <p>В Священную Римскую империю вошли Германия, север Италии и некоторые другие земли. Но в Италии власть императоров была непрочной. Каждому новому императору приходилось идти туда в поход.</p>
+    <p>Чтобы укрепить власть, императоры опирались на Церковь: щедро дарили монастырям и храмам богатства и земли.</p>
+    <p>Но они решили, что могут даже <b>назначать и снимать пап римских</b>. Представь, что тренер одной команды сам начал выбирать судью матча. Судьи вряд ли это стерпят. Вот и священники были недовольны тем, что император лезет в церковные дела. Ссора императора и Церкви стала неизбежной.</p>
+  </div>
+  <details>
+    <summary>Подсказка: почему империя «Священная Римская»?</summary>
+    <div class="body"><p>Это вопрос учебника. Про «Римскую» подсказка прямо в тексте: продолжением чего считал её Оттон? А про «Священную» подумай: кто провозгласил Оттона императором, и кого изображает его корона?</p></div>
+  </details>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · § 4, п. 4</summary>
+    <div class="body"><ul>
+      <li>Священная Римская империя включала Германию, север Италии и некоторые другие земли. Но на Апеннинском полуострове власть императоров была непрочной. Каждому новому императору приходилось совершать поход в Италию.</li>
+      <li>Для укрепления своей власти они использовали Церковь, щедро наделяя монастыри и храмы богатствами и землями. Императоры считали себя вправе даже назначать и смещать пап римских. Вмешательство правителей Священной Римской империи в дела духовные вызвало недовольство священнослужителей. Конфликт императора и Церкви стал неизбежен.</li>
+      <li>Вопрос учебника после пункта 4: почему государство Оттона I получило название Священной Римской империи?</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 16 -->
+<section class="step" data-step="kirill" data-name="Кирилл и Мефодий" data-part="Глава 5 · Славяне">
+  <div class="eyebrow">Глава 5 · Славяне · Учебник, § 4, п. 5</div>
+  <h2>Кирилл и Мефодий</h2>
+  <div class="prose">
+    <p>В IX–XI веках появились первые государства западных славян. Вокруг них соперничали две силы: Франкская держава (позже Священная Римская империя) и Византия. Каждая хотела, чтобы славяне слушали именно её.</p>
+    <p>В начале IX века возникла <b>Великая Моравия</b>. Её князя крестил немецкий епископ, по римскому образцу. Но следующий князь хотел избавиться от немецкого влияния и попросил Византию прислать новых учителей веры.</p>
+    <p>В <b>863 году</b> в Моравию из Византии приехали братья <span class="term">Кирилл и Мефодий</span> из греческого города Солунь (сейчас он называется Фессалоники). Они создали славянский алфавит и начали переводить Библию на славянский язык.</p>
+    <p>Так возникла <span class="term">кириллица</span>, названная в честь Кирилла. Ею и сейчас пишут русские, украинцы, белорусы, болгары, сербы и другие народы. Своя письменность очень много значила для славянской культуры: теперь можно было читать и писать на родном языке.</p>
+  </div>
+  <div class="aside home">
+    <div class="k">Ближе к дому</div>
+    <p>Буквы, которыми написан этот текст, — тоже кириллица, ей больше тысячи лет. А ещё кириллицей пишут на языках Дагестана: аварском, даргинском, кумыкском, лакском, лезгинском и других. Во многие из этих азбук добавили особую букву-палочку «Ӏ».</p>
+  </div>
+  <figure class="fig"><img src="img/2026-09-14-p4/08-kirill-i-mefodiy.jpg" width="292" height="147" loading="lazy" alt="Миниатюра: два святых с нимбами сидят за столами и пишут"><figcaption>Кирилл и Мефодий. Миниатюра из Радзивилловской летописи, XV век.</figcaption></figure>
+  <details>
+    <summary>Подсказка: почему братьев нарисовали в русской летописи?</summary>
+    <div class="body"><p>Это вопрос учебника. Подумай, какими буквами написана сама русская летопись. И кто эти буквы придумал?</p></div>
+  </details>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · § 4, п. 5</summary>
+    <div class="body"><ul>
+      <li>Пункт 5 «Возникновение западнославянских государств». В IX–XI веках возникли первые государства западных славян. Это происходило в условиях острого соперничества между Франкской державой (а позже — Священной Римской империей) и Византией, в том числе за влияние на славян.</li>
+      <li class="pic">Иллюстрация: Кирилл и Мефодий. Миниатюра из Радзивилловской летописи, XV век. Вопрос: как вы считаете, почему деятельность Кирилла и Мефодия была отражена в миниатюре, украшающей русскую летопись?</li>
+      <li>В начале IX века возникла Великая Моравия. Её князь был крещён немецким епископом по римскому образцу, но его преемник, желая избавиться от немецкого влияния, обратился к Византии с просьбой прислать новых наставников в вере. В 863 году в Моравию из Византии прибыли братья из греческого города Солунь (Фессалоники) Кирилл и Мефодий. Они создали славянский алфавит и начали перевод Библии на славянский язык. Так возникла кириллица, названная в честь Кирилла. Ею и ныне пользуются русские, украинцы, белорусы, болгары, сербы и некоторые другие народы. Создание собственной письменности имело огромное значение для славянской культуры.</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 17 -->
+<section class="step" data-step="chehiya" data-name="Чехия и Польша" data-part="Глава 5 · Славяне">
+  <div class="eyebrow">Глава 5 · Славяне · Учебник, § 4, п. 5</div>
+  <h2>Чехия и Польша</h2>
+  <div class="prose">
+    <p>Племя чехов было под властью Великой Моравии. В конце IX века чешский князь крестился. А в начале X века Великая Моравия погибла под ударами венгров (тех самых, из шага 13).</p>
+    <p>Тогда чехи усилились и подчинили соседей. В X веке <b>Чехия</b> вошла в Священную Римскую империю, но осталась во многом самостоятельной. В XI–XII веках чешские князья получили титул королей.</p>
+    <p><b>Польское государство</b> тоже возникло в X веке. В <b>966 году</b> поляки приняли христианство. А в <b>1025 году</b> польский князь <b>Болеслав I Храбрый</b> получил королевский титул.</p>
+  </div>
+  <figure class="fig"><img src="img/2026-09-14-p4/09-pamyatnik-przhemyslu.jpg" width="221" height="319" loading="lazy" alt="Каменная скульптура: женщина с поднятой рукой и сидящий рядом мужчина"><figcaption>Памятник основателю первой чешской княжеской династии Пржемысловичей в Праге. Современное фото.</figcaption></figure>
+  <details>
+    <summary>Легенда: как пахарь стал князем</summary>
+    <div class="body">
+      <p>Когда умер один из правителей чехов, народ выбрал правительницей его дочь. Долго она правила и судила мудро и справедливо.</p>
+      <p>Но однажды проигравший в споре громко сказал: «Горе мужам, когда ими управляет женщина». Обиженная девушка потребовала, чтобы народ дал ей мужа, который правил бы всем «железной рукою». Чехи обещали признать любого, кого она выберет сама.</p>
+      <p>Она выбрала простого крестьянина <b>Пржемысла</b>. Так в VIII веке появилась первая чешская княжеская династия. По преданию, чешские правители при коронации надевали его лапти. На памятнике рядом с Пржемыслом стоит та самая правительница.</p>
+    </div>
+  </details>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · § 4, п. 5</summary>
+    <div class="body"><ul>
+      <li>Под властью Великой Моравии находилось племя чехов. В конце IX века чешский князь принял крещение. Когда в начале X века Великая Моравия погибла под ударами венгров, чехи усилились, подчинив соседей. В X веке Чехия вошла в состав Священной Римской империи, но сохранила значительную самостоятельность. В XI–XII веках за чешскими князьями закрепился королевский титул.</li>
+      <li class="pic">Иллюстрация: памятник основателю первой чешской княжеской династии Пржемысловичей в Праге (Чехия), современное фото. Подпись с легендой: когда умер один из правителей племени чехов, народ выбрал в правительницы его дочь. Долгое время она управляла и судила мудро и справедливо. Но во время разбирательства одного спорного дела проигравший заявил во всеуслышание, что «горе мужам, когда ими управляет женщина». Оскорблённая девушка потребовала, чтобы народ дал ей мужа, который мог бы управлять всем железной рукою. Чехи в ответ обещали признать любого, кого она выберет сама. Так основателем первой чешской княжеской династии в VIII веке стал простой крестьянин Пржемысл. По преданию, его лапти надевались чешскими правителями при коронации.</li>
+      <li>Польское государство также возникло в X веке. В 966 году поляки приняли христианство. В 1025 году польский князь Болеслав I Храбрый получил королевский титул.</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 18 -->
+<section class="step" data-step="vybor" data-name="Рим или Константинополь" data-part="Глава 5 · Славяне">
+  <div class="eyebrow">Глава 5 · Славяне · Учебник, § 4, п. 5 и «Подведём итоги»</div>
+  <h2>Рим или Константинополь?</h2>
+  <div class="prose">
+    <p>Что дало славянам крещение? Три вещи:</p>
+    <ul>
+      <li>славянские государства заняли <b>равное место</b> среди других стран Европы, с ними стали говорить как с равными;</li>
+      <li>окрепла <b>власть князей</b>;</li>
+      <li>появилась основа для развития <b>культуры</b>.</li>
+    </ul>
+    <p>Но крещение было и выбором: откуда брать веру, из Рима или из Константинополя. От этого зависели политика, письменность и культура на века вперёд.</p>
+  </div>
+  <div class="ways">
+    <div class="way">
+      <h3>Из Рима</h3>
+      <div class="cn">Польша, Чехия, Хорватия</div>
+      <p>Крестились по римскому образцу. Там распространилась латинская письменность, и сильно было влияние пап римских и Священной Римской империи.</p>
+    </div>
+    <div class="way const">
+      <h3>Из Константинополя</h3>
+      <div class="cn">Болгария, Сербия, Русь</div>
+      <p>Крестились из Константинополя. Писали кириллицей и оказались в кругу культуры Византии.</p>
+    </div>
+  </div>
+  <div class="prose">
+    <p>Это видно и сегодня: поляки и чехи пишут латинскими буквами, а болгары и мы — кириллицей.</p>
+  </div>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · § 4, п. 5 и «Подведём итоги»</summary>
+    <div class="body"><ul>
+      <li>Присоединение к христианской вере позволило славянам занять равноправное место в европейской системе международных отношений, укрепило княжескую власть, заложило основы дальнейшего развития культуры. В то же время оно означало выбор между Римом и Константинополем: в политике, в письменности, в культурных традициях.</li>
+      <li>Польша, Чехия и Хорватия приняли крещение по римскому образцу. В результате там получила распространение латинская письменность и было сильно влияние римских пап и Священной Римской империи. Болгария, Сербия и Русь, принявшие крещение из Константинополя, использовали кириллицу и оказались в культурной орбите Византии.</li>
+      <li>Вопросы учебника после пункта 5: покажите на карте 8 (см. Приложение) государства южных, западных и восточных славян. Какие изменения, произошедшие в истории славянских государств в IX — начале XI века, отражает карта? Что способствовало включению славян в европейскую систему международных отношений? Как географическое положение славянских государств влияло на их выбор веры?</li>
+      <li>«Подведём итоги»: IX–XI века — важный период в истории Европы. На фоне нападений норманнов, венгров и арабов англосаксонские королевства объединяются для отпора врагу, а во Франции, напротив, наступает время раздробленности. Возникла Священная Римская империя. В эти же века появляются первые государства у славян и венгров, а затем и у скандинавов.</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 19 -->
+<section class="step" data-step="slovar-1" data-name="Словарик: северные гости" data-part="Словарик">
+  <div class="game">
+    <div class="g-head"><h3>Словарик: северные гости</h3><span class="badge" id="b-terms">Игра</span></div>
+    <p class="task">Нажми на карточку, и она перевернётся. Словарик из двух частей, открой все карточки.</p>
+    <div class="progress" id="terms-progress"></div>
+    <div class="cards" data-terms="0"></div>
+  </div>
+</section>
+
+<!-- 20 -->
+<section class="step" data-step="slovar-2" data-name="Словарик: короли и державы" data-part="Словарик">
+  <div class="game">
+    <div class="g-head"><h3>Словарик: короли и державы</h3><span class="badge" id="b-terms2">Игра</span></div>
+    <p class="task">Вторая часть. Раздробленность, империя и кириллица.</p>
+    <div class="progress" id="terms-progress2"></div>
+    <div class="cards" data-terms="1"></div>
+  </div>
+</section>
+
+<!-- 21 -->
+<section class="step" data-step="kto-chto" data-name="Кто что сделал" data-part="Игры">
+  <div class="game" id="g-match">
+    <div class="g-head"><h3>Кто что сделал</h3><span class="badge" id="b-match">Игра</span></div>
+    <p class="task">Нажми на имя слева, потом на дело справа.</p>
+    <div class="match">
+      <div class="col"><div class="lbl">Кто</div><div class="col" id="foes"></div></div>
+      <div class="col"><div class="lbl">Что сделал</div><div class="col" id="outcomes"></div></div>
+    </div>
+    <div id="match-fb"></div>
+  </div>
+</section>
+
+<!-- 22 -->
+<section class="step" data-step="gde" data-name="Где это было?" data-part="Игры">
+  <div class="game">
+    <div class="g-head"><h3>Где это было?</h3><span class="badge" id="b-sort">Игра</span></div>
+    <p class="task">Три страны отбивались от нападений по-разному. Прочитай карточку и выбери, в какой стране это было.</p>
+    <div class="progress" id="sort-progress"></div>
+    <div id="sort-box"></div>
+  </div>
+</section>
+
+<!-- 23 -->
+<section class="step" data-step="poryadok" data-name="Расставь по порядку" data-part="Игры">
+  <div class="game">
+    <div class="g-head"><h3>Расставь по порядку</h3><span class="badge" id="b-order">Игра</span></div>
+    <p class="task">Нажимай на события от самого раннего к самому позднему. Даты спрятаны, вспоминай сама.</p>
+    <div class="pool" id="pool"></div>
+    <div class="seq" id="seq"></div>
+    <div class="row">
+      <button class="btn" id="order-check" type="button" disabled>Проверить</button>
+      <button class="btn ghost" id="order-reset" type="button">Сначала</button>
+    </div>
+    <div id="order-fb"></div>
+  </div>
+</section>
+
+<!-- 24 -->
+<section class="step" data-step="lishnee" data-name="Найди лишнее" data-part="Игры">
+  <div class="game">
+    <div class="g-head"><h3>Найди лишнее</h3><span class="badge" id="b-odd">Игра</span></div>
+    <p class="task">Три слова из одной компании, одно чужое. Найди чужое.</p>
+    <div class="progress" id="odd-progress"></div>
+    <div class="odd-grid" id="odd-grid"></div>
+    <div id="odd-fb"></div>
+    <div class="row"><button class="btn" id="odd-next" type="button" hidden>Дальше</button></div>
+  </div>
+</section>
+
+<!-- 25 -->
+<section class="step" data-step="test" data-name="Проверь себя" data-part="Финал">
+  <div class="eyebrow">Финал</div>
+  <h2>Проверь себя</h2>
+  <div class="game">
+    <div class="progress" id="quiz-progress"></div>
+    <div id="quiz-box"></div>
+  </div>
+</section>
+
+<!-- 26 -->
+<section class="step" data-step="voprosy" data-name="Вопросы учебника" data-part="Финал">
+  <div class="eyebrow">Финал · Вопросы и задания в конце § 4</div>
+  <h2>Вопросы из учебника</h2>
+  <div class="prose">
+    <p>Это вопросы и задания в конце параграфа. Рядом с каждым написано, на каком шаге искать ответ. Отвечай своими словами: так лучше запоминается, и учитель услышит, что ты поняла, а не заучила.</p>
+  </div>
+  <div class="qlist">
+<div class="qi"><span class="qn">1</span><div><p>Почему в Скандинавии началась «эпоха викингов»?</p><p class="src">Подсказка: там три причины — природа, море и то, что происходило с вождями.</p><a href="#kto-takie">Шаг 3 · Кто такие норманны</a></div></div>
+<div class="qi"><span class="qn">2</span><div><p>Прочитайте п. 1 параграфа и составьте схему «Виды деятельности викингов». Выделите не менее трёх видов деятельности викингов.</p><p class="src">Подсказка: перечитай шаги 3–6 и ищи, что викинги делали. Нашла три дела — рисуй схему: в центре «Викинги», от них стрелки к каждому делу.</p><a href="#kto-takie">Шаги 3–6 · Викинги</a></div></div>
+<div class="qi"><span class="qn">3</span><div><p>С помощью карты 6 (см. Приложение) назовите народы, совершавшие в VIII–XI вв. набеги на европейские государства. Какие именно страны Европы страдали от нашествий? Назовите государства, впоследствии образованные завоевателями.</p><p class="src">Подсказка: народы с севера, с востока и с юга есть на шаге «За минуту». Государства, которые создали завоеватели, ищи на шагах 5, 9 и 13. Карта 6 — в конце учебника.</p><a href="#za-minutu">Шаги 1, 5, 9, 13</a></div></div>
+<div class="qi"><span class="qn">4</span><div><p>Почему в Англии королевская власть усилилась, а во Франции произошло её ослабление?</p><p class="src">Подсказка: сравни, кто защищал людей от викингов в Англии, а кто во Франции.</p><a href="#alfred">Шаги 7 и 10</a></div></div>
+<div class="qi"><span class="qn">5</span><div><p>Как сложилась в IX–XI вв. судьба трёх государств, образовавшихся после распада империи Карла Великого?</p><p class="src">Подсказка: вспомни три части Верденского раздела из § 3. Про Западно-Франкское королевство — шаги 10–12, про Восточно-Франкское — шаги 13–15. А где оказался север Италии из земель Лотаря, смотри на шаге 15.</p><a href="#razdroblennost">Шаги 10–15</a></div></div>
+<div class="qi"><span class="qn">6</span><div><p>Какую цель преследовал германский король Оттон I? Удалось ли её реализовать? Обоснуйте свой ответ.</p><p class="src">Подсказка: цель написана на шаге 14. А удалось ли, реши сама: посмотри на шаге 15, какие земли вошли в империю и прочно ли там держалась власть.</p><a href="#otton">Шаги 14–15</a></div></div>
+<div class="qi"><span class="qn">7</span><div><p>Каков главный вклад Кирилла и Мефодия в развитие славянской культуры?</p><a href="#kirill">Шаг 16 · Кирилл и Мефодий</a></div></div>
+<div class="qi"><span class="qn">8*</span><div><p>Как на судьбе славян сказалось то, что одни славянские государства приняли христианство из Рима, а другие — из Константинополя?</p><p class="src">Подсказка: подумай про письменность, про то, чьё влияние было сильнее, и про то, что видно даже сегодня.</p><a href="#vybor">Шаг 18 · Рим или Константинополь</a></div></div>
+<div class="qi"><span class="qn">9</span><div><p>Пользуясь картой 6 (см. Приложение) и материалом параграфа, заполните таблицу: «Год или век» — «Название нового государства Европы».</p><p class="src">Подсказка: открой на шаге 2 список «Ещё даты из текста параграфа» и выписывай строки, где сказано «возникло», «появилось», «образовались». Не забудь Англию на шаге 7.</p><a href="#daty">Шаг 2 · Ещё даты</a></div></div>
+<div class="qi"><span class="qn">⏳</span><div><p>Работаем с хронологией. Расположите события в хронологическом порядке: образование Священной Римской империи; Нормандское завоевание Англии; начало деятельности Кирилла и Мефодия в Великой Моравии; принятие польским князем Болеславом I Храбрым королевского титула.</p><p class="src">Подсказка: три даты есть на ленте времени (шаг 2), четвёртая — на шаге 17.</p><a href="#daty">Шаги 2 и 17</a></div></div>
+<div class="qi"><span class="qn">📜</span><div><p>Работаем с источником. Отрывки из сочинения историка XII века Р. Васа о том, как в начале X века король Франции уступил вождю норманнов Роллону часть своих земель. Вопросы: почему Роллон согласился отказаться от грабежа? Почему Роллон не пожелал склониться перед французским королём? Почему король смирился с унижением?</p><p class="src">О чём отрывки простыми словами. А) Архиепископ города Руана уговаривает Роллона: креститься, уважать короля, перестать разорять его королевство. За это король отдаст Роллону в жёны свою дочь Гизелу, а в приданое — приморскую землю от реки Эр до моря. Роллон будет жить на доходы с этой земли без грабежа и владеть крепостями. Роллону это очень понравилось, и договор подтвердили. Б) По обычаю Роллон должен был поцеловать ногу короля. Наклоняться он не захотел: поднял ногу короля рукой к своим губам, и король упал. Все засмеялись. Но король всё равно отдал Роллону дочь и Нормандию, и мир был скреплён свадьбой. (Короля звали Карл, это далёкий потомок Карла Великого.) Подумай: кто из них двоих был на самом деле сильнее? И вспомни шаг 12: каким был король Франции.</p><a href="#normandiya">Шаги 5 и 12</a></div></div>
+<div class="qi"><span class="qn">А–Я</span><div><p>Работаем с понятиями. Найдите понятие, которое является лишним в общем ряду: руны, викинг, кириллица, сага. Свой ответ обоснуйте.</p><p class="src">Подсказка: три слова связаны с одним народом. С каким? Открой словарик.</p><a href="#slovar-1">Шаги 19–20 · Словарик</a></div></div>
+<div class="qi"><span class="qn">?</span><div><p>Сформулируйте ответ на главный вопрос параграфа, обоснуйте его двумя-тремя аргументами.</p><a href="#itog">Шаг 27 · Главный вопрос</a></div></div>
+  </div>
+</section>
+
+<!-- 27 -->
+<section class="step" data-step="itog" data-name="Главный вопрос" data-part="Финал">
+  <div class="eyebrow">Финал</div>
+  <h2>Как нападения изменили Европу?</h2>
+  <div class="prose">
+    <p>Это главный вопрос параграфа: как нападения норманнов и венгров повлияли на разные страны Европы и что они дали самим норманнам и венграм. Вот четыре «кирпичика» для ответа. Открой их, а потом попробуй ответить своими словами, не подглядывая.</p>
+  </div>
+  <div class="bricks">
+    <div class="brick"><button type="button" aria-expanded="false"><span>Англия объединилась</span><span>+</span></button><div class="b-body" hidden>Против датчан Альфред Великий построил крепости и флот и сделал новое войско, где каждого воина содержали пятеро. Он объединил англосаксонские королевства и стал первым королём Англии. Сильный король был нужен всем, чтобы отбиться.</div></div>
+    <div class="brick"><button type="button" aria-expanded="false"><span>Франция раздробилась</span><span>+</span></button><div class="b-body" hidden>Во Франции от викингов людей защищала местная знать, а не король. Феоды передавались по наследству, знать получила право судить и собирать налоги. Король стал лишь «первым среди равных», а страна распалась на владения.</div></div>
+    <div class="brick"><button type="button" aria-expanded="false"><span>Германия стала империей</span><span>+</span></button><div class="b-body" hidden>Против венгров строили крепости и собрали сильную конницу. Оттон I разбил венгров, стал самым могущественным королём Европы и в 962 году — императором Священной Римской империи.</div></div>
+    <div class="brick"><button type="button" aria-expanded="false"><span>Сами норманны и венгры осели</span><span>+</span></button><div class="b-body" hidden>Норманны получили Нормандию, завоевали Англию, Сицилию и Южную Италию, а дома создали государства и крестились. Венгры перестали ходить в набеги, крестились, и в конце X века появилось Венгерское королевство.</div></div>
+  </div>
+  <div class="aside">
+    <div class="k">Главное в одном предложении</div>
+    <p>Нападения норманнов и венгров по-разному изменили Европу: Англия объединилась вокруг одного короля, Франция распалась на владения сильной знати, Германия разбила венгров и стала Священной Римской империей, а сами норманны и венгры осели, приняли христианство и создали свои государства.</p>
+  </div>
+  <div class="game">
+    <div class="g-head"><h3>Твоя мозаика</h3></div>
+    <div class="mosaic" id="mosaic"></div>
+    <div class="mosaic-list" id="mosaic-list"></div>
+    <div class="row"><a class="btn" href="./">К списку тем</a></div>
+  </div>
+</section>
+
+</main>
+
+<nav class="pager" aria-label="Навигация по шагам">
+  <div class="pager-inner">
+    <button class="btn ghost" id="prev" type="button">Назад</button>
+    <div class="count" id="count"></div>
+    <button class="btn" id="next" type="button">Дальше</button>
+  </div>
+</nav>
+
+<div class="toc" id="toc" hidden>
+  <div class="toc-panel" role="dialog" aria-label="Содержание">
+    <h3>Содержание <button class="toc-close" id="toc-close" type="button">Закрыть</button></h3>
+    <div id="toc-list" style="display:flex;flex-direction:column;gap:2px"></div>
+  </div>
+</div>
+
+<script>
+(function(){
+  'use strict';
+  var $ = function(s, r){ return (r||document).querySelector(s); };
+  var el = function(tag, cls, html){ var e=document.createElement(tag); if(cls) e.className=cls; if(html!=null) e.innerHTML=html; return e; };
+  var shuffle = function(a){ a=a.slice(); for(var i=a.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=a[i]; a[i]=a[j]; a[j]=t; } return a; };
+
+  /* ---------- state ---------- */
+  var KEY='evropa-ix-xi-v1';
+  var state={visited:{},done:{},last:0};
+  try{ var s=JSON.parse(localStorage.getItem(KEY)||'null'); if(s && typeof s==='object'){ state.visited=s.visited||{}; state.done=s.done||{}; state.last=s.last||0; } }catch(e){}
+  function save(){ try{ localStorage.setItem(KEY, JSON.stringify(state)); }catch(e){} }
+
+  var GAMES=[
+    {k:'terms', name:'Словарик, обе части', step:'slovar-1'},
+    {k:'match', name:'Кто что сделал', step:'kto-chto'},
+    {k:'sort', name:'Где это было?', step:'gde'},
+    {k:'order', name:'Расставь по порядку', step:'poryadok'},
+    {k:'odd', name:'Найди лишнее', step:'lishnee'},
+    {k:'quiz', name:'Проверь себя', step:'test'}
+  ];
+  var GAME_STEPS={'slovar-1':'terms','slovar-2':'terms','kto-chto':'match','gde':'sort','poryadok':'order','lishnee':'odd','test':'quiz'};
+
+  /* ---------- steps ---------- */
+  var steps=Array.prototype.slice.call(document.querySelectorAll('.step'));
+  var N=steps.length, cur=0;
+  var stepbar=$('#stepbar'), count=$('#count'), prevB=$('#prev'), nextB=$('#next'), tocList=$('#toc-list');
+
+  steps.forEach(function(s,i){
+    var b=el('button'); b.type='button'; b.setAttribute('aria-label','Шаг '+(i+1)+': '+s.getAttribute('data-name'));
+    b.addEventListener('click', function(){ go(i); });
+    stepbar.appendChild(b);
+    var t=el('button','toc-item','<span class="n">'+(i+1)+'</span><span>'+s.getAttribute('data-name')+'</span><span class="m"></span>');
+    t.type='button'; t.addEventListener('click', function(){ closeToc(); go(i); });
+    tocList.appendChild(t);
+  });
+
+  function paint(){
+    var bars=stepbar.children, items=tocList.children;
+    for(var i=0;i<N;i++){
+      var key=steps[i].getAttribute('data-step'), g=GAME_STEPS[key];
+      var done = g && state.done[g];
+      bars[i].className=(i===cur?'current':'')+(state.visited[i]?' visited':'')+(done?' done':'');
+      items[i].className='toc-item'+(i===cur?' current':'');
+      items[i].lastElementChild.textContent = done ? 'пройдено' : (state.visited[i] ? '✓' : '');
+    }
+    count.textContent=(cur+1)+' / '+N;
+    prevB.disabled = cur===0;
+    if(cur===N-1){ nextB.textContent='Это последний шаг'; nextB.disabled=true; }
+    else { nextB.textContent='Дальше: '+steps[cur+1].getAttribute('data-name'); nextB.disabled=false; }
+    var badges={terms:['b-terms','b-terms2'],match:['b-match'],sort:['b-sort'],order:['b-order'],odd:['b-odd']};
+    for(var k in badges){ badges[k].forEach(function(id){ var b=document.getElementById(id); if(b && state.done[k]){ b.textContent='Пройдено'; b.classList.add('done'); } }); }
+    paintMosaic();
+  }
+  function go(i, silent){
+    if(i<0||i>=N) return;
+    cur=i; steps.forEach(function(s,j){ s.hidden = j!==i; });
+    state.visited[i]=true; state.last=i; save();
+    if(!silent){ var h='#'+steps[i].getAttribute('data-step'); if(location.hash!==h) history.pushState(null,'',h); }
+    window.scrollTo(0,0);
+    paint();
+  }
+  function idxFromHash(){ var h=location.hash.replace('#',''); for(var i=0;i<N;i++) if(steps[i].getAttribute('data-step')===h) return i; return -1; }
+  function onHash(){ var i=idxFromHash(); if(i>=0 && i!==cur) go(i, true); }
+  window.addEventListener('popstate', onHash);
+  window.addEventListener('hashchange', onHash);
+  prevB.addEventListener('click', function(){ go(cur-1); });
+  nextB.addEventListener('click', function(){ go(cur+1); });
+  document.addEventListener('keydown', function(e){ if(e.target && /INPUT|TEXTAREA/.test(e.target.tagName)) return; if(e.key==='ArrowRight') go(cur+1); if(e.key==='ArrowLeft') go(cur-1); if(e.key==='Escape') closeToc(); });
+
+  var toc=$('#toc');
+  function openToc(){ toc.hidden=false; }
+  function closeToc(){ toc.hidden=true; }
+  $('#toc-btn').addEventListener('click', openToc);
+  $('#toc-close').addEventListener('click', closeToc);
+  toc.addEventListener('click', function(e){ if(e.target===toc) closeToc(); });
+
+  function markDone(k){ if(!state.done[k]){ state.done[k]=true; save(); } paint(); }
+
+  /* resume button on step 1 */
+  (function(){
+    var r=$('#resume');
+    if(state.last>0 && idxFromHash()<0){
+      r.hidden=false;
+      r.innerHTML='<button class="btn ghost" type="button">Продолжить с шага '+(state.last+1)+': '+steps[state.last].getAttribute('data-name')+'</button>';
+      r.firstChild.addEventListener('click', function(){ go(state.last); });
+    }
+  })();
+
+  /* ---------- mosaic on final step ---------- */
+  var mosaic=$('#mosaic'), mosaicList=$('#mosaic-list');
+  function paintMosaic(){
+    mosaic.innerHTML=''; mosaicList.innerHTML='';
+    GAMES.forEach(function(g){
+      var t=el('span','tile'+(state.done[g.k]?' on':'')); t.title=g.name; mosaic.appendChild(t);
+      var li=el('span', state.done[g.k]?'':'off', (state.done[g.k]?'★ ':'☆ ')+g.name);
+      if(!state.done[g.k]){ li.style.cursor='pointer'; li.addEventListener('click', function(){ for(var i=0;i<N;i++) if(steps[i].getAttribute('data-step')===g.step){ go(i); break; } }); }
+      mosaicList.appendChild(li);
+    });
+  }
+
+  /* ---------- timeline ---------- */
+  var TL=[
+    {y:'863', era:'Мир', t:'Кирилл и Мефодий в Моравии', d:'Братья Кирилл и Мефодий приехали из Византии в Великую Моравию, государство западных славян. Они создали славянскую азбуку и начали переводить Библию на славянский язык.'},
+    {y:'962', era:'Мир', t:'Священная Римская империя', d:'Папа римский провозгласил германского короля Оттона I императором. Так появилась империя, которую позже назвали Священной Римской.'},
+    {y:'965', era:'Россия', ru:true, t:'Святослав громит хазар', d:'Киевский князь Святослав разгромил Хазарский каганат. Это тот самый сосед Руси, про который ты читала в § 3: в 787 году хазары подавили восстание в Крыму.'},
+    {y:'1066', era:'Мир', t:'Нормандское завоевание Англии', d:'Нормандский герцог Вильгельм разбил англосаксов в битве при Гастингсе и стал королём Англии, Вильгельмом Завоевателем.'},
+    {y:'1068', era:'Россия', ru:true, t:'Победа на реке Снов', d:'Русское войско разбило половцев, кочевников из южных степей, на реке Снов. Вёл русских черниговский князь Святослав, сын Ярослава Мудрого. По летописи, русских было три тысячи, а половцев двенадцать тысяч.'}
+  ];
+  var tl=$('#tl');
+  TL.forEach(function(e,i){
+    var it=el('div','tl-item'+(e.ru?' ru':''));
+    var b=el('button','tl-btn'); b.type='button';
+    b.innerHTML='<span class="dot"></span><span class="y">'+e.y+'</span><span class="t">'+e.t+'</span><span class="era">'+e.era+'</span>';
+    var d=el('div','tl-d',e.d); d.hidden=(i!==0); if(i===0) it.classList.add('open');
+    b.setAttribute('aria-expanded', i===0?'true':'false');
+    b.addEventListener('click', function(){ var open=d.hidden; d.hidden=!open; it.classList.toggle('open',open); b.setAttribute('aria-expanded',open?'true':'false'); });
+    it.appendChild(b); it.appendChild(d); tl.appendChild(it);
+  });
+
+  /* ---------- glossary ---------- */
+  var TERMS=[
+    [
+      {t:'Норманны', d:'«Северные люди»: так в Западной Европе звали жителей Скандинавии.', e:'Предки датчан, шведов, норвежцев, исландцев.'},
+      {t:'Викинги', d:'Так сами скандинавы называли участников морских походов.', e:'В Англии их звали датчанами.'},
+      {t:'Варяги', d:'Так викингов называли на Руси.', e:''},
+      {t:'Путь «из варяг в греки»', d:'Торговый путь по рекам через земли Руси из Скандинавии в Византию.', e:'По нему викинги ездили торговать и наниматься на службу.'},
+      {t:'Нормандия', d:'Герцогство на севере Франции. Король отдал эти земли норманнам в X веке.', e:''},
+      {t:'Нормандцы', d:'Выходцы из Нормандии, потомки норманнов, которые крестились и переняли местный язык.', e:'Вильгельм Завоеватель — нормандец.'},
+      {t:'Руны', d:'Особые письменные знаки, которыми писали норманны.', e:''},
+      {t:'Саги', d:'Скандинавские сказания о битвах и дальних плаваниях.', e:'Например, о Гренландии и Винланде.'}
+    ],
+    [
+      {t:'Англосаксы', d:'Потомки германских племён англов и саксов, которые в V–VI веках основали королевства в Англии.', e:''},
+      {t:'Раздробленность', d:'Время, когда страна распадается на много почти независимых владений, а король ими не управляет.', e:'Франция в IX–XI веках.'},
+      {t:'«Первый среди равных»', d:'Так знать смотрела на короля Франции: главный по названию, но не повелитель.', e:''},
+      {t:'Капетинги', d:'Династия королей Франции, потомки Гуго Капета. Правили до XIV века.', e:''},
+      {t:'Священная Римская империя', d:'Империя Оттона I с 962 года: Германия, север Италии и другие земли.', e:'Считалась продолжением Римской.'},
+      {t:'Скипетр и держава', d:'Знаки императорской власти вместе с короной. Скипетр — жезл, держава — шар с крестом.', e:''},
+      {t:'Великая Моравия', d:'Государство западных славян, возникло в начале IX века.', e:'Сюда в 863 году приехали Кирилл и Мефодий.'},
+      {t:'Кириллица', d:'Славянская азбука, названная в честь Кирилла.', e:'Этими буквами написан и этот текст.'}
+    ]
+  ];
+  var flipped={}, total=0; TERMS.forEach(function(g){ total+=g.length; });
+  var progEls=[$('#terms-progress'),$('#terms-progress2')];
+  function termsProgress(){
+    var n=Object.keys(flipped).length;
+    progEls.forEach(function(p,gi){ var got=0; TERMS[gi].forEach(function(t,i){ if(flipped[gi+'-'+i]) got++; }); p.textContent='Открыто '+got+' из '+TERMS[gi].length+' здесь, всего '+n+' из '+total; });
+    if(n===total) markDone('terms');
+  }
+  document.querySelectorAll('.cards').forEach(function(box){
+    var gi=+box.getAttribute('data-terms');
+    TERMS[gi].forEach(function(t,i){
+      var b=el('button','card'); b.type='button'; b.setAttribute('aria-label',t.t+'. Нажми, чтобы увидеть значение');
+      b.innerHTML='<div class="in"><div class="face f"><div class="w">'+t.t+'</div><div class="tap">Нажми</div></div><div class="face b"><div class="w">'+t.t+'</div><div>'+t.d+'</div>'+(t.e?'<div class="e">'+t.e+'</div>':'')+'</div></div>';
+      b.addEventListener('click', function(){ b.classList.toggle('flip'); flipped[gi+'-'+i]=true; termsProgress(); });
+      box.appendChild(b);
+    });
+  });
+  termsProgress();
+
+  /* ---------- matching ---------- */
+  var PAIRS=[
+    {foe:'Альфред Великий', res:'Построил флот и крепости и стал первым королём Англии', why:'871–900 годы. Воевал с датчанами, в его войске служил каждый шестой.'},
+    {foe:'Вильгельм Завоеватель', res:'Победил при Гастингсе и стал королём Англии', why:'1066 год. Нормандский герцог, раздал земли дружинникам за клятву верности.'},
+    {foe:'Гуго Капет', res:'Получил от знати корону Франции', why:'Конец X века. Граф Парижский, воевал с норманнами, основатель династии Капетингов.'},
+    {foe:'Оттон I', res:'Разбил венгров и стал императором', why:'962 год. Так появилась Священная Римская империя.'},
+    {foe:'Кирилл и Мефодий', res:'Создали славянскую азбуку', why:'863 год, Великая Моравия. Азбуку назвали кириллицей.'},
+    {foe:'Лейф Счастливый', res:'Доплыл до Северной Америки', why:'Около 1000 года, Винланд. За 500 лет до Колумба.'}
+  ];
+  var foesBox=$('#foes'), outBox=$('#outcomes'), matchFb=$('#match-fb'), selFoe=null, matched=0;
+  PAIRS.forEach(function(p){
+    var b=el('button','opt',p.foe); b.type='button'; b.setAttribute('data-foe',p.foe);
+    b.addEventListener('click', function(){
+      if(b.classList.contains('ok')) return;
+      var all=foesBox.querySelectorAll('.opt'); for(var i=0;i<all.length;i++) all[i].classList.remove('sel');
+      b.classList.add('sel'); selFoe=p; matchFb.innerHTML='';
+    });
+    foesBox.appendChild(b);
+  });
+  shuffle(PAIRS).forEach(function(p){
+    var b=el('button','opt',p.res); b.type='button';
+    b.addEventListener('click', function(){
+      if(b.classList.contains('ok')) return;
+      if(!selFoe){ matchFb.innerHTML='<div class="feedback bad"><span class="k">Сначала выбери имя слева.</span></div>'; return; }
+      if(selFoe.res===p.res){
+        b.classList.add('ok'); b.disabled=true;
+        var fb=foesBox.querySelector('[data-foe="'+selFoe.foe+'"]'); fb.classList.remove('sel'); fb.classList.add('ok'); fb.disabled=true;
+        matchFb.innerHTML='<div class="feedback ok"><span class="k">Верно! '+selFoe.foe+'.</span><span>'+selFoe.why+'</span></div>';
+        selFoe=null; matched++;
+        if(matched===PAIRS.length){ matchFb.innerHTML='<div class="feedback ok"><span class="k">Все шестеро на месте!</span><span>Два короля Англии, король Франции, император, братья-просветители и первооткрыватель Америки.</span></div>'; markDone('match'); }
+      } else {
+        b.classList.add('bad'); setTimeout(function(){ b.classList.remove('bad'); },400);
+        matchFb.innerHTML='<div class="feedback bad"><span class="k">Не туда.</span><span>Это сделал кто-то другой. Попробуй другой вариант.</span></div>';
+      }
+    });
+    outBox.appendChild(b);
+  });
+
+  /* ---------- sort: где это было ---------- */
+  var COUNTRIES=['Англия','Франция','Германия'];
+  var SORT=[
+    {t:'Служит каждый шестой, а пятеро его содержат', c:'Англия', why:'Так Альфред Великий переделал армию против датчан.'},
+    {t:'Герцоги и графы богаче самого короля', c:'Франция', why:'Например, герцоги Нормандии и графы Шампани. Король для них «первый среди равных».'},
+    {t:'Вдоль границы строят крепости и собирают сильную конницу против венгров', c:'Германия', why:'Так Оттон I подготовился и разбил венгров.'},
+    {t:'Тяжёлая конница победила пехоту, король погиб в бою', c:'Англия', why:'Битва при Гастингсе в 1066 году: Вильгельм против Гарольда.'},
+    {t:'Власть короля — только полоса от Сены до Луары', c:'Франция', why:'Там Париж и Орлеан, наследство графов Парижских.'},
+    {t:'Корона с двенадцатью драгоценными камнями', c:'Германия', why:'Корона Священной Римской империи: 12 камней по числу апостолов.'},
+    {t:'Победитель датчан стал первым королём всей страны', c:'Англия', why:'Альфред Великий объединил англосаксонские королевства.'},
+    {t:'Корону отдали графу Парижскому', c:'Франция', why:'Гуго Капет, основатель династии Капетингов.'},
+    {t:'Каждый новый император идёт в поход в Италию', c:'Германия', why:'Власть императоров на Апеннинском полуострове была непрочной.'}
+  ];
+  var sortBox=$('#sort-box'), sortP=$('#sort-progress'), sortList=shuffle(SORT), si=0;
+  function renderSort(){
+    if(si>=sortList.length){ return sortDone(); }
+    var it=sortList[si];
+    sortP.textContent='Карточка '+(si+1)+' из '+sortList.length;
+    sortBox.innerHTML='';
+    sortBox.appendChild(el('div','sort-card',it.t));
+    var tri=el('div','tri'); sortBox.appendChild(tri);
+    var fb=el('div'); sortBox.appendChild(fb);
+    var rowN=el('div','row'); sortBox.appendChild(rowN);
+    COUNTRIES.forEach(function(c){
+      var b=el('button','opt',c); b.type='button';
+      b.addEventListener('click', function(){
+        if(c===it.c){
+          var all=tri.querySelectorAll('.opt'); for(var k=0;k<all.length;k++) all[k].disabled=true;
+          b.classList.add('ok');
+          fb.innerHTML='<div class="feedback ok"><span class="k">Да, это '+c+'.</span><span>'+it.why+'</span></div>';
+          var n=el('button','btn', si<sortList.length-1?'Следующая карточка':'Показать итог'); n.type='button';
+          n.addEventListener('click', function(){ si++; renderSort(); });
+          rowN.appendChild(n);
+        } else {
+          b.classList.add('bad'); b.disabled=true;
+          fb.innerHTML='<div class="feedback bad"><span class="k">Нет, это не '+c+'.</span><span>Подумай, в какой стране так было, и попробуй ещё.</span></div>';
+        }
+      });
+      tri.appendChild(b);
+    });
+  }
+  function sortDone(){
+    sortP.textContent='Все карточки разложены';
+    var html='<div class="feedback ok"><span class="k">Готово! Вот что получилось:</span></div><div class="sort-sum">';
+    COUNTRIES.forEach(function(c){
+      var items=SORT.filter(function(x){ return x.c===c; }).map(function(x){ return x.t.toLowerCase(); });
+      html+='<div><b>'+c+':</b> '+items.join('; ')+'.</div>';
+    });
+    html+='</div><p>Англия объединилась, Франция раздробилась, Германия стала империей. Это и есть ответ на главный вопрос.</p><div class="row"><button class="btn ghost" type="button" id="sort-again">Ещё раз</button></div>';
+    sortBox.innerHTML=html;
+    $('#sort-again').addEventListener('click', function(){ sortList=shuffle(SORT); si=0; renderSort(); });
+    markDone('sort');
+  }
+  renderSort();
+
+  /* ---------- ordering ---------- */
+  var EVENTS=[
+    {y:871, t:'Альфред Великий становится королём англосаксов', ys:'871'},
+    {y:962, t:'Оттон I провозглашён императором', ys:'962'},
+    {y:966, t:'Поляки принимают христианство', ys:'966'},
+    {y:1000, t:'Лейф Счастливый доплывает до Винланда', ys:'около 1000'},
+    {y:1066, t:'Битва при Гастингсе', ys:'1066'}
+  ];
+  var pool=$('#pool'), seq=$('#seq'), orderCheck=$('#order-check'), orderFb=$('#order-fb'), picked=[], shuffledEvents=shuffle(EVENTS);
+  function renderOrder(){
+    pool.innerHTML='';
+    shuffledEvents.forEach(function(e){
+      if(picked.indexOf(e)>=0) return;
+      var b=el('button','opt',e.t); b.type='button';
+      b.addEventListener('click', function(){ picked.push(e); renderOrder(); });
+      pool.appendChild(b);
+    });
+    seq.innerHTML='';
+    if(!picked.length){ seq.appendChild(el('div','empty','Сюда встанут события')); }
+    picked.forEach(function(e,i){ seq.appendChild(el('div','slot','<span class="i">'+(i+1)+'</span><span>'+e.t+'</span>')); });
+    orderCheck.disabled = picked.length!==EVENTS.length;
+    orderFb.innerHTML='';
+  }
+  renderOrder();
+  orderCheck.addEventListener('click', function(){
+    var slots=seq.querySelectorAll('.slot'), wrong=0;
+    picked.forEach(function(e,i){
+      var ok = e.y===EVENTS[i].y;
+      slots[i].classList.add(ok?'ok':'bad');
+      slots[i].insertAdjacentHTML('beforeend','<span class="yr">'+e.ys+'</span>');
+      if(!ok) wrong++;
+    });
+    if(!wrong){ orderFb.innerHTML='<div class="feedback ok"><span class="k">Всё по порядку!</span><span>871, 962, 966, около 1000, 1066. Сначала Альфред в Англии, потом Оттон стал императором, через четыре года крестились поляки, потом Лейф доплыл до Америки, а в конце — Гастингс.</span></div>'; markDone('order'); }
+    else orderFb.innerHTML='<div class="feedback bad"><span class="k">Не совсем. Красные события стоят не на своих местах.</span><span>Теперь даты видны. Нажми «Сначала» и попробуй ещё раз.</span></div>';
+    orderCheck.disabled=true;
+  });
+  $('#order-reset').addEventListener('click', function(){ picked=[]; shuffledEvents=shuffle(EVENTS); renderOrder(); });
+
+  /* ---------- odd one out ---------- */
+  var ODD=[
+    {items:['Норманны','Викинги','Варяги','Венгры'], odd:'Венгры', why:'Норманны, викинги и варяги — три имени одних и тех же скандинавов. А венгры — кочевники с Дуная.'},
+    {items:['Исландия','Гренландия','Винланд','Нормандия'], odd:'Нормандия', why:'Исландию, Гренландию и Винланд норманны открыли за морем. А Нормандию им отдал французский король.'},
+    {items:['Польша','Чехия','Хорватия','Болгария'], odd:'Болгария', why:'Польша, Чехия и Хорватия крестились по римскому образцу. Болгария — из Константинополя, и пишет кириллицей.'},
+    {items:['Лондон','Париж','Ахен','Константинополь'], odd:'Константинополь', why:'Лондон, Париж и Ахен викинги разоряли. А в Константинополь они приходили по пути «из варяг в греки» торговать и наниматься на службу.'}
+  ];
+  var oddGrid=$('#odd-grid'), oddFb=$('#odd-fb'), oddNext=$('#odd-next'), oddP=$('#odd-progress'), oddRound=0;
+  function renderOdd(){
+    var r=ODD[oddRound]; oddGrid.innerHTML=''; oddFb.innerHTML=''; oddNext.hidden=true;
+    oddP.textContent='Раунд '+(oddRound+1)+' из '+ODD.length;
+    shuffle(r.items).forEach(function(w){
+      var b=el('button','opt',w); b.type='button';
+      b.addEventListener('click', function(){
+        var all=oddGrid.querySelectorAll('.opt');
+        if(w===r.odd){
+          for(var i=0;i<all.length;i++) all[i].disabled=true;
+          b.classList.add('ok');
+          oddFb.innerHTML='<div class="feedback ok"><span class="k">Точно, лишнее слово «'+w+'».</span><span>'+r.why+'</span></div>';
+          if(oddRound<ODD.length-1) oddNext.hidden=false;
+          else { oddP.textContent='Все четыре раунда пройдены'; markDone('odd'); }
+        } else {
+          b.classList.add('bad'); b.disabled=true;
+          oddFb.innerHTML='<div class="feedback bad"><span class="k">«'+w+'» из той же компании, что и остальные.</span><span>Подумай, какое слово про другое.</span></div>';
+        }
+      });
+      oddGrid.appendChild(b);
+    });
+  }
+  oddNext.addEventListener('click', function(){ oddRound++; renderOdd(); });
+  renderOdd();
+
+  /* ---------- quiz ---------- */
+  var QUIZ=[
+    {q:'Кого в Западной Европе называли норманнами?', o:['Жителей Нормандии','Жителей Скандинавии, «северных людей»','Кочевников с Дуная'], a:1, why:'Норманны — «северные люди», скандинавы. Жители Нормандии — нормандцы, а кочевники с Дуная — венгры.'},
+    {q:'Почему скандинавы пускались в морские походы?', o:['В Скандинавии мало земли для пахоты, а вожди с дружинами искали славы и добычи','Их выгнал из дома Карл Великий','Их позвал на помощь папа римский'], a:0, why:'Суровый климат, мало земли, зато море. И вожди с дружинами, как у германцев в Великое переселение.'},
+    {q:'Как викингов называли на Руси?', o:['Датчане','Нормандцы','Варяги'], a:2, why:'Датчанами их звали в Англии, а нормандцы — жители Нормандии.'},
+    {q:'Что сделал Альфред Великий?', o:['Завоевал Англию в 1066 году','Отбил датчан, объединил англосаксонские королевства и стал первым королём Англии','Открыл Исландию'], a:1, why:'Англию в 1066 году завоевал Вильгельм, а Исландию открыли норманны.'},
+    {q:'Чем закончилась битва при Гастингсе в 1066 году?', o:['Англосаксы прогнали норвежского короля Харальда','Датчан выгнали из Англии навсегда','Нормандский герцог Вильгельм победил и стал королём Англии'], a:2, why:'Харальда разбили за три дня до этого. А при Гастингсе конница Вильгельма победила пехоту Гарольда.'},
+    {q:'Что такое раздробленность?', o:['Время, когда страна распадается на много почти независимых владений','Раздел империи между тремя внуками','Набег викингов на побережье'], a:0, why:'Раздел между внуками — это Верденский раздел из § 3. А раздробленность — когда король почти не управляет владениями знати.'},
+    {q:'Кто такой Гуго Капет?', o:['Норвежский король','Граф Парижский, которому знать отдала корону Франции','Германский император'], a:1, why:'Конец X века. Его потомки, Капетинги, правили Францией до XIV века.'},
+    {q:'Что произошло в 962 году?', o:['Оттон I стал императором, появилась Священная Римская империя','Нормандское завоевание Англии','Кирилл и Мефодий приехали в Моравию'], a:0, why:'Завоевание Англии — 1066, Кирилл и Мефодий — 863.'},
+    {q:'Что создали Кирилл и Мефодий?', o:['Руны','Славянскую азбуку — кириллицу','Корону Священной Римской империи'], a:1, why:'Руны — письменность норманнов. А кириллицу назвали в честь Кирилла.'},
+    {q:'Какие страны приняли крещение из Константинополя?', o:['Польша, Чехия, Хорватия','Англия, Франция, Германия','Болгария, Сербия, Русь'], a:2, why:'Они пишут кириллицей. А Польша, Чехия и Хорватия крестились по римскому образцу.'}
+  ];
+  var qBox=$('#quiz-box'), qP=$('#quiz-progress'), qi=0, score=0;
+  function renderQ(){
+    if(qi>=QUIZ.length) return renderScore();
+    var q=QUIZ[qi];
+    qP.textContent='Вопрос '+(qi+1)+' из '+QUIZ.length;
+    qBox.innerHTML='';
+    qBox.appendChild(el('div','q',q.q));
+    var opts=el('div','q-opts'); qBox.appendChild(opts);
+    var fb=el('div'); qBox.appendChild(fb);
+    var rowN=el('div','row'); qBox.appendChild(rowN);
+    var answered=false;
+    q.o.forEach(function(o,i){
+      var b=el('button','opt',o); b.type='button';
+      b.addEventListener('click', function(){
+        if(answered) return; answered=true;
+        var all=opts.querySelectorAll('.opt');
+        for(var k=0;k<all.length;k++){ all[k].disabled=true; if(k===q.a) all[k].classList.add('ok'); }
+        if(i===q.a){ score++; fb.innerHTML='<div class="feedback ok"><span class="k">Правильно!</span><span>'+q.why+'</span></div>'; }
+        else { b.classList.add('bad'); fb.innerHTML='<div class="feedback bad"><span class="k">Нет, правильный ответ подсвечен зелёным.</span><span>'+q.why+'</span></div>'; }
+        var n=el('button','btn', qi<QUIZ.length-1?'Следующий вопрос':'Показать результат'); n.type='button';
+        n.addEventListener('click', function(){ qi++; renderQ(); window.scrollTo(0,0); });
+        rowN.appendChild(n);
+      });
+      opts.appendChild(b);
+    });
+  }
+  function renderScore(){
+    qP.textContent='Результат';
+    var tiles=''; for(var i=0;i<QUIZ.length;i++) tiles+='<i class="'+(i<score?'on':'')+'"></i>';
+    var msg = score===QUIZ.length ? 'Идеально, Амина! Ни одной ошибки.' : score>=8 ? 'Отлично! Ещё раз взгляни на вопросы, где ошиблась, и будет полный набор.' : score>=6 ? 'Хорошо. Перечитай шаги, где было трудно, и пройди тест снова.' : 'Тема большая, Амина, это нормально. Вернись к шагу «За минуту», потом к словарику, и попробуй ещё раз.';
+    qBox.innerHTML='<div class="score"><div class="big">'+score+' из '+QUIZ.length+'</div><div class="score-tiles">'+tiles+'</div><p>'+msg+'</p><button class="btn ghost" type="button" id="quiz-again">Пройти ещё раз</button></div>';
+    $('#quiz-again').addEventListener('click', function(){ qi=0; score=0; renderQ(); });
+    markDone('quiz');
+  }
+  renderQ();
+
+  /* ---------- bricks ---------- */
+  Array.prototype.forEach.call(document.querySelectorAll('.brick button'), function(b){
+    b.addEventListener('click', function(){
+      var body=b.nextElementSibling, open=body.hidden;
+      body.hidden=!open; b.setAttribute('aria-expanded', open?'true':'false');
+      b.lastElementChild.textContent = open?'−':'+';
+    });
+  });
+
+  /* ---------- start ---------- */
+  var start=idxFromHash(); go(start<0?0:start, true);
+})();
+</script>
+
+</body>
+</html>
