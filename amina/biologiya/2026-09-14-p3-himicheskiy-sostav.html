@@ -1,0 +1,1252 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Из чего состоит клетка</title>
+<meta name="paragraph" content="§ 3">
+<meta name="description" content="Химический состав клетки">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=PT+Sans+Narrow:wght@400;700&family=PT+Sans:wght@400;700&display=swap">
+<style>
+:root{
+  --bg:#EBE8DF; --surface:#F8F6F0; --surface-2:#E2DED2; --ink:#1B2233; --ink-2:#4A5163; --muted:#7A8093;
+  --lapis:#23448A; --on-lapis:#FFFFFF; --lapis-soft:#D9E1F3;
+  --gold:#B08A2E; --gold-soft:#F1E6C2; --on-gold:#2A2107;
+  --terra:#B4552F; --terra-soft:#F3DCD2;
+  --moss:#4E7A3B; --moss-soft:#DCE8D2;
+  --line:#D2CDBF; --tile:#CFC9B9;
+  --shadow:0 1px 2px rgba(27,34,51,.08),0 10px 28px rgba(27,34,51,.07);
+  --display:"Oranienbaum","Georgia","Times New Roman",serif;
+  --body:"Golos Text","Segoe UI",system-ui,-apple-system,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0F1728; --surface:#182338; --surface-2:#21304B; --ink:#EDE8DC; --ink-2:#C2BFB4; --muted:#8B93A8;
+    --lapis:#7EA0E6; --on-lapis:#0F1728; --lapis-soft:#22345A;
+    --gold:#E0B84A; --gold-soft:#3E3419; --on-gold:#0F1728;
+    --terra:#E0825C; --terra-soft:#4A2A1D;
+    --moss:#8DBF74; --moss-soft:#243B1F;
+    --line:#2E3B57; --tile:#2A3856;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 28px rgba(0,0,0,.35);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0F1728; --surface:#182338; --surface-2:#21304B; --ink:#EDE8DC; --ink-2:#C2BFB4; --muted:#8B93A8;
+  --lapis:#7EA0E6; --on-lapis:#0F1728; --lapis-soft:#22345A;
+  --gold:#E0B84A; --gold-soft:#3E3419; --on-gold:#0F1728;
+  --terra:#E0825C; --terra-soft:#4A2A1D;
+  --moss:#8DBF74; --moss-soft:#243B1F;
+  --line:#2E3B57; --tile:#2A3856;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 28px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+@media (prefers-reduced-motion: reduce){ *{transition:none!important;animation:none!important} }
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.55;-webkit-text-size-adjust:100%}
+h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1.1;text-wrap:balance;margin:0}
+p{margin:0}
+a{color:var(--lapis)}
+button{font:inherit;color:inherit;cursor:pointer}
+button:focus-visible,summary:focus-visible,a:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+[hidden]{display:none!important}
+
+/* ---------- top bar ---------- */
+.top{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+.top-inner{max-width:720px;margin:0 auto;padding:10px 16px;display:flex;align-items:center;gap:12px}
+.back{text-decoration:none;color:var(--ink-2);font-size:14px;white-space:nowrap;padding:6px 10px;border-radius:8px;background:var(--surface);border:1px solid var(--line)}
+.crumb{flex:1;min-width:0;font-size:14px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.crumb b{color:var(--ink);font-weight:600}
+.toc-btn{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:6px 10px;font-size:14px;color:var(--lapis);font-weight:600;white-space:nowrap}
+.stepbar{max-width:720px;margin:0 auto;padding:0 16px 10px;display:flex;gap:4px}
+.stepbar button{flex:1;height:8px;min-width:6px;padding:0;border:0;border-radius:2px;background:var(--tile);transition:background .3s,transform .3s}
+.stepbar button.visited{background:var(--lapis)}
+.stepbar button.done{background:var(--gold)}
+.stepbar button.current{transform:scaleY(1.6);background:var(--gold)}
+
+/* ---------- steps ---------- */
+main{max-width:720px;margin:0 auto;padding:20px 16px 120px}
+.step{display:flex;flex-direction:column;gap:16px}
+.eyebrow{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);font-weight:700;display:flex;align-items:center;gap:10px}
+.tess{display:inline-flex;gap:3px}
+.tess i{width:8px;height:8px;display:block;border-radius:1px}
+.tess i:nth-child(1){background:var(--lapis)} .tess i:nth-child(2){background:var(--gold)} .tess i:nth-child(3){background:var(--terra)}
+.step h1{font-size:clamp(36px,8vw,56px)}
+.step h2{font-size:clamp(28px,6vw,38px)}
+.step h3{font-size:22px;color:var(--lapis);margin-top:4px}
+.lede{font-size:19px;color:var(--ink-2);max-width:34ch}
+.prose{display:flex;flex-direction:column;gap:12px;max-width:66ch}
+.prose ul{margin:0;padding-left:22px;display:flex;flex-direction:column;gap:6px}
+.prose li::marker{color:var(--gold)}
+b,strong{font-weight:600}
+.term{font-weight:600;color:var(--lapis);border-bottom:2px solid var(--gold-soft)}
+.aside{background:var(--lapis-soft);border-left:4px solid var(--lapis);padding:12px 16px;border-radius:0 8px 8px 0;font-size:16px;display:flex;flex-direction:column;gap:6px}
+.aside .k{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--lapis);font-weight:700}
+.home{background:var(--gold-soft);border-left-color:var(--gold)}
+.home .k{color:var(--gold)}
+details{border:1px solid var(--line);border-radius:10px;background:var(--surface)}
+details summary{cursor:pointer;list-style:none;padding:12px 16px;font-weight:600;color:var(--lapis);display:flex;align-items:center;gap:10px}
+details summary::-webkit-details-marker{display:none}
+details summary::before{content:"";width:9px;height:9px;background:var(--gold);transform:rotate(45deg);flex:none;transition:transform .2s}
+details[open] summary::before{transform:rotate(45deg) scale(.6);background:var(--lapis)}
+details .body{padding:0 16px 14px;display:flex;flex-direction:column;gap:8px;color:var(--ink-2)}
+
+.steps4{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+@media (min-width:600px){ .steps4{grid-template-columns:repeat(4,1fr)} }
+.dom{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px;display:flex;flex-direction:column;gap:4px;box-shadow:var(--shadow)}
+.dom .n{font-family:var(--display);font-size:28px;color:var(--gold);line-height:1}
+.dom .t{font-weight:600;font-size:15px;line-height:1.25}
+.dom .d{font-size:13.5px;color:var(--ink-2);line-height:1.35}
+
+.ladder{display:flex;flex-direction:column;align-items:center;gap:6px}
+.rung{background:var(--lapis);color:var(--on-lapis);padding:9px 12px;border-radius:8px;text-align:center;font-size:15px;line-height:1.3}
+.rung small{display:block;opacity:.85;font-size:12.5px}
+.rung.r1{width:60%} .rung.r2{width:74%} .rung.r3{width:88%} .rung.r4{width:100%;background:var(--surface-2);color:var(--ink)}
+
+/* timeline (вертикальная, все даты видны сразу) */
+.tl-v{display:flex;flex-direction:column;position:relative;padding-left:4px}
+.tl-v::before{content:"";position:absolute;left:16px;top:16px;bottom:16px;width:3px;background:var(--line);border-radius:2px}
+.tl-item{position:relative;padding-left:36px;display:flex;flex-direction:column}
+.tl-btn{background:none;border:0;padding:8px 0;text-align:left;display:flex;align-items:baseline;gap:8px 12px;flex-wrap:wrap;color:var(--ink);width:100%}
+.tl-btn .dot{position:absolute;left:5px;top:12px;width:17px;height:17px;background:var(--surface);border:3px solid var(--lapis);border-radius:50%;transition:transform .2s,background .2s}
+.tl-item.ru .dot{border-color:var(--terra)}
+.tl-item.open .dot{background:var(--gold);border-color:var(--gold);transform:scale(1.2)}
+.tl-btn .y{font-family:var(--display);font-size:26px;line-height:1;font-variant-numeric:tabular-nums;min-width:96px}
+.tl-btn .t{font-weight:600;font-size:16px}
+.tl-btn .era{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--lapis);font-weight:700;margin-left:auto}
+.tl-item.ru .era{color:var(--terra)}
+.tl-d{color:var(--ink-2);font-size:15.5px;padding:0 0 12px;line-height:1.45}
+.hint{font-size:14px;color:var(--muted)}
+
+/* «как в учебнике» и вопросы учебника */
+details.book{border-color:var(--gold-soft)}
+details.book summary{color:var(--gold)}
+details.book summary::before{background:var(--gold)}
+details.book[open] summary::before{background:var(--gold)}
+details.book .body{font-size:15px;color:var(--ink)}
+details.book .body ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:7px}
+details.book .body li::marker{color:var(--gold)}
+details.book .body .pic{color:var(--ink-2);font-style:italic}
+.qlist{display:flex;flex-direction:column;gap:10px}
+.qi{display:grid;grid-template-columns:auto 1fr;gap:12px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.qi .qn{font-family:var(--display);font-size:24px;color:var(--gold);line-height:1;min-width:20px}
+.qi p{font-size:15.5px}
+.qi .src{font-size:14.5px;color:var(--ink-2);margin-top:6px}
+.qi a{font-size:13.5px;font-weight:600;text-decoration:none;display:inline-block;margin-top:8px;background:var(--lapis-soft);padding:4px 10px;border-radius:999px}
+
+/* games */
+.game{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:12px}
+.g-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.game h3{margin:0}
+.task{color:var(--ink-2)}
+.badge{font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;padding:4px 10px;border-radius:999px;background:var(--gold-soft);color:var(--gold)}
+.badge.done{background:var(--moss-soft);color:var(--moss)}
+.btn{background:var(--lapis);color:var(--on-lapis);border:0;border-radius:10px;padding:10px 18px;font-weight:600;font-size:15px;text-decoration:none;display:inline-block}
+.btn.ghost{background:transparent;color:var(--lapis);border:2px solid var(--lapis)}
+.btn:disabled{opacity:.45;cursor:default}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.feedback{padding:12px 14px;border-radius:10px;font-size:15px;display:flex;flex-direction:column;gap:4px}
+.feedback.ok{background:var(--moss-soft);border-left:4px solid var(--moss)}
+.feedback.bad{background:var(--terra-soft);border-left:4px solid var(--terra)}
+.feedback .k{font-weight:700}
+.progress{font-size:13px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.card{perspective:900px;height:150px;background:none;border:0;padding:0;text-align:left}
+.card .in{position:relative;width:100%;height:100%;transition:transform .5s;transform-style:preserve-3d}
+.card.flip .in{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;border-radius:12px;padding:12px;display:flex;flex-direction:column;justify-content:center;gap:6px;overflow:hidden}
+.face.f{background:var(--lapis);color:var(--on-lapis)}
+.face.f .w{font-family:var(--display);font-size:21px;line-height:1.05}
+.face.f .tap{font-size:11px;opacity:.75;letter-spacing:.08em;text-transform:uppercase}
+.face.b{background:var(--surface-2);color:var(--ink);transform:rotateY(180deg);font-size:12.5px;line-height:1.3;justify-content:flex-start;overflow:auto}
+.face.b .w{font-weight:700;color:var(--lapis);font-size:13px}
+.face.b .e{color:var(--ink-2);font-style:italic}
+
+.match{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.col{display:flex;flex-direction:column;gap:8px}
+.col .lbl{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.opt{background:var(--surface-2);border:2px solid transparent;border-radius:10px;padding:10px 12px;text-align:left;font-weight:500;font-size:15px;transition:border-color .15s,background .15s}
+.opt:hover{border-color:var(--lapis)}
+.opt.sel{border-color:var(--gold);background:var(--gold-soft)}
+.opt.ok{background:var(--moss-soft);border-color:var(--moss)}
+.opt.bad{animation:shake .35s}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+
+.pool{display:flex;flex-direction:column;gap:8px}
+.seq{display:flex;flex-direction:column;gap:8px;min-height:44px;padding:10px;border:2px dashed var(--line);border-radius:12px}
+.seq .slot{display:flex;align-items:center;gap:10px;background:var(--lapis-soft);border-radius:8px;padding:8px 12px;font-size:15px}
+.seq .slot .i{font-family:var(--display);font-size:20px;color:var(--lapis);width:22px;font-variant-numeric:tabular-nums}
+.seq .slot.ok{background:var(--moss-soft)} .seq .slot.bad{background:var(--terra-soft)}
+.seq .slot .yr{margin-left:auto;font-weight:700;color:var(--ink-2);font-variant-numeric:tabular-nums}
+.seq .empty{color:var(--muted);font-size:14px}
+
+.odd-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.odd-grid .opt{text-align:center;padding:16px 10px;font-size:16px}
+.odd-grid .opt.bad{background:var(--terra-soft);border-color:var(--terra)}
+
+.q{font-size:19px;font-weight:600;line-height:1.35}
+.q-opts{display:flex;flex-direction:column;gap:8px}
+.q-opts .opt{font-size:15.5px;line-height:1.35}
+.q-opts .opt.bad{background:var(--terra-soft);border-color:var(--terra)}
+.score{display:flex;flex-direction:column;gap:12px;align-items:flex-start}
+.score .big{font-family:var(--display);font-size:56px;line-height:1;color:var(--gold)}
+.score-tiles{display:flex;gap:5px;flex-wrap:wrap}
+.score-tiles i{width:22px;height:22px;border-radius:3px;background:var(--tile)}
+.score-tiles i.on{background:var(--gold)}
+
+.bricks{display:flex;flex-direction:column;gap:10px}
+.brick{background:var(--surface-2);border-radius:10px;overflow:hidden}
+.brick button{width:100%;background:none;border:0;padding:12px 14px;text-align:left;font-weight:600;color:var(--lapis);display:flex;justify-content:space-between;gap:10px}
+.brick .b-body{padding:0 14px 12px;color:var(--ink-2);font-size:15.5px}
+
+.mosaic{display:flex;gap:6px;align-items:center}
+.mosaic .tile{width:26px;height:26px;background:var(--tile);border-radius:3px;transition:background .4s,transform .4s}
+.mosaic .tile.on{background:var(--gold);transform:rotate(45deg) scale(.8)}
+.mosaic-list{display:flex;flex-direction:column;gap:6px;font-size:15px}
+.mosaic-list span.off{color:var(--muted)}
+
+/* pager */
+.pager{position:fixed;left:0;right:0;bottom:0;z-index:5;background:var(--bg);border-top:1px solid var(--line)}
+.pager-inner{max-width:720px;margin:0 auto;padding:10px 16px;display:flex;align-items:center;gap:10px}
+.pager .count{font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+.pager .btn{flex:1;text-align:center;padding:12px 14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pager .btn.ghost{flex:0 0 auto}
+
+/* toc overlay */
+.toc{position:fixed;inset:0;z-index:10;background:rgba(0,0,0,.35);display:flex;justify-content:flex-end}
+.toc-panel{width:min(360px,90vw);height:100%;background:var(--surface);overflow:auto;padding:16px;display:flex;flex-direction:column;gap:8px;box-shadow:var(--shadow)}
+.toc-panel h3{font-size:24px;margin-bottom:6px;display:flex;justify-content:space-between;align-items:center}
+.toc-close{background:none;border:1px solid var(--line);border-radius:8px;padding:4px 10px;font-size:14px}
+.toc-item{display:flex;align-items:center;gap:10px;background:none;border:0;border-radius:8px;padding:8px 10px;text-align:left;font-size:15px;color:var(--ink)}
+.toc-item:hover{background:var(--surface-2)}
+.toc-item.current{background:var(--gold-soft);font-weight:600}
+.toc-item .n{font-family:var(--display);font-size:18px;color:var(--muted);width:24px;font-variant-numeric:tabular-nums}
+.toc-item .m{margin-left:auto;font-size:12px;color:var(--moss);font-weight:700}
+
+/* схема управления (§ 2) */
+.org{display:flex;flex-direction:column;gap:8px}
+.org .lvl{display:grid;gap:8px;grid-template-columns:repeat(2,1fr)}
+@media (min-width:600px){ .org .lvl{grid-template-columns:repeat(4,1fr)} }
+.org .box{background:var(--surface-2);border-radius:8px;padding:9px 10px;font-size:14px;text-align:center;line-height:1.3}
+.org .box small{display:block;font-size:12px;color:var(--ink-2)}
+.org .box.top{background:var(--lapis);color:var(--on-lapis);font-weight:600;font-size:16px}
+.org .box.sub{background:var(--gold-soft)}
+.org .lbl{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:700;text-align:center}
+
+/* иллюстрации (§ 3) */
+.fig{margin:0;display:flex;flex-direction:column;gap:6px;align-items:flex-start}
+.fig img{width:100%;max-width:360px;height:auto;border-radius:10px;border:1px solid var(--line);background:var(--surface);box-shadow:var(--shadow)}
+.fig.wide img{max-width:100%}
+.fig figcaption{font-size:14px;color:var(--ink-2);line-height:1.35;max-width:60ch}
+.fig-row{display:flex;gap:12px;flex-wrap:wrap;align-items:flex-start}
+.fig-row .fig{flex:1 1 150px;max-width:220px}
+
+/* § 4: «каждый шестой», два пути крещения, игра «Где это было?» */
+.six{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;max-width:380px}
+.six span{height:64px;border-radius:8px;background:var(--surface-2);color:var(--ink-2);display:flex;align-items:flex-end;justify-content:center;padding-bottom:6px;font-size:11.5px;font-weight:600;position:relative}
+.six span::before{content:"";position:absolute;top:10px;left:50%;width:14px;height:14px;margin-left:-7px;border-radius:50%;background:var(--tile)}
+.six span::after{content:"";position:absolute;top:27px;left:50%;width:22px;height:14px;margin-left:-11px;border-radius:8px 8px 3px 3px;background:var(--tile)}
+.six span.w{background:var(--lapis);color:var(--on-lapis)}
+.six span.w::before,.six span.w::after{background:var(--gold)}
+.ways{display:grid;grid-template-columns:1fr;gap:10px}
+@media (min-width:560px){ .ways{grid-template-columns:1fr 1fr} }
+.way{background:var(--surface);border:1px solid var(--line);border-top:5px solid var(--lapis);border-radius:12px;padding:12px 14px;display:flex;flex-direction:column;gap:6px;box-shadow:var(--shadow)}
+.way.const{border-top-color:var(--terra)}
+.way.const h3{color:var(--terra)}
+.way .cn{font-weight:600;font-size:17px}
+.way p{font-size:15.5px;color:var(--ink-2)}
+.sort-card{background:var(--lapis-soft);border-radius:12px;padding:16px;font-size:18px;font-weight:600;line-height:1.35}
+.tri{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.tri .opt{text-align:center;padding:12px 4px;font-size:15px}
+.tri .opt.bad{background:var(--terra-soft);border-color:var(--terra)}
+.sort-sum{display:flex;flex-direction:column;gap:8px;font-size:15px}
+.sort-sum b{color:var(--lapis)}
+/* § 4: разбор вопросов учебника с подсказками и ответом */
+.qtext{font-size:18px;font-weight:600;line-height:1.35;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.aside ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:5px}
+.aside.ans{background:var(--moss-soft);border-left-color:var(--moss)}
+.aside.ans .k{color:var(--moss)}
+.answer{display:flex;flex-direction:column;gap:12px;align-items:stretch}
+.answer .btn{text-align:center}
+.ans-body{display:flex;flex-direction:column;gap:12px}
+.ans-table{width:100%;border-collapse:collapse;font-size:15px;background:var(--surface)}
+.ans-table th,.ans-table td{border:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top;line-height:1.3}
+.ans-table th{font-size:13px;color:var(--ink-2);font-weight:700}
+.ans-table td:first-child{white-space:nowrap}
+
+/* виды шагов: из учебника / задания учебника / сверх учебника */
+.kind-tag{display:flex;gap:10px;align-items:flex-start;border-radius:10px;padding:8px 12px;font-size:13px;line-height:1.35}
+.kind-tag .ic{font-size:18px;line-height:1.1}
+.kind-tag b{font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:700}
+.kind-tag .pg{font-weight:600;margin-left:6px;font-size:13px}
+.kind-tag small{display:block;font-size:13px;color:var(--ink-2);margin-top:2px}
+.kind-tag.book{background:var(--lapis-soft);color:var(--lapis)}
+.kind-tag.task{background:var(--gold-soft);color:var(--gold)}
+.kind-tag.ours{background:var(--terra-soft);color:var(--terra)}
+.stepbar button.k-book{background:var(--lapis-soft)} .stepbar button.k-task{background:var(--gold-soft)} .stepbar button.k-ours{background:var(--terra-soft)}
+.stepbar button.k-book.visited{background:var(--lapis)} .stepbar button.k-task.visited{background:var(--gold)} .stepbar button.k-ours.visited{background:var(--terra)}
+.stepbar button.visited.done{background:var(--moss)}
+.stepbar{gap:3px} .stepbar button{min-width:3px}
+.stepbar button.gstart{margin-left:5px}
+.stepbar button.current{transform:scaleY(1.9);box-shadow:0 0 0 1.5px var(--ink)}
+.toc-group{display:flex;flex-direction:column;gap:2px;border-left:4px solid var(--lapis);padding-left:8px;margin-top:10px}
+.toc-group.k-task{border-left-color:var(--gold)} .toc-group.k-ours{border-left-color:var(--terra)}
+.toc-head{display:flex;align-items:center;gap:8px;font-size:12px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;color:var(--lapis);padding:4px 2px}
+.toc-group.k-task .toc-head{color:var(--gold)} .toc-group.k-ours .toc-head{color:var(--terra)}
+.toc-head .ic{font-size:15px;letter-spacing:0}
+.toc-item .pg{margin-left:auto;font-size:12px;color:var(--muted);white-space:nowrap;font-variant-numeric:tabular-nums}
+.toc-item .pg + .m{margin-left:8px}
+
+/* ===== Книжное оформление (выбрано 14.09.2026): как учебник — синяя шапка, PT Serif / PT Sans Narrow / PT Sans ===== */
+:root{
+  --bg:#FBFAF6; --surface:#FFFFFF; --surface-2:#EAF0F8; --ink:#1A1A1A; --ink-2:#393939; --muted:#6B6B6B;
+  --lapis:#2D63A6; --on-lapis:#FFFFFF; --lapis-soft:#DCE7F5; --gold:#8B6B22; --gold-soft:#F3EBD3; --on-gold:#1A1A1A;
+  --terra:#C24E1E; --terra-soft:#FBE3D6; --moss:#3E7A3A; --moss-soft:#E1EEDC; --line:#D9DDE3; --tile:#D5DCE6; --shadow:none;
+  --band-ink:#FFFFFF; --tb:rgba(255,255,255,.32); --tbv:#FFFFFF; --to:rgba(255,190,160,.5); --tov:#F6A37E; --tt:rgba(255,230,160,.5); --ttv:#F2D27A; --tdone:#A6DB93;
+  --display:"PT Sans Narrow","Arial Narrow",sans-serif; --body:"PT Serif",Georgia,serif; --ui:"PT Sans","Segoe UI",system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){ --bg:#141516; --surface:#1C1E21; --surface-2:#1E2936; --ink:#EDEBE6; --ink-2:#CFCBC3; --muted:#9A968F;
+    --lapis:#79A6E0; --on-lapis:#10141A; --lapis-soft:#1F3350; --gold:#D9B45A; --gold-soft:#3A3120; --on-gold:#10141A;
+    --terra:#F0875A; --terra-soft:#43261A; --moss:#8CC47F; --moss-soft:#22381F; --line:#30343A; --tile:#2C3440; --shadow:none;
+    --band-ink:#10141A; --tb:rgba(16,20,26,.28); --tbv:#10141A; --to:rgba(120,40,10,.4); --tov:#8A2E0C; --tt:rgba(110,80,10,.4); --ttv:#6B4E0E; --tdone:#1F5A1A; } }
+:root[data-theme="dark"]{ --bg:#141516; --surface:#1C1E21; --surface-2:#1E2936; --ink:#EDEBE6; --ink-2:#CFCBC3; --muted:#9A968F;
+    --lapis:#79A6E0; --on-lapis:#10141A; --lapis-soft:#1F3350; --gold:#D9B45A; --gold-soft:#3A3120; --on-gold:#10141A;
+    --terra:#F0875A; --terra-soft:#43261A; --moss:#8CC47F; --moss-soft:#22381F; --line:#30343A; --tile:#2C3440; --shadow:none;
+    --band-ink:#10141A; --tb:rgba(16,20,26,.28); --tbv:#10141A; --to:rgba(120,40,10,.4); --tov:#8A2E0C; --tt:rgba(110,80,10,.4); --ttv:#6B4E0E; --tdone:#1F5A1A; }
+body{font-family:var(--body);font-size:18px;line-height:1.62}
+h1,h2,h3{font-family:var(--display);font-weight:700}
+.step h1{color:var(--lapis);font-size:clamp(34px,8.5vw,52px);line-height:1.02}
+.step h2{color:var(--lapis);font-size:clamp(28px,7vw,36px);line-height:1.08}
+.step h3{font-size:23px}
+.pnum{display:inline-flex;align-items:center;justify-content:center;background:var(--lapis);color:var(--on-lapis);font:700 .72em/1 var(--display);width:1.08em;height:1.08em;margin-right:.3em;vertical-align:.08em}
+.lede{font-size:20px}
+.top{background:var(--lapis);border-bottom:0}
+.back{background:transparent;border-color:var(--band-ink);color:var(--band-ink);font-family:var(--ui);border-radius:3px}
+.crumb{color:var(--band-ink);opacity:.88;font-family:var(--ui)}
+.crumb b{color:var(--band-ink)}
+.toc-btn{background:var(--band-ink);color:var(--lapis);border-color:var(--band-ink);font-family:var(--ui);font-weight:700;border-radius:3px}
+.stepbar button{border-radius:1px}
+.stepbar button.k-book{background:var(--tb)} .stepbar button.k-book.visited{background:var(--tbv)}
+.stepbar button.k-ours{background:var(--to)} .stepbar button.k-ours.visited{background:var(--tov)}
+.stepbar button.k-task{background:var(--tt)} .stepbar button.k-task.visited{background:var(--ttv)}
+.stepbar button.visited.done{background:var(--tdone)}
+.stepbar button.current{box-shadow:0 0 0 1.5px var(--band-ink)}
+.eyebrow{font-family:var(--ui);color:var(--muted);letter-spacing:.08em}
+.tess{display:none}
+.term{font-weight:700;font-style:italic;color:var(--ink);border-bottom:0}
+.kind-tag{border-radius:0;padding:6px 0 0;border-top:2px solid currentColor;font-family:var(--ui);align-items:center}
+.kind-tag.book,.kind-tag.task,.kind-tag.ours{background:transparent}
+.kind-tag .ic{display:flex}
+.kind-tag b{font-size:12.5px;letter-spacing:.08em}
+.kind-tag small{font-family:var(--body);font-style:italic;font-size:14.5px}
+details{border-radius:0}
+details summary{font-family:var(--ui)}
+details.book{border:0;border-top:3px solid var(--lapis);background:var(--surface-2)}
+details.book summary{color:var(--lapis)}
+details.book summary::before,details.book[open] summary::before{background:var(--lapis)}
+details.book .body{font-size:16px}
+.aside{border-radius:0}
+.aside .k{font-family:var(--ui)}
+.dom{border-radius:0;box-shadow:none;border-top:3px solid var(--lapis)}
+.dom .n{font-family:var(--display);font-weight:700;color:var(--lapis)}
+.dom .t{font-family:var(--ui)}
+.rung{border-radius:0}
+.tl-btn .y{font-family:var(--display);font-weight:700;color:var(--lapis)}
+.tl-btn .era{font-family:var(--ui)}
+.fig img{border-radius:0;box-shadow:none}
+.fig figcaption{font-family:var(--ui)}
+.org .box{border-radius:0}
+.qi{border-radius:0}
+.qi .qn{font-family:var(--display);font-weight:700;color:var(--terra)}
+.qi a{border-radius:0;font-family:var(--ui)}
+.game{border-radius:0;box-shadow:none;border-top:4px solid var(--terra)}
+.game h3{color:var(--terra)}
+.badge{border-radius:0;font-family:var(--ui)}
+.btn{border-radius:3px;font-family:var(--ui);font-weight:700}
+.opt{border-radius:0;background:var(--surface);border-color:var(--line);font-family:var(--body)}
+.feedback{border-radius:0}
+.progress{font-family:var(--ui)}
+.q{font-family:var(--body);font-weight:700}
+.face{border-radius:0}
+.face.f .w{font-family:var(--display);font-weight:700}
+.seq,.seq .slot,.sort-card,.brick,.qtext,.way,.six span,.mosaic .tile,.score-tiles i,.toc-panel,.toc-item{border-radius:0}
+.brick button{font-family:var(--ui)}
+.pager{background:var(--surface)}
+.count{font-family:var(--ui)}
+.toc-panel h3{font-family:var(--display)}
+.toc-head{font-family:var(--ui)}
+.toc-head .ic{display:flex}
+.score .big{font-family:var(--display);font-weight:700;color:var(--lapis)}
+/* переносы длинных слов на узком экране (14.09.2026) */
+.match{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+.opt,.face,.qi p,.ans-table td,.ans-table th{overflow-wrap:anywhere;hyphens:auto}
+.ans-table.fit td:first-child{white-space:normal}
+</style>
+</head>
+<body>
+
+
+<header class="top">
+  <div class="top-inner">
+    <a class="back" href="./">← Темы</a>
+    <div class="crumb">Биология · § 3 · <b>Из чего состоит клетка</b></div>
+    <button class="toc-btn" id="toc-btn" type="button">Содержание</button>
+  </div>
+  <div class="stepbar" id="stepbar" aria-label="Шаги темы"></div>
+</header>
+
+<main id="deck">
+
+<!-- 1 -->
+<section class="step" data-step="za-minutu" data-name="За минуту" data-part="Самое главное" data-kind="ours">
+  <div class="kind-tag ours"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 6h14"></path><path d="M5 12h14"></path><path d="M5 18h9"></path></svg></span><div><b>Коротко о главном</b><small>Пересказ для разгона. Подробно, как в учебнике, — в следующих шагах.</small></div></div>
+  <div class="eyebrow"><span class="tess"><i></i><i></i><i></i></span> Биология · 6 класс · § 3</div>
+  <h1>Химический состав клетки</h1>
+  <p class="lede">Амина, в этой теме мы заглянем внутрь клетки и узнаем, из чего она сделана.</p>
+  <div id="resume" hidden></div>
+  <div class="prose">
+    <p>Вспомни азбуку. В ней всего 33 буквы, а из них складываются любые слова: и «камень», и «котёнок», и «яблоко».</p>
+    <p>В природе так же. Её «буквы» — <b>химические элементы</b>: кислород, углерод, водород, азот и другие. Из одних и тех же элементов сложены и камень, и вода в море, и любая живая клетка.</p>
+    <p>Элементы соединяются в «слова» — <b>вещества</b>. Одни вещества клетки неорганические: вода и минеральные соли. Другие органические: углеводы, белки, жиры и нуклеиновые кислоты. У каждого вещества в клетке своя работа.</p>
+    <p>В параграфе четыре части:</p>
+  </div>
+  <div class="steps4">
+    <div class="dom"><div class="n">1</div><div class="t">Элементы</div><div class="d">Больше всего кислорода, углерода, водорода и азота.</div></div>
+    <div class="dom"><div class="n">2</div><div class="t">Неорганические вещества</div><div class="d">Вода и минеральные соли.</div></div>
+    <div class="dom"><div class="n">3</div><div class="t">Органические вещества</div><div class="d">Углеводы, белки, жиры, нуклеиновые кислоты.</div></div>
+    <div class="dom"><div class="n">4</div><div class="t">Моя лаборатория</div><div class="d">Два опыта: ищем вещества в растениях.</div></div>
+  </div>
+  <div class="aside">
+    <div class="k">Как этим пользоваться</div>
+    <p>У каждого шага написано, на какой странице учебника искать. Внизу шага есть «Подробнее, как в учебнике»: там всё, что есть на этих страницах, ничего не пропущено. Сначала учи по коротким шагам, а перед уроком открой «подробнее».</p>
+    <p>Надпись вверху шага подскажет, откуда он: синяя — из учебника, золотая — задание учебника, оранжевая — сверх учебника (пересказ, словарик, игры, самопроверка). В «Содержании» шаги так же разбиты на группы.</p>
+  </div>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 22</summary>
+    <div class="body"><ul>
+      <li>Параграф называется «Химический состав клетки». Он на с. 22–25, в главе 1 «Растение — живой организм».</li>
+      <li>В начале параграфа рамка «Вспомните» с двумя вопросами — они на шаге 2.</li>
+      <li>На с. 22 — текст про химические элементы и схема (шаг 3), таблица «Химический состав клетки, %» (шаг 4). На с. 23 — неорганические и органические вещества (шаги 4–8).</li>
+      <li>На с. 24 — рамка «Запомните»: неорганические вещества, вода, минеральные соли, органические вещества, углеводы, белки, жиры, нуклеиновые кислоты. Все эти слова — в словарике (шаг 13). Там же «Проверьте себя» (шаг 19) и «Подумайте!» (шаг 20).</li>
+      <li>На с. 24–25 — «Моя лаборатория»: две работы «Исследуйте» (шаги 9–11) и «Выполните задание» (шаг 12).</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 2 -->
+<section class="step" data-step="vspomnite" data-name="Вспомни" data-part="Начало" data-kind="task" data-pages="с. 22">
+  <div class="kind-tag task"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l4.2-1L19 8.2 15.8 5 5 15.8z"></path><path d="M13.8 7l3.2 3.2"></path></svg></span><div><b>Задание учебника</b><span class="pg">с. 22</span><small>Вопросы «Вспомните» из книги. Подсказки — наши.</small></div></div>
+  <div class="eyebrow">Перед чтением</div>
+  <h2>Вспомни</h2>
+  <div class="prose">
+    <p>В начале параграфа, в рамке «Вспомните», два вопроса. Они про то, что ты уже проходила раньше. Попробуй ответить сама, а подсказку читай, если застряла.</p>
+  </div>
+  <div class="qlist">
+    <div class="qi"><span class="qn">1</span><div><p>Что такое химический элемент?</p><p class="src">Подсказка: вспомни азбуку из шага 1. Элементы — это «буквы», из которых сложено всё вокруг. Названия каких элементов ты знаешь? Слово «элемент» разобрано на шаге 3.</p><a href="#elementy">Шаг 3 · Из каких элементов</a></div></div>
+    <div class="qi"><span class="qn">2</span><div><p>Какие химические вещества вам известны?</p><p class="src">Подсказка: загляни на кухню. Что налито в чайник, что насыпано в солонку и в сахарницу? Всё это вещества. А какие вещества есть в клетке, — на шаге 4.</p><a href="#veshchestva">Шаг 4 · Два вида веществ</a></div></div>
+  </div>
+</section>
+
+<!-- 3 -->
+<section class="step" data-step="elementy" data-name="Из каких элементов" data-part="Химические элементы" data-kind="book" data-pages="с. 22">
+  <div class="kind-tag book"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.5c2.6-1 5.6-.8 9 1.2v13c-3.4-2-6.4-2.2-9-1.2z"></path><path d="M21 5.5c-2.6-1-5.6-.8-9 1.2v13c3.4-2 6.4-2.2 9-1.2z"></path></svg></span><div><b>Из учебника</b><span class="pg">с. 22</span></div></div>
+  <div class="eyebrow">Химические элементы</div>
+  <h2>Из каких элементов состоит клетка?</h2>
+  <div class="prose">
+    <p><span class="term">Химический элемент</span> — это «буква» природы: простейшая составная часть, из которых сложены все вещества. Например, кислород, углерод, железо.</p>
+    <p>Клетки всех живых организмов — и берёзы, и кошки, и твои — состоят из <b>одних и тех же химических элементов</b>. И эти же элементы входят в состав неживой природы.</p>
+    <p>Раз состав похож, значит, живое и неживое связаны. Учебник говорит так: сходство состава указывает на <b>общность живой и неживой природы</b>.</p>
+  </div>
+  <div class="steps4">
+    <div class="dom"><div class="n">68 %</div><div class="t">Кислород</div></div>
+    <div class="dom"><div class="n">17 %</div><div class="t">Углерод</div></div>
+    <div class="dom"><div class="n">10 %</div><div class="t">Водород</div></div>
+    <div class="dom"><div class="n">3 %</div><div class="t">Азот</div></div>
+  </div>
+  <div class="prose">
+    <p>Больше всего в клетке четырёх элементов: <b>углерода, водорода, кислорода и азота</b>. Вместе они составляют <b>до 98 %</b> массы клетки. Сложи числа на плитках: 68 + 17 + 10 + 3 — как раз 98.</p>
+    <p>Около <b>2 %</b> массы приходится на восемь элементов: калий, натрий, кальций, хлор, магний, железо, фосфор и серу. Остальные элементы есть в клетке в очень малых количествах.</p>
+  </div>
+  <figure class="fig wide"><img src="img/2026-09-14-p3/01-elementy-v-kletke.jpg" width="800" height="365" loading="lazy" alt="Круговая диаграмма: кислород 68 %, углерод 17 %, водород 10 %, азот 3 %, кальций, фосфор и калий 2 %"><figcaption>Примерное соотношение химических элементов в клетке. Схема из учебника (с. 22).</figcaption></figure>
+  <details>
+    <summary>А почему «до 98 %», а не ровно?</summary>
+    <div class="body"><p>Клетки бывают разные, и в каждой элементов чуть больше или чуть меньше. Поэтому учебник пишет «до 98 %» и «около 2 %», а схему называет примерной.</p></div>
+  </details>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 22</summary>
+    <div class="body"><ul>
+      <li>Клетки всех живых организмов состоят из одних и тех же химических элементов. Эти же элементы входят и в состав объектов неживой природы. Сходство состава указывает на общность живой и неживой природы.</li>
+      <li>Больше всего в клетках таких химических элементов, как углерод, водород, кислород и азот. Вместе они составляют до 98 % массы клетки.</li>
+      <li>Около 2 % массы клетки приходится на восемь элементов: калий, натрий, кальций, хлор, магний, железо, фосфор и серу. Остальные химические элементы содержатся в клетках в очень малых количествах.</li>
+      <li class="pic">Схема на с. 22 — примерное соотношение химических элементов в клетке: кислород — 68 %, углерод — 17 %, водород — 10 %, азот — 3 %, кальций, фосфор, калий — 2 %.</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 4 -->
+<section class="step" data-step="veshchestva" data-name="Два вида веществ" data-part="Вещества клетки" data-kind="book" data-pages="с. 22–23">
+  <div class="kind-tag book"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.5c2.6-1 5.6-.8 9 1.2v13c-3.4-2-6.4-2.2-9-1.2z"></path><path d="M21 5.5c-2.6-1-5.6-.8-9 1.2v13c3.4-2 6.4-2.2 9-1.2z"></path></svg></span><div><b>Из учебника</b><span class="pg">с. 22–23</span></div></div>
+  <div class="eyebrow">Вещества клетки</div>
+  <h2>Два вида веществ</h2>
+  <div class="prose">
+    <p>Помнишь азбуку? Из букв-элементов складываются «слова» — вещества. Химические элементы, соединяясь между собой, образуют <span class="term">неорганические</span> и <span class="term">органические</span> вещества.</p>
+    <p>В учебнике есть таблица: сколько каждого вещества в клетке, в процентах от её массы.</p>
+  </div>
+  <div class="ways">
+    <div class="way">
+      <h3>Неорганические вещества</h3>
+      <p><b>Вода</b> — 40—95 %</p>
+      <p><b>Минеральные соли</b> — 1,0—1,5 %</p>
+    </div>
+    <div class="way const">
+      <h3>Органические вещества</h3>
+      <p><b>Углеводы</b> — 0,2—2,0 %</p>
+      <p><b>Белки</b> — 10—20 %</p>
+      <p><b>Жиры</b> — 1,0—5,0 %</p>
+      <p><b>Нуклеиновые кислоты</b> — 1,0—2,0 %</p>
+    </div>
+  </div>
+  <div class="prose">
+    <p>Состав клеток всех организмов похож, но не одинаков. Сколько каких элементов и веществ в клетке, зависит от того, что это за клетка и какую работу она выполняет в организме.</p>
+    <p>Например, в клетках растений обычно больше всего <b>углеводов</b>, а в клетках животных — <b>белков и жиров</b>.</p>
+  </div>
+  <details>
+    <summary>Как запомнить, что куда?</summary>
+    <div class="body"><p>Неорганических веществ в списке два: вода и минеральные соли. Их много и в неживой природе: вода в море, соли в земле. Органических — четыре: углеводы, белки, жиры и нуклеиновые кислоты. Про каждое будет свой шаг.</p></div>
+  </details>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 22–23</summary>
+    <div class="body"><ul>
+      <li>Химические элементы, соединяясь между собой, образуют неорганические и органические вещества.</li>
+      <li class="pic">Таблица на с. 22 «Химический состав клетки, %». Неорганические вещества: вода — 40—95, минеральные соли — 1,0—1,5. Органические вещества: углеводы — 0,2—2,0, белки — 10—20, жиры — 1,0—5,0, нуклеиновые кислоты — 1,0—2,0.</li>
+      <li>Хотя химический состав клеток всех живых организмов сходен, содержание разных элементов и веществ может сильно различаться. Это зависит от типа клеток и от того, какую функцию они выполняют в организме. Например, в растительных клетках, как правило, преобладают углеводы, а в клетках животных — белки и жиры.</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 5 -->
+<section class="step" data-step="voda-soli" data-name="Вода и минеральные соли" data-part="Неорганические вещества" data-kind="book" data-pages="с. 23">
+  <div class="kind-tag book"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.5c2.6-1 5.6-.8 9 1.2v13c-3.4-2-6.4-2.2-9-1.2z"></path><path d="M21 5.5c-2.6-1-5.6-.8-9 1.2v13c3.4-2 6.4-2.2 9-1.2z"></path></svg></span><div><b>Из учебника</b><span class="pg">с. 23</span></div></div>
+  <div class="eyebrow">Неорганические вещества</div>
+  <h2>Вода и минеральные соли</h2>
+  <div class="prose">
+    <p>Вспомни цветок, который забыли полить: листья повисли, стебель обмяк. Польёшь — и он снова стоит. Это работает вода в его клетках.</p>
+    <p><span class="term">Неорганические вещества клетки</span> — это вода и минеральные соли.</p>
+  </div>
+  <h3>Вода</h3>
+  <div class="prose">
+    <p>Воды в клетке больше всего: <b>от 40 до 95 %</b> её массы. Вода:</p>
+    <ul>
+      <li>придаёт клетке <b>упругость</b> — клетка как надутый мяч, а не сдутый;</li>
+      <li><b>определяет её форму</b>;</li>
+      <li><b>участвует в обмене веществ</b>.</li>
+    </ul>
+    <p><span class="term">Обмен веществ</span> — вся работа клетки с веществами: одни она получает, другие строит, ненужные выводит. Чем быстрее и активнее идёт обмен веществ в клетке, тем больше в ней воды.</p>
+  </div>
+  <h3>Минеральные соли</h3>
+  <div class="prose">
+    <p><b>Минеральные соли</b> — примерно <b>1—1,5 %</b> массы клетки. Это, например, соли кальция, калия, фосфора.</p>
+    <p>Клетка использует их для <span class="term">синтеза</span> органических молекул — белков, нуклеиновых кислот и других. Синтез — это сборка сложного из более простого, как дом из кирпичей.</p>
+    <p>Если минеральных веществ не хватает, важнейшие процессы жизни клетки нарушаются.</p>
+  </div>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 23</summary>
+    <div class="body"><ul>
+      <li>Неорганические вещества клетки — это вода и минеральные соли.</li>
+      <li>Больше всего в клетке воды — от 40 до 95 % её общей массы. Вода придаёт клетке упругость, определяет её форму, участвует в обмене веществ.</li>
+      <li>Чем выше интенсивность обмена веществ в клетке (то есть чем активнее он идёт), тем больше в ней воды.</li>
+      <li>Минеральные соли — приблизительно 1—1,5 % общей массы клетки: например, соли кальция, калия, фосфора и др. Эти неорганические вещества используются для синтеза органических молекул (белков, нуклеиновых кислот и др.). При недостатке минеральных веществ нарушаются важнейшие процессы жизнедеятельности клетки.</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 6 -->
+<section class="step" data-step="uglevody" data-name="Углеводы" data-part="Органические вещества" data-kind="book" data-pages="с. 23">
+  <div class="kind-tag book"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.5c2.6-1 5.6-.8 9 1.2v13c-3.4-2-6.4-2.2-9-1.2z"></path><path d="M21 5.5c-2.6-1-5.6-.8-9 1.2v13c3.4-2 6.4-2.2 9-1.2z"></path></svg></span><div><b>Из учебника</b><span class="pg">с. 23</span></div></div>
+  <div class="eyebrow">Органические вещества</div>
+  <h2>Органические вещества. Углеводы</h2>
+  <div class="prose">
+    <p><span class="term">Органические вещества</span> — сложные соединения, в которых обязательно есть углерод. Они входят в состав всех живых организмов.</p>
+    <p>Откуда название? Сначала учёные думали, что такие вещества образуют только живые организмы. Поэтому их и назвали органическими.</p>
+    <p>К органическим веществам относят <b>углеводы, белки, жиры, нуклеиновые кислоты</b> и другие вещества. Начнём с углеводов.</p>
+  </div>
+  <h3>Углеводы</h3>
+  <div class="prose">
+    <p>Представь печку: подбросишь дров — станет тепло. Для клетки такие «дрова» — углеводы. Когда клетка их <span class="term">расщепляет</span>, то есть разбирает на части, она получает <b>энергию</b>, нужную для жизни.</p>
+    <ul>
+      <li><b>Энергия.</b> При расщеплении углеводов клетки получают энергию.</li>
+      <li><b>Прочность.</b> Углеводы входят в состав оболочек клеток и делают их прочными.</li>
+      <li><b>Запас.</b> Крахмал и сахара — запасающие вещества клетки. Они тоже углеводы.</li>
+    </ul>
+  </div>
+  <details>
+    <summary>Где ты встречала углеводы?</summary>
+    <div class="body"><p>Сахар в чае, крахмал в картошке и хлебе — всё это углеводы. Растения запасают их впрок в клубнях, зёрнах, плодах. В «Моей лаборатории» ты будешь искать крахмал в картофеле и пшенице.</p></div>
+  </details>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 23</summary>
+    <div class="body"><ul>
+      <li>Органические вещества — сложные соединения, содержащие углерод. Они входят в состав всех живых организмов. Сначала считали, что органические вещества образуют только живые организмы, поэтому их и назвали органическими. К ним относят углеводы, белки, жиры, нуклеиновые кислоты и другие вещества.</li>
+      <li>Углеводы — важная группа органических веществ: при их расщеплении клетки получают энергию, необходимую для жизнедеятельности. Углеводы входят в состав оболочек клеток и придают им прочность. Запасающие вещества клеток — крахмал и сахара — тоже относятся к углеводам.</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 7 -->
+<section class="step" data-step="belki-zhiry" data-name="Белки и жиры" data-part="Органические вещества" data-kind="book" data-pages="с. 23">
+  <div class="kind-tag book"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.5c2.6-1 5.6-.8 9 1.2v13c-3.4-2-6.4-2.2-9-1.2z"></path><path d="M21 5.5c-2.6-1-5.6-.8-9 1.2v13c3.4-2 6.4-2.2 9-1.2z"></path></svg></span><div><b>Из учебника</b><span class="pg">с. 23</span></div></div>
+  <div class="eyebrow">Органические вещества</div>
+  <h2>Белки и жиры</h2>
+  <h3>Белки</h3>
+  <div class="prose">
+    <p>Если клетка — дом, то белки в нём и стройматериал, и «управляющие». Учебник говорит: белки играют в жизни клеток важнейшую роль.</p>
+    <ul>
+      <li>Белки <b>входят в состав</b> самых разных частей клетки.</li>
+      <li>Они <b>регулируют</b>, то есть направляют, процессы жизнедеятельности.</li>
+      <li>Белки тоже <b>могут запасаться</b> в клетках.</li>
+    </ul>
+  </div>
+  <h3>Жиры</h3>
+  <div class="prose">
+    <p>Жиры <b>откладываются</b> в клетках про запас. Одна из главных их работ — <b>энергетическая</b>: когда жиры расщепляются, освобождается энергия.</p>
+    <p>Жиры дают энергии <b>в 2 раза больше</b>, чем углеводы той же массы. По энергии грамм жира — как два грамма углеводов.</p>
+    <ul>
+      <li>У многих животных <b>подкожный жир</b> сохраняет тепло, как тёплая куртка.</li>
+      <li>Зверь в <b>спячке</b> всю зиму живёт на запасах жира: снаружи энергию он получить не может.</li>
+      <li>В <b>семенах</b> некоторых растений жиры — главный запас питательных веществ.</li>
+    </ul>
+  </div>
+  <div class="aside home">
+    <div class="k">Ближе к дому</div>
+    <p>В Каспийском море, на берегу которого стоит Каспийск, живёт каспийский тюлень. Зимой он выходит на лёд в северной части моря, и от холода его спасает толстый слой подкожного жира.</p>
+  </div>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 23</summary>
+    <div class="body"><ul>
+      <li>Белки играют важнейшую роль в жизни клеток. Они входят в состав разнообразных клеточных структур, регулируют процессы жизнедеятельности и тоже могут запасаться в клетках.</li>
+      <li>Жиры откладываются в клетках. Одна из основных функций жиров — энергетическая: при их расщеплении освобождается энергия, необходимая живым организмам. Жиры дают энергии в 2 раза больше, чем углеводы, взятые в той же массе.</li>
+      <li>Для многих животных подкожный жир — важная часть теплоизоляции. Животному, которое впадает в спячку, жиры дают нужную энергию: получить её извне (снаружи) оно не может. Жиры — основной запас питательных веществ и в семенах некоторых растений.</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 8 -->
+<section class="step" data-step="nuklein" data-name="Нуклеиновые кислоты" data-part="Органические вещества" data-kind="book" data-pages="с. 23">
+  <div class="kind-tag book"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.5c2.6-1 5.6-.8 9 1.2v13c-3.4-2-6.4-2.2-9-1.2z"></path><path d="M21 5.5c-2.6-1-5.6-.8-9 1.2v13c3.4-2 6.4-2.2 9-1.2z"></path></svg></span><div><b>Из учебника</b><span class="pg">с. 23</span></div></div>
+  <div class="eyebrow">Органические вещества</div>
+  <h2>Нуклеиновые кислоты</h2>
+  <div class="prose">
+    <p>Почему котёнок похож на кошку, а из семечки подсолнечника вырастает подсолнух, а не берёза? Потому что в каждой клетке хранится «инструкция», каким быть организму. Её передают от родителей потомкам.</p>
+    <p>Эту инструкцию называют <span class="term">наследственная информация</span>. Главную роль в том, чтобы её сохранить и передать потомкам, играют <b>нуклеиновые кислоты</b>.</p>
+    <ul>
+      <li>Нуклеиновые кислоты есть <b>во всех клетках</b>.</li>
+      <li>Это <b>самые крупные молекулы</b>, которые образуют живые организмы.</li>
+      <li>Вместе они — единая система: хранят наследственную информацию и воплощают её в клетке.</li>
+    </ul>
+  </div>
+  <details>
+    <summary>А почему «воплощают»?</summary>
+    <div class="body"><p>Мало хранить инструкцию — по ней надо ещё и работать. В учебнике сказано «реализация», то есть выполнение: по этой инструкции клетка живёт и строит себя. Ты могла слышать слово «ДНК» — это одна из нуклеиновых кислот.</p></div>
+  </details>
+  <h3>Что ещё есть в клетке</h3>
+  <div class="prose">
+    <p>В клетках растений в небольших количествах есть и другие вещества: <b>витамины</b>, <b>эфирные масла</b> (это от них так пахнут мята и кожура лимона) и другие.</p>
+    <p>В конце параграфа учебник говорит: <b>клетка — это миниатюрная природная лаборатория</b>. В ней создаются и изменяются самые разные химические соединения. А то, что у клеток разных организмов похожий химический состав, доказывает <b>единство живой природы</b>.</p>
+  </div>
+  <div class="aside">
+    <div class="k">Не перепутай</div>
+    <p>Шаг 3: элементы у живого и неживого одни и те же — это указывает на <b>общность живой и неживой природы</b>.</p>
+    <p>Здесь: состав клеток разных организмов похож — это доказывает <b>единство живой природы</b>.</p>
+  </div>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 23</summary>
+    <div class="body"><ul>
+      <li>Нуклеиновые кислоты играют ведущую роль в сохранении наследственной информации и передаче её потомкам.</li>
+      <li>Нуклеиновые кислоты содержатся во всех клетках, это самые крупные молекулы, которые образуют живые организмы. Нуклеиновые кислоты — единая система, направленная на хранение и реализацию наследственной информации в клетке.</li>
+      <li>В растительных клетках в небольших количествах есть также витамины, эфирные масла и другие вещества.</li>
+      <li>Клетка — это миниатюрная природная лаборатория, в которой синтезируются (создаются) и претерпевают изменения различные химические соединения.</li>
+      <li>Сходство химического состава клеток разных организмов доказывает единство живой природы.</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 9 -->
+<section class="step" data-step="opyt-voda" data-name="Опыт: вода и соли" data-part="Моя лаборатория" data-kind="task" data-pages="с. 24">
+  <div class="kind-tag task"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l4.2-1L19 8.2 15.8 5 5 15.8z"></path><path d="M13.8 7l3.2 3.2"></path></svg></span><div><b>Задание учебника</b><span class="pg">с. 24</span><small>Лабораторная работа из книги. Пояснения и подсказки — наши.</small></div></div>
+  <div class="eyebrow">Моя лаборатория · Исследуйте</div>
+  <h2>Обнаружение воды и минеральных веществ в растениях</h2>
+  <div class="aside">
+    <div class="k">Только в классе, с учителем</div>
+    <p>Здесь нужен огонь спиртовки. Учебник прямо пишет: выполнять эту работу только в лаборатории, под руководством учителя. Дома её не повторяй.</p>
+  </div>
+  <div class="prose">
+    <p><b>Цель работы:</b> обнаружить воду и минеральные вещества в растениях.</p>
+    <p><b>Материалы и оборудование:</b> кусочки стебля, корня, листьев или несколько семян, пробирка, спиртовка, пипетка, пинцет, металлическая пластинка.</p>
+    <p><b>Ход работы</b></p>
+  </div>
+  <div class="qlist">
+    <div class="qi"><span class="qn">1</span><div><p>Положи в пробирку кусочки стебля, корня, листьев или несколько семян и нагрей их на слабом огне. Что появилось на стенках пробирки?</p><p class="src">Подсказка: смотри на верхнюю, прохладную часть пробирки. Вспомни, что бывает с крышкой кастрюли, когда варится суп.</p></div></div>
+    <div class="qi"><span class="qn">2</span><div><p>Нагрей кусочки растения на металлической пластинке. Они обугливаются, появляется дым: это сгорают органические вещества. На пластинке остаётся зола — это минеральные вещества, они не сгорают.</p><p class="src">Подсказка: органические вещества горят, минеральные — нет. Поэтому на пластинке остаётся только то, что не горит.</p></div></div>
+    <div class="qi"><span class="qn">3</span><div><p>Сделай вывод.</p><p class="src">Подсказка: составь вывод сама из двух частей. Что было в растении, раз это появилось на стенках пробирки? И что было в растении, раз после сгорания осталась зола?</p></div></div>
+  </div>
+</section>
+
+<!-- 10 -->
+<section class="step" data-step="opyt-krahmal" data-name="Опыт: ищем крахмал" data-part="Моя лаборатория" data-kind="task" data-pages="с. 24–25">
+  <div class="kind-tag task"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l4.2-1L19 8.2 15.8 5 5 15.8z"></path><path d="M13.8 7l3.2 3.2"></path></svg></span><div><b>Задание учебника</b><span class="pg">с. 24–25</span><small>Лабораторная работа из книги. Пояснения и подсказки — наши.</small></div></div>
+  <div class="eyebrow">Моя лаборатория · Исследуйте</div>
+  <h2>Обнаружение органических веществ в растениях</h2>
+  <div class="aside">
+    <div class="k">Осторожно</div>
+    <p>Работай в классе с учителем или дома со взрослыми. Раствор йода не пробуй на вкус и береги от него глаза. Он сильно пачкает кожу и одежду.</p>
+  </div>
+  <div class="prose">
+    <p><b>Цель работы:</b> обнаружить органические вещества в растениях.</p>
+    <p><b>Материалы и оборудование:</b> зёрна пшеницы, клубень картофеля, семена подсолнечника, марля, лист бумаги, раствор йода, крахмал, стакан с водой, ступка с пестиком, пробирка, пипетка, пинцет, металлическая пластинка.</p>
+    <p><b>Ход работы</b> (пункты 1–5, остальные — на следующем шаге)</p>
+  </div>
+  <div class="qlist">
+    <div class="qi"><span class="qn">1</span><div><p>Разотри зёрна пшеницы в ступке в муку, добавь несколько капель воды и приготовь кусочек теста.</p></div></div>
+    <div class="qi"><span class="qn">2</span><div><p>Заверни тесто в марлю, опусти мешочек в стакан с водой и промой его. Получится мутная взвесь.</p><p class="src">Взвесь — вода, в которой плавают мельчайшие частички. Поэтому она и мутная.</p></div></div>
+    <div class="qi"><span class="qn">3</span><div><p>Перелей часть мутной жидкости из стакана в пробирку и капни в неё 2—3 капли раствора йода. Жидкость станет синей.</p></div></div>
+    <div class="qi"><span class="qn">4</span><div><p>Возьми на кончике пинцета крахмал и размешай в пробирке с водой. Капни туда 2—3 капли раствора йода. Вода с крахмалом тоже посинеет. Значит, в зёрнах пшеницы есть крахмал: йод окрашивает его в синий цвет.</p><p class="src">Зачем этот пункт? Это проверка: здесь мы точно знаем, что в пробирке крахмал, и смотрим, какого цвета он станет от йода. Цвет тот же, что в пункте 3, — значит, и там был крахмал.</p></div></div>
+    <div class="qi"><span class="qn">5</span><div><p>Капни каплю раствора йода на разрезанный клубень картофеля. Ты убедишься, что в клубне картофеля тоже есть крахмал (рис. 15).</p></div></div>
+  </div>
+  <figure class="fig"><img src="img/2026-09-14-p3/02-krahmalnye-zerna.jpg" width="434" height="293" loading="lazy" alt="Снимок под микроскопом: клетки с круглыми светящимися крахмальными зёрнами"><figcaption>Рис. 15. Крахмальные зёрна в клетках клубня картофеля (с. 25).</figcaption></figure>
+</section>
+
+<!-- 11 -->
+<section class="step" data-step="opyt-belok-zhir" data-name="Опыт: белок, жир и вывод" data-part="Моя лаборатория" data-kind="task" data-pages="с. 25">
+  <div class="kind-tag task"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l4.2-1L19 8.2 15.8 5 5 15.8z"></path><path d="M13.8 7l3.2 3.2"></path></svg></span><div><b>Задание учебника</b><span class="pg">с. 25</span><small>Продолжение лабораторной работы. Пояснения и подсказки — наши.</small></div></div>
+  <div class="eyebrow">Моя лаборатория · Исследуйте</div>
+  <h2>Обнаружение органических веществ: продолжение</h2>
+  <div class="qlist">
+    <div class="qi"><span class="qn">6</span><div><p>Рассмотри остаток теста на марле. Там клейкая масса — её называют клейковиной, или растительным белком.</p></div></div>
+    <div class="qi"><span class="qn">7</span><div><p>Возьми несколько семян подсолнечника, сними с них кожуру и раздави на листе бумаги: появятся жирные пятна. Это подтверждает, что в семенах подсолнечника много жира.</p></div></div>
+    <div class="qi"><span class="qn">8</span><div><p>Занеси результаты своего исследования в таблицу.</p></div></div>
+    <div class="qi"><span class="qn">9</span><div><p>Сделай общий вывод: каков химический состав растений. Сформулируй его и запиши в тетрадь.</p></div></div>
+  </div>
+  <p class="task">Таблица из учебника. Начерти её в тетради и заполни сама:</p>
+  <table class="ans-table fit">
+    <thead><tr><th>Растение</th><th>Наблюдение</th><th>Вывод о содержании органических веществ</th></tr></thead>
+    <tbody>
+      <tr><td>Зёрна пшеницы</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+      <tr><td>Клубень картофеля</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+      <tr><td>Семена подсолнечника</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    </tbody>
+  </table>
+  <details>
+    <summary>Подсказка к таблице и выводу</summary>
+    <div class="body">
+      <p>В «Наблюдение» пиши, что ты увидела своими глазами: какой стал цвет, что осталось на марле, что появилось на бумаге. В «Вывод» — какое органическое вещество это показало. У пшеницы наблюдений два: вспомни и пункт 3, и пункт 6.</p>
+      <p>Для общего вывода загляни и в первый опыт (шаг 9): какие вещества ты нашла там? Вместе получится ответ, из каких веществ состоят растения — и неорганических, и органических.</p>
+    </div>
+  </details>
+</section>
+
+<!-- 12 -->
+<section class="step" data-step="shema" data-name="Схема в тетради" data-part="Моя лаборатория" data-kind="task" data-pages="с. 25">
+  <div class="kind-tag task"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l4.2-1L19 8.2 15.8 5 5 15.8z"></path><path d="M13.8 7l3.2 3.2"></path></svg></span><div><b>Задание учебника</b><span class="pg">с. 25</span><small>Задание из книги. Подсказки — наши.</small></div></div>
+  <div class="eyebrow">Моя лаборатория · Выполните задание</div>
+  <h2>Схема «Химический состав клетки»</h2>
+  <div class="qtext">Изучив параграф и проведя опыты, заполните в рабочей тетради схему «Химический состав клетки».</div>
+  <div class="prose">
+    <p>Схему заполняешь ты сама. Вот как к ней подойти:</p>
+  </div>
+  <div class="qlist">
+    <div class="qi"><span class="qn">1</span><div><p>Сначала рассмотри пустую схему в рабочей тетради: сколько в ней веток и клеточек?</p></div></div>
+    <div class="qi"><span class="qn">2</span><div><p>Все вещества клетки делятся на две большие группы. Какие? Какие вещества входят в каждую? Посмотри таблицу.</p><a href="#veshchestva">Шаг 4 · Два вида веществ</a></div></div>
+    <div class="qi"><span class="qn">3</span><div><p>Если в схеме есть место, чтобы написать, зачем нужно вещество, — ищи на шагах про воду, соли, углеводы, белки, жиры и нуклеиновые кислоты.</p><a href="#voda-soli">Шаги 5–8</a></div></div>
+    <div class="qi"><span class="qn">4</span><div><p>Проверь себя: вспомни, что ты нашла в опытах. Каждое найденное вещество должно попасть в схему.</p><a href="#opyt-voda">Шаги 9–11</a></div></div>
+  </div>
+</section>
+
+<!-- 13 -->
+<section class="step" data-step="slovar-1" data-name="Словарик: «Запомните»" data-part="Словарик" data-kind="ours">
+  <div class="kind-tag ours"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="6" width="12" height="14" rx="1.5"></rect><path d="M8.5 3.5h10.5a1.5 1.5 0 0 1 1.5 1.5v12.5"></path></svg></span><div><b>Словарик</b><small>Сверх учебника — чтобы запомнить слова параграфа.</small></div></div>
+  <div class="game">
+    <div class="g-head"><h3>Словарик: слова «Запомните»</h3><span class="badge" id="b-terms">Игра</span></div>
+    <p class="task">Это восемь слов из рамки «Запомните» на с. 24. Нажми на карточку, и она перевернётся. Словарик из двух частей, открой все карточки.</p>
+    <div class="progress" id="terms-progress"></div>
+    <div class="cards" data-terms="0"></div>
+  </div>
+</section>
+
+<!-- 14 -->
+<section class="step" data-step="slovar-2" data-name="Словарик: ещё слова" data-part="Словарик" data-kind="ours">
+  <div class="kind-tag ours"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="6" width="12" height="14" rx="1.5"></rect><path d="M8.5 3.5h10.5a1.5 1.5 0 0 1 1.5 1.5v12.5"></path></svg></span><div><b>Словарик</b><small>Сверх учебника — чтобы запомнить слова параграфа.</small></div></div>
+  <div class="game">
+    <div class="g-head"><h3>Словарик: ещё слова</h3><span class="badge" id="b-terms2">Игра</span></div>
+    <p class="task">Вторая часть: слова, которые встречаются в тексте и в опытах.</p>
+    <div class="progress" id="terms-progress2"></div>
+    <div class="cards" data-terms="1"></div>
+  </div>
+</section>
+
+<!-- 15 -->
+<section class="step" data-step="zachem" data-name="Кто за что отвечает" data-part="Игры" data-kind="ours">
+  <div class="kind-tag ours"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="3"></rect><circle cx="9" cy="9" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="15" cy="15" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="15" cy="9" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="9" cy="15" r="1.3" fill="currentColor" stroke="none"></circle></svg></span><div><b>Игра</b><small>Сверх учебника — чтобы закрепить тему.</small></div></div>
+  <div class="game" id="g-match">
+    <div class="g-head"><h3>Кто за что отвечает</h3><span class="badge" id="b-match">Игра</span></div>
+    <p class="task">У каждого вещества в клетке своя работа. Нажми на вещество слева, потом на его работу справа.</p>
+    <div class="match">
+      <div class="col"><div class="lbl">Вещество</div><div class="col" id="foes"></div></div>
+      <div class="col"><div class="lbl">Что делает в клетке</div><div class="col" id="outcomes"></div></div>
+    </div>
+    <div id="match-fb"></div>
+  </div>
+</section>
+
+<!-- 16 -->
+<section class="step" data-step="razlozhi" data-name="Элемент или вещество?" data-part="Игры" data-kind="ours">
+  <div class="kind-tag ours"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="3"></rect><circle cx="9" cy="9" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="15" cy="15" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="15" cy="9" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="9" cy="15" r="1.3" fill="currentColor" stroke="none"></circle></svg></span><div><b>Игра</b><small>Сверх учебника — чтобы закрепить тему.</small></div></div>
+  <div class="game">
+    <div class="g-head"><h3>Элемент или вещество?</h3><span class="badge" id="b-sort">Игра</span></div>
+    <p class="task">Прочитай карточку и выбери, что это: химический элемент, неорганическое вещество или органическое вещество.</p>
+    <div class="progress" id="sort-progress"></div>
+    <div id="sort-box"></div>
+  </div>
+</section>
+
+<!-- 17 -->
+<section class="step" data-step="lishnee" data-name="Найди лишнее" data-part="Игры" data-kind="ours">
+  <div class="kind-tag ours"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="3"></rect><circle cx="9" cy="9" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="15" cy="15" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="15" cy="9" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="9" cy="15" r="1.3" fill="currentColor" stroke="none"></circle></svg></span><div><b>Игра</b><small>Сверх учебника — чтобы закрепить тему.</small></div></div>
+  <div class="game">
+    <div class="g-head"><h3>Найди лишнее</h3><span class="badge" id="b-odd">Игра</span></div>
+    <p class="task">Три из одной компании, одно чужое. Найди чужое.</p>
+    <div class="progress" id="odd-progress"></div>
+    <div class="odd-grid" id="odd-grid"></div>
+    <div id="odd-fb"></div>
+    <div class="row"><button class="btn" id="odd-next" type="button" hidden>Дальше</button></div>
+  </div>
+</section>
+
+<!-- 18 -->
+<section class="step" data-step="test" data-name="Проверь себя" data-part="Финал" data-kind="ours">
+  <div class="kind-tag ours"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"></circle><path d="M8 12.3l2.8 2.8L16.2 9.6"></path></svg></span><div><b>Самопроверка</b><small>Сверх учебника — вопросы, чтобы проверить себя. Задания из учебника — дальше.</small></div></div>
+  <div class="eyebrow">Финал</div>
+  <h2>Проверь себя</h2>
+  <div class="game">
+    <div class="progress" id="quiz-progress"></div>
+    <div id="quiz-box"></div>
+  </div>
+</section>
+
+<!-- 19 -->
+<section class="step" data-step="voprosy" data-name="Вопросы учебника" data-part="Финал" data-kind="task" data-pages="с. 24">
+  <div class="kind-tag task"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l4.2-1L19 8.2 15.8 5 5 15.8z"></path><path d="M13.8 7l3.2 3.2"></path></svg></span><div><b>Задание учебника</b><span class="pg">с. 24</span><small>Вопросы из книги. Где искать ответ и подсказки — наши.</small></div></div>
+  <div class="eyebrow">Финал · Вопросы в конце § 3</div>
+  <h2>Вопросы из учебника</h2>
+  <div class="prose">
+    <p>Это вопросы из рамки «Проверьте себя», номера такие же, как в твоём учебнике. Рядом с каждым написано, на каком шаге искать ответ. Отвечай своими словами: так лучше запоминается, и учитель услышит, что ты поняла, а не заучила.</p>
+  </div>
+  <div class="qlist">
+<div class="qi"><span class="qn">1</span><div><p>Каких химических элементов больше всего в клетке?</p><p class="src">Подсказка: их четыре, вместе — до 98 % массы клетки. Посмотри и на схему: какой из них занимает самый большой кусок?</p><a href="#elementy">Шаг 3 · Из каких элементов</a></div></div>
+<div class="qi"><span class="qn">2</span><div><p>Какую роль в клетке играет вода?</p><p class="src">Подсказка: у воды три дела. Вспомни и про обмен веществ: где он активнее, там воды больше.</p><a href="#voda-soli">Шаг 5 · Вода и минеральные соли</a></div></div>
+<div class="qi"><span class="qn">3</span><div><p>Какую роль в клетке играют минеральные соли?</p><p class="src">Подсказка: для чего клетка их использует и что будет, если их не хватает?</p><a href="#voda-soli">Шаг 5 · Вода и минеральные соли</a></div></div>
+<div class="qi"><span class="qn">4</span><div><p>Какие вещества относят к органическим?</p><p class="src">Подсказка: сначала скажи, что такое органические вещества и какой элемент в них обязательно есть, а потом перечисли их.</p><a href="#uglevody">Шаг 6 · Углеводы</a></div></div>
+<div class="qi"><span class="qn">5</span><div><p>Каково значение органических веществ в клетке?</p><p class="src">Подсказка: пройди по всем четырём — углеводы, белки, жиры, нуклеиновые кислоты — и скажи, что делает каждое.</p><a href="#uglevody">Шаги 6–8</a></div></div>
+<div class="qi"><span class="qn">6</span><div><p>Что указывает на общность живой и неживой природы?</p><p class="src">Подсказка: сравни, из каких элементов состоят клетка и неживая природа. И не путай с «единством живой природы» из шага 8.</p><a href="#elementy">Шаг 3 · Из каких элементов</a></div></div>
+<div class="qi"><span class="qn">Сх</span><div><p>Выполните задание: изучив параграф и проведя опыты, заполните в рабочей тетради схему «Химический состав клетки».</p><a href="#shema">Шаг 12 · Схема в тетради</a></div></div>
+<div class="qi"><span class="qn">?</span><div><p>Подумайте! Почему клетку сравнивают с миниатюрной природной лабораторией?</p><a href="#itog">Шаг 20 · Подумай!</a></div></div>
+  </div>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 24</summary>
+    <div class="body"><ul>
+      <li>«Запомните»: неорганические вещества, вода, минеральные соли, органические вещества, углеводы, белки, жиры, нуклеиновые кислоты. Все эти слова — в словарике, шаг 13.</li>
+      <li>«Проверьте себя»: шесть вопросов, они все перечислены выше.</li>
+      <li>«Подумайте!»: почему клетку сравнивают с миниатюрной природной лабораторией? Разбор с подсказками — на последнем шаге.</li>
+      <li>«Моя лаборатория» (с. 24–25): две работы «Исследуйте» — шаги 9–11, «Выполните задание» — шаг 12.</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 20 -->
+<section class="step" data-step="itog" data-name="Подумай!" data-part="Финал" data-kind="task" data-pages="с. 24">
+  <div class="kind-tag task"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l4.2-1L19 8.2 15.8 5 5 15.8z"></path><path d="M13.8 7l3.2 3.2"></path></svg></span><div><b>Задание учебника</b><span class="pg">с. 24</span><small>Вопрос «Подумайте!» из книги, кирпичики-подсказки — наши.</small></div></div>
+  <div class="eyebrow">Финал</div>
+  <h2>Подумай: почему клетку сравнивают с миниатюрной природной лабораторией?</h2>
+  <div class="prose">
+    <p>Это вопрос из рамки «Подумайте!». Вот четыре «кирпичика» для ответа. Открой их, а потом попробуй ответить своими словами, не подглядывая.</p>
+  </div>
+  <div class="bricks">
+    <div class="brick"><button type="button" aria-expanded="false"><span>Что делают в лаборатории</span><span>+</span></button><div class="b-body" hidden>В лаборатории работают с веществами: соединяют, получают новые, разбирают сложные на простые. Вспомни «Мою лабораторию»: ты сама искала вещества в растениях.</div></div>
+    <div class="brick"><button type="button" aria-expanded="false"><span>Что происходит в клетке</span><span>+</span></button><div class="b-body" hidden>В клетке тоже всё время идёт работа с веществами. Из минеральных солей собираются органические молекулы (шаг 5). Углеводы и жиры расщепляются, чтобы получить энергию (шаги 6–7).</div></div>
+    <div class="brick"><button type="button" aria-expanded="false"><span>Почему «природная»</span><span>+</span></button><div class="b-body" hidden>Эту лабораторию никто не строил и никто в ней не стоит у пробирок. Её устроила сама природа, и работает она в каждом живом организме, в тебе тоже.</div></div>
+    <div class="brick"><button type="button" aria-expanded="false"><span>Почему «миниатюрная»</span><span>+</span></button><div class="b-body" hidden>Клетка очень маленькая: её не разглядишь без увеличительных приборов. А вся эта работа идёт внутри неё.</div></div>
+  </div>
+  <div class="aside">
+    <div class="k">Главное в одном предложении</div>
+    <p>Клетки всех организмов состоят из одних и тех же химических элементов, больше всего — из кислорода, углерода, водорода и азота; элементы образуют неорганические вещества (воду и минеральные соли) и органические (углеводы, белки, жиры, нуклеиновые кислоты), и у каждого вещества в клетке своя работа.</p>
+  </div>
+  <div class="game">
+    <div class="g-head"><h3>Твоя мозаика</h3></div>
+    <div class="mosaic" id="mosaic"></div>
+    <div class="mosaic-list" id="mosaic-list"></div>
+    <div class="row"><a class="btn" href="./">К списку тем</a></div>
+  </div>
+</section>
+
+</main>
+
+<nav class="pager" aria-label="Навигация по шагам">
+  <div class="pager-inner">
+    <button class="btn ghost" id="prev" type="button">Назад</button>
+    <div class="count" id="count"></div>
+    <button class="btn" id="next" type="button">Дальше</button>
+  </div>
+</nav>
+
+<div class="toc" id="toc" hidden>
+  <div class="toc-panel" role="dialog" aria-label="Содержание">
+    <h3>Содержание <button class="toc-close" id="toc-close" type="button">Закрыть</button></h3>
+    <div id="toc-list" style="display:flex;flex-direction:column;gap:2px"></div>
+  </div>
+</div>
+
+<script>
+(function(){
+  'use strict';
+  var $ = function(s, r){ return (r||document).querySelector(s); };
+  var el = function(tag, cls, html){ var e=document.createElement(tag); if(cls) e.className=cls; if(html!=null) e.innerHTML=html; return e; };
+  var shuffle = function(a){ a=a.slice(); for(var i=a.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=a[i]; a[i]=a[j]; a[j]=t; } return a; };
+
+  /* ---------- state ---------- */
+  var KEY='bio-p3-v1';
+  var state={visited:{},done:{},last:0};
+  try{ var s=JSON.parse(localStorage.getItem(KEY)||'null'); if(s && typeof s==='object'){ state.visited=s.visited||{}; state.done=s.done||{}; state.last=s.last||0; } }catch(e){}
+  function save(){ try{ localStorage.setItem(KEY, JSON.stringify(state)); }catch(e){} }
+
+  var GAMES=[
+    {k:'terms', name:'Словарик, обе части', step:'slovar-1'},
+    {k:'match', name:'Кто за что отвечает', step:'zachem'},
+    {k:'sort', name:'Элемент или вещество?', step:'razlozhi'},
+    {k:'odd', name:'Найди лишнее', step:'lishnee'},
+    {k:'quiz', name:'Проверь себя', step:'test'}
+  ];
+  var GAME_STEPS={'slovar-1':'terms','slovar-2':'terms','zachem':'match','razlozhi':'sort','lishnee':'odd','test':'quiz'};
+
+  /* ---------- steps ---------- */
+  var steps=Array.prototype.slice.call(document.querySelectorAll('.step'));
+  var N=steps.length, cur=0;
+  var stepbar=$('#stepbar'), count=$('#count'), prevB=$('#prev'), nextB=$('#next'), tocList=$('#toc-list');
+
+  /* содержание по группам: из учебника / задания учебника / сверх учебника */
+  var KIND={book:['<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.5c2.6-1 5.6-.8 9 1.2v13c-3.4-2-6.4-2.2-9-1.2z"></path><path d="M21 5.5c-2.6-1-5.6-.8-9 1.2v13c3.4-2 6.4-2.2 9-1.2z"></path></svg>','Из учебника'],task:['<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l4.2-1L19 8.2 15.8 5 5 15.8z"></path><path d="M13.8 7l3.2 3.2"></path></svg>','Задания учебника'],ours:['<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="3"></rect><circle cx="9" cy="9" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="15" cy="15" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="15" cy="9" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="9" cy="15" r="1.3" fill="currentColor" stroke="none"></circle></svg>','Сверх учебника']};
+  var tocItems=[], groups=[], prevKind=null, grp=null;
+  steps.forEach(function(s,i){
+    var kind=s.getAttribute('data-kind')||'book', pg=(s.getAttribute('data-pages')||'').replace(/,\s*п\..*$/,'');
+    var start=kind!==prevKind;
+    var b=el('button'); b.type='button'; b.setAttribute('aria-label','Шаг '+(i+1)+': '+s.getAttribute('data-name'));
+    b.setAttribute('data-base','k-'+kind+(start&&i>0?' gstart':'')); b.className=b.getAttribute('data-base');
+    b.addEventListener('click', function(){ go(i); });
+    stepbar.appendChild(b);
+    if(start){
+      var label = kind==='ours' ? (i===0?'Коротко о главном':'Словарик и игры · сверх учебника') : KIND[kind][1];
+      grp=el('div','toc-group k-'+kind,'<div class="toc-head"><span class="ic">'+KIND[kind][0]+'</span><span>'+label+'</span></div>');
+      grp.pages=[]; groups.push(grp); tocList.appendChild(grp); prevKind=kind;
+    }
+    var t=el('button','toc-item','<span class="n">'+(i+1)+'</span><span>'+s.getAttribute('data-name')+'</span>'+(pg?'<span class="pg">'+pg+'</span>':'')+'<span class="m"></span>');
+    t.type='button'; t.addEventListener('click', function(){ closeToc(); go(i); });
+    grp.appendChild(t); tocItems.push(t);
+    (pg.match(/\d+/g)||[]).forEach(function(n){ grp.pages.push(+n); });
+  });
+  groups.forEach(function(g){ if(g.pages.length){ var a=Math.min.apply(null,g.pages), z=Math.max.apply(null,g.pages); g.firstChild.lastChild.textContent+=' · с. '+(a===z?a:a+'–'+z); } });
+
+  function paint(){
+    var bars=stepbar.children, items=tocItems;
+    for(var i=0;i<N;i++){
+      var key=steps[i].getAttribute('data-step'), g=GAME_STEPS[key];
+      var done = g && state.done[g];
+      bars[i].className=bars[i].getAttribute('data-base')+(i===cur?' current':'')+(state.visited[i]?' visited':'')+(done?' done':'');
+      items[i].className='toc-item'+(i===cur?' current':'');
+      items[i].lastElementChild.textContent = done ? 'пройдено' : (state.visited[i] ? '✓' : '');
+    }
+    count.textContent=(cur+1)+' / '+N;
+    prevB.disabled = cur===0;
+    if(cur===N-1){ nextB.textContent='Это последний шаг'; nextB.disabled=true; }
+    else { nextB.textContent='Дальше: '+steps[cur+1].getAttribute('data-name'); nextB.disabled=false; }
+    var badges={terms:['b-terms','b-terms2'],match:['b-match'],sort:['b-sort'],odd:['b-odd']};
+    for(var k in badges){ badges[k].forEach(function(id){ var b=document.getElementById(id); if(b && state.done[k]){ b.textContent='Пройдено'; b.classList.add('done'); } }); }
+    paintMosaic();
+  }
+  function go(i, silent){
+    if(i<0||i>=N) return;
+    cur=i; steps.forEach(function(s,j){ s.hidden = j!==i; });
+    state.visited[i]=true; state.last=i; save();
+    if(!silent){ var h='#'+steps[i].getAttribute('data-step'); if(location.hash!==h) history.pushState(null,'',h); }
+    window.scrollTo(0,0);
+    paint();
+  }
+  function idxFromHash(){ var h=location.hash.replace('#',''); for(var i=0;i<N;i++) if(steps[i].getAttribute('data-step')===h) return i; return -1; }
+  function onHash(){ var i=idxFromHash(); if(i>=0 && i!==cur) go(i, true); }
+  window.addEventListener('popstate', onHash);
+  window.addEventListener('hashchange', onHash);
+  prevB.addEventListener('click', function(){ go(cur-1); });
+  nextB.addEventListener('click', function(){ go(cur+1); });
+  document.addEventListener('keydown', function(e){ if(e.target && /INPUT|TEXTAREA/.test(e.target.tagName)) return; if(e.key==='ArrowRight') go(cur+1); if(e.key==='ArrowLeft') go(cur-1); if(e.key==='Escape') closeToc(); });
+
+  var toc=$('#toc');
+  function openToc(){ toc.hidden=false; }
+  function closeToc(){ toc.hidden=true; }
+  $('#toc-btn').addEventListener('click', openToc);
+  $('#toc-close').addEventListener('click', closeToc);
+  toc.addEventListener('click', function(e){ if(e.target===toc) closeToc(); });
+
+  function markDone(k){ if(!state.done[k]){ state.done[k]=true; save(); } paint(); }
+
+  /* resume button on step 1 */
+  (function(){
+    var r=$('#resume');
+    if(state.last>0 && idxFromHash()<0){
+      r.hidden=false;
+      r.innerHTML='<button class="btn ghost" type="button">Продолжить с шага '+(state.last+1)+': '+steps[state.last].getAttribute('data-name')+'</button>';
+      r.firstChild.addEventListener('click', function(){ go(state.last); });
+    }
+  })();
+
+  /* ---------- mosaic on final step ---------- */
+  var mosaic=$('#mosaic'), mosaicList=$('#mosaic-list');
+  function paintMosaic(){
+    mosaic.innerHTML=''; mosaicList.innerHTML='';
+    GAMES.forEach(function(g){
+      var t=el('span','tile'+(state.done[g.k]?' on':'')); t.title=g.name; mosaic.appendChild(t);
+      var li=el('span', state.done[g.k]?'':'off', (state.done[g.k]?'★ ':'☆ ')+g.name);
+      if(!state.done[g.k]){ li.style.cursor='pointer'; li.addEventListener('click', function(){ for(var i=0;i<N;i++) if(steps[i].getAttribute('data-step')===g.step){ go(i); break; } }); }
+      mosaicList.appendChild(li);
+    });
+  }
+
+  /* ---------- glossary ---------- */
+  var TERMS=[
+    [
+      {t:'Неоргани­ческие вещества', d:'Вещества клетки: вода и минеральные соли.', e:'Их много и в неживой природе.'},
+      {t:'Вода', d:'Её в клетке больше всего: от 40 до 95 % массы. Придаёт клетке упругость, определяет форму, участвует в обмене веществ.', e:''},
+      {t:'Минеральные соли', d:'Около 1—1,5 % массы клетки. Нужны для синтеза органических молекул.', e:'Соли кальция, калия, фосфора.'},
+      {t:'Органические вещества', d:'Сложные соединения, в которых есть углерод. Входят в состав всех живых организмов.', e:'Углеводы, белки, жиры, нуклеиновые кислоты.'},
+      {t:'Углеводы', d:'При расщеплении дают клетке энергию, делают прочными оболочки клеток.', e:'Крахмал, сахара.'},
+      {t:'Белки', d:'Входят в состав частей клетки, регулируют процессы жизнедеятельности, могут запасаться.', e:'Клейковина — растительный белок.'},
+      {t:'Жиры', d:'Запас энергии: дают её в 2 раза больше, чем углеводы той же массы. Подкожный жир хранит тепло.', e:'Много жира в семенах подсолнечника.'},
+      {t:'Нуклеиновые кислоты', d:'Хранят наследственную информацию и передают её потомкам. Самые крупные молекулы.', e:''}
+    ],
+    [
+      {t:'Химический элемент', d:'«Буква» природы: простейшая составная часть веществ.', e:'Кислород, углерод, водород, азот.'},
+      {t:'Обмен веществ', d:'Вся работа клетки с веществами: получить, построить, вывести ненужное.', e:'Чем он активнее, тем больше в клетке воды.'},
+      {t:'Синтез', d:'Создание сложных веществ из более простых.', e:'Минеральные соли нужны для синтеза белков.'},
+      {t:'Расщепление', d:'Разборка вещества на части. Так клетка получает энергию из углеводов и жиров.', e:''},
+      {t:'Крахмал', d:'Запасающее вещество, углевод. От раствора йода синеет.', e:'Есть в клубнях картофеля и зёрнах пшеницы.'},
+      {t:'Клейковина', d:'Клейкая масса, которая остаётся от промытого теста. Это растительный белок.', e:''},
+      {t:'Наслед­ственная информация', d:'«Инструкция», каким быть организму. Передаётся от родителей потомкам.', e:'Хранят её нуклеиновые кислоты.'},
+      {t:'Эфирные масла', d:'Пахучие вещества. Есть в растительных клетках в небольших количествах.', e:'Запах мяты, кожуры лимона.'}
+    ]
+  ];
+  var flipped={}, total=0; TERMS.forEach(function(g){ total+=g.length; });
+  var progEls=[$('#terms-progress'),$('#terms-progress2')];
+  function termsProgress(){
+    var n=Object.keys(flipped).length;
+    progEls.forEach(function(p,gi){ var got=0; TERMS[gi].forEach(function(t,i){ if(flipped[gi+'-'+i]) got++; }); p.textContent='Открыто '+got+' из '+TERMS[gi].length+' здесь, всего '+n+' из '+total; });
+    if(n===total) markDone('terms');
+  }
+  document.querySelectorAll('.cards').forEach(function(box){
+    var gi=+box.getAttribute('data-terms');
+    TERMS[gi].forEach(function(t,i){
+      var b=el('button','card'); b.type='button'; b.setAttribute('aria-label',t.t+'. Нажми, чтобы увидеть значение');
+      b.innerHTML='<div class="in"><div class="face f"><div class="w">'+t.t+'</div><div class="tap">Нажми</div></div><div class="face b"><div class="w">'+t.t+'</div><div>'+t.d+'</div>'+(t.e?'<div class="e">'+t.e+'</div>':'')+'</div></div>';
+      b.addEventListener('click', function(){ b.classList.toggle('flip'); flipped[gi+'-'+i]=true; termsProgress(); });
+      box.appendChild(b);
+    });
+  });
+  termsProgress();
+
+  /* ---------- matching: кто за что отвечает ---------- */
+  var PAIRS=[
+    {foe:'Вода', res:'Придаёт клетке упругость и форму', why:'А ещё вода участвует в обмене веществ. Её в клетке от 40 до 95 %.'},
+    {foe:'Минеральные соли', res:'Нужны для синтеза органических молекул', why:'Например, белков и нуклеиновых кислот. Без них важнейшие процессы клетки нарушаются.'},
+    {foe:'Углеводы', res:'Дают энергию и прочность оболочкам клеток', why:'Крахмал и сахара — запасающие углеводы.'},
+    {foe:'Белки', res:'Входят в части клетки и регулируют её жизнь', why:'Белки тоже могут запасаться в клетках.'},
+    {foe:'Жиры', res:'Запас энергии и защита от холода', why:'Жиры дают энергии в 2 раза больше, чем углеводы той же массы, а подкожный жир хранит тепло.'},
+    {foe:'Нуклеиновые кислоты', res:'Хранят и передают наследственную информацию', why:'Это самые крупные молекулы живых организмов, они есть во всех клетках.'}
+  ];
+  var foesBox=$('#foes'), outBox=$('#outcomes'), matchFb=$('#match-fb'), selFoe=null, matched=0;
+  PAIRS.forEach(function(p){
+    var b=el('button','opt',p.foe); b.type='button'; b.setAttribute('data-foe',p.foe);
+    b.addEventListener('click', function(){
+      if(b.classList.contains('ok')) return;
+      var all=foesBox.querySelectorAll('.opt'); for(var i=0;i<all.length;i++) all[i].classList.remove('sel');
+      b.classList.add('sel'); selFoe=p; matchFb.innerHTML='';
+    });
+    foesBox.appendChild(b);
+  });
+  shuffle(PAIRS).forEach(function(p){
+    var b=el('button','opt',p.res); b.type='button';
+    b.addEventListener('click', function(){
+      if(b.classList.contains('ok')) return;
+      if(!selFoe){ matchFb.innerHTML='<div class="feedback bad"><span class="k">Сначала выбери вещество слева.</span></div>'; return; }
+      if(selFoe.res===p.res){
+        b.classList.add('ok'); b.disabled=true;
+        var fb=foesBox.querySelector('[data-foe="'+selFoe.foe+'"]'); fb.classList.remove('sel'); fb.classList.add('ok'); fb.disabled=true;
+        matchFb.innerHTML='<div class="feedback ok"><span class="k">Верно! '+selFoe.foe+' — '+selFoe.res+'.</span><span>'+selFoe.why+'</span></div>';
+        selFoe=null; matched++;
+        if(matched===PAIRS.length){ matchFb.innerHTML='<div class="feedback ok"><span class="k">Все шесть пар найдены!</span><span>Теперь ты знаешь, у какого вещества какая работа в клетке.</span></div>'; markDone('match'); }
+      } else {
+        b.classList.add('bad'); setTimeout(function(){ b.classList.remove('bad'); },400);
+        matchFb.innerHTML='<div class="feedback bad"><span class="k">Не то.</span><span>Это работа другого вещества. Попробуй ещё.</span></div>';
+      }
+    });
+    outBox.appendChild(b);
+  });
+
+  /* ---------- sort: элемент или вещество ---------- */
+  var COUNTRIES=['Элементы','Неоргани­ческие','Органи­ческие'];
+  var SORT=[
+    {t:'Кислород', c:'Элементы', why:'Кислород — химический элемент, его в клетке больше всего: 68 %.'},
+    {t:'Углерод', c:'Элементы', why:'Углерод — элемент. Не путай с углеводами: углеводы — вещества!'},
+    {t:'Азот', c:'Элементы', why:'Азот — один из четырёх главных элементов клетки, около 3 %.'},
+    {t:'Железо', c:'Элементы', why:'Железо — один из восьми элементов, на которые приходится около 2 % массы клетки.'},
+    {t:'Вода', c:'Неоргани­ческие', why:'Вода — неорганическое вещество, в клетке её больше всего.'},
+    {t:'Соли кальция', c:'Неоргани­ческие', why:'Минеральные соли — неорганические вещества. А вот сам кальций — элемент.'},
+    {t:'Крахмал', c:'Органи­ческие', why:'Крахмал — углевод, а углеводы — органические вещества.'},
+    {t:'Сахар', c:'Органи­ческие', why:'Сахара, как и крахмал, — запасающие углеводы.'},
+    {t:'Клейковина', c:'Органи­ческие', why:'Клейковина — растительный белок, а белки — органические вещества.'},
+    {t:'Жир из семян подсолнечника', c:'Органи­ческие', why:'Жиры — органические вещества, главный запас в семенах некоторых растений.'},
+    {t:'Нуклеиновые кислоты', c:'Органи­ческие', why:'Органические вещества, которые хранят наследственную информацию.'}
+  ];
+  var sortBox=$('#sort-box'), sortP=$('#sort-progress'), sortList=shuffle(SORT), si=0;
+  function renderSort(){
+    if(si>=sortList.length){ return sortDone(); }
+    var it=sortList[si];
+    sortP.textContent='Карточка '+(si+1)+' из '+sortList.length;
+    sortBox.innerHTML='';
+    sortBox.appendChild(el('div','sort-card',it.t));
+    var tri=el('div','tri'); sortBox.appendChild(tri);
+    var fb=el('div'); sortBox.appendChild(fb);
+    var rowN=el('div','row'); sortBox.appendChild(rowN);
+    COUNTRIES.forEach(function(c){
+      var b=el('button','opt',c); b.type='button';
+      b.addEventListener('click', function(){
+        if(c===it.c){
+          var all=tri.querySelectorAll('.opt'); for(var k=0;k<all.length;k++) all[k].disabled=true;
+          b.classList.add('ok');
+          fb.innerHTML='<div class="feedback ok"><span class="k">Верно!</span><span>'+it.why+'</span></div>';
+          var n=el('button','btn', si<sortList.length-1?'Следующая карточка':'Показать итог'); n.type='button';
+          n.addEventListener('click', function(){ si++; renderSort(); });
+          rowN.appendChild(n);
+        } else {
+          b.classList.add('bad'); b.disabled=true;
+          fb.innerHTML='<div class="feedback bad"><span class="k">Нет, не сюда.</span><span>Подумай ещё раз и попробуй снова.</span></div>';
+        }
+      });
+      tri.appendChild(b);
+    });
+  }
+  function sortDone(){
+    sortP.textContent='Все карточки разложены';
+    var html='<div class="feedback ok"><span class="k">Готово! Вот что получилось:</span></div><div class="sort-sum">';
+    COUNTRIES.forEach(function(c){
+      var items=SORT.filter(function(x){ return x.c===c; }).map(function(x){ return x.t.toLowerCase(); });
+      html+='<div><b>'+c+':</b> '+items.join('; ')+'.</div>';
+    });
+    html+='</div><p>Элементы — это «буквы», а вещества — «слова» из них. Из одних и тех же элементов складываются и неорганические, и органические вещества.</p><div class="row"><button class="btn ghost" type="button" id="sort-again">Ещё раз</button></div>';
+    sortBox.innerHTML=html;
+    $('#sort-again').addEventListener('click', function(){ sortList=shuffle(SORT); si=0; renderSort(); });
+    markDone('sort');
+  }
+  renderSort();
+
+  /* ---------- odd one out ---------- */
+  var ODD=[
+    {items:['Кислород','Углерод','Азот','Вода'], odd:'Вода', why:'Кислород, углерод и азот — химические элементы. А вода — вещество, неорганическое.'},
+    {items:['Углеводы','Белки','Жиры','Минеральные соли'], odd:'Минеральные соли', why:'Углеводы, белки и жиры — органические вещества. Минеральные соли — неорганические.'},
+    {items:['Упругость клетки','Форма клетки','Обмен веществ','Наследственная информация'], odd:'Наследственная информация', why:'Упругость, форма и обмен веществ — это работа воды. А наследственную информацию хранят нуклеиновые кислоты.'},
+    {items:['Подкожный жир','Жир в семенах','Запас на время спячки','Клейковина'], odd:'Клейковина', why:'Подкожный жир, жир в семенах и запас на время спячки — это жиры. А клейковина — растительный белок.'}
+  ];
+  var oddGrid=$('#odd-grid'), oddFb=$('#odd-fb'), oddNext=$('#odd-next'), oddP=$('#odd-progress'), oddRound=0;
+  function renderOdd(){
+    var r=ODD[oddRound]; oddGrid.innerHTML=''; oddFb.innerHTML=''; oddNext.hidden=true;
+    oddP.textContent='Раунд '+(oddRound+1)+' из '+ODD.length;
+    shuffle(r.items).forEach(function(w){
+      var b=el('button','opt',w); b.type='button';
+      b.addEventListener('click', function(){
+        var all=oddGrid.querySelectorAll('.opt');
+        if(w===r.odd){
+          for(var i=0;i<all.length;i++) all[i].disabled=true;
+          b.classList.add('ok');
+          oddFb.innerHTML='<div class="feedback ok"><span class="k">Точно, лишнее — «'+w+'».</span><span>'+r.why+'</span></div>';
+          if(oddRound<ODD.length-1) oddNext.hidden=false;
+          else { oddP.textContent='Все четыре раунда пройдены'; markDone('odd'); }
+        } else {
+          b.classList.add('bad'); b.disabled=true;
+          oddFb.innerHTML='<div class="feedback bad"><span class="k">«'+w+'» из той же компании, что и остальные.</span><span>Подумай, что здесь про другое.</span></div>';
+        }
+      });
+      oddGrid.appendChild(b);
+    });
+  }
+  oddNext.addEventListener('click', function(){ oddRound++; renderOdd(); });
+  renderOdd();
+
+  /* ---------- quiz ---------- */
+  var QUIZ=[
+    {q:'Из чего состоят клетки всех живых организмов?', o:['У каждого организма свои особые элементы','Из одних и тех же химических элементов','Только из воды'], a:1, why:'Эти же элементы есть и в неживой природе. Это указывает на общность живой и неживой природы.'},
+    {q:'Каких элементов в клетке больше всего?', o:['Углерода, водорода, кислорода и азота','Железа, серы, калия и натрия','Хлора, магния, кальция и фосфора'], a:0, why:'Вместе эти четыре элемента — до 98 % массы клетки. Элементы из двух других ответов вместе дают около 2 %.'},
+    {q:'Какого элемента в клетке больше всего по схеме учебника?', o:['Углерода','Азота','Кислорода'], a:2, why:'Кислород — 68 %, углерод — 17 %, водород — 10 %, азот — 3 %.'},
+    {q:'Какие вещества клетки неорганические?', o:['Белки и жиры','Вода и минеральные соли','Углеводы и нуклеиновые кислоты'], a:1, why:'Белки, жиры, углеводы и нуклеиновые кислоты — органические вещества.'},
+    {q:'Какого вещества в клетке больше всего?', o:['Белков','Углеводов','Воды'], a:2, why:'Воды в клетке от 40 до 95 % массы.'},
+    {q:'Что делает в клетке вода?', o:['Придаёт упругость, определяет форму, участвует в обмене веществ','Хранит наследственную информацию','Окрашивается йодом в синий цвет'], a:0, why:'Наследственную информацию хранят нуклеиновые кислоты, а от йода синеет крахмал.'},
+    {q:'Зачем клетке минеральные соли?', o:['Они хранят наследственную информацию','Они нужны для синтеза органических молекул','Они дают клетке больше всего энергии'], a:1, why:'Например, для синтеза белков и нуклеиновых кислот. Если минеральных веществ не хватает, жизнь клетки нарушается.'},
+    {q:'Что общего у крахмала и сахаров?', o:['Это белки','Это минеральные соли','Это углеводы, запасающие вещества клетки'], a:2, why:'Крахмал и сахара — углеводы, клетка хранит их про запас.'},
+    {q:'Во сколько раз больше энергии дают жиры, чем углеводы той же массы?', o:['В 2 раза','В 10 раз','Одинаково'], a:0, why:'Поэтому жиры — выгодный запас энергии, например на время спячки.'},
+    {q:'Что доказывает сходство химического состава клеток разных организмов?', o:['Что все организмы одинаковые','Единство живой природы','Что в клетках нет органических веществ'], a:1, why:'Так сказано в конце параграфа. А сходство элементов живого и неживого указывает на общность живой и неживой природы.'}
+  ];
+  var qBox=$('#quiz-box'), qP=$('#quiz-progress'), qi=0, score=0;
+  function renderQ(){
+    if(qi>=QUIZ.length) return renderScore();
+    var q=QUIZ[qi];
+    qP.textContent='Вопрос '+(qi+1)+' из '+QUIZ.length;
+    qBox.innerHTML='';
+    qBox.appendChild(el('div','q',q.q));
+    var opts=el('div','q-opts'); qBox.appendChild(opts);
+    var fb=el('div'); qBox.appendChild(fb);
+    var rowN=el('div','row'); qBox.appendChild(rowN);
+    var answered=false;
+    q.o.forEach(function(o,i){
+      var b=el('button','opt',o); b.type='button';
+      b.addEventListener('click', function(){
+        if(answered) return; answered=true;
+        var all=opts.querySelectorAll('.opt');
+        for(var k=0;k<all.length;k++){ all[k].disabled=true; if(k===q.a) all[k].classList.add('ok'); }
+        if(i===q.a){ score++; fb.innerHTML='<div class="feedback ok"><span class="k">Правильно!</span><span>'+q.why+'</span></div>'; }
+        else { b.classList.add('bad'); fb.innerHTML='<div class="feedback bad"><span class="k">Нет, правильный ответ подсвечен зелёным.</span><span>'+q.why+'</span></div>'; }
+        var n=el('button','btn', qi<QUIZ.length-1?'Следующий вопрос':'Показать результат'); n.type='button';
+        n.addEventListener('click', function(){ qi++; renderQ(); window.scrollTo(0,0); });
+        rowN.appendChild(n);
+      });
+      opts.appendChild(b);
+    });
+  }
+  function renderScore(){
+    qP.textContent='Результат';
+    var tiles=''; for(var i=0;i<QUIZ.length;i++) tiles+='<i class="'+(i<score?'on':'')+'"></i>';
+    var msg = score===QUIZ.length ? 'Идеально, Амина! Ни одной ошибки.' : score>=8 ? 'Отлично! Ещё раз взгляни на вопросы, где ошиблась, и будет полный набор.' : score>=6 ? 'Хорошо. Перечитай шаги, где было трудно, и пройди тест снова.' : 'Тема большая, Амина, это нормально. Вернись к шагу «За минуту», потом к словарику, и попробуй ещё раз.';
+    qBox.innerHTML='<div class="score"><div class="big">'+score+' из '+QUIZ.length+'</div><div class="score-tiles">'+tiles+'</div><p>'+msg+'</p><button class="btn ghost" type="button" id="quiz-again">Пройти ещё раз</button></div>';
+    $('#quiz-again').addEventListener('click', function(){ qi=0; score=0; renderQ(); });
+    markDone('quiz');
+  }
+  renderQ();
+
+  /* ---------- bricks ---------- */
+  Array.prototype.forEach.call(document.querySelectorAll('.brick button'), function(b){
+    b.addEventListener('click', function(){
+      var body=b.nextElementSibling, open=body.hidden;
+      body.hidden=!open; b.setAttribute('aria-expanded', open?'true':'false');
+      b.lastElementChild.textContent = open?'−':'+';
+    });
+  });
+
+  /* ---------- start ---------- */
+  var start=idxFromHash(); go(start<0?0:start, true);
+})();
+</script>
+
+</body>
+</html>

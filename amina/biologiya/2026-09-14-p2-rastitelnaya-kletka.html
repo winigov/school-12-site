@@ -1,0 +1,1552 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Растительная клетка</title>
+<meta name="paragraph" content="§ 2">
+<meta name="description" content="Строение растительной клетки">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=PT+Sans+Narrow:wght@400;700&family=PT+Sans:wght@400;700&display=swap">
+<style>
+:root{
+  --bg:#EBE8DF; --surface:#F8F6F0; --surface-2:#E2DED2; --ink:#1B2233; --ink-2:#4A5163; --muted:#7A8093;
+  --lapis:#23448A; --on-lapis:#FFFFFF; --lapis-soft:#D9E1F3;
+  --gold:#B08A2E; --gold-soft:#F1E6C2; --on-gold:#2A2107;
+  --terra:#B4552F; --terra-soft:#F3DCD2;
+  --moss:#4E7A3B; --moss-soft:#DCE8D2;
+  --line:#D2CDBF; --tile:#CFC9B9;
+  --shadow:0 1px 2px rgba(27,34,51,.08),0 10px 28px rgba(27,34,51,.07);
+  --display:"Oranienbaum","Georgia","Times New Roman",serif;
+  --body:"Golos Text","Segoe UI",system-ui,-apple-system,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0F1728; --surface:#182338; --surface-2:#21304B; --ink:#EDE8DC; --ink-2:#C2BFB4; --muted:#8B93A8;
+    --lapis:#7EA0E6; --on-lapis:#0F1728; --lapis-soft:#22345A;
+    --gold:#E0B84A; --gold-soft:#3E3419; --on-gold:#0F1728;
+    --terra:#E0825C; --terra-soft:#4A2A1D;
+    --moss:#8DBF74; --moss-soft:#243B1F;
+    --line:#2E3B57; --tile:#2A3856;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 28px rgba(0,0,0,.35);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0F1728; --surface:#182338; --surface-2:#21304B; --ink:#EDE8DC; --ink-2:#C2BFB4; --muted:#8B93A8;
+  --lapis:#7EA0E6; --on-lapis:#0F1728; --lapis-soft:#22345A;
+  --gold:#E0B84A; --gold-soft:#3E3419; --on-gold:#0F1728;
+  --terra:#E0825C; --terra-soft:#4A2A1D;
+  --moss:#8DBF74; --moss-soft:#243B1F;
+  --line:#2E3B57; --tile:#2A3856;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 28px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+@media (prefers-reduced-motion: reduce){ *{transition:none!important;animation:none!important} }
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.55;-webkit-text-size-adjust:100%}
+h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1.1;text-wrap:balance;margin:0}
+p{margin:0}
+a{color:var(--lapis)}
+button{font:inherit;color:inherit;cursor:pointer}
+button:focus-visible,summary:focus-visible,a:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+[hidden]{display:none!important}
+
+/* ---------- top bar ---------- */
+.top{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+.top-inner{max-width:720px;margin:0 auto;padding:10px 16px;display:flex;align-items:center;gap:12px}
+.back{text-decoration:none;color:var(--ink-2);font-size:14px;white-space:nowrap;padding:6px 10px;border-radius:8px;background:var(--surface);border:1px solid var(--line)}
+.crumb{flex:1;min-width:0;font-size:14px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.crumb b{color:var(--ink);font-weight:600}
+.toc-btn{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:6px 10px;font-size:14px;color:var(--lapis);font-weight:600;white-space:nowrap}
+.stepbar{max-width:720px;margin:0 auto;padding:0 16px 10px;display:flex;gap:4px}
+.stepbar button{flex:1;height:8px;min-width:6px;padding:0;border:0;border-radius:2px;background:var(--tile);transition:background .3s,transform .3s}
+.stepbar button.visited{background:var(--lapis)}
+.stepbar button.done{background:var(--gold)}
+.stepbar button.current{transform:scaleY(1.6);background:var(--gold)}
+
+/* ---------- steps ---------- */
+main{max-width:720px;margin:0 auto;padding:20px 16px 120px}
+.step{display:flex;flex-direction:column;gap:16px}
+.eyebrow{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);font-weight:700;display:flex;align-items:center;gap:10px}
+.tess{display:inline-flex;gap:3px}
+.tess i{width:8px;height:8px;display:block;border-radius:1px}
+.tess i:nth-child(1){background:var(--lapis)} .tess i:nth-child(2){background:var(--gold)} .tess i:nth-child(3){background:var(--terra)}
+.step h1{font-size:clamp(36px,8vw,56px)}
+.step h2{font-size:clamp(28px,6vw,38px)}
+.step h3{font-size:22px;color:var(--lapis);margin-top:4px}
+.lede{font-size:19px;color:var(--ink-2);max-width:34ch}
+.prose{display:flex;flex-direction:column;gap:12px;max-width:66ch}
+.prose ul{margin:0;padding-left:22px;display:flex;flex-direction:column;gap:6px}
+.prose li::marker{color:var(--gold)}
+b,strong{font-weight:600}
+.term{font-weight:600;color:var(--lapis);border-bottom:2px solid var(--gold-soft)}
+.aside{background:var(--lapis-soft);border-left:4px solid var(--lapis);padding:12px 16px;border-radius:0 8px 8px 0;font-size:16px;display:flex;flex-direction:column;gap:6px}
+.aside .k{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--lapis);font-weight:700}
+.home{background:var(--gold-soft);border-left-color:var(--gold)}
+.home .k{color:var(--gold)}
+details{border:1px solid var(--line);border-radius:10px;background:var(--surface)}
+details summary{cursor:pointer;list-style:none;padding:12px 16px;font-weight:600;color:var(--lapis);display:flex;align-items:center;gap:10px}
+details summary::-webkit-details-marker{display:none}
+details summary::before{content:"";width:9px;height:9px;background:var(--gold);transform:rotate(45deg);flex:none;transition:transform .2s}
+details[open] summary::before{transform:rotate(45deg) scale(.6);background:var(--lapis)}
+details .body{padding:0 16px 14px;display:flex;flex-direction:column;gap:8px;color:var(--ink-2)}
+
+.steps4{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+@media (min-width:600px){ .steps4{grid-template-columns:repeat(4,1fr)} }
+.dom{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px;display:flex;flex-direction:column;gap:4px;box-shadow:var(--shadow)}
+.dom .n{font-family:var(--display);font-size:28px;color:var(--gold);line-height:1}
+.dom .t{font-weight:600;font-size:15px;line-height:1.25}
+.dom .d{font-size:13.5px;color:var(--ink-2);line-height:1.35}
+
+.ladder{display:flex;flex-direction:column;align-items:center;gap:6px}
+.rung{background:var(--lapis);color:var(--on-lapis);padding:9px 12px;border-radius:8px;text-align:center;font-size:15px;line-height:1.3}
+.rung small{display:block;opacity:.85;font-size:12.5px}
+.rung.r1{width:60%} .rung.r2{width:74%} .rung.r3{width:88%} .rung.r4{width:100%;background:var(--surface-2);color:var(--ink)}
+
+/* timeline (вертикальная, все даты видны сразу) */
+.tl-v{display:flex;flex-direction:column;position:relative;padding-left:4px}
+.tl-v::before{content:"";position:absolute;left:16px;top:16px;bottom:16px;width:3px;background:var(--line);border-radius:2px}
+.tl-item{position:relative;padding-left:36px;display:flex;flex-direction:column}
+.tl-btn{background:none;border:0;padding:8px 0;text-align:left;display:flex;align-items:baseline;gap:8px 12px;flex-wrap:wrap;color:var(--ink);width:100%}
+.tl-btn .dot{position:absolute;left:5px;top:12px;width:17px;height:17px;background:var(--surface);border:3px solid var(--lapis);border-radius:50%;transition:transform .2s,background .2s}
+.tl-item.ru .dot{border-color:var(--terra)}
+.tl-item.open .dot{background:var(--gold);border-color:var(--gold);transform:scale(1.2)}
+.tl-btn .y{font-family:var(--display);font-size:26px;line-height:1;font-variant-numeric:tabular-nums;min-width:96px}
+.tl-btn .t{font-weight:600;font-size:16px}
+.tl-btn .era{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--lapis);font-weight:700;margin-left:auto}
+.tl-item.ru .era{color:var(--terra)}
+.tl-d{color:var(--ink-2);font-size:15.5px;padding:0 0 12px;line-height:1.45}
+.hint{font-size:14px;color:var(--muted)}
+
+/* «как в учебнике» и вопросы учебника */
+details.book{border-color:var(--gold-soft)}
+details.book summary{color:var(--gold)}
+details.book summary::before{background:var(--gold)}
+details.book[open] summary::before{background:var(--gold)}
+details.book .body{font-size:15px;color:var(--ink)}
+details.book .body ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:7px}
+details.book .body li::marker{color:var(--gold)}
+details.book .body .pic{color:var(--ink-2);font-style:italic}
+.qlist{display:flex;flex-direction:column;gap:10px}
+.qi{display:grid;grid-template-columns:auto 1fr;gap:12px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.qi .qn{font-family:var(--display);font-size:24px;color:var(--gold);line-height:1;min-width:20px}
+.qi p{font-size:15.5px}
+.qi .src{font-size:14.5px;color:var(--ink-2);margin-top:6px}
+.qi a{font-size:13.5px;font-weight:600;text-decoration:none;display:inline-block;margin-top:8px;background:var(--lapis-soft);padding:4px 10px;border-radius:999px}
+
+/* games */
+.game{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:12px}
+.g-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.game h3{margin:0}
+.task{color:var(--ink-2)}
+.badge{font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;padding:4px 10px;border-radius:999px;background:var(--gold-soft);color:var(--gold)}
+.badge.done{background:var(--moss-soft);color:var(--moss)}
+.btn{background:var(--lapis);color:var(--on-lapis);border:0;border-radius:10px;padding:10px 18px;font-weight:600;font-size:15px;text-decoration:none;display:inline-block}
+.btn.ghost{background:transparent;color:var(--lapis);border:2px solid var(--lapis)}
+.btn:disabled{opacity:.45;cursor:default}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.feedback{padding:12px 14px;border-radius:10px;font-size:15px;display:flex;flex-direction:column;gap:4px}
+.feedback.ok{background:var(--moss-soft);border-left:4px solid var(--moss)}
+.feedback.bad{background:var(--terra-soft);border-left:4px solid var(--terra)}
+.feedback .k{font-weight:700}
+.progress{font-size:13px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.card{perspective:900px;height:150px;background:none;border:0;padding:0;text-align:left}
+.card .in{position:relative;width:100%;height:100%;transition:transform .5s;transform-style:preserve-3d}
+.card.flip .in{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;border-radius:12px;padding:12px;display:flex;flex-direction:column;justify-content:center;gap:6px;overflow:hidden}
+.face.f{background:var(--lapis);color:var(--on-lapis)}
+.face.f .w{font-family:var(--display);font-size:21px;line-height:1.05}
+.face.f .tap{font-size:11px;opacity:.75;letter-spacing:.08em;text-transform:uppercase}
+.face.b{background:var(--surface-2);color:var(--ink);transform:rotateY(180deg);font-size:12.5px;line-height:1.3;justify-content:flex-start;overflow:auto}
+.face.b .w{font-weight:700;color:var(--lapis);font-size:13px}
+.face.b .e{color:var(--ink-2);font-style:italic}
+
+.match{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.col{display:flex;flex-direction:column;gap:8px}
+.col .lbl{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.opt{background:var(--surface-2);border:2px solid transparent;border-radius:10px;padding:10px 12px;text-align:left;font-weight:500;font-size:15px;transition:border-color .15s,background .15s}
+.opt:hover{border-color:var(--lapis)}
+.opt.sel{border-color:var(--gold);background:var(--gold-soft)}
+.opt.ok{background:var(--moss-soft);border-color:var(--moss)}
+.opt.bad{animation:shake .35s}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+
+.pool{display:flex;flex-direction:column;gap:8px}
+.seq{display:flex;flex-direction:column;gap:8px;min-height:44px;padding:10px;border:2px dashed var(--line);border-radius:12px}
+.seq .slot{display:flex;align-items:center;gap:10px;background:var(--lapis-soft);border-radius:8px;padding:8px 12px;font-size:15px}
+.seq .slot .i{font-family:var(--display);font-size:20px;color:var(--lapis);width:22px;font-variant-numeric:tabular-nums}
+.seq .slot.ok{background:var(--moss-soft)} .seq .slot.bad{background:var(--terra-soft)}
+.seq .slot .yr{margin-left:auto;font-weight:700;color:var(--ink-2);font-variant-numeric:tabular-nums}
+.seq .empty{color:var(--muted);font-size:14px}
+
+.odd-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.odd-grid .opt{text-align:center;padding:16px 10px;font-size:16px}
+.odd-grid .opt.bad{background:var(--terra-soft);border-color:var(--terra)}
+
+.q{font-size:19px;font-weight:600;line-height:1.35}
+.q-opts{display:flex;flex-direction:column;gap:8px}
+.q-opts .opt{font-size:15.5px;line-height:1.35}
+.q-opts .opt.bad{background:var(--terra-soft);border-color:var(--terra)}
+.score{display:flex;flex-direction:column;gap:12px;align-items:flex-start}
+.score .big{font-family:var(--display);font-size:56px;line-height:1;color:var(--gold)}
+.score-tiles{display:flex;gap:5px;flex-wrap:wrap}
+.score-tiles i{width:22px;height:22px;border-radius:3px;background:var(--tile)}
+.score-tiles i.on{background:var(--gold)}
+
+.bricks{display:flex;flex-direction:column;gap:10px}
+.brick{background:var(--surface-2);border-radius:10px;overflow:hidden}
+.brick button{width:100%;background:none;border:0;padding:12px 14px;text-align:left;font-weight:600;color:var(--lapis);display:flex;justify-content:space-between;gap:10px}
+.brick .b-body{padding:0 14px 12px;color:var(--ink-2);font-size:15.5px}
+
+.mosaic{display:flex;gap:6px;align-items:center}
+.mosaic .tile{width:26px;height:26px;background:var(--tile);border-radius:3px;transition:background .4s,transform .4s}
+.mosaic .tile.on{background:var(--gold);transform:rotate(45deg) scale(.8)}
+.mosaic-list{display:flex;flex-direction:column;gap:6px;font-size:15px}
+.mosaic-list span.off{color:var(--muted)}
+
+/* pager */
+.pager{position:fixed;left:0;right:0;bottom:0;z-index:5;background:var(--bg);border-top:1px solid var(--line)}
+.pager-inner{max-width:720px;margin:0 auto;padding:10px 16px;display:flex;align-items:center;gap:10px}
+.pager .count{font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+.pager .btn{flex:1;text-align:center;padding:12px 14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pager .btn.ghost{flex:0 0 auto}
+
+/* toc overlay */
+.toc{position:fixed;inset:0;z-index:10;background:rgba(0,0,0,.35);display:flex;justify-content:flex-end}
+.toc-panel{width:min(360px,90vw);height:100%;background:var(--surface);overflow:auto;padding:16px;display:flex;flex-direction:column;gap:8px;box-shadow:var(--shadow)}
+.toc-panel h3{font-size:24px;margin-bottom:6px;display:flex;justify-content:space-between;align-items:center}
+.toc-close{background:none;border:1px solid var(--line);border-radius:8px;padding:4px 10px;font-size:14px}
+.toc-item{display:flex;align-items:center;gap:10px;background:none;border:0;border-radius:8px;padding:8px 10px;text-align:left;font-size:15px;color:var(--ink)}
+.toc-item:hover{background:var(--surface-2)}
+.toc-item.current{background:var(--gold-soft);font-weight:600}
+.toc-item .n{font-family:var(--display);font-size:18px;color:var(--muted);width:24px;font-variant-numeric:tabular-nums}
+.toc-item .m{margin-left:auto;font-size:12px;color:var(--moss);font-weight:700}
+
+/* схема управления (§ 2) */
+.org{display:flex;flex-direction:column;gap:8px}
+.org .lvl{display:grid;gap:8px;grid-template-columns:repeat(2,1fr)}
+@media (min-width:600px){ .org .lvl{grid-template-columns:repeat(4,1fr)} }
+.org .box{background:var(--surface-2);border-radius:8px;padding:9px 10px;font-size:14px;text-align:center;line-height:1.3}
+.org .box small{display:block;font-size:12px;color:var(--ink-2)}
+.org .box.top{background:var(--lapis);color:var(--on-lapis);font-weight:600;font-size:16px}
+.org .box.sub{background:var(--gold-soft)}
+.org .lbl{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:700;text-align:center}
+
+/* иллюстрации (§ 3) */
+.fig{margin:0;display:flex;flex-direction:column;gap:6px;align-items:flex-start}
+.fig img{width:100%;max-width:360px;height:auto;border-radius:10px;border:1px solid var(--line);background:var(--surface);box-shadow:var(--shadow)}
+.fig.wide img{max-width:100%}
+.fig figcaption{font-size:14px;color:var(--ink-2);line-height:1.35;max-width:60ch}
+.fig-row{display:flex;gap:12px;flex-wrap:wrap;align-items:flex-start}
+.fig-row .fig{flex:1 1 150px;max-width:220px}
+
+/* § 4: «каждый шестой», два пути крещения, игра «Где это было?» */
+.six{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;max-width:380px}
+.six span{height:64px;border-radius:8px;background:var(--surface-2);color:var(--ink-2);display:flex;align-items:flex-end;justify-content:center;padding-bottom:6px;font-size:11.5px;font-weight:600;position:relative}
+.six span::before{content:"";position:absolute;top:10px;left:50%;width:14px;height:14px;margin-left:-7px;border-radius:50%;background:var(--tile)}
+.six span::after{content:"";position:absolute;top:27px;left:50%;width:22px;height:14px;margin-left:-11px;border-radius:8px 8px 3px 3px;background:var(--tile)}
+.six span.w{background:var(--lapis);color:var(--on-lapis)}
+.six span.w::before,.six span.w::after{background:var(--gold)}
+.ways{display:grid;grid-template-columns:1fr;gap:10px}
+@media (min-width:560px){ .ways{grid-template-columns:1fr 1fr} }
+.way{background:var(--surface);border:1px solid var(--line);border-top:5px solid var(--lapis);border-radius:12px;padding:12px 14px;display:flex;flex-direction:column;gap:6px;box-shadow:var(--shadow)}
+.way.const{border-top-color:var(--terra)}
+.way.const h3{color:var(--terra)}
+.way .cn{font-weight:600;font-size:17px}
+.way p{font-size:15.5px;color:var(--ink-2)}
+.sort-card{background:var(--lapis-soft);border-radius:12px;padding:16px;font-size:18px;font-weight:600;line-height:1.35}
+.tri{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.tri .opt{text-align:center;padding:12px 4px;font-size:15px}
+.tri .opt.bad{background:var(--terra-soft);border-color:var(--terra)}
+.sort-sum{display:flex;flex-direction:column;gap:8px;font-size:15px}
+.sort-sum b{color:var(--lapis)}
+/* § 4: разбор вопросов учебника с подсказками и ответом */
+.qtext{font-size:18px;font-weight:600;line-height:1.35;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.aside ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:5px}
+.aside.ans{background:var(--moss-soft);border-left-color:var(--moss)}
+.aside.ans .k{color:var(--moss)}
+.answer{display:flex;flex-direction:column;gap:12px;align-items:stretch}
+.answer .btn{text-align:center}
+.ans-body{display:flex;flex-direction:column;gap:12px}
+.ans-table{width:100%;border-collapse:collapse;font-size:15px;background:var(--surface)}
+.ans-table th,.ans-table td{border:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top;line-height:1.3}
+.ans-table th{font-size:13px;color:var(--ink-2);font-weight:700}
+.ans-table td:first-child{white-space:nowrap}
+
+/* виды шагов: из учебника / задания учебника / сверх учебника */
+.kind-tag{display:flex;gap:10px;align-items:flex-start;border-radius:10px;padding:8px 12px;font-size:13px;line-height:1.35}
+.kind-tag .ic{font-size:18px;line-height:1.1}
+.kind-tag b{font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:700}
+.kind-tag .pg{font-weight:600;margin-left:6px;font-size:13px}
+.kind-tag small{display:block;font-size:13px;color:var(--ink-2);margin-top:2px}
+.kind-tag.book{background:var(--lapis-soft);color:var(--lapis)}
+.kind-tag.task{background:var(--gold-soft);color:var(--gold)}
+.kind-tag.ours{background:var(--terra-soft);color:var(--terra)}
+.stepbar button.k-book{background:var(--lapis-soft)} .stepbar button.k-task{background:var(--gold-soft)} .stepbar button.k-ours{background:var(--terra-soft)}
+.stepbar button.k-book.visited{background:var(--lapis)} .stepbar button.k-task.visited{background:var(--gold)} .stepbar button.k-ours.visited{background:var(--terra)}
+.stepbar button.visited.done{background:var(--moss)}
+.stepbar{gap:3px} .stepbar button{min-width:3px}
+.stepbar button.gstart{margin-left:5px}
+.stepbar button.current{transform:scaleY(1.9);box-shadow:0 0 0 1.5px var(--ink)}
+.toc-group{display:flex;flex-direction:column;gap:2px;border-left:4px solid var(--lapis);padding-left:8px;margin-top:10px}
+.toc-group.k-task{border-left-color:var(--gold)} .toc-group.k-ours{border-left-color:var(--terra)}
+.toc-head{display:flex;align-items:center;gap:8px;font-size:12px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;color:var(--lapis);padding:4px 2px}
+.toc-group.k-task .toc-head{color:var(--gold)} .toc-group.k-ours .toc-head{color:var(--terra)}
+.toc-head .ic{font-size:15px;letter-spacing:0}
+.toc-item .pg{margin-left:auto;font-size:12px;color:var(--muted);white-space:nowrap;font-variant-numeric:tabular-nums}
+.toc-item .pg + .m{margin-left:8px}
+
+/* ===== Книжное оформление (выбрано 14.09.2026): как учебник — синяя шапка, PT Serif / PT Sans Narrow / PT Sans ===== */
+:root{
+  --bg:#FBFAF6; --surface:#FFFFFF; --surface-2:#EAF0F8; --ink:#1A1A1A; --ink-2:#393939; --muted:#6B6B6B;
+  --lapis:#2D63A6; --on-lapis:#FFFFFF; --lapis-soft:#DCE7F5; --gold:#8B6B22; --gold-soft:#F3EBD3; --on-gold:#1A1A1A;
+  --terra:#C24E1E; --terra-soft:#FBE3D6; --moss:#3E7A3A; --moss-soft:#E1EEDC; --line:#D9DDE3; --tile:#D5DCE6; --shadow:none;
+  --band-ink:#FFFFFF; --tb:rgba(255,255,255,.32); --tbv:#FFFFFF; --to:rgba(255,190,160,.5); --tov:#F6A37E; --tt:rgba(255,230,160,.5); --ttv:#F2D27A; --tdone:#A6DB93;
+  --display:"PT Sans Narrow","Arial Narrow",sans-serif; --body:"PT Serif",Georgia,serif; --ui:"PT Sans","Segoe UI",system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){ --bg:#141516; --surface:#1C1E21; --surface-2:#1E2936; --ink:#EDEBE6; --ink-2:#CFCBC3; --muted:#9A968F;
+    --lapis:#79A6E0; --on-lapis:#10141A; --lapis-soft:#1F3350; --gold:#D9B45A; --gold-soft:#3A3120; --on-gold:#10141A;
+    --terra:#F0875A; --terra-soft:#43261A; --moss:#8CC47F; --moss-soft:#22381F; --line:#30343A; --tile:#2C3440; --shadow:none;
+    --band-ink:#10141A; --tb:rgba(16,20,26,.28); --tbv:#10141A; --to:rgba(120,40,10,.4); --tov:#8A2E0C; --tt:rgba(110,80,10,.4); --ttv:#6B4E0E; --tdone:#1F5A1A; } }
+:root[data-theme="dark"]{ --bg:#141516; --surface:#1C1E21; --surface-2:#1E2936; --ink:#EDEBE6; --ink-2:#CFCBC3; --muted:#9A968F;
+    --lapis:#79A6E0; --on-lapis:#10141A; --lapis-soft:#1F3350; --gold:#D9B45A; --gold-soft:#3A3120; --on-gold:#10141A;
+    --terra:#F0875A; --terra-soft:#43261A; --moss:#8CC47F; --moss-soft:#22381F; --line:#30343A; --tile:#2C3440; --shadow:none;
+    --band-ink:#10141A; --tb:rgba(16,20,26,.28); --tbv:#10141A; --to:rgba(120,40,10,.4); --tov:#8A2E0C; --tt:rgba(110,80,10,.4); --ttv:#6B4E0E; --tdone:#1F5A1A; }
+body{font-family:var(--body);font-size:18px;line-height:1.62}
+h1,h2,h3{font-family:var(--display);font-weight:700}
+.step h1{color:var(--lapis);font-size:clamp(34px,8.5vw,52px);line-height:1.02}
+.step h2{color:var(--lapis);font-size:clamp(28px,7vw,36px);line-height:1.08}
+.step h3{font-size:23px}
+.pnum{display:inline-flex;align-items:center;justify-content:center;background:var(--lapis);color:var(--on-lapis);font:700 .72em/1 var(--display);width:1.08em;height:1.08em;margin-right:.3em;vertical-align:.08em}
+.lede{font-size:20px}
+.top{background:var(--lapis);border-bottom:0}
+.back{background:transparent;border-color:var(--band-ink);color:var(--band-ink);font-family:var(--ui);border-radius:3px}
+.crumb{color:var(--band-ink);opacity:.88;font-family:var(--ui)}
+.crumb b{color:var(--band-ink)}
+.toc-btn{background:var(--band-ink);color:var(--lapis);border-color:var(--band-ink);font-family:var(--ui);font-weight:700;border-radius:3px}
+.stepbar button{border-radius:1px}
+.stepbar button.k-book{background:var(--tb)} .stepbar button.k-book.visited{background:var(--tbv)}
+.stepbar button.k-ours{background:var(--to)} .stepbar button.k-ours.visited{background:var(--tov)}
+.stepbar button.k-task{background:var(--tt)} .stepbar button.k-task.visited{background:var(--ttv)}
+.stepbar button.visited.done{background:var(--tdone)}
+.stepbar button.current{box-shadow:0 0 0 1.5px var(--band-ink)}
+.eyebrow{font-family:var(--ui);color:var(--muted);letter-spacing:.08em}
+.tess{display:none}
+.term{font-weight:700;font-style:italic;color:var(--ink);border-bottom:0}
+.kind-tag{border-radius:0;padding:6px 0 0;border-top:2px solid currentColor;font-family:var(--ui);align-items:center}
+.kind-tag.book,.kind-tag.task,.kind-tag.ours{background:transparent}
+.kind-tag .ic{display:flex}
+.kind-tag b{font-size:12.5px;letter-spacing:.08em}
+.kind-tag small{font-family:var(--body);font-style:italic;font-size:14.5px}
+details{border-radius:0}
+details summary{font-family:var(--ui)}
+details.book{border:0;border-top:3px solid var(--lapis);background:var(--surface-2)}
+details.book summary{color:var(--lapis)}
+details.book summary::before,details.book[open] summary::before{background:var(--lapis)}
+details.book .body{font-size:16px}
+.aside{border-radius:0}
+.aside .k{font-family:var(--ui)}
+.dom{border-radius:0;box-shadow:none;border-top:3px solid var(--lapis)}
+.dom .n{font-family:var(--display);font-weight:700;color:var(--lapis)}
+.dom .t{font-family:var(--ui)}
+.rung{border-radius:0}
+.tl-btn .y{font-family:var(--display);font-weight:700;color:var(--lapis)}
+.tl-btn .era{font-family:var(--ui)}
+.fig img{border-radius:0;box-shadow:none}
+.fig figcaption{font-family:var(--ui)}
+.org .box{border-radius:0}
+.qi{border-radius:0}
+.qi .qn{font-family:var(--display);font-weight:700;color:var(--terra)}
+.qi a{border-radius:0;font-family:var(--ui)}
+.game{border-radius:0;box-shadow:none;border-top:4px solid var(--terra)}
+.game h3{color:var(--terra)}
+.badge{border-radius:0;font-family:var(--ui)}
+.btn{border-radius:3px;font-family:var(--ui);font-weight:700}
+.opt{border-radius:0;background:var(--surface);border-color:var(--line);font-family:var(--body)}
+.feedback{border-radius:0}
+.progress{font-family:var(--ui)}
+.q{font-family:var(--body);font-weight:700}
+.face{border-radius:0}
+.face.f .w{font-family:var(--display);font-weight:700}
+.seq,.seq .slot,.sort-card,.brick,.qtext,.way,.six span,.mosaic .tile,.score-tiles i,.toc-panel,.toc-item{border-radius:0}
+.brick button{font-family:var(--ui)}
+.pager{background:var(--surface)}
+.count{font-family:var(--ui)}
+.toc-panel h3{font-family:var(--display)}
+.toc-head{font-family:var(--ui)}
+.toc-head .ic{display:flex}
+.score .big{font-family:var(--display);font-weight:700;color:var(--lapis)}
+/* переносы длинных слов на узком экране (14.09.2026) */
+.match{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+.opt,.face,.qi p,.ans-table td,.ans-table th{overflow-wrap:anywhere;hyphens:auto}
+.ans-table.fit td:first-child{white-space:normal}
+</style>
+</head>
+<body>
+
+
+<header class="top">
+  <div class="top-inner">
+    <a class="back" href="./">← Темы</a>
+    <div class="crumb">Биология · § 2 · <b>Растительная клетка</b></div>
+    <button class="toc-btn" id="toc-btn" type="button">Содержание</button>
+  </div>
+  <div class="stepbar" id="stepbar" aria-label="Шаги темы"></div>
+</header>
+
+<main id="deck">
+
+<!-- 1 -->
+<section class="step" data-step="za-minutu" data-name="За минуту" data-part="Самое главное" data-kind="ours">
+  <div class="kind-tag ours"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 6h14"></path><path d="M5 12h14"></path><path d="M5 18h9"></path></svg></span><div><b>Коротко о главном</b><small>Пересказ для разгона. Подробно, как в учебнике, — в следующих шагах.</small></div></div>
+  <div class="eyebrow"><span class="tess"><i></i><i></i><i></i></span> Биология · 6 класс · § 2</div>
+  <h1>Строение растительной клетки</h1>
+  <p class="lede">Амина, это параграф о том, как устроен самый маленький «кирпичик» растения — клетка.</p>
+  <div id="resume" hidden></div>
+  <div class="prose">
+    <p>Представь маленький дом. Вокруг него крепкий забор, у двери стоит охранник и решает, кого пустить. Внутри есть кабинет директора с чертежами всего дома, кухня на солнечных батареях, кладовки с запасами, баки с водой и своя электростанция.</p>
+    <p>Растительная клетка устроена очень похоже. Только она такая крошечная, что увидеть её можно лишь в микроскоп.</p>
+    <p>В этом параграфе ты узнаешь, как называется каждая часть клетки и зачем она нужна. А ещё сама приготовишь препарат из кожицы лука и рассмотришь клетки под микроскопом. Вот четыре главные мысли:</p>
+  </div>
+  <div class="steps4">
+    <div class="dom"><div class="n">1</div><div class="t">Снаружи</div><div class="d">Прочная клеточная стенка и тонкая мембрана.</div></div>
+    <div class="dom"><div class="n">2</div><div class="t">Внутри</div><div class="d">Полужидкая цитоплазма, в ней органоиды.</div></div>
+    <div class="dom"><div class="n">3</div><div class="t">Главный пункт</div><div class="d">Ядро с хромосомами управляет клеткой.</div></div>
+    <div class="dom"><div class="n">4</div><div class="t">Только у растений</div><div class="d">Пластиды и вакуоли с клеточным соком.</div></div>
+  </div>
+  <div class="aside">
+    <div class="k">Как этим пользоваться</div>
+    <p>У каждого шага написано, на какой странице учебника искать. Внизу шага есть «Подробнее, как в учебнике»: там всё, что есть на этих страницах, ничего не пропущено. Сначала учи по коротким шагам, а перед уроком открой «подробнее».</p>
+    <p>Надпись вверху шага подскажет, откуда он: синяя — из учебника, золотая — задание учебника, оранжевая — сверх учебника (пересказ, словарик, игры, самопроверка). В «Содержании» шаги так же разбиты на группы.</p>
+  </div>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 14</summary>
+    <div class="body"><ul>
+      <li>Параграф начинается на с. 14. Название: «§ 2. Строение растительной клетки».</li>
+      <li>На полях — рубрика «Вспомните» с тремя вопросами. Она разобрана на следующем шаге.</li>
+      <li>Текст параграфа занимает с. 14–16, в нём два рисунка: рис. 8 «Строение растительной клетки» и рис. 9 «Формы растительных клеток».</li>
+      <li>Слова для запоминания (рубрика «Запомните», с. 16): клеточная мембрана, клеточная стенка, цитоплазма, ядро, ядрышко, хромосомы, митохондрии, вакуоли, пластиды (хлоропласты, лейкопласты, хромопласты), хлорофилл. Все они есть в словарике.</li>
+      <li>Дальше в параграфе: «Проверьте себя», «Подумайте!», «Шаги к успеху» (с. 16), «Моя лаборатория» с тремя лабораторными работами (с. 17–20), «Это интересно» (с. 20) и «Задания для любознательных» (с. 21). Всё это разобрано по шагам.</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 2 -->
+<section class="step" data-step="vspomnite" data-name="Вспомни" data-part="Разминка" data-kind="task" data-pages="с. 14">
+  <div class="kind-tag task"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l4.2-1L19 8.2 15.8 5 5 15.8z"></path><path d="M13.8 7l3.2 3.2"></path></svg></span><div><b>Задание учебника</b><span class="pg">с. 14</span><small>Вопросы «Вспомните» из книги. Подсказки наши.</small></div></div>
+  <div class="eyebrow">Разминка</div>
+  <h2>Вспомни, что ты уже знаешь</h2>
+  <div class="prose">
+    <p>В начале параграфа, на полях, стоит рубрика «Вспомните». Это вопросы про то, что ты уже проходила в 5 классе. Попробуй ответить вслух, а если не получается, открой подсказку.</p>
+  </div>
+  <div class="qlist">
+    <div class="qi"><span class="qn">1</span><div><p>Что такое клетка?</p></div></div>
+    <div class="qi"><span class="qn">2</span><div><p>Почему для изучения клеток необходимо использовать увеличительные приборы?</p></div></div>
+    <div class="qi"><span class="qn">3</span><div><p>Почему микроскоп, с которым вы работаете, называют световым?</p></div></div>
+  </div>
+  <details>
+    <summary>Подсказки</summary>
+    <div class="body">
+      <p><b>1.</b> Вспомни: из чего состоят все живые организмы — и растения, и животные, и ты сама? Клетка — самая маленькая часть живого, которая может сама жить.</p>
+      <p><b>2.</b> Можно ли увидеть одну клетку лука просто глазами? Подумай, какого клетки размера.</p>
+      <p><b>3.</b> Вспомни, как устроен школьный микроскоп: зачем у него зеркальце или лампочка снизу? Что проходит сквозь препарат, прежде чем попасть тебе в глаз?</p>
+    </div>
+  </details>
+</section>
+
+<!-- 3 -->
+<section class="step" data-step="kletka" data-name="Какая она, растительная клетка" data-part="Часть 1 · Снаружи и внутри" data-kind="book" data-pages="с. 14">
+  <div class="kind-tag book"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.5c2.6-1 5.6-.8 9 1.2v13c-3.4-2-6.4-2.2-9-1.2z"></path><path d="M21 5.5c-2.6-1-5.6-.8-9 1.2v13c3.4-2 6.4-2.2 9-1.2z"></path></svg></span><div><b>Из учебника</b><span class="pg">с. 14</span></div></div>
+  <div class="eyebrow">Часть 1 · Снаружи и внутри</div>
+  <h2>Какая она, растительная клетка?</h2>
+  <div class="prose">
+    <p>У каждой клетки, у любого живого существа, есть <b>три обязательные части</b>: клеточная мембрана, цитоплазма и генетический аппарат (в нём хранятся «чертежи» клетки, это ядро).</p>
+    <p>Но у клеток растений есть и свои особенности. Именно они отличают их от клеток грибов, животных и других царств. Посмотри на схему из учебника: здесь подписаны все главные части.</p>
+  </div>
+  <figure class="fig wide"><img src="img/2026-09-14-p2/01-stroenie-kletki.jpg" width="800" height="469" loading="lazy" alt="Схема растительной клетки: снаружи клеточная стенка и плазматическая мембрана, внутри ядро с ядрышком, вакуоли, зелёные хлоропласты и красные митохондрии"><figcaption>Рис. 8. Строение растительной клетки (с. 14).</figcaption></figure>
+  <div class="org" aria-label="Части клетки на рисунке 8">
+    <div class="box top">Растительная клетка на рис. 8</div>
+    <div class="lbl">Снаружи</div>
+    <div class="lvl">
+      <div class="box">Клеточная стенка<small>шаг 4</small></div>
+      <div class="box">Плазматическая мембрана<small>шаг 4</small></div>
+    </div>
+    <div class="lbl">Внутри, в цитоплазме</div>
+    <div class="lvl">
+      <div class="box sub">Ядро и ядрышко<small>шаг 6</small></div>
+      <div class="box sub">Хлоропласты<small>шаг 7</small></div>
+      <div class="box sub">Вакуоли<small>шаг 9</small></div>
+      <div class="box sub">Митохондрии<small>шаг 10</small></div>
+    </div>
+  </div>
+  <p class="hint">На рисунке мембрана подписана «плазматическая мембрана», а в тексте её называют «клеточная мембрана» или просто «мембрана». Это одно и то же.</p>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 14</summary>
+    <div class="body"><ul>
+      <li>Вы уже знаете, что каждая клетка имеет три обязательные части: клеточную мембрану, цитоплазму и генетический аппарат.</li>
+      <li>Клетки растений имеют особенности строения, которые отличают их от клеток организмов из других царств (рис. 8).</li>
+      <li class="pic">Рис. 8 «Строение растительной клетки». Подписи на рисунке: плазматическая мембрана, клеточная стенка, вакуоль, ядро, ядрышко, хлоропласт, митохондрия.</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 4 -->
+<section class="step" data-step="obolochka" data-name="Оболочка и мембрана" data-part="Часть 1 · Снаружи и внутри" data-kind="book" data-pages="с. 14">
+  <div class="kind-tag book"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.5c2.6-1 5.6-.8 9 1.2v13c-3.4-2-6.4-2.2-9-1.2z"></path><path d="M21 5.5c-2.6-1-5.6-.8-9 1.2v13c3.4-2 6.4-2.2 9-1.2z"></path></svg></span><div><b>Из учебника</b><span class="pg">с. 14</span></div></div>
+  <div class="eyebrow">Часть 1 · Снаружи и внутри</div>
+  <h2>Оболочка и мембрана</h2>
+  <div class="prose">
+    <p>Снаружи у растительной клетки сразу две «одёжки»: плотная оболочка и под ней тонкая плёнка. Сравни их.</p>
+  </div>
+  <div class="ways">
+    <div class="way">
+      <h3>Клеточная оболочка (стенка)</h3>
+      <p class="cn">Как забор с калитками</p>
+      <p>Есть у клеток растений, кроме мембраны. В её состав входит <span class="term">целлюлоза</span>. Оболочка делает клетку <b>прочной</b> и задаёт ей <b>форму</b>.</p>
+      <p>В оболочке есть <b>поры</b> (дырочки), поэтому через неё проходят вода, соли и многие органические вещества.</p>
+    </div>
+    <div class="way const">
+      <h3>Мембрана</h3>
+      <p class="cn">Как охранник у двери</p>
+      <p>Тонкая плёнка под оболочкой. Одни вещества она легко пропускает, другие не пропускает. Это называется <span class="term">полупроницаемость</span>.</p>
+      <p>Так мембрана решает, что войдёт в клетку из окружающей среды и что выйдет из клетки наружу. Работает, пока клетка жива.</p>
+    </div>
+  </div>
+  <details>
+    <summary>А почему?</summary>
+    <div class="body"><p>Представь сито на кухне: вода проходит, а крупа остаётся. Мембрана похожа на очень умное сито: сама выбирает, что пропустить. А когда клетка погибает, «сито» перестаёт выбирать.</p></div>
+  </details>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 14</summary>
+    <div class="body"><ul>
+      <li>Клетки растений, кроме клеточной мембраны, имеют ещё и клеточную оболочку (стенку). В её состав входит целлюлоза. Оболочка придаёт клетке прочность и определяет её форму.</li>
+      <li>В оболочке есть поры, поэтому она проницаема для воды, солей и многих органических веществ.</li>
+      <li>Мембрана — тонкая плёнка, которая находится под оболочкой клетки. Для одних веществ она легко проницаема, для других непроницаема.</li>
+      <li>Полупроницаемость мембраны сохраняется, пока клетка жива. Так мембрана регулирует поступление веществ из окружающей среды в клетку и из клетки в окружающую среду.</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 5 -->
+<section class="step" data-step="citoplazma" data-name="Цитоплазма" data-part="Часть 1 · Снаружи и внутри" data-kind="book" data-pages="с. 14">
+  <div class="kind-tag book"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.5c2.6-1 5.6-.8 9 1.2v13c-3.4-2-6.4-2.2-9-1.2z"></path><path d="M21 5.5c-2.6-1-5.6-.8-9 1.2v13c3.4-2 6.4-2.2 9-1.2z"></path></svg></span><div><b>Из учебника</b><span class="pg">с. 14</span></div></div>
+  <div class="eyebrow">Часть 1 · Снаружи и внутри</div>
+  <h2>Цитоплазма</h2>
+  <div class="prose">
+    <p>Представь банку с киселём, в котором плавают ягоды. Кисель — это <span class="term">цитоплазма</span>, внутренняя среда клетки. Слово пришло из греческого: <i>китос</i> — сосуд, <i>плазма</i> — образование.</p>
+    <p>Цитоплазма <b>полужидкая</b>, поэтому внутри клетки всё может двигаться. В ней находятся <span class="term">органоиды</span> (от греч. <i>органон</i> — орган) — маленькие «органы» клетки, и клеточные включения.</p>
+    <p>Цитоплазма объединяет все части клетки и помогает им работать вместе.</p>
+  </div>
+  <div class="aside">
+    <div class="k">Запомни</div>
+    <p>При сильном нагревании и при замораживании цитоплазма разрушается, и клетка погибает.</p>
+  </div>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 14</summary>
+    <div class="body"><ul>
+      <li>Цитоплазма (от греч. <i>китос</i> — сосуд и <i>плазма</i> — образование) — внутренняя среда клетки.</li>
+      <li>Особенность цитоплазмы — её полужидкое состояние, благодаря которому возможно движение внутри клетки.</li>
+      <li>В цитоплазме находятся различные органоиды (от греч. <i>органон</i> — орган) и клеточные включения.</li>
+      <li>Цитоплазма объединяет все клеточные структуры и обеспечивает их взаимодействие.</li>
+      <li>При сильном нагревании и замораживании цитоплазма разрушается, и тогда клетка погибает.</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 6 -->
+<section class="step" data-step="yadro" data-name="Ядро и хромосомы" data-part="Часть 2 · Ядро" data-kind="book" data-pages="с. 15">
+  <div class="kind-tag book"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.5c2.6-1 5.6-.8 9 1.2v13c-3.4-2-6.4-2.2-9-1.2z"></path><path d="M21 5.5c-2.6-1-5.6-.8-9 1.2v13c3.4-2 6.4-2.2 9-1.2z"></path></svg></span><div><b>Из учебника</b><span class="pg">с. 15</span></div></div>
+  <div class="eyebrow">Часть 2 · Ядро</div>
+  <h2>Ядро и хромосомы</h2>
+  <div class="prose">
+    <p>В цитоплазме лежит небольшое плотное <span class="term">ядро</span>. Это как кабинет директора: оттуда управляют всей жизнью клетки.</p>
+    <p>В ядре хранятся <span class="term">хромосомы</span> (от греч. <i>хрома</i> — краска и <i>сома</i> — тельце). В них записаны все сведения о клетке и обо всём организме — это <b>наследственная информация</b>. Как чертежи дома: по ним можно построить точно такой же.</p>
+    <p>От хромосом зависит, почему дети похожи на родителей. Вот почему у тебя, например, могут быть мамины глаза.</p>
+    <p>В ядре может быть одно или несколько <span class="term">ядрышек</span>.</p>
+  </div>
+  <details>
+    <summary>А почему ядро такое сложное?</summary>
+    <div class="body"><p>В обычный микроскоп ядро похоже на простое тёмное пятнышко. Но в электронный микроскоп (он увеличивает гораздо сильнее) учёные увидели, что ядро устроено очень сложно. Так и должно быть: ведь оно управляет всей клеткой и хранит хромосомы.</p></div>
+  </details>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 15</summary>
+    <div class="body"><ul>
+      <li>В цитоплазме находится небольшое плотное ядро.</li>
+      <li>С помощью электронного микроскопа установили, что ядро клетки имеет очень сложное строение. Это связано с тем, что ядро регулирует процессы жизнедеятельности клетки.</li>
+      <li>В ядре расположены носители наследственной информации о клетке и организме в целом — хромосомы (от греч. <i>хрома</i> — краска и <i>сома</i> — тельце).</li>
+      <li>От хромосом зависит сходство родителей и потомства.</li>
+      <li>В ядре может находиться одно или несколько ядрышек.</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 7 -->
+<section class="step" data-step="plastidy" data-name="Три вида пластид" data-part="Часть 3 · Пластиды" data-kind="book" data-pages="с. 15">
+  <div class="kind-tag book"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.5c2.6-1 5.6-.8 9 1.2v13c-3.4-2-6.4-2.2-9-1.2z"></path><path d="M21 5.5c-2.6-1-5.6-.8-9 1.2v13c3.4-2 6.4-2.2 9-1.2z"></path></svg></span><div><b>Из учебника</b><span class="pg">с. 15</span></div></div>
+  <div class="eyebrow">Часть 3 · Пластиды</div>
+  <h2>Три вида пластид</h2>
+  <div class="prose">
+    <p>Главная особенность клеток растений — в них есть <b>пластиды</b> и <b>вакуоли</b>.</p>
+    <p><span class="term">Пластиды</span> — это множество мелких телец в цитоплазме. Одни бесцветные, другие окрашены в разные цвета. Их три вида, и у каждого своя работа:</p>
+  </div>
+  <div class="steps4">
+    <div class="dom"><div class="n">1</div><div class="t">Хлоропласты</div><div class="d">Зелёные (греч. <i>хлорос</i> — зелёный). В них есть <b>хлорофилл</b> и идёт фотосинтез. Самые важные.</div></div>
+    <div class="dom"><div class="n">2</div><div class="t">Хромопласты</div><div class="d">Жёлтые и красные (греч. <i>хрома</i> — краска). Дают цвет цветкам, осенним листьям, спелым плодам.</div></div>
+    <div class="dom"><div class="n">3</div><div class="t">Лейкопласты</div><div class="d">Бесцветные (греч. <i>лейкос</i> — белый, <i>пластос</i> — вылепленный). В них копятся запасы питательных веществ.</div></div>
+  </div>
+  <div class="aside">
+    <div class="k">Как запомнить</div>
+    <p>Хлоропласты — «кухня» клетки: на свету готовят пищу. Хромопласты — «краски». Лейкопласты — «кладовки».</p>
+  </div>
+  <details>
+    <summary>Что такое фотосинтез?</summary>
+    <div class="body"><p>Это когда растение на свету само делает себе питательные вещества из воды и воздуха. Происходит это в зелёных хлоропластах. Подробно про фотосинтез будет в следующих параграфах.</p></div>
+  </details>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 15</summary>
+    <div class="body"><ul>
+      <li>Характерная особенность клеток растений — наличие в них пластид и вакуолей.</li>
+      <li>Пластиды — многочисленные мелкие тельца. Они находятся в цитоплазме и бывают бесцветными или окрашенными в различные цвета.</li>
+      <li>В бесцветных пластидах — лейкопластах (от греч. <i>лейкос</i> — белый и <i>пластос</i> — вылепленный) накапливаются запасы питательных веществ.</li>
+      <li>Пластиды жёлтого и красного цвета — хромопласты (от греч. <i>хрома</i> — краска). Они определяют окраску цветов, осенних листьев, зрелых плодов.</li>
+      <li>Самое важное значение имеют пластиды зелёного цвета — хлоропласты (от греч. <i>хлорос</i> — зелёный). В них содержится хлорофилл. В хлоропластах происходит процесс фотосинтеза.</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 8 -->
+<section class="step" data-step="prevrascheniya" data-name="Пластиды меняют цвет" data-part="Часть 3 · Пластиды" data-kind="book" data-pages="с. 15">
+  <div class="kind-tag book"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.5c2.6-1 5.6-.8 9 1.2v13c-3.4-2-6.4-2.2-9-1.2z"></path><path d="M21 5.5c-2.6-1-5.6-.8-9 1.2v13c3.4-2 6.4-2.2 9-1.2z"></path></svg></span><div><b>Из учебника</b><span class="pg">с. 15</span></div></div>
+  <div class="eyebrow">Часть 3 · Пластиды</div>
+  <h2>Пластиды меняют цвет</h2>
+  <div class="prose">
+    <p>Пластиды умеют превращаться из одного вида в другой. В учебнике два примера.</p>
+  </div>
+  <div class="ladder">
+    <div class="rung r2">Лейкопласты (бесцветные)<small>на свету</small></div>
+    <div class="rung r3">Хлоропласты (зелёные)<small>осенью хлорофилл разрушается</small></div>
+    <div class="rung r4">Хромопласты (жёлтые и красные)</div>
+  </div>
+  <div class="prose">
+    <p><b>Пример 1. Картошка на свету.</b> Если клубни картофеля полежат на свету, они зеленеют. Это бесцветные лейкопласты превратились в зелёные хлоропласты.</p>
+    <p><b>Пример 2. Осенние листья.</b> Осенью в листьях разрушается хлорофилл, и хлоропласты превращаются в хромопласты. Поэтому листья желтеют и краснеют.</p>
+  </div>
+  <div class="aside">
+    <div class="k">Кстати</div>
+    <p>Позеленевшие места на картошке взрослые обычно срезают: вместе с зелёным цветом в них копится вредное вещество.</p>
+  </div>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 15</summary>
+    <div class="body"><ul>
+      <li>Пластиды могут превращаться из одного вида в другой. Так, лейкопласты могут превращаться в хлоропласты. Пример — позеленение клубней картофеля на свету.</li>
+      <li>Осенняя окраска листьев связана с тем, что разрушается хлорофилл и хлоропласты превращаются в хромопласты.</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 9 -->
+<section class="step" data-step="vakuoli" data-name="Вакуоли" data-part="Часть 4 · Вакуоли и митохондрии" data-kind="book" data-pages="с. 15–16">
+  <div class="kind-tag book"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.5c2.6-1 5.6-.8 9 1.2v13c-3.4-2-6.4-2.2-9-1.2z"></path><path d="M21 5.5c-2.6-1-5.6-.8-9 1.2v13c3.4-2 6.4-2.2 9-1.2z"></path></svg></span><div><b>Из учебника</b><span class="pg">с. 15–16</span></div></div>
+  <div class="eyebrow">Часть 4 · Вакуоли и митохондрии</div>
+  <h2>Вакуоли</h2>
+  <div class="prose">
+    <p>Разрежь спелый арбуз или помидор — и потечёт сок. Откуда он? Из <span class="term">вакуолей</span>.</p>
+    <p>Вакуоли (от лат. <i>вакуус</i> — пустой) — это полости, «пузырьки» внутри клетки. Их ограничивает мембрана. Они заметны почти во всех клетках растений, особенно в старых.</p>
+    <p>Внутри вакуолей — <span class="term">клеточный сок</span>. Это вода, в которой растворены органические и неорганические вещества. Когда мы режем сочный плод, мы повреждаем клетки, и сок вытекает из вакуолей.</p>
+  </div>
+  <details>
+    <summary>А почему «пустой», если там сок?</summary>
+    <div class="body"><p>В микроскоп вакуоль выглядит как светлое «пустое» место среди зернистой цитоплазмы. Поэтому её так и назвали. На самом деле она заполнена клеточным соком.</p></div>
+  </details>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 15–16</summary>
+    <div class="body"><ul>
+      <li>Почти во всех растительных клетках, особенно старых, хорошо заметны полости — вакуоли (от лат. <i>вакуус</i> — пустой), ограниченные мембраной.</li>
+      <li>Вакуоли содержат клеточный сок — водный раствор органических и неорганических соединений.</li>
+      <li>Разрезая спелый плод или другую сочную часть растения, мы повреждаем клетки, и из их вакуолей вытекает сок.</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 10 -->
+<section class="step" data-step="mitohondrii" data-name="Митохондрии" data-part="Часть 4 · Вакуоли и митохондрии" data-kind="book" data-pages="с. 16">
+  <div class="kind-tag book"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.5c2.6-1 5.6-.8 9 1.2v13c-3.4-2-6.4-2.2-9-1.2z"></path><path d="M21 5.5c-2.6-1-5.6-.8-9 1.2v13c3.4-2 6.4-2.2 9-1.2z"></path></svg></span><div><b>Из учебника</b><span class="pg">с. 16</span></div></div>
+  <div class="eyebrow">Часть 4 · Вакуоли и митохондрии</div>
+  <h2>Митохондрии — электростанции</h2>
+  <div class="prose">
+    <p>Любому дому нужна энергия, чтобы горел свет и работали приборы. Клетке тоже.</p>
+    <p><span class="term">Митохондрии</span> (от греч. <i>митос</i> — нить и <i>хондрион</i> — зёрнышко, крупинка) — органоиды овальной формы. Их можно рассмотреть в цитоплазме при большом увеличении микроскопа.</p>
+    <p>В митохондриях выделяется <b>энергия</b>, которая нужна для работы всех остальных частей клетки. Поэтому их часто называют <b>«энергетическими станциями клетки»</b>.</p>
+  </div>
+  <div class="aside">
+    <div class="k">Каждая клетка — под свою работу</div>
+    <p>Сколько в клетке вакуолей, пластид и митохондрий, какой толщины оболочка и как всё внутри расположено — это бывает очень по-разному. Всё зависит от того, какую работу клетка делает в растении.</p>
+  </div>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 16</summary>
+    <div class="body"><ul>
+      <li>Важную роль в жизнедеятельности клетки играют митохондрии (от греч. <i>митос</i> — нить и <i>хондрион</i> — зёрнышко, крупинка) — органоиды овальной формы. Их можно рассмотреть в цитоплазме клетки при большом увеличении в микроскоп.</li>
+      <li>В митохондриях протекают процессы, в результате которых выделяется энергия, необходимая для работы других структур клетки. Поэтому митохондрии часто называют «энергетическими станциями клетки».</li>
+      <li>Количество вакуолей, пластид, митохондрий в клетках, толщина клеточной оболочки, расположение внутренних частей клетки сильно различаются и зависят от того, какую функцию выполняет клетка в организме растения.</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 11 -->
+<section class="step" data-step="formy" data-name="Формы клеток" data-part="Часть 5 · Формы клеток" data-kind="book" data-pages="с. 15–16">
+  <div class="kind-tag book"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.5c2.6-1 5.6-.8 9 1.2v13c-3.4-2-6.4-2.2-9-1.2z"></path><path d="M21 5.5c-2.6-1-5.6-.8-9 1.2v13c3.4-2 6.4-2.2 9-1.2z"></path></svg></span><div><b>Из учебника</b><span class="pg">с. 15–16</span></div></div>
+  <div class="eyebrow">Часть 5 · Формы клеток</div>
+  <h2>Такие разные клетки</h2>
+  <div class="prose">
+    <p>Клетки разных органов растения очень не похожи друг на друга: у них разный цвет, форма и размер. Посмотри на рисунок 9.</p>
+  </div>
+  <figure class="fig wide"><img src="img/2026-09-14-p2/02-formy-kletok.jpg" width="800" height="456" loading="lazy" alt="Пять рисунков клеток: красная клетка мякоти арбуза, две клетки зелёного листа с зелёными пластидами, круглая клетка скорлупы ореха, две длинные клетки жгучих волосков"><figcaption>Рис. 9. Формы растительных клеток. Клетки мякоти арбуза, мякоти зелёного листа, скорлупы ореха, жгучих волосков листьев (с. 15).</figcaption></figure>
+  <details>
+    <summary>Что можно заметить на рисунке</summary>
+    <div class="body"><p>Сравни клетку арбуза и клетку листа: где много зелёных «зёрнышек», а где их нет совсем? Сравни клетку листа и клетку жгучего волоска: какая из них длинная и острая? Подумай, как форма помогает каждой клетке делать свою работу.</p></div>
+  </details>
+  <div class="aside">
+    <div class="k">Как увидеть клетки самой</div>
+    <p>Со строением растительной клетки можно познакомиться, если приготовить препараты и рассмотреть их под микроскопом: кожицу чешуи лука, клетки листа элодеи, клетки плодов томата, рябины и шиповника. Этим мы займёмся в «Моей лаборатории».</p>
+  </div>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 15–16</summary>
+    <div class="body"><ul>
+      <li>Окраска, форма и размеры клеток разных органов растений очень разнообразны (рис. 9).</li>
+      <li class="pic">Рис. 9 «Формы растительных клеток». Подписи: клетки мякоти арбуза; мякоти зелёного листа (две клетки); скорлупы ореха; жгучих волосков листьев (две клетки).</li>
+      <li>Со строением растительной клетки можно познакомиться, приготовив и рассмотрев под микроскопом препараты чешуи кожицы лука, клеток листа элодеи и клеток плодов томатов, рябины и шиповника.</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 12 -->
+<section class="step" data-step="shagi" data-name="Как составить план" data-part="Шаги к успеху" data-kind="task" data-pages="с. 16">
+  <div class="kind-tag task"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l4.2-1L19 8.2 15.8 5 5 15.8z"></path><path d="M13.8 7l3.2 3.2"></path></svg></span><div><b>Задание учебника</b><span class="pg">с. 16</span><small>Правила из рубрики «Шаги к успеху». Пример на другом тексте — наш.</small></div></div>
+  <div class="eyebrow">Шаги к успеху</div>
+  <h2>Как составить план параграфа</h2>
+  <div class="prose">
+    <p>Учебник советует: чтобы лучше усвоить параграф, составь его <b>план</b>. План — это короткий список главных мыслей текста по порядку.</p>
+    <p>Три правила хорошего плана:</p>
+    <ul>
+      <li>пункты плана отражают <b>главные мысли</b>;</li>
+      <li>пункты связаны между собой <b>по смыслу</b>;</li>
+      <li>пункты написаны <b>кратко и чётко</b>.</li>
+    </ul>
+    <p>Как это сделать: раздели текст на части (смысловые единицы) и в каждой найди главную мысль. Помогут два вопроса:</p>
+  </div>
+  <div class="ways">
+    <div class="way"><h3>«О чём здесь говорится?»</h3><p>Помогает разбить текст на части. Сменилась тема — началась новая часть.</p></div>
+    <div class="way const"><h3>«Что об этом говорится?»</h3><p>Помогает найти в каждой части самое главное.</p></div>
+  </div>
+  <details>
+    <summary>Пример на другом тексте</summary>
+    <div class="body">
+      <p><i>Текст:</i> «Школьный микроскоп состоит из нескольких частей. Сверху — окуляр, в него смотрят глазом. Внизу — объективы, они увеличивают предмет. Препарат кладут на столик. Снизу его освещает зеркальце или лампа. Чтобы изображение стало чётким, крутят винты. Работать с микроскопом нужно аккуратно: не трогать стёкла пальцами и переносить микроскоп двумя руками».</p>
+      <p><i>План:</i> 1) Из чего состоит микроскоп. 2) Как навести изображение. 3) Правила работы с микроскопом.</p>
+      <p>Видишь: пунктов мало, они короткие и идут по порядку текста.</p>
+    </div>
+  </details>
+  <div class="aside">
+    <div class="k">Попробуй сама</div>
+    <p>Составь план § 2. Подсказка: читай параграф по кусочкам и задавай себе два вопроса. Шаги 3–11 этой страницы уже разбиты на части — можешь сверить свой план с их названиями, но сформулируй пункты своими словами.</p>
+  </div>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 16</summary>
+    <div class="body"><ul>
+      <li>Рубрика «Шаги к успеху». Чтобы лучше усвоить материал параграфа, нужно составить его план. План должен отвечать требованиям: 1) пункты плана должны отражать главные мысли; 2) пункты плана должны быть связаны между собой по смыслу; 3) пункты плана должны быть сформулированы кратко и чётко.</li>
+      <li>При составлении плана текст делится на части (смысловые единицы), и в каждой из них находится главная мысль. Чтобы было легче, при чтении задавайте два вопроса: «О чём здесь говорится?» и «Что об этом говорится?». Первый вопрос поможет разбить текст на смысловые единицы, а второй — выделить самое существенное, главное в этой части текста.</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 13 -->
+<section class="step" data-step="lab-luk" data-name="Лаборатория: готовим препарат лука" data-part="Моя лаборатория" data-kind="task" data-pages="с. 17–18">
+  <div class="kind-tag task"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l4.2-1L19 8.2 15.8 5 5 15.8z"></path><path d="M13.8 7l3.2 3.2"></path></svg></span><div><b>Задание учебника</b><span class="pg">с. 17–18</span><small>Лабораторная работа из книги. Подсказки наши.</small></div></div>
+  <div class="eyebrow">Моя лаборатория · Работа 1, часть 1</div>
+  <h2>Препарат кожицы чешуи лука</h2>
+  <div class="prose">
+    <p><b>Цель работы:</b> научиться самой готовить препарат кожицы чешуи лука, чтобы рассмотреть под микроскопом, из каких клеток она состоит.</p>
+    <p><b>Материалы и оборудование:</b> луковица, раствор йода, фильтровальная бумага, марля, пипетка, пинцет, препаровальная игла, микроскоп, предметное и покровное стёкла, вода.</p>
+  </div>
+  <div class="aside home">
+    <div class="k">Осторожно</div>
+    <p>Работу делают на уроке, с учителем, или дома вместе со взрослыми. Стёкла тонкие и острые по краям: бери их за края, не нажимай сильно. Йод пачкает руки и одежду, его не пробуют на вкус.</p>
+  </div>
+  <figure class="fig"><img src="img/2026-09-14-p2/03-preparat-luka.jpg" width="692" height="733" loading="lazy" alt="Шесть картинок: пипеткой капают воду на стекло; пинцетом снимают кожицу с чешуи лука; кладут кожицу в каплю; накрывают покровным стеклом; бумагой оттягивают воду под микроскопом; капают йод"><figcaption>Рис. 10. Приготовление микропрепарата кожицы чешуи лука (с. 17).</figcaption></figure>
+  <p class="task">Ход работы, пункты 1–6 — как приготовить препарат:</p>
+  <div class="qlist">
+    <div class="qi"><span class="qn">1</span><div><p>Рассмотри на рисунке 10, в каком порядке готовят препарат.</p></div></div>
+    <div class="qi"><span class="qn">2</span><div><p>Тщательно протри предметное стекло марлей.</p></div></div>
+    <div class="qi"><span class="qn">3</span><div><p>Пипеткой капни на стекло 1–2 капли воды.</p></div></div>
+    <div class="qi"><span class="qn">4</span><div><p>Пинцетом осторожно сними маленький кусочек прозрачной кожицы с <b>внутренней</b> стороны чешуи лука.</p></div></div>
+    <div class="qi"><span class="qn">5</span><div><p>Положи кожицу в каплю воды и расправь кончиком препаровальной иглы.</p></div></div>
+    <div class="qi"><span class="qn">6</span><div><p>Накрой кожицу покровным стеклом, как на рисунке. Лишнюю воду оттяни фильтровальной бумагой.</p></div></div>
+  </div>
+  <details>
+    <summary>Подсказки</summary>
+    <div class="body">
+      <p>Кожица должна быть совсем тонкой и прозрачной, как плёнка. Если она сложилась — расправь иглой, иначе клетки лягут в несколько слоёв и ничего не будет видно.</p>
+      <p>Покровное стекло опускай наклонно, с одного края (картинка 4) — так под ним не останется пузырьков воздуха.</p>
+    </div>
+  </details>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 17–18</summary>
+    <div class="body"><ul>
+      <li>«Моя лаборатория». Рубрика «Исследуйте». Работа «Приготовление и рассматривание препарата кожицы чешуи лука под микроскопом».</li>
+      <li>Цель работы: научиться самостоятельно приготавливать препарат кожицы чешуи лука для изучения клеточного строения под микроскопом.</li>
+      <li>Материалы и оборудование: луковица, раствор йода, фильтровальная бумага, марля, пипетка, пинцет, препаровальная игла, микроскоп, предметное и покровное стёкла, вода.</li>
+      <li>Ход работы. 1. Рассмотрите на рисунке 10 последовательность приготовления препарата. 2. Подготовьте предметное стекло, тщательно протерев его марлей. 3. Пипеткой нанесите 1–2 капли воды на предметное стекло. 4. При помощи пинцета осторожно снимите маленький кусочек прозрачной кожицы с внутренней поверхности чешуи лука. 5. Положите кусочек кожицы в каплю воды и расправьте кончиком препаровальной иглы. 6. Накройте кожицу покровным стеклом, как показано на рисунке. Фильтровальной бумагой оттяните лишнюю воду.</li>
+      <li class="pic">Рис. 10 «Приготовление микропрепарата кожицы чешуи лука»: шесть пронумерованных картинок — капля воды из пипетки на стекле; кожицу снимают пинцетом с чешуи луковицы; кожицу кладут в каплю; накрывают покровным стеклом; под микроскопом бумагой оттягивают воду; пипеткой добавляют йод, а бумагой с другой стороны оттягивают лишний раствор.</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 14 -->
+<section class="step" data-step="lab-luk-2" data-name="Лаборатория: смотрим клетки лука" data-part="Моя лаборатория" data-kind="task" data-pages="с. 18">
+  <div class="kind-tag task"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l4.2-1L19 8.2 15.8 5 5 15.8z"></path><path d="M13.8 7l3.2 3.2"></path></svg></span><div><b>Задание учебника</b><span class="pg">с. 18</span><small>Лабораторная работа из книги. Подсказки наши, выводы — твои.</small></div></div>
+  <div class="eyebrow">Моя лаборатория · Работа 1, часть 2</div>
+  <h2>Смотрим клетки лука</h2>
+  <p class="task">Ход работы, пункты 7–13 — что делать с готовым препаратом:</p>
+  <div class="qlist">
+    <div class="qi"><span class="qn">7</span><div><p>Рассмотри препарат при <b>малом</b> увеличении. Отметь, какие части клетки ты видишь.</p></div></div>
+    <div class="qi"><span class="qn">8</span><div><p>Окрась препарат раствором йода. Лишний раствор оттяни фильтровальной бумагой с противоположной стороны.</p></div></div>
+    <div class="qi"><span class="qn">9</span><div><p>Рассмотри окрашенный препарат. Какие изменения произошли?</p></div></div>
+    <div class="qi"><span class="qn">10</span><div><p>Рассмотри препарат при <b>большом</b> увеличении. Найди тёмную полосу вокруг клетки — это оболочка. Под ней золотистое вещество — цитоплазма (она может занимать всю клетку или лежать около стенок). В цитоплазме хорошо видно ядро. Найди вакуоль с клеточным соком (она отличается от цитоплазмы по цвету).</p></div></div>
+    <div class="qi"><span class="qn">11</span><div><p>Зарисуй 2–3 клетки кожицы лука. Подпиши оболочку, цитоплазму, ядро, вакуоль с клеточным соком (рис. 11).</p></div></div>
+    <div class="qi"><span class="qn">12</span><div><p>Подумай, зачем препарат кожицы чешуи лука окрашивали раствором йода.</p></div></div>
+    <div class="qi"><span class="qn">13</span><div><p>Сделай вывод.</p></div></div>
+  </div>
+  <figure class="fig"><img src="img/2026-09-14-p2/04-kozhica-luka.jpg" width="482" height="283" loading="lazy" alt="Рисунок клеток кожицы лука, похожих на кирпичики, с подписями: оболочка, ядро, вакуоль, поры, цитоплазма"><figcaption>Рис. 11. Клеточное строение кожицы чешуи лука (с. 18).</figcaption></figure>
+  <details>
+    <summary>Подсказки</summary>
+    <div class="body">
+      <p><b>К пункту 9 и 12.</b> Сравни, что было видно до йода и после. Какие части клетки стали заметнее? Вот и ответ, зачем красят.</p>
+      <p><b>К пункту 11.</b> Рисуй простым карандашом, крупно, клетки рядом друг с другом, как кирпичики. Подписи ставь сбоку и проводи к ним линии, как на рис. 11.</p>
+      <p><b>К пункту 13.</b> Вывод отвечает на цель работы: получилось ли приготовить препарат и что ты увидела. Начни так: «Я научилась… Под микроскопом видно, что кожица лука состоит из… В каждой клетке есть…».</p>
+    </div>
+  </details>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 18</summary>
+    <div class="body"><ul>
+      <li>7. Рассмотрите приготовленный препарат при малом увеличении. Отметьте, какие части клетки вы видите. 8. Окрасьте препарат раствором йода. Фильтровальной бумагой с противоположной стороны оттяните лишний раствор. 9. Рассмотрите окрашенный препарат. Какие изменения произошли?</li>
+      <li>10. Рассмотрите препарат при большом увеличении. Найдите на нём тёмную полосу, окружающую клетку, — оболочку; под ней золотистое вещество — цитоплазму (она может занимать всю клетку или находиться около стенок). В цитоплазме хорошо видно ядро. Найдите вакуоль с клеточным соком (она отличается от цитоплазмы по цвету).</li>
+      <li>11. Зарисуйте 2–3 клетки кожицы чешуи лука. Обозначьте оболочку, цитоплазму, ядро, вакуоль с клеточным соком (рис. 11). 12. Подумайте, зачем препарат кожицы чешуи лука окрашивали раствором йода. 13. Сделайте вывод.</li>
+      <li class="pic">Рис. 11 «Клеточное строение кожицы чешуи лука». Подписи: оболочка, ядро, вакуоль, поры, цитоплазма.</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 15 -->
+<section class="step" data-step="lab-plastidy" data-name="Лаборатория: пластиды в плодах" data-part="Моя лаборатория" data-kind="task" data-pages="с. 18–19">
+  <div class="kind-tag task"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l4.2-1L19 8.2 15.8 5 5 15.8z"></path><path d="M13.8 7l3.2 3.2"></path></svg></span><div><b>Задание учебника</b><span class="pg">с. 18–19</span><small>Лабораторная работа из книги. Подсказки наши, выводы — твои.</small></div></div>
+  <div class="eyebrow">Моя лаборатория · Работа 2</div>
+  <h2>Пластиды в клетках плодов томата, рябины, шиповника</h2>
+  <div class="prose">
+    <p><b>Цель работы:</b> познакомиться с особенностями строения пластид в клетках мякоти плодов томата, рябины, шиповника.</p>
+    <p><b>Материалы и оборудование:</b> плоды томата, рябины, шиповника, вода, пипетка, пинцет, препаровальная игла, микроскоп, предметное и покровное стёкла.</p>
+  </div>
+  <div class="qlist">
+    <div class="qi"><span class="qn">1</span><div><p>Приготовь препараты клеток плодов. Иглой перенеси частичку мякоти плода в каплю воды на предметном стекле, кончиком иглы раздели мякоть на клетки и накрой покровным стеклом.</p></div></div>
+    <div class="qi"><span class="qn">2</span><div><p>Рассмотри препарат под микроскопом. Найди в клетках пластиды, отметь их окраску.</p></div></div>
+    <div class="qi"><span class="qn">3</span><div><p>Зарисуй строение клеток.</p></div></div>
+    <div class="qi"><span class="qn">4</span><div><p>Сравни форму и особенности пластид с рисунком 12. Определи, под каким номером нарисованы клетки плодов рябины, томата, шиповника, и соотнеси их с фотографиями плодов.</p></div></div>
+    <div class="qi"><span class="qn">5</span><div><p>Сравни клетки мякоти плодов с клетками листа элодеи и кожицы чешуи лука.</p></div></div>
+    <div class="qi"><span class="qn">6</span><div><p>Обсуди результаты лабораторных работ с одноклассниками.</p></div></div>
+    <div class="qi"><span class="qn">7</span><div><p>Исходя из цели работы (с. 18) и своих наблюдений, сделай выводы.</p></div></div>
+  </div>
+  <figure class="fig wide"><img src="img/2026-09-14-p2/05-plastidy-plodov.jpg" width="800" height="683" loading="lazy" alt="Слева фотографии плодов: а — помидоры, б — рябина, в — шиповник. Справа три рисунка клеток 1, 2, 3 с красными пластидами разной формы"><figcaption>Рис. 12. Пластиды в клетках плодов (с. 19).</figcaption></figure>
+  <details>
+    <summary>Подсказки</summary>
+    <div class="body">
+      <p><b>К пункту 2.</b> Вспомни шаг 7: какие пластиды бывают красными и жёлтыми? Как они называются?</p>
+      <p><b>К пункту 4.</b> Смотри не только на цвет, но и на форму пластид: где они короткие и толстые, как запятые, а где длинные и тонкие, как ниточки? Сравни со своим препаратом. Номер для каждого плода определи сама.</p>
+      <p><b>К пункту 5.</b> Клетки элодеи ты рассмотришь в следующей работе (шаг 16). Сравни, какого цвета пластиды в листе и в плодах и есть ли пластиды в кожице лука.</p>
+    </div>
+  </details>
+  <div class="aside home">
+    <div class="k">Ближе к дому</div>
+    <p>Помидоры растут на огородах и в теплицах Дагестана, а шиповник — в горах и по склонам. Для этой работы всё можно найти на рынке или на даче.</p>
+  </div>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 18–19</summary>
+    <div class="body"><ul>
+      <li>Работа «Пластиды в клетках плодов томатов, рябины, шиповника». Цель работы: познакомиться с особенностями строения пластид в клетках мякоти плодов томата, рябины, шиповника.</li>
+      <li>Материалы и оборудование: плоды томата, рябины, шиповника, вода, пипетка, пинцет, препаровальная игла, микроскоп, предметное и покровное стёкла.</li>
+      <li>Ход работы. 1. Приготовьте препараты клеток плодов томатов, рябины, шиповника: в каплю воды на предметном стекле иглой перенесите частицу мякоти плода, кончиком иглы разделите мякоть на клетки и накройте покровным стеклом. 2. Рассмотрите препарат под микроскопом. Найдите в клетках пластиды, отметьте их окраску. 3. Зарисуйте строение клеток.</li>
+      <li>4. Сравните форму и особенности пластид изученных клеток с изображёнными на рисунке 12. Определите, под каким номером изображены клетки плодов рябины, томата, шиповника, соотнесите их с рисунками плодов. 5. Сравните клетки мякоти плодов с клетками листа элодеи и кожицы чешуи лука. 6. Обсудите с товарищами по классу результаты лабораторных работ. 7. На основе цели работы (см. с. 18) и проведённых наблюдений сделайте выводы.</li>
+      <li class="pic">Рис. 12 «Пластиды в клетках плодов»: слева фотографии плодов, обозначенные буквами а, б, в (томаты, рябина, шиповник), справа рисунки клеток под номерами 1, 2, 3.</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 16 -->
+<section class="step" data-step="lab-elodeya" data-name="Лаборатория: клетки элодеи" data-part="Моя лаборатория" data-kind="task" data-pages="с. 19–20">
+  <div class="kind-tag task"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l4.2-1L19 8.2 15.8 5 5 15.8z"></path><path d="M13.8 7l3.2 3.2"></path></svg></span><div><b>Задание учебника</b><span class="pg">с. 19–20</span><small>Лабораторная работа из книги. Подсказки наши, выводы — твои.</small></div></div>
+  <div class="eyebrow">Моя лаборатория · Работа 3</div>
+  <h2>Строение клетки листа элодеи</h2>
+  <div class="prose">
+    <p><b>Элодея</b> — водное растение, его часто держат в аквариумах. Листики у неё тонкие, поэтому клетки видно без всякой кожицы.</p>
+    <p><b>Цель работы:</b> познакомиться со строением клетки листа элодеи.</p>
+    <p><b>Материалы и оборудование:</b> элодея, вода, пипетка, пинцет, препаровальная игла, микроскоп, предметное и покровное стёкла.</p>
+  </div>
+  <figure class="fig wide"><img src="img/2026-09-14-p2/06-elodeya.jpg" width="665" height="317" loading="lazy" alt="Слева в круге — клетки листа под микроскопом, в них много зелёных зёрнышек; справа — веточка элодеи с мелкими листьями"><figcaption>Рис. 13. Пластиды в клетках листа элодеи (с. 20).</figcaption></figure>
+  <div class="qlist">
+    <div class="qi"><span class="qn">1</span><div><p>Приготовь препарат: отдели лист от стебля, положи его в каплю воды на предметное стекло и накрой покровным стеклом.</p></div></div>
+    <div class="qi"><span class="qn">2</span><div><p>Рассмотри препарат под микроскопом. Найди в клетках пластиды, отметь их окраску.</p></div></div>
+    <div class="qi"><span class="qn">3</span><div><p>Сравни то, что видишь в микроскоп, с рисунком 13.</p></div></div>
+    <div class="qi"><span class="qn">4</span><div><p>Зарисуй строение клетки листа элодеи.</p></div></div>
+    <div class="qi"><span class="qn">5</span><div><p>Сделай вывод.</p></div></div>
+  </div>
+  <details>
+    <summary>Подсказки</summary>
+    <div class="body">
+      <p><b>К пункту 2.</b> Какого цвета «зёрнышки» в клетках? Вспомни, как называются пластиды такого цвета и какое вещество их окрашивает (шаг 7).</p>
+      <p><b>К пункту 5.</b> Что есть в клетке элодеи, чего не было в клетках кожицы лука? Начни вывод со слов: «В клетках листа элодеи я увидела…».</p>
+    </div>
+  </details>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 19–20</summary>
+    <div class="body"><ul>
+      <li>Работа «Строение клетки листа элодеи». Цель работы: познакомиться со строением клетки листа элодеи.</li>
+      <li>Материалы и оборудование: элодея, вода, пипетка, пинцет, препаровальная игла, микроскоп, предметное и покровное стёкла.</li>
+      <li>Ход работы. 1. Приготовьте препарат клеток листа водного растения элодеи: отделите лист от стебля, положите его в каплю воды на предметное стекло и накройте покровным стеклом. 2. Рассмотрите препарат под микроскопом. Найдите в клетках пластиды, отметьте их окраску. 3. Сравните увиденное под микроскопом с рисунком 13. 4. Зарисуйте строение клетки листа элодеи. 5. Сделайте вывод.</li>
+      <li class="pic">Рис. 13 «Пластиды в клетках листа элодеи»: слева клетки листа под микроскопом, справа веточка элодеи.</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 17 -->
+<section class="step" data-step="guk" data-name="Роберт Гук открывает клетки" data-part="Это интересно" data-kind="book" data-pages="с. 20">
+  <div class="kind-tag book"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.5c2.6-1 5.6-.8 9 1.2v13c-3.4-2-6.4-2.2-9-1.2z"></path><path d="M21 5.5c-2.6-1-5.6-.8-9 1.2v13c3.4-2 6.4-2.2 9-1.2z"></path></svg></span><div><b>Из учебника</b><span class="pg">с. 20</span></div></div>
+  <div class="eyebrow">Это интересно</div>
+  <h2>Роберт Гук открывает клетки</h2>
+  <div class="prose">
+    <p>Клетки открыл англичанин <b>Роберт Гук</b> в <b>1665 году</b>. Он сам сделал микроскоп и рассмотрел в него тонкий срез пробки — коры пробкового дуба.</p>
+    <p>Гук увидел множество крошечных ячеек, похожих на пчелиные соты. В учебнике сказано, что он насчитал до 125 миллионов таких «пор» на одном квадратном дюйме (дюйм — это 2,5 см, так что квадратный дюйм чуть больше почтовой марки).</p>
+    <p>Такие же ячейки Гук нашёл в сердцевине бузины и в стеблях других растений. Он назвал их <span class="term">клетками</span>. С этого началось изучение клеточного строения растений.</p>
+  </div>
+  <figure class="fig"><img src="img/2026-09-14-p2/07-kletki-probki-guk.jpg" width="338" height="474" loading="lazy" alt="Старинный рисунок: в круге множество мелких ячеек пробки, рядом микроскоп Гука с лампой и стеклянным шаром"><figcaption>Рис. 14. Вид клеток пробки дуба на собственном рисунке Р. Гука (с. 20).</figcaption></figure>
+  <div class="aside">
+    <div class="k">Слова Гука</div>
+    <p>Свои открытия Гук описал в книге «Микрография, или Описание малых предметов». Он писал: «Это могло бы казаться невероятным, если бы в этом не убеждал нас микроскоп с очевидной наглядностью».</p>
+    <p>А ядро клетки открыли гораздо позже, только в 1831 году, цитоплазму — ещё позднее.</p>
+  </div>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 20</summary>
+    <div class="body"><ul>
+      <li>Рубрика «Это интересно». Существование клеток открыл англичанин Роберт Гук в 1665 г.</li>
+      <li>В своей книге «Микрография, или Описание малых предметов» он писал: «Это могло бы казаться невероятным, если бы в этом не убеждал нас микроскоп с очевидной наглядностью».</li>
+      <li>Рассматривая в сконструированный им микроскоп тонкий срез пробки у пробкового дуба, он насчитал до 125 млн пор, или ячеек, в одном квадратном дюйме (2,5 см) (рис. 14).</li>
+      <li>В сердцевине бузины, стеблях различных растений Р. Гук обнаружил такие же ячейки и назвал их клетками. Так началось изучение клеточного строения растений.</li>
+      <li>Ядро клетки было открыто только в 1831 г., а цитоплазма ещё позднее.</li>
+      <li class="pic">Рис. 14 «Вид клеток пробки дуба на собственном рисунке Р. Гука»: в круге ячейки пробки, рядом микроскоп Гука.</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 18 -->
+<section class="step" data-step="lyuboznatelnym" data-name="Задания для любознательных" data-part="Для любознательных" data-kind="task" data-pages="с. 21">
+  <div class="kind-tag task"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l4.2-1L19 8.2 15.8 5 5 15.8z"></path><path d="M13.8 7l3.2 3.2"></path></svg></span><div><b>Задание учебника</b><span class="pg">с. 21</span><small>Задания из книги по желанию. Пересказ и подсказки наши, ответы — твои.</small></div></div>
+  <div class="eyebrow">Для любознательных</div>
+  <h2>Задания для любознательных</h2>
+  <div class="qlist">
+    <div class="qi"><span class="qn">1</span><div><p>Хочешь увидеть «исторический» препарат Р. Гука из XVII века? Его можно приготовить вместе со взрослыми — попроси помочь учителя или родителей. Тонкий срез светлой пробки кладут в спирт. Через несколько минут начинают по капле добавлять воду, чтобы выгнать из клеток воздух: он затемняет препарат. Потом срез рассматривают под микроскопом. Ты увидишь то же, что Гук.</p><p class="src">Осторожно: срез пробки делает взрослый (нужен острый нож), и со спиртом работает тоже взрослый.</p></div></div>
+    <div class="qi"><span class="qn">2</span><div><p>Прочитай отрывок из книги И. И. Акимушкина «Занимательная биология» и ответь на вопросы:</p><p>• Используя дополнительные источники, выясни, у каких растений можно увидеть клетки невооружённым глазом.</p><p>• Найди в тексте утверждение, которое указывает на единство живой природы.</p><p class="src">Подсказка к первому: подумай о сочных плодах. Разрежь спелый арбуз или помидор и посмотри на мякоть на изломе — видны ли крошечные блестящие «зёрнышки»? Проверь по энциклопедии или спроси учителя.</p><p class="src">Подсказка ко второму: «единство» значит, что у всего живого есть что-то общее. Найди предложение, где сказано, из чего сложены и растения, и животные.</p></div></div>
+  </div>
+  <div class="aside">
+    <div class="k">Отрывок «"Кожа" клетки» коротко</div>
+    <p>Всё живое, и растения, и животные, сложено из клеток. Первым клетку увидел Роберт Гук в 1665 году: он рассмотрел в самодельный микроскоп ломтик пробки. Но тогда его открытие мало кого впечатлило.</p>
+    <p>Только через 175 лет, в 1839 году, учёные Шлейден и Шванн доказали, что из клеток состоит всё живое. Клетки обычно крошечные, но бывают и такие большие, что видны без микроскопа.</p>
+  </div>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 21</summary>
+    <div class="body"><ul>
+      <li>Рубрика «Задания для любознательных». Задание 1: приготовить «исторический» препарат Р. Гука из XVII в. вместе со взрослыми (попросить учителя или родителей): положить тонкий срез светлой пробки в спирт; через несколько минут начать добавлять воду по каплям, чтобы удалить из клеток воздух, затемняющий препарат; рассмотреть срез под микроскопом. Вы увидите то же, что Р. Гук в XVII в.</li>
+      <li>Задание 2: прочитать отрывок из книги «Занимательная биология» И. И. Акимушкина и ответить на вопросы (они перечислены выше).</li>
+      <li>Отрывок «"Кожа" клетки». Всё живое на Земле, и растения, и животные, сложено из клеток, как молекулы из атомов. Сегодня это утверждение мало кого удивит.</li>
+      <li>Первым из людей клетку увидел Роберт Гук, ассистент известного физика Бойля. Это случилось в Англии в 1665 году. Тогда натуралисты и не только те, кто мог позволить себе такое развлечение, увлекались лупами и микроскопами: покупали или делали их сами и смотрели в увеличительные стёкла на всё, что попадалось под руку.</li>
+      <li>Роберт Гук сделал микроскоп сам и рассматривал в него разные вещи, которые открывали ему свои невидимые для глаза свойства. Позднее он рассказал об этом в книге «Микрография».</li>
+      <li>Однажды ему попалась пробка. Гук нарезал её на тонкие ломтики, положил под объектив и увидел стройные ряды ячеек, или клеток, как он их назвал. Он, как смог, зарисовал клетки пробкового дуба. Но открытие Гука и его рисунки не произвели большого впечатления на современников.</li>
+      <li>Прошло почти 175 лет, и только в 1839 году была создана общая теория клеточного строения. Ботаник Маттиас Шлейден и зоолог Теодор Шванн независимо друг от друга доказали, что из клеток сложена не только кора пробкового дуба, но и вообще все растительные и животные ткани, всё живое на планете.</li>
+      <li>Клетки растений и животных в общем схожи. Одно из различий: оболочки клеток растений состоят из клетчатки — высокомолекулярного сахара, а у животных в основном из липидов — жироподобных веществ.</li>
+      <li>Размеры клеток обычно очень малы. В капле нашей крови плавает около 5 миллионов красных кровяных шариков, и каждый из них — клетка. В длину они около 7–8 микрон, а микрон — тысячная часть миллиметра.</li>
+      <li>Бактерии, каждая из которых тоже клетка, ещё меньше: в капле воды 40 миллионов бактерий живут так же просторно, как рыбы в пруду.</li>
+      <li>Но бывают клетки и очень большие, которые видны невооружённым глазом.</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 19 -->
+<section class="step" data-step="vsya-kletka" data-name="Вся клетка на одной схеме" data-part="Итог" data-kind="ours">
+  <div class="kind-tag ours"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 6h14"></path><path d="M5 12h14"></path><path d="M5 18h9"></path></svg></span><div><b>Коротко о главном</b><small>Сверх учебника — вся клетка на одной схеме перед играми.</small></div></div>
+  <div class="eyebrow">Итог</div>
+  <h2>Вся клетка на одной схеме</h2>
+  <div class="prose">
+    <p>Помнишь дом из первого шага? Вот кто в нём за что отвечает. Закрой нижнюю строчку в каждой плитке пальцем и попробуй вспомнить сама.</p>
+  </div>
+  <div class="org" aria-label="Части клетки и их работа">
+    <div class="box top">Растительная клетка</div>
+    <div class="lbl">Снаружи</div>
+    <div class="lvl">
+      <div class="box">Клеточная стенка<small>прочность и форма · забор</small></div>
+      <div class="box">Мембрана<small>одно пропускает, другое нет · охранник</small></div>
+    </div>
+    <div class="lbl">Внутри</div>
+    <div class="lvl">
+      <div class="box">Цитоплазма<small>внутренняя среда, всё объединяет · кисель</small></div>
+      <div class="box">Ядро<small>управляет жизнью клетки · директор</small></div>
+      <div class="box">Хромосомы<small>наследственная информация · чертежи</small></div>
+      <div class="box">Митохондрии<small>дают энергию · электростанция</small></div>
+    </div>
+    <div class="lbl">Только у растений</div>
+    <div class="lvl">
+      <div class="box sub">Хлоропласты<small>зелёные, фотосинтез · кухня</small></div>
+      <div class="box sub">Хромопласты<small>жёлтые и красные, окраска · краски</small></div>
+      <div class="box sub">Лейкопласты<small>бесцветные, запасы · кладовка</small></div>
+      <div class="box sub">Вакуоли<small>клеточный сок · баки с водой</small></div>
+    </div>
+  </div>
+  <p class="hint">Стенка с целлюлозой, пластиды и вакуоли — это то, чем клетки растений отличаются от клеток других царств. Подробнее — на шагах 3–11.</p>
+</section>
+
+<!-- 20 -->
+<section class="step" data-step="slovar-1" data-name="Словарик: снаружи и внутри" data-part="Словарик" data-kind="ours">
+  <div class="kind-tag ours"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="6" width="12" height="14" rx="1.5"></rect><path d="M8.5 3.5h10.5a1.5 1.5 0 0 1 1.5 1.5v12.5"></path></svg></span><div><b>Словарик</b><small>Сверх учебника — чтобы запомнить слова параграфа.</small></div></div>
+  <div class="game">
+    <div class="g-head"><h3>Словарик: снаружи и внутри</h3><span class="badge" id="b-terms">Игра</span></div>
+    <p class="task">Нажми на карточку, и она перевернётся. Словарик из двух частей, открой все карточки.</p>
+    <div class="progress" id="terms-progress"></div>
+    <div class="cards" data-terms="0"></div>
+  </div>
+</section>
+
+<!-- 21 -->
+<section class="step" data-step="slovar-2" data-name="Словарик: пластиды и вакуоли" data-part="Словарик" data-kind="ours">
+  <div class="kind-tag ours"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="6" width="12" height="14" rx="1.5"></rect><path d="M8.5 3.5h10.5a1.5 1.5 0 0 1 1.5 1.5v12.5"></path></svg></span><div><b>Словарик</b><small>Сверх учебника — чтобы запомнить слова параграфа.</small></div></div>
+  <div class="game">
+    <div class="g-head"><h3>Словарик: пластиды и вакуоли</h3><span class="badge" id="b-terms2">Игра</span></div>
+    <p class="task">Вторая часть: пластиды, вакуоли и митохондрии.</p>
+    <div class="progress" id="terms-progress2"></div>
+    <div class="cards" data-terms="1"></div>
+  </div>
+</section>
+
+<!-- 22 -->
+<section class="step" data-step="kto-chto" data-name="Кто чем занят в клетке" data-part="Игры" data-kind="ours">
+  <div class="kind-tag ours"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="3"></rect><circle cx="9" cy="9" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="15" cy="15" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="15" cy="9" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="9" cy="15" r="1.3" fill="currentColor" stroke="none"></circle></svg></span><div><b>Игра</b><small>Сверх учебника — чтобы закрепить тему.</small></div></div>
+  <div class="game" id="g-match">
+    <div class="g-head"><h3>Кто чем занят в клетке</h3><span class="badge" id="b-match">Игра</span></div>
+    <p class="task">У каждой части клетки своя работа. Нажми на часть клетки слева, потом на её работу справа.</p>
+    <div class="match">
+      <div class="col"><div class="lbl">Часть клетки</div><div class="col" id="foes"></div></div>
+      <div class="col"><div class="lbl">Что делает</div><div class="col" id="outcomes"></div></div>
+    </div>
+    <div id="match-fb"></div>
+  </div>
+</section>
+
+<!-- 23 -->
+<section class="step" data-step="plastidy-igra" data-name="Какие это пластиды?" data-part="Игры" data-kind="ours">
+  <div class="kind-tag ours"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="3"></rect><circle cx="9" cy="9" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="15" cy="15" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="15" cy="9" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="9" cy="15" r="1.3" fill="currentColor" stroke="none"></circle></svg></span><div><b>Игра</b><small>Сверх учебника — чтобы закрепить тему.</small></div></div>
+  <div class="game">
+    <div class="g-head"><h3>Какие это пластиды?</h3><span class="badge" id="b-sort">Игра</span></div>
+    <p class="task">Пластиды бывают трёх видов. Прочитай карточку и выбери, про какие пластиды она.</p>
+    <div class="progress" id="sort-progress"></div>
+    <div id="sort-box"></div>
+  </div>
+</section>
+
+<!-- 24 -->
+<section class="step" data-step="preparat" data-name="Приготовь препарат" data-part="Игры" data-kind="ours">
+  <div class="kind-tag ours"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="3"></rect><circle cx="9" cy="9" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="15" cy="15" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="15" cy="9" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="9" cy="15" r="1.3" fill="currentColor" stroke="none"></circle></svg></span><div><b>Игра</b><small>Сверх учебника — чтобы закрепить тему.</small></div></div>
+  <div class="game">
+    <div class="g-head"><h3>Приготовь препарат</h3><span class="badge" id="b-order">Игра</span></div>
+    <p class="task">Ты готовишь препарат кожицы лука. Нажимай на действия в том порядке, в каком их надо делать. Номера спрятаны, вспоминай сама.</p>
+    <div class="pool" id="pool"></div>
+    <div class="seq" id="seq"></div>
+    <div class="row">
+      <button class="btn" id="order-check" type="button" disabled>Проверить</button>
+      <button class="btn ghost" id="order-reset" type="button">Сначала</button>
+    </div>
+    <div id="order-fb"></div>
+  </div>
+</section>
+
+<!-- 25 -->
+<section class="step" data-step="lishnee" data-name="Найди лишнее" data-part="Игры" data-kind="ours">
+  <div class="kind-tag ours"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="3"></rect><circle cx="9" cy="9" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="15" cy="15" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="15" cy="9" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="9" cy="15" r="1.3" fill="currentColor" stroke="none"></circle></svg></span><div><b>Игра</b><small>Сверх учебника — чтобы закрепить тему.</small></div></div>
+  <div class="game">
+    <div class="g-head"><h3>Найди лишнее</h3><span class="badge" id="b-odd">Игра</span></div>
+    <p class="task">Три из одной компании, одно чужое. Найди чужое.</p>
+    <div class="progress" id="odd-progress"></div>
+    <div class="odd-grid" id="odd-grid"></div>
+    <div id="odd-fb"></div>
+    <div class="row"><button class="btn" id="odd-next" type="button" hidden>Дальше</button></div>
+  </div>
+</section>
+
+<!-- 26 -->
+<section class="step" data-step="test" data-name="Проверь себя" data-part="Финал" data-kind="ours">
+  <div class="kind-tag ours"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"></circle><path d="M8 12.3l2.8 2.8L16.2 9.6"></path></svg></span><div><b>Самопроверка</b><small>Сверх учебника — вопросы, чтобы проверить себя. Задания из учебника — дальше.</small></div></div>
+  <div class="eyebrow">Финал</div>
+  <h2>Проверь себя</h2>
+  <div class="game">
+    <div class="progress" id="quiz-progress"></div>
+    <div id="quiz-box"></div>
+  </div>
+</section>
+
+<!-- 27 -->
+<section class="step" data-step="voprosy" data-name="Вопросы учебника" data-part="Финал" data-kind="task" data-pages="с. 16">
+  <div class="kind-tag task"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l4.2-1L19 8.2 15.8 5 5 15.8z"></path><path d="M13.8 7l3.2 3.2"></path></svg></span><div><b>Задание учебника</b><span class="pg">с. 16</span><small>Вопросы из книги. Где искать ответ и подсказки — наши.</small></div></div>
+  <div class="eyebrow">Финал · Проверьте себя</div>
+  <h2>Вопросы из учебника</h2>
+  <div class="prose">
+    <p>Это вопросы рубрики «Проверьте себя», номера такие же, как в твоём учебнике. Рядом с каждым написано, на каком шаге искать ответ. Отвечай своими словами: так лучше запоминается, и учитель услышит, что ты поняла, а не заучила.</p>
+  </div>
+  <div class="qlist">
+<div class="qi"><span class="qn">1</span><div><p>Какое строение имеет растительная клетка?</p><p class="src">Подсказка: возьми рис. 8 и перечисли части по порядку — снаружи внутрь. Про каждую скажи хотя бы одно слово о её работе.</p><a href="#kletka">Шаги 3–11 · от схемы клетки до форм клеток</a></div></div>
+<div class="qi"><span class="qn">2</span><div><p>Какую роль выполняют пластиды в клетках растений?</p><p class="src">Подсказка: пластид три вида — назови каждый и его работу. Не забудь, что они умеют превращаться.</p><a href="#plastidy">Шаги 7–8 · Пластиды</a></div></div>
+<div class="qi"><span class="qn">3</span><div><p>Какую функцию выполняет клеточная мембрана?</p><p class="src">Подсказка: вспомни «охранника у двери» и слово «полупроницаемость».</p><a href="#obolochka">Шаг 4 · Оболочка и мембрана</a></div></div>
+<div class="qi"><span class="qn">4</span><div><p>Какую функцию выполняет клеточная стенка (оболочка) в клетках растений?</p><p class="src">Подсказка: из чего она состоит, что даёт клетке и зачем в ней поры.</p><a href="#obolochka">Шаг 4 · Оболочка и мембрана</a></div></div>
+<div class="qi"><span class="qn">5</span><div><p>Какую функцию выполняет генетический аппарат клетки?</p><p class="src">Подсказка: генетический аппарат — это ядро с хромосомами. Что ядро регулирует и что хранят хромосомы?</p><a href="#yadro">Шаг 6 · Ядро и хромосомы</a></div></div>
+<div class="qi"><span class="qn">6</span><div><p>Какие особенности строения, отличающие их от клеток других организмов, имеют клетки растений?</p><p class="src">Подсказка: найди в учебнике, какие части названы особенностью именно растительных клеток. Их три.</p><a href="#obolochka">Шаги 4, 7 и 9</a></div></div>
+  </div>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 16</summary>
+    <div class="body"><ul>
+      <li>Все вопросы рубрики «Проверьте себя» перечислены выше.</li>
+      <li>Рубрика «Запомните»: клеточная мембрана, клеточная стенка, цитоплазма, ядро, ядрышко, хромосомы, митохондрии, вакуоли, пластиды (хлоропласты, лейкопласты, хромопласты), хлорофилл. Все слова — в словарике (шаги 20–21).</li>
+      <li>Вопрос рубрики «Подумайте!» — на последнем шаге. Задания лабораторных работ — шаги 13–16, «Задания для любознательных» — шаг 18.</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 28 -->
+<section class="step" data-step="itog" data-name="Главный вопрос" data-part="Финал" data-kind="task" data-pages="с. 16">
+  <div class="kind-tag task"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l4.2-1L19 8.2 15.8 5 5 15.8z"></path><path d="M13.8 7l3.2 3.2"></path></svg></span><div><b>Задание учебника</b><span class="pg">с. 16</span><small>Вопрос «Подумайте!» из книги, кирпичики-подсказки — наши.</small></div></div>
+  <div class="eyebrow">Финал</div>
+  <h2>Подумай: с чем связаны особенности строения растительных клеток?</h2>
+  <div class="prose">
+    <p>Это вопрос из рубрики «Подумайте!». Прямо в тексте ответа нет, его надо сложить самой. Вот четыре «кирпичика». Открой их, а потом попробуй ответить своими словами, не подглядывая.</p>
+  </div>
+  <div class="bricks">
+    <div class="brick"><button type="button" aria-expanded="false"><span>Растение не может убежать</span><span>+</span></button><div class="b-body" hidden>Растение всю жизнь стоит на одном месте, его качает ветер, а стебель должен держать листья к свету. Какая часть клетки даёт прочность и форму и из чего она сделана?</div></div>
+    <div class="brick"><button type="button" aria-expanded="false"><span>Растение само готовит себе пищу</span><span>+</span></button><div class="b-body" hidden>Растению не нужно искать еду: оно делает её на свету. В каких пластидах это происходит и какое вещество в них есть?</div></div>
+    <div class="brick"><button type="button" aria-expanded="false"><span>Запасы на потом</span><span>+</span></button><div class="b-body" hidden>Где клетка хранит питательные вещества? А где у неё вода с растворёнными веществами? Вспомни «кладовки» и «баки».</div></div>
+    <div class="brick"><button type="button" aria-expanded="false"><span>Каждой клетке — своя работа</span><span>+</span></button><div class="b-body" hidden>Сравни на рис. 9 клетку зелёного листа и клетку скорлупы ореха. Вспомни шаг 10: от чего зависит, сколько в клетке пластид и вакуолей и какой толщины оболочка?</div></div>
+  </div>
+  <div class="aside">
+    <div class="k">Главное в одном предложении</div>
+    <p>Растительная клетка, как и любая другая, имеет мембрану, цитоплазму и ядро, а ещё у неё есть прочная оболочка из целлюлозы, пластиды — зелёные хлоропласты, цветные хромопласты и бесцветные лейкопласты — и вакуоли с клеточным соком.</p>
+  </div>
+  <div class="game">
+    <div class="g-head"><h3>Твоя мозаика</h3></div>
+    <div class="mosaic" id="mosaic"></div>
+    <div class="mosaic-list" id="mosaic-list"></div>
+    <div class="row"><a class="btn" href="./">К списку тем</a></div>
+  </div>
+</section>
+
+</main>
+
+<nav class="pager" aria-label="Навигация по шагам">
+  <div class="pager-inner">
+    <button class="btn ghost" id="prev" type="button">Назад</button>
+    <div class="count" id="count"></div>
+    <button class="btn" id="next" type="button">Дальше</button>
+  </div>
+</nav>
+
+<div class="toc" id="toc" hidden>
+  <div class="toc-panel" role="dialog" aria-label="Содержание">
+    <h3>Содержание <button class="toc-close" id="toc-close" type="button">Закрыть</button></h3>
+    <div id="toc-list" style="display:flex;flex-direction:column;gap:2px"></div>
+  </div>
+</div>
+
+<script>
+(function(){
+  'use strict';
+  var $ = function(s, r){ return (r||document).querySelector(s); };
+  var el = function(tag, cls, html){ var e=document.createElement(tag); if(cls) e.className=cls; if(html!=null) e.innerHTML=html; return e; };
+  var shuffle = function(a){ a=a.slice(); for(var i=a.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=a[i]; a[i]=a[j]; a[j]=t; } return a; };
+
+  /* ---------- state ---------- */
+  var KEY='bio-p2-v1';
+  var state={visited:{},done:{},last:0};
+  try{ var s=JSON.parse(localStorage.getItem(KEY)||'null'); if(s && typeof s==='object'){ state.visited=s.visited||{}; state.done=s.done||{}; state.last=s.last||0; } }catch(e){}
+  function save(){ try{ localStorage.setItem(KEY, JSON.stringify(state)); }catch(e){} }
+
+  var GAMES=[
+    {k:'terms', name:'Словарик, обе части', step:'slovar-1'},
+    {k:'match', name:'Кто чем занят в клетке', step:'kto-chto'},
+    {k:'sort', name:'Какие это пластиды?', step:'plastidy-igra'},
+    {k:'order', name:'Приготовь препарат', step:'preparat'},
+    {k:'odd', name:'Найди лишнее', step:'lishnee'},
+    {k:'quiz', name:'Проверь себя', step:'test'}
+  ];
+  var GAME_STEPS={'slovar-1':'terms','slovar-2':'terms','kto-chto':'match','plastidy-igra':'sort','preparat':'order','lishnee':'odd','test':'quiz'};
+
+  /* ---------- steps ---------- */
+  var steps=Array.prototype.slice.call(document.querySelectorAll('.step'));
+  var N=steps.length, cur=0;
+  var stepbar=$('#stepbar'), count=$('#count'), prevB=$('#prev'), nextB=$('#next'), tocList=$('#toc-list');
+
+  /* содержание по группам: из учебника / задания учебника / сверх учебника */
+  var KIND={book:['<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.5c2.6-1 5.6-.8 9 1.2v13c-3.4-2-6.4-2.2-9-1.2z"></path><path d="M21 5.5c-2.6-1-5.6-.8-9 1.2v13c3.4-2 6.4-2.2 9-1.2z"></path></svg>','Из учебника'],task:['<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l4.2-1L19 8.2 15.8 5 5 15.8z"></path><path d="M13.8 7l3.2 3.2"></path></svg>','Задания учебника'],ours:['<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="3"></rect><circle cx="9" cy="9" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="15" cy="15" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="15" cy="9" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="9" cy="15" r="1.3" fill="currentColor" stroke="none"></circle></svg>','Сверх учебника']};
+  var tocItems=[], groups=[], prevKind=null, grp=null;
+  steps.forEach(function(s,i){
+    var kind=s.getAttribute('data-kind')||'book', pg=(s.getAttribute('data-pages')||'').replace(/,\s*п\..*$/,'');
+    var start=kind!==prevKind;
+    var b=el('button'); b.type='button'; b.setAttribute('aria-label','Шаг '+(i+1)+': '+s.getAttribute('data-name'));
+    b.setAttribute('data-base','k-'+kind+(start&&i>0?' gstart':'')); b.className=b.getAttribute('data-base');
+    b.addEventListener('click', function(){ go(i); });
+    stepbar.appendChild(b);
+    if(start){
+      var label = kind==='ours' ? (i===0?'Коротко о главном':'Словарик и игры · сверх учебника') : KIND[kind][1];
+      grp=el('div','toc-group k-'+kind,'<div class="toc-head"><span class="ic">'+KIND[kind][0]+'</span><span>'+label+'</span></div>');
+      grp.pages=[]; groups.push(grp); tocList.appendChild(grp); prevKind=kind;
+    }
+    var t=el('button','toc-item','<span class="n">'+(i+1)+'</span><span>'+s.getAttribute('data-name')+'</span>'+(pg?'<span class="pg">'+pg+'</span>':'')+'<span class="m"></span>');
+    t.type='button'; t.addEventListener('click', function(){ closeToc(); go(i); });
+    grp.appendChild(t); tocItems.push(t);
+    (pg.match(/\d+/g)||[]).forEach(function(n){ grp.pages.push(+n); });
+  });
+  groups.forEach(function(g){ if(g.pages.length){ var a=Math.min.apply(null,g.pages), z=Math.max.apply(null,g.pages); g.firstChild.lastChild.textContent+=' · с. '+(a===z?a:a+'–'+z); } });
+
+  function paint(){
+    var bars=stepbar.children, items=tocItems;
+    for(var i=0;i<N;i++){
+      var key=steps[i].getAttribute('data-step'), g=GAME_STEPS[key];
+      var done = g && state.done[g];
+      bars[i].className=bars[i].getAttribute('data-base')+(i===cur?' current':'')+(state.visited[i]?' visited':'')+(done?' done':'');
+      items[i].className='toc-item'+(i===cur?' current':'');
+      items[i].lastElementChild.textContent = done ? 'пройдено' : (state.visited[i] ? '✓' : '');
+    }
+    count.textContent=(cur+1)+' / '+N;
+    prevB.disabled = cur===0;
+    if(cur===N-1){ nextB.textContent='Это последний шаг'; nextB.disabled=true; }
+    else { nextB.textContent='Дальше: '+steps[cur+1].getAttribute('data-name'); nextB.disabled=false; }
+    var badges={terms:['b-terms','b-terms2'],match:['b-match'],sort:['b-sort'],order:['b-order'],odd:['b-odd']};
+    for(var k in badges){ badges[k].forEach(function(id){ var b=document.getElementById(id); if(b && state.done[k]){ b.textContent='Пройдено'; b.classList.add('done'); } }); }
+    paintMosaic();
+  }
+  function go(i, silent){
+    if(i<0||i>=N) return;
+    cur=i; steps.forEach(function(s,j){ s.hidden = j!==i; });
+    state.visited[i]=true; state.last=i; save();
+    if(!silent){ var h='#'+steps[i].getAttribute('data-step'); if(location.hash!==h) history.pushState(null,'',h); }
+    window.scrollTo(0,0);
+    paint();
+  }
+  function idxFromHash(){ var h=location.hash.replace('#',''); for(var i=0;i<N;i++) if(steps[i].getAttribute('data-step')===h) return i; return -1; }
+  function onHash(){ var i=idxFromHash(); if(i>=0 && i!==cur) go(i, true); }
+  window.addEventListener('popstate', onHash);
+  window.addEventListener('hashchange', onHash);
+  prevB.addEventListener('click', function(){ go(cur-1); });
+  nextB.addEventListener('click', function(){ go(cur+1); });
+  document.addEventListener('keydown', function(e){ if(e.target && /INPUT|TEXTAREA/.test(e.target.tagName)) return; if(e.key==='ArrowRight') go(cur+1); if(e.key==='ArrowLeft') go(cur-1); if(e.key==='Escape') closeToc(); });
+
+  var toc=$('#toc');
+  function openToc(){ toc.hidden=false; }
+  function closeToc(){ toc.hidden=true; }
+  $('#toc-btn').addEventListener('click', openToc);
+  $('#toc-close').addEventListener('click', closeToc);
+  toc.addEventListener('click', function(e){ if(e.target===toc) closeToc(); });
+
+  function markDone(k){ if(!state.done[k]){ state.done[k]=true; save(); } paint(); }
+
+  /* resume button on step 1 */
+  (function(){
+    var r=$('#resume');
+    if(state.last>0 && idxFromHash()<0){
+      r.hidden=false;
+      r.innerHTML='<button class="btn ghost" type="button">Продолжить с шага '+(state.last+1)+': '+steps[state.last].getAttribute('data-name')+'</button>';
+      r.firstChild.addEventListener('click', function(){ go(state.last); });
+    }
+  })();
+
+  /* ---------- mosaic on final step ---------- */
+  var mosaic=$('#mosaic'), mosaicList=$('#mosaic-list');
+  function paintMosaic(){
+    mosaic.innerHTML=''; mosaicList.innerHTML='';
+    GAMES.forEach(function(g){
+      var t=el('span','tile'+(state.done[g.k]?' on':'')); t.title=g.name; mosaic.appendChild(t);
+      var li=el('span', state.done[g.k]?'':'off', (state.done[g.k]?'★ ':'☆ ')+g.name);
+      if(!state.done[g.k]){ li.style.cursor='pointer'; li.addEventListener('click', function(){ for(var i=0;i<N;i++) if(steps[i].getAttribute('data-step')===g.step){ go(i); break; } }); }
+      mosaicList.appendChild(li);
+    });
+  }
+
+  /* ---------- glossary ---------- */
+  var TERMS=[
+    [
+      {t:'Клеточная стенка', d:'Прочная оболочка клетки растений. В её состав входит целлюлоза. Даёт прочность и форму, в ней есть поры.', e:'Как забор с калитками.'},
+      {t:'Клеточная мембрана', d:'Тонкая плёнка под оболочкой. Одни вещества пропускает, другие нет.', e:'Как охранник у двери.'},
+      {t:'Цитоплазма', d:'Полужидкая внутренняя среда клетки. Объединяет все её части.', e:'Греч. китос — сосуд, плазма — образование.'},
+      {t:'Органоиды', d:'Маленькие «органы» клетки. Находятся в цитоплазме.', e:'Греч. органон — орган.'},
+      {t:'Ядро', d:'Небольшое плотное тельце в цитоплазме. Управляет жизнью клетки.', e:'Как кабинет директора.'},
+      {t:'Хромосомы', d:'Носители наследственной информации. Находятся в ядре.', e:'Греч. хрома — краска, сома — тельце.'},
+      {t:'Ядрышко', d:'Маленькое тельце внутри ядра. Их бывает одно или несколько.', e:''}
+    ],
+    [
+      {t:'Пластиды', d:'Мелкие тельца в цитоплазме, бесцветные или цветные.', e:'Три вида: хлоропласты, хромопласты, лейкопласты.'},
+      {t:'Хлоропласты', d:'Зелёные пластиды с хлорофиллом. В них идёт фотосинтез.', e:'Греч. хлорос — зелёный.'},
+      {t:'Хлорофилл', d:'Зелёное вещество в хлоропластах.', e:'Осенью разрушается, и листья желтеют.'},
+      {t:'Хромопласты', d:'Жёлтые и красные пластиды. Дают цвет цветкам, осенним листьям, спелым плодам.', e:'Греч. хрома — краска.'},
+      {t:'Лейкопласты', d:'Бесцветные пластиды. В них копятся запасы питательных веществ.', e:'Греч. лейкос — белый.'},
+      {t:'Вакуоли', d:'Полости в клетке, ограниченные мембраной. В них клеточный сок.', e:'Лат. вакуус — пустой.'},
+      {t:'Клеточный сок', d:'Вода с растворёнными органическими и неорганическими веществами. Находится в вакуолях.', e:'Течёт из разрезанного арбуза.'},
+      {t:'Митохондрии', d:'Овальные органоиды, «энергетические станции клетки».', e:'Греч. митос — нить, хондрион — зёрнышко.'}
+    ]
+  ];
+  var flipped={}, total=0; TERMS.forEach(function(g){ total+=g.length; });
+  var progEls=[$('#terms-progress'),$('#terms-progress2')];
+  function termsProgress(){
+    var n=Object.keys(flipped).length;
+    progEls.forEach(function(p,gi){ var got=0; TERMS[gi].forEach(function(t,i){ if(flipped[gi+'-'+i]) got++; }); p.textContent='Открыто '+got+' из '+TERMS[gi].length+' здесь, всего '+n+' из '+total; });
+    if(n===total) markDone('terms');
+  }
+  document.querySelectorAll('.cards').forEach(function(box){
+    var gi=+box.getAttribute('data-terms');
+    TERMS[gi].forEach(function(t,i){
+      var b=el('button','card'); b.type='button'; b.setAttribute('aria-label',t.t+'. Нажми, чтобы увидеть значение');
+      b.innerHTML='<div class="in"><div class="face f"><div class="w">'+t.t+'</div><div class="tap">Нажми</div></div><div class="face b"><div class="w">'+t.t+'</div><div>'+t.d+'</div>'+(t.e?'<div class="e">'+t.e+'</div>':'')+'</div></div>';
+      b.addEventListener('click', function(){ b.classList.toggle('flip'); flipped[gi+'-'+i]=true; termsProgress(); });
+      box.appendChild(b);
+    });
+  });
+  termsProgress();
+
+  /* ---------- matching: кто чем занят в клетке ---------- */
+  var PAIRS=[
+    {foe:'Клеточная стенка', res:'Даёт прочность и форму', why:'В её состав входит целлюлоза, а через поры проходят вода и соли.'},
+    {foe:'Мембрана', res:'Решает, что впустить и что выпустить', why:'Одни вещества она пропускает, другие нет — это полупроницаемость.'},
+    {foe:'Цитоплазма', res:'Объединяет все части клетки', why:'Это полужидкая внутренняя среда, в ней всё может двигаться.'},
+    {foe:'Ядро', res:'Управляет жизнью клетки', why:'В ядре хранятся хромосомы с наследственной информацией.'},
+    {foe:'Хлоропласты', res:'Проводят фотосинтез на свету', why:'В них есть зелёный хлорофилл.'},
+    {foe:'Митохондрии', res:'Дают клетке энергию', why:'Их называют «энергетическими станциями клетки».'},
+    {foe:'Вакуоли', res:'Хранят клеточный сок', why:'Из них течёт сок, когда режешь спелый плод.'}
+  ];
+  var foesBox=$('#foes'), outBox=$('#outcomes'), matchFb=$('#match-fb'), selFoe=null, matched=0;
+  PAIRS.forEach(function(p){
+    var b=el('button','opt',p.foe); b.type='button'; b.setAttribute('data-foe',p.foe);
+    b.addEventListener('click', function(){
+      if(b.classList.contains('ok')) return;
+      var all=foesBox.querySelectorAll('.opt'); for(var i=0;i<all.length;i++) all[i].classList.remove('sel');
+      b.classList.add('sel'); selFoe=p; matchFb.innerHTML='';
+    });
+    foesBox.appendChild(b);
+  });
+  shuffle(PAIRS).forEach(function(p){
+    var b=el('button','opt',p.res); b.type='button';
+    b.addEventListener('click', function(){
+      if(b.classList.contains('ok')) return;
+      if(!selFoe){ matchFb.innerHTML='<div class="feedback bad"><span class="k">Сначала выбери слово слева.</span></div>'; return; }
+      if(selFoe.res===p.res){
+        b.classList.add('ok'); b.disabled=true;
+        var fb=foesBox.querySelector('[data-foe="'+selFoe.foe+'"]'); fb.classList.remove('sel'); fb.classList.add('ok'); fb.disabled=true;
+        matchFb.innerHTML='<div class="feedback ok"><span class="k">Верно! '+selFoe.foe+' — '+selFoe.res+'.</span><span>'+selFoe.why+'</span></div>';
+        selFoe=null; matched++;
+        if(matched===PAIRS.length){ matchFb.innerHTML='<div class="feedback ok"><span class="k">Все семь частей нашли свою работу!</span><span>Теперь ты знаешь, кто чем занят в клетке.</span></div>'; markDone('match'); }
+      } else {
+        b.classList.add('bad'); setTimeout(function(){ b.classList.remove('bad'); },400);
+        matchFb.innerHTML='<div class="feedback bad"><span class="k">Не то.</span><span>Это перевод другого слова. Попробуй ещё.</span></div>';
+      }
+    });
+    outBox.appendChild(b);
+  });
+
+  /* ---------- sort: какие это пластиды ---------- */
+  var COUNTRIES=['Хлоропласты','Хромопласты','Лейкопласты'];
+  var SORT=[
+    {t:'Зелёного цвета', c:'Хлоропласты', why:'Их окрашивает зелёное вещество — хлорофилл.'},
+    {t:'В них есть хлорофилл', c:'Хлоропласты', why:'Поэтому хлоропласты и зелёные.'},
+    {t:'Здесь идёт фотосинтез', c:'Хлоропласты', why:'Это самые важные пластиды.'},
+    {t:'Жёлтые или красные', c:'Хромопласты', why:'Греческое «хрома» значит «краска».'},
+    {t:'Дают цвет лепесткам и спелым плодам', c:'Хромопласты', why:'А ещё осенним листьям.'},
+    {t:'Появляются в листе осенью, когда разрушается хлорофилл', c:'Хромопласты', why:'Хлоропласты превращаются в хромопласты, и лист желтеет.'},
+    {t:'Бесцветные', c:'Лейкопласты', why:'Греческое «лейкос» значит «белый».'},
+    {t:'Хранят запасы питательных веществ', c:'Лейкопласты', why:'Это «кладовки» клетки.'},
+    {t:'На свету превращаются в хлоропласты', c:'Лейкопласты', why:'Поэтому клубни картофеля на свету зеленеют.'}
+  ];
+  var sortBox=$('#sort-box'), sortP=$('#sort-progress'), sortList=shuffle(SORT), si=0;
+  function renderSort(){
+    if(si>=sortList.length){ return sortDone(); }
+    var it=sortList[si];
+    sortP.textContent='Карточка '+(si+1)+' из '+sortList.length;
+    sortBox.innerHTML='';
+    sortBox.appendChild(el('div','sort-card',it.t));
+    var tri=el('div','tri'); sortBox.appendChild(tri);
+    var fb=el('div'); sortBox.appendChild(fb);
+    var rowN=el('div','row'); sortBox.appendChild(rowN);
+    COUNTRIES.forEach(function(c){
+      var b=el('button','opt',c); b.type='button';
+      b.addEventListener('click', function(){
+        if(c===it.c){
+          var all=tri.querySelectorAll('.opt'); for(var k=0;k<all.length;k++) all[k].disabled=true;
+          b.classList.add('ok');
+          fb.innerHTML='<div class="feedback ok"><span class="k">Да, это '+c.toLowerCase()+'.</span><span>'+it.why+'</span></div>';
+          var n=el('button','btn', si<sortList.length-1?'Следующая карточка':'Показать итог'); n.type='button';
+          n.addEventListener('click', function(){ si++; renderSort(); });
+          rowN.appendChild(n);
+        } else {
+          b.classList.add('bad'); b.disabled=true;
+          fb.innerHTML='<div class="feedback bad"><span class="k">Нет, это не '+c.toLowerCase()+'.</span><span>Подумай, какого они цвета и что делают, и попробуй ещё.</span></div>';
+        }
+      });
+      tri.appendChild(b);
+    });
+  }
+  function sortDone(){
+    sortP.textContent='Все карточки разложены';
+    var html='<div class="feedback ok"><span class="k">Готово! Вот что получилось:</span></div><div class="sort-sum">';
+    COUNTRIES.forEach(function(c){
+      var items=SORT.filter(function(x){ return x.c===c; }).map(function(x){ return x.t.toLowerCase(); });
+      html+='<div><b>'+c+':</b> '+items.join('; ')+'.</div>';
+    });
+    html+='</div><p>Три вида пластид делают в клетке разную работу и умеют превращаться друг в друга.</p><div class="row"><button class="btn ghost" type="button" id="sort-again">Ещё раз</button></div>';
+    sortBox.innerHTML=html;
+    $('#sort-again').addEventListener('click', function(){ sortList=shuffle(SORT); si=0; renderSort(); });
+    markDone('sort');
+  }
+  renderSort();
+
+  /* ---------- ordering ---------- */
+  var EVENTS=[
+    {y:1, t:'Протереть предметное стекло марлей', ys:'1'},
+    {y:2, t:'Капнуть на стекло 1–2 капли воды', ys:'2'},
+    {y:3, t:'Снять пинцетом кусочек кожицы с чешуи лука', ys:'3'},
+    {y:4, t:'Расправить кожицу иглой в капле воды', ys:'4'},
+    {y:5, t:'Накрыть покровным стеклом и оттянуть лишнюю воду', ys:'5'},
+    {y:6, t:'Окрасить йодом и рассмотреть под микроскопом', ys:'6'}
+  ];
+  var pool=$('#pool'), seq=$('#seq'), orderCheck=$('#order-check'), orderFb=$('#order-fb'), picked=[], shuffledEvents=shuffle(EVENTS);
+  function renderOrder(){
+    pool.innerHTML='';
+    shuffledEvents.forEach(function(e){
+      if(picked.indexOf(e)>=0) return;
+      var b=el('button','opt',e.t); b.type='button';
+      b.addEventListener('click', function(){ picked.push(e); renderOrder(); });
+      pool.appendChild(b);
+    });
+    seq.innerHTML='';
+    if(!picked.length){ seq.appendChild(el('div','empty','Сюда встанут события')); }
+    picked.forEach(function(e,i){ seq.appendChild(el('div','slot','<span class="i">'+(i+1)+'</span><span>'+e.t+'</span>')); });
+    orderCheck.disabled = picked.length!==EVENTS.length;
+    orderFb.innerHTML='';
+  }
+  renderOrder();
+  orderCheck.addEventListener('click', function(){
+    var slots=seq.querySelectorAll('.slot'), wrong=0;
+    picked.forEach(function(e,i){
+      var ok = e.y===EVENTS[i].y;
+      slots[i].classList.add(ok?'ok':'bad');
+      slots[i].insertAdjacentHTML('beforeend','<span class="yr">'+e.ys+'</span>');
+      if(!ok) wrong++;
+    });
+    if(!wrong){ orderFb.innerHTML='<div class="feedback ok"><span class="k">Всё по порядку!</span><span>Сначала чистое стекло и капля воды, потом кожица, потом покровное стекло, и только в конце йод. Теперь ты готова к лабораторной работе.</span></div>'; markDone('order'); }
+    else orderFb.innerHTML='<div class="feedback bad"><span class="k">Не совсем. Красные события стоят не на своих местах.</span><span>Теперь номера видны. Нажми «Сначала» и попробуй ещё раз.</span></div>';
+    orderCheck.disabled=true;
+  });
+  $('#order-reset').addEventListener('click', function(){ picked=[]; shuffledEvents=shuffle(EVENTS); renderOrder(); });
+
+  /* ---------- odd one out ---------- */
+  var ODD=[
+    {items:['Хлоропласты','Хромопласты','Лейкопласты','Митохондрии'], odd:'Митохондрии', why:'Хлоропласты, хромопласты и лейкопласты — пластиды. А митохондрии не пластиды, это «энергетические станции клетки».'},
+    {items:['Ядро','Хромосомы','Ядрышко','Вакуоль'], odd:'Вакуоль', why:'Хромосомы и ядрышко находятся в ядре. А вакуоль — полость с клеточным соком.'},
+    {items:['Пинцет','Пипетка','Покровное стекло','Хлорофилл'], odd:'Хлорофилл', why:'Пинцет, пипетка и покровное стекло нужны для лабораторной работы. А хлорофилл — зелёное вещество в хлоропластах.'},
+    {items:['Осенний лист','Спелый помидор','Жёлтый лепесток','Клубень картофеля'], odd:'Клубень картофеля', why:'Осенний лист, спелый помидор и жёлтый лепесток окрашивают хромопласты. А в клубне картофеля бесцветные лейкопласты с запасами.'}
+  ];
+  var oddGrid=$('#odd-grid'), oddFb=$('#odd-fb'), oddNext=$('#odd-next'), oddP=$('#odd-progress'), oddRound=0;
+  function renderOdd(){
+    var r=ODD[oddRound]; oddGrid.innerHTML=''; oddFb.innerHTML=''; oddNext.hidden=true;
+    oddP.textContent='Раунд '+(oddRound+1)+' из '+ODD.length;
+    shuffle(r.items).forEach(function(w){
+      var b=el('button','opt',w); b.type='button';
+      b.addEventListener('click', function(){
+        var all=oddGrid.querySelectorAll('.opt');
+        if(w===r.odd){
+          for(var i=0;i<all.length;i++) all[i].disabled=true;
+          b.classList.add('ok');
+          oddFb.innerHTML='<div class="feedback ok"><span class="k">Точно, лишнее — «'+w+'».</span><span>'+r.why+'</span></div>';
+          if(oddRound<ODD.length-1) oddNext.hidden=false;
+          else { oddP.textContent='Все четыре раунда пройдены'; markDone('odd'); }
+        } else {
+          b.classList.add('bad'); b.disabled=true;
+          oddFb.innerHTML='<div class="feedback bad"><span class="k">«'+w+'» из той же компании, что и остальные.</span><span>Подумай, что здесь про другое.</span></div>';
+        }
+      });
+      oddGrid.appendChild(b);
+    });
+  }
+  oddNext.addEventListener('click', function(){ oddRound++; renderOdd(); });
+  renderOdd();
+
+  /* ---------- quiz ---------- */
+  var QUIZ=[
+    {q:'Какие три части есть у каждой клетки?', o:['Стенка, вакуоль и хлоропласт','Мембрана, цитоплазма и генетический аппарат','Ядро, пластиды и поры'], a:1, why:'Это обязательные части любой клетки. А стенка, пластиды и вакуоли — особенности клеток растений.'},
+    {q:'Что входит в состав клеточной оболочки растений?', o:['Целлюлоза','Хлорофилл','Клеточный сок'], a:0, why:'Целлюлоза делает оболочку прочной. Хлорофилл — в хлоропластах, клеточный сок — в вакуолях.'},
+    {q:'Почему через оболочку проходят вода и соли?', o:['Она жидкая','Она зелёная','В ней есть поры'], a:2, why:'Поры — маленькие отверстия в оболочке.'},
+    {q:'Что будет с цитоплазмой при сильном нагревании или замораживании?', o:['Она разрушится, и клетка погибнет','Она станет прочнее','Она позеленеет'], a:0, why:'Цитоплазма разрушается, и тогда клетка погибает.'},
+    {q:'Где находятся хромосомы?', o:['В вакуолях','В ядре','В оболочке'], a:1, why:'Хромосомы — носители наследственной информации, они находятся в ядре.'},
+    {q:'Какие пластиды дают осенним листьям жёлтый и красный цвет?', o:['Лейкопласты','Хлоропласты','Хромопласты'], a:2, why:'Осенью хлорофилл разрушается, и хлоропласты превращаются в хромопласты.'},
+    {q:'Почему клубни картофеля зеленеют на свету?', o:['Лейкопласты превращаются в хлоропласты','Разрушаются хромопласты','В них появляются вакуоли'], a:0, why:'Пластиды умеют превращаться из одного вида в другой.'},
+    {q:'Что находится в вакуолях?', o:['Хромосомы','Клеточный сок','Воздух'], a:1, why:'Клеточный сок — вода, в которой растворены разные вещества.'},
+    {q:'Какие органоиды называют «энергетическими станциями клетки»?', o:['Ядрышки','Лейкопласты','Митохондрии'], a:2, why:'В митохондриях выделяется энергия для работы других частей клетки.'},
+    {q:'Кто и когда открыл клетки?', o:['Роберт Гук в 1665 году','Маттиас Шлейден в 1831 году','Теодор Шванн в 1839 году'], a:0, why:'Гук рассмотрел в свой микроскоп срез пробки. А Шлейден и Шванн в 1839 году доказали, что из клеток состоит всё живое.'}
+  ];
+  var qBox=$('#quiz-box'), qP=$('#quiz-progress'), qi=0, score=0;
+  function renderQ(){
+    if(qi>=QUIZ.length) return renderScore();
+    var q=QUIZ[qi];
+    qP.textContent='Вопрос '+(qi+1)+' из '+QUIZ.length;
+    qBox.innerHTML='';
+    qBox.appendChild(el('div','q',q.q));
+    var opts=el('div','q-opts'); qBox.appendChild(opts);
+    var fb=el('div'); qBox.appendChild(fb);
+    var rowN=el('div','row'); qBox.appendChild(rowN);
+    var answered=false;
+    q.o.forEach(function(o,i){
+      var b=el('button','opt',o); b.type='button';
+      b.addEventListener('click', function(){
+        if(answered) return; answered=true;
+        var all=opts.querySelectorAll('.opt');
+        for(var k=0;k<all.length;k++){ all[k].disabled=true; if(k===q.a) all[k].classList.add('ok'); }
+        if(i===q.a){ score++; fb.innerHTML='<div class="feedback ok"><span class="k">Правильно!</span><span>'+q.why+'</span></div>'; }
+        else { b.classList.add('bad'); fb.innerHTML='<div class="feedback bad"><span class="k">Нет, правильный ответ подсвечен зелёным.</span><span>'+q.why+'</span></div>'; }
+        var n=el('button','btn', qi<QUIZ.length-1?'Следующий вопрос':'Показать результат'); n.type='button';
+        n.addEventListener('click', function(){ qi++; renderQ(); window.scrollTo(0,0); });
+        rowN.appendChild(n);
+      });
+      opts.appendChild(b);
+    });
+  }
+  function renderScore(){
+    qP.textContent='Результат';
+    var tiles=''; for(var i=0;i<QUIZ.length;i++) tiles+='<i class="'+(i<score?'on':'')+'"></i>';
+    var msg = score===QUIZ.length ? 'Идеально, Амина! Ни одной ошибки.' : score>=8 ? 'Отлично! Ещё раз взгляни на вопросы, где ошиблась, и будет полный набор.' : score>=6 ? 'Хорошо. Перечитай шаги, где было трудно, и пройди тест снова.' : 'Тема большая, Амина, это нормально. Вернись к шагу «За минуту», потом к словарику, и попробуй ещё раз.';
+    qBox.innerHTML='<div class="score"><div class="big">'+score+' из '+QUIZ.length+'</div><div class="score-tiles">'+tiles+'</div><p>'+msg+'</p><button class="btn ghost" type="button" id="quiz-again">Пройти ещё раз</button></div>';
+    $('#quiz-again').addEventListener('click', function(){ qi=0; score=0; renderQ(); });
+    markDone('quiz');
+  }
+  renderQ();
+
+  /* ---------- bricks ---------- */
+  Array.prototype.forEach.call(document.querySelectorAll('.brick button'), function(b){
+    b.addEventListener('click', function(){
+      var body=b.nextElementSibling, open=body.hidden;
+      body.hidden=!open; b.setAttribute('aria-expanded', open?'true':'false');
+      b.lastElementChild.textContent = open?'−':'+';
+    });
+  });
+
+  /* ---------- start ---------- */
+  var start=idxFromHash(); go(start<0?0:start, true);
+})();
+</script>
+
+</body>
+</html>

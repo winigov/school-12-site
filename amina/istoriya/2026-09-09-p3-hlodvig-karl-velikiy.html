@@ -344,6 +344,10 @@ details.book .body{font-size:16px}
 .toc-head{font-family:var(--ui)}
 .toc-head .ic{display:flex}
 .score .big{font-family:var(--display);font-weight:700;color:var(--lapis)}
+/* переносы длинных слов на узком экране (14.09.2026) */
+.match{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+.opt,.face,.qi p,.ans-table td,.ans-table th{overflow-wrap:anywhere;hyphens:auto}
+.ans-table.fit td:first-child{white-space:normal}
 </style>
 </head>
 <body>

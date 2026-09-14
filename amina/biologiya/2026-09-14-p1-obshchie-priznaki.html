@@ -1,0 +1,1215 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Какие бывают растения</title>
+<meta name="paragraph" content="§ 1">
+<meta name="description" content="Общие признаки, разнообразие, распространение, значение растений">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=PT+Sans+Narrow:wght@400;700&family=PT+Sans:wght@400;700&display=swap">
+<style>
+:root{
+  --bg:#EBE8DF; --surface:#F8F6F0; --surface-2:#E2DED2; --ink:#1B2233; --ink-2:#4A5163; --muted:#7A8093;
+  --lapis:#23448A; --on-lapis:#FFFFFF; --lapis-soft:#D9E1F3;
+  --gold:#B08A2E; --gold-soft:#F1E6C2; --on-gold:#2A2107;
+  --terra:#B4552F; --terra-soft:#F3DCD2;
+  --moss:#4E7A3B; --moss-soft:#DCE8D2;
+  --line:#D2CDBF; --tile:#CFC9B9;
+  --shadow:0 1px 2px rgba(27,34,51,.08),0 10px 28px rgba(27,34,51,.07);
+  --display:"Oranienbaum","Georgia","Times New Roman",serif;
+  --body:"Golos Text","Segoe UI",system-ui,-apple-system,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0F1728; --surface:#182338; --surface-2:#21304B; --ink:#EDE8DC; --ink-2:#C2BFB4; --muted:#8B93A8;
+    --lapis:#7EA0E6; --on-lapis:#0F1728; --lapis-soft:#22345A;
+    --gold:#E0B84A; --gold-soft:#3E3419; --on-gold:#0F1728;
+    --terra:#E0825C; --terra-soft:#4A2A1D;
+    --moss:#8DBF74; --moss-soft:#243B1F;
+    --line:#2E3B57; --tile:#2A3856;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 28px rgba(0,0,0,.35);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0F1728; --surface:#182338; --surface-2:#21304B; --ink:#EDE8DC; --ink-2:#C2BFB4; --muted:#8B93A8;
+  --lapis:#7EA0E6; --on-lapis:#0F1728; --lapis-soft:#22345A;
+  --gold:#E0B84A; --gold-soft:#3E3419; --on-gold:#0F1728;
+  --terra:#E0825C; --terra-soft:#4A2A1D;
+  --moss:#8DBF74; --moss-soft:#243B1F;
+  --line:#2E3B57; --tile:#2A3856;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 28px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+@media (prefers-reduced-motion: reduce){ *{transition:none!important;animation:none!important} }
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.55;-webkit-text-size-adjust:100%}
+h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1.1;text-wrap:balance;margin:0}
+p{margin:0}
+a{color:var(--lapis)}
+button{font:inherit;color:inherit;cursor:pointer}
+button:focus-visible,summary:focus-visible,a:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+[hidden]{display:none!important}
+
+/* ---------- top bar ---------- */
+.top{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+.top-inner{max-width:720px;margin:0 auto;padding:10px 16px;display:flex;align-items:center;gap:12px}
+.back{text-decoration:none;color:var(--ink-2);font-size:14px;white-space:nowrap;padding:6px 10px;border-radius:8px;background:var(--surface);border:1px solid var(--line)}
+.crumb{flex:1;min-width:0;font-size:14px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.crumb b{color:var(--ink);font-weight:600}
+.toc-btn{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:6px 10px;font-size:14px;color:var(--lapis);font-weight:600;white-space:nowrap}
+.stepbar{max-width:720px;margin:0 auto;padding:0 16px 10px;display:flex;gap:4px}
+.stepbar button{flex:1;height:8px;min-width:6px;padding:0;border:0;border-radius:2px;background:var(--tile);transition:background .3s,transform .3s}
+.stepbar button.visited{background:var(--lapis)}
+.stepbar button.done{background:var(--gold)}
+.stepbar button.current{transform:scaleY(1.6);background:var(--gold)}
+
+/* ---------- steps ---------- */
+main{max-width:720px;margin:0 auto;padding:20px 16px 120px}
+.step{display:flex;flex-direction:column;gap:16px}
+.eyebrow{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);font-weight:700;display:flex;align-items:center;gap:10px}
+.tess{display:inline-flex;gap:3px}
+.tess i{width:8px;height:8px;display:block;border-radius:1px}
+.tess i:nth-child(1){background:var(--lapis)} .tess i:nth-child(2){background:var(--gold)} .tess i:nth-child(3){background:var(--terra)}
+.step h1{font-size:clamp(36px,8vw,56px)}
+.step h2{font-size:clamp(28px,6vw,38px)}
+.step h3{font-size:22px;color:var(--lapis);margin-top:4px}
+.lede{font-size:19px;color:var(--ink-2);max-width:34ch}
+.prose{display:flex;flex-direction:column;gap:12px;max-width:66ch}
+.prose ul{margin:0;padding-left:22px;display:flex;flex-direction:column;gap:6px}
+.prose li::marker{color:var(--gold)}
+b,strong{font-weight:600}
+.term{font-weight:600;color:var(--lapis);border-bottom:2px solid var(--gold-soft)}
+.aside{background:var(--lapis-soft);border-left:4px solid var(--lapis);padding:12px 16px;border-radius:0 8px 8px 0;font-size:16px;display:flex;flex-direction:column;gap:6px}
+.aside .k{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--lapis);font-weight:700}
+.home{background:var(--gold-soft);border-left-color:var(--gold)}
+.home .k{color:var(--gold)}
+details{border:1px solid var(--line);border-radius:10px;background:var(--surface)}
+details summary{cursor:pointer;list-style:none;padding:12px 16px;font-weight:600;color:var(--lapis);display:flex;align-items:center;gap:10px}
+details summary::-webkit-details-marker{display:none}
+details summary::before{content:"";width:9px;height:9px;background:var(--gold);transform:rotate(45deg);flex:none;transition:transform .2s}
+details[open] summary::before{transform:rotate(45deg) scale(.6);background:var(--lapis)}
+details .body{padding:0 16px 14px;display:flex;flex-direction:column;gap:8px;color:var(--ink-2)}
+
+.steps4{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+@media (min-width:600px){ .steps4{grid-template-columns:repeat(4,1fr)} }
+.dom{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px;display:flex;flex-direction:column;gap:4px;box-shadow:var(--shadow)}
+.dom .n{font-family:var(--display);font-size:28px;color:var(--gold);line-height:1}
+.dom .t{font-weight:600;font-size:15px;line-height:1.25}
+.dom .d{font-size:13.5px;color:var(--ink-2);line-height:1.35}
+
+.ladder{display:flex;flex-direction:column;align-items:center;gap:6px}
+.rung{background:var(--lapis);color:var(--on-lapis);padding:9px 12px;border-radius:8px;text-align:center;font-size:15px;line-height:1.3}
+.rung small{display:block;opacity:.85;font-size:12.5px}
+.rung.r1{width:60%} .rung.r2{width:74%} .rung.r3{width:88%} .rung.r4{width:100%;background:var(--surface-2);color:var(--ink)}
+
+/* timeline (вертикальная, все даты видны сразу) */
+.tl-v{display:flex;flex-direction:column;position:relative;padding-left:4px}
+.tl-v::before{content:"";position:absolute;left:16px;top:16px;bottom:16px;width:3px;background:var(--line);border-radius:2px}
+.tl-item{position:relative;padding-left:36px;display:flex;flex-direction:column}
+.tl-btn{background:none;border:0;padding:8px 0;text-align:left;display:flex;align-items:baseline;gap:8px 12px;flex-wrap:wrap;color:var(--ink);width:100%}
+.tl-btn .dot{position:absolute;left:5px;top:12px;width:17px;height:17px;background:var(--surface);border:3px solid var(--lapis);border-radius:50%;transition:transform .2s,background .2s}
+.tl-item.ru .dot{border-color:var(--terra)}
+.tl-item.open .dot{background:var(--gold);border-color:var(--gold);transform:scale(1.2)}
+.tl-btn .y{font-family:var(--display);font-size:26px;line-height:1;font-variant-numeric:tabular-nums;min-width:96px}
+.tl-btn .t{font-weight:600;font-size:16px}
+.tl-btn .era{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--lapis);font-weight:700;margin-left:auto}
+.tl-item.ru .era{color:var(--terra)}
+.tl-d{color:var(--ink-2);font-size:15.5px;padding:0 0 12px;line-height:1.45}
+.hint{font-size:14px;color:var(--muted)}
+
+/* «как в учебнике» и вопросы учебника */
+details.book{border-color:var(--gold-soft)}
+details.book summary{color:var(--gold)}
+details.book summary::before{background:var(--gold)}
+details.book[open] summary::before{background:var(--gold)}
+details.book .body{font-size:15px;color:var(--ink)}
+details.book .body ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:7px}
+details.book .body li::marker{color:var(--gold)}
+details.book .body .pic{color:var(--ink-2);font-style:italic}
+.qlist{display:flex;flex-direction:column;gap:10px}
+.qi{display:grid;grid-template-columns:auto 1fr;gap:12px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.qi .qn{font-family:var(--display);font-size:24px;color:var(--gold);line-height:1;min-width:20px}
+.qi p{font-size:15.5px}
+.qi .src{font-size:14.5px;color:var(--ink-2);margin-top:6px}
+.qi a{font-size:13.5px;font-weight:600;text-decoration:none;display:inline-block;margin-top:8px;background:var(--lapis-soft);padding:4px 10px;border-radius:999px}
+
+/* games */
+.game{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:12px}
+.g-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.game h3{margin:0}
+.task{color:var(--ink-2)}
+.badge{font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;padding:4px 10px;border-radius:999px;background:var(--gold-soft);color:var(--gold)}
+.badge.done{background:var(--moss-soft);color:var(--moss)}
+.btn{background:var(--lapis);color:var(--on-lapis);border:0;border-radius:10px;padding:10px 18px;font-weight:600;font-size:15px;text-decoration:none;display:inline-block}
+.btn.ghost{background:transparent;color:var(--lapis);border:2px solid var(--lapis)}
+.btn:disabled{opacity:.45;cursor:default}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.feedback{padding:12px 14px;border-radius:10px;font-size:15px;display:flex;flex-direction:column;gap:4px}
+.feedback.ok{background:var(--moss-soft);border-left:4px solid var(--moss)}
+.feedback.bad{background:var(--terra-soft);border-left:4px solid var(--terra)}
+.feedback .k{font-weight:700}
+.progress{font-size:13px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.card{perspective:900px;height:150px;background:none;border:0;padding:0;text-align:left}
+.card .in{position:relative;width:100%;height:100%;transition:transform .5s;transform-style:preserve-3d}
+.card.flip .in{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;border-radius:12px;padding:12px;display:flex;flex-direction:column;justify-content:center;gap:6px;overflow:hidden}
+.face.f{background:var(--lapis);color:var(--on-lapis)}
+.face.f .w{font-family:var(--display);font-size:21px;line-height:1.05}
+.face.f .tap{font-size:11px;opacity:.75;letter-spacing:.08em;text-transform:uppercase}
+.face.b{background:var(--surface-2);color:var(--ink);transform:rotateY(180deg);font-size:12.5px;line-height:1.3;justify-content:flex-start;overflow:auto}
+.face.b .w{font-weight:700;color:var(--lapis);font-size:13px}
+.face.b .e{color:var(--ink-2);font-style:italic}
+
+.match{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.col{display:flex;flex-direction:column;gap:8px}
+.col .lbl{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.opt{background:var(--surface-2);border:2px solid transparent;border-radius:10px;padding:10px 12px;text-align:left;font-weight:500;font-size:15px;transition:border-color .15s,background .15s}
+.opt:hover{border-color:var(--lapis)}
+.opt.sel{border-color:var(--gold);background:var(--gold-soft)}
+.opt.ok{background:var(--moss-soft);border-color:var(--moss)}
+.opt.bad{animation:shake .35s}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+
+.pool{display:flex;flex-direction:column;gap:8px}
+.seq{display:flex;flex-direction:column;gap:8px;min-height:44px;padding:10px;border:2px dashed var(--line);border-radius:12px}
+.seq .slot{display:flex;align-items:center;gap:10px;background:var(--lapis-soft);border-radius:8px;padding:8px 12px;font-size:15px}
+.seq .slot .i{font-family:var(--display);font-size:20px;color:var(--lapis);width:22px;font-variant-numeric:tabular-nums}
+.seq .slot.ok{background:var(--moss-soft)} .seq .slot.bad{background:var(--terra-soft)}
+.seq .slot .yr{margin-left:auto;font-weight:700;color:var(--ink-2);font-variant-numeric:tabular-nums}
+.seq .empty{color:var(--muted);font-size:14px}
+
+.odd-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.odd-grid .opt{text-align:center;padding:16px 10px;font-size:16px}
+.odd-grid .opt.bad{background:var(--terra-soft);border-color:var(--terra)}
+
+.q{font-size:19px;font-weight:600;line-height:1.35}
+.q-opts{display:flex;flex-direction:column;gap:8px}
+.q-opts .opt{font-size:15.5px;line-height:1.35}
+.q-opts .opt.bad{background:var(--terra-soft);border-color:var(--terra)}
+.score{display:flex;flex-direction:column;gap:12px;align-items:flex-start}
+.score .big{font-family:var(--display);font-size:56px;line-height:1;color:var(--gold)}
+.score-tiles{display:flex;gap:5px;flex-wrap:wrap}
+.score-tiles i{width:22px;height:22px;border-radius:3px;background:var(--tile)}
+.score-tiles i.on{background:var(--gold)}
+
+.bricks{display:flex;flex-direction:column;gap:10px}
+.brick{background:var(--surface-2);border-radius:10px;overflow:hidden}
+.brick button{width:100%;background:none;border:0;padding:12px 14px;text-align:left;font-weight:600;color:var(--lapis);display:flex;justify-content:space-between;gap:10px}
+.brick .b-body{padding:0 14px 12px;color:var(--ink-2);font-size:15.5px}
+
+.mosaic{display:flex;gap:6px;align-items:center}
+.mosaic .tile{width:26px;height:26px;background:var(--tile);border-radius:3px;transition:background .4s,transform .4s}
+.mosaic .tile.on{background:var(--gold);transform:rotate(45deg) scale(.8)}
+.mosaic-list{display:flex;flex-direction:column;gap:6px;font-size:15px}
+.mosaic-list span.off{color:var(--muted)}
+
+/* pager */
+.pager{position:fixed;left:0;right:0;bottom:0;z-index:5;background:var(--bg);border-top:1px solid var(--line)}
+.pager-inner{max-width:720px;margin:0 auto;padding:10px 16px;display:flex;align-items:center;gap:10px}
+.pager .count{font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+.pager .btn{flex:1;text-align:center;padding:12px 14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pager .btn.ghost{flex:0 0 auto}
+
+/* toc overlay */
+.toc{position:fixed;inset:0;z-index:10;background:rgba(0,0,0,.35);display:flex;justify-content:flex-end}
+.toc-panel{width:min(360px,90vw);height:100%;background:var(--surface);overflow:auto;padding:16px;display:flex;flex-direction:column;gap:8px;box-shadow:var(--shadow)}
+.toc-panel h3{font-size:24px;margin-bottom:6px;display:flex;justify-content:space-between;align-items:center}
+.toc-close{background:none;border:1px solid var(--line);border-radius:8px;padding:4px 10px;font-size:14px}
+.toc-item{display:flex;align-items:center;gap:10px;background:none;border:0;border-radius:8px;padding:8px 10px;text-align:left;font-size:15px;color:var(--ink)}
+.toc-item:hover{background:var(--surface-2)}
+.toc-item.current{background:var(--gold-soft);font-weight:600}
+.toc-item .n{font-family:var(--display);font-size:18px;color:var(--muted);width:24px;font-variant-numeric:tabular-nums}
+.toc-item .m{margin-left:auto;font-size:12px;color:var(--moss);font-weight:700}
+
+/* схема управления (§ 2) */
+.org{display:flex;flex-direction:column;gap:8px}
+.org .lvl{display:grid;gap:8px;grid-template-columns:repeat(2,1fr)}
+@media (min-width:600px){ .org .lvl{grid-template-columns:repeat(4,1fr)} }
+.org .box{background:var(--surface-2);border-radius:8px;padding:9px 10px;font-size:14px;text-align:center;line-height:1.3}
+.org .box small{display:block;font-size:12px;color:var(--ink-2)}
+.org .box.top{background:var(--lapis);color:var(--on-lapis);font-weight:600;font-size:16px}
+.org .box.sub{background:var(--gold-soft)}
+.org .lbl{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:700;text-align:center}
+
+/* иллюстрации (§ 3) */
+.fig{margin:0;display:flex;flex-direction:column;gap:6px;align-items:flex-start}
+.fig img{width:100%;max-width:360px;height:auto;border-radius:10px;border:1px solid var(--line);background:var(--surface);box-shadow:var(--shadow)}
+.fig.wide img{max-width:100%}
+.fig figcaption{font-size:14px;color:var(--ink-2);line-height:1.35;max-width:60ch}
+.fig-row{display:flex;gap:12px;flex-wrap:wrap;align-items:flex-start}
+.fig-row .fig{flex:1 1 150px;max-width:220px}
+
+/* § 4: «каждый шестой», два пути крещения, игра «Где это было?» */
+.six{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;max-width:380px}
+.six span{height:64px;border-radius:8px;background:var(--surface-2);color:var(--ink-2);display:flex;align-items:flex-end;justify-content:center;padding-bottom:6px;font-size:11.5px;font-weight:600;position:relative}
+.six span::before{content:"";position:absolute;top:10px;left:50%;width:14px;height:14px;margin-left:-7px;border-radius:50%;background:var(--tile)}
+.six span::after{content:"";position:absolute;top:27px;left:50%;width:22px;height:14px;margin-left:-11px;border-radius:8px 8px 3px 3px;background:var(--tile)}
+.six span.w{background:var(--lapis);color:var(--on-lapis)}
+.six span.w::before,.six span.w::after{background:var(--gold)}
+.ways{display:grid;grid-template-columns:1fr;gap:10px}
+@media (min-width:560px){ .ways{grid-template-columns:1fr 1fr} }
+.way{background:var(--surface);border:1px solid var(--line);border-top:5px solid var(--lapis);border-radius:12px;padding:12px 14px;display:flex;flex-direction:column;gap:6px;box-shadow:var(--shadow)}
+.way.const{border-top-color:var(--terra)}
+.way.const h3{color:var(--terra)}
+.way .cn{font-weight:600;font-size:17px}
+.way p{font-size:15.5px;color:var(--ink-2)}
+.sort-card{background:var(--lapis-soft);border-radius:12px;padding:16px;font-size:18px;font-weight:600;line-height:1.35}
+.tri{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.tri .opt{text-align:center;padding:12px 4px;font-size:15px}
+.tri .opt.bad{background:var(--terra-soft);border-color:var(--terra)}
+.sort-sum{display:flex;flex-direction:column;gap:8px;font-size:15px}
+.sort-sum b{color:var(--lapis)}
+/* § 4: разбор вопросов учебника с подсказками и ответом */
+.qtext{font-size:18px;font-weight:600;line-height:1.35;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.aside ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:5px}
+.aside.ans{background:var(--moss-soft);border-left-color:var(--moss)}
+.aside.ans .k{color:var(--moss)}
+.answer{display:flex;flex-direction:column;gap:12px;align-items:stretch}
+.answer .btn{text-align:center}
+.ans-body{display:flex;flex-direction:column;gap:12px}
+.ans-table{width:100%;border-collapse:collapse;font-size:15px;background:var(--surface)}
+.ans-table th,.ans-table td{border:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top;line-height:1.3}
+.ans-table th{font-size:13px;color:var(--ink-2);font-weight:700}
+.ans-table td:first-child{white-space:nowrap}
+
+/* виды шагов: из учебника / задания учебника / сверх учебника */
+.kind-tag{display:flex;gap:10px;align-items:flex-start;border-radius:10px;padding:8px 12px;font-size:13px;line-height:1.35}
+.kind-tag .ic{font-size:18px;line-height:1.1}
+.kind-tag b{font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:700}
+.kind-tag .pg{font-weight:600;margin-left:6px;font-size:13px}
+.kind-tag small{display:block;font-size:13px;color:var(--ink-2);margin-top:2px}
+.kind-tag.book{background:var(--lapis-soft);color:var(--lapis)}
+.kind-tag.task{background:var(--gold-soft);color:var(--gold)}
+.kind-tag.ours{background:var(--terra-soft);color:var(--terra)}
+.stepbar button.k-book{background:var(--lapis-soft)} .stepbar button.k-task{background:var(--gold-soft)} .stepbar button.k-ours{background:var(--terra-soft)}
+.stepbar button.k-book.visited{background:var(--lapis)} .stepbar button.k-task.visited{background:var(--gold)} .stepbar button.k-ours.visited{background:var(--terra)}
+.stepbar button.visited.done{background:var(--moss)}
+.stepbar{gap:3px} .stepbar button{min-width:3px}
+.stepbar button.gstart{margin-left:5px}
+.stepbar button.current{transform:scaleY(1.9);box-shadow:0 0 0 1.5px var(--ink)}
+.toc-group{display:flex;flex-direction:column;gap:2px;border-left:4px solid var(--lapis);padding-left:8px;margin-top:10px}
+.toc-group.k-task{border-left-color:var(--gold)} .toc-group.k-ours{border-left-color:var(--terra)}
+.toc-head{display:flex;align-items:center;gap:8px;font-size:12px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;color:var(--lapis);padding:4px 2px}
+.toc-group.k-task .toc-head{color:var(--gold)} .toc-group.k-ours .toc-head{color:var(--terra)}
+.toc-head .ic{font-size:15px;letter-spacing:0}
+.toc-item .pg{margin-left:auto;font-size:12px;color:var(--muted);white-space:nowrap;font-variant-numeric:tabular-nums}
+.toc-item .pg + .m{margin-left:8px}
+
+/* ===== Книжное оформление (выбрано 14.09.2026): как учебник — синяя шапка, PT Serif / PT Sans Narrow / PT Sans ===== */
+:root{
+  --bg:#FBFAF6; --surface:#FFFFFF; --surface-2:#EAF0F8; --ink:#1A1A1A; --ink-2:#393939; --muted:#6B6B6B;
+  --lapis:#2D63A6; --on-lapis:#FFFFFF; --lapis-soft:#DCE7F5; --gold:#8B6B22; --gold-soft:#F3EBD3; --on-gold:#1A1A1A;
+  --terra:#C24E1E; --terra-soft:#FBE3D6; --moss:#3E7A3A; --moss-soft:#E1EEDC; --line:#D9DDE3; --tile:#D5DCE6; --shadow:none;
+  --band-ink:#FFFFFF; --tb:rgba(255,255,255,.32); --tbv:#FFFFFF; --to:rgba(255,190,160,.5); --tov:#F6A37E; --tt:rgba(255,230,160,.5); --ttv:#F2D27A; --tdone:#A6DB93;
+  --display:"PT Sans Narrow","Arial Narrow",sans-serif; --body:"PT Serif",Georgia,serif; --ui:"PT Sans","Segoe UI",system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){ --bg:#141516; --surface:#1C1E21; --surface-2:#1E2936; --ink:#EDEBE6; --ink-2:#CFCBC3; --muted:#9A968F;
+    --lapis:#79A6E0; --on-lapis:#10141A; --lapis-soft:#1F3350; --gold:#D9B45A; --gold-soft:#3A3120; --on-gold:#10141A;
+    --terra:#F0875A; --terra-soft:#43261A; --moss:#8CC47F; --moss-soft:#22381F; --line:#30343A; --tile:#2C3440; --shadow:none;
+    --band-ink:#10141A; --tb:rgba(16,20,26,.28); --tbv:#10141A; --to:rgba(120,40,10,.4); --tov:#8A2E0C; --tt:rgba(110,80,10,.4); --ttv:#6B4E0E; --tdone:#1F5A1A; } }
+:root[data-theme="dark"]{ --bg:#141516; --surface:#1C1E21; --surface-2:#1E2936; --ink:#EDEBE6; --ink-2:#CFCBC3; --muted:#9A968F;
+    --lapis:#79A6E0; --on-lapis:#10141A; --lapis-soft:#1F3350; --gold:#D9B45A; --gold-soft:#3A3120; --on-gold:#10141A;
+    --terra:#F0875A; --terra-soft:#43261A; --moss:#8CC47F; --moss-soft:#22381F; --line:#30343A; --tile:#2C3440; --shadow:none;
+    --band-ink:#10141A; --tb:rgba(16,20,26,.28); --tbv:#10141A; --to:rgba(120,40,10,.4); --tov:#8A2E0C; --tt:rgba(110,80,10,.4); --ttv:#6B4E0E; --tdone:#1F5A1A; }
+body{font-family:var(--body);font-size:18px;line-height:1.62}
+h1,h2,h3{font-family:var(--display);font-weight:700}
+.step h1{color:var(--lapis);font-size:clamp(34px,8.5vw,52px);line-height:1.02}
+.step h2{color:var(--lapis);font-size:clamp(28px,7vw,36px);line-height:1.08}
+.step h3{font-size:23px}
+.pnum{display:inline-flex;align-items:center;justify-content:center;background:var(--lapis);color:var(--on-lapis);font:700 .72em/1 var(--display);width:1.08em;height:1.08em;margin-right:.3em;vertical-align:.08em}
+.lede{font-size:20px}
+.top{background:var(--lapis);border-bottom:0}
+.back{background:transparent;border-color:var(--band-ink);color:var(--band-ink);font-family:var(--ui);border-radius:3px}
+.crumb{color:var(--band-ink);opacity:.88;font-family:var(--ui)}
+.crumb b{color:var(--band-ink)}
+.toc-btn{background:var(--band-ink);color:var(--lapis);border-color:var(--band-ink);font-family:var(--ui);font-weight:700;border-radius:3px}
+.stepbar button{border-radius:1px}
+.stepbar button.k-book{background:var(--tb)} .stepbar button.k-book.visited{background:var(--tbv)}
+.stepbar button.k-ours{background:var(--to)} .stepbar button.k-ours.visited{background:var(--tov)}
+.stepbar button.k-task{background:var(--tt)} .stepbar button.k-task.visited{background:var(--ttv)}
+.stepbar button.visited.done{background:var(--tdone)}
+.stepbar button.current{box-shadow:0 0 0 1.5px var(--band-ink)}
+.eyebrow{font-family:var(--ui);color:var(--muted);letter-spacing:.08em}
+.tess{display:none}
+.term{font-weight:700;font-style:italic;color:var(--ink);border-bottom:0}
+.kind-tag{border-radius:0;padding:6px 0 0;border-top:2px solid currentColor;font-family:var(--ui);align-items:center}
+.kind-tag.book,.kind-tag.task,.kind-tag.ours{background:transparent}
+.kind-tag .ic{display:flex}
+.kind-tag b{font-size:12.5px;letter-spacing:.08em}
+.kind-tag small{font-family:var(--body);font-style:italic;font-size:14.5px}
+details{border-radius:0}
+details summary{font-family:var(--ui)}
+details.book{border:0;border-top:3px solid var(--lapis);background:var(--surface-2)}
+details.book summary{color:var(--lapis)}
+details.book summary::before,details.book[open] summary::before{background:var(--lapis)}
+details.book .body{font-size:16px}
+.aside{border-radius:0}
+.aside .k{font-family:var(--ui)}
+.dom{border-radius:0;box-shadow:none;border-top:3px solid var(--lapis)}
+.dom .n{font-family:var(--display);font-weight:700;color:var(--lapis)}
+.dom .t{font-family:var(--ui)}
+.rung{border-radius:0}
+.tl-btn .y{font-family:var(--display);font-weight:700;color:var(--lapis)}
+.tl-btn .era{font-family:var(--ui)}
+.fig img{border-radius:0;box-shadow:none}
+.fig figcaption{font-family:var(--ui)}
+.org .box{border-radius:0}
+.qi{border-radius:0}
+.qi .qn{font-family:var(--display);font-weight:700;color:var(--terra)}
+.qi a{border-radius:0;font-family:var(--ui)}
+.game{border-radius:0;box-shadow:none;border-top:4px solid var(--terra)}
+.game h3{color:var(--terra)}
+.badge{border-radius:0;font-family:var(--ui)}
+.btn{border-radius:3px;font-family:var(--ui);font-weight:700}
+.opt{border-radius:0;background:var(--surface);border-color:var(--line);font-family:var(--body)}
+.feedback{border-radius:0}
+.progress{font-family:var(--ui)}
+.q{font-family:var(--body);font-weight:700}
+.face{border-radius:0}
+.face.f .w{font-family:var(--display);font-weight:700}
+.seq,.seq .slot,.sort-card,.brick,.qtext,.way,.six span,.mosaic .tile,.score-tiles i,.toc-panel,.toc-item{border-radius:0}
+.brick button{font-family:var(--ui)}
+.pager{background:var(--surface)}
+.count{font-family:var(--ui)}
+.toc-panel h3{font-family:var(--display)}
+.toc-head{font-family:var(--ui)}
+.toc-head .ic{display:flex}
+.score .big{font-family:var(--display);font-weight:700;color:var(--lapis)}
+/* переносы длинных слов на узком экране (14.09.2026) */
+.match{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+.opt,.face,.qi p,.ans-table td,.ans-table th{overflow-wrap:anywhere;hyphens:auto}
+.ans-table.fit td:first-child{white-space:normal}
+</style>
+</head>
+<body>
+
+
+<header class="top">
+  <div class="top-inner">
+    <a class="back" href="./">← Темы</a>
+    <div class="crumb">Биология · § 1 · <b>Какие бывают растения</b></div>
+    <button class="toc-btn" id="toc-btn" type="button">Содержание</button>
+  </div>
+  <div class="stepbar" id="stepbar" aria-label="Шаги темы"></div>
+</header>
+
+<main id="deck">
+
+<!-- 1 -->
+<section class="step" data-step="za-minutu" data-name="За минуту" data-part="Самое главное" data-kind="ours">
+  <div class="kind-tag ours"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 6h14"></path><path d="M5 12h14"></path><path d="M5 18h9"></path></svg></span><div><b>Коротко о главном</b><small>Пересказ для разгона. Подробно, как в учебнике, — в следующих шагах.</small></div></div>
+  <div class="eyebrow"><span class="tess"><i></i><i></i><i></i></span> Биология · 6 класс · § 1</div>
+  <h1>Общие признаки, разнообразие, распространение, значение растений</h1>
+  <p class="lede">Амина, это параграф о том, чем растения отличаются от других живых существ, какие они бывают, где растут и зачем нужны.</p>
+  <div id="resume" hidden></div>
+  <div class="prose">
+    <p>Представь, что ты собираешь огромную коллекцию. В ней зелёный налёт на стенке аквариума, травинка во дворе, кактус на подоконнике и дерево выше тридцатиэтажного дома. Всё это растения. Такие разные — что же у них общего?</p>
+    <p>Оказывается, немало. Почти все растения зелёные и сами делают себе пищу из воды, воздуха и солнечного света. Они растут всю жизнь и умеют поворачиваться к свету.</p>
+    <p>Учёные делят это огромное царство на группы: низшие и высшие растения. А ещё растения дают всем живым существам кислород и пищу.</p>
+    <p>Название параграфа длинное, но в нём всего четыре части:</p>
+  </div>
+  <div class="steps4">
+    <div class="dom"><div class="n">1</div><div class="t">Общие признаки</div><div class="d">Чем растения отличаются от других живых существ.</div></div>
+    <div class="dom"><div class="n">2</div><div class="t">Разнообразие</div><div class="d">Какие бывают растения и на какие группы их делят.</div></div>
+    <div class="dom"><div class="n">3</div><div class="t">Распространение</div><div class="d">Где растут растения и сколько живут.</div></div>
+    <div class="dom"><div class="n">4</div><div class="t">Значение</div><div class="d">Зачем растения нужны природе.</div></div>
+  </div>
+  <div class="aside">
+    <div class="k">Как этим пользоваться</div>
+    <p>У каждого шага написано, на какой странице учебника искать. Внизу шага есть «Подробнее, как в учебнике»: там всё, что есть на этих страницах, ничего не пропущено. Сначала учи по коротким шагам, а перед уроком открой «подробнее».</p>
+    <p>Надпись вверху шага подскажет, откуда он: синяя — из учебника, золотая — задание учебника, оранжевая — сверх учебника (пересказ, словарик, игры, самопроверка). В «Содержании» шаги так же разбиты на группы.</p>
+  </div>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 10</summary>
+    <div class="body"><ul>
+      <li>Параграф открывает главу 1 «Растение — живой организм» (так написано вверху страниц 11 и 13).</li>
+      <li>Название параграфа: «Общие признаки, разнообразие, распространение, значение растений».</li>
+      <li>В начале параграфа рамка «Вспомните» с двумя вопросами. Они на следующем шаге.</li>
+      <li>В тексте три части с выделенными заголовками: «Многообразие растений», «Характерные признаки растений», «Значение растений в природе». К тексту четыре рисунка: рис. 4–7.</li>
+      <li>В конце параграфа (с. 13) рамки «Запомните» (9 слов), «Проверьте себя» (4 вопроса) и «Подумайте!». Слова есть в словарике, вопросы — на шагах «Вопросы учебника» и «Подумай».</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 2 -->
+<section class="step" data-step="vspomnite" data-name="Вспомни" data-part="Перед чтением" data-kind="task" data-pages="с. 10">
+  <div class="kind-tag task"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l4.2-1L19 8.2 15.8 5 5 15.8z"></path><path d="M13.8 7l3.2 3.2"></path></svg></span><div><b>Задание учебника</b><span class="pg">с. 10</span><small>Вопросы из книги. Подсказки — наши.</small></div></div>
+  <div class="eyebrow">Перед чтением</div>
+  <h2>Вспомни, что ты уже знаешь</h2>
+  <div class="prose">
+    <p>Параграф начинается с рамки «Вспомните». Это вопросы о том, что ты проходила в 5 классе. Попробуй сначала ответить сама, а подсказки помогут вспомнить.</p>
+  </div>
+  <div class="qlist">
+<div class="qi"><span class="qn">1</span><div><p>По каким признакам растения отличаются от других организмов?</p><p class="src">Подсказка: какого цвета почти все растения? Откуда растение берёт пищу — ищет её, как животное, или делает само? Может ли дерево уйти с места? Проверить себя можно на шагах 5–7.</p><a href="#pigmenty">Шаги 5–7 · Признаки растений</a></div></div>
+<div class="qi"><span class="qn">2</span><div><p>Как человек использует растения?</p><p class="src">Подсказка: загляни на кухню, в шкаф с одеждой и в аптечку. Из чего хлеб, хлопковая футболка, бумага в тетради, деревянный стул? А ещё растения сажают на улицах городов — об этом шаг 11.</p><a href="#chistyy-vozdukh">Шаг 11 · Растения и чистый воздух</a></div></div>
+  </div>
+</section>
+
+<!-- 3 -->
+<section class="step" data-step="mnogoobrazie" data-name="Сколько на свете растений" data-part="Разнообразие" data-kind="book" data-pages="с. 10">
+  <div class="kind-tag book"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.5c2.6-1 5.6-.8 9 1.2v13c-3.4-2-6.4-2.2-9-1.2z"></path><path d="M21 5.5c-2.6-1-5.6-.8-9 1.2v13c3.4-2 6.4-2.2 9-1.2z"></path></svg></span><div><b>Из учебника</b><span class="pg">с. 10</span></div></div>
+  <div class="eyebrow">Многообразие растений</div>
+  <h2>Сколько на свете растений?</h2>
+  <div class="prose">
+    <p>Все растения Земли учёные объединяют в <span class="term">царство Растения</span>. Царство — самая большая группа живых организмов, у которых много общего. Ты знаешь и другие царства, например царство Животные.</p>
+    <p>В царстве Растения больше <b>350 тысяч видов</b>. <span class="term">Вид</span> — это растения, очень похожие друг на друга по строению. Например, все ромашки аптечные — один вид.</p>
+    <p>И какие же они разные! Самые маленькие — одноклеточные водоросли: их можно разглядеть только в микроскоп. А самые большие — деревья, которые поднимаются над землёй больше чем на 100 метров.</p>
+  </div>
+  <figure class="fig wide"><img src="img/2026-09-14-p1/01-razmery-rasteniy.jpg" width="795" height="504" loading="lazy" alt="Рисунок: ель, Спасская башня Кремля, берёза, секвойя и эвкалипт рядом со шкалой высоты с отметками 71 и 100 метров"><figcaption>Рис. 4. Размеры растений (с. 10).</figcaption></figure>
+  <div class="aside">
+    <div class="k">Как читать рисунок</div>
+    <p>Слева шкала высоты с отметками 71 м и 100 м. Для сравнения рядом с деревьями нарисована Спасская башня Московского Кремля: она как раз около 71 метра. Ель и берёза гораздо ниже башни, а секвойя и эвкалипт — выше.</p>
+  </div>
+  <details>
+    <summary>А как это — растение из одной клетки?</summary>
+    <div class="body"><p>Клетка — крошечный «кирпичик» живого, ты знаешь о ней из 5 класса. В дереве миллиарды клеток, а у некоторых водорослей всего одна. И эта одна клетка сама питается, растёт и делится.</p></div>
+  </details>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 10</summary>
+    <div class="body"><ul>
+      <li>«Многообразие растений». Царство Растения объединяет более 350 тысяч видов. Растения бывают самых разных форм — от одноклеточных микроскопических водорослей до огромных деревьев, которые возвышаются над землёй больше чем на 100 м (рис. 4).</li>
+      <li class="pic">Рис. 4 «Размеры растений»: ель, берёза, секвойя и эвкалипт, для сравнения — Спасская башня Кремля. Слева шкала высоты с отметками 71 м и 100 м.</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 4 -->
+<section class="step" data-step="rasprostranenie" data-name="Где растут и сколько живут" data-part="Разнообразие" data-kind="book" data-pages="с. 10">
+  <div class="kind-tag book"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.5c2.6-1 5.6-.8 9 1.2v13c-3.4-2-6.4-2.2-9-1.2z"></path><path d="M21 5.5c-2.6-1-5.6-.8-9 1.2v13c3.4-2 6.4-2.2 9-1.2z"></path></svg></span><div><b>Из учебника</b><span class="pg">с. 10</span></div></div>
+  <div class="eyebrow">Распространение растений</div>
+  <h2>Где растут и сколько живут?</h2>
+  <div class="prose">
+    <p>Растения живут почти повсюду — везде, куда проникает солнечный свет. И на суше, и в воде: в морях, океанах, реках и озёрах.</p>
+    <p>Больше всего разных растений в тропических, субтропических и умеренных зонах Земли. Но даже в холодной тундре и в арктических пустынях летом можно увидеть удивительно много видов растений.</p>
+  </div>
+  <details>
+    <summary>А что это за зоны?</summary>
+    <div class="body">
+      <p><b>Тропики</b> — самая жаркая часть Земли, там не бывает зимы. Например, джунгли Африки и Южной Америки.</p>
+      <p><b>Субтропики</b> — тоже тепло, но зима мягкая и прохладная. Например, побережье Чёрного моря у Сочи.</p>
+      <p><b>Умеренная зона</b> — есть и тёплое лето, и холодная зима. В ней лежит большая часть России.</p>
+      <p><b>Тундра</b> и <b>арктические пустыни</b> — холодный Крайний Север, где лето короткое и прохладное.</p>
+    </div>
+  </details>
+  <div class="prose">
+    <p>И живут растения очень по-разному. Секвойя может прожить <b>4000 лет</b> и больше! Она ещё и одно из самых высоких деревьев планеты: отдельные секвойи вырастают до <b>115 метров</b>.</p>
+    <p>Бывают дубы старше 1000 лет. А есть растения, которые живут всего несколько месяцев, недель и даже дней.</p>
+  </div>
+  <div class="aside">
+    <div class="k">Сравни</div>
+    <p>Секвойя, которой 4000 лет, проросла, когда Древнего Рима ещё не было: Рим появится только через 1200 лет. Ты читала о нём на уроках истории в 5 классе.</p>
+  </div>
+  <div class="aside home">
+    <div class="k">Ближе к дому</div>
+    <p>Растения живут и в морской воде. В Каспийском море, на берегу которого стоит Каспийск, тоже растут водоросли и другие водные растения.</p>
+  </div>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 10</summary>
+    <div class="body"><ul>
+      <li>Растения занимают всевозможные места обитания: они встречаются везде, куда проникает солнечный свет. Живут на суше и в водах морей, океанов, рек и озёр.</li>
+      <li>Особенно велико многообразие растений в тропических, субтропических и умеренных зонах Земли. Но и в холодных зонах — в тундре и арктических пустынях — летом можно поразиться многообразию видов растений.</li>
+      <li>Продолжительность жизни у растений разная. Возраст секвой может достигать 4000 лет и больше. Секвойя — одно из самых высоких деревьев на планете: отдельные деревья достигают 115 метров. Есть дубы старше 1000 лет, но есть растения, которые живут всего несколько месяцев, недель и даже дней.</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 5 -->
+<section class="step" data-step="pigmenty" data-name="Зелёный цвет и фотосинтез" data-part="Признаки растений" data-kind="book" data-pages="с. 10–11">
+  <div class="kind-tag book"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.5c2.6-1 5.6-.8 9 1.2v13c-3.4-2-6.4-2.2-9-1.2z"></path><path d="M21 5.5c-2.6-1-5.6-.8-9 1.2v13c3.4-2 6.4-2.2 9-1.2z"></path></svg></span><div><b>Из учебника</b><span class="pg">с. 10–11</span></div></div>
+  <div class="eyebrow">Характерные признаки растений</div>
+  <h2>Почему растения зелёные?</h2>
+  <div class="prose">
+    <p>Первый признак растений виден сразу: почти все они зелёные. Но бывают и красные, бурые, жёлтые и других цветов.</p>
+    <p>Цвет растению дают особые красители в его клетках — <span class="term">пигменты</span>. Слово пришло из латыни: «пигментум» значит «краска». Например, красные осенние листья клёна окрашены пигментами.</p>
+    <p>Самый распространённый пигмент растений — зелёный <span class="term">хлорофилл</span>. Он улавливает солнечные лучи и помогает растению усвоить их энергию.</p>
+    <p>А без этого невозможен <span class="term">фотосинтез</span>. Слово греческое: «фотос» — свет, «синтезис» — соединение. Фотосинтез — это когда растение из воды и углекислого газа с помощью энергии света делает органические вещества, то есть себе пищу.</p>
+  </div>
+  <div class="aside">
+    <div class="k">Картинка-сравнение</div>
+    <p>Представь кухню, где плита работает от солнечной батареи. Продукты — вода и углекислый газ. Плита — хлорофилл. Электричество — солнечный свет. А готовое блюдо — органические вещества, пища растения.</p>
+  </div>
+  <details>
+    <summary>А что такое органические и неорганические вещества?</summary>
+    <div class="body"><p><b>Неорганические</b> — вещества неживой природы, например вода и углекислый газ, который мы выдыхаем. <b>Органические</b> — вещества, из которых строят себя живые организмы, например сахар и крахмал. Крахмал есть в картошке и в хлебе, и сделали его растения.</p></div>
+  </details>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 10–11</summary>
+    <div class="body"><ul>
+      <li>«Характерные признаки растений». Растения в основном зелёные, но могут быть красными, бурыми, жёлтыми и других цветов.</li>
+      <li>Окраска растений зависит от того, какие особые красители есть в их клетках. Эти красители — пигменты (от лат. «пигментум» — краска).</li>
+      <li>Самый распространённый у растений пигмент — зелёный хлорофилл. Он играет чрезвычайно важную роль: улавливает солнечные лучи и обеспечивает усвоение их энергии.</li>
+      <li>Это необходимое условие фотосинтеза (от греч. «фотос» — свет и «синтезис» — соединение). Фотосинтез — процесс образования органических соединений из неорганических (воды и углекислого газа) за счёт энергии света.</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 6 -->
+<section class="step" data-step="parazity" data-name="Растения без хлорофилла" data-part="Признаки растений" data-kind="book" data-pages="с. 11">
+  <div class="kind-tag book"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.5c2.6-1 5.6-.8 9 1.2v13c-3.4-2-6.4-2.2-9-1.2z"></path><path d="M21 5.5c-2.6-1-5.6-.8-9 1.2v13c3.4-2 6.4-2.2 9-1.2z"></path></svg></span><div><b>Из учебника</b><span class="pg">с. 11</span></div></div>
+  <div class="eyebrow">Характерные признаки растений</div>
+  <h2>Главный признак и исключения</h2>
+  <div class="prose">
+    <p>Способность к фотосинтезу — <b>главная особенность</b> царства Растения. Ни кошка, ни человек так не умеют: нам нужна готовая пища, а растение делает её само.</p>
+    <p>Но есть исключения. <span class="term">Растения-паразиты</span> фотосинтезом не занимаются. Паразит — тот, кто живёт за чужой счёт. Например, у <b>заразихи</b> и <b>Петрова креста</b> в клетках нет хлорофилла.</p>
+    <p>Как же они живут? Прикрепляются к другому растению и забирают у него готовые органические вещества, то есть готовую пищу.</p>
+  </div>
+  <figure class="fig wide"><img src="img/2026-09-14-p1/02-rasteniya-parazity.jpg" width="800" height="357" loading="lazy" alt="Две фотографии: розовое соцветие Петрова креста среди листьев и жёлтые нити повилики, которые оплетают траву"><figcaption>Рис. 5. Растения-паразиты: Петров крест (а), повилика (б) (с. 11).</figcaption></figure>
+  <div class="aside">
+    <div class="k">Посмотри на цвет</div>
+    <p>Заметила? Петров крест розовый, а повилика похожа на жёлтые нитки, которые оплели чужие стебли. Зелёного цвета у них нет. Повилика — тоже растение-паразит.</p>
+  </div>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 11</summary>
+    <div class="body"><ul>
+      <li>Способность к фотосинтезу — главная характерная особенность представителей царства Растения.</li>
+      <li>Но некоторые растения к фотосинтезу не способны. Например, растения-паразиты заразиха и Петров крест не содержат в клетках хлорофилла. Они питаются готовыми органическими веществами, которые получают из растений, на которых паразитируют (рис. 5).</li>
+      <li class="pic">Рис. 5 «Растения-паразиты: Петров крест (а), повилика (б)». Две фотографии.</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 7 -->
+<section class="step" data-step="rost-dvizhenie" data-name="Растут всю жизнь и двигаются" data-part="Признаки растений" data-kind="book" data-pages="с. 11">
+  <div class="kind-tag book"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.5c2.6-1 5.6-.8 9 1.2v13c-3.4-2-6.4-2.2-9-1.2z"></path><path d="M21 5.5c-2.6-1-5.6-.8-9 1.2v13c3.4-2 6.4-2.2 9-1.2z"></path></svg></span><div><b>Из учебника</b><span class="pg">с. 11</span></div></div>
+  <div class="eyebrow">Характерные признаки растений</div>
+  <h2>Растут всю жизнь и умеют двигаться</h2>
+  <div class="prose">
+    <p>Ещё одна особенность: растения <b>растут всю жизнь</b>. У животных (за немногими исключениями) рост ограничен: котёнок вырастает во взрослую кошку и дальше не растёт. А дерево год за годом становится выше и толще.</p>
+    <p>Активно передвигаться растения не могут: дерево не перейдёт на другое место, как собака. Но <b>движения</b> у них есть! Например, растение поворачивается и растёт в сторону света.</p>
+  </div>
+  <figure class="fig"><img src="img/2026-09-14-p1/03-dvizheniya-rasteniya.jpg" width="630" height="338" loading="lazy" alt="Три подсолнечника: их цветки повёрнуты к солнцу, которое движется по небу слева направо"><figcaption>Рис. 6. Движения растения (с. 11).</figcaption></figure>
+  <div class="aside">
+    <div class="k">Как читать рисунок</div>
+    <p>Утром солнце слева, днём наверху, вечером справа — стрелки показывают его путь. А подсолнечник поворачивает цветок вслед за солнцем.</p>
+  </div>
+  <div class="aside">
+    <div class="k">Попробуй сама</div>
+    <p>Посмотри на комнатный цветок на подоконнике: его листья повёрнуты к окну. Разверни горшок — и через несколько дней листья снова повернутся к свету.</p>
+  </div>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 11</summary>
+    <div class="body"><ul>
+      <li>Ещё одна особенность растений: в отличие от животных, у которых (за немногими исключениями) рост продолжается ограниченное время, растения растут в течение всей своей жизни.</li>
+      <li>Растения не способны активно передвигаться, но движения у них есть. Например, они могут поворачиваться и расти в сторону источника света (рис. 6).</li>
+      <li class="pic">Рис. 6 «Движения растения»: три подсолнечника поворачивают цветки вслед за солнцем.</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 8 -->
+<section class="step" data-step="nizshie-vysshie" data-name="Низшие и высшие" data-part="Группы растений" data-kind="book" data-pages="с. 12">
+  <div class="kind-tag book"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.5c2.6-1 5.6-.8 9 1.2v13c-3.4-2-6.4-2.2-9-1.2z"></path><path d="M21 5.5c-2.6-1-5.6-.8-9 1.2v13c3.4-2 6.4-2.2 9-1.2z"></path></svg></span><div><b>Из учебника</b><span class="pg">с. 12</span></div></div>
+  <div class="eyebrow">Группы растений</div>
+  <h2>Низшие и высшие растения</h2>
+  <div class="prose">
+    <p>По строению все растения традиционно делят на две группы: <span class="term">низшие</span> и <span class="term">высшие</span>. Это не про рост! Маленький мох — высшее растение, а водоросль бывает длиной в несколько метров и всё равно низшая.</p>
+    <p><b>Низшие растения</b> устроены просто. У них нет сложного строения из тканей: нет ни корней, ни стеблей, ни листьев. Тело самых простых из них — всего одна клетка.</p>
+    <p>Тело многоклеточных низших растений называют <span class="term">слоевище</span>, или <span class="term">таллом</span> (от греч. «таллос» — молодая ветка, росток). Это цельная пластинка, нить или кустик без корня, стебля и листьев. К низшим растениям относятся <b>водоросли</b>.</p>
+    <p>У <b>высших растений</b> тело разделено на <span class="term">органы</span>: побеги (стебли с листьями) и корни. Корней нет только у мхов. А органы состоят из разных <span class="term">тканей</span>.</p>
+  </div>
+  <details>
+    <summary>А что такое ткани и органы?</summary>
+    <div class="body">
+      <p><b>Ткань</b> — группа похожих клеток, которые вместе делают одну работу. Как бригада строителей, где все кладут кирпичи и вместе строят стену. Например, одни клетки листа вместе делают фотосинтез, а другие защищают лист снаружи.</p>
+      <p><b>Орган</b> — часть тела со своим строением и своей работой. Корень держит растение в земле и всасывает воду, лист делает фотосинтез. Орган состоит из нескольких тканей, как дом из разных материалов.</p>
+      <p><b>Побег</b> — стебель вместе с листьями. В учебнике он назван «листостебельный побег».</p>
+    </div>
+  </details>
+  <figure class="fig wide"><img src="img/2026-09-14-p1/04-nizshie-i-vysshie.jpg" width="800" height="970" loading="lazy" alt="Рисунок: водоросли, моховидные, хвощевидные, плауновидные, папоротниковидные, голосеменные и покрытосеменные растения"><figcaption>Рис. 7. Растения низшие и высшие (с. 12).</figcaption></figure>
+  <div class="aside">
+    <div class="k">Найди на рисунке</div>
+    <p>Водоросли — единственные низшие растения на рисунке, остальные шесть групп высшие. Посмотри: у хвоща, плауна и папоротника внизу видны корни, а у водорослей их нет.</p>
+  </div>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 12</summary>
+    <div class="body"><ul>
+      <li>Все растения в зависимости от строения традиционно подразделяют на низшие и высшие (рис. 7).</li>
+      <li>Низшие растения не имеют сложного тканевого строения. У них нет ни корней, ни стеблей, ни листьев. Тело самых примитивных низших растений может состоять из одной клетки. Тело многоклеточных низших растений называют слоевищем или талломом (от греч. «таллос» — молодая ветка, росток).</li>
+      <li>К низшим растениям относятся водоросли.</li>
+      <li>У высших растений тело расчленено на органы — листостебельные побеги и корни (корней нет только у мхов). Органы состоят из различных тканей.</li>
+      <li class="pic">Рис. 7 «Растения низшие и высшие»: водоросли, моховидные, хвощевидные, плауновидные, папоротниковидные, голосеменные, покрытосеменные.</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 9 -->
+<section class="step" data-step="sporovye-semennye" data-name="Споровые и семенные" data-part="Группы растений" data-kind="book" data-pages="с. 13">
+  <div class="kind-tag book"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.5c2.6-1 5.6-.8 9 1.2v13c-3.4-2-6.4-2.2-9-1.2z"></path><path d="M21 5.5c-2.6-1-5.6-.8-9 1.2v13c3.4-2 6.4-2.2 9-1.2z"></path></svg></span><div><b>Из учебника</b><span class="pg">с. 13</span></div></div>
+  <div class="eyebrow">Группы растений</div>
+  <h2>Споровые и семенные растения</h2>
+  <div class="prose">
+    <p>Высшие растения делят ещё на две большие группы — по тому, как они размножаются.</p>
+    <p><b>Высшие споровые растения</b> — мхи, хвощи, плауны и папоротники. Они размножаются <span class="term">спорами</span>. Спора — крошечная клеточка, похожая на пылинку, из которой может вырасти новое растение. Например, коричневые точки на обратной стороне листа папоротника — это места, где созревают споры.</p>
+    <p><b>Высшие семенные растения</b> образуют <span class="term">семена</span> и размножаются ими. Среди них есть голосеменные и покрытосеменные.</p>
+    <p><span class="term">Голосеменные</span> не имеют цветков. Их семена лежат на чешуях шишек и ничем не прикрыты — «голые». Например, сосна и ель.</p>
+    <p><span class="term">Покрытосеменные</span> устроены сложнее всех высших растений. У них есть цветки, а из цветков получаются плоды с семенами внутри: семя «покрыто» плодом. Поэтому их называют ещё <b>цветковые</b>. Например, яблоня: весной цветёт, а осенью на ней яблоки с семечками.</p>
+  </div>
+  <div class="prose"><p><b>Схема: как делят растения (по рис. 7)</b></p></div>
+  <div class="org" aria-label="Схема: растения низшие и высшие">
+    <div class="box top">Царство Растения</div>
+    <div class="lbl">Низшие растения · нет органов и тканей</div>
+    <div class="lvl" style="grid-template-columns:1fr"><div class="box">Водоросли<small>тело — одна клетка или слоевище (таллом)</small></div></div>
+    <div class="lbl">Высшие растения · есть органы и ткани</div>
+    <div class="lvl" style="grid-template-columns:1fr 1fr"><div class="box sub">Высшие споровые<small>размножаются спорами</small></div><div class="box sub">Высшие семенные<small>размножаются семенами</small></div></div>
+    <div class="lbl">Споровые</div>
+    <div class="lvl"><div class="box">Моховидные<small>мхи</small></div><div class="box">Хвощевидные<small>хвощи</small></div><div class="box">Плауновидные<small>плауны</small></div><div class="box">Папоротниковидные<small>папоротники</small></div></div>
+    <div class="lbl">Семенные</div>
+    <div class="lvl" style="grid-template-columns:1fr 1fr"><div class="box">Голосеменные<small>цветков нет, семена на чешуях шишек</small></div><div class="box">Покрытосеменные, или цветковые<small>цветки, из них плоды с семенами</small></div></div>
+  </div>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 13</summary>
+    <div class="body"><ul>
+      <li>Высшие растения объединяют в две большие группы: споровые и семенные растения.</li>
+      <li>К высшим споровым растениям относятся мхи, хвощи, плауны и папоротники. Они размножаются с помощью спор.</li>
+      <li>Высшие семенные растения образуют семена и с их помощью размножаются. Среди них выделяют голосеменные и покрытосеменные растения.</li>
+      <li>Голосеменные цветков не имеют. Семена у них находятся на чешуях шишек, то есть не защищены покровами плодов.</li>
+      <li>Самую высокую организацию среди высших растений имеют покрытосеменные. У них есть цветки, из которых образуются плоды с семенами. Отсюда их названия — цветковые, или покрытосеменные.</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 10 -->
+<section class="step" data-step="kislorod-pishcha" data-name="Кислород и пища" data-part="Значение растений" data-kind="book" data-pages="с. 13">
+  <div class="kind-tag book"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.5c2.6-1 5.6-.8 9 1.2v13c-3.4-2-6.4-2.2-9-1.2z"></path><path d="M21 5.5c-2.6-1-5.6-.8-9 1.2v13c3.4-2 6.4-2.2 9-1.2z"></path></svg></span><div><b>Из учебника</b><span class="pg">с. 13</span></div></div>
+  <div class="eyebrow">Значение растений в природе</div>
+  <h2>Чем растения важны для природы?</h2>
+  <div class="prose">
+    <p>Сделай глубокий вдох. В этом вдохе есть кислород, и его выделили растения.</p>
+    <p>Растения обогащают воздух <b>кислородом</b>, а он нужен для дыхания почти всем живым существам. Из воздуха растения поглощают <b>углекислый газ</b> — тот самый, из которого при фотосинтезе делают пищу.</p>
+    <p>Ещё растения — пища. Их едят <span class="term">растительноядные животные</span>, то есть те, кто питается растениями, например заяц или корова. А растительноядными, в свою очередь, питаются <span class="term">хищники</span>, например лиса или волк.</p>
+  </div>
+  <div class="aside">
+    <div class="k">Цепочка</div>
+    <p>Трава → заяц → лиса. Не будет травы — не станет зайцев, а за ними и лис.</p>
+  </div>
+  <div class="prose">
+    <p>И в лесу, и на лугу, и на болоте, и в пустыне живут самые разные живые существа.</p>
+  </div>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 13</summary>
+    <div class="body"><ul>
+      <li>«Значение растений в природе». Растения обогащают воздух кислородом, необходимым для дыхания почти всех живых существ, и поглощают из воздуха углекислый газ.</li>
+      <li>Растения служат пищей растительноядным животным, которыми, в свою очередь, питаются хищники. Леса, луга, болота и пустыни населяют разнообразные представители живого мира.</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 11 -->
+<section class="step" data-step="chistyy-vozdukh" data-name="Растения и чистый воздух" data-part="Значение растений" data-kind="book" data-pages="с. 13">
+  <div class="kind-tag book"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.5c2.6-1 5.6-.8 9 1.2v13c-3.4-2-6.4-2.2-9-1.2z"></path><path d="M21 5.5c-2.6-1-5.6-.8-9 1.2v13c3.4-2 6.4-2.2 9-1.2z"></path></svg></span><div><b>Из учебника</b><span class="pg">с. 13</span></div></div>
+  <div class="eyebrow">Значение растений в природе</div>
+  <h2>Растения-«датчики» и растения-«пылесосы»</h2>
+  <div class="prose">
+    <p>Учёные выяснили, что растения по-разному чувствуют <span class="term">загрязнение окружающей среды</span>, то есть грязный воздух, дым заводов, выхлопные газы машин.</p>
+    <p>Одни растения очень <b>чувствительные</b>: как только воздух загрязняется, им становится плохо. Наблюдая за ними, учёные очень точно узнают, насколько загрязнена природа. Такие растения — как живые датчики.</p>
+    <p>Другие растения <b>устойчивые</b>: грязный воздух им почти не вредит. Их и надо сажать в городах, где много заводов и машин.</p>
+  </div>
+  <div class="ways">
+    <div class="way"><h3>Чувствительные</h3><p class="cn">«датчики»</p><p>Мхи, ель, пихта, сосна и другие растения.</p></div>
+    <div class="way const"><h3>Устойчивые</h3><p class="cn">«пылесосы»</p><p>Акация белая, акация жёлтая, тополь, каштан, берёза, ольха, ива, боярышник, сирень, лиственница и другие.</p></div>
+  </div>
+  <div class="prose">
+    <p>Устойчивые растения активно поглощают из воздуха разные вредные вещества и задерживают пыль — они хорошие <span class="term">пылеуловители</span>.</p>
+    <p>А леса вокруг промышленных городов очень важны и для природы, и для здоровья людей. В лесу вместе живёт много разных видов растений, это устойчивое <span class="term">растительное сообщество</span>. Поэтому лес особенно активно поглощает и перерабатывает вредные вещества.</p>
+  </div>
+  <details>
+    <summary>Как запомнить, кто «датчик»?</summary>
+    <div class="body"><p>«Датчики» — это мхи и хвойные деревья с иголками: ель, пихта, сосна. Но осторожно: лиственница, хоть у неё тоже иголки, стоит в списке устойчивых. Она сбрасывает хвою на зиму, как берёза листья.</p></div>
+  </details>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 13</summary>
+    <div class="body"><ul>
+      <li>Учёные установили, что растения по-разному чувствительны к загрязнению окружающей среды. Наиболее чутко на загрязнения реагируют мхи, ель, пихта, сосна и другие растения. Наблюдая за ними, учёные могут очень точно судить о загрязнении окружающей среды.</li>
+      <li>Если самые чувствительные к загрязнению растения могут служить показателями состояния окружающей среды, то устойчивые следует использовать для озеленения городов с развитой промышленностью и большим числом автомобилей.</li>
+      <li>Наиболее устойчивы к загрязнению атмосферного воздуха акация белая, акация жёлтая, тополь, каштан, берёза, ольха, ива, боярышник, сирень, лиственница и др. Эти растения активно поглощают из воздуха различные вредные вещества и являются хорошими пылеуловителями.</li>
+      <li>Важную экологическую и оздоровительную роль играют леса вокруг промышленных центров. Лес — устойчивое растительное сообщество с большим числом видов, поэтому он особенно активно поглощает и перерабатывает вредные вещества.</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 12 -->
+<section class="step" data-step="slovar-1" data-name="Словарик: признаки и строение" data-part="Словарик" data-kind="ours">
+  <div class="kind-tag ours"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="6" width="12" height="14" rx="1.5"></rect><path d="M8.5 3.5h10.5a1.5 1.5 0 0 1 1.5 1.5v12.5"></path></svg></span><div><b>Словарик</b><small>Сверх учебника — чтобы запомнить слова параграфа.</small></div></div>
+  <div class="game">
+    <div class="g-head"><h3>Словарик: признаки и строение</h3><span class="badge" id="b-terms">Игра</span></div>
+    <p class="task">Нажми на карточку, и она перевернётся. Словарик из двух частей, открой все карточки. Здесь все слова из рамки «Запомните» и ещё несколько важных.</p>
+    <div class="progress" id="terms-progress"></div>
+    <div class="cards" data-terms="0"></div>
+  </div>
+</section>
+
+<!-- 13 -->
+<section class="step" data-step="slovar-2" data-name="Словарик: группы растений" data-part="Словарик" data-kind="ours">
+  <div class="kind-tag ours"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="6" width="12" height="14" rx="1.5"></rect><path d="M8.5 3.5h10.5a1.5 1.5 0 0 1 1.5 1.5v12.5"></path></svg></span><div><b>Словарик</b><small>Сверх учебника — чтобы запомнить слова параграфа.</small></div></div>
+  <div class="game">
+    <div class="g-head"><h3>Словарик: группы растений</h3><span class="badge" id="b-terms2">Игра</span></div>
+    <p class="task">Вторая часть: на какие группы делят растения.</p>
+    <div class="progress" id="terms-progress2"></div>
+    <div class="cards" data-terms="1"></div>
+  </div>
+</section>
+
+<!-- 14 -->
+<section class="step" data-step="kto-chem" data-name="Кто чем знаменит?" data-part="Игры" data-kind="ours">
+  <div class="kind-tag ours"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="3"></rect><circle cx="9" cy="9" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="15" cy="15" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="15" cy="9" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="9" cy="15" r="1.3" fill="currentColor" stroke="none"></circle></svg></span><div><b>Игра</b><small>Сверх учебника — чтобы закрепить тему.</small></div></div>
+  <div class="game" id="g-match">
+    <div class="g-head"><h3>Кто чем знаменит?</h3><span class="badge" id="b-match">Игра</span></div>
+    <p class="task">Нажми на растение слева, потом на его особенность справа.</p>
+    <div class="match">
+      <div class="col"><div class="lbl">Растение</div><div class="col" id="foes"></div></div>
+      <div class="col"><div class="lbl">Чем знаменито</div><div class="col" id="outcomes"></div></div>
+    </div>
+    <div id="match-fb"></div>
+  </div>
+</section>
+
+<!-- 15 -->
+<section class="step" data-step="gruppy" data-name="Разложи по группам" data-part="Игры" data-kind="ours">
+  <div class="kind-tag ours"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="3"></rect><circle cx="9" cy="9" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="15" cy="15" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="15" cy="9" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="9" cy="15" r="1.3" fill="currentColor" stroke="none"></circle></svg></span><div><b>Игра</b><small>Сверх учебника — чтобы закрепить тему.</small></div></div>
+  <div class="game">
+    <div class="g-head"><h3>Разложи по группам</h3><span class="badge" id="b-sort">Игра</span></div>
+    <p class="task">Прочитай карточку и выбери, к какой группе растений она относится.</p>
+    <div class="progress" id="sort-progress"></div>
+    <div id="sort-box"></div>
+  </div>
+</section>
+
+<!-- 16 -->
+<section class="step" data-step="lishnee" data-name="Найди лишнее" data-part="Игры" data-kind="ours">
+  <div class="kind-tag ours"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="3"></rect><circle cx="9" cy="9" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="15" cy="15" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="15" cy="9" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="9" cy="15" r="1.3" fill="currentColor" stroke="none"></circle></svg></span><div><b>Игра</b><small>Сверх учебника — чтобы закрепить тему.</small></div></div>
+  <div class="game">
+    <div class="g-head"><h3>Найди лишнее</h3><span class="badge" id="b-odd">Игра</span></div>
+    <p class="task">Три из одной компании, одно чужое. Найди чужое.</p>
+    <div class="progress" id="odd-progress"></div>
+    <div class="odd-grid" id="odd-grid"></div>
+    <div id="odd-fb"></div>
+    <div class="row"><button class="btn" id="odd-next" type="button" hidden>Дальше</button></div>
+  </div>
+</section>
+
+<!-- 17 -->
+<section class="step" data-step="test" data-name="Проверь себя" data-part="Финал" data-kind="ours">
+  <div class="kind-tag ours"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"></circle><path d="M8 12.3l2.8 2.8L16.2 9.6"></path></svg></span><div><b>Самопроверка</b><small>Сверх учебника — вопросы, чтобы проверить себя. Задания из учебника — дальше.</small></div></div>
+  <div class="eyebrow">Финал</div>
+  <h2>Проверь себя</h2>
+  <div class="game">
+    <div class="progress" id="quiz-progress"></div>
+    <div id="quiz-box"></div>
+  </div>
+</section>
+
+<!-- 18 -->
+<section class="step" data-step="voprosy" data-name="Вопросы учебника" data-part="Финал" data-kind="task" data-pages="с. 13">
+  <div class="kind-tag task"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l4.2-1L19 8.2 15.8 5 5 15.8z"></path><path d="M13.8 7l3.2 3.2"></path></svg></span><div><b>Задание учебника</b><span class="pg">с. 13</span><small>Вопросы из книги. Где искать ответ и подсказки — наши.</small></div></div>
+  <div class="eyebrow">Финал · Вопросы в конце § 1</div>
+  <h2>Вопросы из учебника</h2>
+  <div class="prose">
+    <p>Это вопросы из рамки «Проверьте себя» в конце параграфа, номера такие же, как в твоём учебнике. Рядом с каждым написано, на каком шаге искать ответ. Отвечай своими словами: так лучше запоминается, и учитель услышит, что ты поняла, а не заучила.</p>
+  </div>
+  <div class="qlist">
+<div class="qi"><span class="qn">1</span><div><p>Каковы характерные признаки, присущие растениям?</p><p class="src">Подсказка: в учебнике их четыре. Один — про цвет и пигменты, один — главный, про то, как растение получает пищу, ещё два — про рост и движения. Не забудь про исключения.</p><a href="#pigmenty">Шаги 5–7 · Признаки растений</a></div></div>
+<div class="qi"><span class="qn">2</span><div><p>Что такое ткани и органы?</p><p class="src">Подсказка: в учебнике об этом коротко, на с. 12. Простыми словами — в раскрывашке «А что такое ткани и органы?». Приведи пример органа растения.</p><a href="#nizshie-vysshie">Шаг 8 · Низшие и высшие</a></div></div>
+<div class="qi"><span class="qn">3</span><div><p>Чем различаются представители низших и высших растений?</p><p class="src">Подсказка: сравни, есть ли у них корни, стебли, листья и ткани. Как называется тело низших растений? Кто относится к тем и к другим? Поможет схема на шаге 9.</p><a href="#nizshie-vysshie">Шаги 8–9 · Группы растений</a></div></div>
+<div class="qi"><span class="qn">4</span><div><p>Какое значение имеют растения в природе?</p><p class="src">Подсказка: подумай о воздухе (что растения выделяют и что поглощают), о пище для животных и о том, какие растения помогают очистить воздух.</p><a href="#kislorod-pishcha">Шаги 10–11 · Значение растений</a></div></div>
+<div class="qi"><span class="qn">?</span><div><p>Подумайте! Почему растения важны для существования жизни на нашей планете?</p><p class="src">Этот вопрос разбираем на последнем шаге, там есть кирпичики-подсказки.</p><a href="#itog">Шаг 19 · Подумай</a></div></div>
+  </div>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 13</summary>
+    <div class="body"><ul>
+      <li>«Запомните»: слоевище, таллом, ткани, органы, низшие растения, высшие растения, высшие споровые растения, высшие семенные растения, пигменты. Все эти слова есть в словарике (шаги 12–13).</li>
+      <li>«Проверьте себя»: четыре вопроса, они перечислены выше.</li>
+      <li>«Подумайте!»: почему растения важны для существования жизни на нашей планете? Разбираем на шаге 19.</li>
+      <li>Рамка «Вспомните» в начале параграфа (с. 10) — на шаге 2.</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 19 -->
+<section class="step" data-step="itog" data-name="Подумай" data-part="Финал" data-kind="task" data-pages="с. 13">
+  <div class="kind-tag task"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l4.2-1L19 8.2 15.8 5 5 15.8z"></path><path d="M13.8 7l3.2 3.2"></path></svg></span><div><b>Задание учебника</b><span class="pg">с. 13</span><small>Вопрос «Подумайте!» из книги, кирпичики-подсказки — наши.</small></div></div>
+  <div class="eyebrow">Финал</div>
+  <h2>Подумай: почему растения важны для жизни на планете?</h2>
+  <div class="prose">
+    <p>Это вопрос из рамки «Подумайте!» в конце параграфа. Вот четыре «кирпичика» для ответа. Открой их, а потом попробуй ответить своими словами, не подглядывая.</p>
+  </div>
+  <div class="bricks">
+    <div class="brick"><button type="button" aria-expanded="false"><span>Чем дышат живые существа</span><span>+</span></button><div class="b-body" hidden>Растения обогащают воздух кислородом, а он нужен для дыхания почти всем живым существам (шаг 10). Подумай: что было бы, если бы кислород никто не пополнял?</div></div>
+    <div class="brick"><button type="button" aria-expanded="false"><span>Кто сам делает пищу</span><span>+</span></button><div class="b-body" hidden>Растения с хлорофиллом сами делают органические вещества из воды и углекислого газа за счёт энергии света (шаги 5–6). Животные и люди так не умеют. Откуда же они берут пищу?</div></div>
+    <div class="brick"><button type="button" aria-expanded="false"><span>С чего начинается цепочка</span><span>+</span></button><div class="b-body" hidden>Растения едят растительноядные животные, а их — хищники (шаг 10). Что стоит в самом начале такой цепочки?</div></div>
+    <div class="brick"><button type="button" aria-expanded="false"><span>Чистый воздух и дом для живых</span><span>+</span></button><div class="b-body" hidden>Растения поглощают углекислый газ и вредные вещества, задерживают пыль, а леса вокруг городов перерабатывают вредные вещества (шаг 11). И в лесах, на лугах, болотах, в пустынях живёт множество живых существ.</div></div>
+  </div>
+  <div class="aside">
+    <div class="k">Главное в одном предложении</div>
+    <p>Растения — это больше 350 тысяч видов, которые живут везде, куда проникает свет, с помощью хлорофилла сами создают органические вещества (фотосинтез), растут всю жизнь, делятся на низшие (водоросли) и высшие (споровые и семенные) и дают всему живому кислород и пищу.</p>
+  </div>
+  <div class="game">
+    <div class="g-head"><h3>Твоя мозаика</h3></div>
+    <div class="mosaic" id="mosaic"></div>
+    <div class="mosaic-list" id="mosaic-list"></div>
+    <div class="row"><a class="btn" href="./">К списку тем</a></div>
+  </div>
+</section>
+
+</main>
+
+<nav class="pager" aria-label="Навигация по шагам">
+  <div class="pager-inner">
+    <button class="btn ghost" id="prev" type="button">Назад</button>
+    <div class="count" id="count"></div>
+    <button class="btn" id="next" type="button">Дальше</button>
+  </div>
+</nav>
+
+<div class="toc" id="toc" hidden>
+  <div class="toc-panel" role="dialog" aria-label="Содержание">
+    <h3>Содержание <button class="toc-close" id="toc-close" type="button">Закрыть</button></h3>
+    <div id="toc-list" style="display:flex;flex-direction:column;gap:2px"></div>
+  </div>
+</div>
+
+<script>
+(function(){
+  'use strict';
+  var $ = function(s, r){ return (r||document).querySelector(s); };
+  var el = function(tag, cls, html){ var e=document.createElement(tag); if(cls) e.className=cls; if(html!=null) e.innerHTML=html; return e; };
+  var shuffle = function(a){ a=a.slice(); for(var i=a.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=a[i]; a[i]=a[j]; a[j]=t; } return a; };
+
+  /* ---------- state ---------- */
+  var KEY='bio-p1-v1';
+  var state={visited:{},done:{},last:0};
+  try{ var s=JSON.parse(localStorage.getItem(KEY)||'null'); if(s && typeof s==='object'){ state.visited=s.visited||{}; state.done=s.done||{}; state.last=s.last||0; } }catch(e){}
+  function save(){ try{ localStorage.setItem(KEY, JSON.stringify(state)); }catch(e){} }
+
+  var GAMES=[
+    {k:'terms', name:'Словарик, обе части', step:'slovar-1'},
+    {k:'match', name:'Кто чем знаменит?', step:'kto-chem'},
+    {k:'sort', name:'Разложи по группам', step:'gruppy'},
+    {k:'odd', name:'Найди лишнее', step:'lishnee'},
+    {k:'quiz', name:'Проверь себя', step:'test'}
+  ];
+  var GAME_STEPS={'slovar-1':'terms','slovar-2':'terms','kto-chem':'match','gruppy':'sort','lishnee':'odd','test':'quiz'};
+
+  /* ---------- steps ---------- */
+  var steps=Array.prototype.slice.call(document.querySelectorAll('.step'));
+  var N=steps.length, cur=0;
+  var stepbar=$('#stepbar'), count=$('#count'), prevB=$('#prev'), nextB=$('#next'), tocList=$('#toc-list');
+
+  /* содержание по группам: из учебника / задания учебника / сверх учебника */
+  var KIND={book:['<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.5c2.6-1 5.6-.8 9 1.2v13c-3.4-2-6.4-2.2-9-1.2z"></path><path d="M21 5.5c-2.6-1-5.6-.8-9 1.2v13c3.4-2 6.4-2.2 9-1.2z"></path></svg>','Из учебника'],task:['<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l4.2-1L19 8.2 15.8 5 5 15.8z"></path><path d="M13.8 7l3.2 3.2"></path></svg>','Задания учебника'],ours:['<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="3"></rect><circle cx="9" cy="9" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="15" cy="15" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="15" cy="9" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="9" cy="15" r="1.3" fill="currentColor" stroke="none"></circle></svg>','Сверх учебника']};
+  var tocItems=[], groups=[], prevKind=null, grp=null;
+  steps.forEach(function(s,i){
+    var kind=s.getAttribute('data-kind')||'book', pg=(s.getAttribute('data-pages')||'').replace(/,\s*п\..*$/,'');
+    var start=kind!==prevKind;
+    var b=el('button'); b.type='button'; b.setAttribute('aria-label','Шаг '+(i+1)+': '+s.getAttribute('data-name'));
+    b.setAttribute('data-base','k-'+kind+(start&&i>0?' gstart':'')); b.className=b.getAttribute('data-base');
+    b.addEventListener('click', function(){ go(i); });
+    stepbar.appendChild(b);
+    if(start){
+      var label = kind==='ours' ? (i===0?'Коротко о главном':'Словарик и игры · сверх учебника') : KIND[kind][1];
+      grp=el('div','toc-group k-'+kind,'<div class="toc-head"><span class="ic">'+KIND[kind][0]+'</span><span>'+label+'</span></div>');
+      grp.pages=[]; groups.push(grp); tocList.appendChild(grp); prevKind=kind;
+    }
+    var t=el('button','toc-item','<span class="n">'+(i+1)+'</span><span>'+s.getAttribute('data-name')+'</span>'+(pg?'<span class="pg">'+pg+'</span>':'')+'<span class="m"></span>');
+    t.type='button'; t.addEventListener('click', function(){ closeToc(); go(i); });
+    grp.appendChild(t); tocItems.push(t);
+    (pg.match(/\d+/g)||[]).forEach(function(n){ grp.pages.push(+n); });
+  });
+  groups.forEach(function(g){ if(g.pages.length){ var a=Math.min.apply(null,g.pages), z=Math.max.apply(null,g.pages); g.firstChild.lastChild.textContent+=' · с. '+(a===z?a:a+'–'+z); } });
+
+  function paint(){
+    var bars=stepbar.children, items=tocItems;
+    for(var i=0;i<N;i++){
+      var key=steps[i].getAttribute('data-step'), g=GAME_STEPS[key];
+      var done = g && state.done[g];
+      bars[i].className=bars[i].getAttribute('data-base')+(i===cur?' current':'')+(state.visited[i]?' visited':'')+(done?' done':'');
+      items[i].className='toc-item'+(i===cur?' current':'');
+      items[i].lastElementChild.textContent = done ? 'пройдено' : (state.visited[i] ? '✓' : '');
+    }
+    count.textContent=(cur+1)+' / '+N;
+    prevB.disabled = cur===0;
+    if(cur===N-1){ nextB.textContent='Это последний шаг'; nextB.disabled=true; }
+    else { nextB.textContent='Дальше: '+steps[cur+1].getAttribute('data-name'); nextB.disabled=false; }
+    var badges={terms:['b-terms','b-terms2'],match:['b-match'],sort:['b-sort'],odd:['b-odd']};
+    for(var k in badges){ badges[k].forEach(function(id){ var b=document.getElementById(id); if(b && state.done[k]){ b.textContent='Пройдено'; b.classList.add('done'); } }); }
+    paintMosaic();
+  }
+  function go(i, silent){
+    if(i<0||i>=N) return;
+    cur=i; steps.forEach(function(s,j){ s.hidden = j!==i; });
+    state.visited[i]=true; state.last=i; save();
+    if(!silent){ var h='#'+steps[i].getAttribute('data-step'); if(location.hash!==h) history.pushState(null,'',h); }
+    window.scrollTo(0,0);
+    paint();
+  }
+  function idxFromHash(){ var h=location.hash.replace('#',''); for(var i=0;i<N;i++) if(steps[i].getAttribute('data-step')===h) return i; return -1; }
+  function onHash(){ var i=idxFromHash(); if(i>=0 && i!==cur) go(i, true); }
+  window.addEventListener('popstate', onHash);
+  window.addEventListener('hashchange', onHash);
+  prevB.addEventListener('click', function(){ go(cur-1); });
+  nextB.addEventListener('click', function(){ go(cur+1); });
+  document.addEventListener('keydown', function(e){ if(e.target && /INPUT|TEXTAREA/.test(e.target.tagName)) return; if(e.key==='ArrowRight') go(cur+1); if(e.key==='ArrowLeft') go(cur-1); if(e.key==='Escape') closeToc(); });
+
+  var toc=$('#toc');
+  function openToc(){ toc.hidden=false; }
+  function closeToc(){ toc.hidden=true; }
+  $('#toc-btn').addEventListener('click', openToc);
+  $('#toc-close').addEventListener('click', closeToc);
+  toc.addEventListener('click', function(e){ if(e.target===toc) closeToc(); });
+
+  function markDone(k){ if(!state.done[k]){ state.done[k]=true; save(); } paint(); }
+
+  /* resume button on step 1 */
+  (function(){
+    var r=$('#resume');
+    if(state.last>0 && idxFromHash()<0){
+      r.hidden=false;
+      r.innerHTML='<button class="btn ghost" type="button">Продолжить с шага '+(state.last+1)+': '+steps[state.last].getAttribute('data-name')+'</button>';
+      r.firstChild.addEventListener('click', function(){ go(state.last); });
+    }
+  })();
+
+  /* ---------- mosaic on final step ---------- */
+  var mosaic=$('#mosaic'), mosaicList=$('#mosaic-list');
+  function paintMosaic(){
+    mosaic.innerHTML=''; mosaicList.innerHTML='';
+    GAMES.forEach(function(g){
+      var t=el('span','tile'+(state.done[g.k]?' on':'')); t.title=g.name; mosaic.appendChild(t);
+      var li=el('span', state.done[g.k]?'':'off', (state.done[g.k]?'★ ':'☆ ')+g.name);
+      if(!state.done[g.k]){ li.style.cursor='pointer'; li.addEventListener('click', function(){ for(var i=0;i<N;i++) if(steps[i].getAttribute('data-step')===g.step){ go(i); break; } }); }
+      mosaicList.appendChild(li);
+    });
+  }
+
+  /* ---------- glossary ---------- */
+  var TERMS=[
+    [
+      {t:'Пигменты', d:'Особые красители в клетках растения, от них зависит его цвет. От лат. «пигментум» — краска.', e:'Самый распространённый — зелёный хлорофилл.'},
+      {t:'Хлорофилл', d:'Зелёный пигмент растений. Улавливает солнечные лучи и помогает усвоить их энергию.', e:'Из-за него листья зелёные.'},
+      {t:'Фотосинтез', d:'Образование органических веществ из воды и углекислого газа за счёт энергии света.', e:'«Фотос» — свет, «синтезис» — соединение.'},
+      {t:'Растения-паразиты', d:'Растения без хлорофилла. Берут готовую пищу у других растений.', e:'Заразиха, Петров крест, повилика.'},
+      {t:'Ткани', d:'Группы похожих клеток, которые вместе делают одну работу.', e:'Органы высших растений состоят из разных тканей.'},
+      {t:'Органы', d:'Части тела растения со своим строением и своей работой.', e:'Корень, побег — стебель с листьями.'},
+      {t:'Слоевище', d:'Тело многоклеточного низшего растения: нет ни корней, ни стеблей, ни листьев.', e:'Например, у водорослей.'},
+      {t:'Таллом', d:'Другое название слоевища. От греч. «таллос» — молодая ветка, росток.', e:''}
+    ],
+    [
+      {t:'Низшие растения', d:'Растения без сложного тканевого строения: нет корней, стеблей и листьев.', e:'Водоросли.'},
+      {t:'Высшие растения', d:'Растения, тело которых разделено на органы из разных тканей.', e:'Мхи, папоротники, сосна, яблоня.'},
+      {t:'Споры', d:'Крошечные клеточки, из которых вырастают новые растения.', e:'Ими размножаются мхи и папоротники.'},
+      {t:'Высшие споровые растения', d:'Высшие растения, которые размножаются спорами.', e:'Мхи, хвощи, плауны, папоротники.'},
+      {t:'Высшие семенные растения', d:'Высшие растения, которые образуют семена и размножаются ими.', e:'Голосеменные и покрытосеменные.'},
+      {t:'Голосеменные', d:'Семенные растения без цветков. Семена лежат на чешуях шишек.', e:'Сосна, ель.'},
+      {t:'Покрытосеменные', d:'Растения с цветками, из которых получаются плоды с семенами. Другое название — цветковые.', e:'Яблоня, подсолнечник.'}
+    ]
+  ];
+  var flipped={}, total=0; TERMS.forEach(function(g){ total+=g.length; });
+  var progEls=[$('#terms-progress'),$('#terms-progress2')];
+  function termsProgress(){
+    var n=Object.keys(flipped).length;
+    progEls.forEach(function(p,gi){ var got=0; TERMS[gi].forEach(function(t,i){ if(flipped[gi+'-'+i]) got++; }); p.textContent='Открыто '+got+' из '+TERMS[gi].length+' здесь, всего '+n+' из '+total; });
+    if(n===total) markDone('terms');
+  }
+  document.querySelectorAll('.cards').forEach(function(box){
+    var gi=+box.getAttribute('data-terms');
+    TERMS[gi].forEach(function(t,i){
+      var b=el('button','card'); b.type='button'; b.setAttribute('aria-label',t.t+'. Нажми, чтобы увидеть значение');
+      b.innerHTML='<div class="in"><div class="face f"><div class="w">'+t.t+'</div><div class="tap">Нажми</div></div><div class="face b"><div class="w">'+t.t+'</div><div>'+t.d+'</div>'+(t.e?'<div class="e">'+t.e+'</div>':'')+'</div></div>';
+      b.addEventListener('click', function(){ b.classList.toggle('flip'); flipped[gi+'-'+i]=true; termsProgress(); });
+      box.appendChild(b);
+    });
+  });
+  termsProgress();
+
+  /* ---------- matching: кто чем знаменит ---------- */
+  var PAIRS=[
+    {foe:'Секвойя', res:'Живёт до 4000 лет и растёт до 115 м', why:'Секвойя — одно из самых высоких деревьев на планете.'},
+    {foe:'Водоросли', res:'Тело — слоевище, без корней, стеблей и листьев', why:'Водоросли — низшие растения.'},
+    {foe:'Петров крест', res:'Нет хлорофилла, берёт пищу у других растений', why:'Это растение-паразит, фотосинтезом оно не занимается.'},
+    {foe:'Подсолнечник', res:'Поворачивает цветок вслед за солнцем', why:'Так на рис. 6 показаны движения растения.'},
+    {foe:'Папоротник', res:'Размножается спорами', why:'Папоротники — высшие споровые растения, как мхи, хвощи и плауны.'},
+    {foe:'Тополь', res:'Не боится грязного воздуха и ловит пыль', why:'Тополь устойчив к загрязнению, поэтому его сажают в городах.'},
+    {foe:'Пихта', res:'Чутко реагирует на грязный воздух', why:'По таким растениям учёные узнают, насколько загрязнена природа.'}
+  ];
+  var foesBox=$('#foes'), outBox=$('#outcomes'), matchFb=$('#match-fb'), selFoe=null, matched=0;
+  PAIRS.forEach(function(p){
+    var b=el('button','opt',p.foe); b.type='button'; b.setAttribute('data-foe',p.foe);
+    b.addEventListener('click', function(){
+      if(b.classList.contains('ok')) return;
+      var all=foesBox.querySelectorAll('.opt'); for(var i=0;i<all.length;i++) all[i].classList.remove('sel');
+      b.classList.add('sel'); selFoe=p; matchFb.innerHTML='';
+    });
+    foesBox.appendChild(b);
+  });
+  shuffle(PAIRS).forEach(function(p){
+    var b=el('button','opt',p.res); b.type='button';
+    b.addEventListener('click', function(){
+      if(b.classList.contains('ok')) return;
+      if(!selFoe){ matchFb.innerHTML='<div class="feedback bad"><span class="k">Сначала выбери растение слева.</span></div>'; return; }
+      if(selFoe.res===p.res){
+        b.classList.add('ok'); b.disabled=true;
+        var fb=foesBox.querySelector('[data-foe="'+selFoe.foe+'"]'); fb.classList.remove('sel'); fb.classList.add('ok'); fb.disabled=true;
+        matchFb.innerHTML='<div class="feedback ok"><span class="k">Верно! '+selFoe.foe+': '+selFoe.res.charAt(0).toLowerCase()+selFoe.res.slice(1)+'.</span><span>'+selFoe.why+'</span></div>';
+        selFoe=null; matched++;
+        if(matched===PAIRS.length){ matchFb.innerHTML='<div class="feedback ok"><span class="k">Все семь пар найдены!</span><span>Теперь ты знаешь, чем знамениты эти растения.</span></div>'; markDone('match'); }
+      } else {
+        b.classList.add('bad'); setTimeout(function(){ b.classList.remove('bad'); },400);
+        matchFb.innerHTML='<div class="feedback bad"><span class="k">Не то.</span><span>Это про другое растение. Попробуй ещё.</span></div>';
+      }
+    });
+    outBox.appendChild(b);
+  });
+
+  /* ---------- sort: разложи по группам ---------- */
+  var COUNTRIES=['Низшие','Высшие споровые','Высшие семенные'];
+  var SORT=[
+    {t:'Водоросли', c:'Низшие', why:'Водоросли — это и есть низшие растения.'},
+    {t:'Тело из одной клетки', c:'Низшие', why:'Так устроены самые примитивные низшие растения.'},
+    {t:'Тело — слоевище, или таллом', c:'Низшие', why:'Слоевище — тело многоклеточных низших растений, без корней, стеблей и листьев.'},
+    {t:'Мхи', c:'Высшие споровые', why:'Мхи — высшие растения, хотя корней у них нет. Размножаются спорами.'},
+    {t:'Хвощи и плауны', c:'Высшие споровые', why:'У них есть органы, а размножаются они спорами.'},
+    {t:'Папоротники', c:'Высшие споровые', why:'Споры созревают на обратной стороне их листьев.'},
+    {t:'Голосеменные: цветков нет, семена на чешуях шишек', c:'Высшие семенные', why:'Они размножаются семенами, только семена ничем не покрыты.'},
+    {t:'Покрытосеменные: цветки, а из них плоды с семенами', c:'Высшие семенные', why:'Это цветковые растения, самые сложно устроенные.'},
+    {t:'Яблоня: весной цветёт, осенью яблоки с семечками', c:'Высшие семенные', why:'Яблоня — покрытосеменное, цветковое растение.'}
+  ];
+  var sortBox=$('#sort-box'), sortP=$('#sort-progress'), sortList=shuffle(SORT), si=0;
+  function renderSort(){
+    if(si>=sortList.length){ return sortDone(); }
+    var it=sortList[si];
+    sortP.textContent='Карточка '+(si+1)+' из '+sortList.length;
+    sortBox.innerHTML='';
+    sortBox.appendChild(el('div','sort-card',it.t));
+    var tri=el('div','tri'); sortBox.appendChild(tri);
+    var fb=el('div'); sortBox.appendChild(fb);
+    var rowN=el('div','row'); sortBox.appendChild(rowN);
+    COUNTRIES.forEach(function(c){
+      var b=el('button','opt',c); b.type='button';
+      b.addEventListener('click', function(){
+        if(c===it.c){
+          var all=tri.querySelectorAll('.opt'); for(var k=0;k<all.length;k++) all[k].disabled=true;
+          b.classList.add('ok');
+          fb.innerHTML='<div class="feedback ok"><span class="k">Да, это '+c.toLowerCase()+' растения.</span><span>'+it.why+'</span></div>';
+          var n=el('button','btn', si<sortList.length-1?'Следующая карточка':'Показать итог'); n.type='button';
+          n.addEventListener('click', function(){ si++; renderSort(); });
+          rowN.appendChild(n);
+        } else {
+          b.classList.add('bad'); b.disabled=true;
+          fb.innerHTML='<div class="feedback bad"><span class="k">Нет, это не '+c.toLowerCase()+'.</span><span>Подумай, как устроено это растение и как оно размножается, и попробуй ещё.</span></div>';
+        }
+      });
+      tri.appendChild(b);
+    });
+  }
+  function sortDone(){
+    sortP.textContent='Все карточки разложены';
+    var html='<div class="feedback ok"><span class="k">Готово! Вот что получилось:</span></div><div class="sort-sum">';
+    COUNTRIES.forEach(function(c){
+      var items=SORT.filter(function(x){ return x.c===c; }).map(function(x){ return x.t.toLowerCase(); });
+      html+='<div><b>'+c+':</b> '+items.join('; ')+'.</div>';
+    });
+    html+='</div><p>Сверь с рисунком 7 и со схемой на шаге 9: низшие — водоросли, а высшие делятся на споровые и семенные.</p><div class="row"><button class="btn ghost" type="button" id="sort-again">Ещё раз</button></div>';
+    sortBox.innerHTML=html;
+    $('#sort-again').addEventListener('click', function(){ sortList=shuffle(SORT); si=0; renderSort(); });
+    markDone('sort');
+  }
+  renderSort();
+
+  /* ---------- odd one out ---------- */
+  var ODD=[
+    {items:['Мхи','Хвощи','Папоротники','Сосна'], odd:'Сосна', why:'Мхи, хвощи и папоротники размножаются спорами. А сосна — семенное растение, голосеменное: её семена лежат на чешуях шишек.'},
+    {items:['Корень','Стебель','Лист','Слоевище'], odd:'Слоевище', why:'Корень, стебель и лист — органы высших растений. А слоевище — тело низших, у которых органов нет.'},
+    {items:['Тополь','Сирень','Ива','Пихта'], odd:'Пихта', why:'Тополь, сирень и ива устойчивы к грязному воздуху. А пихта, наоборот, чутко на него реагирует.'},
+    {items:['Вода','Углекислый газ','Солнечный свет','Кислород'], odd:'Кислород', why:'Вода, углекислый газ и свет нужны растению для фотосинтеза. А кислород растения, наоборот, выделяют в воздух.'}
+  ];
+  var oddGrid=$('#odd-grid'), oddFb=$('#odd-fb'), oddNext=$('#odd-next'), oddP=$('#odd-progress'), oddRound=0;
+  function renderOdd(){
+    var r=ODD[oddRound]; oddGrid.innerHTML=''; oddFb.innerHTML=''; oddNext.hidden=true;
+    oddP.textContent='Раунд '+(oddRound+1)+' из '+ODD.length;
+    shuffle(r.items).forEach(function(w){
+      var b=el('button','opt',w); b.type='button';
+      b.addEventListener('click', function(){
+        var all=oddGrid.querySelectorAll('.opt');
+        if(w===r.odd){
+          for(var i=0;i<all.length;i++) all[i].disabled=true;
+          b.classList.add('ok');
+          oddFb.innerHTML='<div class="feedback ok"><span class="k">Точно, лишнее — «'+w+'».</span><span>'+r.why+'</span></div>';
+          if(oddRound<ODD.length-1) oddNext.hidden=false;
+          else { oddP.textContent='Все четыре раунда пройдены'; markDone('odd'); }
+        } else {
+          b.classList.add('bad'); b.disabled=true;
+          oddFb.innerHTML='<div class="feedback bad"><span class="k">«'+w+'» из той же компании, что и остальные.</span><span>Подумай, что здесь про другое.</span></div>';
+        }
+      });
+      oddGrid.appendChild(b);
+    });
+  }
+  oddNext.addEventListener('click', function(){ oddRound++; renderOdd(); });
+  renderOdd();
+
+  /* ---------- quiz ---------- */
+  var QUIZ=[
+    {q:'Сколько видов объединяет царство Растения?', o:['Около тысячи','Более 350 тысяч','Ровно сто'], a:1, why:'Более 350 тысяч видов — от микроскопических водорослей до огромных деревьев.'},
+    {q:'Где встречаются растения?', o:['Везде, куда проникает солнечный свет','Только в жарких странах','Только на суше'], a:0, why:'Растения живут и на суше, и в воде, от тропиков до тундры.'},
+    {q:'Что такое пигменты?', o:['Органы растения','Споры папоротника','Особые красители в клетках растения'], a:2, why:'От лат. «пигментум» — краска. Самый распространённый — зелёный хлорофилл.'},
+    {q:'Какую работу выполняет хлорофилл?', o:['Всасывает воду из почвы','Улавливает солнечные лучи','Защищает растение от животных'], a:1, why:'Он улавливает солнечные лучи и помогает усвоить их энергию. Без этого нет фотосинтеза.'},
+    {q:'Из чего растение при фотосинтезе делает органические вещества?', o:['Из кислорода и пыли','Из песка и камней','Из воды и углекислого газа'], a:2, why:'Из воды и углекислого газа, а энергию даёт свет.'},
+    {q:'Почему Петров крест не может заниматься фотосинтезом?', o:['В его клетках нет хлорофилла','Он растёт только ночью','Он живёт под водой'], a:0, why:'Это растение-паразит: он питается готовыми веществами других растений.'},
+    {q:'Чем рост растений отличается от роста большинства животных?', o:['Растения растут только весной','Растения растут всю жизнь','Растения совсем не растут'], a:1, why:'У животных (за немногими исключениями) рост ограничен, а растения растут всю жизнь.'},
+    {q:'Что верно про низшие растения?', o:['У них есть цветки и плоды','Они размножаются семенами','У них нет корней, стеблей и листьев'], a:2, why:'Их тело — одна клетка или слоевище (таллом). Это водоросли.'},
+    {q:'Какие растения размножаются спорами?', o:['Мхи, хвощи, плауны, папоротники','Голосеменные и покрытосеменные','Все деревья'], a:0, why:'Это высшие споровые растения. Голосеменные и покрытосеменные — семенные.'},
+    {q:'Какие растения лучше сажать в городах, где много заводов и машин?', o:['Самые чувствительные, например пихту','Устойчивые к загрязнению: тополь, иву, сирень','Растения-паразиты'], a:1, why:'Устойчивые растения поглощают вредные вещества и ловят пыль. А чувствительные служат учёным «датчиками».'}
+  ];
+  var qBox=$('#quiz-box'), qP=$('#quiz-progress'), qi=0, score=0;
+  function renderQ(){
+    if(qi>=QUIZ.length) return renderScore();
+    var q=QUIZ[qi];
+    qP.textContent='Вопрос '+(qi+1)+' из '+QUIZ.length;
+    qBox.innerHTML='';
+    qBox.appendChild(el('div','q',q.q));
+    var opts=el('div','q-opts'); qBox.appendChild(opts);
+    var fb=el('div'); qBox.appendChild(fb);
+    var rowN=el('div','row'); qBox.appendChild(rowN);
+    var answered=false;
+    q.o.forEach(function(o,i){
+      var b=el('button','opt',o); b.type='button';
+      b.addEventListener('click', function(){
+        if(answered) return; answered=true;
+        var all=opts.querySelectorAll('.opt');
+        for(var k=0;k<all.length;k++){ all[k].disabled=true; if(k===q.a) all[k].classList.add('ok'); }
+        if(i===q.a){ score++; fb.innerHTML='<div class="feedback ok"><span class="k">Правильно!</span><span>'+q.why+'</span></div>'; }
+        else { b.classList.add('bad'); fb.innerHTML='<div class="feedback bad"><span class="k">Нет, правильный ответ подсвечен зелёным.</span><span>'+q.why+'</span></div>'; }
+        var n=el('button','btn', qi<QUIZ.length-1?'Следующий вопрос':'Показать результат'); n.type='button';
+        n.addEventListener('click', function(){ qi++; renderQ(); window.scrollTo(0,0); });
+        rowN.appendChild(n);
+      });
+      opts.appendChild(b);
+    });
+  }
+  function renderScore(){
+    qP.textContent='Результат';
+    var tiles=''; for(var i=0;i<QUIZ.length;i++) tiles+='<i class="'+(i<score?'on':'')+'"></i>';
+    var msg = score===QUIZ.length ? 'Идеально, Амина! Ни одной ошибки.' : score>=8 ? 'Отлично! Ещё раз взгляни на вопросы, где ошиблась, и будет полный набор.' : score>=6 ? 'Хорошо. Перечитай шаги, где было трудно, и пройди тест снова.' : 'Тема большая, Амина, это нормально. Вернись к шагу «За минуту», потом к словарику, и попробуй ещё раз.';
+    qBox.innerHTML='<div class="score"><div class="big">'+score+' из '+QUIZ.length+'</div><div class="score-tiles">'+tiles+'</div><p>'+msg+'</p><button class="btn ghost" type="button" id="quiz-again">Пройти ещё раз</button></div>';
+    $('#quiz-again').addEventListener('click', function(){ qi=0; score=0; renderQ(); });
+    markDone('quiz');
+  }
+  renderQ();
+
+  /* ---------- bricks ---------- */
+  Array.prototype.forEach.call(document.querySelectorAll('.brick button'), function(b){
+    b.addEventListener('click', function(){
+      var body=b.nextElementSibling, open=body.hidden;
+      body.hidden=!open; b.setAttribute('aria-expanded', open?'true':'false');
+      b.lastElementChild.textContent = open?'−':'+';
+    });
+  });
+
+  /* ---------- start ---------- */
+  var start=idxFromHash(); go(start<0?0:start, true);
+})();
+</script>
+
+</body>
+</html>
