@@ -1,0 +1,1462 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Сеньоры и вассалы</title>
+<meta name="paragraph" content="§ 7">
+<meta name="description" content="Сеньоры и вассалы">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=PT+Sans+Narrow:wght@400;700&family=PT+Sans:wght@400;700&display=swap">
+<style>
+:root{
+  --bg:#EBE8DF; --surface:#F8F6F0; --surface-2:#E2DED2; --ink:#1B2233; --ink-2:#4A5163; --muted:#7A8093;
+  --lapis:#23448A; --on-lapis:#FFFFFF; --lapis-soft:#D9E1F3;
+  --gold:#B08A2E; --gold-soft:#F1E6C2; --on-gold:#2A2107;
+  --terra:#B4552F; --terra-soft:#F3DCD2;
+  --moss:#4E7A3B; --moss-soft:#DCE8D2;
+  --line:#D2CDBF; --tile:#CFC9B9;
+  --shadow:0 1px 2px rgba(27,34,51,.08),0 10px 28px rgba(27,34,51,.07);
+  --display:"Oranienbaum","Georgia","Times New Roman",serif;
+  --body:"Golos Text","Segoe UI",system-ui,-apple-system,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0F1728; --surface:#182338; --surface-2:#21304B; --ink:#EDE8DC; --ink-2:#C2BFB4; --muted:#8B93A8;
+    --lapis:#7EA0E6; --on-lapis:#0F1728; --lapis-soft:#22345A;
+    --gold:#E0B84A; --gold-soft:#3E3419; --on-gold:#0F1728;
+    --terra:#E0825C; --terra-soft:#4A2A1D;
+    --moss:#8DBF74; --moss-soft:#243B1F;
+    --line:#2E3B57; --tile:#2A3856;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 28px rgba(0,0,0,.35);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0F1728; --surface:#182338; --surface-2:#21304B; --ink:#EDE8DC; --ink-2:#C2BFB4; --muted:#8B93A8;
+  --lapis:#7EA0E6; --on-lapis:#0F1728; --lapis-soft:#22345A;
+  --gold:#E0B84A; --gold-soft:#3E3419; --on-gold:#0F1728;
+  --terra:#E0825C; --terra-soft:#4A2A1D;
+  --moss:#8DBF74; --moss-soft:#243B1F;
+  --line:#2E3B57; --tile:#2A3856;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 28px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+@media (prefers-reduced-motion: reduce){ *{transition:none!important;animation:none!important} }
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.55;-webkit-text-size-adjust:100%}
+h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1.1;text-wrap:balance;margin:0}
+p{margin:0}
+a{color:var(--lapis)}
+button{font:inherit;color:inherit;cursor:pointer}
+button:focus-visible,summary:focus-visible,a:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+[hidden]{display:none!important}
+
+/* ---------- top bar ---------- */
+.top{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+.top-inner{max-width:720px;margin:0 auto;padding:10px 16px;display:flex;align-items:center;gap:12px}
+.back{text-decoration:none;color:var(--ink-2);font-size:14px;white-space:nowrap;padding:6px 10px;border-radius:8px;background:var(--surface);border:1px solid var(--line)}
+.crumb{flex:1;min-width:0;font-size:14px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.crumb b{color:var(--ink);font-weight:600}
+.toc-btn{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:6px 10px;font-size:14px;color:var(--lapis);font-weight:600;white-space:nowrap}
+.stepbar{max-width:720px;margin:0 auto;padding:0 16px 10px;display:flex;gap:4px}
+.stepbar button{flex:1;height:8px;min-width:6px;padding:0;border:0;border-radius:2px;background:var(--tile);transition:background .3s,transform .3s}
+.stepbar button.visited{background:var(--lapis)}
+.stepbar button.done{background:var(--gold)}
+.stepbar button.current{transform:scaleY(1.6);background:var(--gold)}
+
+/* ---------- steps ---------- */
+main{max-width:720px;margin:0 auto;padding:20px 16px 120px}
+.step{display:flex;flex-direction:column;gap:16px}
+.eyebrow{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);font-weight:700;display:flex;align-items:center;gap:10px}
+.tess{display:inline-flex;gap:3px}
+.tess i{width:8px;height:8px;display:block;border-radius:1px}
+.tess i:nth-child(1){background:var(--lapis)} .tess i:nth-child(2){background:var(--gold)} .tess i:nth-child(3){background:var(--terra)}
+.step h1{font-size:clamp(36px,8vw,56px)}
+.step h2{font-size:clamp(28px,6vw,38px)}
+.step h3{font-size:22px;color:var(--lapis);margin-top:4px}
+.lede{font-size:19px;color:var(--ink-2);max-width:34ch}
+.prose{display:flex;flex-direction:column;gap:12px;max-width:66ch}
+.prose ul{margin:0;padding-left:22px;display:flex;flex-direction:column;gap:6px}
+.prose li::marker{color:var(--gold)}
+b,strong{font-weight:600}
+.term{font-weight:600;color:var(--lapis);border-bottom:2px solid var(--gold-soft)}
+.aside{background:var(--lapis-soft);border-left:4px solid var(--lapis);padding:12px 16px;border-radius:0 8px 8px 0;font-size:16px;display:flex;flex-direction:column;gap:6px}
+.aside .k{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--lapis);font-weight:700}
+.home{background:var(--gold-soft);border-left-color:var(--gold)}
+.home .k{color:var(--gold)}
+details{border:1px solid var(--line);border-radius:10px;background:var(--surface)}
+details summary{cursor:pointer;list-style:none;padding:12px 16px;font-weight:600;color:var(--lapis);display:flex;align-items:center;gap:10px}
+details summary::-webkit-details-marker{display:none}
+details summary::before{content:"";width:9px;height:9px;background:var(--gold);transform:rotate(45deg);flex:none;transition:transform .2s}
+details[open] summary::before{transform:rotate(45deg) scale(.6);background:var(--lapis)}
+details .body{padding:0 16px 14px;display:flex;flex-direction:column;gap:8px;color:var(--ink-2)}
+
+.steps4{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+@media (min-width:600px){ .steps4{grid-template-columns:repeat(4,1fr)} }
+.dom{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px;display:flex;flex-direction:column;gap:4px;box-shadow:var(--shadow)}
+.dom .n{font-family:var(--display);font-size:28px;color:var(--gold);line-height:1}
+.dom .t{font-weight:600;font-size:15px;line-height:1.25}
+.dom .d{font-size:13.5px;color:var(--ink-2);line-height:1.35}
+
+.ladder{display:flex;flex-direction:column;align-items:center;gap:6px}
+.rung{background:var(--lapis);color:var(--on-lapis);padding:9px 12px;border-radius:8px;text-align:center;font-size:15px;line-height:1.3}
+.rung small{display:block;opacity:.85;font-size:12.5px}
+.rung.r1{width:60%} .rung.r2{width:74%} .rung.r3{width:88%} .rung.r4{width:100%;background:var(--surface-2);color:var(--ink)}
+
+/* timeline (вертикальная, все даты видны сразу) */
+.tl-v{display:flex;flex-direction:column;position:relative;padding-left:4px}
+.tl-v::before{content:"";position:absolute;left:16px;top:16px;bottom:16px;width:3px;background:var(--line);border-radius:2px}
+.tl-item{position:relative;padding-left:36px;display:flex;flex-direction:column}
+.tl-btn{background:none;border:0;padding:8px 0;text-align:left;display:flex;align-items:baseline;gap:8px 12px;flex-wrap:wrap;color:var(--ink);width:100%}
+.tl-btn .dot{position:absolute;left:5px;top:12px;width:17px;height:17px;background:var(--surface);border:3px solid var(--lapis);border-radius:50%;transition:transform .2s,background .2s}
+.tl-item.ru .dot{border-color:var(--terra)}
+.tl-item.open .dot{background:var(--gold);border-color:var(--gold);transform:scale(1.2)}
+.tl-btn .y{font-family:var(--display);font-size:26px;line-height:1;font-variant-numeric:tabular-nums;min-width:96px}
+.tl-btn .t{font-weight:600;font-size:16px}
+.tl-btn .era{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--lapis);font-weight:700;margin-left:auto}
+.tl-item.ru .era{color:var(--terra)}
+.tl-d{color:var(--ink-2);font-size:15.5px;padding:0 0 12px;line-height:1.45}
+.hint{font-size:14px;color:var(--muted)}
+
+/* «как в учебнике» и вопросы учебника */
+details.book{border-color:var(--gold-soft)}
+details.book summary{color:var(--gold)}
+details.book summary::before{background:var(--gold)}
+details.book[open] summary::before{background:var(--gold)}
+details.book .body{font-size:15px;color:var(--ink)}
+details.book .body ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:7px}
+details.book .body li::marker{color:var(--gold)}
+details.book .body .pic{color:var(--ink-2);font-style:italic}
+.qlist{display:flex;flex-direction:column;gap:10px}
+.qi{display:grid;grid-template-columns:auto 1fr;gap:12px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.qi .qn{font-family:var(--display);font-size:24px;color:var(--gold);line-height:1;min-width:20px}
+.qi p{font-size:15.5px}
+.qi .src{font-size:14.5px;color:var(--ink-2);margin-top:6px}
+.qi a{font-size:13.5px;font-weight:600;text-decoration:none;display:inline-block;margin-top:8px;background:var(--lapis-soft);padding:4px 10px;border-radius:999px}
+
+/* games */
+.game{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:12px}
+.g-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.game h3{margin:0}
+.task{color:var(--ink-2)}
+.badge{font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;padding:4px 10px;border-radius:999px;background:var(--gold-soft);color:var(--gold)}
+.badge.done{background:var(--moss-soft);color:var(--moss)}
+.btn{background:var(--lapis);color:var(--on-lapis);border:0;border-radius:10px;padding:10px 18px;font-weight:600;font-size:15px;text-decoration:none;display:inline-block}
+.btn.ghost{background:transparent;color:var(--lapis);border:2px solid var(--lapis)}
+.btn:disabled{opacity:.45;cursor:default}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.feedback{padding:12px 14px;border-radius:10px;font-size:15px;display:flex;flex-direction:column;gap:4px}
+.feedback.ok{background:var(--moss-soft);border-left:4px solid var(--moss)}
+.feedback.bad{background:var(--terra-soft);border-left:4px solid var(--terra)}
+.feedback .k{font-weight:700}
+.progress{font-size:13px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.card{perspective:900px;height:150px;background:none;border:0;padding:0;text-align:left}
+.card .in{position:relative;width:100%;height:100%;transition:transform .5s;transform-style:preserve-3d}
+.card.flip .in{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;border-radius:12px;padding:12px;display:flex;flex-direction:column;justify-content:center;gap:6px;overflow:hidden}
+.face.f{background:var(--lapis);color:var(--on-lapis)}
+.face.f .w{font-family:var(--display);font-size:21px;line-height:1.05}
+.face.f .tap{font-size:11px;opacity:.75;letter-spacing:.08em;text-transform:uppercase}
+.face.b{background:var(--surface-2);color:var(--ink);transform:rotateY(180deg);font-size:12.5px;line-height:1.3;justify-content:flex-start;overflow:auto}
+.face.b .w{font-weight:700;color:var(--lapis);font-size:13px}
+.face.b .e{color:var(--ink-2);font-style:italic}
+
+.match{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.col{display:flex;flex-direction:column;gap:8px}
+.col .lbl{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.opt{background:var(--surface-2);border:2px solid transparent;border-radius:10px;padding:10px 12px;text-align:left;font-weight:500;font-size:15px;transition:border-color .15s,background .15s}
+.opt:hover{border-color:var(--lapis)}
+.opt.sel{border-color:var(--gold);background:var(--gold-soft)}
+.opt.ok{background:var(--moss-soft);border-color:var(--moss)}
+.opt.bad{animation:shake .35s}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+
+.pool{display:flex;flex-direction:column;gap:8px}
+.seq{display:flex;flex-direction:column;gap:8px;min-height:44px;padding:10px;border:2px dashed var(--line);border-radius:12px}
+.seq .slot{display:flex;align-items:center;gap:10px;background:var(--lapis-soft);border-radius:8px;padding:8px 12px;font-size:15px}
+.seq .slot .i{font-family:var(--display);font-size:20px;color:var(--lapis);width:22px;font-variant-numeric:tabular-nums}
+.seq .slot.ok{background:var(--moss-soft)} .seq .slot.bad{background:var(--terra-soft)}
+.seq .slot .yr{margin-left:auto;font-weight:700;color:var(--ink-2);font-variant-numeric:tabular-nums}
+.seq .empty{color:var(--muted);font-size:14px}
+
+.odd-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.odd-grid .opt{text-align:center;padding:16px 10px;font-size:16px}
+.odd-grid .opt.bad{background:var(--terra-soft);border-color:var(--terra)}
+
+.q{font-size:19px;font-weight:600;line-height:1.35}
+.q-opts{display:flex;flex-direction:column;gap:8px}
+.q-opts .opt{font-size:15.5px;line-height:1.35}
+.q-opts .opt.bad{background:var(--terra-soft);border-color:var(--terra)}
+.score{display:flex;flex-direction:column;gap:12px;align-items:flex-start}
+.score .big{font-family:var(--display);font-size:56px;line-height:1;color:var(--gold)}
+.score-tiles{display:flex;gap:5px;flex-wrap:wrap}
+.score-tiles i{width:22px;height:22px;border-radius:3px;background:var(--tile)}
+.score-tiles i.on{background:var(--gold)}
+
+.bricks{display:flex;flex-direction:column;gap:10px}
+.brick{background:var(--surface-2);border-radius:10px;overflow:hidden}
+.brick button{width:100%;background:none;border:0;padding:12px 14px;text-align:left;font-weight:600;color:var(--lapis);display:flex;justify-content:space-between;gap:10px}
+.brick .b-body{padding:0 14px 12px;color:var(--ink-2);font-size:15.5px}
+
+.mosaic{display:flex;gap:6px;align-items:center}
+.mosaic .tile{width:26px;height:26px;background:var(--tile);border-radius:3px;transition:background .4s,transform .4s}
+.mosaic .tile.on{background:var(--gold);transform:rotate(45deg) scale(.8)}
+.mosaic-list{display:flex;flex-direction:column;gap:6px;font-size:15px}
+.mosaic-list span.off{color:var(--muted)}
+
+/* pager */
+.pager{position:fixed;left:0;right:0;bottom:0;z-index:5;background:var(--bg);border-top:1px solid var(--line)}
+.pager-inner{max-width:720px;margin:0 auto;padding:10px 16px;display:flex;align-items:center;gap:10px}
+.pager .count{font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+.pager .btn{flex:1;text-align:center;padding:12px 14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pager .btn.ghost{flex:0 0 auto}
+
+/* toc overlay */
+.toc{position:fixed;inset:0;z-index:10;background:rgba(0,0,0,.35);display:flex;justify-content:flex-end}
+.toc-panel{width:min(360px,90vw);height:100%;background:var(--surface);overflow:auto;padding:16px;display:flex;flex-direction:column;gap:8px;box-shadow:var(--shadow)}
+.toc-panel h3{font-size:24px;margin-bottom:6px;display:flex;justify-content:space-between;align-items:center}
+.toc-close{background:none;border:1px solid var(--line);border-radius:8px;padding:4px 10px;font-size:14px}
+.toc-item{display:flex;align-items:center;gap:10px;background:none;border:0;border-radius:8px;padding:8px 10px;text-align:left;font-size:15px;color:var(--ink)}
+.toc-item:hover{background:var(--surface-2)}
+.toc-item.current{background:var(--gold-soft);font-weight:600}
+.toc-item .n{font-family:var(--display);font-size:18px;color:var(--muted);width:24px;font-variant-numeric:tabular-nums}
+.toc-item .m{margin-left:auto;font-size:12px;color:var(--moss);font-weight:700}
+
+/* схема управления (§ 2) */
+.org{display:flex;flex-direction:column;gap:8px}
+.org .lvl{display:grid;gap:8px;grid-template-columns:repeat(2,1fr)}
+@media (min-width:600px){ .org .lvl{grid-template-columns:repeat(4,1fr)} }
+.org .box{background:var(--surface-2);border-radius:8px;padding:9px 10px;font-size:14px;text-align:center;line-height:1.3}
+.org .box small{display:block;font-size:12px;color:var(--ink-2)}
+.org .box.top{background:var(--lapis);color:var(--on-lapis);font-weight:600;font-size:16px}
+.org .box.sub{background:var(--gold-soft)}
+.org .lbl{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:700;text-align:center}
+
+/* иллюстрации (§ 3) */
+.fig{margin:0;display:flex;flex-direction:column;gap:6px;align-items:flex-start}
+.fig img{width:100%;max-width:360px;height:auto;border-radius:10px;border:1px solid var(--line);background:var(--surface);box-shadow:var(--shadow)}
+.fig.wide img{max-width:100%}
+.fig figcaption{font-size:14px;color:var(--ink-2);line-height:1.35;max-width:60ch}
+.fig-row{display:flex;gap:12px;flex-wrap:wrap;align-items:flex-start}
+.fig-row .fig{flex:1 1 150px;max-width:220px}
+
+/* § 4: «каждый шестой», два пути крещения, игра «Где это было?» */
+.six{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;max-width:380px}
+.six span{height:64px;border-radius:8px;background:var(--surface-2);color:var(--ink-2);display:flex;align-items:flex-end;justify-content:center;padding-bottom:6px;font-size:11.5px;font-weight:600;position:relative}
+.six span::before{content:"";position:absolute;top:10px;left:50%;width:14px;height:14px;margin-left:-7px;border-radius:50%;background:var(--tile)}
+.six span::after{content:"";position:absolute;top:27px;left:50%;width:22px;height:14px;margin-left:-11px;border-radius:8px 8px 3px 3px;background:var(--tile)}
+.six span.w{background:var(--lapis);color:var(--on-lapis)}
+.six span.w::before,.six span.w::after{background:var(--gold)}
+.ways{display:grid;grid-template-columns:1fr;gap:10px}
+@media (min-width:560px){ .ways{grid-template-columns:1fr 1fr} }
+.way{background:var(--surface);border:1px solid var(--line);border-top:5px solid var(--lapis);border-radius:12px;padding:12px 14px;display:flex;flex-direction:column;gap:6px;box-shadow:var(--shadow)}
+.way.const{border-top-color:var(--terra)}
+.way.const h3{color:var(--terra)}
+.way .cn{font-weight:600;font-size:17px}
+.way p{font-size:15.5px;color:var(--ink-2)}
+.sort-card{background:var(--lapis-soft);border-radius:12px;padding:16px;font-size:18px;font-weight:600;line-height:1.35}
+.tri{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.tri .opt{text-align:center;padding:12px 4px;font-size:15px}
+.tri .opt.bad{background:var(--terra-soft);border-color:var(--terra)}
+.sort-sum{display:flex;flex-direction:column;gap:8px;font-size:15px}
+.sort-sum b{color:var(--lapis)}
+/* § 4: разбор вопросов учебника с подсказками и ответом */
+.qtext{font-size:18px;font-weight:600;line-height:1.35;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.aside ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:5px}
+.aside.ans{background:var(--moss-soft);border-left-color:var(--moss)}
+.aside.ans .k{color:var(--moss)}
+.answer{display:flex;flex-direction:column;gap:12px;align-items:stretch}
+.answer .btn{text-align:center}
+.ans-body{display:flex;flex-direction:column;gap:12px}
+.ans-table{width:100%;border-collapse:collapse;font-size:15px;background:var(--surface)}
+.ans-table th,.ans-table td{border:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top;line-height:1.3}
+.ans-table th{font-size:13px;color:var(--ink-2);font-weight:700}
+.ans-table td:first-child{white-space:nowrap}
+
+/* виды шагов: из учебника / задания учебника / сверх учебника */
+.kind-tag{display:flex;gap:10px;align-items:flex-start;border-radius:10px;padding:8px 12px;font-size:13px;line-height:1.35}
+.kind-tag .ic{font-size:18px;line-height:1.1}
+.kind-tag b{font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:700}
+.kind-tag .pg{font-weight:600;margin-left:6px;font-size:13px}
+.kind-tag small{display:block;font-size:13px;color:var(--ink-2);margin-top:2px}
+.kind-tag.book{background:var(--lapis-soft);color:var(--lapis)}
+.kind-tag.task{background:var(--gold-soft);color:var(--gold)}
+.kind-tag.ours{background:var(--terra-soft);color:var(--terra)}
+.stepbar button.k-book{background:var(--lapis-soft)} .stepbar button.k-task{background:var(--gold-soft)} .stepbar button.k-ours{background:var(--terra-soft)}
+.stepbar button.k-book.visited{background:var(--lapis)} .stepbar button.k-task.visited{background:var(--gold)} .stepbar button.k-ours.visited{background:var(--terra)}
+.stepbar button.visited.done{background:var(--moss)}
+.stepbar{gap:3px} .stepbar button{min-width:3px}
+.stepbar button.gstart{margin-left:5px}
+.stepbar button.current{transform:scaleY(1.9);box-shadow:0 0 0 1.5px var(--ink)}
+.toc-group{display:flex;flex-direction:column;gap:2px;border-left:4px solid var(--lapis);padding-left:8px;margin-top:10px}
+.toc-group.k-task{border-left-color:var(--gold)} .toc-group.k-ours{border-left-color:var(--terra)}
+.toc-head{display:flex;align-items:center;gap:8px;font-size:12px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;color:var(--lapis);padding:4px 2px}
+.toc-group.k-task .toc-head{color:var(--gold)} .toc-group.k-ours .toc-head{color:var(--terra)}
+.toc-head .ic{font-size:15px;letter-spacing:0}
+.toc-item .pg{margin-left:auto;font-size:12px;color:var(--muted);white-space:nowrap;font-variant-numeric:tabular-nums}
+.toc-item .pg + .m{margin-left:8px}
+
+/* ===== Книжное оформление (выбрано 14.09.2026): как учебник — синяя шапка, PT Serif / PT Sans Narrow / PT Sans ===== */
+:root{
+  --bg:#FBFAF6; --surface:#FFFFFF; --surface-2:#EAF0F8; --ink:#1A1A1A; --ink-2:#393939; --muted:#6B6B6B;
+  --lapis:#2D63A6; --on-lapis:#FFFFFF; --lapis-soft:#DCE7F5; --gold:#8B6B22; --gold-soft:#F3EBD3; --on-gold:#1A1A1A;
+  --terra:#C24E1E; --terra-soft:#FBE3D6; --moss:#3E7A3A; --moss-soft:#E1EEDC; --line:#D9DDE3; --tile:#D5DCE6; --shadow:none;
+  --band-ink:#FFFFFF; --tb:rgba(255,255,255,.32); --tbv:#FFFFFF; --to:rgba(255,190,160,.5); --tov:#F6A37E; --tt:rgba(255,230,160,.5); --ttv:#F2D27A; --tdone:#A6DB93;
+  --display:"PT Sans Narrow","Arial Narrow",sans-serif; --body:"PT Serif",Georgia,serif; --ui:"PT Sans","Segoe UI",system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){ --bg:#141516; --surface:#1C1E21; --surface-2:#1E2936; --ink:#EDEBE6; --ink-2:#CFCBC3; --muted:#9A968F;
+    --lapis:#79A6E0; --on-lapis:#10141A; --lapis-soft:#1F3350; --gold:#D9B45A; --gold-soft:#3A3120; --on-gold:#10141A;
+    --terra:#F0875A; --terra-soft:#43261A; --moss:#8CC47F; --moss-soft:#22381F; --line:#30343A; --tile:#2C3440; --shadow:none;
+    --band-ink:#10141A; --tb:rgba(16,20,26,.28); --tbv:#10141A; --to:rgba(120,40,10,.4); --tov:#8A2E0C; --tt:rgba(110,80,10,.4); --ttv:#6B4E0E; --tdone:#1F5A1A; } }
+:root[data-theme="dark"]{ --bg:#141516; --surface:#1C1E21; --surface-2:#1E2936; --ink:#EDEBE6; --ink-2:#CFCBC3; --muted:#9A968F;
+    --lapis:#79A6E0; --on-lapis:#10141A; --lapis-soft:#1F3350; --gold:#D9B45A; --gold-soft:#3A3120; --on-gold:#10141A;
+    --terra:#F0875A; --terra-soft:#43261A; --moss:#8CC47F; --moss-soft:#22381F; --line:#30343A; --tile:#2C3440; --shadow:none;
+    --band-ink:#10141A; --tb:rgba(16,20,26,.28); --tbv:#10141A; --to:rgba(120,40,10,.4); --tov:#8A2E0C; --tt:rgba(110,80,10,.4); --ttv:#6B4E0E; --tdone:#1F5A1A; }
+body{font-family:var(--body);font-size:18px;line-height:1.62}
+h1,h2,h3{font-family:var(--display);font-weight:700}
+.step h1{color:var(--lapis);font-size:clamp(34px,8.5vw,52px);line-height:1.02}
+.step h2{color:var(--lapis);font-size:clamp(28px,7vw,36px);line-height:1.08}
+.step h3{font-size:23px}
+.pnum{display:inline-flex;align-items:center;justify-content:center;background:var(--lapis);color:var(--on-lapis);font:700 .72em/1 var(--display);width:1.08em;height:1.08em;margin-right:.3em;vertical-align:.08em}
+.lede{font-size:20px}
+.top{background:var(--lapis);border-bottom:0}
+.back{background:transparent;border-color:var(--band-ink);color:var(--band-ink);font-family:var(--ui);border-radius:3px}
+.crumb{color:var(--band-ink);opacity:.88;font-family:var(--ui)}
+.crumb b{color:var(--band-ink)}
+.toc-btn{background:var(--band-ink);color:var(--lapis);border-color:var(--band-ink);font-family:var(--ui);font-weight:700;border-radius:3px}
+.stepbar button{border-radius:1px}
+.stepbar button.k-book{background:var(--tb)} .stepbar button.k-book.visited{background:var(--tbv)}
+.stepbar button.k-ours{background:var(--to)} .stepbar button.k-ours.visited{background:var(--tov)}
+.stepbar button.k-task{background:var(--tt)} .stepbar button.k-task.visited{background:var(--ttv)}
+.stepbar button.visited.done{background:var(--tdone)}
+.stepbar button.current{box-shadow:0 0 0 1.5px var(--band-ink)}
+.eyebrow{font-family:var(--ui);color:var(--muted);letter-spacing:.08em}
+.tess{display:none}
+.term{font-weight:700;font-style:italic;color:var(--ink);border-bottom:0}
+.kind-tag{border-radius:0;padding:6px 0 0;border-top:2px solid currentColor;font-family:var(--ui);align-items:center}
+.kind-tag.book,.kind-tag.task,.kind-tag.ours{background:transparent}
+.kind-tag .ic{display:flex}
+.kind-tag b{font-size:12.5px;letter-spacing:.08em}
+.kind-tag small{font-family:var(--body);font-style:italic;font-size:14.5px}
+details{border-radius:0}
+details summary{font-family:var(--ui)}
+details.book{border:0;border-top:3px solid var(--lapis);background:var(--surface-2)}
+details.book summary{color:var(--lapis)}
+details.book summary::before,details.book[open] summary::before{background:var(--lapis)}
+details.book .body{font-size:16px}
+.aside{border-radius:0}
+.aside .k{font-family:var(--ui)}
+.dom{border-radius:0;box-shadow:none;border-top:3px solid var(--lapis)}
+.dom .n{font-family:var(--display);font-weight:700;color:var(--lapis)}
+.dom .t{font-family:var(--ui)}
+.rung{border-radius:0}
+.tl-btn .y{font-family:var(--display);font-weight:700;color:var(--lapis)}
+.tl-btn .era{font-family:var(--ui)}
+.fig img{border-radius:0;box-shadow:none}
+.fig figcaption{font-family:var(--ui)}
+.org .box{border-radius:0}
+.qi{border-radius:0}
+.qi .qn{font-family:var(--display);font-weight:700;color:var(--terra)}
+.qi a{border-radius:0;font-family:var(--ui)}
+.game{border-radius:0;box-shadow:none;border-top:4px solid var(--terra)}
+.game h3{color:var(--terra)}
+.badge{border-radius:0;font-family:var(--ui)}
+.btn{border-radius:3px;font-family:var(--ui);font-weight:700}
+.opt{border-radius:0;background:var(--surface);border-color:var(--line);font-family:var(--body)}
+.feedback{border-radius:0}
+.progress{font-family:var(--ui)}
+.q{font-family:var(--body);font-weight:700}
+.face{border-radius:0}
+.face.f .w{font-family:var(--display);font-weight:700}
+.seq,.seq .slot,.sort-card,.brick,.qtext,.way,.six span,.mosaic .tile,.score-tiles i,.toc-panel,.toc-item{border-radius:0}
+.brick button{font-family:var(--ui)}
+.pager{background:var(--surface)}
+.count{font-family:var(--ui)}
+.toc-panel h3{font-family:var(--display)}
+.toc-head{font-family:var(--ui)}
+.toc-head .ic{display:flex}
+.score .big{font-family:var(--display);font-weight:700;color:var(--lapis)}
+/* переносы длинных слов на узком экране (14.09.2026) */
+.match{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+.opt,.face,.qi p,.ans-table td,.ans-table th{overflow-wrap:anywhere;hyphens:auto}
+.ans-table.fit td:first-child{white-space:normal}
+</style>
+</head>
+<body>
+
+
+<header class="top">
+  <div class="top-inner">
+    <a class="back" href="./">← Темы</a>
+    <div class="crumb">История · § 7 · <b>Сеньоры и вассалы</b></div>
+    <button class="toc-btn" id="toc-btn" type="button">Содержание</button>
+  </div>
+  <div class="stepbar" id="stepbar" aria-label="Шаги темы"></div>
+</header>
+
+<main id="deck">
+
+<!-- 1 -->
+<section class="step" data-step="za-minutu" data-name="За минуту" data-part="Самое главное" data-kind="ours">
+  <div class="kind-tag ours"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 6h14"></path><path d="M5 12h14"></path><path d="M5 18h9"></path></svg></span><div><b>Коротко о главном</b><small>Пересказ для разгона. Подробно, как в учебнике, — в следующих шагах.</small></div></div>
+  <div class="eyebrow"><span class="tess"><i></i><i></i><i></i></span> История · 6 класс · § 7</div>
+  <h1>Сеньоры и вассалы</h1>
+  <p class="lede">Амина, это история о том, как в Европе землю стали давать в награду за защиту, а воин на коне стал самым важным человеком.</p>
+  <div id="resume" hidden></div>
+  <div class="prose">
+    <p>Представь деревню у реки тысячу лет назад. Ни полиции, ни армии рядом нет. В любой день могут приплыть грабители на кораблях или прискакать чужие всадники. Что делать крестьянину, у которого в руках только лопата?</p>
+    <p>Идти к соседу, у которого есть конь, меч и крепкий дом: «Защити нас!» Сосед согласится, но скажет: «Тогда работайте на моём поле и отдавайте мне часть урожая». Так крестьянин становится зависимым, а сосед — его господином, <b>сеньором</b>.</p>
+    <p>Но и у этого сеньора есть господин повыше. Тот дал ему землю, а за это сеньор должен приезжать к нему на войну со своим отрядом. Кто получил землю за службу, тот <b>вассал</b>. Выходит целая лестница: каждый служит тому, кто стоит выше, и получает за это землю.</p>
+    <p>Главный вопрос параграфа: <b>почему к концу раннего Средневековья в Европе распространились феоды и вассальные отношения?</b> Держи в голове деревню у реки. Вот четыре главные части темы:</p>
+  </div>
+  <div class="steps4">
+    <div class="dom"><div class="n">1</div><div class="t">Три сословия</div><div class="d">Молящиеся, воюющие, работающие.</div></div>
+    <div class="dom"><div class="n">2</div><div class="t">Крестьянин</div><div class="d">Земля сеньора, барщина и оброк.</div></div>
+    <div class="dom"><div class="n">3</div><div class="t">Сеньоры и вассалы</div><div class="d">Феоды и феодальная лестница.</div></div>
+    <div class="dom"><div class="n">4</div><div class="t">Рыцари</div><div class="d">Война, замки, турниры, кодекс чести.</div></div>
+  </div>
+  <div class="aside">
+    <div class="k">Как этим пользоваться</div>
+    <p>У каждого шага написано, на какой странице учебника искать. Внизу шага есть «Подробнее, как в учебнике»: там всё, что есть на этих страницах, ничего не пропущено. Сначала учи по коротким шагам, а перед уроком открой «подробнее».</p>
+    <p>Надпись вверху шага подскажет, откуда он: синяя — из учебника, золотая — задание учебника, оранжевая — сверх учебника (пересказ, словарик, игры, самопроверка). В «Содержании» шаги так же разбиты на группы.</p>
+  </div>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 74</summary>
+    <div class="body"><ul>
+      <li>Главный вопрос параграфа: почему к концу раннего Средневековья в Европе распространились феоды и вассальные отношения?</li>
+      <li>Слова параграфа: барщина, вассал, натуральное хозяйство, оброк, повинности, рыцарь, сеньор, сословие, феодализм. Все они есть в словарике (шаги 15–16).</li>
+      <li class="pic">Иллюстрация в начале параграфа: «Церемония посвящения в рыцари». Миниатюра, XV век. Картинка и подпись к ней — на шаге 12, к ней вопрос 1 в конце параграфа.</li>
+      <li>§ 7 — первый параграф главы III «Средневековое европейское общество». Начало главы (с. 73) — на следующем шаге. Итоги главы будут в конце § 9.</li>
+      <li>Таблицы дат «Мир / Россия» в § 7 нет. Даты, которые встречаются в тексте, собраны на шаге 3.</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 2 -->
+<section class="step" data-step="glava-3" data-name="Начало главы III" data-part="Глава III" data-kind="book" data-pages="с. 73">
+  <div class="kind-tag book"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.5c2.6-1 5.6-.8 9 1.2v13c-3.4-2-6.4-2.2-9-1.2z"></path><path d="M21 5.5c-2.6-1-5.6-.8-9 1.2v13c3.4-2 6.4-2.2 9-1.2z"></path></svg></span><div><b>Из учебника</b><span class="pg">с. 73</span></div></div>
+  <div class="eyebrow">Начало главы III</div>
+  <h2>Средневековое европейское общество</h2>
+  <div class="prose">
+    <p>С этого параграфа начинается новая глава учебника — глава III «Средневековое европейское общество». Она про то, как жили разные группы людей в Европе: воины, крестьяне, горожане, священники.</p>
+    <p>Открывает главу миниатюра «Три сословия». Попробуй угадать, кто из этих троих молится, кто сражается, а кто трудится. Подсказка — в том, что у них в руках и во что они одеты.</p>
+  </div>
+  <figure class="fig"><img src="img/2026-09-15-p7/01-tri-sosloviya.jpg" width="740" height="758" loading="lazy" alt="Миниатюра внутри большой буквы: слева человек в длинной одежде поднял руку, в середине воин в шлеме и кольчуге со щитом, справа человек с лопатой"><figcaption>Три сословия. Миниатюра. XIII в. Средневековое общество в Западной Европе делилось на три разряда: «те, кто молится», «те, кто сражается» и «те, кто трудится». Считалось, что общество может существовать только при гармоничном взаимодействии всех сословий (с. 73).</figcaption></figure>
+  <div class="prose">
+    <p>Рядом в учебнике слова <b>епископа Адальберона Ланского</b>. Он сравнил общество с домом Божьим, разделённым на три части: одни молятся, другие сражаются, третьи работают. Части не мешают друг другу: каждая помогает двум другим трудиться, и все вместе заботятся о целом. Поэтому дом стоит крепко, законы соблюдаются, а люди живут в мире.</p>
+  </div>
+  <details>
+    <summary>Трудные слова в эпиграфе</summary>
+    <div class="body"><ul>
+      <li><b>Эпиграф</b> — короткие слова в начале главы, которые подсказывают, о чём она.</li>
+      <li><b>Тройственное сочленение</b> — соединение трёх частей в одно целое, как суставы соединяют кости.</li>
+      <li><b>Раздельность</b> — то, что части отделены друг от друга.</li>
+      <li><b>Закон может торжествовать</b> — законы соблюдаются, побеждает порядок.</li>
+      <li><b>Вкушать мир</b> — жить в мире, спокойно.</li>
+    </ul></div>
+  </details>
+  <div class="aside">
+    <div class="k">Главный вопрос главы (учебник, с. 73)</div>
+    <p>Почему исполнение обязанностей каждым из сословий было важно для всего средневекового общества?</p>
+    <p>Ответ ты будешь собирать постепенно, до конца главы — до § 9. Пока просто держи этот вопрос в голове.</p>
+  </div>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 73</summary>
+    <div class="body"><ul>
+      <li>С. 73 — начало главы III «Средневековое европейское общество».</li>
+      <li class="pic">Иллюстрация: «Три сословия». Миниатюра, XIII век. Подпись: средневековое общество в Западной Европе делилось на три разряда: «те, кто молится», «те, кто сражается» и «те, кто трудится». Считалось, что общество может существовать только при гармоничном взаимодействии всех сословий.</li>
+      <li>Эпиграф: «Так дом Божий, единым почитаемый, разделён на три части: одни молятся, другие сражаются, третьи работают. Три соседствующие части не страдают от своей раздельности: услуги, оказываемые одной из них, служат условием для трудов двух других; в свою очередь каждая часть берёт на себя заботу о целом. Так это тройственное сочленение остаётся единым, благодаря чему закон может торжествовать, а люди — вкушать мир». <i>Епископ Адальберон Ланский.</i></li>
+      <li>Главный вопрос главы: почему исполнение обязанностей каждым из сословий было важно для всего средневекового общества?</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 3 -->
+<section class="step" data-step="daty" data-name="Даты из текста" data-part="Лента времени" data-kind="book" data-pages="с. 74–83">
+  <div class="kind-tag book"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.5c2.6-1 5.6-.8 9 1.2v13c-3.4-2-6.4-2.2-9-1.2z"></path><path d="M21 5.5c-2.6-1-5.6-.8-9 1.2v13c3.4-2 6.4-2.2 9-1.2z"></path></svg></span><div><b>Из учебника</b><span class="pg">с. 74–83</span></div></div>
+  <div class="eyebrow">Даты из текста параграфа</div>
+  <h2>Лента времени</h2>
+  <p class="task">В § 7 нет таблицы дат, как в прошлых параграфах. Здесь собраны даты и века, которые встречаются в самом тексте и в подписях к картинкам, сверху вниз от ранних к поздним. Нажми на дату, чтобы прочитать, что случилось. Справа — страница учебника.</p>
+  <div class="tl-v" id="tl"></div>
+  <p class="hint">Век в подписи к миниатюре — это когда её нарисовали.</p>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · все даты § 7 по страницам</summary>
+    <div class="body"><ul>
+      <li>Около 1000 г. — во всей Европе населения было меньше, чем сейчас в Италии или Франции (с. 74–75).</li>
+      <li>К XI в. — главной ценностью по-прежнему была земля; сложилось новое устройство общества (с. 74–75).</li>
+      <li>VIII–XI вв. — набеги норманнов, арабов и венгров (с. 75).</li>
+      <li>VIII–X вв. — государи создают конное войско (с. 75).</li>
+      <li>К XII в. — свободной земли и свободных крестьян в Западной Европе почти не осталось (с. 77).</li>
+      <li>XIV в. — появился сплошной доспех весом до 30 кг (с. 79).</li>
+      <li>1340 г. — послание Жана де Валленкура с отказом от вассальной клятвы (с. 83).</li>
+      <li>Даты в подписях к иллюстрациям: миниатюра «Три сословия», XIII в. (с. 73); «Церемония посвящения в рыцари», XV в. (с. 74); «Санчо IV Кастильский принимает вассальную присягу», XIII в. (с. 79); «Рыцарь в доспехах», середина XIV в. (с. 79); «Рыцарский турнир», XV в. (с. 80); «Книга о рыцарском ордене» Рамона Льюля, XIII в. (с. 80); «Рыцарский замок XII в.» (с. 81); «Рыцарь предлагает даме своё сердце», ковёр, XIV в. (с. 82).</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 4 -->
+<section class="step" data-step="zemlya" data-name="Земля и защита" data-part="Глава 1 · Новое устройство" data-kind="book" data-pages="с. 74–75, п. 1">
+  <div class="kind-tag book"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.5c2.6-1 5.6-.8 9 1.2v13c-3.4-2-6.4-2.2-9-1.2z"></path><path d="M21 5.5c-2.6-1-5.6-.8-9 1.2v13c3.4-2 6.4-2.2 9-1.2z"></path></svg></span><div><b>Из учебника</b><span class="pg">с. 74–75, п. 1</span></div></div>
+  <div class="eyebrow">Глава 1 · Новое устройство общества</div>
+  <h2><span class="pnum">1</span>Земля с людьми и защита</h2>
+  <div class="prose">
+    <p>К XI веку главным богатством в Европе, как и раньше, была <b>земля</b>: она кормила людей. Но пашни, сады и огороды дают урожай, только когда на них работают. Поэтому ценилась не просто земля, а земля с людьми. А людей не хватало.</p>
+    <p>Около 1000 года во всей Европе жило меньше людей, чем сейчас в одной Италии или Франции. Путешественник мог ехать целый день и не встретить ни одного человека.</p>
+    <p>Земледельцам постоянно грозила опасность, и они искали защиты. Защитить могли только те, у кого было оружие и кто умел им владеть. После Великого переселения народов это были германские короли и их дружинники (ты помнишь их по § 1). Их власть постепенно росла.</p>
+    <p>Простые германцы, которые поселились на землях Западной Римской империи, ещё долго были свободными и полноправными: они и пахали землю, и воевали. Но рядом с их небольшими участками росли большие владения короля и дружинников. На этих владениях работали жители завоёванных земель.</p>
+    <h3>Как свободный становился зависимым</h3>
+    <p>Неравенство росло. Знатные люди нередко силой отбирали у обедневших соседей землю и свободу. А с VIII по XI век на Европу нападали норманны, арабы и венгры. Чтобы спастись, простой земледелец переходил под защиту могущественного соседа.</p>
+  </div>
+  <div class="steps4">
+    <div class="dom"><div class="n">1</div><div class="t">Опасность</div><div class="d">Набеги врагов, знатные соседи отбирают землю.</div></div>
+    <div class="dom"><div class="n">2</div><div class="t">Защита</div><div class="d">Земледелец идёт к могущественному соседу.</div></div>
+    <div class="dom"><div class="n">3</div><div class="t">Цена</div><div class="d">Теряет свободу и права на землю.</div></div>
+    <div class="dom"><div class="n">4</div><div class="t">Итог</div><div class="d">Работает на господина и отдаёт часть урожая.</div></div>
+  </div>
+  <div class="prose">
+    <p>Так он становился <span class="term">зависимым крестьянином</span>. А его богатый покровитель становился его <span class="term">сеньором</span> (по-латыни — «старший»), то есть господином. Сеньорами могли быть светские лица (то есть не священники), епископы и монастыри.</p>
+  </div>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 74–75, п. 1</summary>
+    <div class="body"><ul>
+      <li>Пункт 1 «Новое устройство общества». К XI в. в Европе главной ценностью, дающей средства к существованию, по-прежнему была земля. Но пашни, сады и огороды приносят урожай, когда на них работают. Поэтому ценилась не просто земля, а земля с людьми, которых не хватало. Около 1000 г. во всей Европе населения было меньше, чем сейчас в Италии или Франции. Путешественник мог пробыть в дороге целый день, не встретив ни единого человека.</li>
+      <li>В раннее Средневековье постоянная внешняя опасность заставляла земледельцев искать себе защиту. Предоставить её могли только те, кто имел оружие и умел им владеть. После Великого переселения народов такими людьми были германские короли и дружинники, власть которых постепенно усиливалась. Простые германцы, осевшие на территории Западной Римской империи, ещё долго оставались свободными и полноправными людьми, земледельцами и одновременно воинами. Но рядом с их небольшими земельными участками росли крупные владения короля и его дружинников с работавшими на них жителями завоёванных земель.</li>
+      <li>Возрастающее неравенство изменило отношения между соплеменниками. Знатные люди нередко силой отбирали землю и свободу у обедневших соседей. В то же время простые земледельцы нуждались в помощи против продолжавшихся с VIII по XI в. набегов норманнов, арабов и венгров. Переходя под защиту могущественного соседа, они теряли свободу и права на землю, попадали в зависимость от богатого покровителя, т. е. становились зависимыми крестьянами. Теперь они должны были работать на него и отдавать ему часть урожая, а тот становился их сеньором (по-латыни — старший), т. е. господином. Сеньорами могли быть светские лица, епископы, монастыри.</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 5 -->
+<section class="step" data-step="sosloviya" data-name="Воины и три сословия" data-part="Глава 1 · Новое устройство" data-kind="book" data-pages="с. 75–76, п. 1">
+  <div class="kind-tag book"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.5c2.6-1 5.6-.8 9 1.2v13c-3.4-2-6.4-2.2-9-1.2z"></path><path d="M21 5.5c-2.6-1-5.6-.8-9 1.2v13c3.4-2 6.4-2.2 9-1.2z"></path></svg></span><div><b>Из учебника</b><span class="pg">с. 75–76, п. 1</span></div></div>
+  <div class="eyebrow">Глава 1 · Новое устройство общества</div>
+  <h2><span class="pnum">1</span>Воины на конях и три сословия</h2>
+  <div class="prose">
+    <p>Зависимых крестьян становилось больше и из-за королевской власти. Уже в VIII–X веках из-за военной опасности государям нужно было хорошо вооружённое и обученное <b>конное войско</b>, которое могло бы отбивать нападения. Пешее ополчение для этого не годилось.</p>
+    <p>Крестьяне больше не были обязаны воевать и теряли право носить оружие. А раньше оружие было признаком свободного человека. Защищать население и ходить в набеги на соседей стали воины.</p>
+    <p>Но боевой конь и хорошее вооружение стоили очень дорого. Чтобы их купить и содержать, воину нужно было много земли с крестьянами. Так к XI веку в Западной Европе сложилось новое устройство общества: профессиональные воины отделились от земледельцев и стали им противопоставлены.</p>
+  </div>
+  <details>
+    <summary>Что такое ополчение и «противопоставлены»?</summary>
+    <div class="body"><p><b>Ополчение</b> — войско из простых людей, которых собирают на время войны. Они идут воевать пешком и с тем оружием, какое есть. <b>Профессиональный воин</b> — тот, для кого война и есть работа: он всё время тренируется и воюет на коне.</p><p><b>Противопоставлены</b> — стоят по разные стороны: у воинов одна жизнь и одни заботы, у земледельцев — другие.</p></div>
+  </details>
+  <div class="prose">
+    <h3>Три сословия</h3>
+    <p>Люди того времени по-разному представляли себе общество. Одни делили его на богатых и бедных или на сильных и слабых, другие находили в нём много разных групп.</p>
+    <p>Шли постоянные войны и ссоры, и Церковь предложила своё деление, чтобы примирить людей. Она учила, что Бог разделил общество на три <span class="term">сословия</span>: молящихся, воюющих и работающих. У каждого сословия свои задачи. Вспомни миниатюру «Три сословия» из шага 2.</p>
+    <p>Общество часто сравнивали с телом человека:</p>
+  </div>
+  <div class="steps4">
+    <div class="dom"><div class="n">1</div><div class="t">Молящиеся</div><div class="d">Как сердце.</div></div>
+    <div class="dom"><div class="n">2</div><div class="t">Воюющие</div><div class="d">Как руки.</div></div>
+    <div class="dom"><div class="n">3</div><div class="t">Работающие</div><div class="d">Как ноги.</div></div>
+    <div class="dom"><div class="n">4</div><div class="t">Все вместе</div><div class="d">Одно тело: все зависят друг от друга.</div></div>
+  </div>
+  <div class="prose">
+    <p>Этим сравнением хотели сказать: сословия не равны, но каждое необходимо, и все зависят друг от друга. Тело не проживёт ни без сердца, ни без рук, ни без ног.</p>
+  </div>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 75–76, п. 1</summary>
+    <div class="body"><ul>
+      <li>Распространению зависимости крестьян способствовала и королевская власть. Уже в VIII–X вв. военная опасность заставляла государей создавать хорошо вооружённое и обученное конное войско, которое могло бы успешно отражать нападения. Пешее ополчение для этого не годилось. Не обязанные воевать, крестьяне утрачивали право носить оружие, прежде неотделимое от их свободы.</li>
+      <li>Защита населения и набеги на соседей стали занятием воинов, но боевой конь и хорошее вооружение стоили очень дорого. Чтобы их приобрести и содержать, воин должен был иметь во владении много земли с крестьянами. Так к XI в. в Западной Европе сложилось новое устройство общества, в котором профессиональные воины были отделены от земледельцев и противопоставлены им.</li>
+      <li>Люди тогда по-разному представляли себе, как устроено общество. Некоторые делили его на богатых и бедных или на могущественных и слабых, другие выделяли в нём множество групп. В условиях постоянных войн и конфликтов Церковь предложила своё деление, призванное примирить противоречия. Она утверждала, что Бог разделил общество на три сословия: молящихся, воюющих и работающих. Перед каждым из них стояли свои задачи.</li>
+      <li>Общество часто сравнивали с телом человека, уподобляя молящихся сердцу, воюющих рукам, а работающих ногам. Тем самым подчёркивалось, что все сословия хотя и не равны, но каждое необходимо и все зависят друг от друга.</li>
+      <li>Вопросы учебника после пункта 1: что считалось в Средние века главной ценностью? Почему? Как внешняя опасность влияла на развитие общества? Как люди Средневековья представляли себе устройство общества?</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 6 -->
+<section class="step" data-step="pomestie" data-name="Поместье сеньора" data-part="Глава 2 · Крестьянин" data-kind="book" data-pages="с. 76–77, п. 2">
+  <div class="kind-tag book"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.5c2.6-1 5.6-.8 9 1.2v13c-3.4-2-6.4-2.2-9-1.2z"></path><path d="M21 5.5c-2.6-1-5.6-.8-9 1.2v13c3.4-2 6.4-2.2 9-1.2z"></path></svg></span><div><b>Из учебника</b><span class="pg">с. 76–77, п. 2</span></div></div>
+  <div class="eyebrow">Глава 2 · Крестьянин</div>
+  <h2><span class="pnum">2</span>Крестьянин на земле сеньора</h2>
+  <div class="prose">
+    <p>Крестьянин потерял свободу, и земля, на которой он жил и работал, была не его: вся она принадлежала сеньорам. Но у крестьян были орудия труда, рабочие руки и умения. Без их труда земля для сеньора ничего не стоила.</p>
+    <p>Владения сеньора называют <span class="term">поместьем</span>, или <span class="term">сеньорией</span>. Обычно поместье делилось на две части:</p>
+  </div>
+  <div class="ways">
+    <div class="way"><h3>Земля господина</h3><div class="cn">сеньор оставлял себе</div><p>Леса для охоты, луга для его коней, пашни и огороды, с которых продукты шли на его стол. Весь урожай с господских садов и полей — сеньору.</p></div>
+    <div class="way const"><h3>Наделы крестьян</h3><div class="cn">сеньор отдавал крестьянам</div><p>Участки земли, на которых крестьяне работали для себя. За пользование ими крестьяне несли повинности.</p></div>
+  </div>
+  <figure class="fig wide"><img src="img/2026-09-15-p7/03-pomestie.jpg" width="800" height="362" loading="lazy" alt="Рисунок: на холме замок с постройками, ниже церковь, деревня с домиками и огородами, мельница и кузница у реки, пастбище, полосы полей и луг"><figcaption>Поместье (сеньория). Реконструкция: 1 — замок сеньора; 2 — конюшня; 3 — склады и амбары; 4 — дом для челяди; 5 — кузница; 6 — водяная мельница; 7 — церковь и кладбище; 8 — деревня с крестьянскими домами и приусадебными хозяйствами; 9 — общее пастбище; 10 — пахотные наделы; 11 — луг (с. 76). Задание учебника: изучите рисунок. Составьте рассказ о том, как было устроено поместье.</figcaption></figure>
+  <details>
+    <summary>Подсказка к заданию у рисунка</summary>
+    <div class="body"><p>Представь, что ты идёшь по дороге через мостик и рассказываешь, что видишь вокруг. Начни с холма, где живёт сеньор, потом спустись к деревне и к реке. Для каждого места подумай: кому оно нужно — сеньору, крестьянам или всем вместе? <b>Челядь</b> — слуги в доме господина.</p></div>
+  </details>
+  <div class="prose">
+    <h3>Повинности</h3>
+    <p>За пользование землёй сеньора крестьяне несли <span class="term">повинности</span> — обязанности в пользу сеньора:</p>
+    <ul>
+      <li><span class="term">барщина</span> — работали на господском поле;</li>
+      <li><span class="term">оброк</span> — платили продуктами или деньгами;</li>
+      <li>были и другие повинности.</li>
+    </ul>
+    <p>Судил крестьян, как правило, тоже сеньор.</p>
+  </div>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 76–77, п. 2</summary>
+    <div class="body"><ul>
+      <li>Пункт 2 «Крестьянин на земле сеньора». Положение крестьян в средневековом обществе было связано с утратой свободы и с тем, что земля, на которой они жили и работали, не являлась их собственностью, вся она принадлежала сеньорам. В то же время у крестьян были орудия труда, рабочие руки и навыки, без их труда земля для сеньора не имела ценности.</li>
+      <li>Владения сеньора — их называют поместьем, или сеньорией, — обычно делились на две части. Одну господин оставлял себе: леса для охоты, луга, где паслись его кони, пашни и огороды, поставлявшие продукты на его стол. Весь урожай, собранный в господских садах и на полях, принадлежал сеньору.</li>
+      <li class="pic">Рисунок на с. 76: «Поместье (сеньория)». Реконструкция: 1 — замок сеньора; 2 — конюшня; 3 — склады и амбары; 4 — дом для челяди; 5 — кузница; 6 — водяная мельница; 7 — церковь и кладбище; 8 — деревня с крестьянскими домами и приусадебными хозяйствами; 9 — общее пастбище; 10 — пахотные наделы; 11 — луг. Задание: изучите рисунок. Составьте рассказ о том, как было устроено поместье.</li>
+      <li>Другая часть земли делилась на наделы, которые передавались крестьянам. За пользование землёй сеньора крестьяне несли повинности в его пользу: работали на господском поле (барщина), платили оброк продуктами или деньгами, были и другие повинности. Судил крестьян, как правило, тоже сеньор.</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 7 -->
+<section class="step" data-step="hozyaystvo" data-name="Зависимость и натуральное хозяйство" data-part="Глава 2 · Крестьянин" data-kind="book" data-pages="с. 77, п. 2">
+  <div class="kind-tag book"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.5c2.6-1 5.6-.8 9 1.2v13c-3.4-2-6.4-2.2-9-1.2z"></path><path d="M21 5.5c-2.6-1-5.6-.8-9 1.2v13c3.4-2 6.4-2.2 9-1.2z"></path></svg></span><div><b>Из учебника</b><span class="pg">с. 77, п. 2</span></div></div>
+  <div class="eyebrow">Глава 2 · Крестьянин</div>
+  <h2><span class="pnum">2</span>Разная зависимость и натуральное хозяйство</h2>
+  <div class="prose">
+    <p>К XII веку в Западной Европе почти не осталось свободной земли и свободных крестьян. Но несвободны крестьяне были по-разному. Одни несли небольшие повинности. Другие подолгу работали на барщине или отдавали сеньору половину урожая.</p>
+    <p>Тяжелее всех было <span class="term">лично зависимым</span> крестьянам. Они несли повинности и за землю, и за самих себя. Нередко они даже жениться не могли без согласия сеньора.</p>
+    <p>Повинности часто были тяжёлыми, но подолгу не менялись, и к ним привыкали. А если сеньоры пытались их увеличить и нарушали давние обычаи, крестьяне сопротивлялись: искали справедливости в суде короля или восставали.</p>
+    <h3>Всё своё, всё на месте</h3>
+    <p>Крестьяне кормили и себя, и своего сеньора с его людьми, и ближайшие города. Всё, что нужно для жизни каждый день, делали в каждой деревне. Покупали редко, да и деньги взять было негде.</p>
+  </div>
+  <div class="aside">
+    <div class="k">Натуральное хозяйство</div>
+    <p>Когда всё необходимое не покупают, а производят на месте, это называется <span class="term">натуральным хозяйством</span>. В раннее Средневековье оно господствовало, то есть было главным.</p>
+    <p>Представь, что твоя семья сама растит хлеб и овощи, держит корову и овец, прядёт шерсть, шьёт одежду, а на рынок ездит раз в год — за солью.</p>
+  </div>
+  <div class="prose">
+    <p>Но кое-что всё же приходилось покупать или выменивать, например соль или железо. А сеньорам нужны были хорошее оружие и породистые кони, их обычно привозили издалека. Так что даже при натуральном хозяйстве обмен и торговля полностью не прекращались.</p>
+  </div>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 77, п. 2</summary>
+    <div class="body"><ul>
+      <li>Свободной земли и свободных крестьян к XII в. в Западной Европе почти не осталось. Однако все они были несвободны по-разному. Одни несли небольшие повинности, а другие подолгу работали на барщине или отдавали сеньору половину урожая. Самым тяжёлым было положение лично зависимых крестьян. Они несли повинности и за землю, и за себя лично. Нередко без согласия сеньора они даже не могли жениться.</li>
+      <li>Крестьянские повинности часто были тяжёлыми, но, так как они подолгу не менялись, к ним привыкали. И если сеньоры пытались увеличить их, нарушая давние обычаи, то крестьяне сопротивлялись, искали справедливости в суде короля или восставали.</li>
+      <li>Крестьяне обеспечивали продовольствием и себя, и своего сеньора с его людьми, и ближайшие к ним города. То, в чём люди нуждались для повседневной жизни, производилось в каждой деревне. Покупки делались редко, да и деньги на них взять было негде.</li>
+      <li>Такое положение, когда всё необходимое не покупается, а производится на месте, называется натуральным хозяйством. В раннее Средневековье оно господствовало, но кое-что всё же приходилось покупать или выменивать, например соль или железо. Да и сеньоры нуждались в хорошем оружии и в породистых конях; всё это обычно привозилось издалека. Так что даже при натуральном хозяйстве обмен и торговля полностью не прекращались.</li>
+      <li>Вопросы учебника после пункта 2: какие повинности несли крестьяне в пользу сеньора? Почему это происходило? Что такое натуральное хозяйство?</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 8 -->
+<section class="step" data-step="lestnica" data-name="Феодальная лестница" data-part="Глава 3 · Сеньоры и вассалы" data-kind="book" data-pages="с. 77–78, п. 3">
+  <div class="kind-tag book"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.5c2.6-1 5.6-.8 9 1.2v13c-3.4-2-6.4-2.2-9-1.2z"></path><path d="M21 5.5c-2.6-1-5.6-.8-9 1.2v13c3.4-2 6.4-2.2 9-1.2z"></path></svg></span><div><b>Из учебника</b><span class="pg">с. 77–78, п. 3</span></div></div>
+  <div class="eyebrow">Глава 3 · Сеньоры и вассалы</div>
+  <h2><span class="pnum">3</span>Феоды и феодальная лестница</h2>
+  <div class="prose">
+    <p>Войны шли часто, и главную роль в обществе играли воюющие. Только они могли защитить от врагов главную ценность — землю, а земля давала хозяину богатство и власть. На этом строились и отношения внутри сословия воюющих. Главное в них — земельные владения, <span class="term">феоды</span>.</p>
+    <p>Высшим сеньором был <b>король</b>. Своим приближённым — <b>герцогам, графам, маркизам</b> — он давал большие феоды. Землю они получали с условием: нести военную службу, лично являться на неё и приводить большие отряды хорошо вооружённых конных воинов.</p>
+    <p>Чтобы собрать такой отряд, каждому из них приходилось делить свой феод на части и раздавать своим людям — тоже с условием военной службы. Так доходило до самой нижней ступеньки. На ней стояли простые конные воины: их земли хватало только на своего коня и оружие.</p>
+    <p>Тот, кто давал землю, назывался <span class="term">сеньором</span>, а тот, кто получил от него феод, — <span class="term">вассалом</span>. Один и тот же воин-землевладелец мог быть сразу и вассалом (для того, кто выше), и сеньором (для тех, кто ниже). Всё вместе напоминало лестницу, её так и называют — <span class="term">феодальная лестница</span>.</p>
+  </div>
+  <figure class="fig"><img src="img/2026-09-15-p7/04-feodalnaya-lestnica.jpg" width="800" height="651" loading="lazy" alt="Схема-лестница из четырёх ступеней: сверху Король, ниже Герцоги, графы, маркизы, ниже Бароны, внизу Рыцари"><figcaption>Феодальная лестница (с. 78). Задание учебника: рассмотрите схему и расскажите, что означает правило «Вассал моего вассала — не мой вассал».</figcaption></figure>
+  <details>
+    <summary>Подсказка к заданию у схемы</summary>
+    <div class="body"><p>Возьми три ступеньки подряд: король, граф, барон. Король дал землю графу, граф — барону. Кто чей вассал? А теперь медленно прочитай правило, подставляя вместо слов «мой» и «моего» короля и графа. Кому тогда служит барон?</p></div>
+  </details>
+  <details>
+    <summary>А кто такие бароны?</summary>
+    <div class="body"><p>На схеме между герцогами, графами, маркизами и рыцарями стоят бароны. В тексте учебника про них не рассказано. Бароны — тоже знатные сеньоры, но пониже рангом, чем герцоги и графы.</p></div>
+  </details>
+  <div class="aside">
+    <div class="k">Не везде одинаково (учебник, с. 78)</div>
+    <p>В Англии и Германии все феодалы должны были в какой-то мере подчиняться королю. А во Франции действовало правило: «Вассал моего вассала — не мой вассал». Крестьяне в эту лестницу не входили, потому что не несли военной службы.</p>
+  </div>
+  <div class="aside">
+    <div class="k">Подробнее (учебник, с. 78)</div>
+    <p>О Средних веках говорят, используя слово <span class="term">феодализм</span>. Его важная черта — землёй владели с условием: свои права на одну и ту же землю были и у сеньоров, и у вассалов, и у крестьян, у каждого свои. Сегодня учёные-историки много спорят о понятии «феодализм».</p>
+  </div>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 77–78, п. 3</summary>
+    <div class="body"><ul>
+      <li>Пункт 3 «Сеньоры и вассалы». В условиях частых войн ведущая роль в обществе принадлежала воюющим. Именно они могли защитить от внешней опасности главную ценность — землю, которая давала её владельцам богатство и власть. Вокруг этого строились и отношения внутри сословия воюющих. Главную роль в них играли земельные владения — феоды.</li>
+      <li>Высшим сеньором был король. Своим приближённым — герцогам, графам, маркизам — он передавал во владение большие феоды. Они получали земли при условии несения военной службы и лично являлись на неё, приводя с собой большие отряды хорошо вооружённых конных воинов. Но, чтобы собрать такой отряд, каждому из них приходилось делить феод на части и раздавать их своим людям, тоже на условии несения военной службы. Так дело доходило до самой нижней ступеньки, которую занимали простые конные воины — их земельных владений хватало лишь на собственного коня и оружие.</li>
+      <li>Тот, кто наделял землёй, именовался сеньором, а получивший от него феод — вассалом. Система, в которой воин-землевладелец, занимая свою ступеньку, мог быть одновременно и вассалом, и сеньором, напоминала лестницу; её и называют феодальной лестницей. Отношения между сеньорами и вассалами не везде были одинаковыми. В Англии и Германии все феодалы обязаны были в какой-то мере подчиняться королю. Во Франции же действовало правило: «Вассал моего вассала — не мой вассал». Вне этой системы находились крестьяне, поскольку они не несли военной службы.</li>
+      <li>Подробнее. Говоря о Средних веках, используют термин феодализм. Его важной чертой был условный характер владения землёй: определённые права на неё были и у сеньоров, и у вассалов, и у крестьян, но у каждого — свои. Сегодня в исторической науке понятие «феодализм» вызывает немало споров.</li>
+      <li class="pic">Схема на с. 78 «Феодальная лестница»: король; ниже — герцоги, графы, маркизы; ниже — бароны; внизу — рыцари. Задание: рассмотрите схему и расскажите, что означает правило «Вассал моего вассала — не мой вассал».</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 9 -->
+<section class="step" data-step="obyazannosti" data-name="Кто кому что должен" data-part="Глава 3 · Сеньоры и вассалы" data-kind="book" data-pages="с. 78–79, п. 3">
+  <div class="kind-tag book"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.5c2.6-1 5.6-.8 9 1.2v13c-3.4-2-6.4-2.2-9-1.2z"></path><path d="M21 5.5c-2.6-1-5.6-.8-9 1.2v13c3.4-2 6.4-2.2 9-1.2z"></path></svg></span><div><b>Из учебника</b><span class="pg">с. 78–79, п. 3</span></div></div>
+  <div class="eyebrow">Глава 3 · Сеньоры и вассалы</div>
+  <h2><span class="pnum">3</span>Кто кому что должен</h2>
+  <div class="ways">
+    <div class="way"><h3>Вассал</h3><div class="cn">обязан сеньору</div><p>Нести конную военную службу — обычно 40 дней в году. Помогать сеньору советом и деньгами, например чтобы выкупить сеньора из плена.</p></div>
+    <div class="way const"><h3>Сеньор</h3><div class="cn">обязан вассалу</div><p>Защищать вассала. Не отбирать у него феод без веской причины.</p></div>
+  </div>
+  <div class="prose">
+    <p>Ссоры между сеньорами и вассалами случались часто. Но отобрать феод у вассала было непросто: такие дела решал суд из равных ему вассалов того же сеньора.</p>
+  </div>
+  <figure class="fig"><img src="img/2026-09-15-p7/05-sancho-iv.jpg" width="800" height="540" loading="lazy" alt="Миниатюра: король в короне со скипетром сидит на троне, перед ним на коленях стоят люди в ярких одеждах, слева стоит человек с жезлом"><figcaption>Санчо IV Кастильский принимает вассальную присягу. Миниатюра. XIII в. (с. 79). Задание учебника: опишите церемонию, представленную на иллюстрации. Предположите, какое значение она имела для её участников. Кто из них является сеньором, а кто вассалом? Почему?</figcaption></figure>
+  <details>
+    <summary>Подсказка к заданию у миниатюры</summary>
+    <div class="body"><p><b>Присяга</b> — торжественное обещание служить. Посмотри на позы: кто сидит, кто стоит, кто на коленях? У кого знаки власти — корона и скипетр? Подумай, кто здесь даёт обещание, а кто его принимает, и что каждый из них получает от этого обещания.</p></div>
+  </details>
+  <div class="prose">
+    <p>В идеале храбрые вассалы верно служили справедливому сеньору, а он щедро их награждал. Но так бывало далеко не всегда. Случалось, что сеньор притеснял вассала, а вассал выступал против сеньора.</p>
+    <p>К тому же часто вассал получал не один, а два феода или больше от разных сеньоров. Тогда отношения сильно запутывались: трудно было понять, кому вассал должен служить в первую очередь.</p>
+  </div>
+  <details>
+    <summary>А почему это запутывало?</summary>
+    <div class="body"><p>Представь, что ты ходишь в две секции, и тренеры обеих назначили соревнования на один и тот же день. Куда идти? Вот и у вассала двух сеньоров было двое тех, кому он обещал служить.</p></div>
+  </details>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 78–79, п. 3</summary>
+    <div class="body"><ul>
+      <li>Обязанности вассала состояли в военной конной службе, обычно ограниченной сроком в 40 дней в году, и в помощи сеньору советом и деньгами (например для выкупа сеньора из плена). Сеньор же должен был защищать вассала и не лишать его феода без веской причины. Конфликты между сеньорами и вассалами были обычным делом, но отобрать феод у вассала было сложно: такие вопросы решал суд равных ему вассалов того же сеньора.</li>
+      <li class="pic">Иллюстрация на с. 79: «Санчо IV Кастильский принимает вассальную присягу». Миниатюра, XIII век. Задание: опишите церемонию, представленную на иллюстрации. Предположите, какое значение она имела для её участников. Кто из них является сеньором, а кто вассалом? Почему?</li>
+      <li>В идеале храбрые вассалы верно служили справедливому сеньору, который щедро их вознаграждал. Однако так бывало далеко не всегда. Случалось, что сеньор притеснял вассала, а тот выступал против сеньора. К тому же часто вассал получал не один, а два или более феода от разных сеньоров. Тогда отношения между ними сильно запутывались. Было трудно понять, кому вассал должен служить в первую очередь.</li>
+      <li>Вопросы учебника после пункта 3: кого называли сеньорами и вассалами? Какие взаимные обязанности у них были? Почему между сеньорами и вассалами порой возникали конфликты?</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 10 -->
+<section class="step" data-step="rycar" data-name="Рыцарь на войне" data-part="Глава 4 · Рыцари" data-kind="book" data-pages="с. 79, п. 4">
+  <div class="kind-tag book"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.5c2.6-1 5.6-.8 9 1.2v13c-3.4-2-6.4-2.2-9-1.2z"></path><path d="M21 5.5c-2.6-1-5.6-.8-9 1.2v13c3.4-2 6.4-2.2 9-1.2z"></path></svg></span><div><b>Из учебника</b><span class="pg">с. 79, п. 4</span></div></div>
+  <div class="eyebrow">Глава 4 · Рыцари</div>
+  <h2><span class="pnum">4</span>Рыцарь на войне</h2>
+  <div class="prose">
+    <p>Сеньоров и вассалов объединяло одно: все они были <span class="term">рыцарями</span> или хотели ими стать. Русское слово «рыцарь» пришло от немецкого «риттер» — всадник. Рыцарем обычно становился знатный человек, достаточно богатый, чтобы иметь боевого коня и вооружение.</p>
+    <p>Несколько веков рыцари господствовали на полях сражений. В бою рыцари почти не рисковали жизнью: их противники, такие же рыцари, обычно старались не убить их, а взять в плен, чтобы получить выкуп.</p>
+    <p>Воинские обязанности требовали от рыцаря храбрости, физической силы и постоянных тренировок.</p>
+  </div>
+  <figure class="fig"><img src="img/2026-09-15-p7/06-rycar-v-dospehah.jpg" width="482" height="1098" style="max-width:220px" loading="lazy" alt="Рисунок: рыцарь в шлеме с поднятым забралом, в кольчуге, синей накидке, со щитом и мечом, в латных башмаках; детали помечены цифрами от 1 до 7"><figcaption>Рыцарь в доспехах, сер. XIV в. Реконструкция: 1 — забрало; 2 — шлем; 3 — кольчуга; 4 — латы; 5 — щит; 6 — наколенник; 7 — латный башмак (с. 79).</figcaption></figure>
+  <div class="aside">
+    <div class="k">Подпись к рисунку (учебник, с. 79)</div>
+    <p>Рыцарь был прекрасно подготовлен к войне. Его защищали кольчуга, щит и шлем. В XIV веке появился <b>сплошной доспех</b> весом до 30 кг. Нападал рыцарь мечом и длинным копьём. Когда рыцари в доспехах мчались на конях по полю боя, казалось, что такой удар не выдержит никакая сила.</p>
+  </div>
+  <details>
+    <summary>Трудные слова про доспехи</summary>
+    <div class="body"><ul>
+      <li><b>Защитное вооружение</b> — то, что бережёт самого воина: кольчуга, шлем, щит, доспех. <b>Наступательное оружие</b> — то, чем бьют противника: меч, копьё.</li>
+      <li><b>Кольчуга</b> — рубаха, сплетённая из маленьких железных колец.</li>
+      <li><b>Латы</b> — доспех из цельных железных пластин.</li>
+      <li><b>Забрало</b> — часть шлема, которая закрывает лицо. На рисунке рыцарь его поднял.</li>
+    </ul></div>
+  </details>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 79, п. 4</summary>
+    <div class="body"><ul>
+      <li>Пункт 4 «Рыцарь на войне». Сеньоров и вассалов объединяло то, что все они были или стремились стать рыцарями. Слово «рыцарь» в русском языке происходит от немецкого «риттер» — всадник. Рыцарем обычно становился человек знатный и достаточно состоятельный, чтобы иметь боевого коня и вооружение.</li>
+      <li>Несколько веков рыцари господствовали на полях сражений. В бою рыцари фактически не рисковали жизнью, ведь обычно их противники — такие же рыцари — стремились не убивать их, а брать в плен, чтобы получить выкуп. Воинские обязанности требовали от рыцаря храбрости, физической силы и постоянной тренировки.</li>
+      <li class="pic">Рисунок на с. 79: «Рыцарь в доспехах, сер. XIV в.». Реконструкция: 1 — забрало; 2 — шлем; 3 — кольчуга; 4 — латы; 5 — щит; 6 — наколенник; 7 — латный башмак. Подпись: рыцарь был прекрасно подготовлен к войне. Его защитное вооружение составляли кольчуга, щит и шлем. В XIV в. появился сплошной доспех весом до 30 кг. Наступательным оружием были меч и длинное копьё. Когда защищённые доспехами рыцари на конях мчались по полю боя — казалось, нет силы, способной выдержать такой удар.</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 11 -->
+<section class="step" data-step="turniry" data-name="Турниры и гербы" data-part="Глава 4 · Рыцари" data-kind="book" data-pages="с. 80, п. 4">
+  <div class="kind-tag book"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.5c2.6-1 5.6-.8 9 1.2v13c-3.4-2-6.4-2.2-9-1.2z"></path><path d="M21 5.5c-2.6-1-5.6-.8-9 1.2v13c3.4-2 6.4-2.2 9-1.2z"></path></svg></span><div><b>Из учебника</b><span class="pg">с. 80, п. 4</span></div></div>
+  <div class="eyebrow">Глава 4 · Рыцари</div>
+  <h2><span class="pnum">4</span>Турниры, гербы и что нужно рыцарю</h2>
+  <div class="prose">
+    <p>В мирное время рыцари занимались тем, что похоже на войну: охотились на кабанов или оленей, участвовали в <span class="term">турнирах</span> — состязаниях в умении владеть оружием. Чтобы несчастных случаев было как можно меньше, на турнирах обычно сражались затупленным оружием и в особых доспехах.</p>
+  </div>
+  <figure class="fig"><img src="img/2026-09-15-p7/07-turnir.jpg" width="535" height="396" loading="lazy" alt="Миниатюра: два всадника в доспехах несутся навстречу друг другу с копьями, кони в расшитых попонах; наверху на трибуне сидят король, дамы и трубачи"><figcaption>Рыцарский турнир. Миниатюра. XV в. (с. 80). Задание учебника: назовите детали вооружения рыцарей. Кто, помимо рыцарей, присутствовал на турнире?</figcaption></figure>
+  <details>
+    <summary>Подсказка к заданию у миниатюры</summary>
+    <div class="body"><p>Для первого вопроса вспомни рисунок «Рыцарь в доспехах» из прошлого шага и найди те же детали у всадников. Что у них в руках? Для второго посмотри наверх, на трибуну: во что одеты эти люди и что у некоторых в руках?</p></div>
+  </details>
+  <div class="prose">
+    <p>Турниры устраивали <span class="term">герольды</span>. Взглянув на рыцаря, они сразу понимали, кто он: на щите был знак рода — <span class="term">герб</span>. Позже гербы появились у городов и у духовных лиц (священников), а из гербов правителей выросли гербы государств. На гербе помещали <span class="term">девиз</span> владельца — короткое изречение.</p>
+    <p>Гербы есть и сегодня: у России это золотой двуглавый орёл на красном щите. Свои гербы есть у Дагестана и у многих городов.</p>
+  </div>
+  <div class="aside">
+    <div class="k">Свидетельство эпохи (учебник, с. 80)</div>
+    <p><b>Из «Книги о рыцарском ордене» Рамона Льюля (XIII в.)</b></p>
+    <p>«Иметь коня, доспехи и быть господином ещё недостаточно для того, чтобы претендовать на высокую честь принадлежности к рыцарству, ибо рыцарь нуждается также в оруженосце и паже, которые заботились бы о нём и о его конях. Необходимо также, чтобы кто-то пахал, перекапывал землю и выпалывал сорняки, чтобы давала она плоды, которыми питаются рыцарь и его кони; следует ему также ездить верхом и вести жизнь сеньора».</p>
+    <p>Задание учебника: что, по мнению автора документа, необходимо иметь для того, чтобы быть рыцарем?</p>
+  </div>
+  <details>
+    <summary>Подсказка к заданию и трудные слова</summary>
+    <div class="body"><p>Перечитай отрывок и выпиши всё, что, по словам автора, нужно рыцарю: сначала вещи, потом люди, которые о нём заботятся, потом те, кто его кормит, и в конце — какую жизнь он должен вести.</p><p><b>Претендовать</b> — считать, что имеешь право на что-то. <b>Ибо</b> — потому что. <b>Паж и оруженосец</b> — юные помощники рыцаря, о них следующий шаг.</p></div>
+  </details>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 80, п. 4</summary>
+    <div class="body"><ul>
+      <li>В мирное время рыцари заполняли досуг занятиями, похожими на войну: охотились на кабанов или оленей, участвовали в турнирах — состязаниях в умении владеть оружием. Чтобы свести к минимуму несчастные случаи на турнирах, рыцари обычно сражались затупленным оружием и в особых доспехах.</li>
+      <li>Организацией турниров занимались герольды. Едва взглянув на рыцаря, они могли определить, кто он такой: ведь на щите был знак рода — герб. Позже гербы появились у городов и духовных лиц, а из гербов правителей возникали гербы государств. На гербе был помещён девиз его обладателя — краткое изречение.</li>
+      <li class="pic">Иллюстрация на с. 80: «Рыцарский турнир». Миниатюра, XV век. Задание: назовите детали вооружения рыцарей. Кто, помимо рыцарей, присутствовал на турнире?</li>
+      <li>«Свидетельство эпохи»: отрывок из «Книги о рыцарском ордене» Рамона Льюля (XIII в.) — полностью приведён выше. Задание: что, по мнению автора документа, необходимо иметь для того, чтобы быть рыцарем?</li>
+      <li>«Любопытные детали» и вопросы после пункта 4 (тоже на с. 80) — на следующем шаге.</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 12 -->
+<section class="step" data-step="posvyashchenie" data-name="Паж, оруженосец, рыцарь" data-part="Глава 4 · Рыцари" data-kind="book" data-pages="с. 74, 80, п. 4">
+  <div class="kind-tag book"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.5c2.6-1 5.6-.8 9 1.2v13c-3.4-2-6.4-2.2-9-1.2z"></path><path d="M21 5.5c-2.6-1-5.6-.8-9 1.2v13c3.4-2 6.4-2.2 9-1.2z"></path></svg></span><div><b>Из учебника</b><span class="pg">с. 80 и 74, п. 4</span></div></div>
+  <div class="eyebrow">Глава 4 · Рыцари</div>
+  <h2><span class="pnum">4</span>Как становились рыцарями</h2>
+  <div class="prose">
+    <p>С 7 лет мальчики из знатных семей вассалов служили <span class="term">пажами</span> при дворах сеньоров. Их учили ездить верхом, владеть оружием, охотиться, петь, танцевать, и они перенимали изысканные придворные манеры.</p>
+    <p>Потом юноша становился <span class="term">оруженосцем</span> рыцаря: прислуживал ему и помогал в сражении. Но даже после такой подготовки рыцарем можно было стать только после особой церемонии — <b>посвящения</b>. Этот обряд был похож на монашеский.</p>
+    <p>А ещё именно Церковь приучала рыцарей с их грубыми военными нравами к мысли, что рыцарь должен служить, защищать бедных и так далее.</p>
+  </div>
+  <figure class="fig"><img src="img/2026-09-15-p7/02-posvyashchenie.jpg" width="800" height="610" loading="lazy" alt="Миниатюра: король в короне сидит на троне с большим мечом, перед ним на коленях молодой человек в красной одежде, справа люди несут шлем и шпоры"><figcaption>Церемония посвящения в рыцари. Миниатюра. XV в. Этой картинкой начинается параграф (с. 74), к ней вопрос 1 в конце параграфа.</figcaption></figure>
+  <div class="aside">
+    <div class="k">Акколада (подпись к миниатюре, с. 74)</div>
+    <p>Церемония посвящения в рыцари называлась <span class="term">акколадой</span> (от латинского «объятия»). Она пришла от обычая германцев торжественно вручать оружие молодому воину: с этой минуты его считали совершеннолетним. Со временем у церемонии сложился свой постоянный порядок.</p>
+    <p>Главное в обряде — опоясывание мечом. Потом посвящающий обнимал нового рыцаря и давал ему пощёчину. Пощёчина означала единственный удар, на который новый рыцарь должен был не отвечать.</p>
+  </div>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 80 и 74, п. 4</summary>
+    <div class="body"><ul>
+      <li>Любопытные детали (с. 80). С 7 лет мальчики из знатных семей вассалов служили пажами при дворах сеньоров. Их учили ездить верхом, владеть оружием, охотиться, петь, танцевать; они усваивали изысканные придворные манеры. Затем юноша становился оруженосцем рыцаря: прислуживал, помогал в сражении. Но даже пройдя такую подготовку, он мог стать рыцарем только в результате особой церемонии посвящения. Этот ритуал сродни монашескому. Стоит также отметить, что именно Церковь внедряла в грубые военные нравы рыцарей идеи служения, защиты бедных и т. д.</li>
+      <li class="pic">Иллюстрация в начале параграфа (с. 74): «Церемония посвящения в рыцари». Миниатюра, XV век. Подпись: церемония посвящения в рыцари называлась акколадой (от латинского «объятия»). Она восходит к обычаю германцев торжественно вручать оружие молодому воину, признаваемому с этого момента совершеннолетним. Со временем церемония приобрела классическую форму. Ключевым эпизодом ритуала являлось опоясывание мечом, за которым следовали объятия посвящающего и пощёчина как символ единственного удара, который новый рыцарь должен был оставить безответным.</li>
+      <li>Вопросы учебника после пункта 4 (с. 80): каковы были преимущества рыцарского войска перед пешим ополчением? Почему рыцари чаще попадали в плен, чем погибали? Какие занятия считались достойными рыцаря?</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 13 -->
+<section class="step" data-step="zamok" data-name="Рыцарский замок" data-part="Глава 5 · Быт и культура" data-kind="book" data-pages="с. 81, п. 5">
+  <div class="kind-tag book"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.5c2.6-1 5.6-.8 9 1.2v13c-3.4-2-6.4-2.2-9-1.2z"></path><path d="M21 5.5c-2.6-1-5.6-.8-9 1.2v13c3.4-2 6.4-2.2 9-1.2z"></path></svg></span><div><b>Из учебника</b><span class="pg">с. 81, п. 5</span></div></div>
+  <div class="eyebrow">Глава 5 · Быт и культура</div>
+  <h2><span class="pnum">5</span>Рыцарский замок</h2>
+  <div class="prose">
+    <p>Средневековье с его постоянными войнами лучше всего показывает неприступный каменный <span class="term">замок</span> — дом рыцаря и одновременно его крепость.</p>
+    <p>Строители замков старались устроить для нападающих целую систему препятствий:</p>
+    <ul>
+      <li>ров, заполненный водой, с подъёмным мостом;</li>
+      <li>одно или два кольца каменных стен с башнями;</li>
+      <li>высокая главная башня — <span class="term">донжон</span>.</li>
+    </ul>
+    <p>Колодец и запасы еды позволяли выдержать долгую осаду. Захватить замок обычно удавалось только хитростью или с помощью предателей.</p>
+  </div>
+  <figure class="fig wide"><img src="img/2026-09-15-p7/08-zamok.jpg" width="800" height="535" loading="lazy" alt="Рисунок: каменный замок на скалистом холме над рекой, с высокой квадратной башней, круглыми башнями, стенами, деревянным забором и мостиком у ворот; части помечены цифрами от 1 до 14"><figcaption>Рыцарский замок XII в. Реконструкция: 1 — донжон; 2 — замковая часовня; 3 — башня; 4 — верхний двор; 5 — нижний двор с хозяйственными постройками и конюшней; 6 — каменные стены; 7 — бойницы; 8 — деревянные галереи; 9 — ров с водой; 10 — подъёмный мост; 11 — надвратная башня и железная решётка; 12 — сторожевая вышка; 13 — палисад; 14 — колодец (с. 81). Задание учебника: расскажите, где возводился и как был устроен рыцарский замок.</figcaption></figure>
+  <details>
+    <summary>Подсказка к заданию у рисунка</summary>
+    <div class="body"><p>«Где возводился»: посмотри, на каком месте стоит замок и что вокруг — легко ли к нему подобраться? «Как устроен»: пройди путь врага от подножия холма до донжона по номерам. Что ему встретится первым, что потом?</p><p><b>Бойницы</b> — узкие окошки в стене для стрельбы. <b>Палисад</b> — забор из заострённых брёвен. <b>Часовня</b> — маленькая церковь. <b>Осада</b> — когда враги окружают крепость и ждут, пока у защитников кончатся еда и вода.</p></div>
+  </details>
+  <div class="prose">
+    <p>Замок был центром жизни всей округи. Здесь жил сеньор с семьёй, подолгу гостили вассалы и воспитывались их дети.</p>
+  </div>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 81, п. 5</summary>
+    <div class="body"><ul>
+      <li>Пункт 5 «Рыцарские быт и культура». Воплощением Средневековья с его постоянными войнами стал неприступный каменный замок — жилище рыцаря и его крепость. Строители замков стремились создать для нападавших систему препятствий: заполненный водой ров с подъёмным мостом, одно или два кольца каменных стен с башнями, высокая главная башня — донжон. Колодец и запасы продовольствия позволяли выдержать долгую осаду. Захватить замок, как правило, удавалось лишь хитростью или с помощью предателей.</li>
+      <li>Замок был центром жизни всей округи. Здесь жил сеньор с семьёй, подолгу гостили вассалы и воспитывались их дети.</li>
+      <li class="pic">Рисунок на с. 81: «Рыцарский замок XII в.». Реконструкция: 1 — донжон; 2 — замковая часовня; 3 — башня; 4 — верхний двор; 5 — нижний двор с хозяйственными постройками и конюшней; 6 — каменные стены; 7 — бойницы; 8 — деревянные галереи; 9 — ров с водой; 10 — подъёмный мост; 11 — надвратная башня и железная решётка; 12 — сторожевая вышка; 13 — палисад; 14 — колодец. Задание: расскажите, где возводился и как был устроен рыцарский замок.</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 14 -->
+<section class="step" data-step="kultura" data-name="Честь и Прекрасная дама" data-part="Глава 5 · Быт и культура" data-kind="book" data-pages="с. 81–82, п. 5">
+  <div class="kind-tag book"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.5c2.6-1 5.6-.8 9 1.2v13c-3.4-2-6.4-2.2-9-1.2z"></path><path d="M21 5.5c-2.6-1-5.6-.8-9 1.2v13c3.4-2 6.4-2.2 9-1.2z"></path></svg></span><div><b>Из учебника</b><span class="pg">с. 81–82, п. 5 и «Подведём итоги»</span></div></div>
+  <div class="eyebrow">Глава 5 · Быт и культура</div>
+  <h2><span class="pnum">5</span>Рыцарская культура</h2>
+  <div class="prose">
+    <p>При дворах сеньоров расцвела рыцарская культура: замки и гербы, турниры и пиры, танцы и поэтические состязания.</p>
+    <p>Рыцарь подчинялся особым правилам поведения — <span class="term">кодексу рыцарской чести</span>. Эти правила отличали его от всех остальных людей.</p>
+  </div>
+  <div class="steps4">
+    <div class="dom"><div class="n">1</div><div class="t">Честь</div><div class="d">Честь выше жизни, худший порок — трусость.</div></div>
+    <div class="dom"><div class="n">2</div><div class="t">Храбрость</div><div class="d">Быть храбрым в бою.</div></div>
+    <div class="dom"><div class="n">3</div><div class="t">Верность</div><div class="d">Быть верным сеньору.</div></div>
+    <div class="dom"><div class="n">4</div><div class="t">Защита</div><div class="d">Отстаивать христианскую веру, защищать слабых.</div></div>
+  </div>
+  <div class="prose">
+    <p>Но к простолюдинам рыцари этот кодекс не применяли. С ними они вели себя грубо и жестоко, часто грабили мирных жителей и не считали себя обязанными держать данное им слово.</p>
+    <p>Рыцарская культура требовала умения вести себя при дворе, особенно с дамами. Считалось, что рыцарь должен быть влюблён в образ <b>Прекрасной дамы</b> и прославлять её своими подвигами. Эта придворная игра смягчала грубые нравы.</p>
+  </div>
+  <figure class="fig"><img src="img/2026-09-15-p7/09-rycar-i-dama.jpg" width="535" height="446" loading="lazy" alt="Ковёр: в цветущем лесу сидит дама в синем платье с птицей на руке, перед ней стоит мужчина в красном плаще и протягивает ей что-то маленькое; вокруг кролики и собачка"><figcaption>Рыцарь предлагает даме своё сердце. Изображение на ковре. Фрагмент. XIV в. (с. 82). Задание учебника: какие черты рыцарской культуры отражает иллюстрация?</figcaption></figure>
+  <details>
+    <summary>Подсказка к заданию у ковра</summary>
+    <div class="body"><p>Что делает рыцарь и как он одет? Вспомни, как рыцарь должен был вести себя с дамами и что такое Прекрасная дама. А кто сидит у дамы на руке? Какое занятие знатных людей эта птица напоминает?</p></div>
+  </details>
+  <div class="prose">
+    <p>Многие рыцари сочиняли стихи. Например, <span class="term">трубадуры</span> — рыцари-поэты Южной Франции. При дворах звучали их песни и эпические поэмы о героях прошлого, такие как «Песнь о Роланде». Очень любили рыцарские романы о короле Артуре и рыцарях Круглого стола.</p>
+    <p>Рыцарские идеалы и ценности сильно повлияли на то, как потом развивалась культура Западной Европы.</p>
+  </div>
+  <div class="aside">
+    <div class="k">Подведём итоги (учебник, с. 82)</div>
+    <p>К XI веку сложилось новое устройство общества и представление о том, что оно делится на три сословия — молящихся, воюющих и работающих. Крестьяне попали в зависимость от сеньоров. У воюющих утвердилась система вассальных отношений: передача феодов и выполнение определённых обязанностей. Возникло рыцарство.</p>
+  </div>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 81–82, п. 5 и «Подведём итоги»</summary>
+    <div class="body"><ul>
+      <li>При дворах сеньоров расцвела рыцарская культура. Замки и гербы, турниры и пиры, танцы и поэтические состязания. Рыцарь подчинялся определённым правилам поведения (кодексу рыцарской чести), отличавшим его от всех остальных. Честь для рыцаря была выше жизни, а худшим пороком считалась трусость. Ему следовало быть храбрым в бою и верным сеньору, отстаивать христианскую веру, защищать слабых. Однако кодекс рыцарской чести не соблюдался по отношению к простолюдинам, с ними рыцари вели себя грубо и жестоко, часто грабили мирных жителей, не считали себя обязанными держать данное слово.</li>
+      <li>Рыцарская культура требовала умения вести себя при дворе, особенно в общении с дамами. Считалось, что рыцарь должен быть влюблён в образ Прекрасной дамы и прославлять её своими подвигами. Эта придворная игра смягчала грубость нравов.</li>
+      <li class="pic">Иллюстрация на с. 82: «Рыцарь предлагает даме своё сердце». Изображение на ковре, фрагмент, XIV век. Задание: какие черты рыцарской культуры отражает иллюстрация?</li>
+      <li>Многие рыцари сочиняли стихи, как, например, трубадуры — рыцари-поэты Южной Франции. При дворах звучали их песни и эпические поэмы о героях былых времён, такие, как «Песнь о Роланде». Очень популярны были рыцарские романы о короле Артуре и рыцарях Круглого стола. Рыцарские идеалы и ценности оказали большое влияние на последующее развитие западноевропейской культуры.</li>
+      <li>Вопрос учебника после пункта 5: как рыцарская культура связана с военными занятиями рыцарей?</li>
+      <li>«Подведём итоги»: к XI в. сложилось новое устройство общества и оформились представления о его делении на три сословия — молящихся, воюющих и работающих. Крестьяне оказались в зависимости от сеньоров. В сословии воюющих утвердилась система вассальных отношений, основанная на передаче феодов и выполнении определённых обязанностей. Возникло рыцарство.</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 15 -->
+<section class="step" data-step="slovar-1" data-name="Словарик: общество и земля" data-part="Словарик" data-kind="ours">
+  <div class="kind-tag ours"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="6" width="12" height="14" rx="1.5"></rect><path d="M8.5 3.5h10.5a1.5 1.5 0 0 1 1.5 1.5v12.5"></path></svg></span><div><b>Словарик</b><small>Сверх учебника — чтобы запомнить слова параграфа.</small></div></div>
+  <div class="game">
+    <div class="g-head"><h3>Словарик: общество и земля</h3><span class="badge" id="b-terms">Игра</span></div>
+    <p class="task">Нажми на карточку, и она перевернётся. Словарик из двух частей, открой все карточки.</p>
+    <div class="progress" id="terms-progress"></div>
+    <div class="cards" data-terms="0"></div>
+  </div>
+</section>
+
+<!-- 16 -->
+<section class="step" data-step="slovar-2" data-name="Словарик: крестьяне и рыцари" data-part="Словарик" data-kind="ours">
+  <div class="kind-tag ours"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="6" width="12" height="14" rx="1.5"></rect><path d="M8.5 3.5h10.5a1.5 1.5 0 0 1 1.5 1.5v12.5"></path></svg></span><div><b>Словарик</b><small>Сверх учебника — чтобы запомнить слова параграфа.</small></div></div>
+  <div class="game">
+    <div class="g-head"><h3>Словарик: крестьяне и рыцари</h3><span class="badge" id="b-terms2">Игра</span></div>
+    <p class="task">Вторая часть: повинности, хозяйство и жизнь рыцарей.</p>
+    <div class="progress" id="terms-progress2"></div>
+    <div class="cards" data-terms="1"></div>
+  </div>
+</section>
+
+<!-- 17 -->
+<section class="step" data-step="slova" data-name="Слова с секретом" data-part="Игры" data-kind="ours">
+  <div class="kind-tag ours"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="3"></rect><circle cx="9" cy="9" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="15" cy="15" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="15" cy="9" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="9" cy="15" r="1.3" fill="currentColor" stroke="none"></circle></svg></span><div><b>Игра</b><small>Сверх учебника — чтобы закрепить тему.</small></div></div>
+  <div class="game" id="g-match">
+    <div class="g-head"><h3>Слова с секретом</h3><span class="badge" id="b-match">Игра</span></div>
+    <p class="task">У каждого из этих слов есть перевод или разгадка. Нажми на слово слева, потом на его разгадку справа.</p>
+    <div class="match">
+      <div class="col"><div class="lbl">Слово</div><div class="col" id="foes"></div></div>
+      <div class="col"><div class="lbl">Что значит</div><div class="col" id="outcomes"></div></div>
+    </div>
+    <div id="match-fb"></div>
+  </div>
+</section>
+
+<!-- 18 -->
+<section class="step" data-step="kto-dolzhen" data-name="Кто что должен?" data-part="Игры" data-kind="ours">
+  <div class="kind-tag ours"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="3"></rect><circle cx="9" cy="9" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="15" cy="15" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="15" cy="9" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="9" cy="15" r="1.3" fill="currentColor" stroke="none"></circle></svg></span><div><b>Игра</b><small>Сверх учебника — чтобы закрепить тему.</small></div></div>
+  <div class="game">
+    <div class="g-head"><h3>Кто что должен?</h3><span class="badge" id="b-sort">Игра</span></div>
+    <p class="task">В средневековом обществе у каждого были свои обязанности. Прочитай карточку и выбери, чья это обязанность: крестьянина, вассала или сеньора.</p>
+    <div class="progress" id="sort-progress"></div>
+    <div id="sort-box"></div>
+  </div>
+</section>
+
+<!-- 19 -->
+<section class="step" data-step="put-v-rycari" data-name="Путь в рыцари" data-part="Игры" data-kind="ours">
+  <div class="kind-tag ours"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="3"></rect><circle cx="9" cy="9" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="15" cy="15" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="15" cy="9" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="9" cy="15" r="1.3" fill="currentColor" stroke="none"></circle></svg></span><div><b>Игра</b><small>Сверх учебника — чтобы закрепить тему.</small></div></div>
+  <div class="game">
+    <div class="g-head"><h3>Путь в рыцари</h3><span class="badge" id="b-order">Игра</span></div>
+    <p class="task">Как мальчик из знатной семьи становился рыцарем? Нажимай на события по порядку, от первого к последнему.</p>
+    <div class="pool" id="pool"></div>
+    <div class="seq" id="seq"></div>
+    <div class="row">
+      <button class="btn" id="order-check" type="button" disabled>Проверить</button>
+      <button class="btn ghost" id="order-reset" type="button">Сначала</button>
+    </div>
+    <div id="order-fb"></div>
+  </div>
+</section>
+
+<!-- 20 -->
+<section class="step" data-step="lishnee" data-name="Найди лишнее" data-part="Игры" data-kind="ours">
+  <div class="kind-tag ours"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="3"></rect><circle cx="9" cy="9" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="15" cy="15" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="15" cy="9" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="9" cy="15" r="1.3" fill="currentColor" stroke="none"></circle></svg></span><div><b>Игра</b><small>Сверх учебника — чтобы закрепить тему.</small></div></div>
+  <div class="game">
+    <div class="g-head"><h3>Найди лишнее</h3><span class="badge" id="b-odd">Игра</span></div>
+    <p class="task">Три из одной компании, одно чужое. Найди чужое.</p>
+    <div class="progress" id="odd-progress"></div>
+    <div class="odd-grid" id="odd-grid"></div>
+    <div id="odd-fb"></div>
+    <div class="row"><button class="btn" id="odd-next" type="button" hidden>Дальше</button></div>
+  </div>
+</section>
+
+<!-- 21 -->
+<section class="step" data-step="test" data-name="Проверь себя" data-part="Финал" data-kind="ours">
+  <div class="kind-tag ours"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"></circle><path d="M8 12.3l2.8 2.8L16.2 9.6"></path></svg></span><div><b>Самопроверка</b><small>Сверх учебника — вопросы, чтобы проверить себя. Задания из учебника — дальше.</small></div></div>
+  <div class="eyebrow">Финал</div>
+  <h2>Проверь себя</h2>
+  <div class="game">
+    <div class="progress" id="quiz-progress"></div>
+    <div id="quiz-box"></div>
+  </div>
+</section>
+
+<!-- 22 -->
+<section class="step" data-step="voprosy" data-name="Вопросы учебника" data-part="Финал" data-kind="task" data-pages="с. 83">
+  <div class="kind-tag task"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l4.2-1L19 8.2 15.8 5 5 15.8z"></path><path d="M13.8 7l3.2 3.2"></path></svg></span><div><b>Задание учебника</b><span class="pg">с. 83</span><small>Вопросы из книги. Где искать ответ и подсказки — наши.</small></div></div>
+  <div class="eyebrow">Финал · Вопросы и задания в конце § 7</div>
+  <h2>Вопросы из учебника</h2>
+  <div class="prose">
+    <p>Это вопросы и задания в конце параграфа, номера такие же, как в твоём учебнике. Рядом с каждым написано, на каком шаге искать ответ. Отвечай своими словами: так лучше запоминается, и учитель услышит, что ты поняла, а не заучила.</p>
+  </div>
+  <div class="qlist">
+<div class="qi"><span class="qn">1</span><div><p>Рассмотрите иллюстрацию в начале параграфа. По каким деталям можно определить, представители какого сословия на ней изображены? Докажите, что на иллюстрации представлена церемония посвящения в рыцари.</p><p class="src">Подсказка: картинка — на шаге 12. Посмотри на одежду, оружие и позы: кто сидит на троне, что у него в руках, кто стоит на коленях, что несут люди справа? Потом перечитай подпись про акколаду и найди на картинке то, что в ней описано.</p><a href="#posvyashchenie">Шаг 12 · Паж, оруженосец, рыцарь</a> <a href="#rycar">Шаг 10 · Рыцарь на войне</a></div></div>
+<div class="qi"><span class="qn">2</span><div><p>Как и почему крестьяне теряли землю и свободу? Охарактеризуйте положение зависимых от сеньора крестьян.</p><p class="src">Подсказка: для первой части ищи, от кого крестьянам нужна была защита, кто отбирал у них землю и почему они перестали носить оружие (шаги 4–5). Для второй — чья была земля, какие повинности несли крестьяне, кто их судил, кому было тяжелее всех и что делали крестьяне, если повинности увеличивали (шаги 6–7).</p><a href="#zemlya">Шаги 4–5 · Земля и защита</a> <a href="#pomestie">Шаги 6–7 · Крестьянин</a></div></div>
+<div class="qi"><span class="qn">3</span><div><p>Почему в средневековой Европе сложилось натуральное хозяйство?</p><p class="src">Подсказка: вспомни, сколько людей жило тогда в Европе и легко ли было куда-то добраться (шаг 4). Откуда брали всё нужное для жизни, часто ли покупали и были ли у людей деньги (шаг 7)?</p><a href="#hozyaystvo">Шаг 7 · Натуральное хозяйство</a> <a href="#zemlya">Шаг 4</a></div></div>
+<div class="qi"><span class="qn">4</span><div><p>Что такое феодальная лестница? Какова причина её возникновения?</p><p class="src">Подсказка: определение — в тексте шага 8, посмотри и на схему. Про причину подумай: что король требовал от герцогов и графов за феод и как им удавалось это выполнить? А зачем воину вообще нужна была земля с крестьянами (шаг 5)?</p><a href="#lestnica">Шаг 8 · Феодальная лестница</a> <a href="#sosloviya">Шаг 5</a></div></div>
+<div class="qi"><span class="qn">5</span><div><p>Что имеется в виду, когда в наши дни говорят о рыцарском поведении? Как это связано со средневековыми рыцарями?</p><p class="src">Подсказка: вспомни, в каких случаях сегодня говорят «поступил по-рыцарски». Потом сравни это с правилами кодекса рыцарской чести и с тем, как рыцарь должен был вести себя с дамами (шаг 14). Какие идеи вносила в жизнь рыцарей Церковь (шаг 12)?</p><a href="#kultura">Шаг 14 · Рыцарская культура</a> <a href="#posvyashchenie">Шаг 12</a></div></div>
+<div class="qi"><span class="qn">6</span><div><p>Каковы отличительные черты рыцарской культуры?</p><p class="src">Подсказка: перечисли, из чего состояла жизнь рыцаря при дворе сеньора: где он жил, чем занимался в мирное время, какие правила соблюдал, как вёл себя с дамами, что сочинял и слушал.</p><a href="#turniry">Шаг 11 · Турниры и гербы</a> <a href="#zamok">Шаг 13</a> <a href="#kultura">Шаг 14</a></div></div>
+<div class="qi"><span class="qn"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3h8l4 4v12a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"></path><path d="M9 11h6"></path><path d="M9 15h6"></path><path d="M9 7h3"></path></svg></span><div><p>Работаем с источником. Прочитайте текст послания с отказом Жана де Валленкура от вассальной клятвы графу Эно, союзнику короля Англии (1340). Ответьте на вопросы.</p><p>«Высочайшему и благороднейшему государю, моему дражайшему господину сеньору Эно. Я, Жан де Валленкур, ставлю вас в известность, что, хотя держу от вас замок в Валленкуре, а также четыре владения в Мурмэ, я вынужден вторгнуться в ваш край вместе с королём Франции и другими сеньорами, при которых я состою. И поскольку я ни за что не сделал бы этого до тех пор, пока считался бы вашим вассалом, мне велено из уст самого короля [Франции], чтобы я отказался от вассальной клятвы, принесённой вам. Вы знаете, что все мои самые ценные владения расположены в королевстве Французском, а потому… я отказываюсь от вассальной клятвы, принесённой вам».</p><p>Вопросы: 1. Почему некоторые рыцари становились вассалами разных сеньоров? Как это сказывалось на их жизни и службе в условиях военных конфликтов? 2. Какие черты кодекса рыцарской чести проявились в этой грамоте?</p><p class="src">Подсказка: сначала разбери слова. «Держу от вас замок» — получил от вас замок как феод. «Вассальная клятва» — торжественное обещание служить сеньору. «Вторгнуться в ваш край» — прийти войной на вашу землю. 1) Вспомни, что говорит учебник о вассале, у которого несколько феодов (шаг 9), и найди в письме, у скольких сеньоров служит Жан и где его самые ценные владения. 2) Сравни, как поступает Жан, с правилами кодекса рыцарской чести (шаг 14). Какие из них видны в его письме?</p><a href="#obyazannosti">Шаг 9 · Кто кому что должен</a> <a href="#kultura">Шаг 14 · Кодекс чести</a></div></div>
+<div class="qi"><span class="qn">А–Я</span><div><p>Работаем с понятиями. 1. Разделите на две группы понятия: натуральное хозяйство, рыцарь, феод, барщина, турнир, вассал, повинности. По какому признаку вы их разделили? Что они обозначают? 2. Найдите понятие, которое является лишним в общем ряду: замок, турнир, оброк, трубадур. Свой ответ обоснуйте.</p><p class="src">Подсказка: сначала вспомни, что значит каждое слово (словарик на шагах 15–16). 1) Поищи, что общего у нескольких слов: о ком или о чём они? Признак может быть разный, главное — объяснить свой. 2) Для каждого слова спроси себя: о ком оно, чья это жизнь?</p><a href="#slovar-1">Шаг 15 · Словарик</a> <a href="#slovar-2">Шаг 16 · Словарик</a></div></div>
+<div class="qi"><span class="qn"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="1"></rect><path d="M8 20h8"></path><path d="M12 16v4"></path></svg></span><div><p>Дополнительные материалы. «Учителю и ученику». Материалы к параграфу на портале «История.РФ».</p><p class="src">В учебнике рядом есть QR-код: наведи на него камеру телефона, если захочешь посмотреть.</p></div></div>
+<div class="qi"><span class="qn">?</span><div><p>Сформулируйте ответ на главный вопрос параграфа, обоснуйте его двумя-тремя аргументами.</p><a href="#itog">Шаг 23 · Главный вопрос</a></div></div>
+  </div>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 83</summary>
+    <div class="body"><ul>
+      <li>Все вопросы и задания с. 83 перечислены выше, в том же порядке, что в книге: «Вопросы и задания» 1–6, «Работаем с источником» (послание Жана де Валленкура и два вопроса), «Работаем с понятиями» (два задания), «Дополнительные материалы», главный вопрос параграфа.</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 23 -->
+<section class="step" data-step="itog" data-name="Главный вопрос" data-part="Финал" data-kind="task" data-pages="с. 83">
+  <div class="kind-tag task"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l4.2-1L19 8.2 15.8 5 5 15.8z"></path><path d="M13.8 7l3.2 3.2"></path></svg></span><div><b>Задание учебника</b><span class="pg">с. 74 и 83</span><small>Главный вопрос из книги, кирпичики-подсказки — наши.</small></div></div>
+  <div class="eyebrow">Финал</div>
+  <h2>Почему распространились феоды и вассалы?</h2>
+  <div class="prose">
+    <p>Это главный вопрос параграфа: почему к концу раннего Средневековья в Европе распространились феоды и вассальные отношения? Вспомни деревню у реки из первого шага. Вот четыре «кирпичика» для ответа. Открой их, а потом попробуй ответить своими словами, не подглядывая.</p>
+  </div>
+  <div class="bricks">
+    <div class="brick"><button type="button" aria-expanded="false"><span>Опасность со всех сторон</span><span>+</span></button><div class="b-body" hidden>С VIII по XI век на Европу нападали норманны, арабы и венгры. Людям нужна была защита, а защитить могли только те, у кого есть оружие и кто умеет им владеть.</div></div>
+    <div class="brick"><button type="button" aria-expanded="false"><span>Нужны конные воины</span><span>+</span></button><div class="b-body" hidden>Пешее ополчение с нападениями не справлялось, государям было нужно конное войско. Но боевой конь и хорошее вооружение стоили очень дорого: чтобы их содержать, воину нужно было много земли с крестьянами.</div></div>
+    <div class="brick"><button type="button" aria-expanded="false"><span>Главная ценность — земля</span><span>+</span></button><div class="b-body" hidden>Денег было мало, всё нужное производили на месте. Самым ценным была земля с людьми, которые на ней работают. Её и давали за военную службу — это и есть феод.</div></div>
+    <div class="brick"><button type="button" aria-expanded="false"><span>Лестница сверху вниз</span><span>+</span></button><div class="b-body" hidden>Король давал феоды герцогам, графам и маркизам, чтобы они приводили к нему отряды. Те, чтобы собрать отряд, делили свои феоды между своими людьми, тоже за службу. Так почти каждый воин стал чьим-то вассалом, а многие — ещё и сеньорами.</div></div>
+  </div>
+  <div class="aside">
+    <div class="k">Главное в одном предложении</div>
+    <p>К концу раннего Средневековья Европе постоянно грозили набеги, защитить от них могли только дорогие конные воины, а главной ценностью была земля с крестьянами, поэтому короли и знать раздавали земли-феоды за военную службу, и так сложились отношения сеньоров и вассалов.</p>
+  </div>
+  <div class="game">
+    <div class="g-head"><h3>Твоя мозаика</h3></div>
+    <div class="mosaic" id="mosaic"></div>
+    <div class="mosaic-list" id="mosaic-list"></div>
+    <div class="row"><a class="btn" href="./">К списку тем</a></div>
+  </div>
+</section>
+
+</main>
+
+<nav class="pager" aria-label="Навигация по шагам">
+  <div class="pager-inner">
+    <button class="btn ghost" id="prev" type="button">Назад</button>
+    <div class="count" id="count"></div>
+    <button class="btn" id="next" type="button">Дальше</button>
+  </div>
+</nav>
+
+<div class="toc" id="toc" hidden>
+  <div class="toc-panel" role="dialog" aria-label="Содержание">
+    <h3>Содержание <button class="toc-close" id="toc-close" type="button">Закрыть</button></h3>
+    <div id="toc-list" style="display:flex;flex-direction:column;gap:2px"></div>
+  </div>
+</div>
+
+<script>
+(function(){
+  'use strict';
+  var $ = function(s, r){ return (r||document).querySelector(s); };
+  var el = function(tag, cls, html){ var e=document.createElement(tag); if(cls) e.className=cls; if(html!=null) e.innerHTML=html; return e; };
+  var shuffle = function(a){ a=a.slice(); for(var i=a.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=a[i]; a[i]=a[j]; a[j]=t; } return a; };
+
+  /* ---------- state ---------- */
+  var KEY='seniory-vassaly-v1';
+  var state={visited:{},done:{},last:0};
+  try{ var s=JSON.parse(localStorage.getItem(KEY)||'null'); if(s && typeof s==='object'){ state.visited=s.visited||{}; state.done=s.done||{}; state.last=s.last||0; } }catch(e){}
+  function save(){ try{ localStorage.setItem(KEY, JSON.stringify(state)); }catch(e){} }
+
+  var GAMES=[
+    {k:'terms', name:'Словарик, обе части', step:'slovar-1'},
+    {k:'match', name:'Слова с секретом', step:'slova'},
+    {k:'sort', name:'Кто что должен?', step:'kto-dolzhen'},
+    {k:'order', name:'Путь в рыцари', step:'put-v-rycari'},
+    {k:'odd', name:'Найди лишнее', step:'lishnee'},
+    {k:'quiz', name:'Проверь себя', step:'test'}
+  ];
+  var GAME_STEPS={'slovar-1':'terms','slovar-2':'terms','slova':'match','kto-dolzhen':'sort','put-v-rycari':'order','lishnee':'odd','test':'quiz'};
+
+  /* ---------- steps ---------- */
+  var steps=Array.prototype.slice.call(document.querySelectorAll('.step'));
+  var N=steps.length, cur=0;
+  var stepbar=$('#stepbar'), count=$('#count'), prevB=$('#prev'), nextB=$('#next'), tocList=$('#toc-list');
+
+  /* содержание по группам: из учебника / задания учебника / сверх учебника */
+  var KIND={book:['<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.5c2.6-1 5.6-.8 9 1.2v13c-3.4-2-6.4-2.2-9-1.2z"></path><path d="M21 5.5c-2.6-1-5.6-.8-9 1.2v13c3.4-2 6.4-2.2 9-1.2z"></path></svg>','Из учебника'],task:['<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l4.2-1L19 8.2 15.8 5 5 15.8z"></path><path d="M13.8 7l3.2 3.2"></path></svg>','Задания учебника'],ours:['<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="3"></rect><circle cx="9" cy="9" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="15" cy="15" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="15" cy="9" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="9" cy="15" r="1.3" fill="currentColor" stroke="none"></circle></svg>','Сверх учебника']};
+  var tocItems=[], groups=[], prevKind=null, grp=null;
+  steps.forEach(function(s,i){
+    var kind=s.getAttribute('data-kind')||'book', pg=(s.getAttribute('data-pages')||'').replace(/,\s*п\..*$/,'');
+    var start=kind!==prevKind;
+    var b=el('button'); b.type='button'; b.setAttribute('aria-label','Шаг '+(i+1)+': '+s.getAttribute('data-name'));
+    b.setAttribute('data-base','k-'+kind+(start&&i>0?' gstart':'')); b.className=b.getAttribute('data-base');
+    b.addEventListener('click', function(){ go(i); });
+    stepbar.appendChild(b);
+    if(start){
+      var label = kind==='ours' ? (i===0?'Коротко о главном':'Словарик и игры · сверх учебника') : KIND[kind][1];
+      grp=el('div','toc-group k-'+kind,'<div class="toc-head"><span class="ic">'+KIND[kind][0]+'</span><span>'+label+'</span></div>');
+      grp.pages=[]; groups.push(grp); tocList.appendChild(grp); prevKind=kind;
+    }
+    var t=el('button','toc-item','<span class="n">'+(i+1)+'</span><span>'+s.getAttribute('data-name')+'</span>'+(pg?'<span class="pg">'+pg+'</span>':'')+'<span class="m"></span>');
+    t.type='button'; t.addEventListener('click', function(){ closeToc(); go(i); });
+    grp.appendChild(t); tocItems.push(t);
+    (pg.match(/\d+/g)||[]).forEach(function(n){ grp.pages.push(+n); });
+  });
+  groups.forEach(function(g){ if(g.pages.length){ var a=Math.min.apply(null,g.pages), z=Math.max.apply(null,g.pages); g.firstChild.lastChild.textContent+=' · с. '+(a===z?a:a+'–'+z); } });
+
+  function paint(){
+    var bars=stepbar.children, items=tocItems;
+    for(var i=0;i<N;i++){
+      var key=steps[i].getAttribute('data-step'), g=GAME_STEPS[key];
+      var done = g && state.done[g];
+      bars[i].className=bars[i].getAttribute('data-base')+(i===cur?' current':'')+(state.visited[i]?' visited':'')+(done?' done':'');
+      items[i].className='toc-item'+(i===cur?' current':'');
+      items[i].lastElementChild.textContent = done ? 'пройдено' : (state.visited[i] ? '✓' : '');
+    }
+    count.textContent=(cur+1)+' / '+N;
+    prevB.disabled = cur===0;
+    if(cur===N-1){ nextB.textContent='Это последний шаг'; nextB.disabled=true; }
+    else { nextB.textContent='Дальше: '+steps[cur+1].getAttribute('data-name'); nextB.disabled=false; }
+    var badges={terms:['b-terms','b-terms2'],match:['b-match'],sort:['b-sort'],order:['b-order'],odd:['b-odd']};
+    for(var k in badges){ badges[k].forEach(function(id){ var b=document.getElementById(id); if(b && state.done[k]){ b.textContent='Пройдено'; b.classList.add('done'); } }); }
+    paintMosaic();
+  }
+  function go(i, silent){
+    if(i<0||i>=N) return;
+    cur=i; steps.forEach(function(s,j){ s.hidden = j!==i; });
+    state.visited[i]=true; state.last=i; save();
+    if(!silent){ var h='#'+steps[i].getAttribute('data-step'); if(location.hash!==h) history.pushState(null,'',h); }
+    window.scrollTo(0,0);
+    paint();
+  }
+  function idxFromHash(){ var h=location.hash.replace('#',''); for(var i=0;i<N;i++) if(steps[i].getAttribute('data-step')===h) return i; return -1; }
+  function onHash(){ var i=idxFromHash(); if(i>=0 && i!==cur) go(i, true); }
+  window.addEventListener('popstate', onHash);
+  window.addEventListener('hashchange', onHash);
+  prevB.addEventListener('click', function(){ go(cur-1); });
+  nextB.addEventListener('click', function(){ go(cur+1); });
+  document.addEventListener('keydown', function(e){ if(e.target && /INPUT|TEXTAREA/.test(e.target.tagName)) return; if(e.key==='ArrowRight') go(cur+1); if(e.key==='ArrowLeft') go(cur-1); if(e.key==='Escape') closeToc(); });
+
+  var toc=$('#toc');
+  function openToc(){ toc.hidden=false; }
+  function closeToc(){ toc.hidden=true; }
+  $('#toc-btn').addEventListener('click', openToc);
+  $('#toc-close').addEventListener('click', closeToc);
+  toc.addEventListener('click', function(e){ if(e.target===toc) closeToc(); });
+
+  function markDone(k){ if(!state.done[k]){ state.done[k]=true; save(); } paint(); }
+
+  /* resume button on step 1 */
+  (function(){
+    var r=$('#resume');
+    if(state.last>0 && idxFromHash()<0){
+      r.hidden=false;
+      r.innerHTML='<button class="btn ghost" type="button">Продолжить с шага '+(state.last+1)+': '+steps[state.last].getAttribute('data-name')+'</button>';
+      r.firstChild.addEventListener('click', function(){ go(state.last); });
+    }
+  })();
+
+  /* ---------- mosaic on final step ---------- */
+  var mosaic=$('#mosaic'), mosaicList=$('#mosaic-list');
+  function paintMosaic(){
+    mosaic.innerHTML=''; mosaicList.innerHTML='';
+    GAMES.forEach(function(g){
+      var t=el('span','tile'+(state.done[g.k]?' on':'')); t.title=g.name; mosaic.appendChild(t);
+      var li=el('span', state.done[g.k]?'':'off', (state.done[g.k]?'★ ':'☆ ')+g.name);
+      if(!state.done[g.k]){ li.style.cursor='pointer'; li.addEventListener('click', function(){ for(var i=0;i<N;i++) if(steps[i].getAttribute('data-step')===g.step){ go(i); break; } }); }
+      mosaicList.appendChild(li);
+    });
+  }
+
+  /* ---------- timeline ---------- */
+  var TL=[
+    {y:'VIII–XI вв.', era:'с. 75', t:'Набеги норманнов, арабов и венгров', d:'Все эти века на Европу нападали норманны, арабы и венгры. Простые земледельцы искали защиты у могущественных соседей и попадали к ним в зависимость.'},
+    {y:'VIII–X вв.', era:'с. 75', t:'Государи создают конное войско', d:'Из-за военной опасности государи создавали хорошо вооружённое и обученное конное войско. Пешее ополчение не могло отбивать нападения, а крестьяне теряли право носить оружие.'},
+    {y:'около 1000 г.', era:'с. 74–75', t:'В Европе мало людей', d:'Во всей Европе жило меньше людей, чем сейчас в одной Италии или Франции. Путешественник мог целый день ехать и не встретить ни одного человека.'},
+    {y:'к XI в.', era:'с. 75, 82', t:'Новое устройство общества', d:'Земля по-прежнему главная ценность. Профессиональные воины отделились от земледельцев. Сложились представления о трёх сословиях — молящихся, воюющих и работающих.'},
+    {y:'к XII в.', era:'с. 77', t:'Свободных крестьян почти не осталось', d:'В Западной Европе почти не осталось свободной земли и свободных крестьян. Но зависимы крестьяне были по-разному.'},
+    {y:'XII в.', era:'с. 81', t:'Рыцарский замок', d:'Таким был каменный рыцарский замок XII века: ров с водой, подъёмный мост, стены с башнями и донжон. Рисунок-реконструкция — на шаге 13.'},
+    {y:'XIII в.', era:'с. 73, 79, 80', t:'Рамон Льюль и две миниатюры', d:'Рамон Льюль написал «Книгу о рыцарском ордене». В этом же веке нарисованы миниатюры «Три сословия» и «Санчо IV Кастильский принимает вассальную присягу».'},
+    {y:'XIV в.', era:'с. 79, 82', t:'Сплошной доспех', d:'Появился сплошной доспех весом до 30 кг. Рисунок «Рыцарь в доспехах» показывает рыцаря середины XIV века, ковёр «Рыцарь предлагает даме своё сердце» — тоже XIV век.'},
+    {y:'1340 г.', era:'с. 83', t:'Жан де Валленкур отказывается от клятвы', d:'Рыцарь Жан де Валленкур написал графу Эно, союзнику короля Англии, что отказывается от вассальной клятвы. Это письмо — в задании «Работаем с источником» (шаг 22).'},
+    {y:'XV в.', era:'с. 74, 80', t:'Миниатюры о рыцарях', d:'Нарисованы миниатюры «Церемония посвящения в рыцари» и «Рыцарский турнир».'}
+  ];
+  var tl=$('#tl');
+  TL.forEach(function(e,i){
+    var it=el('div','tl-item'+(e.ru?' ru':''));
+    var b=el('button','tl-btn'); b.type='button';
+    b.innerHTML='<span class="dot"></span><span class="y">'+e.y+'</span><span class="t">'+e.t+'</span><span class="era">'+e.era+'</span>';
+    var d=el('div','tl-d',e.d); d.hidden=(i!==0); if(i===0) it.classList.add('open');
+    b.setAttribute('aria-expanded', i===0?'true':'false');
+    b.addEventListener('click', function(){ var open=d.hidden; d.hidden=!open; it.classList.toggle('open',open); b.setAttribute('aria-expanded',open?'true':'false'); });
+    it.appendChild(b); it.appendChild(d); tl.appendChild(it);
+  });
+
+  /* ---------- glossary ---------- */
+  var TERMS=[
+    [
+      {t:'Сословие', d:'Большая группа людей со своими задачами. Церковь учила, что сословий три: молящиеся, воюющие и работающие.', e:'Общество сравнивали с телом: сердце, руки и ноги.'},
+      {t:'Сеньор', d:'По-латыни «старший». Господин: тот, кто дал землю вассалу или у кого в зависимости крестьяне.', e:'Сеньорами могли быть светские лица, епископы, монастыри.'},
+      {t:'Вассал', d:'Тот, кто получил от сеньора феод и за это служит ему.', e:'Главная обязанность — конная военная служба.'},
+      {t:'Феод', d:'Земельное владение, которое сеньор передаёт вассалу с условием военной службы.', e:''},
+      {t:'Феодальная лестница', d:'Система, где каждый воин-землевладелец стоит на своей ступеньке и может быть сразу вассалом и сеньором.', e:'Король, герцоги, графы, маркизы, бароны, рыцари.'},
+      {t:'Феодализм', d:'Так называют порядки Средних веков. Главная черта — землёй владели с условием: у сеньора, вассала и крестьянина свои права на неё.', e:'Историки до сих пор спорят об этом понятии.'},
+      {t:'Поместье (сеньория)', d:'Владения сеньора: его собственная земля и наделы крестьян.', e:'Замок, мельница, кузница, церковь, деревня, поля, луг.'},
+      {t:'Рыцарь', d:'От немецкого «риттер» — всадник. Знатный конный воин с боевым конём и вооружением.', e:'Все сеньоры и вассалы были рыцарями или хотели ими стать.'}
+    ],
+    [
+      {t:'Зависимые крестьяне', d:'Крестьяне, которые перешли под защиту сеньора и потеряли свободу и права на землю.', e:'Лично зависимые несли повинности и за землю, и за себя.'},
+      {t:'Повинности', d:'Обязанности крестьян в пользу сеньора за пользование его землёй.', e:'Барщина, оброк и другие.'},
+      {t:'Барщина', d:'Работа крестьян на господском поле.', e:''},
+      {t:'Оброк', d:'Плата сеньору продуктами или деньгами.', e:''},
+      {t:'Натуральное хозяйство', d:'Когда всё необходимое не покупают, а производят на месте.', e:'Соль и железо всё равно покупали или выменивали.'},
+      {t:'Турнир', d:'Состязание рыцарей в умении владеть оружием.', e:'Сражались затупленным оружием и в особых доспехах.'},
+      {t:'Герб', d:'Знак рода на щите рыцаря. Позже гербы появились у городов, духовных лиц и государств.', e:'На гербе был девиз — краткое изречение.'},
+      {t:'Кодекс рыцарской чести', d:'Правила поведения рыцаря: честь выше жизни, храбрость, верность сеньору, защита веры и слабых.', e:'Худший порок — трусость.'}
+    ]
+  ];
+  var flipped={}, total=0; TERMS.forEach(function(g){ total+=g.length; });
+  var progEls=[$('#terms-progress'),$('#terms-progress2')];
+  function termsProgress(){
+    var n=Object.keys(flipped).length;
+    progEls.forEach(function(p,gi){ var got=0; TERMS[gi].forEach(function(t,i){ if(flipped[gi+'-'+i]) got++; }); p.textContent='Открыто '+got+' из '+TERMS[gi].length+' здесь, всего '+n+' из '+total; });
+    if(n===total) markDone('terms');
+  }
+  document.querySelectorAll('.cards').forEach(function(box){
+    var gi=+box.getAttribute('data-terms');
+    TERMS[gi].forEach(function(t,i){
+      var b=el('button','card'); b.type='button'; b.setAttribute('aria-label',t.t+'. Нажми, чтобы увидеть значение');
+      b.innerHTML='<div class="in"><div class="face f"><div class="w">'+t.t+'</div><div class="tap">Нажми</div></div><div class="face b"><div class="w">'+t.t+'</div><div>'+t.d+'</div>'+(t.e?'<div class="e">'+t.e+'</div>':'')+'</div></div>';
+      b.addEventListener('click', function(){ b.classList.toggle('flip'); flipped[gi+'-'+i]=true; termsProgress(); });
+      box.appendChild(b);
+    });
+  });
+  termsProgress();
+
+  /* ---------- matching: слова с секретом ---------- */
+  var PAIRS=[
+    {foe:'Сеньор', res:'По-латыни «старший»', why:'Сеньор — господин: тот, кто дал вассалу феод или у кого в зависимости крестьяне.'},
+    {foe:'Рыцарь', res:'От немецкого «всадник»', why:'Немецкое слово «риттер» значит «всадник». Рыцарь — конный воин.'},
+    {foe:'Акколада', res:'Посвящение в рыцари', why:'Слово — от латинского «объятия»: посвящающий обнимал нового рыцаря.'},
+    {foe:'Паж', res:'Мальчик на службе у сеньора с 7 лет', why:'Пажей учили ездить верхом, владеть оружием, охотиться, петь, танцевать и придворным манерам.'},
+    {foe:'Оруженосец', res:'Юный помощник рыцаря в бою', why:'Он прислуживал рыцарю и помогал ему в сражении, а потом мог стать рыцарем сам.'},
+    {foe:'Донжон', res:'Главная башня замка', why:'Высокая главная башня. На рисунке замка она под номером 1.'},
+    {foe:'Герольд', res:'Устроитель турниров', why:'Герольды с одного взгляда на герб узнавали, кто перед ними.'},
+    {foe:'Трубадур', res:'Рыцарь-поэт Южной Франции', why:'Песни трубадуров звучали при дворах сеньоров.'}
+  ];
+  var foesBox=$('#foes'), outBox=$('#outcomes'), matchFb=$('#match-fb'), selFoe=null, matched=0;
+  PAIRS.forEach(function(p){
+    var b=el('button','opt',p.foe); b.type='button'; b.setAttribute('data-foe',p.foe);
+    b.addEventListener('click', function(){
+      if(b.classList.contains('ok')) return;
+      var all=foesBox.querySelectorAll('.opt'); for(var i=0;i<all.length;i++) all[i].classList.remove('sel');
+      b.classList.add('sel'); selFoe=p; matchFb.innerHTML='';
+    });
+    foesBox.appendChild(b);
+  });
+  shuffle(PAIRS).forEach(function(p){
+    var b=el('button','opt',p.res); b.type='button';
+    b.addEventListener('click', function(){
+      if(b.classList.contains('ok')) return;
+      if(!selFoe){ matchFb.innerHTML='<div class="feedback bad"><span class="k">Сначала выбери слово слева.</span></div>'; return; }
+      if(selFoe.res===p.res){
+        b.classList.add('ok'); b.disabled=true;
+        var fb=foesBox.querySelector('[data-foe="'+selFoe.foe+'"]'); fb.classList.remove('sel'); fb.classList.add('ok'); fb.disabled=true;
+        matchFb.innerHTML='<div class="feedback ok"><span class="k">Верно! '+selFoe.foe+' — '+selFoe.res+'.</span><span>'+selFoe.why+'</span></div>';
+        selFoe=null; matched++;
+        if(matched===PAIRS.length){ matchFb.innerHTML='<div class="feedback ok"><span class="k">Все восемь слов разгаданы!</span><span>Теперь ты знаешь, что прячется за этими словами.</span></div>'; markDone('match'); }
+      } else {
+        b.classList.add('bad'); setTimeout(function(){ b.classList.remove('bad'); },400);
+        matchFb.innerHTML='<div class="feedback bad"><span class="k">Не то.</span><span>Это разгадка другого слова. Попробуй ещё.</span></div>';
+      }
+    });
+    outBox.appendChild(b);
+  });
+
+  /* ---------- sort: кто что должен ---------- */
+  var ROLES=['Крестьянин','Вассал','Сеньор'];
+  var SORT=[
+    {t:'Работать на господском поле', c:'Крестьянин', why:'Это барщина — одна из повинностей крестьян.'},
+    {t:'Платить господину продуктами или деньгами', c:'Крестьянин', why:'Это оброк.'},
+    {t:'Спрашивать согласия господина, чтобы жениться', c:'Крестьянин', why:'Так было у лично зависимых крестьян: их положение было самым тяжёлым.'},
+    {t:'Приезжать на войну на коне, обычно на 40 дней в году', c:'Вассал', why:'Конная военная служба — главная обязанность вассала.'},
+    {t:'Помогать господину советом', c:'Вассал', why:'Вассал помогал сеньору советом и деньгами.'},
+    {t:'Собрать деньги, чтобы выкупить господина из плена', c:'Вассал', why:'Это помощь сеньору деньгами.'},
+    {t:'Защищать того, кто получил от него феод', c:'Сеньор', why:'Сеньор должен был защищать своего вассала.'},
+    {t:'Не отбирать феод без веской причины', c:'Сеньор', why:'А если спор всё же был, его решал суд равных вассалов того же сеньора.'},
+    {t:'Судить крестьян своего поместья', c:'Сеньор', why:'Судил крестьян, как правило, тоже сеньор.'}
+  ];
+  var sortBox=$('#sort-box'), sortP=$('#sort-progress'), sortList=shuffle(SORT), si=0;
+  function renderSort(){
+    if(si>=sortList.length){ return sortDone(); }
+    var it=sortList[si];
+    sortP.textContent='Карточка '+(si+1)+' из '+sortList.length;
+    sortBox.innerHTML='';
+    sortBox.appendChild(el('div','sort-card',it.t));
+    var tri=el('div','tri'); sortBox.appendChild(tri);
+    var fb=el('div'); sortBox.appendChild(fb);
+    var rowN=el('div','row'); sortBox.appendChild(rowN);
+    ROLES.forEach(function(c){
+      var b=el('button','opt',c); b.type='button';
+      b.addEventListener('click', function(){
+        if(c===it.c){
+          var all=tri.querySelectorAll('.opt'); for(var k=0;k<all.length;k++) all[k].disabled=true;
+          b.classList.add('ok');
+          fb.innerHTML='<div class="feedback ok"><span class="k">Верно, это должен '+c.toLowerCase()+'.</span><span>'+it.why+'</span></div>';
+          var n=el('button','btn', si<sortList.length-1?'Следующая карточка':'Показать итог'); n.type='button';
+          n.addEventListener('click', function(){ si++; renderSort(); });
+          rowN.appendChild(n);
+        } else {
+          b.classList.add('bad'); b.disabled=true;
+          fb.innerHTML='<div class="feedback bad"><span class="k">Нет, это должен не '+c.toLowerCase()+'.</span><span>Подумай, кто кому служит, и попробуй ещё.</span></div>';
+        }
+      });
+      tri.appendChild(b);
+    });
+  }
+  function sortDone(){
+    sortP.textContent='Все карточки разложены';
+    var html='<div class="feedback ok"><span class="k">Готово! Вот что получилось:</span></div><div class="sort-sum">';
+    ROLES.forEach(function(c){
+      var items=SORT.filter(function(x){ return x.c===c; }).map(function(x){ return x.t.toLowerCase(); });
+      html+='<div><b>'+c+':</b> '+items.join('; ')+'.</div>';
+    });
+    html+='</div><p>Все были связаны друг с другом: крестьяне кормили сеньоров, вассалы служили сеньорам, а сеньоры защищали вассалов.</p><div class="row"><button class="btn ghost" type="button" id="sort-again">Ещё раз</button></div>';
+    sortBox.innerHTML=html;
+    $('#sort-again').addEventListener('click', function(){ sortList=shuffle(SORT); si=0; renderSort(); });
+    markDone('sort');
+  }
+  renderSort();
+
+  /* ---------- ordering ---------- */
+  var EVENTS=[
+    {y:1, t:'Мальчику 7 лет — его отправляют служить ко двору сеньора', ys:'1'},
+    {y:2, t:'Паж учится ездить верхом, охотиться, петь и танцевать', ys:'2'},
+    {y:3, t:'Юноша-оруженосец прислуживает рыцарю и помогает ему в сражении', ys:'3'},
+    {y:4, t:'На церемонии посвящения его опоясывают мечом', ys:'4'},
+    {y:5, t:'Посвящающий обнимает нового рыцаря', ys:'5'},
+    {y:6, t:'Пощёчина — единственный удар, на который нельзя ответить', ys:'6'}
+  ];
+  var pool=$('#pool'), seq=$('#seq'), orderCheck=$('#order-check'), orderFb=$('#order-fb'), picked=[], shuffledEvents=shuffle(EVENTS);
+  function renderOrder(){
+    pool.innerHTML='';
+    shuffledEvents.forEach(function(e){
+      if(picked.indexOf(e)>=0) return;
+      var b=el('button','opt',e.t); b.type='button';
+      b.addEventListener('click', function(){ picked.push(e); renderOrder(); });
+      pool.appendChild(b);
+    });
+    seq.innerHTML='';
+    if(!picked.length){ seq.appendChild(el('div','empty','Сюда встанут события')); }
+    picked.forEach(function(e,i){ seq.appendChild(el('div','slot','<span class="i">'+(i+1)+'</span><span>'+e.t+'</span>')); });
+    orderCheck.disabled = picked.length!==EVENTS.length;
+    orderFb.innerHTML='';
+  }
+  renderOrder();
+  orderCheck.addEventListener('click', function(){
+    var slots=seq.querySelectorAll('.slot'), wrong=0;
+    picked.forEach(function(e,i){
+      var ok = e.y===EVENTS[i].y;
+      slots[i].classList.add(ok?'ok':'bad');
+      slots[i].insertAdjacentHTML('beforeend','<span class="yr">'+e.ys+'</span>');
+      if(!ok) wrong++;
+    });
+    if(!wrong){ orderFb.innerHTML='<div class="feedback ok"><span class="k">Всё по порядку!</span><span>Паж, потом оруженосец, потом посвящение: опоясывание мечом, объятия и пощёчина. Путь в рыцари занимал много лет.</span></div>'; markDone('order'); }
+    else orderFb.innerHTML='<div class="feedback bad"><span class="k">Не совсем. Красные события стоят не на своих местах.</span><span>Теперь справа видны правильные номера. Нажми «Сначала» и попробуй ещё раз.</span></div>';
+    orderCheck.disabled=true;
+  });
+  $('#order-reset').addEventListener('click', function(){ picked=[]; shuffledEvents=shuffle(EVENTS); renderOrder(); });
+
+  /* ---------- odd one out ---------- */
+  var ODD=[
+    {items:['Молящиеся','Воюющие','Работающие','Торгующие'], odd:'Торгующие', why:'Церковь делила общество на три сословия: молящихся, воюющих и работающих. Отдельных «торгующих» в этом делении нет.'},
+    {items:['Кольчуга','Шлем','Щит','Плуг'], odd:'Плуг', why:'Кольчуга, шлем и щит — защитное вооружение рыцаря. Плугом пашут землю, это орудие крестьянина.'},
+    {items:['Норманны','Арабы','Венгры','Франки'], odd:'Франки', why:'С VIII по XI век на Европу совершали набеги норманны, арабы и венгры. Франки — народ Франкского государства, о них был § 3.'},
+    {items:['Ров с водой','Подъёмный мост','Донжон','Водяная мельница'], odd:'Водяная мельница', why:'Ров, подъёмный мост и донжон защищали замок от врагов. Водяная мельница — часть хозяйства поместья, на ней мелют зерно.'}
+  ];
+  var oddGrid=$('#odd-grid'), oddFb=$('#odd-fb'), oddNext=$('#odd-next'), oddP=$('#odd-progress'), oddRound=0;
+  function renderOdd(){
+    var r=ODD[oddRound]; oddGrid.innerHTML=''; oddFb.innerHTML=''; oddNext.hidden=true;
+    oddP.textContent='Раунд '+(oddRound+1)+' из '+ODD.length;
+    shuffle(r.items).forEach(function(w){
+      var b=el('button','opt',w); b.type='button';
+      b.addEventListener('click', function(){
+        var all=oddGrid.querySelectorAll('.opt');
+        if(w===r.odd){
+          for(var i=0;i<all.length;i++) all[i].disabled=true;
+          b.classList.add('ok');
+          oddFb.innerHTML='<div class="feedback ok"><span class="k">Точно, лишнее — «'+w+'».</span><span>'+r.why+'</span></div>';
+          if(oddRound<ODD.length-1) oddNext.hidden=false;
+          else { oddP.textContent='Все четыре раунда пройдены'; markDone('odd'); }
+        } else {
+          b.classList.add('bad'); b.disabled=true;
+          oddFb.innerHTML='<div class="feedback bad"><span class="k">«'+w+'» из той же компании, что и остальные.</span><span>Подумай, что здесь про другое.</span></div>';
+        }
+      });
+      oddGrid.appendChild(b);
+    });
+  }
+  oddNext.addEventListener('click', function(){ oddRound++; renderOdd(); });
+  renderOdd();
+
+  /* ---------- quiz ---------- */
+  var QUIZ=[
+    {q:'Что значит слово «сеньор» по-латыни?', o:['Старший','Всадник','Объятия'], a:0, why:'«Всадник» — это немецкое «риттер», от него слово «рыцарь». «Объятия» — так переводят «акколаду».'},
+    {q:'На какие три сословия, по учению Церкви, Бог разделил общество?', o:['Богатых, бедных и слабых','Молящихся, воюющих и работающих','Королей, купцов и крестьян'], a:1, why:'Молящиеся, воюющие и работающие. Деление на богатых и бедных тоже встречалось, но Церковь предложила своё.'},
+    {q:'С какой частью тела сравнивали воюющих?', o:['С сердцем','С ногами','С руками'], a:2, why:'Молящихся сравнивали с сердцем, воюющих — с руками, работающих — с ногами.'},
+    {q:'Кто мог быть сеньором крестьян?', o:['Светские лица, епископы и монастыри','Только король','Только городские купцы'], a:0, why:'Сеньорами могли быть и знатные воины, и епископы, и монастыри.'},
+    {q:'Что такое барщина?', o:['Плата продуктами или деньгами','Работа крестьян на господском поле','Суд сеньора над крестьянами'], a:1, why:'Плата продуктами или деньгами — это оброк.'},
+    {q:'Что такое натуральное хозяйство?', o:['Когда всё нужное покупают на рынке','Когда землю дают за военную службу','Когда всё нужное не покупают, а производят на месте'], a:2, why:'А земля за военную службу — это феод.'},
+    {q:'Кто находился вне феодальной лестницы?', o:['Бароны','Графы','Крестьяне'], a:2, why:'Крестьяне не несли военной службы, поэтому в лестницу не входили.'},
+    {q:'Сколько дней в году обычно длилась конная служба вассала?', o:['40 дней','7 дней','Весь год без перерыва'], a:0, why:'Ещё вассал помогал сеньору советом и деньгами.'},
+    {q:'Сколько весил сплошной доспех, появившийся в XIV веке?', o:['До 3 кг','До 30 кг','До 300 кг'], a:1, why:'До 30 кг — это как три полных ведра воды. Поэтому рыцарю нужна была большая сила и постоянные тренировки.'},
+    {q:'Что такое донжон?', o:['Ров с водой вокруг замка','Высокая главная башня замка','Забор из брёвен — палисад'], a:1, why:'Ров и палисад — тоже препятствия для врагов, но донжон — это главная башня.'}
+  ];
+  var qBox=$('#quiz-box'), qP=$('#quiz-progress'), qi=0, score=0;
+  function renderQ(){
+    if(qi>=QUIZ.length) return renderScore();
+    var q=QUIZ[qi];
+    qP.textContent='Вопрос '+(qi+1)+' из '+QUIZ.length;
+    qBox.innerHTML='';
+    qBox.appendChild(el('div','q',q.q));
+    var opts=el('div','q-opts'); qBox.appendChild(opts);
+    var fb=el('div'); qBox.appendChild(fb);
+    var rowN=el('div','row'); qBox.appendChild(rowN);
+    var answered=false;
+    q.o.forEach(function(o,i){
+      var b=el('button','opt',o); b.type='button';
+      b.addEventListener('click', function(){
+        if(answered) return; answered=true;
+        var all=opts.querySelectorAll('.opt');
+        for(var k=0;k<all.length;k++){ all[k].disabled=true; if(k===q.a) all[k].classList.add('ok'); }
+        if(i===q.a){ score++; fb.innerHTML='<div class="feedback ok"><span class="k">Правильно!</span><span>'+q.why+'</span></div>'; }
+        else { b.classList.add('bad'); fb.innerHTML='<div class="feedback bad"><span class="k">Нет, правильный ответ подсвечен зелёным.</span><span>'+q.why+'</span></div>'; }
+        var n=el('button','btn', qi<QUIZ.length-1?'Следующий вопрос':'Показать результат'); n.type='button';
+        n.addEventListener('click', function(){ qi++; renderQ(); window.scrollTo(0,0); });
+        rowN.appendChild(n);
+      });
+      opts.appendChild(b);
+    });
+  }
+  function renderScore(){
+    qP.textContent='Результат';
+    var tiles=''; for(var i=0;i<QUIZ.length;i++) tiles+='<i class="'+(i<score?'on':'')+'"></i>';
+    var msg = score===QUIZ.length ? 'Идеально, Амина! Ни одной ошибки.' : score>=8 ? 'Отлично! Ещё раз взгляни на вопросы, где ошиблась, и будет полный набор.' : score>=6 ? 'Хорошо. Перечитай шаги, где было трудно, и пройди тест снова.' : 'Тема большая, Амина, это нормально. Вернись к шагу «За минуту», потом к словарику, и попробуй ещё раз.';
+    qBox.innerHTML='<div class="score"><div class="big">'+score+' из '+QUIZ.length+'</div><div class="score-tiles">'+tiles+'</div><p>'+msg+'</p><button class="btn ghost" type="button" id="quiz-again">Пройти ещё раз</button></div>';
+    $('#quiz-again').addEventListener('click', function(){ qi=0; score=0; renderQ(); });
+    markDone('quiz');
+  }
+  renderQ();
+
+  /* ---------- bricks ---------- */
+  Array.prototype.forEach.call(document.querySelectorAll('.brick button'), function(b){
+    b.addEventListener('click', function(){
+      var body=b.nextElementSibling, open=body.hidden;
+      body.hidden=!open; b.setAttribute('aria-expanded', open?'true':'false');
+      b.lastElementChild.textContent = open?'−':'+';
+    });
+  });
+
+  /* ---------- start ---------- */
+  var start=idxFromHash(); go(start<0?0:start, true);
+})();
+</script>
+
+</body>
+</html>
