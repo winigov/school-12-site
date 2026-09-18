@@ -1,0 +1,1316 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Воды Океана</title>
+<meta name="paragraph" content="§ 33">
+<meta name="description" content="Воды Океана: солёность, температура, движение воды">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=PT+Sans+Narrow:wght@400;700&family=PT+Sans:wght@400;700&display=swap">
+<style>
+:root{
+  --bg:#EBE8DF; --surface:#F8F6F0; --surface-2:#E2DED2; --ink:#1B2233; --ink-2:#4A5163; --muted:#7A8093;
+  --lapis:#23448A; --on-lapis:#FFFFFF; --lapis-soft:#D9E1F3;
+  --gold:#B08A2E; --gold-soft:#F1E6C2; --on-gold:#2A2107;
+  --terra:#B4552F; --terra-soft:#F3DCD2;
+  --moss:#4E7A3B; --moss-soft:#DCE8D2;
+  --line:#D2CDBF; --tile:#CFC9B9;
+  --shadow:0 1px 2px rgba(27,34,51,.08),0 10px 28px rgba(27,34,51,.07);
+  --display:"Oranienbaum","Georgia","Times New Roman",serif;
+  --body:"Golos Text","Segoe UI",system-ui,-apple-system,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0F1728; --surface:#182338; --surface-2:#21304B; --ink:#EDE8DC; --ink-2:#C2BFB4; --muted:#8B93A8;
+    --lapis:#7EA0E6; --on-lapis:#0F1728; --lapis-soft:#22345A;
+    --gold:#E0B84A; --gold-soft:#3E3419; --on-gold:#0F1728;
+    --terra:#E0825C; --terra-soft:#4A2A1D;
+    --moss:#8DBF74; --moss-soft:#243B1F;
+    --line:#2E3B57; --tile:#2A3856;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 28px rgba(0,0,0,.35);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0F1728; --surface:#182338; --surface-2:#21304B; --ink:#EDE8DC; --ink-2:#C2BFB4; --muted:#8B93A8;
+  --lapis:#7EA0E6; --on-lapis:#0F1728; --lapis-soft:#22345A;
+  --gold:#E0B84A; --gold-soft:#3E3419; --on-gold:#0F1728;
+  --terra:#E0825C; --terra-soft:#4A2A1D;
+  --moss:#8DBF74; --moss-soft:#243B1F;
+  --line:#2E3B57; --tile:#2A3856;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 28px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+@media (prefers-reduced-motion: reduce){ *{transition:none!important;animation:none!important} }
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.55;-webkit-text-size-adjust:100%}
+h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1.1;text-wrap:balance;margin:0}
+p{margin:0}
+a{color:var(--lapis)}
+button{font:inherit;color:inherit;cursor:pointer}
+button:focus-visible,summary:focus-visible,a:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+[hidden]{display:none!important}
+
+/* ---------- top bar ---------- */
+.top{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+.top-inner{max-width:720px;margin:0 auto;padding:10px 16px;display:flex;align-items:center;gap:12px}
+.back{text-decoration:none;color:var(--ink-2);font-size:14px;white-space:nowrap;padding:6px 10px;border-radius:8px;background:var(--surface);border:1px solid var(--line)}
+.crumb{flex:1;min-width:0;font-size:14px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.crumb b{color:var(--ink);font-weight:600}
+.toc-btn{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:6px 10px;font-size:14px;color:var(--lapis);font-weight:600;white-space:nowrap}
+.stepbar{max-width:720px;margin:0 auto;padding:0 16px 10px;display:flex;gap:4px}
+.stepbar button{flex:1;height:8px;min-width:6px;padding:0;border:0;border-radius:2px;background:var(--tile);transition:background .3s,transform .3s}
+.stepbar button.visited{background:var(--lapis)}
+.stepbar button.done{background:var(--gold)}
+.stepbar button.current{transform:scaleY(1.6);background:var(--gold)}
+
+/* ---------- steps ---------- */
+main{max-width:720px;margin:0 auto;padding:20px 16px 120px}
+.step{display:flex;flex-direction:column;gap:16px}
+.eyebrow{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);font-weight:700;display:flex;align-items:center;gap:10px}
+.tess{display:inline-flex;gap:3px}
+.tess i{width:8px;height:8px;display:block;border-radius:1px}
+.tess i:nth-child(1){background:var(--lapis)} .tess i:nth-child(2){background:var(--gold)} .tess i:nth-child(3){background:var(--terra)}
+.step h1{font-size:clamp(36px,8vw,56px)}
+.step h2{font-size:clamp(28px,6vw,38px)}
+.step h3{font-size:22px;color:var(--lapis);margin-top:4px}
+.lede{font-size:19px;color:var(--ink-2);max-width:34ch}
+.prose{display:flex;flex-direction:column;gap:12px;max-width:66ch}
+.prose ul{margin:0;padding-left:22px;display:flex;flex-direction:column;gap:6px}
+.prose li::marker{color:var(--gold)}
+b,strong{font-weight:600}
+.term{font-weight:600;color:var(--lapis);border-bottom:2px solid var(--gold-soft)}
+.aside{background:var(--lapis-soft);border-left:4px solid var(--lapis);padding:12px 16px;border-radius:0 8px 8px 0;font-size:16px;display:flex;flex-direction:column;gap:6px}
+.aside .k{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--lapis);font-weight:700}
+.home{background:var(--gold-soft);border-left-color:var(--gold)}
+.home .k{color:var(--gold)}
+details{border:1px solid var(--line);border-radius:10px;background:var(--surface)}
+details summary{cursor:pointer;list-style:none;padding:12px 16px;font-weight:600;color:var(--lapis);display:flex;align-items:center;gap:10px}
+details summary::-webkit-details-marker{display:none}
+details summary::before{content:"";width:9px;height:9px;background:var(--gold);transform:rotate(45deg);flex:none;transition:transform .2s}
+details[open] summary::before{transform:rotate(45deg) scale(.6);background:var(--lapis)}
+details .body{padding:0 16px 14px;display:flex;flex-direction:column;gap:8px;color:var(--ink-2)}
+
+.steps4{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+@media (min-width:600px){ .steps4{grid-template-columns:repeat(4,1fr)} }
+.dom{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px;display:flex;flex-direction:column;gap:4px;box-shadow:var(--shadow)}
+.dom .n{font-family:var(--display);font-size:28px;color:var(--gold);line-height:1}
+.dom .t{font-weight:600;font-size:15px;line-height:1.25}
+.dom .d{font-size:13.5px;color:var(--ink-2);line-height:1.35}
+
+.ladder{display:flex;flex-direction:column;align-items:center;gap:6px}
+.rung{background:var(--lapis);color:var(--on-lapis);padding:9px 12px;border-radius:8px;text-align:center;font-size:15px;line-height:1.3}
+.rung small{display:block;opacity:.85;font-size:12.5px}
+.rung.r1{width:60%} .rung.r2{width:74%} .rung.r3{width:88%} .rung.r4{width:100%;background:var(--surface-2);color:var(--ink)}
+
+/* timeline (вертикальная, все даты видны сразу) */
+.tl-v{display:flex;flex-direction:column;position:relative;padding-left:4px}
+.tl-v::before{content:"";position:absolute;left:16px;top:16px;bottom:16px;width:3px;background:var(--line);border-radius:2px}
+.tl-item{position:relative;padding-left:36px;display:flex;flex-direction:column}
+.tl-btn{background:none;border:0;padding:8px 0;text-align:left;display:flex;align-items:baseline;gap:8px 12px;flex-wrap:wrap;color:var(--ink);width:100%}
+.tl-btn .dot{position:absolute;left:5px;top:12px;width:17px;height:17px;background:var(--surface);border:3px solid var(--lapis);border-radius:50%;transition:transform .2s,background .2s}
+.tl-item.ru .dot{border-color:var(--terra)}
+.tl-item.open .dot{background:var(--gold);border-color:var(--gold);transform:scale(1.2)}
+.tl-btn .y{font-family:var(--display);font-size:26px;line-height:1;font-variant-numeric:tabular-nums;min-width:96px}
+.tl-btn .t{font-weight:600;font-size:16px}
+.tl-btn .era{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--lapis);font-weight:700;margin-left:auto}
+.tl-item.ru .era{color:var(--terra)}
+.tl-d{color:var(--ink-2);font-size:15.5px;padding:0 0 12px;line-height:1.45}
+.hint{font-size:14px;color:var(--muted)}
+
+/* «как в учебнике» и вопросы учебника */
+details.book{border-color:var(--gold-soft)}
+details.book summary{color:var(--gold)}
+details.book summary::before{background:var(--gold)}
+details.book[open] summary::before{background:var(--gold)}
+details.book .body{font-size:15px;color:var(--ink)}
+details.book .body ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:7px}
+details.book .body li::marker{color:var(--gold)}
+details.book .body .pic{color:var(--ink-2);font-style:italic}
+.qlist{display:flex;flex-direction:column;gap:10px}
+.qi{display:grid;grid-template-columns:auto 1fr;gap:12px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.qi .qn{font-family:var(--display);font-size:24px;color:var(--gold);line-height:1;min-width:20px}
+.qi p{font-size:15.5px}
+.qi .src{font-size:14.5px;color:var(--ink-2);margin-top:6px}
+.qi a{font-size:13.5px;font-weight:600;text-decoration:none;display:inline-block;margin-top:8px;background:var(--lapis-soft);padding:4px 10px;border-radius:999px}
+
+/* games */
+.game{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:12px}
+.g-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.game h3{margin:0}
+.task{color:var(--ink-2)}
+.badge{font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;padding:4px 10px;border-radius:999px;background:var(--gold-soft);color:var(--gold)}
+.badge.done{background:var(--moss-soft);color:var(--moss)}
+.btn{background:var(--lapis);color:var(--on-lapis);border:0;border-radius:10px;padding:10px 18px;font-weight:600;font-size:15px;text-decoration:none;display:inline-block}
+.btn.ghost{background:transparent;color:var(--lapis);border:2px solid var(--lapis)}
+.btn:disabled{opacity:.45;cursor:default}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.feedback{padding:12px 14px;border-radius:10px;font-size:15px;display:flex;flex-direction:column;gap:4px}
+.feedback.ok{background:var(--moss-soft);border-left:4px solid var(--moss)}
+.feedback.bad{background:var(--terra-soft);border-left:4px solid var(--terra)}
+.feedback .k{font-weight:700}
+.progress{font-size:13px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.card{perspective:900px;height:150px;background:none;border:0;padding:0;text-align:left}
+.card .in{position:relative;width:100%;height:100%;transition:transform .5s;transform-style:preserve-3d}
+.card.flip .in{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;border-radius:12px;padding:12px;display:flex;flex-direction:column;justify-content:center;gap:6px;overflow:hidden}
+.face.f{background:var(--lapis);color:var(--on-lapis)}
+.face.f .w{font-family:var(--display);font-size:21px;line-height:1.05}
+.face.f .tap{font-size:11px;opacity:.75;letter-spacing:.08em;text-transform:uppercase}
+.face.b{background:var(--surface-2);color:var(--ink);transform:rotateY(180deg);font-size:12.5px;line-height:1.3;justify-content:flex-start;overflow:auto}
+.face.b .w{font-weight:700;color:var(--lapis);font-size:13px}
+.face.b .e{color:var(--ink-2);font-style:italic}
+
+.match{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.col{display:flex;flex-direction:column;gap:8px}
+.col .lbl{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.opt{background:var(--surface-2);border:2px solid transparent;border-radius:10px;padding:10px 12px;text-align:left;font-weight:500;font-size:15px;transition:border-color .15s,background .15s}
+.opt:hover{border-color:var(--lapis)}
+.opt.sel{border-color:var(--gold);background:var(--gold-soft)}
+.opt.ok{background:var(--moss-soft);border-color:var(--moss)}
+.opt.bad{animation:shake .35s}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+
+.pool{display:flex;flex-direction:column;gap:8px}
+.seq{display:flex;flex-direction:column;gap:8px;min-height:44px;padding:10px;border:2px dashed var(--line);border-radius:12px}
+.seq .slot{display:flex;align-items:center;gap:10px;background:var(--lapis-soft);border-radius:8px;padding:8px 12px;font-size:15px}
+.seq .slot .i{font-family:var(--display);font-size:20px;color:var(--lapis);width:22px;font-variant-numeric:tabular-nums}
+.seq .slot.ok{background:var(--moss-soft)} .seq .slot.bad{background:var(--terra-soft)}
+.seq .slot .yr{margin-left:auto;font-weight:700;color:var(--ink-2);font-variant-numeric:tabular-nums}
+.seq .empty{color:var(--muted);font-size:14px}
+
+.odd-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.odd-grid .opt{text-align:center;padding:16px 10px;font-size:16px}
+.odd-grid .opt.bad{background:var(--terra-soft);border-color:var(--terra)}
+
+.q{font-size:19px;font-weight:600;line-height:1.35}
+.q-opts{display:flex;flex-direction:column;gap:8px}
+.q-opts .opt{font-size:15.5px;line-height:1.35}
+.q-opts .opt.bad{background:var(--terra-soft);border-color:var(--terra)}
+.score{display:flex;flex-direction:column;gap:12px;align-items:flex-start}
+.score .big{font-family:var(--display);font-size:56px;line-height:1;color:var(--gold)}
+.score-tiles{display:flex;gap:5px;flex-wrap:wrap}
+.score-tiles i{width:22px;height:22px;border-radius:3px;background:var(--tile)}
+.score-tiles i.on{background:var(--gold)}
+
+.bricks{display:flex;flex-direction:column;gap:10px}
+.brick{background:var(--surface-2);border-radius:10px;overflow:hidden}
+.brick button{width:100%;background:none;border:0;padding:12px 14px;text-align:left;font-weight:600;color:var(--lapis);display:flex;justify-content:space-between;gap:10px}
+.brick .b-body{padding:0 14px 12px;color:var(--ink-2);font-size:15.5px}
+
+.mosaic{display:flex;gap:6px;align-items:center}
+.mosaic .tile{width:26px;height:26px;background:var(--tile);border-radius:3px;transition:background .4s,transform .4s}
+.mosaic .tile.on{background:var(--gold);transform:rotate(45deg) scale(.8)}
+.mosaic-list{display:flex;flex-direction:column;gap:6px;font-size:15px}
+.mosaic-list span.off{color:var(--muted)}
+
+/* pager */
+.pager{position:fixed;left:0;right:0;bottom:0;z-index:5;background:var(--bg);border-top:1px solid var(--line)}
+.pager-inner{max-width:720px;margin:0 auto;padding:10px 16px;display:flex;align-items:center;gap:10px}
+.pager .count{font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+.pager .btn{flex:1;text-align:center;padding:12px 14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pager .btn.ghost{flex:0 0 auto}
+
+/* toc overlay */
+.toc{position:fixed;inset:0;z-index:10;background:rgba(0,0,0,.35);display:flex;justify-content:flex-end}
+.toc-panel{width:min(360px,90vw);height:100%;background:var(--surface);overflow:auto;padding:16px;display:flex;flex-direction:column;gap:8px;box-shadow:var(--shadow)}
+.toc-panel h3{font-size:24px;margin-bottom:6px;display:flex;justify-content:space-between;align-items:center}
+.toc-close{background:none;border:1px solid var(--line);border-radius:8px;padding:4px 10px;font-size:14px}
+.toc-item{display:flex;align-items:center;gap:10px;background:none;border:0;border-radius:8px;padding:8px 10px;text-align:left;font-size:15px;color:var(--ink)}
+.toc-item:hover{background:var(--surface-2)}
+.toc-item.current{background:var(--gold-soft);font-weight:600}
+.toc-item .n{font-family:var(--display);font-size:18px;color:var(--muted);width:24px;font-variant-numeric:tabular-nums}
+.toc-item .m{margin-left:auto;font-size:12px;color:var(--moss);font-weight:700}
+
+/* схема управления (§ 2) */
+.org{display:flex;flex-direction:column;gap:8px}
+.org .lvl{display:grid;gap:8px;grid-template-columns:repeat(2,1fr)}
+@media (min-width:600px){ .org .lvl{grid-template-columns:repeat(4,1fr)} }
+.org .box{background:var(--surface-2);border-radius:8px;padding:9px 10px;font-size:14px;text-align:center;line-height:1.3}
+.org .box small{display:block;font-size:12px;color:var(--ink-2)}
+.org .box.top{background:var(--lapis);color:var(--on-lapis);font-weight:600;font-size:16px}
+.org .box.sub{background:var(--gold-soft)}
+.org .lbl{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:700;text-align:center}
+
+/* иллюстрации (§ 3) */
+.fig{margin:0;display:flex;flex-direction:column;gap:6px;align-items:flex-start}
+.fig img{width:100%;max-width:360px;height:auto;border-radius:10px;border:1px solid var(--line);background:var(--surface);box-shadow:var(--shadow)}
+.fig.wide img{max-width:100%}
+.fig figcaption{font-size:14px;color:var(--ink-2);line-height:1.35;max-width:60ch}
+.fig-row{display:flex;gap:12px;flex-wrap:wrap;align-items:flex-start}
+.fig-row .fig{flex:1 1 150px;max-width:220px}
+
+/* § 4: «каждый шестой», два пути крещения, игра «Где это было?» */
+.six{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;max-width:380px}
+.six span{height:64px;border-radius:8px;background:var(--surface-2);color:var(--ink-2);display:flex;align-items:flex-end;justify-content:center;padding-bottom:6px;font-size:11.5px;font-weight:600;position:relative}
+.six span::before{content:"";position:absolute;top:10px;left:50%;width:14px;height:14px;margin-left:-7px;border-radius:50%;background:var(--tile)}
+.six span::after{content:"";position:absolute;top:27px;left:50%;width:22px;height:14px;margin-left:-11px;border-radius:8px 8px 3px 3px;background:var(--tile)}
+.six span.w{background:var(--lapis);color:var(--on-lapis)}
+.six span.w::before,.six span.w::after{background:var(--gold)}
+.ways{display:grid;grid-template-columns:1fr;gap:10px}
+@media (min-width:560px){ .ways{grid-template-columns:1fr 1fr} }
+.way{background:var(--surface);border:1px solid var(--line);border-top:5px solid var(--lapis);border-radius:12px;padding:12px 14px;display:flex;flex-direction:column;gap:6px;box-shadow:var(--shadow)}
+.way.const{border-top-color:var(--terra)}
+.way.const h3{color:var(--terra)}
+.way .cn{font-weight:600;font-size:17px}
+.way p{font-size:15.5px;color:var(--ink-2)}
+.sort-card{background:var(--lapis-soft);border-radius:12px;padding:16px;font-size:18px;font-weight:600;line-height:1.35}
+.tri{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.tri .opt{text-align:center;padding:12px 4px;font-size:15px}
+.tri .opt.bad{background:var(--terra-soft);border-color:var(--terra)}
+.sort-sum{display:flex;flex-direction:column;gap:8px;font-size:15px}
+.sort-sum b{color:var(--lapis)}
+/* § 4: разбор вопросов учебника с подсказками и ответом */
+.qtext{font-size:18px;font-weight:600;line-height:1.35;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.aside ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:5px}
+.aside.ans{background:var(--moss-soft);border-left-color:var(--moss)}
+.aside.ans .k{color:var(--moss)}
+.answer{display:flex;flex-direction:column;gap:12px;align-items:stretch}
+.answer .btn{text-align:center}
+.ans-body{display:flex;flex-direction:column;gap:12px}
+.ans-table{width:100%;border-collapse:collapse;font-size:15px;background:var(--surface)}
+.ans-table th,.ans-table td{border:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top;line-height:1.3}
+.ans-table th{font-size:13px;color:var(--ink-2);font-weight:700}
+.ans-table td:first-child{white-space:nowrap}
+
+/* виды шагов: из учебника / задания учебника / сверх учебника */
+.kind-tag{display:flex;gap:10px;align-items:flex-start;border-radius:10px;padding:8px 12px;font-size:13px;line-height:1.35}
+.kind-tag .ic{font-size:18px;line-height:1.1}
+.kind-tag b{font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:700}
+.kind-tag .pg{font-weight:600;margin-left:6px;font-size:13px}
+.kind-tag small{display:block;font-size:13px;color:var(--ink-2);margin-top:2px}
+.kind-tag.book{background:var(--lapis-soft);color:var(--lapis)}
+.kind-tag.task{background:var(--gold-soft);color:var(--gold)}
+.kind-tag.ours{background:var(--terra-soft);color:var(--terra)}
+.stepbar button.k-book{background:var(--lapis-soft)} .stepbar button.k-task{background:var(--gold-soft)} .stepbar button.k-ours{background:var(--terra-soft)}
+.stepbar button.k-book.visited{background:var(--lapis)} .stepbar button.k-task.visited{background:var(--gold)} .stepbar button.k-ours.visited{background:var(--terra)}
+.stepbar button.visited.done{background:var(--moss)}
+.stepbar{gap:3px} .stepbar button{min-width:3px}
+.stepbar button.gstart{margin-left:5px}
+.stepbar button.current{transform:scaleY(1.9);box-shadow:0 0 0 1.5px var(--ink)}
+.toc-group{display:flex;flex-direction:column;gap:2px;border-left:4px solid var(--lapis);padding-left:8px;margin-top:10px}
+.toc-group.k-task{border-left-color:var(--gold)} .toc-group.k-ours{border-left-color:var(--terra)}
+.toc-head{display:flex;align-items:center;gap:8px;font-size:12px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;color:var(--lapis);padding:4px 2px}
+.toc-group.k-task .toc-head{color:var(--gold)} .toc-group.k-ours .toc-head{color:var(--terra)}
+.toc-head .ic{font-size:15px;letter-spacing:0}
+.toc-item .pg{margin-left:auto;font-size:12px;color:var(--muted);white-space:nowrap;font-variant-numeric:tabular-nums}
+.toc-item .pg + .m{margin-left:8px}
+
+/* ===== Книжное оформление (выбрано 14.09.2026): как учебник — синяя шапка, PT Serif / PT Sans Narrow / PT Sans ===== */
+:root{
+  --bg:#FBFAF6; --surface:#FFFFFF; --surface-2:#EAF0F8; --ink:#1A1A1A; --ink-2:#393939; --muted:#6B6B6B;
+  --lapis:#2D63A6; --on-lapis:#FFFFFF; --lapis-soft:#DCE7F5; --gold:#8B6B22; --gold-soft:#F3EBD3; --on-gold:#1A1A1A;
+  --terra:#C24E1E; --terra-soft:#FBE3D6; --moss:#3E7A3A; --moss-soft:#E1EEDC; --line:#D9DDE3; --tile:#D5DCE6; --shadow:none;
+  --band-ink:#FFFFFF; --tb:rgba(255,255,255,.32); --tbv:#FFFFFF; --to:rgba(255,190,160,.5); --tov:#F6A37E; --tt:rgba(255,230,160,.5); --ttv:#F2D27A; --tdone:#A6DB93;
+  --display:"PT Sans Narrow","Arial Narrow",sans-serif; --body:"PT Serif",Georgia,serif; --ui:"PT Sans","Segoe UI",system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){ --bg:#141516; --surface:#1C1E21; --surface-2:#1E2936; --ink:#EDEBE6; --ink-2:#CFCBC3; --muted:#9A968F;
+    --lapis:#79A6E0; --on-lapis:#10141A; --lapis-soft:#1F3350; --gold:#D9B45A; --gold-soft:#3A3120; --on-gold:#10141A;
+    --terra:#F0875A; --terra-soft:#43261A; --moss:#8CC47F; --moss-soft:#22381F; --line:#30343A; --tile:#2C3440; --shadow:none;
+    --band-ink:#10141A; --tb:rgba(16,20,26,.28); --tbv:#10141A; --to:rgba(120,40,10,.4); --tov:#8A2E0C; --tt:rgba(110,80,10,.4); --ttv:#6B4E0E; --tdone:#1F5A1A; } }
+:root[data-theme="dark"]{ --bg:#141516; --surface:#1C1E21; --surface-2:#1E2936; --ink:#EDEBE6; --ink-2:#CFCBC3; --muted:#9A968F;
+    --lapis:#79A6E0; --on-lapis:#10141A; --lapis-soft:#1F3350; --gold:#D9B45A; --gold-soft:#3A3120; --on-gold:#10141A;
+    --terra:#F0875A; --terra-soft:#43261A; --moss:#8CC47F; --moss-soft:#22381F; --line:#30343A; --tile:#2C3440; --shadow:none;
+    --band-ink:#10141A; --tb:rgba(16,20,26,.28); --tbv:#10141A; --to:rgba(120,40,10,.4); --tov:#8A2E0C; --tt:rgba(110,80,10,.4); --ttv:#6B4E0E; --tdone:#1F5A1A; }
+body{font-family:var(--body);font-size:18px;line-height:1.62}
+h1,h2,h3{font-family:var(--display);font-weight:700}
+.step h1{color:var(--lapis);font-size:clamp(34px,8.5vw,52px);line-height:1.02}
+.step h2{color:var(--lapis);font-size:clamp(28px,7vw,36px);line-height:1.08}
+.step h3{font-size:23px}
+.pnum{display:inline-flex;align-items:center;justify-content:center;background:var(--lapis);color:var(--on-lapis);font:700 .72em/1 var(--display);width:1.08em;height:1.08em;margin-right:.3em;vertical-align:.08em}
+.lede{font-size:20px}
+.top{background:var(--lapis);border-bottom:0}
+.back{background:transparent;border-color:var(--band-ink);color:var(--band-ink);font-family:var(--ui);border-radius:3px}
+.crumb{color:var(--band-ink);opacity:.88;font-family:var(--ui)}
+.crumb b{color:var(--band-ink)}
+.toc-btn{background:var(--band-ink);color:var(--lapis);border-color:var(--band-ink);font-family:var(--ui);font-weight:700;border-radius:3px}
+.stepbar button{border-radius:1px}
+.stepbar button.k-book{background:var(--tb)} .stepbar button.k-book.visited{background:var(--tbv)}
+.stepbar button.k-ours{background:var(--to)} .stepbar button.k-ours.visited{background:var(--tov)}
+.stepbar button.k-task{background:var(--tt)} .stepbar button.k-task.visited{background:var(--ttv)}
+.stepbar button.visited.done{background:var(--tdone)}
+.stepbar button.current{box-shadow:0 0 0 1.5px var(--band-ink)}
+.eyebrow{font-family:var(--ui);color:var(--muted);letter-spacing:.08em}
+.tess{display:none}
+.term{font-weight:700;font-style:italic;color:var(--ink);border-bottom:0}
+.kind-tag{border-radius:0;padding:6px 0 0;border-top:2px solid currentColor;font-family:var(--ui);align-items:center}
+.kind-tag.book,.kind-tag.task,.kind-tag.ours{background:transparent}
+.kind-tag .ic{display:flex}
+.kind-tag b{font-size:12.5px;letter-spacing:.08em}
+.kind-tag small{font-family:var(--body);font-style:italic;font-size:14.5px}
+details{border-radius:0}
+details summary{font-family:var(--ui)}
+details.book{border:0;border-top:3px solid var(--lapis);background:var(--surface-2)}
+details.book summary{color:var(--lapis)}
+details.book summary::before,details.book[open] summary::before{background:var(--lapis)}
+details.book .body{font-size:16px}
+.aside{border-radius:0}
+.aside .k{font-family:var(--ui)}
+.dom{border-radius:0;box-shadow:none;border-top:3px solid var(--lapis)}
+.dom .n{font-family:var(--display);font-weight:700;color:var(--lapis)}
+.dom .t{font-family:var(--ui)}
+.rung{border-radius:0}
+.tl-btn .y{font-family:var(--display);font-weight:700;color:var(--lapis)}
+.tl-btn .era{font-family:var(--ui)}
+.fig img{border-radius:0;box-shadow:none}
+.fig figcaption{font-family:var(--ui)}
+.org .box{border-radius:0}
+.qi{border-radius:0}
+.qi .qn{font-family:var(--display);font-weight:700;color:var(--terra)}
+.qi a{border-radius:0;font-family:var(--ui)}
+.game{border-radius:0;box-shadow:none;border-top:4px solid var(--terra)}
+.game h3{color:var(--terra)}
+.badge{border-radius:0;font-family:var(--ui)}
+.btn{border-radius:3px;font-family:var(--ui);font-weight:700}
+.opt{border-radius:0;background:var(--surface);border-color:var(--line);font-family:var(--body)}
+.feedback{border-radius:0}
+.progress{font-family:var(--ui)}
+.q{font-family:var(--body);font-weight:700}
+.face{border-radius:0}
+.face.f .w{font-family:var(--display);font-weight:700}
+.seq,.seq .slot,.sort-card,.brick,.qtext,.way,.six span,.mosaic .tile,.score-tiles i,.toc-panel,.toc-item{border-radius:0}
+.brick button{font-family:var(--ui)}
+.pager{background:var(--surface)}
+.count{font-family:var(--ui)}
+.toc-panel h3{font-family:var(--display)}
+.toc-head{font-family:var(--ui)}
+.toc-head .ic{display:flex}
+.score .big{font-family:var(--display);font-weight:700;color:var(--lapis)}
+/* переносы длинных слов на узком экране (14.09.2026) */
+.match{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+.opt,.face,.qi p,.ans-table td,.ans-table th{overflow-wrap:anywhere;hyphens:auto}
+.ans-table.fit td:first-child{white-space:normal}
+</style>
+</head>
+<body>
+
+
+<header class="top">
+  <div class="top-inner">
+    <a class="back" href="./">← Темы</a>
+    <div class="crumb">География · § 33 · <b>Воды Океана</b></div>
+    <button class="toc-btn" id="toc-btn" type="button">Содержание</button>
+  </div>
+  <div class="stepbar" id="stepbar" aria-label="Шаги темы"></div>
+</header>
+
+<main id="deck">
+
+<!-- 1 -->
+<section class="step" data-step="za-minutu" data-name="За минуту" data-part="Самое главное" data-kind="ours">
+  <div class="kind-tag ours"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 6h14"></path><path d="M5 12h14"></path><path d="M5 18h9"></path></svg></span><div><b>Коротко о главном</b><small>Пересказ для разгона. Подробно, как в учебнике, — в следующих шагах.</small></div></div>
+  <div class="eyebrow"><span class="tess"><i></i><i></i><i></i></span> География · 6 класс · § 33</div>
+  <h1>Воды Океана</h1>
+  <p class="lede">Амина, это тема про то, почему морская вода солёная, где она теплее, а где холоднее, и почему она никогда не стоит на месте.</p>
+  <div id="resume" hidden></div>
+  <div class="prose">
+    <p>Ты заходишь в море, набегает волна — и во рту становится солоно. А если после купания посидеть на солнце, на коже остаётся белый налёт. Это соль: вода испарилась, а соль осталась.</p>
+    <p>Вот с этого учебник и начинает. Оказывается, в каждом литре океанской воды примерно <b>35 граммов</b> солей — почти две столовые ложки. Пить такую воду нельзя, поэтому на кораблях возят запас пресной воды.</p>
+    <p>Дальше — про тепло. У экватора вода круглый год как в тёплой ванне, а у полюсов она замерзает, и по Океану плавают огромные ледяные горы.</p>
+    <p>И третье: вода всё время движется. Ветер поднимает волны и гонит течения длиной в тысячи километров, подводное землетрясение может родить страшную волну цунами, а Луна и Солнце тянут воду к себе — от этого бывают приливы и отливы.</p>
+    <p>Вот четыре части темы:</p>
+  </div>
+  <div class="steps4">
+    <div class="dom"><div class="n">1</div><div class="t">Солёность</div><div class="d">Сколько соли в воде и в чём её измеряют.</div></div>
+    <div class="dom"><div class="n">2</div><div class="t">Где солонее</div><div class="d">От экватора к полюсам и во внутренних морях.</div></div>
+    <div class="dom"><div class="n">3</div><div class="t">Тепло и лёд</div><div class="d">Температура воды, морские льды и айсберги.</div></div>
+    <div class="dom"><div class="n">4</div><div class="t">Движение</div><div class="d">Волны, цунами, течения, приливы и отливы.</div></div>
+  </div>
+  <div class="aside">
+    <div class="k">Как этим пользоваться</div>
+    <p>У каждого шага написано, на какой странице учебника искать. Внизу шага есть «Подробнее, как в учебнике»: там всё, что есть на этих страницах, ничего не пропущено. Сначала учи по коротким шагам, а перед уроком открой «подробнее».</p>
+    <p>Надпись вверху шага подскажет, откуда он: синяя — из учебника, золотая — задание учебника, оранжевая — сверх учебника (пересказ, словарик, игры, самопроверка). В «Содержании» шаги так же разбиты на группы.</p>
+  </div>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 107</summary>
+    <div class="body"><ul>
+      <li>§ 33 «Воды Океана» относится к разделу «Гидросфера — водная оболочка Земли» (это написано наверху страницы).</li>
+      <li>Параграф открывается строчкой курсивом — это вопросы подтем: «Почему вода в Океане солёная. Везде ли в Океане солёность воды одинакова. Как меняется температура воды в Океане. Как движется вода в Океане». Дальше каждый такой вопрос становится заголовком.</li>
+      <li class="pic">Наверху с. 107 — фотография-заставка параграфа: под водой стая рыб, рядом песчаный берег и полоса прибоя.</li>
+      <li>Все факты с. 107 разобраны на шагах 2 и 3, с. 108 — на шагах 4 и 5, с. 109 — на шагах 6, 7 и 8, с. 110 — на шагах 8, 9 и 17.</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 2 -->
+<section class="step" data-step="solenost" data-name="Что такое солёность" data-part="Почему вода солёная" data-kind="book" data-pages="с. 107">
+  <div class="kind-tag book"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.5c2.6-1 5.6-.8 9 1.2v13c-3.4-2-6.4-2.2-9-1.2z"></path><path d="M21 5.5c-2.6-1-5.6-.8-9 1.2v13c3.4-2 6.4-2.2 9-1.2z"></path></svg></span><div><b>Из учебника</b><span class="pg">с. 107</span></div></div>
+  <div class="eyebrow">Почему вода в Океане солёная?</div>
+  <h2>Что такое солёность</h2>
+  <div class="prose">
+    <p>Чистой воды, в которой совсем ничего не растворено, в природе почти не бывает. Даже в дождевой капле что-нибудь да растворено. А сколько именно веществ растворено в воде — это её важнейшее свойство, оно называется <span class="term">солёность</span>.</p>
+    <p>Солёность измеряют в <span class="term">промилле</span>. Слово незнакомое, но идея простая. Ты знаешь процент: <b>процент (%) — это одна сотая доля числа</b>. А <b>промилле (‰) — это одна тысячная доля числа</b>. Значок похож на процент, только внизу два кружочка.</p>
+  </div>
+  <div class="aside">
+    <div class="k">Определение (учебник, с. 107)</div>
+    <p>Солёность — количество веществ в граммах, растворённых в 1 л (1 кг) воды, измеряемое в промилле (‰).</p>
+  </div>
+  <div class="prose">
+    <p><b>Средняя солёность Мирового океана — 35 ‰.</b> Что это значит? Возьми 1 литр океанической (морской) воды — он весит 1 кг. Если вся вода превратится в пар, на дне останется осадок: <b>35 граммов солей</b> (твёрдых веществ). Вот и вся расшифровка: «промилле» — это просто «граммов на литр».</p>
+    <p>А какую воду тогда называют <span class="term">пресной</span>? Ту, солёность которой <b>меньше 1 ‰</b>, то есть меньше одного грамма на литр. Такая вода в реках, озёрах, в кране дома.</p>
+    <h3>Почему её нельзя пить?</h3>
+    <p>Океаническая вода для питья непригодна. Поэтому на морских судах всегда есть запас пресной питьевой воды, а ещё специальные <span class="term">опреснительные установки</span> — приборы, которые отделяют соль от воды прямо на корабле.</p>
+  </div>
+  <details>
+    <summary>Как проверить промилле на кухне</summary>
+    <div class="body"><p>Налей в стакан 1 литр воды и раствори в нём 1 грамм соли (это примерно четверть чайной ложки). Получится солёность 1 ‰ — как у самой солёной пресной воды. А чтобы получилось «как в Океане», соли нужно в 35 раз больше.</p></div>
+  </details>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 107 (начало)</summary>
+    <div class="body"><ul>
+      <li>Заголовок подтемы: «Почему вода в Океане солёная?»</li>
+      <li>В природе практически не встречается вода, не содержащая разных растворённых веществ. Количество растворённого в воде вещества определяет важнейшее свойство воды — солёность.</li>
+      <li>Солёность измеряется в промилле. Если процент (%) — это одна сотая доля числа, то промилле (‰) — это одна тысячная доля числа.</li>
+      <li>Средняя солёность Мирового океана — 35 ‰. Это значит, что если 1 л (1 кг) океанической (морской) воды превратится в пар, в осадке останется 35 г солей (твёрдых веществ).</li>
+      <li>Пресной считается вода, солёность которой меньше 1 ‰.</li>
+      <li>Океаническая вода для питья непригодна. Поэтому на морских судах всегда есть запас пресной питьевой воды, а также специальные опреснительные установки.</li>
+      <li>Врезка на полях: «Солёность — количество веществ в граммах, растворённых в 1 л (1 кг) воды, измеряемое в промилле (‰)».</li>
+      <li>Остальное с этой страницы — на следующем шаге.</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 3 -->
+<section class="step" data-step="otkuda-sol" data-name="Откуда в Океане соль" data-part="Почему вода солёная" data-kind="book" data-pages="с. 107">
+  <div class="kind-tag book"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.5c2.6-1 5.6-.8 9 1.2v13c-3.4-2-6.4-2.2-9-1.2z"></path><path d="M21 5.5c-2.6-1-5.6-.8-9 1.2v13c3.4-2 6.4-2.2 9-1.2z"></path></svg></span><div><b>Из учебника</b><span class="pg">с. 107</span></div></div>
+  <div class="eyebrow">Почему вода в Океане солёная?</div>
+  <h2>Откуда в Океане соль</h2>
+  <div class="prose">
+    <p>В водах Океана растворены соединения почти <b>всех</b> химических элементов. Но главное место среди них занимают два — <b>натрий и хлор</b>, на них приходится <b>более 85 %</b>. Из этих двух элементов состоит <span class="term">поваренная соль</span> — та самая, которую мы каждый день кладём в еду. Она и придаёт океанической воде солёный вкус.</p>
+    <p>А горький привкус морской воде добавляют <b>соли магния</b>. Ещё в водах Океана нашли алюминий, медь, серебро и даже золото — правда, в очень малых количествах. Учебник добавляет: купание в морской воде очень полезно для здоровья.</p>
+    <h3>Откуда же она берётся?</h3>
+    <p>Учебник называет три причины.</p>
+  </div>
+  <div class="steps4">
+    <div class="dom"><div class="n">1</div><div class="t">Из недр Земли</div><div class="d">Океан получал соли из растворов, поступавших из недр, ещё когда только формировался.</div></div>
+    <div class="dom"><div class="n">2</div><div class="t">Реки</div><div class="d">Большие количества растворённого вещества приносят реки — это звено круговорота воды.</div></div>
+    <div class="dom"><div class="n">3</div><div class="t">Горные породы</div><div class="d">Среди пород дна и берегов немало растворимых: каменная соль, известняк.</div></div>
+    <div class="dom"><div class="n">4</div><div class="t">И ещё</div><div class="d">Подводные вулканы, гидротермальные источники и сам живой мир Океана.</div></div>
+  </div>
+  <details>
+    <summary>Как реки могут солить Океан, если они пресные?</summary>
+    <div class="body"><p>В каждом литре речной воды растворено совсем мало солей — менее 1 грамма. Но рек много, и текут они миллионы лет: общий объём воды, стекающей в Океан, чрезвычайно велик. Капля за каплей соль накапливается.</p><p>И главное: вода с поверхности океанов и морей испаряется и уходит облаками, а соли остаются. В течение миллиардов лет вода уходит, а соль остаётся и пополняется — как в кастрюле с супом, которую долго кипятят без крышки.</p></div>
+  </details>
+  <div class="aside">
+    <div class="k">Вывод в учебнике (с. 107)</div>
+    <p>В водах Мирового океана содержится во много раз больше растворённых веществ, чем в пресной воде.</p>
+  </div>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 107 (продолжение)</summary>
+    <div class="body"><ul>
+      <li>В водах Океана растворены соединения почти всех химических элементов. Главное место среди них занимают натрий и хлор — более 85 %. Из этих двух элементов состоит поваренная соль — та самая, которую мы ежедневно употребляем в пищу. Она и придаёт океанической воде солёный вкус.</li>
+      <li>А горький привкус добавляют соли магния.</li>
+      <li>Кроме того, в водах Океана обнаружены алюминий, медь, серебро и даже золото, но только в очень малых количествах.</li>
+      <li>Купание в морской воде очень полезно для здоровья.</li>
+      <li>Откуда берётся соль в Океане? Во-первых, Океан получал соли из растворов, поступавших из недр, ещё при его формировании на ранних стадиях геологической истории Земли.</li>
+      <li>Во-вторых, большие количества растворённого вещества приносят в Океан реки. Это одно из звеньев круговорота воды в природе. Хотя в каждом литре речной воды растворено совсем мало солей (менее 1 г), общий объём стекающей в Океан речной воды чрезвычайно велик.</li>
+      <li>В-третьих, среди горных пород, слагающих дно и берега Океана, немало растворимых (каменная соль, известняк и др.).</li>
+      <li>В течение миллиардов лет вода с поверхности океанов и морей испаряется, а соли остаются и пополняются.</li>
+      <li>Поставляют вещество в океанический раствор подводные вулканы и гидротермальные источники, а также органический мир Океана.</li>
+      <li>Розовая полоса-вывод в конце страницы: «В ВОДАХ МИРОВОГО ОКЕАНА СОДЕРЖИТСЯ ВО МНОГО РАЗ БОЛЬШЕ РАСТВОРЁННЫХ ВЕЩЕСТВ, ЧЕМ В ПРЕСНОЙ ВОДЕ».</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 4 -->
+<section class="step" data-step="gde-solenee" data-name="Везде ли солёность одинакова" data-part="Где солонее" data-kind="book" data-pages="с. 108">
+  <div class="kind-tag book"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.5c2.6-1 5.6-.8 9 1.2v13c-3.4-2-6.4-2.2-9-1.2z"></path><path d="M21 5.5c-2.6-1-5.6-.8-9 1.2v13c3.4-2 6.4-2.2 9-1.2z"></path></svg></span><div><b>Из учебника</b><span class="pg">с. 108</span></div></div>
+  <div class="eyebrow">Везде ли в Океане солёность воды одинакова?</div>
+  <h2>Везде ли солёность одинакова</h2>
+  <div class="prose">
+    <p>Представь, что Океан — это очень глубокая чаша. Внизу, в <b>основной толще воды</b> — от нескольких десятков метров и до самого дна, — солёность почти не меняется: она близка к средней, около <b>35 ‰</b>. Исключение одно: там, где на дне извергаются вулканы, солёность может возрасти <b>в десять раз</b>.</p>
+    <p>А вот у самой поверхности всё интереснее. Там солёность меняется от экватора к полюсам:</p>
+    <ul>
+      <li>в <b>экваториальных</b> и <b>умеренных</b> широтах она понижена;</li>
+      <li>в <b>тропических</b> — повышена;</li>
+      <li>в <b>полярных</b> — наименьшая.</li>
+    </ul>
+    <p>Заметно различаются значения солёности и во внутренних морях.</p>
+    <h3>Что делает воду менее солёной</h3>
+    <p>Солёность снижается там, где:</p>
+    <ul>
+      <li>выпадает много атмосферных осадков (дождь — это пресная вода, он разбавляет море);</li>
+      <li>мало испарение (значит, вода не «уваривается»);</li>
+      <li>крупные реки приносят много пресной воды;</li>
+      <li>активно происходит таяние льдов.</li>
+    </ul>
+  </div>
+  <div class="aside">
+    <div class="k">Врезка учебника (с. 108)</div>
+    <p>Пониженную среднюю солёность имеют воды окраинных морей Северного Ледовитого океана, а также <b>Балтийского</b> моря (около <b>10 ‰</b>).</p>
+    <p>Самую высокую среднюю солёность имеют воды внутренних морей тропических широт. Солёность вод <b>Красного</b> моря — <b>42 ‰</b>. Это самое солёное море на Земле.</p>
+  </div>
+  <div class="aside">
+    <div class="k">Вывод в учебнике (с. 108)</div>
+    <p>Солёность в поверхностных океанических водах меняется в зависимости от внешних условий.</p>
+  </div>
+  <div class="aside home">
+    <div class="k">Ближе к дому</div>
+    <p>До моря от Каспийска — несколько минут пешком, но Каспийское море не часть Океана: это замкнутый водоём, самое большое озеро на Земле. Вода в нём куда менее солёная, чем океанская: в средней части около 12—13 ‰ — почти втрое меньше, чем 35 ‰.</p>
+    <p>А на севере, у дельты Волги, река так разбавляет воду, что она становится почти пресной. Получается, то самое правило из учебника — «реки приносят пресную воду» — видно прямо у нас.</p>
+  </div>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 108 (первая половина)</summary>
+    <div class="body"><ul>
+      <li>Заголовок подтемы: «Везде ли в Океане солёность воды одинакова?»</li>
+      <li>В основной толще воды Мирового океана — на глубине от нескольких десятков метров до самого дна — солёность изменяется мало, она близка к средней — около 35 ‰.</li>
+      <li>Исключения составляют те области, где на дне происходит извержение вулканов: здесь солёность может возрастать в десять раз.</li>
+      <li>В поверхностных океанических водах солёность изменяется от экватора к полюсам. В экваториальных и умеренных широтах она понижена, в тропических повышена, а в полярных наименьшая.</li>
+      <li>Заметно различаются значения солёности во внутренних морях.</li>
+      <li>В водах Мирового океана солёность снижается там, где выпадает много атмосферных осадков, мало испарение и куда приносят много пресной воды крупные реки, где активно происходит таяние льдов.</li>
+      <li>Врезка: «Пониженную среднюю солёность имеют воды окраинных морей Северного Ледовитого океана, а также Балтийского моря (около 10 ‰)».</li>
+      <li>Врезка: «Самую высокую среднюю солёность имеют воды внутренних морей тропических широт. Солёность вод Красного моря — 42 ‰. Это самое солёное море на Земле».</li>
+      <li>Розовая полоса-вывод: «СОЛЁНОСТЬ В ПОВЕРХНОСТНЫХ ОКЕАНИЧЕСКИХ ВОДАХ МЕНЯЕТСЯ В ЗАВИСИМОСТИ ОТ ВНЕШНИХ УСЛОВИЙ».</li>
+      <li>Наверху страницы — колонтитул «§ 33. Воды Океана».</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 5 -->
+<section class="step" data-step="temperatura" data-name="Тёплая вода и холодная" data-part="Температура воды" data-kind="book" data-pages="с. 108">
+  <div class="kind-tag book"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.5c2.6-1 5.6-.8 9 1.2v13c-3.4-2-6.4-2.2-9-1.2z"></path><path d="M21 5.5c-2.6-1-5.6-.8-9 1.2v13c3.4-2 6.4-2.2 9-1.2z"></path></svg></span><div><b>Из учебника</b><span class="pg">с. 108</span></div></div>
+  <div class="eyebrow">Как меняется температура воды в Океане?</div>
+  <h2>Тёплая вода и холодная</h2>
+  <div class="prose">
+    <p>Океанские воды, как и всё на Земле, получают тепло в основном <b>от Солнца</b>. Ты уже знаешь: больше всего тепла Земля получает в <b>жарком поясе</b> — области между тропиками.</p>
+    <p>Поэтому и вода теплее всего у экватора: <b>температура поверхностных вод</b> там круглый год <b>+25…+28 °C</b>. Это как хорошо прогретая ванна, и так — в любой месяц, хоть в январе.</p>
+    <p>Чем дальше от экватора, тем меньше тепла и тем ниже температура воды. В полярных областях она <b>от 0 до −1,5 °C</b>. Обрати внимание на минус: это не ошибка. Солёная вода замерзает при температуре <b>ниже 0 °C</b>, поэтому морская вода может быть холоднее нуля и всё ещё оставаться водой.</p>
+    <p>Температура поверхностных вод колеблется ещё и в зависимости от <b>сезона года</b> и <b>времени суток</b> — как у нас в Каспийске летом днём вода теплее, чем ночью.</p>
+    <h3>А что на глубине?</h3>
+    <p>На глубине температура воды низкая. И в толще Океана она, как и солёность, довольно постоянная — <b>около +2 °C</b>. Только там, где действуют подводные вулканы, температура намного выше.</p>
+  </div>
+  <div class="aside">
+    <div class="k">Запомни картинку</div>
+    <p>Океан похож на дом, где нагрета только крыша. Наверху, у экватора, +25…+28 °C, у полюсов — около нуля, а внизу, на глубине, везде примерно +2 °C, и летом, и зимой.</p>
+  </div>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 108 (вторая половина)</summary>
+    <div class="body"><ul>
+      <li>Заголовок подтемы: «Как меняется температура воды в Океане?»</li>
+      <li>Океанские воды, как и всё на Земле, получают тепло в основном от Солнца. Вы знаете, что больше всего тепла Земля получает в жарком поясе — области между тропиками.</li>
+      <li>Температура поверхностных вод в районе экватора круглый год +25…+28 °C.</li>
+      <li>Чем дальше от экватора, тем меньше тепла, тем ниже и температура воды. В полярных областях она составляет от 0 до −1,5 °C (солёная вода замерзает при температуре ниже 0 °C).</li>
+      <li>Температура поверхностных вод колеблется также в зависимости от сезона года и времени суток.</li>
+      <li>На глубине температура воды низкая. И в толще Океана она, как и солёность, довольно постоянная — около +2 °C. Только там, где действуют подводные вулканы, температура намного выше.</li>
+      <li class="pic">На этой же странице — фотография «Рис. 74. Айсберг». Она и текст про морские льды — на следующем шаге.</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 6 -->
+<section class="step" data-step="ldy" data-name="Морские льды и айсберги" data-part="Температура воды" data-kind="book" data-pages="с. 108–109">
+  <div class="kind-tag book"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.5c2.6-1 5.6-.8 9 1.2v13c-3.4-2-6.4-2.2-9-1.2z"></path><path d="M21 5.5c-2.6-1-5.6-.8-9 1.2v13c3.4-2 6.4-2.2 9-1.2z"></path></svg></span><div><b>Из учебника</b><span class="pg">с. 108–109</span></div></div>
+  <div class="eyebrow">Как меняется температура воды в Океане?</div>
+  <h2>Морские льды и айсберги</h2>
+  <div class="prose">
+    <p>В полярных широтах большую часть года стоят сильные морозы. На обширных площадях поверхности Океана вода замерзает — так образуются <span class="term">морские льды</span>. В полярных широтах льды могут существовать несколько лет и достигать толщины <b>5—7 метров</b>. Это выше двухэтажного дома.</p>
+    <p>А вот <span class="term">айсберги</span> — это совсем другое, их не следует путать с морскими льдами. Айсберг не намёрз на поверхности моря: он <b>откололся от ледника</b>, который сполз с суши в море.</p>
+  </div>
+  <div class="aside">
+    <div class="k">Врезка учебника (с. 109)</div>
+    <p>Айсберги — плавающие гигантские глыбы, отколовшиеся от ледников, сползающих с суши в море.</p>
+  </div>
+  <figure class="fig"><img src="img/2026-09-18-p33/01-aysberg.jpg" width="600" height="750" loading="lazy" alt="Фотография: белая ледяная вершина торчит над спокойным морем, а под водой видна огромная голубая подводная часть айсберга, во много раз больше надводной"><figcaption>Рис. 74. Айсберг (с. 108).</figcaption></figure>
+  <div class="prose">
+    <p>Высота айсбергов от основания до вершины может достигать <b>нескольких сотен метров</b>. Основные источники поступления айсбергов в Океан — обширные ледники <b>Антарктиды</b> и <b>Гренландии</b>.</p>
+    <p>Посмотри на фотографию: над водой торчит только макушка, а основная часть спрятана внизу. Поэтому айсберги и опасны для кораблей.</p>
+  </div>
+  <div class="aside">
+    <div class="k">Вывод в учебнике (с. 109)</div>
+    <p>По мере приближения к полюсам температура поверхностных океанических вод понижается. На глубине она постоянно низкая.</p>
+  </div>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 108–109</summary>
+    <div class="body"><ul>
+      <li>В полярных широтах большую часть года бывают сильные морозы. На обширных площадях поверхности Океана вода замерзает и образуются морские льды.</li>
+      <li>В полярных широтах льды могут существовать несколько лет и достигать толщины 5—7 м.</li>
+      <li>Поверхностные морские льды не следует путать с айсбергами (рис. 74).</li>
+      <li>Высота айсбергов от основания до вершины может достигать нескольких сотен метров.</li>
+      <li>Основные источники поступления айсбергов в Океан — обширные ледники Антарктиды и Гренландии.</li>
+      <li>Врезка: «Айсберги — плавающие гигантские глыбы, отколовшиеся от ледников, сползающих с суши в море».</li>
+      <li class="pic">Подпись к фотографии на с. 108: «Рис. 74. Айсберг».</li>
+      <li>Розовая полоса-вывод: «ПО МЕРЕ ПРИБЛИЖЕНИЯ К ПОЛЮСАМ ТЕМПЕРАТУРА ПОВЕРХНОСТНЫХ ОКЕАНИЧЕСКИХ ВОД ПОНИЖАЕТСЯ. НА ГЛУБИНЕ ОНА ПОСТОЯННО НИЗКАЯ».</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 7 -->
+<section class="step" data-step="volny" data-name="Волны, прибой и цунами" data-part="Как движется вода" data-kind="book" data-pages="с. 109">
+  <div class="kind-tag book"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.5c2.6-1 5.6-.8 9 1.2v13c-3.4-2-6.4-2.2-9-1.2z"></path><path d="M21 5.5c-2.6-1-5.6-.8-9 1.2v13c3.4-2 6.4-2.2 9-1.2z"></path></svg></span><div><b>Из учебника</b><span class="pg">с. 109</span></div></div>
+  <div class="eyebrow">Как движется вода в Океане?</div>
+  <h2>Волны, прибой и цунами</h2>
+  <div class="prose">
+    <p>Океанические воды находятся в постоянном движении. На поверхности мы чаще всего видим <span class="term">волны</span>. Тот, кому приходилось купаться в море, знает, как приятно качаться на волнах: тебя поднимает и опускает, но вперёд не уносит. Это потому, что частицы воды совершают <b>колебательные движения вверх—вниз</b>.</p>
+    <p>Волны обычно образуются <b>под действием ветра</b> и иногда достигают огромных размеров. Правило простое: <b>чем сильнее ветер, тем выше волны</b>.</p>
+    <p>При приближении к берегу волна становится круче и опрокидывается (разрушается) — это <span class="term">прибой</span>. Тот самый шум, под который хорошо засыпать.</p>
+  </div>
+  <figure class="fig wide"><img src="img/2026-09-18-p33/02-shema-volny.jpg" width="800" height="499" loading="lazy" alt="Схема на фотографии моря: стрелка «Ветер» слева направо, у двух вершин волн подписи «Гребень», пунктирная линия «Подошва», вертикальная стрелка «Высота волны» и горизонтальная стрелка «Длина волны» между гребнями"><figcaption>Рис. 75. Схема волны (с. 109).</figcaption></figure>
+  <div class="prose">
+    <p>На схеме подписаны части волны: <b>гребень</b> — её вершина, <b>подошва</b> — самое низкое место, <b>высота волны</b> — от подошвы до гребня, <b>длина волны</b> — расстояние между двумя гребнями. И стрелка ветра, от которого всё это началось.</p>
+    <h3>Зачем волны нужны морю</h3>
+    <p>При волнении вода перемешивается. Это значит, что тепло, кислород, питательные вещества, необходимые живым организмам, лучше распределяются в толще воды. Получается, волны — это как ложка, которая размешивает чай: без неё сахар лежал бы на дне.</p>
+    <h3>Цунами</h3>
+    <p>Если где-то в глубинах Океана происходит сильное подводное землетрясение или извержение вулкана, может образоваться <span class="term">цунами</span>. Это волна, которая движется с огромной скоростью — <b>до 800 км/ч</b>, быстрее самолёта. У берега её высота может достигать нескольких десятков метров. Обрушившись на берег, цунами приносит катастрофические разрушения.</p>
+    <p>Главное отличие от обычной волны: цунами рождает не ветер, а толчок из глубины Земли.</p>
+  </div>
+  <details>
+    <summary>А часто ли бывают цунами?</summary>
+    <div class="body"><p>Цунами возникают там, где на дне Океана часто случаются сильные землетрясения, — чаще всего у берегов Тихого океана. Там на побережьях заранее ставят датчики и сирены, чтобы люди успели уйти от берега.</p></div>
+  </details>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 109</summary>
+    <div class="body"><ul>
+      <li>Заголовок подтемы: «Как движется вода в Океане?»</li>
+      <li>Океанические воды находятся в постоянном движении. На поверхности мы чаще всего видим волны (рис. 75).</li>
+      <li>Тот, кому приходилось купаться в море, знает, как приятно качаться на волнах. Это потому, что частицы воды совершают колебательные движения вверх—вниз.</li>
+      <li>Волны обычно образуются под действием ветра и иногда достигают огромных размеров. Чем сильнее ветер, тем выше волны.</li>
+      <li>При приближении к берегу волна становится круче и опрокидывается (разрушается) — это прибой.</li>
+      <li>При волнении вода перемешивается. Это значит, что тепло, кислород, питательные вещества, необходимые живым организмам, лучше распределяются в толще воды.</li>
+      <li>Если где-то в глубинах Океана происходит сильное подводное землетрясение или извержение вулкана, может образоваться цунами. Это волна, которая движется с огромной скоростью — до 800 км/ч. У берега её высота может достигать нескольких десятков метров. Обрушившись на берег, цунами приносит катастрофические разрушения.</li>
+      <li class="pic">Подпись к схеме: «Рис. 75. Схема волны». На самой схеме подписаны: Ветер (стрелка), Гребень (у двух вершин), Подошва, Высота волны, Длина волны.</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 8 -->
+<section class="step" data-step="techeniya" data-name="Океанические течения" data-part="Как движется вода" data-kind="book" data-pages="с. 109–110">
+  <div class="kind-tag book"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.5c2.6-1 5.6-.8 9 1.2v13c-3.4-2-6.4-2.2-9-1.2z"></path><path d="M21 5.5c-2.6-1-5.6-.8-9 1.2v13c3.4-2 6.4-2.2 9-1.2z"></path></svg></span><div><b>Из учебника</b><span class="pg">с. 109–110</span></div></div>
+  <div class="eyebrow">Как движется вода в Океане?</div>
+  <h2>Океанические течения</h2>
+  <div class="prose">
+    <p>Волна качает воду вверх-вниз на месте. А ещё в Океане возникают <b>горизонтальные перемещения больших масс воды</b> — это <span class="term">океанические течения</span>. Про них знали ещё древние мореплаватели: корабль без вёсел и парусов сам куда-то уплывал.</p>
+    <p>Течение — это настоящая река внутри Океана, только без берегов:</p>
+    <ul>
+      <li>протяжённость — <b>до нескольких тысяч километров</b>;</li>
+      <li>ширина — <b>десятки и сотни километров</b>;</li>
+      <li>глубина — <b>сотни метров</b>.</li>
+    </ul>
+    <h3>Тёплые и холодные</h3>
+    <p>Температура воды в течениях обычно отличается от окружающей: она или выше — тогда течение <b>тёплое</b>, или ниже — тогда <b>холодное</b>. На картах <b>тёплые течения показаны красными стрелками, а холодные — синими</b>. Учебник просит: посмотрите на карту океанов в атласе.</p>
+    <p>Куда они текут? Тёплые течения обычно движутся вдоль экватора, а затем поворачивают к северу или к югу — в более холодные области. Холодные течения, наоборот, направлены в сторону экватора.</p>
+    <p>Самое известное тёплое течение — <b>Гольфстрим</b>. Самое известное холодное — <b>течение Западных Ветров</b> в Южном полушарии.</p>
+  </div>
+  <div class="aside">
+    <div class="k">Врезка учебника (с. 109)</div>
+    <p>Океанические течения обычно возникают под воздействием постоянных ветров.</p>
+  </div>
+  <details>
+    <summary>Как запомнить, куда текут тёплые, а куда холодные</summary>
+    <div class="body"><p>У экватора жарко. Тёплое течение набирает тепло у экватора и «везёт» его подальше от него — к северу или к югу. А холодное набирает холод там, где холодно, и «везёт» его обратно к экватору. Получается кольцо.</p></div>
+  </details>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 109–110</summary>
+    <div class="body"><ul>
+      <li>В Океане возникают и горизонтальные перемещения больших масс воды — океанические течения. Об этом знали древние мореплаватели.</li>
+      <li>Протяжённость течений велика — до нескольких тысяч километров. Их ширина достигает десятков и сотен километров, а глубина — сотни метров.</li>
+      <li>Температура воды в течениях обычно отличается от окружающей — она или выше (в тёплых течениях), или ниже (в холодных).</li>
+      <li>На картах тёплые течения в Океане показаны красными стрелками, а холодные — синими. В тексте задание: «Посмотрите на карту океанов в атласе».</li>
+      <li>Тёплые течения обычно движутся вдоль экватора, а затем поворачивают к северу или к югу — в более холодные области. Холодные течения, наоборот, направлены в сторону экватора.</li>
+      <li>Самое известное тёплое течение — Гольфстрим, а самое известное холодное — течение Западных Ветров в Южном полушарии.</li>
+      <li>Врезка: «Океанические течения обычно возникают под воздействием постоянных ветров».</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 9 -->
+<section class="step" data-step="prilivy" data-name="Приливы и отливы" data-part="Как движется вода" data-kind="book" data-pages="с. 110">
+  <div class="kind-tag book"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.5c2.6-1 5.6-.8 9 1.2v13c-3.4-2-6.4-2.2-9-1.2z"></path><path d="M21 5.5c-2.6-1-5.6-.8-9 1.2v13c3.4-2 6.4-2.2 9-1.2z"></path></svg></span><div><b>Из учебника</b><span class="pg">с. 110</span></div></div>
+  <div class="eyebrow">Как движется вода в Океане?</div>
+  <h2>Приливы и отливы</h2>
+  <div class="prose">
+    <p>В прибрежных районах можно наблюдать <span class="term">приливы</span> и <span class="term">отливы</span>. Вода в течение суток то отступает от берега, обнажая большие участки дна, то возвращается. Утром лодка стоит на воде, а днём — на песке, и до воды нужно идти сотню метров.</p>
+    <p>Откуда это? Такие колебания уровня Океана связаны с <b>притяжением океанской воды массой Луны и Солнца</b>. Луна тянет воду к себе, и в её сторону вода немного «горбится».</p>
+    <p>Правда, в некоторых морях приливы и отливы невелики и поэтому малозаметны. В нашей стране они хорошо выражены на берегах <b>Белого</b> и <b>Охотского</b> морей — до <b>13 м</b> в заливе Пенжинская губа. А самые высокие приливы на Земле — в заливе <b>Фанди</b> Атлантического океана (Канада) — <b>до 18 м</b>. Это высота шестиэтажного дома.</p>
+  </div>
+  <div class="aside">
+    <div class="k">Вывод в учебнике (с. 110)</div>
+    <p>Волны, океанические течения, цунами, приливы и отливы — это виды движения воды в Океане. Они происходят под действием внешних и внутренних сил Земли.</p>
+  </div>
+  <div class="aside">
+    <div class="k">Запомните (учебник, с. 110)</div>
+    <p>Солёность и температура — свойства воды в Океане. Айсберг. Ветровые волны и цунами. Океанические течения. Приливы и отливы.</p>
+  </div>
+  <details>
+    <summary>Что такое «внешние и внутренние силы Земли»</summary>
+    <div class="body"><p><b>Внешние</b> — те, что действуют снаружи, с поверхности и из космоса: ветер, притяжение Луны и Солнца. <b>Внутренние</b> — те, что идут из глубины Земли: подводные землетрясения и извержения вулканов, от которых рождается цунами.</p></div>
+  </details>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 110</summary>
+    <div class="body"><ul>
+      <li>В прибрежных районах можно наблюдать приливы и отливы. Вода в течение суток то отступает от берега, обнажая большие участки дна, то возвращается.</li>
+      <li>Такие колебания уровня Океана связаны с притяжением океанской воды массой Луны и Солнца.</li>
+      <li>Правда, в некоторых морях приливы и отливы невелики и поэтому малозаметны.</li>
+      <li>В нашей стране они хорошо выражены на берегах Белого и Охотского морей (до 13 м в заливе Пенжинская губа).</li>
+      <li>Самые высокие приливы — в заливе Фанди Атлантического океана (Канада) — до 18 м.</li>
+      <li>Розовая полоса-вывод: «ВОЛНЫ, ОКЕАНИЧЕСКИЕ ТЕЧЕНИЯ, ЦУНАМИ, ПРИЛИВЫ И ОТЛИВЫ — ЭТО ВИДЫ ДВИЖЕНИЯ ВОДЫ В ОКЕАНЕ. ОНИ ПРОИСХОДЯТ ПОД ДЕЙСТВИЕМ ВНЕШНИХ И ВНУТРЕННИХ СИЛ ЗЕМЛИ».</li>
+      <li>Рубрика «Запомните:» — «Солёность и температура — свойства воды в Океане. Айсберг. Ветровые волны и цунами. Океанические течения. Приливы и отливы».</li>
+      <li>Внизу страницы — вопросы и задания к параграфу. Все они собраны на шаге 17.</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 10 -->
+<section class="step" data-step="slovar-1" data-name="Словарик: солёная вода" data-part="Словарик" data-kind="ours">
+  <div class="kind-tag ours"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="6" width="12" height="14" rx="1.5"></rect><path d="M8.5 3.5h10.5a1.5 1.5 0 0 1 1.5 1.5v12.5"></path></svg></span><div><b>Словарик</b><small>Сверх учебника — чтобы запомнить слова параграфа.</small></div></div>
+  <div class="game">
+    <div class="g-head"><h3>Словарик: солёная вода</h3><span class="badge" id="b-terms">Игра</span></div>
+    <p class="task">Нажми на карточку, и она перевернётся. Словарик из двух частей, открой все карточки.</p>
+    <div class="progress" id="terms-progress"></div>
+    <div class="cards" data-terms="0"></div>
+  </div>
+</section>
+
+<!-- 11 -->
+<section class="step" data-step="slovar-2" data-name="Словарик: лёд и движение" data-part="Словарик" data-kind="ours">
+  <div class="kind-tag ours"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="6" width="12" height="14" rx="1.5"></rect><path d="M8.5 3.5h10.5a1.5 1.5 0 0 1 1.5 1.5v12.5"></path></svg></span><div><b>Словарик</b><small>Сверх учебника — чтобы запомнить слова параграфа.</small></div></div>
+  <div class="game">
+    <div class="g-head"><h3>Словарик: лёд и движение воды</h3><span class="badge" id="b-terms2">Игра</span></div>
+    <p class="task">Вторая часть: льды, волны, течения, приливы.</p>
+    <div class="progress" id="terms-progress2"></div>
+    <div class="cards" data-terms="1"></div>
+  </div>
+</section>
+
+<!-- 12 -->
+<section class="step" data-step="chisla" data-name="Числа с секретом" data-part="Игры" data-kind="ours">
+  <div class="kind-tag ours"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="3"></rect><circle cx="9" cy="9" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="15" cy="15" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="15" cy="9" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="9" cy="15" r="1.3" fill="currentColor" stroke="none"></circle></svg></span><div><b>Игра</b><small>Сверх учебника — чтобы закрепить тему.</small></div></div>
+  <div class="game" id="g-match">
+    <div class="g-head"><h3>Числа с секретом</h3><span class="badge" id="b-match">Игра</span></div>
+    <p class="task">В параграфе много чисел, и за каждым что-то прячется. Нажми на число слева, потом на его разгадку справа.</p>
+    <div class="match">
+      <div class="col"><div class="lbl">Число</div><div class="col" id="foes"></div></div>
+      <div class="col"><div class="lbl">Что это</div><div class="col" id="outcomes"></div></div>
+    </div>
+    <div id="match-fb"></div>
+  </div>
+</section>
+
+<!-- 13 -->
+<section class="step" data-step="otchego" data-name="От чего движется вода?" data-part="Игры" data-kind="ours">
+  <div class="kind-tag ours"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="3"></rect><circle cx="9" cy="9" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="15" cy="15" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="15" cy="9" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="9" cy="15" r="1.3" fill="currentColor" stroke="none"></circle></svg></span><div><b>Игра</b><small>Сверх учебника — чтобы закрепить тему.</small></div></div>
+  <div class="game">
+    <div class="g-head"><h3>От чего движется вода?</h3><span class="badge" id="b-sort">Игра</span></div>
+    <p class="task">Прочитай карточку и выбери, что заставило воду двигаться: ветер, толчок из глубины Земли или притяжение Луны и Солнца.</p>
+    <div class="progress" id="sort-progress"></div>
+    <div id="sort-box"></div>
+  </div>
+</section>
+
+<!-- 14 -->
+<section class="step" data-step="priboy" data-name="Как рождается прибой" data-part="Игры" data-kind="ours">
+  <div class="kind-tag ours"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="3"></rect><circle cx="9" cy="9" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="15" cy="15" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="15" cy="9" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="9" cy="15" r="1.3" fill="currentColor" stroke="none"></circle></svg></span><div><b>Игра</b><small>Сверх учебника — чтобы закрепить тему.</small></div></div>
+  <div class="game">
+    <div class="g-head"><h3>Как рождается прибой</h3><span class="badge" id="b-order">Игра</span></div>
+    <p class="task">Что за чем происходит от первого дуновения ветра до шума волны у берега? Нажимай по порядку, от первого к последнему.</p>
+    <div class="pool" id="pool"></div>
+    <div class="seq" id="seq"></div>
+    <div class="row">
+      <button class="btn" id="order-check" type="button" disabled>Проверить</button>
+      <button class="btn ghost" id="order-reset" type="button">Сначала</button>
+    </div>
+    <div id="order-fb"></div>
+  </div>
+</section>
+
+<!-- 15 -->
+<section class="step" data-step="lishnee" data-name="Найди лишнее" data-part="Игры" data-kind="ours">
+  <div class="kind-tag ours"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="3"></rect><circle cx="9" cy="9" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="15" cy="15" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="15" cy="9" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="9" cy="15" r="1.3" fill="currentColor" stroke="none"></circle></svg></span><div><b>Игра</b><small>Сверх учебника — чтобы закрепить тему.</small></div></div>
+  <div class="game">
+    <div class="g-head"><h3>Найди лишнее</h3><span class="badge" id="b-odd">Игра</span></div>
+    <p class="task">Три из одной компании, одно чужое. Найди чужое.</p>
+    <div class="progress" id="odd-progress"></div>
+    <div class="odd-grid" id="odd-grid"></div>
+    <div id="odd-fb"></div>
+    <div class="row"><button class="btn" id="odd-next" type="button" hidden>Дальше</button></div>
+  </div>
+</section>
+
+<!-- 16 -->
+<section class="step" data-step="test" data-name="Проверь себя" data-part="Финал" data-kind="ours">
+  <div class="kind-tag ours"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"></circle><path d="M8 12.3l2.8 2.8L16.2 9.6"></path></svg></span><div><b>Самопроверка</b><small>Сверх учебника — вопросы, чтобы проверить себя. Задания из учебника — дальше.</small></div></div>
+  <div class="eyebrow">Финал</div>
+  <h2>Проверь себя</h2>
+  <div class="game">
+    <div class="progress" id="quiz-progress"></div>
+    <div id="quiz-box"></div>
+  </div>
+</section>
+
+<!-- 17 -->
+<section class="step" data-step="voprosy" data-name="Вопросы учебника" data-part="Финал" data-kind="task" data-pages="с. 110">
+  <div class="kind-tag task"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l4.2-1L19 8.2 15.8 5 5 15.8z"></path><path d="M13.8 7l3.2 3.2"></path></svg></span><div><b>Задание учебника</b><span class="pg">с. 110</span><small>Вопросы из книги. Где искать ответ и подсказки — наши.</small></div></div>
+  <div class="eyebrow">Финал · Вопросы и задания в конце § 33</div>
+  <h2>Вопросы из учебника</h2>
+  <div class="prose">
+    <p>Это все вопросы и задания в конце параграфа, с теми же номерами и по тем же группам, что в твоём учебнике. Рядом с каждым написано, на каком шаге искать ответ. Отвечай своими словами: так лучше запоминается, и учитель услышит, что ты поняла, а не заучила.</p>
+    <h3>Откройте атлас</h3>
+  </div>
+  <div class="qlist">
+<div class="qi"><span class="qn">1</span><div><p>Найдите на карте океанов в атласе течения: Гольфстрим, Западных Ветров, Лабрадорское, Перуанское, Северо-Атлантическое.</p><p class="src">Подсказка: два из них названы в самом параграфе — найди их на шаге 8. Остальные ищи в атласе по подписям вдоль стрелок. И помни правило цвета: стрелки одного цвета — тёплые, другого — холодные.</p><a href="#techeniya">Шаг 8 · Океанические течения</a></div></div>
+  </div>
+  <div class="prose"><h3>Это я знаю</h3></div>
+  <div class="qlist">
+<div class="qi"><span class="qn">2</span><div><p>Почему вода в Океане солёная?</p><p class="src">Подсказка: учебник называет три причины («во-первых», «во-вторых», «в-третьих») и добавляет к ним ещё несколько источников. Плюс не забудь про испарение: вода уходит, а соль остаётся.</p><a href="#otkuda-sol">Шаг 3 · Откуда в Океане соль</a></div></div>
+<div class="qi"><span class="qn">3</span><div><p>Почему в Красном море солёность больше, чем в Балтийском?</p><p class="src">Подсказка: сравни, в каких широтах лежит каждое море и что там с осадками, испарением и реками. Список «от чего солёность снижается» — на шаге 4, там же обе врезки с числами.</p><a href="#gde-solenee">Шаг 4 · Везде ли солёность одинакова</a></div></div>
+<div class="qi"><span class="qn">4</span><div><p>Почему и как меняется температура воды в Мировом океане?</p><p class="src">Подсказка: «почему» — откуда вода берёт тепло. «Как» — в четыре шага: от экватора к полюсам, по сезонам, по времени суток и вглубь. Все четыре есть на шаге 5.</p><a href="#temperatura">Шаг 5 · Тёплая вода и холодная</a></div></div>
+<div class="qi"><span class="qn">5</span><div><p>Чем обусловлено движение воды в Океане?</p><p class="src">Подсказка: перечисли виды движения воды и у каждого назови причину. Их четыре, и все они собраны на последнем шаге в виде кирпичиков.</p><a href="#volny">Шаги 7–9 · Как движется вода</a> <a href="#itog">Шаг 18 · Кирпичики</a></div></div>
+<div class="qi"><span class="qn">6</span><div><p>Почему образуются приливы и отливы?</p><p class="src">Подсказка: ответ в одном предложении учебника, и в нём названы два небесных тела. Ищи на шаге 9.</p><a href="#prilivy">Шаг 9 · Приливы и отливы</a></div></div>
+<div class="qi"><span class="qn">7</span><div><p>Солёность воды измеряется: а) в граммах; б) в промилле; в) в сантиметрах.</p><p class="src">Подсказка: в сантиметрах меряют длину — этот вариант отпадает сразу. А из двух оставшихся один — единица измерения солёности, другой — просто вес. Проверь по определению на шаге 2.</p><a href="#solenost">Шаг 2 · Что такое солёность</a></div></div>
+<div class="qi"><span class="qn">8</span><div><p>Средняя солёность в Океане: а) 42 ‰; б) 35 ‰; в) 1 ‰.</p><p class="src">Подсказка: два из этих трёх чисел в параграфе тоже есть, но означают совсем другое: одно — солёность самого солёного моря, другое — границу пресной воды. Шаги 2 и 4.</p><a href="#solenost">Шаг 2</a> <a href="#gde-solenee">Шаг 4</a></div></div>
+<div class="qi"><span class="qn">9</span><div><p>От экватора к полюсам температура воды в поверхностном слое: а) повышается; б) понижается.</p><p class="src">Подсказка: вспомни два числа — сколько градусов у экватора и сколько в полярных областях. Сравни их. Это шаг 5, и то же самое написано в выводе на шаге 6.</p><a href="#temperatura">Шаг 5 · Тёплая вода и холодная</a></div></div>
+<div class="qi"><span class="qn">10</span><div><p>Волны в Океане возникают под воздействием: а) силы тяжести; б) ветра.</p><p class="src">Подсказка: в параграфе есть правило «чем сильнее …, тем выше волны». Подставь пропущенное слово — и ответ готов. Шаг 7.</p><a href="#volny">Шаг 7 · Волны, прибой и цунами</a></div></div>
+  </div>
+  <div class="prose"><h3>Это я могу</h3></div>
+  <div class="qlist">
+<div class="qi"><span class="qn">11</span><div><p>Систематизируйте свои знания о течениях по плану: 1. Каково значение течений для нашей планеты? 2. Как образуется течение? 3. Какие бывают течения? 4. Какие самые крупные течения? Результаты оформите в виде таблицы.</p><p class="src">Подсказка: сделай таблицу из двух столбцов — слева пункт плана, справа твой ответ. Пункты 2, 3 и 4 целиком есть на шаге 8 (врезка про постоянные ветры, тёплые и холодные, Гольфстрим и течение Западных Ветров). А для пункта 1 подумай сама: течения переносят тепло и холод из одних мест в другие — что это значит для погоды на берегах и для жизни в Океане?</p><a href="#techeniya">Шаг 8 · Океанические течения</a></div></div>
+<div class="qi"><span class="qn">12</span><div><p>Подсчитайте, сколько соли нужно растворить в 1 л воды, чтобы получить солёность воды, как в Красном море.</p><p class="src">Подсказка: сначала вспомни, что означает запись «35 ‰» для 1 литра воды (шаг 2) — там это прямо расшифровано в граммах. Потом посмотри солёность Красного моря во врезке на шаге 4 и сделай то же самое с этим числом. Считать почти не придётся.</p><a href="#solenost">Шаг 2</a> <a href="#gde-solenee">Шаг 4</a></div></div>
+<div class="qi"><span class="qn">13</span><div><p>Нанесите на контурную карту течения, названные в рубрике «Откройте атлас» (красным цветом тёплые течения, синим — холодные).</p><p class="src">Подсказка: правило цвета — на шаге 8. Само название течения на карте атласа обычно написано вдоль стрелки, а цвет стрелки подскажет, тёплое оно или холодное. Переноси на контурную карту по береговым линиям: сначала найди материк, потом стрелку рядом с ним.</p><a href="#techeniya">Шаг 8 · Океанические течения</a></div></div>
+  </div>
+  <div class="prose"><h3>Это мне интересно</h3></div>
+  <div class="qlist">
+<div class="qi"><span class="qn">14</span><div><p>Морские течения позволили шотландцам добраться до Австралии (вспомните роман Ж. Верна «Дети капитана Гранта»). Определите по карте, какие течения помогали кораблям доплыть из Англии в Австралию.</p><p class="src">Подсказка: проведи по карте пальцем путь от Англии на юг вдоль Африки и дальше на восток. Какие стрелки идут в ту же сторону? Помни про самое известное холодное течение Южного полушария — оно как раз огибает Землю с запада на восток (шаг 8).</p><a href="#techeniya">Шаг 8 · Океанические течения</a></div></div>
+<div class="qi"><span class="qn">15</span><div><p>Вспомните, какие из ваших любимых героев потерпели кораблекрушение. Какие знания о природе помогли им спастись и выжить?</p><p class="src">Подсказка: это вопрос про твои книги и фильмы, готового ответа в параграфе нет. Но кое-что из этой темы пригодилось бы любому герою: почему нельзя пить морскую воду и как получить пресную (шаг 2), куда понесёт плот течение (шаг 8), почему у берега волна опрокидывается (шаг 7).</p><a href="#solenost">Шаг 2</a> <a href="#volny">Шаг 7</a> <a href="#techeniya">Шаг 8</a></div></div>
+  </div>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 110</summary>
+    <div class="body"><ul>
+      <li>Все вопросы и задания с. 110 перечислены выше, в том же порядке и с теми же номерами, что в книге.</li>
+      <li>Они разбиты на группы значками на полях: «Откройте атлас» — задание 1; «Это я знаю» — задания 2—10; «Это я могу» — задания 11—13; «Это мне интересно» — задания 14—15.</li>
+      <li>Задания 7—10 — с вариантами ответа а), б), в).</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 18 -->
+<section class="step" data-step="itog" data-name="Главный вопрос" data-part="Финал" data-kind="task" data-pages="с. 110">
+  <div class="kind-tag task"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l4.2-1L19 8.2 15.8 5 5 15.8z"></path><path d="M13.8 7l3.2 3.2"></path></svg></span><div><b>Задание учебника</b><span class="pg">с. 110</span><small>Вопрос 5 из книги, кирпичики-подсказки — наши.</small></div></div>
+  <div class="eyebrow">Финал · Вопрос 5 «Это я знаю»</div>
+  <h2>Чем обусловлено движение воды в Океане?</h2>
+  <div class="prose">
+    <p>Это вопрос 5 из конца параграфа, и он собирает вместе всю вторую половину темы. Вот четыре «кирпичика» для ответа. Открой их, а потом попробуй ответить своими словами, не подглядывая.</p>
+  </div>
+  <div class="bricks">
+    <div class="brick"><button type="button" aria-expanded="false"><span>Ветер поднимает волны</span><span>+</span></button><div class="b-body" hidden>Волны обычно образуются под действием ветра, и чем сильнее ветер, тем выше волны. У берега волна становится круче и опрокидывается — это прибой.</div></div>
+    <div class="brick"><button type="button" aria-expanded="false"><span>Постоянные ветры гонят течения</span><span>+</span></button><div class="b-body" hidden>Океанические течения — горизонтальные перемещения больших масс воды — обычно возникают под воздействием постоянных ветров. Они тянутся на тысячи километров и бывают тёплыми и холодными.</div></div>
+    <div class="brick"><button type="button" aria-expanded="false"><span>Толчок из глубины Земли</span><span>+</span></button><div class="b-body" hidden>Сильное подводное землетрясение или извержение вулкана может родить цунами — волну со скоростью до 800 км/ч, которая у берега поднимается на десятки метров.</div></div>
+    <div class="brick"><button type="button" aria-expanded="false"><span>Притяжение Луны и Солнца</span><span>+</span></button><div class="b-body" hidden>Луна и Солнце притягивают океанскую воду, и за сутки уровень Океана у берега то поднимается, то опускается. Это приливы и отливы.</div></div>
+  </div>
+  <div class="aside">
+    <div class="k">Ответ одной строкой, как в учебнике</div>
+    <p>Волны, океанические течения, цунами, приливы и отливы — это виды движения воды в Океане. Они происходят под действием внешних и внутренних сил Земли.</p>
+  </div>
+  <div class="aside">
+    <div class="k">Главное в одном предложении</div>
+    <p>Вода в Океане солёная — в среднем 35 граммов солей на литр; у поверхности она тем холоднее, чем ближе к полюсам, а в глубине везде около +2 °C; и она никогда не стоит на месте: ветер поднимает волны и гонит течения, подводные землетрясения рождают цунами, а притяжение Луны и Солнца даёт приливы и отливы.</p>
+  </div>
+  <div class="game">
+    <div class="g-head"><h3>Твоя мозаика</h3></div>
+    <div class="mosaic" id="mosaic"></div>
+    <div class="mosaic-list" id="mosaic-list"></div>
+    <div class="row"><a class="btn" href="./">К списку тем</a></div>
+  </div>
+</section>
+
+</main>
+
+<nav class="pager" aria-label="Навигация по шагам">
+  <div class="pager-inner">
+    <button class="btn ghost" id="prev" type="button">Назад</button>
+    <div class="count" id="count"></div>
+    <button class="btn" id="next" type="button">Дальше</button>
+  </div>
+</nav>
+
+<div class="toc" id="toc" hidden>
+  <div class="toc-panel" role="dialog" aria-label="Содержание">
+    <h3>Содержание <button class="toc-close" id="toc-close" type="button">Закрыть</button></h3>
+    <div id="toc-list" style="display:flex;flex-direction:column;gap:2px"></div>
+  </div>
+</div>
+
+<script>
+(function(){
+  'use strict';
+  var $ = function(s, r){ return (r||document).querySelector(s); };
+  var el = function(tag, cls, html){ var e=document.createElement(tag); if(cls) e.className=cls; if(html!=null) e.innerHTML=html; return e; };
+  var shuffle = function(a){ a=a.slice(); for(var i=a.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=a[i]; a[i]=a[j]; a[j]=t; } return a; };
+
+  /* ---------- state ---------- */
+  var KEY='geo-p33-v1';
+  var state={visited:{},done:{},last:0};
+  try{ var s=JSON.parse(localStorage.getItem(KEY)||'null'); if(s && typeof s==='object'){ state.visited=s.visited||{}; state.done=s.done||{}; state.last=s.last||0; } }catch(e){}
+  function save(){ try{ localStorage.setItem(KEY, JSON.stringify(state)); }catch(e){} }
+
+  var GAMES=[
+    {k:'terms', name:'Словарик, обе части', step:'slovar-1'},
+    {k:'match', name:'Числа с секретом', step:'chisla'},
+    {k:'sort', name:'От чего движется вода?', step:'otchego'},
+    {k:'order', name:'Как рождается прибой', step:'priboy'},
+    {k:'odd', name:'Найди лишнее', step:'lishnee'},
+    {k:'quiz', name:'Проверь себя', step:'test'}
+  ];
+  var GAME_STEPS={'slovar-1':'terms','slovar-2':'terms','chisla':'match','otchego':'sort','priboy':'order','lishnee':'odd','test':'quiz'};
+
+  /* ---------- steps ---------- */
+  var steps=Array.prototype.slice.call(document.querySelectorAll('.step'));
+  var N=steps.length, cur=0;
+  var stepbar=$('#stepbar'), count=$('#count'), prevB=$('#prev'), nextB=$('#next'), tocList=$('#toc-list');
+
+  /* содержание по группам: из учебника / задания учебника / сверх учебника */
+  var KIND={book:['<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.5c2.6-1 5.6-.8 9 1.2v13c-3.4-2-6.4-2.2-9-1.2z"></path><path d="M21 5.5c-2.6-1-5.6-.8-9 1.2v13c3.4-2 6.4-2.2 9-1.2z"></path></svg>','Из учебника'],task:['<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l4.2-1L19 8.2 15.8 5 5 15.8z"></path><path d="M13.8 7l3.2 3.2"></path></svg>','Задания учебника'],ours:['<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="3"></rect><circle cx="9" cy="9" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="15" cy="15" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="15" cy="9" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="9" cy="15" r="1.3" fill="currentColor" stroke="none"></circle></svg>','Сверх учебника']};
+  var tocItems=[], groups=[], prevKind=null, grp=null;
+  steps.forEach(function(s,i){
+    var kind=s.getAttribute('data-kind')||'book', pg=(s.getAttribute('data-pages')||'').replace(/,\s*п\..*$/,'');
+    var start=kind!==prevKind;
+    var b=el('button'); b.type='button'; b.setAttribute('aria-label','Шаг '+(i+1)+': '+s.getAttribute('data-name'));
+    b.setAttribute('data-base','k-'+kind+(start&&i>0?' gstart':'')); b.className=b.getAttribute('data-base');
+    b.addEventListener('click', function(){ go(i); });
+    stepbar.appendChild(b);
+    if(start){
+      var label = kind==='ours' ? (i===0?'Коротко о главном':'Словарик и игры · сверх учебника') : KIND[kind][1];
+      grp=el('div','toc-group k-'+kind,'<div class="toc-head"><span class="ic">'+KIND[kind][0]+'</span><span>'+label+'</span></div>');
+      grp.pages=[]; groups.push(grp); tocList.appendChild(grp); prevKind=kind;
+    }
+    var t=el('button','toc-item','<span class="n">'+(i+1)+'</span><span>'+s.getAttribute('data-name')+'</span>'+(pg?'<span class="pg">'+pg+'</span>':'')+'<span class="m"></span>');
+    t.type='button'; t.addEventListener('click', function(){ closeToc(); go(i); });
+    grp.appendChild(t); tocItems.push(t);
+    (pg.match(/\d+/g)||[]).forEach(function(n){ grp.pages.push(+n); });
+  });
+  groups.forEach(function(g){ if(g.pages.length){ var a=Math.min.apply(null,g.pages), z=Math.max.apply(null,g.pages); g.firstChild.lastChild.textContent+=' · с. '+(a===z?a:a+'–'+z); } });
+
+  function paint(){
+    var bars=stepbar.children, items=tocItems;
+    for(var i=0;i<N;i++){
+      var key=steps[i].getAttribute('data-step'), g=GAME_STEPS[key];
+      var done = g && state.done[g];
+      bars[i].className=bars[i].getAttribute('data-base')+(i===cur?' current':'')+(state.visited[i]?' visited':'')+(done?' done':'');
+      items[i].className='toc-item'+(i===cur?' current':'');
+      items[i].lastElementChild.textContent = done ? 'пройдено' : (state.visited[i] ? '✓' : '');
+    }
+    count.textContent=(cur+1)+' / '+N;
+    prevB.disabled = cur===0;
+    if(cur===N-1){ nextB.textContent='Это последний шаг'; nextB.disabled=true; }
+    else { nextB.textContent='Дальше: '+steps[cur+1].getAttribute('data-name'); nextB.disabled=false; }
+    var badges={terms:['b-terms','b-terms2'],match:['b-match'],sort:['b-sort'],order:['b-order'],odd:['b-odd']};
+    for(var k in badges){ badges[k].forEach(function(id){ var b=document.getElementById(id); if(b && state.done[k]){ b.textContent='Пройдено'; b.classList.add('done'); } }); }
+    paintMosaic();
+  }
+  function go(i, silent){
+    if(i<0||i>=N) return;
+    cur=i; steps.forEach(function(s,j){ s.hidden = j!==i; });
+    state.visited[i]=true; state.last=i; save();
+    if(!silent){ var h='#'+steps[i].getAttribute('data-step'); if(location.hash!==h) history.pushState(null,'',h); }
+    window.scrollTo(0,0);
+    paint();
+  }
+  function idxFromHash(){ var h=location.hash.replace('#',''); for(var i=0;i<N;i++) if(steps[i].getAttribute('data-step')===h) return i; return -1; }
+  function onHash(){ var i=idxFromHash(); if(i>=0 && i!==cur) go(i, true); }
+  window.addEventListener('popstate', onHash);
+  window.addEventListener('hashchange', onHash);
+  prevB.addEventListener('click', function(){ go(cur-1); });
+  nextB.addEventListener('click', function(){ go(cur+1); });
+  document.addEventListener('keydown', function(e){ if(e.target && /INPUT|TEXTAREA/.test(e.target.tagName)) return; if(e.key==='ArrowRight') go(cur+1); if(e.key==='ArrowLeft') go(cur-1); if(e.key==='Escape') closeToc(); });
+
+  var toc=$('#toc');
+  function openToc(){ toc.hidden=false; }
+  function closeToc(){ toc.hidden=true; }
+  $('#toc-btn').addEventListener('click', openToc);
+  $('#toc-close').addEventListener('click', closeToc);
+  toc.addEventListener('click', function(e){ if(e.target===toc) closeToc(); });
+
+  function markDone(k){ if(!state.done[k]){ state.done[k]=true; save(); } paint(); }
+
+  /* resume button on step 1 */
+  (function(){
+    var r=$('#resume');
+    if(state.last>0 && idxFromHash()<0){
+      r.hidden=false;
+      r.innerHTML='<button class="btn ghost" type="button">Продолжить с шага '+(state.last+1)+': '+steps[state.last].getAttribute('data-name')+'</button>';
+      r.firstChild.addEventListener('click', function(){ go(state.last); });
+    }
+  })();
+
+  /* ---------- mosaic on final step ---------- */
+  var mosaic=$('#mosaic'), mosaicList=$('#mosaic-list');
+  function paintMosaic(){
+    mosaic.innerHTML=''; mosaicList.innerHTML='';
+    GAMES.forEach(function(g){
+      var t=el('span','tile'+(state.done[g.k]?' on':'')); t.title=g.name; mosaic.appendChild(t);
+      var li=el('span', state.done[g.k]?'':'off', (state.done[g.k]?'★ ':'☆ ')+g.name);
+      if(!state.done[g.k]){ li.style.cursor='pointer'; li.addEventListener('click', function(){ for(var i=0;i<N;i++) if(steps[i].getAttribute('data-step')===g.step){ go(i); break; } }); }
+      mosaicList.appendChild(li);
+    });
+  }
+
+  /* ---------- glossary ---------- */
+  var TERMS=[
+    [
+      {t:'Солёность', d:'Количество веществ в граммах, растворённых в 1 л (1 кг) воды, измеряемое в промилле (‰).', e:'Это важнейшее свойство воды.'},
+      {t:'Промилле (‰)', d:'Одна тысячная доля числа. Для воды это просто «граммов на литр».', e:'Процент (%) — одна сотая доля числа.'},
+      {t:'35 ‰', d:'Средняя солёность Мирового океана: выпарить 1 л морской воды — останется 35 г солей.', e:''},
+      {t:'Пресная вода', d:'Вода, солёность которой меньше 1 ‰.', e:'Такая вода в реках, озёрах и в кране.'},
+      {t:'Поваренная соль', d:'Натрий и хлор — более 85 % всех растворённых в Океане веществ. Придаёт воде солёный вкус.', e:'Та самая соль, что стоит на кухне.'},
+      {t:'Соли магния', d:'Из-за них у морской воды горький привкус.', e:''},
+      {t:'Опреснительная установка', d:'Прибор на корабле, который отделяет соль от морской воды.', e:'Океаническая вода для питья непригодна.'},
+      {t:'Гидротермальные источники', d:'Горячие подводные источники. Вместе с подводными вулканами поставляют вещество в океанический раствор.', e:''}
+    ],
+    [
+      {t:'Морские льды', d:'Лёд, который получается, когда вода замерзает на поверхности Океана.', e:'В полярных широтах живут несколько лет, толщина 5—7 м.'},
+      {t:'Айсберг', d:'Плавающая гигантская глыба, отколовшаяся от ледника, сползающего с суши в море.', e:'Высота — до нескольких сотен метров.'},
+      {t:'Волна', d:'Движение воды на поверхности: частицы воды колеблются вверх—вниз. Обычно её поднимает ветер.', e:'Чем сильнее ветер, тем выше волны.'},
+      {t:'Гребень и подошва', d:'На схеме волны гребень — её вершина, подошва — самое низкое место.', e:'Высота волны — от подошвы до гребня.'},
+      {t:'Прибой', d:'У берега волна становится круче и опрокидывается (разрушается) — это прибой.', e:''},
+      {t:'Цунами', d:'Волна от сильного подводного землетрясения или извержения вулкана.', e:'Скорость до 800 км/ч, у берега высота в десятки метров.'},
+      {t:'Океанические течения', d:'Горизонтальные перемещения больших масс воды. Возникают под воздействием постоянных ветров.', e:'Тёплые — красные стрелки на карте, холодные — синие.'},
+      {t:'Приливы и отливы', d:'Колебания уровня Океана: за сутки вода то отступает от берега, то возвращается.', e:'Связаны с притяжением воды массой Луны и Солнца.'}
+    ]
+  ];
+  var flipped={}, total=0; TERMS.forEach(function(g){ total+=g.length; });
+  var progEls=[$('#terms-progress'),$('#terms-progress2')];
+  function termsProgress(){
+    var n=Object.keys(flipped).length;
+    progEls.forEach(function(p,gi){ var got=0; TERMS[gi].forEach(function(t,i){ if(flipped[gi+'-'+i]) got++; }); p.textContent='Открыто '+got+' из '+TERMS[gi].length+' здесь, всего '+n+' из '+total; });
+    if(n===total) markDone('terms');
+  }
+  document.querySelectorAll('.cards').forEach(function(box){
+    var gi=+box.getAttribute('data-terms');
+    TERMS[gi].forEach(function(t,i){
+      var b=el('button','card'); b.type='button'; b.setAttribute('aria-label',t.t+'. Нажми, чтобы увидеть значение');
+      b.innerHTML='<div class="in"><div class="face f"><div class="w">'+t.t+'</div><div class="tap">Нажми</div></div><div class="face b"><div class="w">'+t.t+'</div><div>'+t.d+'</div>'+(t.e?'<div class="e">'+t.e+'</div>':'')+'</div></div>';
+      b.addEventListener('click', function(){ b.classList.toggle('flip'); flipped[gi+'-'+i]=true; termsProgress(); });
+      box.appendChild(b);
+    });
+  });
+  termsProgress();
+
+  /* ---------- matching: числа с секретом ---------- */
+  var PAIRS=[
+    {foe:'35 ‰', res:'Средняя солёность Мирового океана', why:'Выпарить 1 л океанической воды — останется 35 г солей.'},
+    {foe:'42 ‰', res:'Солёность Красного моря', why:'Это самое солёное море на Земле.'},
+    {foe:'около 10 ‰', res:'Солёность Балтийского моря', why:'Пониженную солёность имеют и окраинные моря Северного Ледовитого океана.'},
+    {foe:'+25…+28 °C', res:'Температура воды у экватора', why:'И так круглый год: экватор лежит в жарком поясе.'},
+    {foe:'около +2 °C', res:'Температура в толще Океана', why:'На глубине она такая почти везде и почти всегда.'},
+    {foe:'5—7 м', res:'Толщина многолетних морских льдов', why:'Такие льды в полярных широтах живут по нескольку лет.'},
+    {foe:'до 800 км/ч', res:'Скорость цунами', why:'Цунами рождается от сильного подводного землетрясения или извержения вулкана.'},
+    {foe:'до 18 м', res:'Самый высокий прилив на Земле', why:'Это залив Фанди в Атлантическом океане, в Канаде.'}
+  ];
+  var foesBox=$('#foes'), outBox=$('#outcomes'), matchFb=$('#match-fb'), selFoe=null, matched=0;
+  PAIRS.forEach(function(p){
+    var b=el('button','opt',p.foe); b.type='button'; b.setAttribute('data-foe',p.foe);
+    b.addEventListener('click', function(){
+      if(b.classList.contains('ok')) return;
+      var all=foesBox.querySelectorAll('.opt'); for(var i=0;i<all.length;i++) all[i].classList.remove('sel');
+      b.classList.add('sel'); selFoe=p; matchFb.innerHTML='';
+    });
+    foesBox.appendChild(b);
+  });
+  shuffle(PAIRS).forEach(function(p){
+    var b=el('button','opt',p.res); b.type='button';
+    b.addEventListener('click', function(){
+      if(b.classList.contains('ok')) return;
+      if(!selFoe){ matchFb.innerHTML='<div class="feedback bad"><span class="k">Сначала выбери число слева.</span></div>'; return; }
+      if(selFoe.res===p.res){
+        b.classList.add('ok'); b.disabled=true;
+        var fb=foesBox.querySelector('[data-foe="'+selFoe.foe+'"]'); fb.classList.remove('sel'); fb.classList.add('ok'); fb.disabled=true;
+        matchFb.innerHTML='<div class="feedback ok"><span class="k">Верно! '+selFoe.foe+' — '+selFoe.res.toLowerCase()+'.</span><span>'+selFoe.why+'</span></div>';
+        selFoe=null; matched++;
+        if(matched===PAIRS.length){ matchFb.innerHTML='<div class="feedback ok"><span class="k">Все восемь чисел разгаданы!</span><span>Теперь на уроке ты вспомнишь их сразу.</span></div>'; markDone('match'); }
+      } else {
+        b.classList.add('bad'); setTimeout(function(){ b.classList.remove('bad'); },400);
+        matchFb.innerHTML='<div class="feedback bad"><span class="k">Не то.</span><span>Это разгадка другого числа. Попробуй ещё.</span></div>';
+      }
+    });
+    outBox.appendChild(b);
+  });
+
+  /* ---------- sort: от чего движется вода ---------- */
+  var ROLES=['Ветер','Толчок из глубины','Луна и Солнце'];
+  var SORT=[
+    {t:'Волны на поверхности моря', c:'Ветер', why:'Волны обычно образуются под действием ветра.'},
+    {t:'Чем сильнее дует, тем выше поднимается вода', c:'Ветер', why:'Чем сильнее ветер, тем выше волны.'},
+    {t:'Прибой: волна опрокидывается у берега', c:'Ветер', why:'Прибой — это та же ветровая волна, только у берега она стала круче и разрушилась.'},
+    {t:'Океанические течения длиной в тысячи километров', c:'Ветер', why:'Океанические течения обычно возникают под воздействием постоянных ветров.'},
+    {t:'Цунами', c:'Толчок из глубины', why:'Цунами образуется при сильном подводном землетрясении или извержении вулкана.'},
+    {t:'Волна, которая идёт со скоростью до 800 км/ч', c:'Толчок из глубины', why:'Такая скорость бывает только у цунами.'},
+    {t:'Волна высотой в несколько десятков метров у берега', c:'Толчок из глубины', why:'У берега высота цунами может достигать нескольких десятков метров.'},
+    {t:'Прилив: вода возвращается к берегу', c:'Луна и Солнце', why:'Колебания уровня Океана связаны с притяжением океанской воды массой Луны и Солнца.'},
+    {t:'Отлив: обнажаются большие участки дна', c:'Луна и Солнце', why:'За сутки вода то отступает от берега, то возвращается.'}
+  ];
+  var sortBox=$('#sort-box'), sortP=$('#sort-progress'), sortList=shuffle(SORT), si=0;
+  function renderSort(){
+    if(si>=sortList.length){ return sortDone(); }
+    var it=sortList[si];
+    sortP.textContent='Карточка '+(si+1)+' из '+sortList.length;
+    sortBox.innerHTML='';
+    sortBox.appendChild(el('div','sort-card',it.t));
+    var tri=el('div','tri'); sortBox.appendChild(tri);
+    var fb=el('div'); sortBox.appendChild(fb);
+    var rowN=el('div','row'); sortBox.appendChild(rowN);
+    ROLES.forEach(function(c){
+      var b=el('button','opt',c); b.type='button';
+      b.addEventListener('click', function(){
+        if(c===it.c){
+          var all=tri.querySelectorAll('.opt'); for(var k=0;k<all.length;k++) all[k].disabled=true;
+          b.classList.add('ok');
+          fb.innerHTML='<div class="feedback ok"><span class="k">Верно: '+c+'.</span><span>'+it.why+'</span></div>';
+          var n=el('button','btn', si<sortList.length-1?'Следующая карточка':'Показать итог'); n.type='button';
+          n.addEventListener('click', function(){ si++; renderSort(); });
+          rowN.appendChild(n);
+        } else {
+          b.classList.add('bad'); b.disabled=true;
+          fb.innerHTML='<div class="feedback bad"><span class="k">Нет, дело не в этом.</span><span>Подумай, что здесь толкает воду, и попробуй ещё.</span></div>';
+        }
+      });
+      tri.appendChild(b);
+    });
+  }
+  function sortDone(){
+    sortP.textContent='Все карточки разложены';
+    var html='<div class="feedback ok"><span class="k">Готово! Вот что получилось:</span></div><div class="sort-sum">';
+    ROLES.forEach(function(c){
+      var items=SORT.filter(function(x){ return x.c===c; }).map(function(x){ return x.t.toLowerCase(); });
+      html+='<div><b>'+c+':</b> '+items.join('; ')+'.</div>';
+    });
+    html+='</div><p>Ветер и притяжение Луны и Солнца — это внешние силы Земли, а подводные землетрясения и извержения — внутренние.</p><div class="row"><button class="btn ghost" type="button" id="sort-again">Ещё раз</button></div>';
+    sortBox.innerHTML=html;
+    $('#sort-again').addEventListener('click', function(){ sortList=shuffle(SORT); si=0; renderSort(); });
+    markDone('sort');
+  }
+  renderSort();
+
+  /* ---------- ordering ---------- */
+  var EVENTS=[
+    {y:1, t:'Над морем начинает дуть ветер', ys:'1'},
+    {y:2, t:'Частицы воды качаются вверх—вниз, и бежит волна', ys:'2'},
+    {y:3, t:'Ветер усиливается, и волна становится выше', ys:'3'},
+    {y:4, t:'У берега волна становится круче', ys:'4'},
+    {y:5, t:'Волна опрокидывается — это прибой', ys:'5'}
+  ];
+  var pool=$('#pool'), seq=$('#seq'), orderCheck=$('#order-check'), orderFb=$('#order-fb'), picked=[], shuffledEvents=shuffle(EVENTS);
+  function renderOrder(){
+    pool.innerHTML='';
+    shuffledEvents.forEach(function(e){
+      if(picked.indexOf(e)>=0) return;
+      var b=el('button','opt',e.t); b.type='button';
+      b.addEventListener('click', function(){ picked.push(e); renderOrder(); });
+      pool.appendChild(b);
+    });
+    seq.innerHTML='';
+    if(!picked.length){ seq.appendChild(el('div','empty','Сюда встанут шаги по порядку')); }
+    picked.forEach(function(e,i){ seq.appendChild(el('div','slot','<span class="i">'+(i+1)+'</span><span>'+e.t+'</span>')); });
+    orderCheck.disabled = picked.length!==EVENTS.length;
+    orderFb.innerHTML='';
+  }
+  renderOrder();
+  orderCheck.addEventListener('click', function(){
+    var slots=seq.querySelectorAll('.slot'), wrong=0;
+    picked.forEach(function(e,i){
+      var ok = e.y===EVENTS[i].y;
+      slots[i].classList.add(ok?'ok':'bad');
+      slots[i].insertAdjacentHTML('beforeend','<span class="yr">'+e.ys+'</span>');
+      if(!ok) wrong++;
+    });
+    if(!wrong){ orderFb.innerHTML='<div class="feedback ok"><span class="k">Всё по порядку!</span><span>Сначала ветер, потом волна, у берега она становится круче и опрокидывается. Так и получается прибой.</span></div>'; markDone('order'); }
+    else orderFb.innerHTML='<div class="feedback bad"><span class="k">Не совсем. Красные шаги стоят не на своих местах.</span><span>Теперь справа видны правильные номера. Нажми «Сначала» и попробуй ещё раз.</span></div>';
+    orderCheck.disabled=true;
+  });
+  $('#order-reset').addEventListener('click', function(){ picked=[]; shuffledEvents=shuffle(EVENTS); renderOrder(); });
+
+  /* ---------- odd one out ---------- */
+  var ODD=[
+    {items:['Волны','Цунами','Приливы и отливы','Айсберги'], odd:'Айсберги', why:'Волны, цунами, приливы и отливы — виды движения воды в Океане. А айсберг — это плавающая глыба льда, отколовшаяся от ледника.'},
+    {items:['35 ‰','42 ‰','около 10 ‰','до 800 км/ч'], odd:'до 800 км/ч', why:'Первые три числа — солёность: средняя в Океане, в Красном море и в Балтийском. А 800 км/ч — скорость цунами.'},
+    {items:['Гребень','Подошва','Длина волны','Прибой'], odd:'Прибой', why:'Гребень, подошва и длина волны подписаны на схеме волны (рис. 75). А прибой — это когда волна у берега опрокидывается.'},
+    {items:['Много осадков','Крупная река рядом','Таяние льдов','Сильное испарение'], odd:'Сильное испарение', why:'Дождь, речная вода и талая вода — пресные, они понижают солёность. А при сильном испарении вода уходит, соль остаётся, и солёность растёт.'}
+  ];
+  var oddGrid=$('#odd-grid'), oddFb=$('#odd-fb'), oddNext=$('#odd-next'), oddP=$('#odd-progress'), oddRound=0;
+  function renderOdd(){
+    var r=ODD[oddRound]; oddGrid.innerHTML=''; oddFb.innerHTML=''; oddNext.hidden=true;
+    oddP.textContent='Раунд '+(oddRound+1)+' из '+ODD.length;
+    shuffle(r.items).forEach(function(w){
+      var b=el('button','opt',w); b.type='button';
+      b.addEventListener('click', function(){
+        var all=oddGrid.querySelectorAll('.opt');
+        if(w===r.odd){
+          for(var i=0;i<all.length;i++) all[i].disabled=true;
+          b.classList.add('ok');
+          oddFb.innerHTML='<div class="feedback ok"><span class="k">Точно, лишнее — «'+w+'».</span><span>'+r.why+'</span></div>';
+          if(oddRound<ODD.length-1) oddNext.hidden=false;
+          else { oddP.textContent='Все четыре раунда пройдены'; markDone('odd'); }
+        } else {
+          b.classList.add('bad'); b.disabled=true;
+          oddFb.innerHTML='<div class="feedback bad"><span class="k">«'+w+'» из той же компании, что и остальные.</span><span>Подумай, что здесь про другое.</span></div>';
+        }
+      });
+      oddGrid.appendChild(b);
+    });
+  }
+  oddNext.addEventListener('click', function(){ oddRound++; renderOdd(); });
+  renderOdd();
+
+  /* ---------- quiz ---------- */
+  var QUIZ=[
+    {q:'Промилле (‰) — это…', o:['одна сотая доля числа','одна тысячная доля числа','одна десятая доля числа'], a:1, why:'Одна сотая — это процент (%). А промилле — одна тысячная, для воды это просто «граммов на литр».'},
+    {q:'Выпарили 1 л океанической воды средней солёности. Сколько солей останется?', o:['3,5 г','35 г','350 г'], a:1, why:'Средняя солёность Мирового океана — 35 ‰, то есть 35 г солей на литр.'},
+    {q:'Какую воду считают пресной?', o:['ту, солёность которой меньше 1 ‰','ту, солёность которой меньше 10 ‰','ту, солёность которой меньше 35 ‰'], a:0, why:'Меньше 1 ‰ — меньше одного грамма солей на литр. 35 ‰ — это, наоборот, средняя солёность Океана.'},
+    {q:'Какие вещества занимают главное место среди растворённых в Океане — более 85 %?', o:['соли магния','алюминий и медь','натрий и хлор'], a:2, why:'Из натрия и хлора состоит поваренная соль, она и даёт солёный вкус. Соли магния добавляют горький привкус, а меди и алюминия в воде очень мало.'},
+    {q:'Какое море на Земле самое солёное?', o:['Балтийское','Красное','Охотское'], a:1, why:'Солёность вод Красного моря — 42 ‰. У Балтийского, наоборот, пониженная — около 10 ‰.'},
+    {q:'Какая температура воды в толще Океана, далеко от поверхности?', o:['около +2 °C','около +15 °C','около −10 °C'], a:0, why:'В толще Океана температура, как и солёность, довольно постоянная — около +2 °C. Намного выше она только у подводных вулканов.'},
+    {q:'Какой толщины бывают морские льды, которые в полярных широтах живут по нескольку лет?', o:['5—7 см','5—7 м','50—70 м'], a:1, why:'5—7 метров — это выше двухэтажного дома. А сотни метров — это уже высота айсберга.'},
+    {q:'Откуда в Океане берутся айсберги?', o:['намерзают на поверхности моря зимой','их приносят крупные реки','откалываются от ледников Антарктиды и Гренландии'], a:2, why:'Лёд, который намерзает на поверхности моря, — это морские льды, их не надо путать с айсбергами.'},
+    {q:'Что на схеме волны называют длиной волны?', o:['расстояние между двумя гребнями','высоту от подошвы до гребня','скорость, с которой идёт волна'], a:0, why:'Высота от подошвы до гребня — это высота волны, она подписана на схеме отдельно.'},
+    {q:'Каким цветом на картах показывают тёплые течения?', o:['синим','красным','зелёным'], a:1, why:'Тёплые течения — красные стрелки, холодные — синие. Это пригодится для задания с контурной картой.'}
+  ];
+  var qBox=$('#quiz-box'), qP=$('#quiz-progress'), qi=0, score=0;
+  function renderQ(){
+    if(qi>=QUIZ.length) return renderScore();
+    var q=QUIZ[qi];
+    qP.textContent='Вопрос '+(qi+1)+' из '+QUIZ.length;
+    qBox.innerHTML='';
+    qBox.appendChild(el('div','q',q.q));
+    var opts=el('div','q-opts'); qBox.appendChild(opts);
+    var fb=el('div'); qBox.appendChild(fb);
+    var rowN=el('div','row'); qBox.appendChild(rowN);
+    var answered=false;
+    q.o.forEach(function(o,i){
+      var b=el('button','opt',o); b.type='button';
+      b.addEventListener('click', function(){
+        if(answered) return; answered=true;
+        var all=opts.querySelectorAll('.opt');
+        for(var k=0;k<all.length;k++){ all[k].disabled=true; if(k===q.a) all[k].classList.add('ok'); }
+        if(i===q.a){ score++; fb.innerHTML='<div class="feedback ok"><span class="k">Правильно!</span><span>'+q.why+'</span></div>'; }
+        else { b.classList.add('bad'); fb.innerHTML='<div class="feedback bad"><span class="k">Нет, правильный ответ подсвечен зелёным.</span><span>'+q.why+'</span></div>'; }
+        var n=el('button','btn', qi<QUIZ.length-1?'Следующий вопрос':'Показать результат'); n.type='button';
+        n.addEventListener('click', function(){ qi++; renderQ(); window.scrollTo(0,0); });
+        rowN.appendChild(n);
+      });
+      opts.appendChild(b);
+    });
+  }
+  function renderScore(){
+    qP.textContent='Результат';
+    var tiles=''; for(var i=0;i<QUIZ.length;i++) tiles+='<i class="'+(i<score?'on':'')+'"></i>';
+    var msg = score===QUIZ.length ? 'Идеально, Амина! Ни одной ошибки.' : score>=8 ? 'Отлично! Ещё раз взгляни на вопросы, где ошиблась, и будет полный набор.' : score>=6 ? 'Хорошо. Перечитай шаги, где было трудно, и пройди тест снова.' : 'В параграфе много чисел, Амина, и это нормально. Вернись к словарику и к игре «Числа с секретом», а потом попробуй ещё раз.';
+    qBox.innerHTML='<div class="score"><div class="big">'+score+' из '+QUIZ.length+'</div><div class="score-tiles">'+tiles+'</div><p>'+msg+'</p><button class="btn ghost" type="button" id="quiz-again">Пройти ещё раз</button></div>';
+    $('#quiz-again').addEventListener('click', function(){ qi=0; score=0; renderQ(); });
+    markDone('quiz');
+  }
+  renderQ();
+
+  /* ---------- bricks ---------- */
+  Array.prototype.forEach.call(document.querySelectorAll('.brick button'), function(b){
+    b.addEventListener('click', function(){
+      var body=b.nextElementSibling, open=body.hidden;
+      body.hidden=!open; b.setAttribute('aria-expanded', open?'true':'false');
+      b.lastElementChild.textContent = open?'−':'+';
+    });
+  });
+
+  /* ---------- start ---------- */
+  var start=idxFromHash(); go(start<0?0:start, true);
+})();
+</script>
+
+</body>
+</html>

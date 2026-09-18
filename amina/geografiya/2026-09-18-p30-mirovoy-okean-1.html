@@ -1,0 +1,1148 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Мировой океан (1)</title>
+<meta name="paragraph" content="§ 30">
+<meta name="description" content="Мировой океан. Моря, заливы и проливы">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=PT+Sans+Narrow:wght@400;700&family=PT+Sans:wght@400;700&display=swap">
+<style>
+:root{
+  --bg:#EBE8DF; --surface:#F8F6F0; --surface-2:#E2DED2; --ink:#1B2233; --ink-2:#4A5163; --muted:#7A8093;
+  --lapis:#23448A; --on-lapis:#FFFFFF; --lapis-soft:#D9E1F3;
+  --gold:#B08A2E; --gold-soft:#F1E6C2; --on-gold:#2A2107;
+  --terra:#B4552F; --terra-soft:#F3DCD2;
+  --moss:#4E7A3B; --moss-soft:#DCE8D2;
+  --line:#D2CDBF; --tile:#CFC9B9;
+  --shadow:0 1px 2px rgba(27,34,51,.08),0 10px 28px rgba(27,34,51,.07);
+  --display:"Oranienbaum","Georgia","Times New Roman",serif;
+  --body:"Golos Text","Segoe UI",system-ui,-apple-system,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0F1728; --surface:#182338; --surface-2:#21304B; --ink:#EDE8DC; --ink-2:#C2BFB4; --muted:#8B93A8;
+    --lapis:#7EA0E6; --on-lapis:#0F1728; --lapis-soft:#22345A;
+    --gold:#E0B84A; --gold-soft:#3E3419; --on-gold:#0F1728;
+    --terra:#E0825C; --terra-soft:#4A2A1D;
+    --moss:#8DBF74; --moss-soft:#243B1F;
+    --line:#2E3B57; --tile:#2A3856;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 28px rgba(0,0,0,.35);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0F1728; --surface:#182338; --surface-2:#21304B; --ink:#EDE8DC; --ink-2:#C2BFB4; --muted:#8B93A8;
+  --lapis:#7EA0E6; --on-lapis:#0F1728; --lapis-soft:#22345A;
+  --gold:#E0B84A; --gold-soft:#3E3419; --on-gold:#0F1728;
+  --terra:#E0825C; --terra-soft:#4A2A1D;
+  --moss:#8DBF74; --moss-soft:#243B1F;
+  --line:#2E3B57; --tile:#2A3856;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 28px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+@media (prefers-reduced-motion: reduce){ *{transition:none!important;animation:none!important} }
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.55;-webkit-text-size-adjust:100%}
+h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1.1;text-wrap:balance;margin:0}
+p{margin:0}
+a{color:var(--lapis)}
+button{font:inherit;color:inherit;cursor:pointer}
+button:focus-visible,summary:focus-visible,a:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+[hidden]{display:none!important}
+
+/* ---------- top bar ---------- */
+.top{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+.top-inner{max-width:720px;margin:0 auto;padding:10px 16px;display:flex;align-items:center;gap:12px}
+.back{text-decoration:none;color:var(--ink-2);font-size:14px;white-space:nowrap;padding:6px 10px;border-radius:8px;background:var(--surface);border:1px solid var(--line)}
+.crumb{flex:1;min-width:0;font-size:14px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.crumb b{color:var(--ink);font-weight:600}
+.toc-btn{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:6px 10px;font-size:14px;color:var(--lapis);font-weight:600;white-space:nowrap}
+.stepbar{max-width:720px;margin:0 auto;padding:0 16px 10px;display:flex;gap:4px}
+.stepbar button{flex:1;height:8px;min-width:6px;padding:0;border:0;border-radius:2px;background:var(--tile);transition:background .3s,transform .3s}
+.stepbar button.visited{background:var(--lapis)}
+.stepbar button.done{background:var(--gold)}
+.stepbar button.current{transform:scaleY(1.6);background:var(--gold)}
+
+/* ---------- steps ---------- */
+main{max-width:720px;margin:0 auto;padding:20px 16px 120px}
+.step{display:flex;flex-direction:column;gap:16px}
+.eyebrow{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);font-weight:700;display:flex;align-items:center;gap:10px}
+.tess{display:inline-flex;gap:3px}
+.tess i{width:8px;height:8px;display:block;border-radius:1px}
+.tess i:nth-child(1){background:var(--lapis)} .tess i:nth-child(2){background:var(--gold)} .tess i:nth-child(3){background:var(--terra)}
+.step h1{font-size:clamp(36px,8vw,56px)}
+.step h2{font-size:clamp(28px,6vw,38px)}
+.step h3{font-size:22px;color:var(--lapis);margin-top:4px}
+.lede{font-size:19px;color:var(--ink-2);max-width:34ch}
+.prose{display:flex;flex-direction:column;gap:12px;max-width:66ch}
+.prose ul{margin:0;padding-left:22px;display:flex;flex-direction:column;gap:6px}
+.prose li::marker{color:var(--gold)}
+b,strong{font-weight:600}
+.term{font-weight:600;color:var(--lapis);border-bottom:2px solid var(--gold-soft)}
+.aside{background:var(--lapis-soft);border-left:4px solid var(--lapis);padding:12px 16px;border-radius:0 8px 8px 0;font-size:16px;display:flex;flex-direction:column;gap:6px}
+.aside .k{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--lapis);font-weight:700}
+.home{background:var(--gold-soft);border-left-color:var(--gold)}
+.home .k{color:var(--gold)}
+details{border:1px solid var(--line);border-radius:10px;background:var(--surface)}
+details summary{cursor:pointer;list-style:none;padding:12px 16px;font-weight:600;color:var(--lapis);display:flex;align-items:center;gap:10px}
+details summary::-webkit-details-marker{display:none}
+details summary::before{content:"";width:9px;height:9px;background:var(--gold);transform:rotate(45deg);flex:none;transition:transform .2s}
+details[open] summary::before{transform:rotate(45deg) scale(.6);background:var(--lapis)}
+details .body{padding:0 16px 14px;display:flex;flex-direction:column;gap:8px;color:var(--ink-2)}
+
+.steps4{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+@media (min-width:600px){ .steps4{grid-template-columns:repeat(4,1fr)} }
+.dom{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px;display:flex;flex-direction:column;gap:4px;box-shadow:var(--shadow)}
+.dom .n{font-family:var(--display);font-size:28px;color:var(--gold);line-height:1}
+.dom .t{font-weight:600;font-size:15px;line-height:1.25}
+.dom .d{font-size:13.5px;color:var(--ink-2);line-height:1.35}
+
+.ladder{display:flex;flex-direction:column;align-items:center;gap:6px}
+.rung{background:var(--lapis);color:var(--on-lapis);padding:9px 12px;border-radius:8px;text-align:center;font-size:15px;line-height:1.3}
+.rung small{display:block;opacity:.85;font-size:12.5px}
+.rung.r1{width:60%} .rung.r2{width:74%} .rung.r3{width:88%} .rung.r4{width:100%;background:var(--surface-2);color:var(--ink)}
+
+/* timeline (вертикальная, все даты видны сразу) */
+.tl-v{display:flex;flex-direction:column;position:relative;padding-left:4px}
+.tl-v::before{content:"";position:absolute;left:16px;top:16px;bottom:16px;width:3px;background:var(--line);border-radius:2px}
+.tl-item{position:relative;padding-left:36px;display:flex;flex-direction:column}
+.tl-btn{background:none;border:0;padding:8px 0;text-align:left;display:flex;align-items:baseline;gap:8px 12px;flex-wrap:wrap;color:var(--ink);width:100%}
+.tl-btn .dot{position:absolute;left:5px;top:12px;width:17px;height:17px;background:var(--surface);border:3px solid var(--lapis);border-radius:50%;transition:transform .2s,background .2s}
+.tl-item.ru .dot{border-color:var(--terra)}
+.tl-item.open .dot{background:var(--gold);border-color:var(--gold);transform:scale(1.2)}
+.tl-btn .y{font-family:var(--display);font-size:26px;line-height:1;font-variant-numeric:tabular-nums;min-width:96px}
+.tl-btn .t{font-weight:600;font-size:16px}
+.tl-btn .era{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--lapis);font-weight:700;margin-left:auto}
+.tl-item.ru .era{color:var(--terra)}
+.tl-d{color:var(--ink-2);font-size:15.5px;padding:0 0 12px;line-height:1.45}
+.hint{font-size:14px;color:var(--muted)}
+
+/* «как в учебнике» и вопросы учебника */
+details.book{border-color:var(--gold-soft)}
+details.book summary{color:var(--gold)}
+details.book summary::before{background:var(--gold)}
+details.book[open] summary::before{background:var(--gold)}
+details.book .body{font-size:15px;color:var(--ink)}
+details.book .body ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:7px}
+details.book .body li::marker{color:var(--gold)}
+details.book .body .pic{color:var(--ink-2);font-style:italic}
+.qlist{display:flex;flex-direction:column;gap:10px}
+.qi{display:grid;grid-template-columns:auto 1fr;gap:12px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.qi .qn{font-family:var(--display);font-size:24px;color:var(--gold);line-height:1;min-width:20px}
+.qi p{font-size:15.5px}
+.qi .src{font-size:14.5px;color:var(--ink-2);margin-top:6px}
+.qi a{font-size:13.5px;font-weight:600;text-decoration:none;display:inline-block;margin-top:8px;background:var(--lapis-soft);padding:4px 10px;border-radius:999px}
+
+/* games */
+.game{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:12px}
+.g-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.game h3{margin:0}
+.task{color:var(--ink-2)}
+.badge{font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;padding:4px 10px;border-radius:999px;background:var(--gold-soft);color:var(--gold)}
+.badge.done{background:var(--moss-soft);color:var(--moss)}
+.btn{background:var(--lapis);color:var(--on-lapis);border:0;border-radius:10px;padding:10px 18px;font-weight:600;font-size:15px;text-decoration:none;display:inline-block}
+.btn.ghost{background:transparent;color:var(--lapis);border:2px solid var(--lapis)}
+.btn:disabled{opacity:.45;cursor:default}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.feedback{padding:12px 14px;border-radius:10px;font-size:15px;display:flex;flex-direction:column;gap:4px}
+.feedback.ok{background:var(--moss-soft);border-left:4px solid var(--moss)}
+.feedback.bad{background:var(--terra-soft);border-left:4px solid var(--terra)}
+.feedback .k{font-weight:700}
+.progress{font-size:13px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.card{perspective:900px;height:150px;background:none;border:0;padding:0;text-align:left}
+.card .in{position:relative;width:100%;height:100%;transition:transform .5s;transform-style:preserve-3d}
+.card.flip .in{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;border-radius:12px;padding:12px;display:flex;flex-direction:column;justify-content:center;gap:6px;overflow:hidden}
+.face.f{background:var(--lapis);color:var(--on-lapis)}
+.face.f .w{font-family:var(--display);font-size:21px;line-height:1.05}
+.face.f .tap{font-size:11px;opacity:.75;letter-spacing:.08em;text-transform:uppercase}
+.face.b{background:var(--surface-2);color:var(--ink);transform:rotateY(180deg);font-size:12.5px;line-height:1.3;justify-content:flex-start;overflow:auto}
+.face.b .w{font-weight:700;color:var(--lapis);font-size:13px}
+.face.b .e{color:var(--ink-2);font-style:italic}
+
+.match{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.col{display:flex;flex-direction:column;gap:8px}
+.col .lbl{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.opt{background:var(--surface-2);border:2px solid transparent;border-radius:10px;padding:10px 12px;text-align:left;font-weight:500;font-size:15px;transition:border-color .15s,background .15s}
+.opt:hover{border-color:var(--lapis)}
+.opt.sel{border-color:var(--gold);background:var(--gold-soft)}
+.opt.ok{background:var(--moss-soft);border-color:var(--moss)}
+.opt.bad{animation:shake .35s}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+
+.pool{display:flex;flex-direction:column;gap:8px}
+.seq{display:flex;flex-direction:column;gap:8px;min-height:44px;padding:10px;border:2px dashed var(--line);border-radius:12px}
+.seq .slot{display:flex;align-items:center;gap:10px;background:var(--lapis-soft);border-radius:8px;padding:8px 12px;font-size:15px}
+.seq .slot .i{font-family:var(--display);font-size:20px;color:var(--lapis);width:22px;font-variant-numeric:tabular-nums}
+.seq .slot.ok{background:var(--moss-soft)} .seq .slot.bad{background:var(--terra-soft)}
+.seq .slot .yr{margin-left:auto;font-weight:700;color:var(--ink-2);font-variant-numeric:tabular-nums}
+.seq .empty{color:var(--muted);font-size:14px}
+
+.odd-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.odd-grid .opt{text-align:center;padding:16px 10px;font-size:16px}
+.odd-grid .opt.bad{background:var(--terra-soft);border-color:var(--terra)}
+
+.q{font-size:19px;font-weight:600;line-height:1.35}
+.q-opts{display:flex;flex-direction:column;gap:8px}
+.q-opts .opt{font-size:15.5px;line-height:1.35}
+.q-opts .opt.bad{background:var(--terra-soft);border-color:var(--terra)}
+.score{display:flex;flex-direction:column;gap:12px;align-items:flex-start}
+.score .big{font-family:var(--display);font-size:56px;line-height:1;color:var(--gold)}
+.score-tiles{display:flex;gap:5px;flex-wrap:wrap}
+.score-tiles i{width:22px;height:22px;border-radius:3px;background:var(--tile)}
+.score-tiles i.on{background:var(--gold)}
+
+.bricks{display:flex;flex-direction:column;gap:10px}
+.brick{background:var(--surface-2);border-radius:10px;overflow:hidden}
+.brick button{width:100%;background:none;border:0;padding:12px 14px;text-align:left;font-weight:600;color:var(--lapis);display:flex;justify-content:space-between;gap:10px}
+.brick .b-body{padding:0 14px 12px;color:var(--ink-2);font-size:15.5px}
+
+.mosaic{display:flex;gap:6px;align-items:center}
+.mosaic .tile{width:26px;height:26px;background:var(--tile);border-radius:3px;transition:background .4s,transform .4s}
+.mosaic .tile.on{background:var(--gold);transform:rotate(45deg) scale(.8)}
+.mosaic-list{display:flex;flex-direction:column;gap:6px;font-size:15px}
+.mosaic-list span.off{color:var(--muted)}
+
+/* pager */
+.pager{position:fixed;left:0;right:0;bottom:0;z-index:5;background:var(--bg);border-top:1px solid var(--line)}
+.pager-inner{max-width:720px;margin:0 auto;padding:10px 16px;display:flex;align-items:center;gap:10px}
+.pager .count{font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+.pager .btn{flex:1;text-align:center;padding:12px 14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pager .btn.ghost{flex:0 0 auto}
+
+/* toc overlay */
+.toc{position:fixed;inset:0;z-index:10;background:rgba(0,0,0,.35);display:flex;justify-content:flex-end}
+.toc-panel{width:min(360px,90vw);height:100%;background:var(--surface);overflow:auto;padding:16px;display:flex;flex-direction:column;gap:8px;box-shadow:var(--shadow)}
+.toc-panel h3{font-size:24px;margin-bottom:6px;display:flex;justify-content:space-between;align-items:center}
+.toc-close{background:none;border:1px solid var(--line);border-radius:8px;padding:4px 10px;font-size:14px}
+.toc-item{display:flex;align-items:center;gap:10px;background:none;border:0;border-radius:8px;padding:8px 10px;text-align:left;font-size:15px;color:var(--ink)}
+.toc-item:hover{background:var(--surface-2)}
+.toc-item.current{background:var(--gold-soft);font-weight:600}
+.toc-item .n{font-family:var(--display);font-size:18px;color:var(--muted);width:24px;font-variant-numeric:tabular-nums}
+.toc-item .m{margin-left:auto;font-size:12px;color:var(--moss);font-weight:700}
+
+/* схема управления (§ 2) */
+.org{display:flex;flex-direction:column;gap:8px}
+.org .lvl{display:grid;gap:8px;grid-template-columns:repeat(2,1fr)}
+@media (min-width:600px){ .org .lvl{grid-template-columns:repeat(4,1fr)} }
+.org .box{background:var(--surface-2);border-radius:8px;padding:9px 10px;font-size:14px;text-align:center;line-height:1.3}
+.org .box small{display:block;font-size:12px;color:var(--ink-2)}
+.org .box.top{background:var(--lapis);color:var(--on-lapis);font-weight:600;font-size:16px}
+.org .box.sub{background:var(--gold-soft)}
+.org .lbl{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:700;text-align:center}
+
+/* иллюстрации (§ 3) */
+.fig{margin:0;display:flex;flex-direction:column;gap:6px;align-items:flex-start}
+.fig img{width:100%;max-width:360px;height:auto;border-radius:10px;border:1px solid var(--line);background:var(--surface);box-shadow:var(--shadow)}
+.fig.wide img{max-width:100%}
+.fig figcaption{font-size:14px;color:var(--ink-2);line-height:1.35;max-width:60ch}
+.fig-row{display:flex;gap:12px;flex-wrap:wrap;align-items:flex-start}
+.fig-row .fig{flex:1 1 150px;max-width:220px}
+
+/* § 4: «каждый шестой», два пути крещения, игра «Где это было?» */
+.six{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;max-width:380px}
+.six span{height:64px;border-radius:8px;background:var(--surface-2);color:var(--ink-2);display:flex;align-items:flex-end;justify-content:center;padding-bottom:6px;font-size:11.5px;font-weight:600;position:relative}
+.six span::before{content:"";position:absolute;top:10px;left:50%;width:14px;height:14px;margin-left:-7px;border-radius:50%;background:var(--tile)}
+.six span::after{content:"";position:absolute;top:27px;left:50%;width:22px;height:14px;margin-left:-11px;border-radius:8px 8px 3px 3px;background:var(--tile)}
+.six span.w{background:var(--lapis);color:var(--on-lapis)}
+.six span.w::before,.six span.w::after{background:var(--gold)}
+.ways{display:grid;grid-template-columns:1fr;gap:10px}
+@media (min-width:560px){ .ways{grid-template-columns:1fr 1fr} }
+.way{background:var(--surface);border:1px solid var(--line);border-top:5px solid var(--lapis);border-radius:12px;padding:12px 14px;display:flex;flex-direction:column;gap:6px;box-shadow:var(--shadow)}
+.way.const{border-top-color:var(--terra)}
+.way.const h3{color:var(--terra)}
+.way .cn{font-weight:600;font-size:17px}
+.way p{font-size:15.5px;color:var(--ink-2)}
+.sort-card{background:var(--lapis-soft);border-radius:12px;padding:16px;font-size:18px;font-weight:600;line-height:1.35}
+.tri{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.tri .opt{text-align:center;padding:12px 4px;font-size:15px}
+.tri .opt.bad{background:var(--terra-soft);border-color:var(--terra)}
+.sort-sum{display:flex;flex-direction:column;gap:8px;font-size:15px}
+.sort-sum b{color:var(--lapis)}
+/* § 4: разбор вопросов учебника с подсказками и ответом */
+.qtext{font-size:18px;font-weight:600;line-height:1.35;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.aside ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:5px}
+.aside.ans{background:var(--moss-soft);border-left-color:var(--moss)}
+.aside.ans .k{color:var(--moss)}
+.answer{display:flex;flex-direction:column;gap:12px;align-items:stretch}
+.answer .btn{text-align:center}
+.ans-body{display:flex;flex-direction:column;gap:12px}
+.ans-table{width:100%;border-collapse:collapse;font-size:15px;background:var(--surface)}
+.ans-table th,.ans-table td{border:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top;line-height:1.3}
+.ans-table th{font-size:13px;color:var(--ink-2);font-weight:700}
+.ans-table td:first-child{white-space:nowrap}
+
+/* виды шагов: из учебника / задания учебника / сверх учебника */
+.kind-tag{display:flex;gap:10px;align-items:flex-start;border-radius:10px;padding:8px 12px;font-size:13px;line-height:1.35}
+.kind-tag .ic{font-size:18px;line-height:1.1}
+.kind-tag b{font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:700}
+.kind-tag .pg{font-weight:600;margin-left:6px;font-size:13px}
+.kind-tag small{display:block;font-size:13px;color:var(--ink-2);margin-top:2px}
+.kind-tag.book{background:var(--lapis-soft);color:var(--lapis)}
+.kind-tag.task{background:var(--gold-soft);color:var(--gold)}
+.kind-tag.ours{background:var(--terra-soft);color:var(--terra)}
+.stepbar button.k-book{background:var(--lapis-soft)} .stepbar button.k-task{background:var(--gold-soft)} .stepbar button.k-ours{background:var(--terra-soft)}
+.stepbar button.k-book.visited{background:var(--lapis)} .stepbar button.k-task.visited{background:var(--gold)} .stepbar button.k-ours.visited{background:var(--terra)}
+.stepbar button.visited.done{background:var(--moss)}
+.stepbar{gap:3px} .stepbar button{min-width:3px}
+.stepbar button.gstart{margin-left:5px}
+.stepbar button.current{transform:scaleY(1.9);box-shadow:0 0 0 1.5px var(--ink)}
+.toc-group{display:flex;flex-direction:column;gap:2px;border-left:4px solid var(--lapis);padding-left:8px;margin-top:10px}
+.toc-group.k-task{border-left-color:var(--gold)} .toc-group.k-ours{border-left-color:var(--terra)}
+.toc-head{display:flex;align-items:center;gap:8px;font-size:12px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;color:var(--lapis);padding:4px 2px}
+.toc-group.k-task .toc-head{color:var(--gold)} .toc-group.k-ours .toc-head{color:var(--terra)}
+.toc-head .ic{font-size:15px;letter-spacing:0}
+.toc-item .pg{margin-left:auto;font-size:12px;color:var(--muted);white-space:nowrap;font-variant-numeric:tabular-nums}
+.toc-item .pg + .m{margin-left:8px}
+
+/* ===== Книжное оформление (выбрано 14.09.2026): как учебник — синяя шапка, PT Serif / PT Sans Narrow / PT Sans ===== */
+:root{
+  --bg:#FBFAF6; --surface:#FFFFFF; --surface-2:#EAF0F8; --ink:#1A1A1A; --ink-2:#393939; --muted:#6B6B6B;
+  --lapis:#2D63A6; --on-lapis:#FFFFFF; --lapis-soft:#DCE7F5; --gold:#8B6B22; --gold-soft:#F3EBD3; --on-gold:#1A1A1A;
+  --terra:#C24E1E; --terra-soft:#FBE3D6; --moss:#3E7A3A; --moss-soft:#E1EEDC; --line:#D9DDE3; --tile:#D5DCE6; --shadow:none;
+  --band-ink:#FFFFFF; --tb:rgba(255,255,255,.32); --tbv:#FFFFFF; --to:rgba(255,190,160,.5); --tov:#F6A37E; --tt:rgba(255,230,160,.5); --ttv:#F2D27A; --tdone:#A6DB93;
+  --display:"PT Sans Narrow","Arial Narrow",sans-serif; --body:"PT Serif",Georgia,serif; --ui:"PT Sans","Segoe UI",system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){ --bg:#141516; --surface:#1C1E21; --surface-2:#1E2936; --ink:#EDEBE6; --ink-2:#CFCBC3; --muted:#9A968F;
+    --lapis:#79A6E0; --on-lapis:#10141A; --lapis-soft:#1F3350; --gold:#D9B45A; --gold-soft:#3A3120; --on-gold:#10141A;
+    --terra:#F0875A; --terra-soft:#43261A; --moss:#8CC47F; --moss-soft:#22381F; --line:#30343A; --tile:#2C3440; --shadow:none;
+    --band-ink:#10141A; --tb:rgba(16,20,26,.28); --tbv:#10141A; --to:rgba(120,40,10,.4); --tov:#8A2E0C; --tt:rgba(110,80,10,.4); --ttv:#6B4E0E; --tdone:#1F5A1A; } }
+:root[data-theme="dark"]{ --bg:#141516; --surface:#1C1E21; --surface-2:#1E2936; --ink:#EDEBE6; --ink-2:#CFCBC3; --muted:#9A968F;
+    --lapis:#79A6E0; --on-lapis:#10141A; --lapis-soft:#1F3350; --gold:#D9B45A; --gold-soft:#3A3120; --on-gold:#10141A;
+    --terra:#F0875A; --terra-soft:#43261A; --moss:#8CC47F; --moss-soft:#22381F; --line:#30343A; --tile:#2C3440; --shadow:none;
+    --band-ink:#10141A; --tb:rgba(16,20,26,.28); --tbv:#10141A; --to:rgba(120,40,10,.4); --tov:#8A2E0C; --tt:rgba(110,80,10,.4); --ttv:#6B4E0E; --tdone:#1F5A1A; }
+body{font-family:var(--body);font-size:18px;line-height:1.62}
+h1,h2,h3{font-family:var(--display);font-weight:700}
+.step h1{color:var(--lapis);font-size:clamp(34px,8.5vw,52px);line-height:1.02}
+.step h2{color:var(--lapis);font-size:clamp(28px,7vw,36px);line-height:1.08}
+.step h3{font-size:23px}
+.pnum{display:inline-flex;align-items:center;justify-content:center;background:var(--lapis);color:var(--on-lapis);font:700 .72em/1 var(--display);width:1.08em;height:1.08em;margin-right:.3em;vertical-align:.08em}
+.lede{font-size:20px}
+.top{background:var(--lapis);border-bottom:0}
+.back{background:transparent;border-color:var(--band-ink);color:var(--band-ink);font-family:var(--ui);border-radius:3px}
+.crumb{color:var(--band-ink);opacity:.88;font-family:var(--ui)}
+.crumb b{color:var(--band-ink)}
+.toc-btn{background:var(--band-ink);color:var(--lapis);border-color:var(--band-ink);font-family:var(--ui);font-weight:700;border-radius:3px}
+.stepbar button{border-radius:1px}
+.stepbar button.k-book{background:var(--tb)} .stepbar button.k-book.visited{background:var(--tbv)}
+.stepbar button.k-ours{background:var(--to)} .stepbar button.k-ours.visited{background:var(--tov)}
+.stepbar button.k-task{background:var(--tt)} .stepbar button.k-task.visited{background:var(--ttv)}
+.stepbar button.visited.done{background:var(--tdone)}
+.stepbar button.current{box-shadow:0 0 0 1.5px var(--band-ink)}
+.eyebrow{font-family:var(--ui);color:var(--muted);letter-spacing:.08em}
+.tess{display:none}
+.term{font-weight:700;font-style:italic;color:var(--ink);border-bottom:0}
+.kind-tag{border-radius:0;padding:6px 0 0;border-top:2px solid currentColor;font-family:var(--ui);align-items:center}
+.kind-tag.book,.kind-tag.task,.kind-tag.ours{background:transparent}
+.kind-tag .ic{display:flex}
+.kind-tag b{font-size:12.5px;letter-spacing:.08em}
+.kind-tag small{font-family:var(--body);font-style:italic;font-size:14.5px}
+details{border-radius:0}
+details summary{font-family:var(--ui)}
+details.book{border:0;border-top:3px solid var(--lapis);background:var(--surface-2)}
+details.book summary{color:var(--lapis)}
+details.book summary::before,details.book[open] summary::before{background:var(--lapis)}
+details.book .body{font-size:16px}
+.aside{border-radius:0}
+.aside .k{font-family:var(--ui)}
+.dom{border-radius:0;box-shadow:none;border-top:3px solid var(--lapis)}
+.dom .n{font-family:var(--display);font-weight:700;color:var(--lapis)}
+.dom .t{font-family:var(--ui)}
+.rung{border-radius:0}
+.tl-btn .y{font-family:var(--display);font-weight:700;color:var(--lapis)}
+.tl-btn .era{font-family:var(--ui)}
+.fig img{border-radius:0;box-shadow:none}
+.fig figcaption{font-family:var(--ui)}
+.org .box{border-radius:0}
+.qi{border-radius:0}
+.qi .qn{font-family:var(--display);font-weight:700;color:var(--terra)}
+.qi a{border-radius:0;font-family:var(--ui)}
+.game{border-radius:0;box-shadow:none;border-top:4px solid var(--terra)}
+.game h3{color:var(--terra)}
+.badge{border-radius:0;font-family:var(--ui)}
+.btn{border-radius:3px;font-family:var(--ui);font-weight:700}
+.opt{border-radius:0;background:var(--surface);border-color:var(--line);font-family:var(--body)}
+.feedback{border-radius:0}
+.progress{font-family:var(--ui)}
+.q{font-family:var(--body);font-weight:700}
+.face{border-radius:0}
+.face.f .w{font-family:var(--display);font-weight:700}
+.seq,.seq .slot,.sort-card,.brick,.qtext,.way,.six span,.mosaic .tile,.score-tiles i,.toc-panel,.toc-item{border-radius:0}
+.brick button{font-family:var(--ui)}
+.pager{background:var(--surface)}
+.count{font-family:var(--ui)}
+.toc-panel h3{font-family:var(--display)}
+.toc-head{font-family:var(--ui)}
+.toc-head .ic{display:flex}
+.score .big{font-family:var(--display);font-weight:700;color:var(--lapis)}
+/* переносы длинных слов на узком экране (14.09.2026) */
+.match{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+.opt,.face,.qi p,.ans-table td,.ans-table th{overflow-wrap:anywhere;hyphens:auto}
+.ans-table.fit td:first-child{white-space:normal}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-inner">
+    <a class="back" href="./">← Темы</a>
+    <div class="crumb">География · § 30 · <b>Мировой океан (1)</b></div>
+    <button class="toc-btn" id="toc-btn" type="button">Содержание</button>
+  </div>
+  <div class="stepbar" id="stepbar" aria-label="Шаги темы"></div>
+</header>
+
+<main id="deck">
+
+<!-- 1 -->
+<section class="step" data-step="za-minutu" data-name="За минуту" data-part="Самое главное" data-kind="ours">
+  <div class="kind-tag ours"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 6h14"></path><path d="M5 12h14"></path><path d="M5 18h9"></path></svg></span><div><b>Коротко о главном</b><small>Пересказ для разгона. Подробно, как в учебнике, — в следующих шагах.</small></div></div>
+  <div class="eyebrow">География · 6 класс · § 30</div>
+  <h1>Мировой океан (1)</h1>
+  <p class="lede">Амина, это тема про всю воду Земли сразу: про четыре океана и про то, что получается там, где вода встречается с сушей.</p>
+  <div id="resume" hidden></div>
+  <div class="prose">
+    <p>Представь, что ты вышла на берег и смотришь на воду. Видно её до самого горизонта, и кажется, что она тут и заканчивается. Но это только кажется.</p>
+    <p>А теперь представь, что ты поднялась так высоко, что видишь всю Землю целиком, как глобус. Сверху Земля почти не похожа на землю: воды на ней гораздо больше, чем суши. И эта вода не разлита отдельными лужами — она вся соединена в одно огромное целое.</p>
+    <p>Это целое и называется <b>Мировой океан</b>. Он такой большой, что говорить о нём сразу неудобно, поэтому люди мысленно разделили его на четыре части — четыре океана. Границы между ними придумали сами: в воде никаких линий нет.</p>
+    <p>А у берегов материков у Мирового океана есть как бы «закоулки»: вода заходит в сушу — получаются <b>моря</b> и <b>заливы</b>; вода протискивается между двумя кусками суши — получается <b>пролив</b>. Вот четыре части этой темы:</p>
+  </div>
+  <figure class="fig wide"><img src="img/2026-09-18-p30/01-zastavka-mirovoy-okean.jpg" width="800" height="181" loading="lazy" alt="Фотография-заставка: слева высокая пенная волна океана, справа закат над спокойной водой, внизу синяя полоса с названием параграфа"><figcaption>Так открывается § 30 в учебнике: одна и та же вода бывает и бушующей волной, и спокойной гладью под закатом (с. 101).</figcaption></figure>
+  <div class="steps4">
+    <div class="dom"><div class="n">1</div><div class="t">Мировой океан</div><div class="d">Вся вода, соединённая в одно целое.</div></div>
+    <div class="dom"><div class="n">2</div><div class="t">Четыре океана</div><div class="d">Тихий, Атлантический, Индийский, Северный Ледовитый.</div></div>
+    <div class="dom"><div class="n">3</div><div class="t">Моря</div><div class="d">Внутренние, окраинные, межостровные.</div></div>
+    <div class="dom"><div class="n">4</div><div class="t">Заливы и проливы</div><div class="d">Вода входит в сушу и разделяет сушу.</div></div>
+  </div>
+  <div class="aside">
+    <div class="k">Как этим пользоваться</div>
+    <p>У каждого шага написано, на какой странице учебника искать. Внизу шага есть «Подробнее, как в учебнике»: там всё, что есть на этих страницах, ничего не пропущено. Сначала учи по коротким шагам, а перед уроком открой «подробнее».</p>
+    <p>Надпись вверху шага подскажет, откуда он: синяя — из учебника, золотая — задание учебника, оранжевая — сверх учебника (пересказ, словарик, игры, самопроверка). В «Содержании» шаги так же разбиты на группы.</p>
+  </div>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · что есть в § 30, с. 101–103</summary>
+    <div class="body"><ul>
+      <li>§ 30 «Мировой океан (1)» — параграф из главы «Гидросфера — водная оболочка Земли» (это написано в синей полоске вверху страницы).</li>
+      <li>Начинается параграф строкой подтем курсивом: «Что такое Мировой океан. Что мы видим на границах материков и океанов». Это и есть два вопроса-заголовка внутри параграфа.</li>
+      <li>На с. 101 — раздел «Что такое Мировой океан?», три врезки на полях (про гидросферу, про ноль метров и про площади океанов) и розовая полоса с выводом.</li>
+      <li>На с. 102 — раздел «Что мы видим на границах материков и океанов?», врезка со списками внутренних и окраинных морей, фотография «Рис. 72» и розовая полоса с выводом.</li>
+      <li>На с. 103 — рубрика «Шаг за шагом. Описываем океан и море по карте» (план из 7 пунктов), рамка «Запомните:» и вопросы в конце параграфа тремя группами: «Это я знаю», «Это я могу», «Это мне интересно».</li>
+      <li>Все факты с этих страниц разложены по следующим шагам, каждый со своим блоком «Подробнее, как в учебнике».</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 2 -->
+<section class="step" data-step="chto-takoe" data-name="Что такое Мировой океан" data-part="Что такое Мировой океан" data-kind="book" data-pages="с. 101">
+  <div class="kind-tag book"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.5c2.6-1 5.6-.8 9 1.2v13c-3.4-2-6.4-2.2-9-1.2z"></path><path d="M21 5.5c-2.6-1-5.6-.8-9 1.2v13c3.4-2 6.4-2.2 9-1.2z"></path></svg></span><div><b>Из учебника</b><span class="pg">с. 101</span></div></div>
+  <div class="eyebrow">Что такое Мировой океан</div>
+  <h2>Одно огромное вместилище воды</h2>
+  <div class="prose">
+    <p><span class="term">Мировой океан</span> — гигантское вместилище воды на Земле. Проще говоря: это вся вода океанов и морей, взятая вместе.</p>
+    <p>Его водную поверхность называют <span class="term">акваторией</span>. Акватория Мирового океана — около <b>361 млн км²</b>. Это большая часть всей поверхности Земли: воды на планете больше, чем суши.</p>
+    <p>Вся вода Земли вместе — это <span class="term">гидросфера</span>, водная оболочка планеты. Так называется и вся глава учебника. Мировой океан — её основная часть.</p>
+  </div>
+  <div class="aside">
+    <div class="k">Врезка на полях (учебник, с. 101)</div>
+    <p>Мировой океан — основная часть гидросферы, включающая воды океанов и морей.</p>
+  </div>
+  <div class="prose">
+    <h3>Четыре части и один Южный</h3>
+    <p>В Мировом океане выделяют четыре крупные части — <b>Тихий</b>, <b>Атлантический</b>, <b>Индийский</b> и <b>Северный Ледовитый</b> океаны. Все они сообщаются между собой: из одного можно доплыть в другой, нигде не выходя на сушу.</p>
+    <p>Иногда выделяют ещё <b>Южный океан</b> — часть Мирового океана вокруг Антарктиды.</p>
+    <p>Чётких границ между океанами нет. Линии, которые разделяют их на карте, — <b>условные</b>, то есть придуманные людьми для удобства. Карта океанов есть в Приложении учебника.</p>
+  </div>
+  <details>
+    <summary>Что значит «условные линии»?</summary>
+    <div class="body"><p>Условная линия — это граница, которую договорились считать границей, хотя на самом месте её не видно. Если ты поплывёшь из Индийского океана в Тихий, никакого забора или полоски на воде не будет: вода везде одинаковая. Просто люди договорились, где один океан считать законченным, а другой — начавшимся.</p></div>
+  </details>
+  <div class="aside">
+    <div class="k">Врезка на полях (учебник, с. 101)</div>
+    <p>Спокойную поверхность Мирового океана принимают за <b>абсолютную высоту ноль метров</b>.</p>
+    <p>Поэтому, когда говорят «гора высотой 3000 метров», считают от уровня океана, а не от подножия горы.</p>
+  </div>
+  <div class="aside">
+    <div class="k">Вывод параграфа (учебник, с. 101)</div>
+    <p>МИРОВОЙ ОКЕАН — ОСНОВНАЯ И ЕДИНАЯ ЧАСТЬ ГИДРОСФЕРЫ.</p>
+  </div>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 101</summary>
+    <div class="body"><ul>
+      <li>Заголовок раздела: «Что такое Мировой океан?».</li>
+      <li>Мировой океан — гигантское вместилище воды на Земле. Его водная поверхность, или акватория (от греческого слова аква — вода), занимает около 361 млн км² — это большая часть поверхности Земли.</li>
+      <li>В Мировом океане выделяют четыре крупные части — Тихий, Атлантический, Индийский и Северный Ледовитый океаны. Все они сообщаются между собой.</li>
+      <li>Иногда выделяют Южный океан — часть Мирового океана вокруг Антарктиды.</li>
+      <li>Чётких границ между океанами нет (см. карту океанов в Приложении). Линии, разделяющие океаны, являются условными.</li>
+      <li>Врезка на полях: Мировой океан — основная часть гидросферы, включающая воды океанов и морей.</li>
+      <li>Врезка на полях: спокойную поверхность Мирового океана принимают за абсолютную высоту ноль метров.</li>
+      <li>Розовая полоса-вывод: МИРОВОЙ ОКЕАН — ОСНОВНАЯ И ЕДИНАЯ ЧАСТЬ ГИДРОСФЕРЫ.</li>
+      <li>В синей полосе вверху страницы — название главы: «Гидросфера — водная оболочка Земли».</li>
+      <li>Рассказ о каждом из четырёх океанов и врезка с их площадями — тоже на с. 101, они на следующем шаге.</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 3 -->
+<section class="step" data-step="chetyre-okeana" data-name="Четыре океана" data-part="Что такое Мировой океан" data-kind="book" data-pages="с. 101">
+  <div class="kind-tag book"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.5c2.6-1 5.6-.8 9 1.2v13c-3.4-2-6.4-2.2-9-1.2z"></path><path d="M21 5.5c-2.6-1-5.6-.8-9 1.2v13c3.4-2 6.4-2.2 9-1.2z"></path></svg></span><div><b>Из учебника</b><span class="pg">с. 101</span></div></div>
+  <div class="eyebrow">Что такое Мировой океан</div>
+  <h2>Четыре океана: у кого какой характер</h2>
+  <div class="prose">
+    <p>Открой карту полушарий или атлас — и читай про каждый океан, сразу находя его глазами. Так запомнится гораздо быстрее.</p>
+  </div>
+  <div class="ways">
+    <div class="way"><h3>Тихий</h3><div class="cn">самый большой и самый глубокий</div><p>Занимает большую часть Западного полушария. На него приходится почти половина площади всего Мирового океана. Он больше по площади, чем вся суша Земли, вместе взятая.</p></div>
+    <div class="way const"><h3>Атлантический</h3><div class="cn">примерно вдвое меньше Тихого</div><p>Сильно вытянут с севера на юг. На карте выглядит сжатым длинными побережьями материков: на западе — Северная и Южная Америка, на востоке — Евразия и Африка.</p></div>
+    <div class="way"><h3>Индийский</h3><div class="cn">почти весь в Южном полушарии</div><p>Удобно расположился между Африкой, Австралией, Евразией и Антарктидой.</p></div>
+    <div class="way const"><h3>Северный Ледовитый</h3><div class="cn">самый маленький и самый холодный</div><p>Почти весь год покрыт льдами. Находится в северной приполярной области, между Северной Америкой и Евразией.</p></div>
+  </div>
+  <div class="aside">
+    <div class="k">Площади океанов (врезка, учебник, с. 101)</div>
+    <ul>
+      <li>Тихий — 178,6 млн км²;</li>
+      <li>Атлантический — 91,6 млн км²;</li>
+      <li>Индийский — 76,2 млн км²;</li>
+      <li>Северный Ледовитый — 14,7 млн км².</li>
+    </ul>
+  </div>
+  <details>
+    <summary>Как проверить себя по этим числам</summary>
+    <div class="body"><p>Сложи все четыре числа на калькуляторе. Должно получиться примерно столько же, сколько площадь всего Мирового океана, — около 361 млн км². Если получилось — значит, ты ничего не перепутала при переписывании.</p><p><b>Млн км²</b> — миллион квадратных километров. Квадратный километр — это квадрат со стороной 1 км.</p></div>
+  </details>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 101</summary>
+    <div class="body"><ul>
+      <li>Тихий океан — самый большой и самый глубокий. Вы сразу найдёте его на карте — он занимает большую часть Западного полушария, и на него приходится почти половина площади Мирового океана. Он занимает даже большую площадь, чем вся суша.</li>
+      <li>Атлантический океан по площади примерно вдвое меньше Тихого и сильно вытянут с севера на юг. На карте он выглядит сжатым длинными побережьями материков: на западе — побережьями Северной и Южной Америки, на востоке — побережьями Евразии и Африки.</li>
+      <li>Индийский океан удобно расположился между Африкой, Австралией, Евразией и Антарктидой и почти целиком оказался в Южном полушарии.</li>
+      <li>Северный Ледовитый океан — самый маленький и самый холодный из четырёх. Почти весь год он покрыт льдами. Он располагается в северной приполярной области и занимает пространство между Северной Америкой и Евразией.</li>
+      <li>Врезка на полях «Площади океанов»: Тихий — 178,6 млн км²; Атлантический — 91,6 млн км²; Индийский — 76,2 млн км²; Северный Ледовитый — 14,7 млн км².</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 4 -->
+<section class="step" data-step="morya" data-name="Моря" data-part="На границах материков и океанов" data-kind="book" data-pages="с. 102">
+  <div class="kind-tag book"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.5c2.6-1 5.6-.8 9 1.2v13c-3.4-2-6.4-2.2-9-1.2z"></path><path d="M21 5.5c-2.6-1-5.6-.8-9 1.2v13c3.4-2 6.4-2.2 9-1.2z"></path></svg></span><div><b>Из учебника</b><span class="pg">с. 102</span></div></div>
+  <div class="eyebrow">На границах материков и океанов</div>
+  <h2>Моря: вода у самого берега</h2>
+  <div class="prose">
+    <p>В пределах океанов выделяют <span class="term">моря</span>, <span class="term">заливы</span> и <span class="term">проливы</span>. Главное их отличие от основной акватории вот в чём: все они занимают <b>пограничное положение</b> — между сушей и открытым океаном.</p>
+    <p>Посмотри на карту полушарий и приглядись к очертаниям материков. Их побережья очень разные. Где-то линия берега плавная и спокойная — например, на северо-западе Африки. А где-то она причудливо изогнутая, как северное побережье Австралии (карта в учебнике на с. 180—181).</p>
+    <h3>Какие бывают моря</h3>
+  </div>
+  <div class="ways">
+    <div class="way"><h3>Внутренние</h3><div class="cn">вдаются глубоко в сушу</div><p>Море заходит далеко внутрь материка, будто суша его обняла. Средиземное, Чёрное, Азовское.</p></div>
+    <div class="way const"><h3>Окраинные</h3><div class="cn">вдаются в сушу незначительно</div><p>Лежат у края материка. Чаще всего отделены от основной части океана островами. Охотское, Японское.</p></div>
+  </div>
+  <div class="prose">
+    <p>Есть ещё <span class="term">межостровные</span> моря — те, что лежат среди островов. Пример из учебника: Филиппинское.</p>
+    <p>Особое географическое положение занимает <span class="term">Саргассово море</span> в Атлантическом океане: у него нет берегов из суши, оно расположено между несколькими течениями.</p>
+    <p>Из-за близости к суше моря отличаются от открытого океана <b>свойствами вод и глубинами</b>: вода в них бывает теплее или холоднее, солонее или преснее, а глубины обычно меньше.</p>
+  </div>
+  <div class="aside">
+    <div class="k">Списки из врезки (учебник, с. 102)</div>
+    <p><b>Внутренние моря:</b> Средиземное, Мраморное, Чёрное, Азовское, Белое, Балтийское, Красное, Жёлтое.</p>
+    <p><b>Окраинные моря:</b> Охотское, Японское, Баренцево, Карибское, Карское, Чукотское и др.</p>
+  </div>
+  <div class="aside home">
+    <div class="k">Ближе к дому</div>
+    <p>Заметь: Каспийского моря в этих списках нет. И это не забывчивость авторов. Каспийское море со всех сторон окружено сушей и никак не соединяется с Мировым океаном, поэтому географы считают его не морем, а <b>озером</b> — самым большим озером на Земле. «Морем» его зовут за огромный размер и за то, что вода в нём солоноватая.</p>
+    <p>Так что море, на которое ты смотришь из Каспийска, в § 30 не попадает — у него свой, отдельный рассказ.</p>
+  </div>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 102</summary>
+    <div class="body"><ul>
+      <li>Заголовок раздела: «Что мы видим на границах материков и океанов?».</li>
+      <li>В пределах океанов выделяют моря, заливы и проливы. Главное их отличие от основной акватории состоит в том, что все они занимают пограничное положение между сушей и открытым океаном.</li>
+      <li>Внимательно приглядитесь к очертаниям материков на карте полушарий: их побережья очень различаются на разных участках. Где-то линия берега плавная, спокойная, как, например, на северо-западе Африки, где-то, наоборот, причудливо изогнутая, как северное побережье Австралии (см. с. 180—181).</li>
+      <li>Моря могут вдаваться глубоко в сушу — их называют внутренними. Те моря, которые вдаются в сушу незначительно, называют окраинными. Окраинные моря чаще всего отделены от основной части океана островами.</li>
+      <li>Из-за своей близости к суше моря отличаются от открытого океана свойствами вод и глубинами.</li>
+      <li>Существуют ещё межостровные моря (Филиппинское и др.).</li>
+      <li>Особое географическое положение занимает Саргассово море в Атлантическом океане, расположенное между несколькими течениями.</li>
+      <li>Врезка на полях. Внутренние моря: Средиземное, Мраморное, Чёрное, Азовское, Белое, Балтийское, Красное, Жёлтое. Окраинные моря: Охотское, Японское, Баренцево, Карибское, Карское, Чукотское и др.</li>
+      <li>Про заливы и проливы, фотография «Рис. 72» и розовая полоса-вывод — тоже на с. 102, они на следующем шаге.</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 5 -->
+<section class="step" data-step="zalivy-prolivy" data-name="Заливы и проливы" data-part="На границах материков и океанов" data-kind="book" data-pages="с. 102">
+  <div class="kind-tag book"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.5c2.6-1 5.6-.8 9 1.2v13c-3.4-2-6.4-2.2-9-1.2z"></path><path d="M21 5.5c-2.6-1-5.6-.8-9 1.2v13c3.4-2 6.4-2.2 9-1.2z"></path></svg></span><div><b>Из учебника</b><span class="pg">с. 102</span></div></div>
+  <div class="eyebrow">На границах материков и океанов</div>
+  <h2>Заливы и проливы</h2>
+  <div class="prose">
+    <p><span class="term">Заливы</span> — это части морей или океанов, вдающиеся в сушу. Вода как будто заходит в «карман» берега.</p>
+    <p>Самые большие заливы: <b>Бенгальский, Мексиканский, Большой Австралийский, Гудзонов, Гвинейский, Аденский, Персидский, Бискайский</b>.</p>
+    <p>На берегу <b>Финского</b> залива стоит Санкт-Петербург, а на берегу залива <b>Петра Великого</b> — Владивосток. Многие большие города выросли именно у заливов: там кораблям спокойнее, чем в открытом океане.</p>
+  </div>
+  <figure class="fig"><img src="img/2026-09-18-p30/02-ris-72-vellington.jpg" width="609" height="439" loading="lazy" alt="Вид сверху на город у воды: высотки и порт на берегу большой бухты, зелёные холмы вокруг, песчаный пляж справа"><figcaption>Рис. 72. На берегу залива стоит Веллингтон — столица Новой Зеландии (с. 102).</figcaption></figure>
+  <div class="prose">
+    <p><span class="term">Проливы</span> — узкие вытянутые участки водной поверхности. У пролива сразу две работы: он <b>соединяет две акватории</b> и <b>разделяет участки суши</b>.</p>
+  </div>
+  <div class="steps4">
+    <div class="dom"><div class="n">1</div><div class="t">Гибралтарский</div><div class="d">Соединяет Средиземное море с Атлантическим океаном. Разделяет Африку и Евразию.</div></div>
+    <div class="dom"><div class="n">2</div><div class="t">Татарский</div><div class="d">Самый длинный в России. Отделяет остров Сахалин от Евразии.</div></div>
+    <div class="dom"><div class="n">3</div><div class="t">Магелланов</div><div class="d">Соединяет Атлантический и Тихий океаны. Отделяет Огненную Землю от Южной Америки.</div></div>
+    <div class="dom"><div class="n">4</div><div class="t">Берингов</div><div class="d">Соединяет Северный Ледовитый и Тихий океаны. Разделяет Евразию и Северную Америку.</div></div>
+  </div>
+  <div class="prose">
+    <p>Ещё два пролива-рекордсмена из учебника:</p>
+    <ul>
+      <li><b>Мозамбикский</b> — самый длинный пролив в мире. Отделяет остров Мадагаскар от Африки.</li>
+      <li><b>Дрейка</b> — самый широкий. Разделяет Антарктический полуостров и архипелаг Огненная Земля.</li>
+    </ul>
+  </div>
+  <details>
+    <summary>Как не перепутать залив и пролив</summary>
+    <div class="body"><p>Задай себе один вопрос: <b>что эта вода делает с сушей?</b></p><p>Залив в сушу <b>заходит</b> и там заканчивается — это тупик, дальше берег. А пролив сушу <b>проходит насквозь</b>: с одной его стороны одна вода, с другой — другая, и между ними можно проплыть. Само слово подсказывает: про-лив, вода «проливается» из одного места в другое.</p><p><b>Архипелаг</b> — группа островов, которые лежат рядом.</p></div>
+  </details>
+  <div class="aside">
+    <div class="k">Вывод параграфа (учебник, с. 102)</div>
+    <p>МОРЯ И ЗАЛИВЫ — ЭТО ЧАСТИ МИРОВОГО ОКЕАНА, ВДАЮЩИЕСЯ В СУШУ (ИЛИ ПРИЛЕГАЮЩИЕ К НЕЙ).</p>
+  </div>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 102</summary>
+    <div class="body"><ul>
+      <li>Заливы — это части морей или океанов, вдающиеся в сушу (рис. 72).</li>
+      <li>Самые большие заливы — Бенгальский, Мексиканский, Большой Австралийский, Гудзонов, Гвинейский, Аденский, Персидский, Бискайский.</li>
+      <li>На берегу Финского залива стоит Санкт-Петербург, а на берегу залива Петра Великого — Владивосток.</li>
+      <li class="pic">Рис. 72. Подпись: «На берегу залива стоит Веллингтон — столица Новой Зеландии».</li>
+      <li>Проливы — узкие вытянутые участки водной поверхности, соединяющие две акватории и разделяющие участки суши.</li>
+      <li>Гибралтарский пролив соединяет Средиземное море с Атлантическим океаном и разделяет материки Африка и Евразия.</li>
+      <li>Татарский пролив (самый длинный в России) отделяет остров Сахалин от Евразии.</li>
+      <li>Магелланов пролив соединяет Атлантический и Тихий океаны и отделяет остров Огненная Земля от материка Южная Америка.</li>
+      <li>Берингов пролив соединяет Северный Ледовитый и Тихий океаны и разделяет материки Евразия и Северная Америка.</li>
+      <li>Самый длинный пролив в мире — Мозамбикский, отделяющий остров Мадагаскар от Африки.</li>
+      <li>Самый широкий — пролив Дрейка, разделяющий Антарктический полуостров и архипелаг Огненная Земля.</li>
+      <li>Розовая полоса-вывод: МОРЯ И ЗАЛИВЫ — ЭТО ЧАСТИ МИРОВОГО ОКЕАНА, ВДАЮЩИЕСЯ В СУШУ (ИЛИ ПРИЛЕГАЮЩИЕ К НЕЙ).</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 6 -->
+<section class="step" data-step="opisyvaem" data-name="Шаг за шагом: описываем океан" data-part="Шаг за шагом" data-kind="task" data-pages="с. 103">
+  <div class="kind-tag task"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l4.2-1L19 8.2 15.8 5 5 15.8z"></path><path d="M13.8 7l3.2 3.2"></path></svg></span><div><b>Задание учебника</b><span class="pg">с. 103</span><small>План из книги. Пояснения к словам — наши.</small></div></div>
+  <div class="eyebrow">Шаг за шагом</div>
+  <h2>Описываем океан и море по карте</h2>
+  <div class="prose">
+    <p>Это памятка из учебника. По ней можно рассказать про любой океан или море так, чтобы ничего не забыть. Открой атлас, выбери океан или море — и иди по пунктам сверху вниз. Описывать за тебя мы не будем: весь смысл в том, чтобы ты сама поискала по карте.</p>
+  </div>
+  <div class="qlist">
+    <div class="qi"><span class="qn">1</span><div><p>Найдём океан на карте и определим, в каком полушарии и между какими материками он находится. Для моря определим океан, к которому оно относится.</p></div></div>
+    <div class="qi"><span class="qn">2</span><div><p>Используя текст учебника, определим площадь океана.</p><p class="src">Площади всех четырёх океанов есть на с. 101 и на шаге 3.</p></div></div>
+    <div class="qi"><span class="qn">3</span><div><p>Используя шкалу глубин в атласе, определим максимальную глубину.</p><p class="src"><b>Шкала глубин</b> — цветная полоска сбоку карты: чем темнее синий, тем глубже. Самые большие глубины на картах ещё подписывают числом.</p></div></div>
+    <div class="qi"><span class="qn">4</span><div><p>Определим, в какой части океана находится море.</p><p class="src">Ответ бывает такой: «в северо-западной части», «на востоке океана».</p></div></div>
+    <div class="qi"><span class="qn">5</span><div><p>Определим, берега каких материков и крупных стран омывает. Используем и физическую, и политическую карты.</p><p class="src">Материки видно на физической карте, страны — на политической, где каждая страна своего цвета.</p></div></div>
+    <div class="qi"><span class="qn">6</span><div><p>Укажем важнейшие заливы, проливы.</p></div></div>
+    <div class="qi"><span class="qn">7</span><div><p>Определим виды хозяйственной деятельности людей, связанной с океаном или морем, используя учебник, справочники и консультации с учителем.</p><p class="src"><b>Хозяйственная деятельность</b> — то, чем люди зарабатывают и что добывают: рыболовство, перевозка грузов кораблями, добыча нефти со дна, отдых на побережье.</p></div></div>
+  </div>
+  <div class="aside">
+    <div class="k">Запомните (учебник, с. 103)</div>
+    <p>Мировой океан. Тихий океан. Атлантический океан. Индийский океан. Северный Ледовитый океан. Южный океан. Моря. Заливы. Проливы.</p>
+    <p>Это слова, которые нужно знать после § 30. Все они есть в словарике на шагах 7 и 8.</p>
+  </div>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 103</summary>
+    <div class="body"><ul>
+      <li>Рубрика «Шаг за шагом. Описываем океан и море по карте», план из семи пунктов: 1. Найдём океан на карте и определим, в каком полушарии и между какими материками он находится. Для моря определим океан, к которому оно относится. 2. Используя текст учебника, определим площадь океана. 3. Используя шкалу глубин в атласе, определим максимальную глубину. 4. Определим, в какой части океана находится море. 5. Определим, берега каких материков и крупных стран омывает. Используем и физическую, и политическую карты. 6. Укажем важнейшие заливы, проливы. 7. Определим виды хозяйственной деятельности людей, связанной с океаном или морем, используя учебник, справочники и консультации с учителем.</li>
+      <li>Рамка «Запомните:» — Мировой океан. Тихий океан. Атлантический океан. Индийский океан. Северный Ледовитый океан. Южный океан. Моря. Заливы. Проливы.</li>
+      <li>Вопросы и задания в конце параграфа (тоже с. 103) — на шаге 13.</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 7 -->
+<section class="step" data-step="slovar-1" data-name="Словарик: океан и его части" data-part="Словарик" data-kind="ours">
+  <div class="kind-tag ours"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="6" width="12" height="14" rx="1.5"></rect><path d="M8.5 3.5h10.5a1.5 1.5 0 0 1 1.5 1.5v12.5"></path></svg></span><div><b>Словарик</b><small>Сверх учебника — чтобы запомнить слова параграфа.</small></div></div>
+  <div class="game">
+    <div class="g-head"><h3>Словарик: океан и его части</h3><span class="badge" id="b-terms">Игра</span></div>
+    <p class="task">Нажми на карточку, и она перевернётся. Словарик из двух частей, открой все карточки.</p>
+    <div class="progress" id="terms-progress"></div>
+    <div class="cards" data-terms="0"></div>
+  </div>
+</section>
+
+<!-- 8 -->
+<section class="step" data-step="slovar-2" data-name="Словарик: моря, заливы, проливы" data-part="Словарик" data-kind="ours">
+  <div class="kind-tag ours"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="6" width="12" height="14" rx="1.5"></rect><path d="M8.5 3.5h10.5a1.5 1.5 0 0 1 1.5 1.5v12.5"></path></svg></span><div><b>Словарик</b><small>Сверх учебника — чтобы запомнить слова параграфа.</small></div></div>
+  <div class="game">
+    <div class="g-head"><h3>Словарик: моря, заливы, проливы</h3><span class="badge" id="b-terms2">Игра</span></div>
+    <p class="task">Вторая часть: всё, что происходит там, где океан встречается с сушей.</p>
+    <div class="progress" id="terms-progress2"></div>
+    <div class="cards" data-terms="1"></div>
+  </div>
+</section>
+
+<!-- 9 -->
+<section class="step" data-step="slova" data-name="Название и разгадка" data-part="Игры" data-kind="ours">
+  <div class="kind-tag ours"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="3"></rect><circle cx="9" cy="9" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="15" cy="15" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="15" cy="9" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="9" cy="15" r="1.3" fill="currentColor" stroke="none"></circle></svg></span><div><b>Игра</b><small>Сверх учебника — чтобы закрепить тему.</small></div></div>
+  <div class="game" id="g-match">
+    <div class="g-head"><h3>Название и разгадка</h3><span class="badge" id="b-match">Игра</span></div>
+    <p class="task">Нажми на название слева, потом на его разгадку справа.</p>
+    <div class="match">
+      <div class="col"><div class="lbl">Название</div><div class="col" id="foes"></div></div>
+      <div class="col"><div class="lbl">Что это</div><div class="col" id="outcomes"></div></div>
+    </div>
+    <div id="match-fb"></div>
+  </div>
+</section>
+
+<!-- 10 -->
+<section class="step" data-step="more-zaliv-proliv" data-name="Море, залив или пролив?" data-part="Игры" data-kind="ours">
+  <div class="kind-tag ours"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="3"></rect><circle cx="9" cy="9" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="15" cy="15" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="15" cy="9" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="9" cy="15" r="1.3" fill="currentColor" stroke="none"></circle></svg></span><div><b>Игра</b><small>Сверх учебника — чтобы закрепить тему.</small></div></div>
+  <div class="game">
+    <div class="g-head"><h3>Море, залив или пролив?</h3><span class="badge" id="b-sort">Игра</span></div>
+    <p class="task">На карточке одно название из параграфа. Выбери, что это: море, залив или пролив.</p>
+    <div class="progress" id="sort-progress"></div>
+    <div id="sort-box"></div>
+  </div>
+</section>
+
+<!-- 11 -->
+<section class="step" data-step="lishnee" data-name="Найди лишнее" data-part="Игры" data-kind="ours">
+  <div class="kind-tag ours"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="3"></rect><circle cx="9" cy="9" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="15" cy="15" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="15" cy="9" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="9" cy="15" r="1.3" fill="currentColor" stroke="none"></circle></svg></span><div><b>Игра</b><small>Сверх учебника — чтобы закрепить тему.</small></div></div>
+  <div class="game">
+    <div class="g-head"><h3>Найди лишнее</h3><span class="badge" id="b-odd">Игра</span></div>
+    <p class="task">Три из одной компании, одно чужое. Найди чужое.</p>
+    <div class="progress" id="odd-progress"></div>
+    <div class="odd-grid" id="odd-grid"></div>
+    <div id="odd-fb"></div>
+    <div class="row"><button class="btn" id="odd-next" type="button" hidden>Дальше</button></div>
+  </div>
+</section>
+
+<!-- 12 -->
+<section class="step" data-step="test" data-name="Проверь себя" data-part="Финал" data-kind="ours">
+  <div class="kind-tag ours"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"></circle><path d="M8 12.3l2.8 2.8L16.2 9.6"></path></svg></span><div><b>Самопроверка</b><small>Сверх учебника — вопросы, чтобы проверить себя. Задания из учебника — дальше.</small></div></div>
+  <div class="eyebrow">Финал</div>
+  <h2>Проверь себя</h2>
+  <div class="game">
+    <div class="progress" id="quiz-progress"></div>
+    <div id="quiz-box"></div>
+  </div>
+</section>
+
+<!-- 13 -->
+<section class="step" data-step="voprosy" data-name="Вопросы учебника" data-part="Финал" data-kind="task" data-pages="с. 103">
+  <div class="kind-tag task"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l4.2-1L19 8.2 15.8 5 5 15.8z"></path><path d="M13.8 7l3.2 3.2"></path></svg></span><div><b>Задание учебника</b><span class="pg">с. 103</span><small>Вопросы из книги. Где искать ответ и подсказки — наши.</small></div></div>
+  <div class="eyebrow">Финал · Вопросы в конце § 30</div>
+  <h2>Вопросы из учебника</h2>
+  <div class="prose">
+    <p>Вопросы разбиты на три группы, как в твоём учебнике, и номера такие же. Рядом с каждым написано, на каком шаге искать ответ. Отвечай своими словами: так лучше запоминается, и учитель услышит, что ты поняла, а не заучила.</p>
+    <h3>Это я знаю</h3>
+  </div>
+  <div class="qlist">
+    <div class="qi"><span class="qn">1</span><div><p>Что называется морем, заливом, проливом?</p><p class="src">Подсказка: три определения есть в тексте шагов 4 и 5. Для каждого назови два признака: где оно находится и что делает с сушей. Полностью этот вопрос разобран на последнем шаге.</p><a href="#morya">Шаг 4 · Моря</a> <a href="#zalivy-prolivy">Шаг 5 · Заливы и проливы</a></div></div>
+    <div class="qi"><span class="qn">2</span><div><p>По площади больше океан: а) Атлантический, чем Тихий; б) Атлантический, чем Индийский; в) Северный Ледовитый, чем Индийский.</p><p class="src">Подсказка: здесь надо проверить каждое из трёх утверждений отдельно. Выпиши четыре площади из врезки (шаг 3) и для каждой пары просто сравни числа: какое больше?</p><a href="#chetyre-okeana">Шаг 3 · Четыре океана</a></div></div>
+    <div class="qi"><span class="qn">3</span><div><p>Окраинным морем является: а) Чёрное; б) Баренцево; в) Красное; г) Средиземное.</p><p class="src">Подсказка: сначала вспомни, чем окраинное море отличается от внутреннего. Потом найди эти четыре названия в списках из врезки на шаге 4 — три из них будут в одном списке, а одно в другом.</p><a href="#morya">Шаг 4 · Моря</a></div></div>
+  </div>
+  <div class="prose"><h3>Это я могу</h3></div>
+  <div class="qlist">
+    <div class="qi"><span class="qn">4</span><div><p>Используя текст параграфа, составьте круговую диаграмму «Площади океанов». Какой вывод вы можете сделать?</p><p class="src">Подсказка: числа — во врезке на шаге 3. Круговая диаграмма — это круг, разрезанный на куски, как пирог: чем больше число, тем больше кусок. Сложи все четыре площади — это будет целый круг. Потом прикинь, какую часть круга занимает каждый океан: половину, четверть, совсем узкую полоску. Вывод сделай сама, глядя на готовый рисунок.</p><a href="#chetyre-okeana">Шаг 3 · Четыре океана</a></div></div>
+    <div class="qi"><span class="qn">5</span><div><p>Нанесите на контурную карту все океаны, моря, заливы, проливы, названия которых выделены в тексте.</p><p class="src">Подсказка: сначала составь список. Океаны — на шагах 2 и 3, моря — на шаге 4, заливы и проливы — на шаге 5. Короткий список главных слов есть и в рамке «Запомните» на шаге 6. Потом ищи каждое название в атласе и переноси на контурную карту. Подписывай крупно и разборчиво, названия океанов — вдоль, по всей их длине.</p><a href="#chto-takoe">Шаг 2 · Мировой океан</a> <a href="#morya">Шаг 4 · Моря</a> <a href="#zalivy-prolivy">Шаг 5 · Заливы и проливы</a></div></div>
+  </div>
+  <div class="prose"><h3>Это мне интересно</h3></div>
+  <div class="qlist">
+    <div class="qi"><span class="qn">6</span><div><p>Познакомьтесь с литературным описанием Азовского моря. Используя социальные сети, расспросите своих сверстников из Таганрога, Бердянска или Мариуполя об их впечатлениях о море, на берегах которого живут. Подготовьте сообщение об Азовском море.</p><p>Отрывок из учебника: «Невелико… Мелко Азовское море, мутны его воды, ибо несут сюда множество ила Дон и Бердянка, Миус и Калмиус, Молочная и Услюка. Печальны азовские песчаные берега: на западе — мёртвая полоса жёлтой Арабатской косы, на юго-востоке — невесёлые холмы да поросшие тальником ерики. Но нигде, пожалуй, художник не встретит таких тонких и нежных красок, как в Азовье… Недвижен ленивый парус далёкого баркаса, и очертания его смутно расплываются, словно кто-то тронул белой акварелью молочно-розовую линию горизонта и задумчиво отвёл кисть. А вокруг моря, куда не кинь глазом, — всё степь да степь. …Покрытые мхом каменные бабы помнят, как над синей азовской степью носились скифские наездники, как по морю, гордо подняв лебединую грудь, плыли генуэзские и венецианские корабли, как на смертную битву за русскую землю шли на половцев Игоревы полки, как два с половиной века тому назад великий Пётр, облюбовав место у пустынного Таганьего Рога, заложил город над морем…» <i>В. А. Закруткин.</i></p><p class="src">Подсказка: сначала разбери отрывок. <b>Ил</b> — мягкий осадок на дне, из-за него вода мутная. <b>Коса</b> — узкая песчаная полоска, уходящая в море. <b>Ерики</b> — маленькие протоки. <b>Баркас</b> — небольшое судно. <b>Каменные бабы</b> — древние каменные статуи в степи. Найди Азовское море в атласе: к какому океану оно относится, какое оно — внутреннее или окраинное, какие реки в него впадают, через какой пролив оно соединяется с Чёрным морем. Про переписку с незнакомыми людьми в соцсетях обязательно поговори с родителями.</p><a href="#morya">Шаг 4 · Моря</a></div></div>
+  </div>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 103</summary>
+    <div class="body"><ul>
+      <li>Все вопросы с. 103 перечислены выше в том же порядке и с той же нумерацией, что в книге, и разбиты на те же три группы: «Это я знаю» — вопросы 1—3; «Это я могу» — задания 4—5; «Это мне интересно» — задание 6 с отрывком В. А. Закруткина об Азовском море.</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 14 -->
+<section class="step" data-step="itog" data-name="Главный вопрос" data-part="Финал" data-kind="task" data-pages="с. 103">
+  <div class="kind-tag task"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l4.2-1L19 8.2 15.8 5 5 15.8z"></path><path d="M13.8 7l3.2 3.2"></path></svg></span><div><b>Задание учебника</b><span class="pg">с. 103</span><small>Вопрос из книги, кирпичики-подсказки — наши.</small></div></div>
+  <div class="eyebrow">Финал · Вопрос 1 из «Это я знаю»</div>
+  <h2>Что называется морем, заливом, проливом?</h2>
+  <div class="prose">
+    <p>Это первый вопрос в конце параграфа (с. 103) — и самый главный. Если ты ответишь на него уверенно, значит, половину § 30 ты уже знаешь.</p>
+    <p>Вот четыре «кирпичика» для ответа. Открой их, а потом попробуй рассказать всё сама, не подглядывая.</p>
+  </div>
+  <div class="bricks">
+    <div class="brick"><button type="button" aria-expanded="false"><span>Что у них общего</span><span>+</span></button><div class="b-body" hidden>Моря, заливы и проливы выделяют в пределах океанов — все они части Мирового океана. Главное их отличие от основной акватории в том, что они занимают пограничное положение: между сушей и открытым океаном.</div></div>
+    <div class="brick"><button type="button" aria-expanded="false"><span>Море</span><span>+</span></button><div class="b-body" hidden>Часть океана возле суши. Внутренние моря вдаются глубоко в сушу, окраинные — незначительно и чаще отделены от океана островами, межостровные лежат среди островов. Из-за близости к суше моря отличаются от открытого океана свойствами вод и глубинами.</div></div>
+    <div class="brick"><button type="button" aria-expanded="false"><span>Залив</span><span>+</span></button><div class="b-body" hidden>Часть моря или океана, вдающаяся в сушу. Самые большие: Бенгальский, Мексиканский, Большой Австралийский, Гудзонов, Гвинейский, Аденский, Персидский, Бискайский.</div></div>
+    <div class="brick"><button type="button" aria-expanded="false"><span>Пролив</span><span>+</span></button><div class="b-body" hidden>Узкий вытянутый участок водной поверхности. Делает сразу два дела: соединяет две акватории и разделяет участки суши. Например, Гибралтарский соединяет Средиземное море с Атлантическим океаном и разделяет Африку и Евразию.</div></div>
+  </div>
+  <div class="aside">
+    <div class="k">Главное в одном предложении</div>
+    <p>Мировой океан — основная и единая часть гидросферы: четыре океана сообщаются между собой, а там, где вода встречается с сушей, в нём выделяют моря и заливы, вдающиеся в сушу, и проливы, которые соединяют две акватории и разделяют участки суши.</p>
+  </div>
+  <div class="game">
+    <div class="g-head"><h3>Твоя мозаика</h3></div>
+    <div class="mosaic" id="mosaic"></div>
+    <div class="mosaic-list" id="mosaic-list"></div>
+    <div class="row"><a class="btn" href="./">К списку тем</a></div>
+  </div>
+</section>
+
+</main>
+
+<nav class="pager" aria-label="Навигация по шагам">
+  <div class="pager-inner">
+    <button class="btn ghost" id="prev" type="button">Назад</button>
+    <div class="count" id="count"></div>
+    <button class="btn" id="next" type="button">Дальше</button>
+  </div>
+</nav>
+
+<div class="toc" id="toc" hidden>
+  <div class="toc-panel" role="dialog" aria-label="Содержание">
+    <h3>Содержание <button class="toc-close" id="toc-close" type="button">Закрыть</button></h3>
+    <div id="toc-list" style="display:flex;flex-direction:column;gap:2px"></div>
+  </div>
+</div>
+
+<script>
+(function(){
+  'use strict';
+  var $ = function(s, r){ return (r||document).querySelector(s); };
+  var el = function(tag, cls, html){ var e=document.createElement(tag); if(cls) e.className=cls; if(html!=null) e.innerHTML=html; return e; };
+  var shuffle = function(a){ a=a.slice(); for(var i=a.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=a[i]; a[i]=a[j]; a[j]=t; } return a; };
+
+  /* ---------- state ---------- */
+  var KEY='geo-p30-v1';
+  var state={visited:{},done:{},last:0};
+  try{ var s=JSON.parse(localStorage.getItem(KEY)||'null'); if(s && typeof s==='object'){ state.visited=s.visited||{}; state.done=s.done||{}; state.last=s.last||0; } }catch(e){}
+  function save(){ try{ localStorage.setItem(KEY, JSON.stringify(state)); }catch(e){} }
+
+  var GAMES=[
+    {k:'terms', name:'Словарик, обе части', step:'slovar-1'},
+    {k:'match', name:'Название и разгадка', step:'slova'},
+    {k:'sort', name:'Море, залив или пролив?', step:'more-zaliv-proliv'},
+    {k:'odd', name:'Найди лишнее', step:'lishnee'},
+    {k:'quiz', name:'Проверь себя', step:'test'}
+  ];
+  var GAME_STEPS={'slovar-1':'terms','slovar-2':'terms','slova':'match','more-zaliv-proliv':'sort','lishnee':'odd','test':'quiz'};
+
+  /* ---------- steps ---------- */
+  var steps=Array.prototype.slice.call(document.querySelectorAll('.step'));
+  var N=steps.length, cur=0;
+  var stepbar=$('#stepbar'), count=$('#count'), prevB=$('#prev'), nextB=$('#next'), tocList=$('#toc-list');
+
+  /* содержание по группам: из учебника / задания учебника / сверх учебника */
+  var KIND={book:['<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.5c2.6-1 5.6-.8 9 1.2v13c-3.4-2-6.4-2.2-9-1.2z"></path><path d="M21 5.5c-2.6-1-5.6-.8-9 1.2v13c3.4-2 6.4-2.2 9-1.2z"></path></svg>','Из учебника'],task:['<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l4.2-1L19 8.2 15.8 5 5 15.8z"></path><path d="M13.8 7l3.2 3.2"></path></svg>','Задания учебника'],ours:['<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="3"></rect><circle cx="9" cy="9" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="15" cy="15" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="15" cy="9" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="9" cy="15" r="1.3" fill="currentColor" stroke="none"></circle></svg>','Сверх учебника']};
+  var tocItems=[], groups=[], prevKind=null, grp=null;
+  steps.forEach(function(s,i){
+    var kind=s.getAttribute('data-kind')||'book', pg=(s.getAttribute('data-pages')||'').replace(/,\s*п\..*$/,'');
+    var start=kind!==prevKind;
+    var b=el('button'); b.type='button'; b.setAttribute('aria-label','Шаг '+(i+1)+': '+s.getAttribute('data-name'));
+    b.setAttribute('data-base','k-'+kind+(start&&i>0?' gstart':'')); b.className=b.getAttribute('data-base');
+    b.addEventListener('click', function(){ go(i); });
+    stepbar.appendChild(b);
+    if(start){
+      var label = kind==='ours' ? (i===0?'Коротко о главном':'Словарик и игры · сверх учебника') : KIND[kind][1];
+      grp=el('div','toc-group k-'+kind,'<div class="toc-head"><span class="ic">'+KIND[kind][0]+'</span><span>'+label+'</span></div>');
+      grp.pages=[]; groups.push(grp); tocList.appendChild(grp); prevKind=kind;
+    }
+    var t=el('button','toc-item','<span class="n">'+(i+1)+'</span><span>'+s.getAttribute('data-name')+'</span>'+(pg?'<span class="pg">'+pg+'</span>':'')+'<span class="m"></span>');
+    t.type='button'; t.addEventListener('click', function(){ closeToc(); go(i); });
+    grp.appendChild(t); tocItems.push(t);
+    (pg.match(/\d+/g)||[]).forEach(function(n){ grp.pages.push(+n); });
+  });
+  groups.forEach(function(g){ if(g.pages.length){ var a=Math.min.apply(null,g.pages), z=Math.max.apply(null,g.pages); g.firstChild.lastChild.textContent+=' · с. '+(a===z?a:a+'–'+z); } });
+
+  function paint(){
+    var bars=stepbar.children, items=tocItems;
+    for(var i=0;i<N;i++){
+      var key=steps[i].getAttribute('data-step'), g=GAME_STEPS[key];
+      var done = g && state.done[g];
+      bars[i].className=bars[i].getAttribute('data-base')+(i===cur?' current':'')+(state.visited[i]?' visited':'')+(done?' done':'');
+      items[i].className='toc-item'+(i===cur?' current':'');
+      items[i].lastElementChild.textContent = done ? 'пройдено' : (state.visited[i] ? '✓' : '');
+    }
+    count.textContent=(cur+1)+' / '+N;
+    prevB.disabled = cur===0;
+    if(cur===N-1){ nextB.textContent='Это последний шаг'; nextB.disabled=true; }
+    else { nextB.textContent='Дальше: '+steps[cur+1].getAttribute('data-name'); nextB.disabled=false; }
+    var badges={terms:['b-terms','b-terms2'],match:['b-match'],sort:['b-sort'],odd:['b-odd']};
+    for(var k in badges){ badges[k].forEach(function(id){ var b=document.getElementById(id); if(b && state.done[k]){ b.textContent='Пройдено'; b.classList.add('done'); } }); }
+    paintMosaic();
+  }
+  function go(i, silent){
+    if(i<0||i>=N) return;
+    cur=i; steps.forEach(function(s,j){ s.hidden = j!==i; });
+    state.visited[i]=true; state.last=i; save();
+    if(!silent){ var h='#'+steps[i].getAttribute('data-step'); if(location.hash!==h) history.pushState(null,'',h); }
+    window.scrollTo(0,0);
+    paint();
+  }
+  function idxFromHash(){ var h=location.hash.replace('#',''); for(var i=0;i<N;i++) if(steps[i].getAttribute('data-step')===h) return i; return -1; }
+  function onHash(){ var i=idxFromHash(); if(i>=0 && i!==cur) go(i, true); }
+  window.addEventListener('popstate', onHash);
+  window.addEventListener('hashchange', onHash);
+  prevB.addEventListener('click', function(){ go(cur-1); });
+  nextB.addEventListener('click', function(){ go(cur+1); });
+  document.addEventListener('keydown', function(e){ if(e.target && /INPUT|TEXTAREA/.test(e.target.tagName)) return; if(e.key==='ArrowRight') go(cur+1); if(e.key==='ArrowLeft') go(cur-1); if(e.key==='Escape') closeToc(); });
+
+  var toc=$('#toc');
+  function openToc(){ toc.hidden=false; }
+  function closeToc(){ toc.hidden=true; }
+  $('#toc-btn').addEventListener('click', openToc);
+  $('#toc-close').addEventListener('click', closeToc);
+  toc.addEventListener('click', function(e){ if(e.target===toc) closeToc(); });
+
+  function markDone(k){ if(!state.done[k]){ state.done[k]=true; save(); } paint(); }
+
+  /* resume button on step 1 */
+  (function(){
+    var r=$('#resume');
+    if(state.last>0 && idxFromHash()<0){
+      r.hidden=false;
+      r.innerHTML='<button class="btn ghost" type="button">Продолжить с шага '+(state.last+1)+': '+steps[state.last].getAttribute('data-name')+'</button>';
+      r.firstChild.addEventListener('click', function(){ go(state.last); });
+    }
+  })();
+
+  /* ---------- mosaic on final step ---------- */
+  var mosaic=$('#mosaic'), mosaicList=$('#mosaic-list');
+  function paintMosaic(){
+    mosaic.innerHTML=''; mosaicList.innerHTML='';
+    GAMES.forEach(function(g){
+      var t=el('span','tile'+(state.done[g.k]?' on':'')); t.title=g.name; mosaic.appendChild(t);
+      var li=el('span', state.done[g.k]?'':'off', (state.done[g.k]?'★ ':'☆ ')+g.name);
+      if(!state.done[g.k]){ li.style.cursor='pointer'; li.addEventListener('click', function(){ for(var i=0;i<N;i++) if(steps[i].getAttribute('data-step')===g.step){ go(i); break; } }); }
+      mosaicList.appendChild(li);
+    });
+  }
+
+  /* ---------- glossary ---------- */
+  var TERMS=[
+    [
+      {t:'Гидросфера', d:'Водная оболочка Земли — вся вода планеты вместе.', e:'Так называется вся глава учебника.'},
+      {t:'Мировой океан', d:'Гигантское вместилище воды на Земле. Основная часть гидросферы, включающая воды океанов и морей.', e:'Его площадь — около 361 млн км².'},
+      {t:'Акватория', d:'Водная поверхность.', e:'Акватория Мирового океана — около 361 млн км².'},
+      {t:'Абсолютная высота ноль метров', d:'Спокойная поверхность Мирового океана. От неё отсчитывают высоту гор и глубину впадин.', e:''},
+      {t:'Тихий океан', d:'Самый большой и самый глубокий. Занимает большую часть Западного полушария.', e:'178,6 млн км² — почти половина Мирового океана и больше, чем вся суша.'},
+      {t:'Атлантический океан', d:'Примерно вдвое меньше Тихого, сильно вытянут с севера на юг.', e:'91,6 млн км². Сжат побережьями Америк, Евразии и Африки.'},
+      {t:'Индийский океан', d:'Расположился между Африкой, Австралией, Евразией и Антарктидой, почти целиком в Южном полушарии.', e:'76,2 млн км².'},
+      {t:'Северный Ледовитый океан', d:'Самый маленький и самый холодный, почти весь год покрыт льдами.', e:'14,7 млн км². Между Северной Америкой и Евразией.'}
+    ],
+    [
+      {t:'Южный океан', d:'Часть Мирового океана вокруг Антарктиды, которую иногда выделяют отдельно.', e:'Чётких границ между океанами нет, линии условные.'},
+      {t:'Море', d:'Часть океана у самой суши. Занимает пограничное положение между сушей и открытым океаном.', e:'Отличается от открытого океана свойствами вод и глубинами.'},
+      {t:'Внутреннее море', d:'Море, которое вдаётся глубоко в сушу.', e:'Средиземное, Мраморное, Чёрное, Азовское, Белое, Балтийское, Красное, Жёлтое.'},
+      {t:'Окраинное море', d:'Море, которое вдаётся в сушу незначительно. Чаще всего отделено от основной части океана островами.', e:'Охотское, Японское, Баренцево, Карибское, Карское, Чукотское и др.'},
+      {t:'Межостровное море', d:'Море, которое лежит среди островов.', e:'Пример из учебника — Филиппинское.'},
+      {t:'Саргассово море', d:'Море в Атлантическом океане с особым положением: оно расположено между несколькими течениями.', e:''},
+      {t:'Залив', d:'Часть моря или океана, вдающаяся в сушу.', e:'Бенгальский, Мексиканский, Большой Австралийский, Гудзонов, Гвинейский, Аденский, Персидский, Бискайский.'},
+      {t:'Пролив', d:'Узкий вытянутый участок водной поверхности. Соединяет две акватории и разделяет участки суши.', e:'Гибралтарский, Татарский, Магелланов, Берингов, Мозамбикский, Дрейка.'}
+    ]
+  ];
+  var flipped={}, total=0; TERMS.forEach(function(g){ total+=g.length; });
+  var progEls=[$('#terms-progress'),$('#terms-progress2')];
+  function termsProgress(){
+    var n=Object.keys(flipped).length;
+    progEls.forEach(function(p,gi){ var got=0; TERMS[gi].forEach(function(t,i){ if(flipped[gi+'-'+i]) got++; }); p.textContent='Открыто '+got+' из '+TERMS[gi].length+' здесь, всего '+n+' из '+total; });
+    if(n===total) markDone('terms');
+  }
+  document.querySelectorAll('.cards').forEach(function(box){
+    var gi=+box.getAttribute('data-terms');
+    TERMS[gi].forEach(function(t,i){
+      var b=el('button','card'); b.type='button'; b.setAttribute('aria-label',t.t+'. Нажми, чтобы увидеть значение');
+      b.innerHTML='<div class="in"><div class="face f"><div class="w">'+t.t+'</div><div class="tap">Нажми</div></div><div class="face b"><div class="w">'+t.t+'</div><div>'+t.d+'</div>'+(t.e?'<div class="e">'+t.e+'</div>':'')+'</div></div>';
+      b.addEventListener('click', function(){ b.classList.toggle('flip'); flipped[gi+'-'+i]=true; termsProgress(); });
+      box.appendChild(b);
+    });
+  });
+  termsProgress();
+
+  /* ---------- matching: название и разгадка ---------- */
+  var PAIRS=[
+    {foe:'Гидросфера', res:'Водная оболочка Земли', why:'Так называется вся вода планеты — и вся глава учебника.'},
+    {foe:'Акватория', res:'Водная поверхность', why:'Акватория Мирового океана — около 361 млн км².'},
+    {foe:'Гибралтарский', res:'Пролив между Африкой и Евразией', why:'Он же соединяет Средиземное море с Атлантическим океаном.'},
+    {foe:'Финский', res:'Залив, на берегу которого стоит Санкт-Петербург', why:'А на берегу залива Петра Великого стоит Владивосток.'},
+    {foe:'Петра Великого', res:'Залив, на берегу которого стоит Владивосток', why:'Оба города выросли у заливов: кораблям там спокойнее, чем в открытом океане.'},
+    {foe:'Татарский', res:'Самый длинный пролив в России', why:'Он отделяет остров Сахалин от Евразии.'},
+    {foe:'Мозамбикский', res:'Самый длинный пролив в мире', why:'Он отделяет остров Мадагаскар от Африки.'},
+    {foe:'Дрейка', res:'Самый широкий пролив', why:'Разделяет Антарктический полуостров и архипелаг Огненная Земля.'}
+  ];
+  var foesBox=$('#foes'), outBox=$('#outcomes'), matchFb=$('#match-fb'), selFoe=null, matched=0;
+  PAIRS.forEach(function(p){
+    var b=el('button','opt',p.foe); b.type='button'; b.setAttribute('data-foe',p.foe);
+    b.addEventListener('click', function(){
+      if(b.classList.contains('ok')) return;
+      var all=foesBox.querySelectorAll('.opt'); for(var i=0;i<all.length;i++) all[i].classList.remove('sel');
+      b.classList.add('sel'); selFoe=p; matchFb.innerHTML='';
+    });
+    foesBox.appendChild(b);
+  });
+  shuffle(PAIRS).forEach(function(p){
+    var b=el('button','opt',p.res); b.type='button';
+    b.addEventListener('click', function(){
+      if(b.classList.contains('ok')) return;
+      if(!selFoe){ matchFb.innerHTML='<div class="feedback bad"><span class="k">Сначала выбери название слева.</span></div>'; return; }
+      if(selFoe.res===p.res){
+        b.classList.add('ok'); b.disabled=true;
+        var fb=foesBox.querySelector('[data-foe="'+selFoe.foe+'"]'); fb.classList.remove('sel'); fb.classList.add('ok'); fb.disabled=true;
+        matchFb.innerHTML='<div class="feedback ok"><span class="k">Верно, пара собралась: «'+selFoe.foe+'» — «'+selFoe.res+'».</span><span>'+selFoe.why+'</span></div>';
+        selFoe=null; matched++;
+        if(matched===PAIRS.length){ matchFb.innerHTML='<div class="feedback ok"><span class="k">Все восемь пар собраны!</span><span>Теперь эти названия не перепутаешь.</span></div>'; markDone('match'); }
+      } else {
+        b.classList.add('bad'); setTimeout(function(){ b.classList.remove('bad'); },400);
+        matchFb.innerHTML='<div class="feedback bad"><span class="k">Не то.</span><span>Это разгадка другого названия. Попробуй ещё.</span></div>';
+      }
+    });
+    outBox.appendChild(b);
+  });
+
+  /* ---------- sort: море, залив или пролив ---------- */
+  var ROLES=['Море','Залив','Пролив'];
+  var SORT=[
+    {t:'Охотское', c:'Море', why:'Окраинное море: от основной части океана оно отделено островами.'},
+    {t:'Саргассово', c:'Море', why:'Особое море в Атлантическом океане: оно лежит между несколькими течениями.'},
+    {t:'Филиппинское', c:'Море', why:'Учебник приводит его как пример межостровного моря.'},
+    {t:'Бенгальский', c:'Залив', why:'Один из самых больших заливов на Земле.'},
+    {t:'Мексиканский', c:'Залив', why:'Тоже из списка самых больших заливов.'},
+    {t:'Персидский', c:'Залив', why:'И он в списке самых больших заливов.'},
+    {t:'Гибралтарский', c:'Пролив', why:'Соединяет Средиземное море с Атлантическим океаном и разделяет Африку и Евразию.'},
+    {t:'Берингов', c:'Пролив', why:'Соединяет Северный Ледовитый и Тихий океаны и разделяет Евразию и Северную Америку.'},
+    {t:'Магелланов', c:'Пролив', why:'Соединяет Атлантический и Тихий океаны и отделяет Огненную Землю от материка Южная Америка.'}
+  ];
+  var sortBox=$('#sort-box'), sortP=$('#sort-progress'), sortList=shuffle(SORT), si=0;
+  function renderSort(){
+    if(si>=sortList.length){ return sortDone(); }
+    var it=sortList[si];
+    sortP.textContent='Карточка '+(si+1)+' из '+sortList.length;
+    sortBox.innerHTML='';
+    sortBox.appendChild(el('div','sort-card',it.t));
+    var tri=el('div','tri'); sortBox.appendChild(tri);
+    var fb=el('div'); sortBox.appendChild(fb);
+    var rowN=el('div','row'); sortBox.appendChild(rowN);
+    ROLES.forEach(function(c){
+      var b=el('button','opt',c); b.type='button';
+      b.addEventListener('click', function(){
+        if(c===it.c){
+          var all=tri.querySelectorAll('.opt'); for(var k=0;k<all.length;k++) all[k].disabled=true;
+          b.classList.add('ok');
+          fb.innerHTML='<div class="feedback ok"><span class="k">Верно, это '+c.toLowerCase()+'.</span><span>'+it.why+'</span></div>';
+          var n=el('button','btn', si<sortList.length-1?'Следующая карточка':'Показать итог'); n.type='button';
+          n.addEventListener('click', function(){ si++; renderSort(); });
+          rowN.appendChild(n);
+        } else {
+          b.classList.add('bad'); b.disabled=true;
+          fb.innerHTML='<div class="feedback bad"><span class="k">Нет, это не '+c.toLowerCase()+'.</span><span>Вспомни, что эта вода делает с сушей, и попробуй ещё.</span></div>';
+        }
+      });
+      tri.appendChild(b);
+    });
+  }
+  function sortDone(){
+    sortP.textContent='Все карточки разложены';
+    var html='<div class="feedback ok"><span class="k">Готово! Вот что получилось:</span></div><div class="sort-sum">';
+    ROLES.forEach(function(c){
+      var items=SORT.filter(function(x){ return x.c===c; }).map(function(x){ return x.t; });
+      html+='<div><b>'+c+':</b> '+items.join(', ')+'.</div>';
+    });
+    html+='</div><p>И моря, и заливы, и проливы — части Мирового океана у берегов материков.</p><div class="row"><button class="btn ghost" type="button" id="sort-again">Ещё раз</button></div>';
+    sortBox.innerHTML=html;
+    $('#sort-again').addEventListener('click', function(){ sortList=shuffle(SORT); si=0; renderSort(); });
+    markDone('sort');
+  }
+  renderSort();
+
+  /* ---------- odd one out ---------- */
+  var ODD=[
+    {items:['Тихий','Атлантический','Индийский','Средиземное'], odd:'Средиземное', why:'Тихий, Атлантический и Индийский — океаны, крупные части Мирового океана. Средиземное — море, и притом внутреннее.'},
+    {items:['Гибралтарский','Берингов','Магелланов','Бенгальский'], odd:'Бенгальский', why:'Первые три — проливы: они соединяют акватории и разделяют сушу. Бенгальский — один из самых больших заливов.'},
+    {items:['Северная Америка','Евразия','Африка','Мадагаскар'], odd:'Мадагаскар', why:'Первые три — материки. Мадагаскар — остров, его отделяет от Африки Мозамбикский пролив.'},
+    {items:['Мексиканский','Гвинейский','Аденский','Мозамбикский'], odd:'Мозамбикский', why:'Первые три — из списка самых больших заливов. Мозамбикский — пролив, и самый длинный в мире.'}
+  ];
+  var oddGrid=$('#odd-grid'), oddFb=$('#odd-fb'), oddNext=$('#odd-next'), oddP=$('#odd-progress'), oddRound=0;
+  function renderOdd(){
+    var r=ODD[oddRound]; oddGrid.innerHTML=''; oddFb.innerHTML=''; oddNext.hidden=true;
+    oddP.textContent='Раунд '+(oddRound+1)+' из '+ODD.length;
+    shuffle(r.items).forEach(function(w){
+      var b=el('button','opt',w); b.type='button';
+      b.addEventListener('click', function(){
+        var all=oddGrid.querySelectorAll('.opt');
+        if(w===r.odd){
+          for(var i=0;i<all.length;i++) all[i].disabled=true;
+          b.classList.add('ok');
+          oddFb.innerHTML='<div class="feedback ok"><span class="k">Точно, лишнее — «'+w+'».</span><span>'+r.why+'</span></div>';
+          if(oddRound<ODD.length-1) oddNext.hidden=false;
+          else { oddP.textContent='Все четыре раунда пройдены'; markDone('odd'); }
+        } else {
+          b.classList.add('bad'); b.disabled=true;
+          oddFb.innerHTML='<div class="feedback bad"><span class="k">«'+w+'» из той же компании, что и остальные.</span><span>Подумай, что здесь про другое.</span></div>';
+        }
+      });
+      oddGrid.appendChild(b);
+    });
+  }
+  oddNext.addEventListener('click', function(){ oddRound++; renderOdd(); });
+  renderOdd();
+
+  /* ---------- quiz ---------- */
+  var QUIZ=[
+    {q:'Как в учебнике называют водную поверхность Мирового океана?', o:['Литосфера','Акватория','Атмосфера'], a:1, why:'Литосфера — каменная оболочка Земли, атмосфера — воздушная. Водная поверхность — акватория.'},
+    {q:'Какую площадь занимает Мировой океан?', o:['Около 161 млн км²','Около 261 млн км²','Около 361 млн км²'], a:2, why:'Около 361 млн км² — это большая часть всей поверхности Земли.'},
+    {q:'Какой океан самый большой и самый глубокий?', o:['Тихий','Атлантический','Индийский'], a:0, why:'На Тихий приходится почти половина площади Мирового океана, и он больше, чем вся суша.'},
+    {q:'Какой океан почти весь год покрыт льдами?', o:['Индийский','Северный Ледовитый','Атлантический'], a:1, why:'Он же самый маленький и самый холодный, лежит между Северной Америкой и Евразией.'},
+    {q:'Какой океан почти целиком оказался в Южном полушарии?', o:['Северный Ледовитый','Тихий','Индийский'], a:2, why:'Индийский расположился между Африкой, Австралией, Евразией и Антарктидой.'},
+    {q:'Часть Мирового океана вокруг Антарктиды иногда выделяют как…', o:['Южный океан','Саргассово море','Филиппинское море'], a:0, why:'Саргассово море — в Атлантическом океане, Филиппинское — межостровное море.'},
+    {q:'Какое море учебник приводит в пример межостровного?', o:['Белое','Филиппинское','Азовское'], a:1, why:'Белое и Азовское — внутренние моря: они глубоко вдаются в сушу.'},
+    {q:'Какой пролив соединяет Средиземное море с Атлантическим океаном?', o:['Берингов','Магелланов','Гибралтарский'], a:2, why:'Гибралтарский заодно разделяет материки Африка и Евразия.'},
+    {q:'Какой пролив самый широкий в мире?', o:['Дрейка','Мозамбикский','Татарский'], a:0, why:'Мозамбикский — самый длинный в мире, Татарский — самый длинный в России.'},
+    {q:'На берегу какого залива стоит Санкт-Петербург?', o:['Гвинейского','Финского','Бискайского'], a:1, why:'А на берегу залива Петра Великого стоит Владивосток.'}
+  ];
+  var qBox=$('#quiz-box'), qP=$('#quiz-progress'), qi=0, score=0;
+  function renderQ(){
+    if(qi>=QUIZ.length) return renderScore();
+    var q=QUIZ[qi];
+    qP.textContent='Вопрос '+(qi+1)+' из '+QUIZ.length;
+    qBox.innerHTML='';
+    qBox.appendChild(el('div','q',q.q));
+    var opts=el('div','q-opts'); qBox.appendChild(opts);
+    var fb=el('div'); qBox.appendChild(fb);
+    var rowN=el('div','row'); qBox.appendChild(rowN);
+    var answered=false;
+    q.o.forEach(function(o,i){
+      var b=el('button','opt',o); b.type='button';
+      b.addEventListener('click', function(){
+        if(answered) return; answered=true;
+        var all=opts.querySelectorAll('.opt');
+        for(var k=0;k<all.length;k++){ all[k].disabled=true; if(k===q.a) all[k].classList.add('ok'); }
+        if(i===q.a){ score++; fb.innerHTML='<div class="feedback ok"><span class="k">Правильно!</span><span>'+q.why+'</span></div>'; }
+        else { b.classList.add('bad'); fb.innerHTML='<div class="feedback bad"><span class="k">Нет, правильный ответ подсвечен зелёным.</span><span>'+q.why+'</span></div>'; }
+        var n=el('button','btn', qi<QUIZ.length-1?'Следующий вопрос':'Показать результат'); n.type='button';
+        n.addEventListener('click', function(){ qi++; renderQ(); window.scrollTo(0,0); });
+        rowN.appendChild(n);
+      });
+      opts.appendChild(b);
+    });
+  }
+  function renderScore(){
+    qP.textContent='Результат';
+    var tiles=''; for(var i=0;i<QUIZ.length;i++) tiles+='<i class="'+(i<score?'on':'')+'"></i>';
+    var msg = score===QUIZ.length ? 'Идеально, Амина! Ни одной ошибки.' : score>=8 ? 'Отлично! Ещё раз взгляни на вопросы, где ошиблась, и будет полный набор.' : score>=6 ? 'Хорошо. Перечитай шаги, где было трудно, и пройди тест снова.' : 'Ничего страшного, Амина, названий тут много. Вернись к словарику на шагах 7 и 8, потом к шагам 3 и 5, и попробуй ещё раз.';
+    qBox.innerHTML='<div class="score"><div class="big">'+score+' из '+QUIZ.length+'</div><div class="score-tiles">'+tiles+'</div><p>'+msg+'</p><button class="btn ghost" type="button" id="quiz-again">Пройти ещё раз</button></div>';
+    $('#quiz-again').addEventListener('click', function(){ qi=0; score=0; renderQ(); });
+    markDone('quiz');
+  }
+  renderQ();
+
+  /* ---------- bricks ---------- */
+  Array.prototype.forEach.call(document.querySelectorAll('.brick button'), function(b){
+    b.addEventListener('click', function(){
+      var body=b.nextElementSibling, open=body.hidden;
+      body.hidden=!open; b.setAttribute('aria-expanded', open?'true':'false');
+      b.lastElementChild.textContent = open?'−':'+';
+    });
+  });
+
+  /* ---------- start ---------- */
+  var start=idxFromHash(); go(start<0?0:start, true);
+})();
+</script>
+
+</body>
+</html>

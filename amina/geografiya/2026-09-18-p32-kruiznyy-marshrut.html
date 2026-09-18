@@ -1,0 +1,804 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Круизный маршрут</title>
+<meta name="paragraph" content="§ 32">
+<meta name="description" content="Учимся с «Полярной звездой». Круизный маршрутный лист путешественника">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=PT+Sans+Narrow:wght@400;700&family=PT+Sans:wght@400;700&display=swap">
+<style>
+:root{
+  --bg:#EBE8DF; --surface:#F8F6F0; --surface-2:#E2DED2; --ink:#1B2233; --ink-2:#4A5163; --muted:#7A8093;
+  --lapis:#23448A; --on-lapis:#FFFFFF; --lapis-soft:#D9E1F3;
+  --gold:#B08A2E; --gold-soft:#F1E6C2; --on-gold:#2A2107;
+  --terra:#B4552F; --terra-soft:#F3DCD2;
+  --moss:#4E7A3B; --moss-soft:#DCE8D2;
+  --line:#D2CDBF; --tile:#CFC9B9;
+  --shadow:0 1px 2px rgba(27,34,51,.08),0 10px 28px rgba(27,34,51,.07);
+  --display:"Oranienbaum","Georgia","Times New Roman",serif;
+  --body:"Golos Text","Segoe UI",system-ui,-apple-system,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0F1728; --surface:#182338; --surface-2:#21304B; --ink:#EDE8DC; --ink-2:#C2BFB4; --muted:#8B93A8;
+    --lapis:#7EA0E6; --on-lapis:#0F1728; --lapis-soft:#22345A;
+    --gold:#E0B84A; --gold-soft:#3E3419; --on-gold:#0F1728;
+    --terra:#E0825C; --terra-soft:#4A2A1D;
+    --moss:#8DBF74; --moss-soft:#243B1F;
+    --line:#2E3B57; --tile:#2A3856;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 28px rgba(0,0,0,.35);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0F1728; --surface:#182338; --surface-2:#21304B; --ink:#EDE8DC; --ink-2:#C2BFB4; --muted:#8B93A8;
+  --lapis:#7EA0E6; --on-lapis:#0F1728; --lapis-soft:#22345A;
+  --gold:#E0B84A; --gold-soft:#3E3419; --on-gold:#0F1728;
+  --terra:#E0825C; --terra-soft:#4A2A1D;
+  --moss:#8DBF74; --moss-soft:#243B1F;
+  --line:#2E3B57; --tile:#2A3856;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 28px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+@media (prefers-reduced-motion: reduce){ *{transition:none!important;animation:none!important} }
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.55;-webkit-text-size-adjust:100%}
+h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1.1;text-wrap:balance;margin:0}
+p{margin:0}
+a{color:var(--lapis)}
+button{font:inherit;color:inherit;cursor:pointer}
+button:focus-visible,summary:focus-visible,a:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+[hidden]{display:none!important}
+
+/* ---------- top bar ---------- */
+.top{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+.top-inner{max-width:720px;margin:0 auto;padding:10px 16px;display:flex;align-items:center;gap:12px}
+.back{text-decoration:none;color:var(--ink-2);font-size:14px;white-space:nowrap;padding:6px 10px;border-radius:8px;background:var(--surface);border:1px solid var(--line)}
+.crumb{flex:1;min-width:0;font-size:14px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.crumb b{color:var(--ink);font-weight:600}
+.toc-btn{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:6px 10px;font-size:14px;color:var(--lapis);font-weight:600;white-space:nowrap}
+.stepbar{max-width:720px;margin:0 auto;padding:0 16px 10px;display:flex;gap:4px}
+.stepbar button{flex:1;height:8px;min-width:6px;padding:0;border:0;border-radius:2px;background:var(--tile);transition:background .3s,transform .3s}
+.stepbar button.visited{background:var(--lapis)}
+.stepbar button.done{background:var(--gold)}
+.stepbar button.current{transform:scaleY(1.6);background:var(--gold)}
+
+/* ---------- steps ---------- */
+main{max-width:720px;margin:0 auto;padding:20px 16px 120px}
+.step{display:flex;flex-direction:column;gap:16px}
+.eyebrow{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);font-weight:700;display:flex;align-items:center;gap:10px}
+.tess{display:inline-flex;gap:3px}
+.tess i{width:8px;height:8px;display:block;border-radius:1px}
+.tess i:nth-child(1){background:var(--lapis)} .tess i:nth-child(2){background:var(--gold)} .tess i:nth-child(3){background:var(--terra)}
+.step h1{font-size:clamp(36px,8vw,56px)}
+.step h2{font-size:clamp(28px,6vw,38px)}
+.step h3{font-size:22px;color:var(--lapis);margin-top:4px}
+.lede{font-size:19px;color:var(--ink-2);max-width:34ch}
+.prose{display:flex;flex-direction:column;gap:12px;max-width:66ch}
+.prose ul{margin:0;padding-left:22px;display:flex;flex-direction:column;gap:6px}
+.prose li::marker{color:var(--gold)}
+b,strong{font-weight:600}
+.term{font-weight:600;color:var(--lapis);border-bottom:2px solid var(--gold-soft)}
+.aside{background:var(--lapis-soft);border-left:4px solid var(--lapis);padding:12px 16px;border-radius:0 8px 8px 0;font-size:16px;display:flex;flex-direction:column;gap:6px}
+.aside .k{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--lapis);font-weight:700}
+.home{background:var(--gold-soft);border-left-color:var(--gold)}
+.home .k{color:var(--gold)}
+details{border:1px solid var(--line);border-radius:10px;background:var(--surface)}
+details summary{cursor:pointer;list-style:none;padding:12px 16px;font-weight:600;color:var(--lapis);display:flex;align-items:center;gap:10px}
+details summary::-webkit-details-marker{display:none}
+details summary::before{content:"";width:9px;height:9px;background:var(--gold);transform:rotate(45deg);flex:none;transition:transform .2s}
+details[open] summary::before{transform:rotate(45deg) scale(.6);background:var(--lapis)}
+details .body{padding:0 16px 14px;display:flex;flex-direction:column;gap:8px;color:var(--ink-2)}
+
+.steps4{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+@media (min-width:600px){ .steps4{grid-template-columns:repeat(4,1fr)} }
+.dom{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px;display:flex;flex-direction:column;gap:4px;box-shadow:var(--shadow)}
+.dom .n{font-family:var(--display);font-size:28px;color:var(--gold);line-height:1}
+.dom .t{font-weight:600;font-size:15px;line-height:1.25}
+.dom .d{font-size:13.5px;color:var(--ink-2);line-height:1.35}
+
+.ladder{display:flex;flex-direction:column;align-items:center;gap:6px}
+.rung{background:var(--lapis);color:var(--on-lapis);padding:9px 12px;border-radius:8px;text-align:center;font-size:15px;line-height:1.3}
+.rung small{display:block;opacity:.85;font-size:12.5px}
+.rung.r1{width:60%} .rung.r2{width:74%} .rung.r3{width:88%} .rung.r4{width:100%;background:var(--surface-2);color:var(--ink)}
+
+/* timeline (вертикальная, все даты видны сразу) */
+.tl-v{display:flex;flex-direction:column;position:relative;padding-left:4px}
+.tl-v::before{content:"";position:absolute;left:16px;top:16px;bottom:16px;width:3px;background:var(--line);border-radius:2px}
+.tl-item{position:relative;padding-left:36px;display:flex;flex-direction:column}
+.tl-btn{background:none;border:0;padding:8px 0;text-align:left;display:flex;align-items:baseline;gap:8px 12px;flex-wrap:wrap;color:var(--ink);width:100%}
+.tl-btn .dot{position:absolute;left:5px;top:12px;width:17px;height:17px;background:var(--surface);border:3px solid var(--lapis);border-radius:50%;transition:transform .2s,background .2s}
+.tl-item.ru .dot{border-color:var(--terra)}
+.tl-item.open .dot{background:var(--gold);border-color:var(--gold);transform:scale(1.2)}
+.tl-btn .y{font-family:var(--display);font-size:26px;line-height:1;font-variant-numeric:tabular-nums;min-width:96px}
+.tl-btn .t{font-weight:600;font-size:16px}
+.tl-btn .era{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--lapis);font-weight:700;margin-left:auto}
+.tl-item.ru .era{color:var(--terra)}
+.tl-d{color:var(--ink-2);font-size:15.5px;padding:0 0 12px;line-height:1.45}
+.hint{font-size:14px;color:var(--muted)}
+
+/* «как в учебнике» и вопросы учебника */
+details.book{border-color:var(--gold-soft)}
+details.book summary{color:var(--gold)}
+details.book summary::before{background:var(--gold)}
+details.book[open] summary::before{background:var(--gold)}
+details.book .body{font-size:15px;color:var(--ink)}
+details.book .body ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:7px}
+details.book .body li::marker{color:var(--gold)}
+details.book .body .pic{color:var(--ink-2);font-style:italic}
+.qlist{display:flex;flex-direction:column;gap:10px}
+.qi{display:grid;grid-template-columns:auto 1fr;gap:12px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.qi .qn{font-family:var(--display);font-size:24px;color:var(--gold);line-height:1;min-width:20px}
+.qi p{font-size:15.5px}
+.qi .src{font-size:14.5px;color:var(--ink-2);margin-top:6px}
+.qi a{font-size:13.5px;font-weight:600;text-decoration:none;display:inline-block;margin-top:8px;background:var(--lapis-soft);padding:4px 10px;border-radius:999px}
+
+/* games */
+.game{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:12px}
+.g-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.game h3{margin:0}
+.task{color:var(--ink-2)}
+.badge{font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;padding:4px 10px;border-radius:999px;background:var(--gold-soft);color:var(--gold)}
+.badge.done{background:var(--moss-soft);color:var(--moss)}
+.btn{background:var(--lapis);color:var(--on-lapis);border:0;border-radius:10px;padding:10px 18px;font-weight:600;font-size:15px;text-decoration:none;display:inline-block}
+.btn.ghost{background:transparent;color:var(--lapis);border:2px solid var(--lapis)}
+.btn:disabled{opacity:.45;cursor:default}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.feedback{padding:12px 14px;border-radius:10px;font-size:15px;display:flex;flex-direction:column;gap:4px}
+.feedback.ok{background:var(--moss-soft);border-left:4px solid var(--moss)}
+.feedback.bad{background:var(--terra-soft);border-left:4px solid var(--terra)}
+.feedback .k{font-weight:700}
+.progress{font-size:13px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.card{perspective:900px;height:150px;background:none;border:0;padding:0;text-align:left}
+.card .in{position:relative;width:100%;height:100%;transition:transform .5s;transform-style:preserve-3d}
+.card.flip .in{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;border-radius:12px;padding:12px;display:flex;flex-direction:column;justify-content:center;gap:6px;overflow:hidden}
+.face.f{background:var(--lapis);color:var(--on-lapis)}
+.face.f .w{font-family:var(--display);font-size:21px;line-height:1.05}
+.face.f .tap{font-size:11px;opacity:.75;letter-spacing:.08em;text-transform:uppercase}
+.face.b{background:var(--surface-2);color:var(--ink);transform:rotateY(180deg);font-size:12.5px;line-height:1.3;justify-content:flex-start;overflow:auto}
+.face.b .w{font-weight:700;color:var(--lapis);font-size:13px}
+.face.b .e{color:var(--ink-2);font-style:italic}
+
+.match{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.col{display:flex;flex-direction:column;gap:8px}
+.col .lbl{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.opt{background:var(--surface-2);border:2px solid transparent;border-radius:10px;padding:10px 12px;text-align:left;font-weight:500;font-size:15px;transition:border-color .15s,background .15s}
+.opt:hover{border-color:var(--lapis)}
+.opt.sel{border-color:var(--gold);background:var(--gold-soft)}
+.opt.ok{background:var(--moss-soft);border-color:var(--moss)}
+.opt.bad{animation:shake .35s}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+
+.pool{display:flex;flex-direction:column;gap:8px}
+.seq{display:flex;flex-direction:column;gap:8px;min-height:44px;padding:10px;border:2px dashed var(--line);border-radius:12px}
+.seq .slot{display:flex;align-items:center;gap:10px;background:var(--lapis-soft);border-radius:8px;padding:8px 12px;font-size:15px}
+.seq .slot .i{font-family:var(--display);font-size:20px;color:var(--lapis);width:22px;font-variant-numeric:tabular-nums}
+.seq .slot.ok{background:var(--moss-soft)} .seq .slot.bad{background:var(--terra-soft)}
+.seq .slot .yr{margin-left:auto;font-weight:700;color:var(--ink-2);font-variant-numeric:tabular-nums}
+.seq .empty{color:var(--muted);font-size:14px}
+
+.odd-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.odd-grid .opt{text-align:center;padding:16px 10px;font-size:16px}
+.odd-grid .opt.bad{background:var(--terra-soft);border-color:var(--terra)}
+
+.q{font-size:19px;font-weight:600;line-height:1.35}
+.q-opts{display:flex;flex-direction:column;gap:8px}
+.q-opts .opt{font-size:15.5px;line-height:1.35}
+.q-opts .opt.bad{background:var(--terra-soft);border-color:var(--terra)}
+.score{display:flex;flex-direction:column;gap:12px;align-items:flex-start}
+.score .big{font-family:var(--display);font-size:56px;line-height:1;color:var(--gold)}
+.score-tiles{display:flex;gap:5px;flex-wrap:wrap}
+.score-tiles i{width:22px;height:22px;border-radius:3px;background:var(--tile)}
+.score-tiles i.on{background:var(--gold)}
+
+.bricks{display:flex;flex-direction:column;gap:10px}
+.brick{background:var(--surface-2);border-radius:10px;overflow:hidden}
+.brick button{width:100%;background:none;border:0;padding:12px 14px;text-align:left;font-weight:600;color:var(--lapis);display:flex;justify-content:space-between;gap:10px}
+.brick .b-body{padding:0 14px 12px;color:var(--ink-2);font-size:15.5px}
+
+.mosaic{display:flex;gap:6px;align-items:center}
+.mosaic .tile{width:26px;height:26px;background:var(--tile);border-radius:3px;transition:background .4s,transform .4s}
+.mosaic .tile.on{background:var(--gold);transform:rotate(45deg) scale(.8)}
+.mosaic-list{display:flex;flex-direction:column;gap:6px;font-size:15px}
+.mosaic-list span.off{color:var(--muted)}
+
+/* pager */
+.pager{position:fixed;left:0;right:0;bottom:0;z-index:5;background:var(--bg);border-top:1px solid var(--line)}
+.pager-inner{max-width:720px;margin:0 auto;padding:10px 16px;display:flex;align-items:center;gap:10px}
+.pager .count{font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+.pager .btn{flex:1;text-align:center;padding:12px 14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pager .btn.ghost{flex:0 0 auto}
+
+/* toc overlay */
+.toc{position:fixed;inset:0;z-index:10;background:rgba(0,0,0,.35);display:flex;justify-content:flex-end}
+.toc-panel{width:min(360px,90vw);height:100%;background:var(--surface);overflow:auto;padding:16px;display:flex;flex-direction:column;gap:8px;box-shadow:var(--shadow)}
+.toc-panel h3{font-size:24px;margin-bottom:6px;display:flex;justify-content:space-between;align-items:center}
+.toc-close{background:none;border:1px solid var(--line);border-radius:8px;padding:4px 10px;font-size:14px}
+.toc-item{display:flex;align-items:center;gap:10px;background:none;border:0;border-radius:8px;padding:8px 10px;text-align:left;font-size:15px;color:var(--ink)}
+.toc-item:hover{background:var(--surface-2)}
+.toc-item.current{background:var(--gold-soft);font-weight:600}
+.toc-item .n{font-family:var(--display);font-size:18px;color:var(--muted);width:24px;font-variant-numeric:tabular-nums}
+.toc-item .m{margin-left:auto;font-size:12px;color:var(--moss);font-weight:700}
+
+/* схема управления (§ 2) */
+.org{display:flex;flex-direction:column;gap:8px}
+.org .lvl{display:grid;gap:8px;grid-template-columns:repeat(2,1fr)}
+@media (min-width:600px){ .org .lvl{grid-template-columns:repeat(4,1fr)} }
+.org .box{background:var(--surface-2);border-radius:8px;padding:9px 10px;font-size:14px;text-align:center;line-height:1.3}
+.org .box small{display:block;font-size:12px;color:var(--ink-2)}
+.org .box.top{background:var(--lapis);color:var(--on-lapis);font-weight:600;font-size:16px}
+.org .box.sub{background:var(--gold-soft)}
+.org .lbl{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:700;text-align:center}
+
+/* иллюстрации (§ 3) */
+.fig{margin:0;display:flex;flex-direction:column;gap:6px;align-items:flex-start}
+.fig img{width:100%;max-width:360px;height:auto;border-radius:10px;border:1px solid var(--line);background:var(--surface);box-shadow:var(--shadow)}
+.fig.wide img{max-width:100%}
+.fig figcaption{font-size:14px;color:var(--ink-2);line-height:1.35;max-width:60ch}
+.fig-row{display:flex;gap:12px;flex-wrap:wrap;align-items:flex-start}
+.fig-row .fig{flex:1 1 150px;max-width:220px}
+
+/* § 4: «каждый шестой», два пути крещения, игра «Где это было?» */
+.six{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;max-width:380px}
+.six span{height:64px;border-radius:8px;background:var(--surface-2);color:var(--ink-2);display:flex;align-items:flex-end;justify-content:center;padding-bottom:6px;font-size:11.5px;font-weight:600;position:relative}
+.six span::before{content:"";position:absolute;top:10px;left:50%;width:14px;height:14px;margin-left:-7px;border-radius:50%;background:var(--tile)}
+.six span::after{content:"";position:absolute;top:27px;left:50%;width:22px;height:14px;margin-left:-11px;border-radius:8px 8px 3px 3px;background:var(--tile)}
+.six span.w{background:var(--lapis);color:var(--on-lapis)}
+.six span.w::before,.six span.w::after{background:var(--gold)}
+.ways{display:grid;grid-template-columns:1fr;gap:10px}
+@media (min-width:560px){ .ways{grid-template-columns:1fr 1fr} }
+.way{background:var(--surface);border:1px solid var(--line);border-top:5px solid var(--lapis);border-radius:12px;padding:12px 14px;display:flex;flex-direction:column;gap:6px;box-shadow:var(--shadow)}
+.way.const{border-top-color:var(--terra)}
+.way.const h3{color:var(--terra)}
+.way .cn{font-weight:600;font-size:17px}
+.way p{font-size:15.5px;color:var(--ink-2)}
+.sort-card{background:var(--lapis-soft);border-radius:12px;padding:16px;font-size:18px;font-weight:600;line-height:1.35}
+.tri{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.tri .opt{text-align:center;padding:12px 4px;font-size:15px}
+.tri .opt.bad{background:var(--terra-soft);border-color:var(--terra)}
+.sort-sum{display:flex;flex-direction:column;gap:8px;font-size:15px}
+.sort-sum b{color:var(--lapis)}
+/* § 4: разбор вопросов учебника с подсказками и ответом */
+.qtext{font-size:18px;font-weight:600;line-height:1.35;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.aside ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:5px}
+.aside.ans{background:var(--moss-soft);border-left-color:var(--moss)}
+.aside.ans .k{color:var(--moss)}
+.answer{display:flex;flex-direction:column;gap:12px;align-items:stretch}
+.answer .btn{text-align:center}
+.ans-body{display:flex;flex-direction:column;gap:12px}
+.ans-table{width:100%;border-collapse:collapse;font-size:15px;background:var(--surface)}
+.ans-table th,.ans-table td{border:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top;line-height:1.3}
+.ans-table th{font-size:13px;color:var(--ink-2);font-weight:700}
+.ans-table td:first-child{white-space:nowrap}
+
+/* виды шагов: из учебника / задания учебника / сверх учебника */
+.kind-tag{display:flex;gap:10px;align-items:flex-start;border-radius:10px;padding:8px 12px;font-size:13px;line-height:1.35}
+.kind-tag .ic{font-size:18px;line-height:1.1}
+.kind-tag b{font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:700}
+.kind-tag .pg{font-weight:600;margin-left:6px;font-size:13px}
+.kind-tag small{display:block;font-size:13px;color:var(--ink-2);margin-top:2px}
+.kind-tag.book{background:var(--lapis-soft);color:var(--lapis)}
+.kind-tag.task{background:var(--gold-soft);color:var(--gold)}
+.kind-tag.ours{background:var(--terra-soft);color:var(--terra)}
+.stepbar button.k-book{background:var(--lapis-soft)} .stepbar button.k-task{background:var(--gold-soft)} .stepbar button.k-ours{background:var(--terra-soft)}
+.stepbar button.k-book.visited{background:var(--lapis)} .stepbar button.k-task.visited{background:var(--gold)} .stepbar button.k-ours.visited{background:var(--terra)}
+.stepbar button.visited.done{background:var(--moss)}
+.stepbar{gap:3px} .stepbar button{min-width:3px}
+.stepbar button.gstart{margin-left:5px}
+.stepbar button.current{transform:scaleY(1.9);box-shadow:0 0 0 1.5px var(--ink)}
+.toc-group{display:flex;flex-direction:column;gap:2px;border-left:4px solid var(--lapis);padding-left:8px;margin-top:10px}
+.toc-group.k-task{border-left-color:var(--gold)} .toc-group.k-ours{border-left-color:var(--terra)}
+.toc-head{display:flex;align-items:center;gap:8px;font-size:12px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;color:var(--lapis);padding:4px 2px}
+.toc-group.k-task .toc-head{color:var(--gold)} .toc-group.k-ours .toc-head{color:var(--terra)}
+.toc-head .ic{font-size:15px;letter-spacing:0}
+.toc-item .pg{margin-left:auto;font-size:12px;color:var(--muted);white-space:nowrap;font-variant-numeric:tabular-nums}
+.toc-item .pg + .m{margin-left:8px}
+
+/* ===== Книжное оформление (выбрано 14.09.2026): как учебник — синяя шапка, PT Serif / PT Sans Narrow / PT Sans ===== */
+:root{
+  --bg:#FBFAF6; --surface:#FFFFFF; --surface-2:#EAF0F8; --ink:#1A1A1A; --ink-2:#393939; --muted:#6B6B6B;
+  --lapis:#2D63A6; --on-lapis:#FFFFFF; --lapis-soft:#DCE7F5; --gold:#8B6B22; --gold-soft:#F3EBD3; --on-gold:#1A1A1A;
+  --terra:#C24E1E; --terra-soft:#FBE3D6; --moss:#3E7A3A; --moss-soft:#E1EEDC; --line:#D9DDE3; --tile:#D5DCE6; --shadow:none;
+  --band-ink:#FFFFFF; --tb:rgba(255,255,255,.32); --tbv:#FFFFFF; --to:rgba(255,190,160,.5); --tov:#F6A37E; --tt:rgba(255,230,160,.5); --ttv:#F2D27A; --tdone:#A6DB93;
+  --display:"PT Sans Narrow","Arial Narrow",sans-serif; --body:"PT Serif",Georgia,serif; --ui:"PT Sans","Segoe UI",system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){ --bg:#141516; --surface:#1C1E21; --surface-2:#1E2936; --ink:#EDEBE6; --ink-2:#CFCBC3; --muted:#9A968F;
+    --lapis:#79A6E0; --on-lapis:#10141A; --lapis-soft:#1F3350; --gold:#D9B45A; --gold-soft:#3A3120; --on-gold:#10141A;
+    --terra:#F0875A; --terra-soft:#43261A; --moss:#8CC47F; --moss-soft:#22381F; --line:#30343A; --tile:#2C3440; --shadow:none;
+    --band-ink:#10141A; --tb:rgba(16,20,26,.28); --tbv:#10141A; --to:rgba(120,40,10,.4); --tov:#8A2E0C; --tt:rgba(110,80,10,.4); --ttv:#6B4E0E; --tdone:#1F5A1A; } }
+:root[data-theme="dark"]{ --bg:#141516; --surface:#1C1E21; --surface-2:#1E2936; --ink:#EDEBE6; --ink-2:#CFCBC3; --muted:#9A968F;
+    --lapis:#79A6E0; --on-lapis:#10141A; --lapis-soft:#1F3350; --gold:#D9B45A; --gold-soft:#3A3120; --on-gold:#10141A;
+    --terra:#F0875A; --terra-soft:#43261A; --moss:#8CC47F; --moss-soft:#22381F; --line:#30343A; --tile:#2C3440; --shadow:none;
+    --band-ink:#10141A; --tb:rgba(16,20,26,.28); --tbv:#10141A; --to:rgba(120,40,10,.4); --tov:#8A2E0C; --tt:rgba(110,80,10,.4); --ttv:#6B4E0E; --tdone:#1F5A1A; }
+body{font-family:var(--body);font-size:18px;line-height:1.62}
+h1,h2,h3{font-family:var(--display);font-weight:700}
+.step h1{color:var(--lapis);font-size:clamp(34px,8.5vw,52px);line-height:1.02}
+.step h2{color:var(--lapis);font-size:clamp(28px,7vw,36px);line-height:1.08}
+.step h3{font-size:23px}
+.pnum{display:inline-flex;align-items:center;justify-content:center;background:var(--lapis);color:var(--on-lapis);font:700 .72em/1 var(--display);width:1.08em;height:1.08em;margin-right:.3em;vertical-align:.08em}
+.lede{font-size:20px}
+.top{background:var(--lapis);border-bottom:0}
+.back{background:transparent;border-color:var(--band-ink);color:var(--band-ink);font-family:var(--ui);border-radius:3px}
+.crumb{color:var(--band-ink);opacity:.88;font-family:var(--ui)}
+.crumb b{color:var(--band-ink)}
+.toc-btn{background:var(--band-ink);color:var(--lapis);border-color:var(--band-ink);font-family:var(--ui);font-weight:700;border-radius:3px}
+.stepbar button{border-radius:1px}
+.stepbar button.k-book{background:var(--tb)} .stepbar button.k-book.visited{background:var(--tbv)}
+.stepbar button.k-ours{background:var(--to)} .stepbar button.k-ours.visited{background:var(--tov)}
+.stepbar button.k-task{background:var(--tt)} .stepbar button.k-task.visited{background:var(--ttv)}
+.stepbar button.visited.done{background:var(--tdone)}
+.stepbar button.current{box-shadow:0 0 0 1.5px var(--band-ink)}
+.eyebrow{font-family:var(--ui);color:var(--muted);letter-spacing:.08em}
+.tess{display:none}
+.term{font-weight:700;font-style:italic;color:var(--ink);border-bottom:0}
+.kind-tag{border-radius:0;padding:6px 0 0;border-top:2px solid currentColor;font-family:var(--ui);align-items:center}
+.kind-tag.book,.kind-tag.task,.kind-tag.ours{background:transparent}
+.kind-tag .ic{display:flex}
+.kind-tag b{font-size:12.5px;letter-spacing:.08em}
+.kind-tag small{font-family:var(--body);font-style:italic;font-size:14.5px}
+details{border-radius:0}
+details summary{font-family:var(--ui)}
+details.book{border:0;border-top:3px solid var(--lapis);background:var(--surface-2)}
+details.book summary{color:var(--lapis)}
+details.book summary::before,details.book[open] summary::before{background:var(--lapis)}
+details.book .body{font-size:16px}
+.aside{border-radius:0}
+.aside .k{font-family:var(--ui)}
+.dom{border-radius:0;box-shadow:none;border-top:3px solid var(--lapis)}
+.dom .n{font-family:var(--display);font-weight:700;color:var(--lapis)}
+.dom .t{font-family:var(--ui)}
+.rung{border-radius:0}
+.tl-btn .y{font-family:var(--display);font-weight:700;color:var(--lapis)}
+.tl-btn .era{font-family:var(--ui)}
+.fig img{border-radius:0;box-shadow:none}
+.fig figcaption{font-family:var(--ui)}
+.org .box{border-radius:0}
+.qi{border-radius:0}
+.qi .qn{font-family:var(--display);font-weight:700;color:var(--terra)}
+.qi a{border-radius:0;font-family:var(--ui)}
+.game{border-radius:0;box-shadow:none;border-top:4px solid var(--terra)}
+.game h3{color:var(--terra)}
+.badge{border-radius:0;font-family:var(--ui)}
+.btn{border-radius:3px;font-family:var(--ui);font-weight:700}
+.opt{border-radius:0;background:var(--surface);border-color:var(--line);font-family:var(--body)}
+.feedback{border-radius:0}
+.progress{font-family:var(--ui)}
+.q{font-family:var(--body);font-weight:700}
+.face{border-radius:0}
+.face.f .w{font-family:var(--display);font-weight:700}
+.seq,.seq .slot,.sort-card,.brick,.qtext,.way,.six span,.mosaic .tile,.score-tiles i,.toc-panel,.toc-item{border-radius:0}
+.brick button{font-family:var(--ui)}
+.pager{background:var(--surface)}
+.count{font-family:var(--ui)}
+.toc-panel h3{font-family:var(--display)}
+.toc-head{font-family:var(--ui)}
+.toc-head .ic{display:flex}
+.score .big{font-family:var(--display);font-weight:700;color:var(--lapis)}
+/* переносы длинных слов на узком экране (14.09.2026) */
+.match{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+.opt,.face,.qi p,.ans-table td,.ans-table th{overflow-wrap:anywhere;hyphens:auto}
+.ans-table.fit td:first-child{white-space:normal}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-inner">
+    <a class="back" href="./">← Темы</a>
+    <div class="crumb">География · § 32 · <b>Круизный маршрут</b></div>
+    <button class="toc-btn" id="toc-btn" type="button">Содержание</button>
+  </div>
+  <div class="stepbar" id="stepbar" aria-label="Шаги темы"></div>
+</header>
+
+<main id="deck">
+
+<!-- 1 -->
+<section class="step" data-step="za-minutu" data-name="За минуту" data-part="Самое главное" data-kind="ours">
+  <div class="kind-tag ours"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 6h14"></path><path d="M5 12h14"></path><path d="M5 18h9"></path></svg></span><div><b>Коротко о главном</b><small>Пересказ для разгона. Само задание — на следующем шаге.</small></div></div>
+  <div class="eyebrow"><span class="tess"><i></i><i></i><i></i></span> География · 6 класс · § 32</div>
+  <h1>Круизный маршрутный лист путешественника</h1>
+  <p class="lede">Амина, этот параграф — не рассказ, а работа: весь класс будто уходит в морской круиз, и твоё дело — проложить путь корабля на карте. А потом заполнить «маршрутный лист»: записать по порядку, откуда вышли, где остановимся и что там посмотрим.</p>
+  <div id="resume" hidden></div>
+  <figure class="fig wide"><img src="img/2026-09-18-p32/01-shapka-p32.jpg" width="800" height="191" loading="lazy" alt="Шапка параграфа: компас лежит на дорожной карте, рядом глобус с голубым океаном, надпись «§ 32. Учимся с „Полярной звездой“» и цифра 5 в кружке"><figcaption>Так начинается § 32 в учебнике: компас на карте и океан на глобусе. Цифра 5 в кружке значит, что это пятый практикум «Учимся с „Полярной звездой“» (с. 106).</figcaption></figure>
+  <div class="prose">
+    <p>Представь, что ты собираешь рюкзак не на день, а на несколько недель. Корабль отойдёт от причала — и вернуться за забытой вещью уже не получится. Поэтому у путешественников есть лист, где всё записано заранее.</p>
+    <p>Такой лист называют <b>маршрутным</b>. В нём по порядку: откуда вышли, куда идём, где остановимся, что успеем посмотреть, сколько примерно плыть. Так планируют не только круиз, но и поход в горы, и поездку к родне, и школьную экскурсию.</p>
+    <p>Здесь учебник не объясняет новое правило, а даёт задание. Значит, готовых ответов на этой странице нет — и у нас их тоже не будет. Будет план работы, подсказки, с чего начать, словарик нужных слов и игра на внимание к карте.</p>
+  </div>
+  <div class="steps4">
+    <div class="dom"><div class="n">1</div><div class="t">Что делаем</div><div class="d">Прокладываем маршрут круиза на контурной карте.</div></div>
+    <div class="dom"><div class="n">2</div><div class="t">Что заполняем</div><div class="d">Маршрутный лист — таблицу об этом путешествии.</div></div>
+    <div class="dom"><div class="n">3</div><div class="t">Что нужно</div><div class="d">Атлас, контурная карта, линейка, нитка, карандаши.</div></div>
+    <div class="dom"><div class="n">4</div><div class="t">Чья работа</div><div class="d">Карта — у каждого своя, лист можно один на группу.</div></div>
+  </div>
+  <div class="aside">
+    <div class="k">Как этим пользоваться</div>
+    <p>У каждого шага вверху написано, на какой странице учебника искать. Внизу шага есть «Подробнее, как в учебнике»: там всё, что есть на этой странице, ничего не пропущено.</p>
+    <p>Надпись вверху шага подсказывает, откуда он: золотая — задание учебника, оранжевая — сверх учебника (пересказ, словарик, игра). Синих шагов «из учебника» здесь нет: весь параграф — одно большое задание.</p>
+  </div>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 106</summary>
+    <div class="body"><ul>
+      <li>§ 32 называется «Учимся с „Полярной звездой“». Цифра 5 в кружке на шапке параграфа значит, что это пятый такой практикум в учебнике.</li>
+      <li>Заголовок раздела на странице: «Выполняем проектное задание».</li>
+      <li>Первые слова параграфа: «Вам предстоит выполнить проектное задание. Ваша задача — проложить маршрут на карте и заполнить „Круизный маршрутный лист путешественника“».</li>
+      <li>На полях страницы зелёная врезка: «Вспомните правила работы с контурной картой (с. 93)».</li>
+      <li>Весь параграф занимает одну страницу — с. 106. Новых определений в нём нет, вопросов и заданий в конце тоже нет: всё, что нужно сделать, перечислено по пунктам 1—6 (следующий шаг).</li>
+      <li class="pic">Других иллюстраций, кроме шапки параграфа (компас на карте и глобус), на странице нет.</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 2 -->
+<section class="step" data-step="zadanie" data-name="Что задаёт учебник" data-part="Проектное задание" data-kind="task" data-pages="с. 106">
+  <div class="kind-tag task"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l4.2-1L19 8.2 15.8 5 5 15.8z"></path><path d="M13.8 7l3.2 3.2"></path></svg></span><div><b>Задание учебника</b><span class="pg">с. 106</span><small>Всё, как в книге. Маршрут и таблицу заполняешь ты сама.</small></div></div>
+  <div class="eyebrow">Выполняем проектное задание</div>
+  <h2>Что задаёт учебник</h2>
+  <div class="qtext">Ваша задача — проложить маршрут на карте и заполнить «Круизный маршрутный лист путешественника».</div>
+  <div class="prose">
+    <p>Представьте, что вы всем классом отправляетесь в морское путешествие — <span class="term">круиз</span> по крупным островам мира. Ваш корабль «Александр Суворов» выходит из <b>Санкт-Петербурга</b> и направляется к острову <b>Новая Гвинея</b>.</p>
+    <p>Маршрут предусматривает остановки на островах:</p>
+    <ul>
+      <li>Великобритания,</li>
+      <li>Мадагаскар,</li>
+      <li>Шри-Ланка,</li>
+      <li>Суматра,</li>
+      <li>Ява,</li>
+      <li>Калимантан.</li>
+    </ul>
+    <p>По указанию учителя вы будете работать самостоятельно, или с товарищем, или группой. <b>Карта с маршрутом должна быть у каждого своя.</b> Маршрутный лист можно сделать один на группу. Учитель распределит работу над заданием между участниками.</p>
+    <p>Начните работу с изучения <b>физической карты полушарий</b> в географическом атласе или на с. 180—181 Приложения.</p>
+    <h3>План работы</h3>
+  </div>
+  <div class="qlist">
+    <div class="qi"><span class="qn">1</span><div><p>Выясните, в каком направлении от вашего населённого пункта находится Санкт-Петербург. Каково расстояние от него до Санкт-Петербурга?</p><p>Узнайте, как добраться до Санкт-Петербурга (поездом или самолётом), сколько времени займёт дорога (можно выяснить в Интернете или в справочной по телефону либо расспросить старших).</p></div></div>
+    <div class="qi"><span class="qn">2</span><div><p>Найдите на физической карте Санкт-Петербург и острова, указанные в маршруте. Подпишите их на контурной карте.</p></div></div>
+    <div class="qi"><span class="qn">3</span><div><p>Проложите маршрут на контурной карте, обозначайте путь цветной линией: от Санкт-Петербурга по Балтийскому морю к острову Великобритания; через Гибралтарский пролив по Средиземному морю; через Суэцкий канал по Красному морю; обогнув полуостров Сомали — к острову Мадагаскар; от Мадагаскара — к острову Шри-Ланка; от Шри-Ланки — к островам Суматра, Ява, Калимантан и Новая Гвинея.</p></div></div>
+    <div class="qi"><span class="qn">4</span><div><p>Придумайте название контурной карте.</p></div></div>
+    <div class="qi"><span class="qn">5</span><div><p>Заполните маршрутный лист и оформите контурную карту.</p></div></div>
+    <div class="qi"><span class="qn">6</span><div><p>НЕ забудьте заполнить легенду карты.</p></div></div>
+  </div>
+  <div class="aside">
+    <div class="k">В учебнике это стоит между пунктами 4 и 5</div>
+    <p>«Маршрутный лист можно оформить как таблицу в тетради или на отдельном листе либо подготовить в электронном виде. Художественно оформите маршрутный лист, подобрав фотографии, рисунки».</p>
+  </div>
+  <div class="aside home">
+    <div class="k">А какие в таблице столбцы?</div>
+    <p>Учебник этого не показывает: самой таблицы на с. 106 нет, сказано только, что маршрутный лист <i>можно</i> оформить как таблицу. Значит, столбцы вы придумываете сами — или их назовёт учитель.</p>
+    <p>Спроси на уроке, есть ли у него образец. А если образца нет, наши предложения — на следующем шаге.</p>
+  </div>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 106</summary>
+    <div class="body"><ul>
+      <li>«Выполняем проектное задание. Вам предстоит выполнить проектное задание. Ваша задача — проложить маршрут на карте и заполнить „Круизный маршрутный лист путешественника“».</li>
+      <li>«Представьте, что вы всем классом отправляетесь в морское путешествие — круиз по крупным островам мира. Ваш корабль „Александр Суворов“ выходит из Санкт-Петербурга и направляется к острову Новая Гвинея. Маршрут предусматривает остановки на островах: Великобритания, Мадагаскар, Шри-Ланка, Суматра, Ява, Калимантан».</li>
+      <li>«По указанию учителя вы будете работать самостоятельно, или с товарищем, или группой. Карта с маршрутом должна быть у каждого своя. Маршрутный лист можно сделать один на группу. Учитель распределит работу над заданием между участниками».</li>
+      <li>«Начните работу с изучения физической карты полушарий в географическом атласе или на с. 180—181 Приложения».</li>
+      <li>Пункты 1—6 приведены выше полностью, слово в слово, в том же порядке, что в книге.</li>
+      <li>Между пунктами 4 и 5 в книге стоит абзац: «Маршрутный лист можно оформить как таблицу в тетради или на отдельном листе либо подготовить в электронном виде. Художественно оформите маршрутный лист, подобрав фотографии, рисунки».</li>
+      <li>Врезка на полях: «Вспомните правила работы с контурной картой (с. 93)».</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 3 -->
+<section class="step" data-step="kak-nachat" data-name="С чего начать" data-part="Проектное задание" data-kind="task" data-pages="с. 106">
+  <div class="kind-tag task"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l4.2-1L19 8.2 15.8 5 5 15.8z"></path><path d="M13.8 7l3.2 3.2"></path></svg></span><div><b>Задание учебника</b><span class="pg">с. 106</span><small>Задание из книги, подсказки наши. Маршрут и таблицу ты заполняешь сама.</small></div></div>
+  <div class="eyebrow">Подсказки к работе</div>
+  <h2>С чего начать</h2>
+  <div class="prose">
+    <p>Самое трудное в таком задании — первый шаг. Дальше пойдёт легко: круиз почти весь описан в пункте 3, нужно только аккуратно перенести его на карту.</p>
+    <h3>Разложи карты</h3>
+    <ul>
+      <li><b>Физическая карта полушарий</b> — в атласе или в Приложении учебника. Приложение — это карты в самом конце книги, они начинаются с с. 180: карта полушарий на с. 180—181, а сразу за ней, на с. 182, физическая карта мира. По ним ты находишь города, острова, моря и проливы.</li>
+      <li><b>Контурная карта мира</b> — на ней ты рисуешь. Это та самая карта, которую ты уже начала заполнять в прошлом практикуме «Учимся с „Полярной звездой“» на с. 92—93: там третий шаг просил нанести равнины и горы из заданий на с. 87 и с. 91 и подписать океаны — «чтобы легче ориентироваться на будущем маршруте». Вот он, будущий маршрут.</li>
+      <li>Правила работы с контурной картой — там же, на с. 93, во врезке. Учебник просит их вспомнить, так что перечитай перед работой.</li>
+      <li>Линейка, простой карандаш, цветные карандаши или ручки, нитка — ниткой удобно мерить кривую линию.</li>
+    </ul>
+    <h3>Как проверить, что путь возможен по воде</h3>
+    <p>Веди пальцем по карте только по синему. Упёрлась в сушу — значит, где-то рядом есть «дверь»: <span class="term">пролив</span> или канал. Две такие двери учебник уже назвал: <b>Гибралтарский пролив</b> и <b>Суэцкий канал</b>.</p>
+    <p>А ещё в пункте 3 есть слово «обогнув». Полуостров Сомали корабль не пересекает, а обходит по морю. Найди его на карте и посмотри, с какой стороны придётся обходить.</p>
+  </div>
+  <details>
+    <summary>А почему нельзя просто провести прямую линию?</summary>
+    <div class="body"><p>Потому что корабль идёт по воде. Прямая линия от Мадагаскара до Шри-Ланки пройдёт по океану — так можно. А прямая от Санкт-Петербурга до Великобритании легко «проедет» по суше, если не обойти Данию. Поэтому линию маршрута ведут не по линейке, а по карте: она изгибается вдоль берегов.</p></div>
+  </details>
+  <div class="prose">
+    <h3>Сколько строк будет в листе</h3>
+    <p>Посчитай точки маршрута: порт отправления — Санкт-Петербург, шесть островов-остановок и конечный остров Новая Гвинея. Получается <b>восемь</b> строк. Запиши их в том порядке, в каком к ним приходит корабль, а не как попало.</p>
+  </div>
+  <div class="aside">
+    <div class="k">Столбцы, которые можно взять (это наше предложение)</div>
+    <ul>
+      <li>№ по порядку;</li>
+      <li>остановка: остров и страна;</li>
+      <li>каким морем или океаном сюда пришли;</li>
+      <li>через что прошли по дороге: пролив, канал, вокруг чего обогнули;</li>
+      <li>что посмотрим на остановке — одна-две строчки;</li>
+      <li>примерное расстояние от прошлой остановки.</li>
+    </ul>
+    <p>Столбцов может быть меньше или больше. Главное, чтобы по листу было понятно, куда и зачем плывёт корабль.</p>
+  </div>
+  <div class="prose">
+    <h3>Как измерить расстояние</h3>
+    <p>Приложи нитку к линии маршрута и повтори ниткой все изгибы. Потом распрями нитку, измерь линейкой и переведи сантиметры в километры по <b>масштабу</b> карты. Число получится приблизительное — так и надо написать: «около стольких-то километров».</p>
+    <h3>Про первый пункт</h3>
+    <p>Найди на карте России Каспийск и Санкт-Петербург. Вспомни, где на карте север, и сама посмотри, в какой он стороне от нас. Расстояние тоже измерь по масштабу, а не бери из головы. А про поезд и самолёт спроси у старших или посмотри расписание — это и есть задание.</p>
+  </div>
+  <div class="aside home">
+    <div class="k">Ближе к дому</div>
+    <p>Может показаться, что круиз проще начать из Каспийска: море у нас прямо за окном. Но Каспийское море замкнутое, в океан из него по морю не выйдешь.</p>
+    <p>Зато из Каспия есть выход по рекам и каналам: по Волге и Волго-Донскому каналу — в Азовское и Чёрное моря, по Волго-Балтийскому пути — в Балтийское море. Если захочешь придумать свой, дополнительный маршрут — это честная идея. А в задании учебника корабль всё-таки выходит из Санкт-Петербурга.</p>
+  </div>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 106</summary>
+    <div class="body"><ul>
+      <li>О начале работы в книге сказано так: «Начните работу с изучения физической карты полушарий в географическом атласе или на с. 180—181 Приложения». Приложение — карты в конце учебника, они начинаются с с. 180; на с. 182 — физическая карта мира.</li>
+      <li>Врезка на полях страницы: «Вспомните правила работы с контурной картой (с. 93)».</li>
+      <li>С. 92—93 — это предыдущий практикум «Учимся с „Полярной звездой“». Его третий шаг: «Нанесите на контурную карту равнины и горы, перечисленные в заданиях 1 на с. 87 и на с. 91. Подпишите океаны, чтобы легче ориентироваться на будущем маршруте». Там же, на с. 93, стоит врезка «Правила работы с контурной картой».</li>
+      <li>Про оформление: «Маршрутный лист можно оформить как таблицу в тетради или на отдельном листе либо подготовить в электронном виде. Художественно оформите маршрутный лист, подобрав фотографии, рисунки».</li>
+      <li>Всё остальное на этом шаге — подсказки, как это сделать. В учебнике их нет, и готовых ответов он тоже не даёт.</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 4 -->
+<section class="step" data-step="slovar-1" data-name="Словарик" data-part="Словарик" data-kind="ours">
+  <div class="kind-tag ours"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="6" width="12" height="14" rx="1.5"></rect><path d="M8.5 3.5h10.5a1.5 1.5 0 0 1 1.5 1.5v12.5"></path></svg></span><div><b>Словарик</b><small>Сверх учебника — слова, которые пригодятся в маршрутном листе.</small></div></div>
+  <div class="game">
+    <div class="g-head"><h3>Словарик путешественника</h3><span class="badge" id="b-terms">Игра</span></div>
+    <p class="task">Нажми на карточку, и она перевернётся. Эти слова понадобятся, когда будешь заполнять лист: ими удобно объяснить, где идёт корабль.</p>
+    <div class="progress" id="terms-progress"></div>
+    <div class="cards" data-terms="0"></div>
+  </div>
+</section>
+
+<!-- 5 -->
+<section class="step" data-step="lishnee" data-name="Найди лишнее" data-part="Игры" data-kind="ours">
+  <div class="kind-tag ours"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="3"></rect><circle cx="9" cy="9" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="15" cy="15" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="15" cy="9" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="9" cy="15" r="1.3" fill="currentColor" stroke="none"></circle></svg></span><div><b>Игра</b><small>Сверх учебника — чтобы не путать пролив с заливом, а остров с полуостровом.</small></div></div>
+  <div class="game">
+    <div class="g-head"><h3>Найди лишнее</h3><span class="badge" id="b-odd">Игра</span></div>
+    <p class="task">Три названия из одной компании, одно — чужое. Найди чужое. Эти названия в задании не нужны: игра просто тренирует глаз.</p>
+    <div class="progress" id="odd-progress"></div>
+    <div class="odd-grid" id="odd-grid"></div>
+    <div id="odd-fb"></div>
+    <div class="row"><button class="btn" id="odd-next" type="button" hidden>Дальше</button></div>
+  </div>
+</section>
+
+<!-- 6 -->
+<section class="step" data-step="itog" data-name="Что должно получиться" data-part="Финал" data-kind="task" data-pages="с. 106">
+  <div class="kind-tag task"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l4.2-1L19 8.2 15.8 5 5 15.8z"></path><path d="M13.8 7l3.2 3.2"></path></svg></span><div><b>Задание учебника</b><span class="pg">с. 106</span><small>Что просит книга, кирпичики-подсказки наши.</small></div></div>
+  <div class="eyebrow">Финал</div>
+  <h2>Что должно получиться</h2>
+  <div class="prose">
+    <p>Работа готова, когда у тебя на столе лежат две вещи: <b>контурная карта</b> с проложенным маршрутом и <b>маршрутный лист</b>. Открой кирпичики и проверь себя по ним перед тем, как сдавать.</p>
+  </div>
+  <div class="bricks">
+    <div class="brick"><button type="button" aria-expanded="false"><span>Линия маршрута на карте</span><span>+</span></button><div class="b-body" hidden>Цветная линия идёт от Санкт-Петербурга до Новой Гвинеи и нигде не проходит по суше. Санкт-Петербург и все острова маршрута подписаны. Проверь глазами весь путь от начала до конца — особенно места, где корабль проходит пролив или канал.</div></div>
+    <div class="brick"><button type="button" aria-expanded="false"><span>Название и легенда карты</span><span>+</span></button><div class="b-body" hidden>Пункт 4 просит придумать карте название, а пункт 6 напоминает про легенду. В легенде объясни каждый свой знак: чем обозначена линия маршрута, чем — точки остановок, чем — порт отправления. Тот, кто возьмёт твою карту в руки, должен понять её без тебя.</div></div>
+    <div class="brick"><button type="button" aria-expanded="false"><span>Остановки по порядку</span><span>+</span></button><div class="b-body" hidden>В листе восемь строк: порт отправления, шесть островов-остановок и конечный остров. Они стоят в том порядке, в каком к ним приходит корабль. В каждой строке видно, каким морем или океаном он туда пришёл.</div></div>
+    <div class="brick"><button type="button" aria-expanded="false"><span>Что смотрим и сколько плыть</span><span>+</span></button><div class="b-body" hidden>На каждой остановке одна-две строчки: чем этот остров интересен. Рядом — примерное расстояние от прошлой остановки, измеренное по масштабу карты. И оформление: учебник просит подобрать фотографии и рисунки, чтобы лист было интересно смотреть.</div></div>
+  </div>
+  <div class="aside">
+    <div class="k">Главное в одном предложении</div>
+    <p>Маршрутный лист — это рассказ о круизе в виде таблицы: откуда вышли, какими морями и проливами идём, где остановимся и что там посмотрим, — а рядом контурная карта, на которой этот путь нарисован и объяснён в легенде.</p>
+  </div>
+  <div class="game">
+    <div class="g-head"><h3>Твоя мозаика</h3></div>
+    <div class="mosaic" id="mosaic"></div>
+    <div class="mosaic-list" id="mosaic-list"></div>
+    <div class="row"><a class="btn" href="./">К списку тем</a></div>
+  </div>
+</section>
+
+</main>
+
+<nav class="pager" aria-label="Навигация по шагам">
+  <div class="pager-inner">
+    <button class="btn ghost" id="prev" type="button">Назад</button>
+    <div class="count" id="count"></div>
+    <button class="btn" id="next" type="button">Дальше</button>
+  </div>
+</nav>
+
+<div class="toc" id="toc" hidden>
+  <div class="toc-panel" role="dialog" aria-label="Содержание">
+    <h3>Содержание <button class="toc-close" id="toc-close" type="button">Закрыть</button></h3>
+    <div id="toc-list" style="display:flex;flex-direction:column;gap:2px"></div>
+  </div>
+</div>
+
+<script>
+(function(){
+  'use strict';
+  var $ = function(s, r){ return (r||document).querySelector(s); };
+  var el = function(tag, cls, html){ var e=document.createElement(tag); if(cls) e.className=cls; if(html!=null) e.innerHTML=html; return e; };
+  var shuffle = function(a){ a=a.slice(); for(var i=a.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=a[i]; a[i]=a[j]; a[j]=t; } return a; };
+
+  /* ---------- state ---------- */
+  var KEY='geo-p32-v1';
+  var state={visited:{},done:{},last:0};
+  try{ var s=JSON.parse(localStorage.getItem(KEY)||'null'); if(s && typeof s==='object'){ state.visited=s.visited||{}; state.done=s.done||{}; state.last=s.last||0; } }catch(e){}
+  function save(){ try{ localStorage.setItem(KEY, JSON.stringify(state)); }catch(e){} }
+
+  var GAMES=[
+    {k:'terms', name:'Словарик путешественника', step:'slovar-1'},
+    {k:'odd', name:'Найди лишнее', step:'lishnee'}
+  ];
+  var GAME_STEPS={'slovar-1':'terms','lishnee':'odd'};
+
+  /* ---------- steps ---------- */
+  var steps=Array.prototype.slice.call(document.querySelectorAll('.step'));
+  var N=steps.length, cur=0;
+  var stepbar=$('#stepbar'), count=$('#count'), prevB=$('#prev'), nextB=$('#next'), tocList=$('#toc-list');
+
+  /* содержание по группам: из учебника / задания учебника / сверх учебника */
+  var KIND={book:['<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.5c2.6-1 5.6-.8 9 1.2v13c-3.4-2-6.4-2.2-9-1.2z"></path><path d="M21 5.5c-2.6-1-5.6-.8-9 1.2v13c3.4-2 6.4-2.2 9-1.2z"></path></svg>','Из учебника'],task:['<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l4.2-1L19 8.2 15.8 5 5 15.8z"></path><path d="M13.8 7l3.2 3.2"></path></svg>','Задания учебника'],ours:['<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="3"></rect><circle cx="9" cy="9" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="15" cy="15" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="15" cy="9" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="9" cy="15" r="1.3" fill="currentColor" stroke="none"></circle></svg>','Сверх учебника']};
+  var tocItems=[], groups=[], prevKind=null, grp=null;
+  steps.forEach(function(s,i){
+    var kind=s.getAttribute('data-kind')||'book', pg=(s.getAttribute('data-pages')||'').replace(/,\s*п\..*$/,'');
+    var start=kind!==prevKind;
+    var b=el('button'); b.type='button'; b.setAttribute('aria-label','Шаг '+(i+1)+': '+s.getAttribute('data-name'));
+    b.setAttribute('data-base','k-'+kind+(start&&i>0?' gstart':'')); b.className=b.getAttribute('data-base');
+    b.addEventListener('click', function(){ go(i); });
+    stepbar.appendChild(b);
+    if(start){
+      var label = kind==='ours' ? (i===0?'Коротко о главном':'Словарик и игры · сверх учебника') : KIND[kind][1];
+      grp=el('div','toc-group k-'+kind,'<div class="toc-head"><span class="ic">'+KIND[kind][0]+'</span><span>'+label+'</span></div>');
+      grp.pages=[]; groups.push(grp); tocList.appendChild(grp); prevKind=kind;
+    }
+    var t=el('button','toc-item','<span class="n">'+(i+1)+'</span><span>'+s.getAttribute('data-name')+'</span>'+(pg?'<span class="pg">'+pg+'</span>':'')+'<span class="m"></span>');
+    t.type='button'; t.addEventListener('click', function(){ closeToc(); go(i); });
+    grp.appendChild(t); tocItems.push(t);
+    (pg.match(/\d+/g)||[]).forEach(function(n){ grp.pages.push(+n); });
+  });
+  groups.forEach(function(g){ if(g.pages.length){ var a=Math.min.apply(null,g.pages), z=Math.max.apply(null,g.pages); g.firstChild.lastChild.textContent+=' · с. '+(a===z?a:a+'–'+z); } });
+
+  function paint(){
+    var bars=stepbar.children, items=tocItems;
+    for(var i=0;i<N;i++){
+      var key=steps[i].getAttribute('data-step'), g=GAME_STEPS[key];
+      var done = g && state.done[g];
+      bars[i].className=bars[i].getAttribute('data-base')+(i===cur?' current':'')+(state.visited[i]?' visited':'')+(done?' done':'');
+      items[i].className='toc-item'+(i===cur?' current':'');
+      items[i].lastElementChild.textContent = done ? 'пройдено' : (state.visited[i] ? '✓' : '');
+    }
+    count.textContent=(cur+1)+' / '+N;
+    prevB.disabled = cur===0;
+    if(cur===N-1){ nextB.textContent='Это последний шаг'; nextB.disabled=true; }
+    else { nextB.textContent='Дальше: '+steps[cur+1].getAttribute('data-name'); nextB.disabled=false; }
+    var badges={terms:['b-terms'],odd:['b-odd']};
+    for(var k in badges){ badges[k].forEach(function(id){ var b=document.getElementById(id); if(b && state.done[k]){ b.textContent='Пройдено'; b.classList.add('done'); } }); }
+    paintMosaic();
+  }
+  function go(i, silent){
+    if(i<0||i>=N) return;
+    cur=i; steps.forEach(function(s,j){ s.hidden = j!==i; });
+    state.visited[i]=true; state.last=i; save();
+    if(!silent){ var h='#'+steps[i].getAttribute('data-step'); if(location.hash!==h) history.pushState(null,'',h); }
+    window.scrollTo(0,0);
+    paint();
+  }
+  function idxFromHash(){ var h=location.hash.replace('#',''); for(var i=0;i<N;i++) if(steps[i].getAttribute('data-step')===h) return i; return -1; }
+  function onHash(){ var i=idxFromHash(); if(i>=0 && i!==cur) go(i, true); }
+  window.addEventListener('popstate', onHash);
+  window.addEventListener('hashchange', onHash);
+  prevB.addEventListener('click', function(){ go(cur-1); });
+  nextB.addEventListener('click', function(){ go(cur+1); });
+  document.addEventListener('keydown', function(e){ if(e.target && /INPUT|TEXTAREA/.test(e.target.tagName)) return; if(e.key==='ArrowRight') go(cur+1); if(e.key==='ArrowLeft') go(cur-1); if(e.key==='Escape') closeToc(); });
+
+  var toc=$('#toc');
+  function openToc(){ toc.hidden=false; }
+  function closeToc(){ toc.hidden=true; }
+  $('#toc-btn').addEventListener('click', openToc);
+  $('#toc-close').addEventListener('click', closeToc);
+  toc.addEventListener('click', function(e){ if(e.target===toc) closeToc(); });
+
+  function markDone(k){ if(!state.done[k]){ state.done[k]=true; save(); } paint(); }
+
+  /* resume button on step 1 */
+  (function(){
+    var r=$('#resume');
+    if(state.last>0 && idxFromHash()<0){
+      r.hidden=false;
+      r.innerHTML='<button class="btn ghost" type="button">Продолжить с шага '+(state.last+1)+': '+steps[state.last].getAttribute('data-name')+'</button>';
+      r.firstChild.addEventListener('click', function(){ go(state.last); });
+    }
+  })();
+
+  /* ---------- mosaic on final step ---------- */
+  var mosaic=$('#mosaic'), mosaicList=$('#mosaic-list');
+  function paintMosaic(){
+    mosaic.innerHTML=''; mosaicList.innerHTML='';
+    GAMES.forEach(function(g){
+      var t=el('span','tile'+(state.done[g.k]?' on':'')); t.title=g.name; mosaic.appendChild(t);
+      var li=el('span', state.done[g.k]?'':'off', (state.done[g.k]?'★ ':'☆ ')+g.name);
+      if(!state.done[g.k]){ li.style.cursor='pointer'; li.addEventListener('click', function(){ for(var i=0;i<N;i++) if(steps[i].getAttribute('data-step')===g.step){ go(i); break; } }); }
+      mosaicList.appendChild(li);
+    });
+  }
+
+  /* ---------- glossary ---------- */
+  var TERMS=[
+    [
+      {t:'Круиз', d:'Морское путешествие на корабле с остановками в разных местах, чтобы их посмотреть.', e:'В задании класс идёт в круиз по крупным островам мира.'},
+      {t:'Маршрут', d:'Путь, по которому идут или плывут: с началом, остановками и концом.', e:'Начало маршрута — Санкт-Петербург, конец — остров Новая Гвинея.'},
+      {t:'Порт', d:'Место на берегу, где корабли причаливают, разгружаются и берут пассажиров.', e:'Санкт-Петербург — порт на Балтийском море, Махачкала — на Каспийском.'},
+      {t:'Акватория', d:'Участок водной поверхности, у которого есть границы.', e:'Акватория порта — вода у причалов, где корабли стоят и разворачиваются.'},
+      {t:'Пролив', d:'Узкое водное пространство между двумя участками суши, которое соединяет два водоёма.', e:'Гибралтарский пролив соединяет Атлантический океан и Средиземное море.'},
+      {t:'Залив', d:'Часть океана или моря, которая вдаётся в сушу, но свободно с ним соединяется.', e:'Бенгальский залив — у берегов Индии, Финский залив — у Санкт-Петербурга.'},
+      {t:'Материк', d:'Огромный участок суши, со всех сторон окружённый водой. Материков шесть.', e:'Евразия, Африка, Северная Америка, Южная Америка, Австралия, Антарктида.'},
+      {t:'Остров', d:'Участок суши, со всех сторон окружённый водой, но гораздо меньше материка.', e:'Мадагаскар, Великобритания, Шри-Ланка, Ява — острова из твоего маршрута.'}
+    ]
+  ];
+  var flipped={}, total=0; TERMS.forEach(function(g){ total+=g.length; });
+  var progEls=[$('#terms-progress')];
+  function termsProgress(){
+    var n=Object.keys(flipped).length;
+    progEls.forEach(function(p,gi){ var got=0; TERMS[gi].forEach(function(t,i){ if(flipped[gi+'-'+i]) got++; }); p.textContent='Открыто '+got+' из '+TERMS[gi].length; });
+    if(n===total) markDone('terms');
+  }
+  document.querySelectorAll('.cards').forEach(function(box){
+    var gi=+box.getAttribute('data-terms');
+    TERMS[gi].forEach(function(t,i){
+      var b=el('button','card'); b.type='button'; b.setAttribute('aria-label',t.t+'. Нажми, чтобы увидеть значение');
+      b.innerHTML='<div class="in"><div class="face f"><div class="w">'+t.t+'</div><div class="tap">Нажми</div></div><div class="face b"><div class="w">'+t.t+'</div><div>'+t.d+'</div>'+(t.e?'<div class="e">'+t.e+'</div>':'')+'</div></div>';
+      b.addEventListener('click', function(){ b.classList.toggle('flip'); flipped[gi+'-'+i]=true; termsProgress(); });
+      box.appendChild(b);
+    });
+  });
+  termsProgress();
+
+  /* ---------- odd one out ---------- */
+  var ODD=[
+    {items:['Балтийское море','Средиземное море','Красное море','Гибралтарский пролив'], odd:'Гибралтарский пролив', why:'Балтийское, Средиземное и Красное — моря, широкие водные пространства. Гибралтар — узкий пролив, дверь из Атлантического океана в Средиземное море.'},
+    {items:['Гибралтарский пролив','Берингов пролив','Магелланов пролив','Бенгальский залив'], odd:'Бенгальский залив', why:'Пролив соединяет два водоёма и лежит между участками суши. А залив вдаётся в сушу: Бенгальский залив — часть Индийского океана.'},
+    {items:['Мадагаскар','Шри-Ланка','Суматра','Сомали'], odd:'Сомали', why:'Мадагаскар, Шри-Ланка и Суматра — острова, вокруг них вода. Сомали — полуостров: он одним боком соединён с Африкой, поэтому корабль его огибает.'},
+    {items:['Санкт-Петербург','Махачкала','Владивосток','Эльбрус'], odd:'Эльбрус', why:'Санкт-Петербург, Махачкала и Владивосток — портовые города на берегу. Эльбрус — самая высокая гора России, кораблю там делать нечего.'}
+  ];
+  var oddGrid=$('#odd-grid'), oddFb=$('#odd-fb'), oddNext=$('#odd-next'), oddP=$('#odd-progress'), oddRound=0;
+  function renderOdd(){
+    var r=ODD[oddRound]; oddGrid.innerHTML=''; oddFb.innerHTML=''; oddNext.hidden=true;
+    oddP.textContent='Раунд '+(oddRound+1)+' из '+ODD.length;
+    shuffle(r.items).forEach(function(w){
+      var b=el('button','opt',w); b.type='button';
+      b.addEventListener('click', function(){
+        var all=oddGrid.querySelectorAll('.opt');
+        if(w===r.odd){
+          for(var i=0;i<all.length;i++) all[i].disabled=true;
+          b.classList.add('ok');
+          oddFb.innerHTML='<div class="feedback ok"><span class="k">Точно, лишнее — «'+w+'».</span><span>'+r.why+'</span></div>';
+          if(oddRound<ODD.length-1) oddNext.hidden=false;
+          else { oddP.textContent='Все четыре раунда пройдены'; markDone('odd'); }
+        } else {
+          b.classList.add('bad'); b.disabled=true;
+          oddFb.innerHTML='<div class="feedback bad"><span class="k">«'+w+'» из той же компании, что и остальные.</span><span>Подумай, что здесь про другое.</span></div>';
+        }
+      });
+      oddGrid.appendChild(b);
+    });
+  }
+  oddNext.addEventListener('click', function(){ oddRound++; renderOdd(); });
+  renderOdd();
+
+  /* ---------- bricks ---------- */
+  Array.prototype.forEach.call(document.querySelectorAll('.brick button'), function(b){
+    b.addEventListener('click', function(){
+      var body=b.nextElementSibling, open=body.hidden;
+      body.hidden=!open; b.setAttribute('aria-expanded', open?'true':'false');
+      b.lastElementChild.textContent = open?'−':'+';
+    });
+  });
+
+  /* ---------- start ---------- */
+  var start=idxFromHash(); go(start<0?0:start, true);
+})();
+</script>
+
+</body>
+</html>
