@@ -1,0 +1,1260 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Литосфера и человек</title>
+<meta name="paragraph" content="§ 28">
+<meta name="description" content="Литосфера и человек">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=PT+Sans+Narrow:wght@400;700&family=PT+Sans:wght@400;700&display=swap">
+<style>
+:root{
+  --bg:#EBE8DF; --surface:#F8F6F0; --surface-2:#E2DED2; --ink:#1B2233; --ink-2:#4A5163; --muted:#7A8093;
+  --lapis:#23448A; --on-lapis:#FFFFFF; --lapis-soft:#D9E1F3;
+  --gold:#B08A2E; --gold-soft:#F1E6C2; --on-gold:#2A2107;
+  --terra:#B4552F; --terra-soft:#F3DCD2;
+  --moss:#4E7A3B; --moss-soft:#DCE8D2;
+  --line:#D2CDBF; --tile:#CFC9B9;
+  --shadow:0 1px 2px rgba(27,34,51,.08),0 10px 28px rgba(27,34,51,.07);
+  --display:"Oranienbaum","Georgia","Times New Roman",serif;
+  --body:"Golos Text","Segoe UI",system-ui,-apple-system,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0F1728; --surface:#182338; --surface-2:#21304B; --ink:#EDE8DC; --ink-2:#C2BFB4; --muted:#8B93A8;
+    --lapis:#7EA0E6; --on-lapis:#0F1728; --lapis-soft:#22345A;
+    --gold:#E0B84A; --gold-soft:#3E3419; --on-gold:#0F1728;
+    --terra:#E0825C; --terra-soft:#4A2A1D;
+    --moss:#8DBF74; --moss-soft:#243B1F;
+    --line:#2E3B57; --tile:#2A3856;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 28px rgba(0,0,0,.35);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0F1728; --surface:#182338; --surface-2:#21304B; --ink:#EDE8DC; --ink-2:#C2BFB4; --muted:#8B93A8;
+  --lapis:#7EA0E6; --on-lapis:#0F1728; --lapis-soft:#22345A;
+  --gold:#E0B84A; --gold-soft:#3E3419; --on-gold:#0F1728;
+  --terra:#E0825C; --terra-soft:#4A2A1D;
+  --moss:#8DBF74; --moss-soft:#243B1F;
+  --line:#2E3B57; --tile:#2A3856;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 28px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+@media (prefers-reduced-motion: reduce){ *{transition:none!important;animation:none!important} }
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.55;-webkit-text-size-adjust:100%}
+h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1.1;text-wrap:balance;margin:0}
+p{margin:0}
+a{color:var(--lapis)}
+button{font:inherit;color:inherit;cursor:pointer}
+button:focus-visible,summary:focus-visible,a:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+[hidden]{display:none!important}
+
+/* ---------- top bar ---------- */
+.top{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+.top-inner{max-width:720px;margin:0 auto;padding:10px 16px;display:flex;align-items:center;gap:12px}
+.back{text-decoration:none;color:var(--ink-2);font-size:14px;white-space:nowrap;padding:6px 10px;border-radius:8px;background:var(--surface);border:1px solid var(--line)}
+.crumb{flex:1;min-width:0;font-size:14px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.crumb b{color:var(--ink);font-weight:600}
+.toc-btn{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:6px 10px;font-size:14px;color:var(--lapis);font-weight:600;white-space:nowrap}
+.stepbar{max-width:720px;margin:0 auto;padding:0 16px 10px;display:flex;gap:4px}
+.stepbar button{flex:1;height:8px;min-width:6px;padding:0;border:0;border-radius:2px;background:var(--tile);transition:background .3s,transform .3s}
+.stepbar button.visited{background:var(--lapis)}
+.stepbar button.done{background:var(--gold)}
+.stepbar button.current{transform:scaleY(1.6);background:var(--gold)}
+
+/* ---------- steps ---------- */
+main{max-width:720px;margin:0 auto;padding:20px 16px 120px}
+.step{display:flex;flex-direction:column;gap:16px}
+.eyebrow{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);font-weight:700;display:flex;align-items:center;gap:10px}
+.tess{display:inline-flex;gap:3px}
+.tess i{width:8px;height:8px;display:block;border-radius:1px}
+.tess i:nth-child(1){background:var(--lapis)} .tess i:nth-child(2){background:var(--gold)} .tess i:nth-child(3){background:var(--terra)}
+.step h1{font-size:clamp(36px,8vw,56px)}
+.step h2{font-size:clamp(28px,6vw,38px)}
+.step h3{font-size:22px;color:var(--lapis);margin-top:4px}
+.lede{font-size:19px;color:var(--ink-2);max-width:34ch}
+.prose{display:flex;flex-direction:column;gap:12px;max-width:66ch}
+.prose ul{margin:0;padding-left:22px;display:flex;flex-direction:column;gap:6px}
+.prose li::marker{color:var(--gold)}
+b,strong{font-weight:600}
+.term{font-weight:600;color:var(--lapis);border-bottom:2px solid var(--gold-soft)}
+.aside{background:var(--lapis-soft);border-left:4px solid var(--lapis);padding:12px 16px;border-radius:0 8px 8px 0;font-size:16px;display:flex;flex-direction:column;gap:6px}
+.aside .k{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--lapis);font-weight:700}
+.home{background:var(--gold-soft);border-left-color:var(--gold)}
+.home .k{color:var(--gold)}
+details{border:1px solid var(--line);border-radius:10px;background:var(--surface)}
+details summary{cursor:pointer;list-style:none;padding:12px 16px;font-weight:600;color:var(--lapis);display:flex;align-items:center;gap:10px}
+details summary::-webkit-details-marker{display:none}
+details summary::before{content:"";width:9px;height:9px;background:var(--gold);transform:rotate(45deg);flex:none;transition:transform .2s}
+details[open] summary::before{transform:rotate(45deg) scale(.6);background:var(--lapis)}
+details .body{padding:0 16px 14px;display:flex;flex-direction:column;gap:8px;color:var(--ink-2)}
+
+.steps4{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+@media (min-width:600px){ .steps4{grid-template-columns:repeat(4,1fr)} }
+.dom{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px;display:flex;flex-direction:column;gap:4px;box-shadow:var(--shadow)}
+.dom .n{font-family:var(--display);font-size:28px;color:var(--gold);line-height:1}
+.dom .t{font-weight:600;font-size:15px;line-height:1.25}
+.dom .d{font-size:13.5px;color:var(--ink-2);line-height:1.35}
+
+.ladder{display:flex;flex-direction:column;align-items:center;gap:6px}
+.rung{background:var(--lapis);color:var(--on-lapis);padding:9px 12px;border-radius:8px;text-align:center;font-size:15px;line-height:1.3}
+.rung small{display:block;opacity:.85;font-size:12.5px}
+.rung.r1{width:60%} .rung.r2{width:74%} .rung.r3{width:88%} .rung.r4{width:100%;background:var(--surface-2);color:var(--ink)}
+
+/* timeline (вертикальная, все даты видны сразу) */
+.tl-v{display:flex;flex-direction:column;position:relative;padding-left:4px}
+.tl-v::before{content:"";position:absolute;left:16px;top:16px;bottom:16px;width:3px;background:var(--line);border-radius:2px}
+.tl-item{position:relative;padding-left:36px;display:flex;flex-direction:column}
+.tl-btn{background:none;border:0;padding:8px 0;text-align:left;display:flex;align-items:baseline;gap:8px 12px;flex-wrap:wrap;color:var(--ink);width:100%}
+.tl-btn .dot{position:absolute;left:5px;top:12px;width:17px;height:17px;background:var(--surface);border:3px solid var(--lapis);border-radius:50%;transition:transform .2s,background .2s}
+.tl-item.ru .dot{border-color:var(--terra)}
+.tl-item.open .dot{background:var(--gold);border-color:var(--gold);transform:scale(1.2)}
+.tl-btn .y{font-family:var(--display);font-size:26px;line-height:1;font-variant-numeric:tabular-nums;min-width:96px}
+.tl-btn .t{font-weight:600;font-size:16px}
+.tl-btn .era{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--lapis);font-weight:700;margin-left:auto}
+.tl-item.ru .era{color:var(--terra)}
+.tl-d{color:var(--ink-2);font-size:15.5px;padding:0 0 12px;line-height:1.45}
+.hint{font-size:14px;color:var(--muted)}
+
+/* «как в учебнике» и вопросы учебника */
+details.book{border-color:var(--gold-soft)}
+details.book summary{color:var(--gold)}
+details.book summary::before{background:var(--gold)}
+details.book[open] summary::before{background:var(--gold)}
+details.book .body{font-size:15px;color:var(--ink)}
+details.book .body ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:7px}
+details.book .body li::marker{color:var(--gold)}
+details.book .body .pic{color:var(--ink-2);font-style:italic}
+.qlist{display:flex;flex-direction:column;gap:10px}
+.qi{display:grid;grid-template-columns:auto 1fr;gap:12px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.qi .qn{font-family:var(--display);font-size:24px;color:var(--gold);line-height:1;min-width:20px}
+.qi p{font-size:15.5px}
+.qi .src{font-size:14.5px;color:var(--ink-2);margin-top:6px}
+.qi a{font-size:13.5px;font-weight:600;text-decoration:none;display:inline-block;margin-top:8px;background:var(--lapis-soft);padding:4px 10px;border-radius:999px}
+
+/* games */
+.game{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:12px}
+.g-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.game h3{margin:0}
+.task{color:var(--ink-2)}
+.badge{font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;padding:4px 10px;border-radius:999px;background:var(--gold-soft);color:var(--gold)}
+.badge.done{background:var(--moss-soft);color:var(--moss)}
+.btn{background:var(--lapis);color:var(--on-lapis);border:0;border-radius:10px;padding:10px 18px;font-weight:600;font-size:15px;text-decoration:none;display:inline-block}
+.btn.ghost{background:transparent;color:var(--lapis);border:2px solid var(--lapis)}
+.btn:disabled{opacity:.45;cursor:default}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.feedback{padding:12px 14px;border-radius:10px;font-size:15px;display:flex;flex-direction:column;gap:4px}
+.feedback.ok{background:var(--moss-soft);border-left:4px solid var(--moss)}
+.feedback.bad{background:var(--terra-soft);border-left:4px solid var(--terra)}
+.feedback .k{font-weight:700}
+.progress{font-size:13px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.card{perspective:900px;height:150px;background:none;border:0;padding:0;text-align:left}
+.card .in{position:relative;width:100%;height:100%;transition:transform .5s;transform-style:preserve-3d}
+.card.flip .in{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;border-radius:12px;padding:12px;display:flex;flex-direction:column;justify-content:center;gap:6px;overflow:hidden}
+.face.f{background:var(--lapis);color:var(--on-lapis)}
+.face.f .w{font-family:var(--display);font-size:21px;line-height:1.05}
+.face.f .tap{font-size:11px;opacity:.75;letter-spacing:.08em;text-transform:uppercase}
+.face.b{background:var(--surface-2);color:var(--ink);transform:rotateY(180deg);font-size:12.5px;line-height:1.3;justify-content:flex-start;overflow:auto}
+.face.b .w{font-weight:700;color:var(--lapis);font-size:13px}
+.face.b .e{color:var(--ink-2);font-style:italic}
+
+.match{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.col{display:flex;flex-direction:column;gap:8px}
+.col .lbl{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.opt{background:var(--surface-2);border:2px solid transparent;border-radius:10px;padding:10px 12px;text-align:left;font-weight:500;font-size:15px;transition:border-color .15s,background .15s}
+.opt:hover{border-color:var(--lapis)}
+.opt.sel{border-color:var(--gold);background:var(--gold-soft)}
+.opt.ok{background:var(--moss-soft);border-color:var(--moss)}
+.opt.bad{animation:shake .35s}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+
+.pool{display:flex;flex-direction:column;gap:8px}
+.seq{display:flex;flex-direction:column;gap:8px;min-height:44px;padding:10px;border:2px dashed var(--line);border-radius:12px}
+.seq .slot{display:flex;align-items:center;gap:10px;background:var(--lapis-soft);border-radius:8px;padding:8px 12px;font-size:15px}
+.seq .slot .i{font-family:var(--display);font-size:20px;color:var(--lapis);width:22px;font-variant-numeric:tabular-nums}
+.seq .slot.ok{background:var(--moss-soft)} .seq .slot.bad{background:var(--terra-soft)}
+.seq .slot .yr{margin-left:auto;font-weight:700;color:var(--ink-2);font-variant-numeric:tabular-nums}
+.seq .empty{color:var(--muted);font-size:14px}
+
+.odd-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.odd-grid .opt{text-align:center;padding:16px 10px;font-size:16px}
+.odd-grid .opt.bad{background:var(--terra-soft);border-color:var(--terra)}
+
+.q{font-size:19px;font-weight:600;line-height:1.35}
+.q-opts{display:flex;flex-direction:column;gap:8px}
+.q-opts .opt{font-size:15.5px;line-height:1.35}
+.q-opts .opt.bad{background:var(--terra-soft);border-color:var(--terra)}
+.score{display:flex;flex-direction:column;gap:12px;align-items:flex-start}
+.score .big{font-family:var(--display);font-size:56px;line-height:1;color:var(--gold)}
+.score-tiles{display:flex;gap:5px;flex-wrap:wrap}
+.score-tiles i{width:22px;height:22px;border-radius:3px;background:var(--tile)}
+.score-tiles i.on{background:var(--gold)}
+
+.bricks{display:flex;flex-direction:column;gap:10px}
+.brick{background:var(--surface-2);border-radius:10px;overflow:hidden}
+.brick button{width:100%;background:none;border:0;padding:12px 14px;text-align:left;font-weight:600;color:var(--lapis);display:flex;justify-content:space-between;gap:10px}
+.brick .b-body{padding:0 14px 12px;color:var(--ink-2);font-size:15.5px}
+
+.mosaic{display:flex;gap:6px;align-items:center}
+.mosaic .tile{width:26px;height:26px;background:var(--tile);border-radius:3px;transition:background .4s,transform .4s}
+.mosaic .tile.on{background:var(--gold);transform:rotate(45deg) scale(.8)}
+.mosaic-list{display:flex;flex-direction:column;gap:6px;font-size:15px}
+.mosaic-list span.off{color:var(--muted)}
+
+/* pager */
+.pager{position:fixed;left:0;right:0;bottom:0;z-index:5;background:var(--bg);border-top:1px solid var(--line)}
+.pager-inner{max-width:720px;margin:0 auto;padding:10px 16px;display:flex;align-items:center;gap:10px}
+.pager .count{font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+.pager .btn{flex:1;text-align:center;padding:12px 14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pager .btn.ghost{flex:0 0 auto}
+
+/* toc overlay */
+.toc{position:fixed;inset:0;z-index:10;background:rgba(0,0,0,.35);display:flex;justify-content:flex-end}
+.toc-panel{width:min(360px,90vw);height:100%;background:var(--surface);overflow:auto;padding:16px;display:flex;flex-direction:column;gap:8px;box-shadow:var(--shadow)}
+.toc-panel h3{font-size:24px;margin-bottom:6px;display:flex;justify-content:space-between;align-items:center}
+.toc-close{background:none;border:1px solid var(--line);border-radius:8px;padding:4px 10px;font-size:14px}
+.toc-item{display:flex;align-items:center;gap:10px;background:none;border:0;border-radius:8px;padding:8px 10px;text-align:left;font-size:15px;color:var(--ink)}
+.toc-item:hover{background:var(--surface-2)}
+.toc-item.current{background:var(--gold-soft);font-weight:600}
+.toc-item .n{font-family:var(--display);font-size:18px;color:var(--muted);width:24px;font-variant-numeric:tabular-nums}
+.toc-item .m{margin-left:auto;font-size:12px;color:var(--moss);font-weight:700}
+
+/* схема управления (§ 2) */
+.org{display:flex;flex-direction:column;gap:8px}
+.org .lvl{display:grid;gap:8px;grid-template-columns:repeat(2,1fr)}
+@media (min-width:600px){ .org .lvl{grid-template-columns:repeat(4,1fr)} }
+.org .box{background:var(--surface-2);border-radius:8px;padding:9px 10px;font-size:14px;text-align:center;line-height:1.3}
+.org .box small{display:block;font-size:12px;color:var(--ink-2)}
+.org .box.top{background:var(--lapis);color:var(--on-lapis);font-weight:600;font-size:16px}
+.org .box.sub{background:var(--gold-soft)}
+.org .lbl{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:700;text-align:center}
+
+/* иллюстрации (§ 3) */
+.fig{margin:0;display:flex;flex-direction:column;gap:6px;align-items:flex-start}
+.fig img{width:100%;max-width:360px;height:auto;border-radius:10px;border:1px solid var(--line);background:var(--surface);box-shadow:var(--shadow)}
+.fig.wide img{max-width:100%}
+.fig figcaption{font-size:14px;color:var(--ink-2);line-height:1.35;max-width:60ch}
+.fig-row{display:flex;gap:12px;flex-wrap:wrap;align-items:flex-start}
+.fig-row .fig{flex:1 1 150px;max-width:220px}
+
+/* § 4: «каждый шестой», два пути крещения, игра «Где это было?» */
+.six{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;max-width:380px}
+.six span{height:64px;border-radius:8px;background:var(--surface-2);color:var(--ink-2);display:flex;align-items:flex-end;justify-content:center;padding-bottom:6px;font-size:11.5px;font-weight:600;position:relative}
+.six span::before{content:"";position:absolute;top:10px;left:50%;width:14px;height:14px;margin-left:-7px;border-radius:50%;background:var(--tile)}
+.six span::after{content:"";position:absolute;top:27px;left:50%;width:22px;height:14px;margin-left:-11px;border-radius:8px 8px 3px 3px;background:var(--tile)}
+.six span.w{background:var(--lapis);color:var(--on-lapis)}
+.six span.w::before,.six span.w::after{background:var(--gold)}
+.ways{display:grid;grid-template-columns:1fr;gap:10px}
+@media (min-width:560px){ .ways{grid-template-columns:1fr 1fr} }
+.way{background:var(--surface);border:1px solid var(--line);border-top:5px solid var(--lapis);border-radius:12px;padding:12px 14px;display:flex;flex-direction:column;gap:6px;box-shadow:var(--shadow)}
+.way.const{border-top-color:var(--terra)}
+.way.const h3{color:var(--terra)}
+.way .cn{font-weight:600;font-size:17px}
+.way p{font-size:15.5px;color:var(--ink-2)}
+.sort-card{background:var(--lapis-soft);border-radius:12px;padding:16px;font-size:18px;font-weight:600;line-height:1.35}
+.tri{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.tri .opt{text-align:center;padding:12px 4px;font-size:15px}
+.tri .opt.bad{background:var(--terra-soft);border-color:var(--terra)}
+.sort-sum{display:flex;flex-direction:column;gap:8px;font-size:15px}
+.sort-sum b{color:var(--lapis)}
+/* § 4: разбор вопросов учебника с подсказками и ответом */
+.qtext{font-size:18px;font-weight:600;line-height:1.35;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.aside ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:5px}
+.aside.ans{background:var(--moss-soft);border-left-color:var(--moss)}
+.aside.ans .k{color:var(--moss)}
+.answer{display:flex;flex-direction:column;gap:12px;align-items:stretch}
+.answer .btn{text-align:center}
+.ans-body{display:flex;flex-direction:column;gap:12px}
+.ans-table{width:100%;border-collapse:collapse;font-size:15px;background:var(--surface)}
+.ans-table th,.ans-table td{border:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top;line-height:1.3}
+.ans-table th{font-size:13px;color:var(--ink-2);font-weight:700}
+.ans-table td:first-child{white-space:nowrap}
+
+/* виды шагов: из учебника / задания учебника / сверх учебника */
+.kind-tag{display:flex;gap:10px;align-items:flex-start;border-radius:10px;padding:8px 12px;font-size:13px;line-height:1.35}
+.kind-tag .ic{font-size:18px;line-height:1.1}
+.kind-tag b{font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:700}
+.kind-tag .pg{font-weight:600;margin-left:6px;font-size:13px}
+.kind-tag small{display:block;font-size:13px;color:var(--ink-2);margin-top:2px}
+.kind-tag.book{background:var(--lapis-soft);color:var(--lapis)}
+.kind-tag.task{background:var(--gold-soft);color:var(--gold)}
+.kind-tag.ours{background:var(--terra-soft);color:var(--terra)}
+.stepbar button.k-book{background:var(--lapis-soft)} .stepbar button.k-task{background:var(--gold-soft)} .stepbar button.k-ours{background:var(--terra-soft)}
+.stepbar button.k-book.visited{background:var(--lapis)} .stepbar button.k-task.visited{background:var(--gold)} .stepbar button.k-ours.visited{background:var(--terra)}
+.stepbar button.visited.done{background:var(--moss)}
+.stepbar{gap:3px} .stepbar button{min-width:3px}
+.stepbar button.gstart{margin-left:5px}
+.stepbar button.current{transform:scaleY(1.9);box-shadow:0 0 0 1.5px var(--ink)}
+.toc-group{display:flex;flex-direction:column;gap:2px;border-left:4px solid var(--lapis);padding-left:8px;margin-top:10px}
+.toc-group.k-task{border-left-color:var(--gold)} .toc-group.k-ours{border-left-color:var(--terra)}
+.toc-head{display:flex;align-items:center;gap:8px;font-size:12px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;color:var(--lapis);padding:4px 2px}
+.toc-group.k-task .toc-head{color:var(--gold)} .toc-group.k-ours .toc-head{color:var(--terra)}
+.toc-head .ic{font-size:15px;letter-spacing:0}
+.toc-item .pg{margin-left:auto;font-size:12px;color:var(--muted);white-space:nowrap;font-variant-numeric:tabular-nums}
+.toc-item .pg + .m{margin-left:8px}
+
+/* ===== Книжное оформление (выбрано 14.09.2026): как учебник — синяя шапка, PT Serif / PT Sans Narrow / PT Sans ===== */
+:root{
+  --bg:#FBFAF6; --surface:#FFFFFF; --surface-2:#EAF0F8; --ink:#1A1A1A; --ink-2:#393939; --muted:#6B6B6B;
+  --lapis:#2D63A6; --on-lapis:#FFFFFF; --lapis-soft:#DCE7F5; --gold:#8B6B22; --gold-soft:#F3EBD3; --on-gold:#1A1A1A;
+  --terra:#C24E1E; --terra-soft:#FBE3D6; --moss:#3E7A3A; --moss-soft:#E1EEDC; --line:#D9DDE3; --tile:#D5DCE6; --shadow:none;
+  --band-ink:#FFFFFF; --tb:rgba(255,255,255,.32); --tbv:#FFFFFF; --to:rgba(255,190,160,.5); --tov:#F6A37E; --tt:rgba(255,230,160,.5); --ttv:#F2D27A; --tdone:#A6DB93;
+  --display:"PT Sans Narrow","Arial Narrow",sans-serif; --body:"PT Serif",Georgia,serif; --ui:"PT Sans","Segoe UI",system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){ --bg:#141516; --surface:#1C1E21; --surface-2:#1E2936; --ink:#EDEBE6; --ink-2:#CFCBC3; --muted:#9A968F;
+    --lapis:#79A6E0; --on-lapis:#10141A; --lapis-soft:#1F3350; --gold:#D9B45A; --gold-soft:#3A3120; --on-gold:#10141A;
+    --terra:#F0875A; --terra-soft:#43261A; --moss:#8CC47F; --moss-soft:#22381F; --line:#30343A; --tile:#2C3440; --shadow:none;
+    --band-ink:#10141A; --tb:rgba(16,20,26,.28); --tbv:#10141A; --to:rgba(120,40,10,.4); --tov:#8A2E0C; --tt:rgba(110,80,10,.4); --ttv:#6B4E0E; --tdone:#1F5A1A; } }
+:root[data-theme="dark"]{ --bg:#141516; --surface:#1C1E21; --surface-2:#1E2936; --ink:#EDEBE6; --ink-2:#CFCBC3; --muted:#9A968F;
+    --lapis:#79A6E0; --on-lapis:#10141A; --lapis-soft:#1F3350; --gold:#D9B45A; --gold-soft:#3A3120; --on-gold:#10141A;
+    --terra:#F0875A; --terra-soft:#43261A; --moss:#8CC47F; --moss-soft:#22381F; --line:#30343A; --tile:#2C3440; --shadow:none;
+    --band-ink:#10141A; --tb:rgba(16,20,26,.28); --tbv:#10141A; --to:rgba(120,40,10,.4); --tov:#8A2E0C; --tt:rgba(110,80,10,.4); --ttv:#6B4E0E; --tdone:#1F5A1A; }
+body{font-family:var(--body);font-size:18px;line-height:1.62}
+h1,h2,h3{font-family:var(--display);font-weight:700}
+.step h1{color:var(--lapis);font-size:clamp(34px,8.5vw,52px);line-height:1.02}
+.step h2{color:var(--lapis);font-size:clamp(28px,7vw,36px);line-height:1.08}
+.step h3{font-size:23px}
+.pnum{display:inline-flex;align-items:center;justify-content:center;background:var(--lapis);color:var(--on-lapis);font:700 .72em/1 var(--display);width:1.08em;height:1.08em;margin-right:.3em;vertical-align:.08em}
+.lede{font-size:20px}
+.top{background:var(--lapis);border-bottom:0}
+.back{background:transparent;border-color:var(--band-ink);color:var(--band-ink);font-family:var(--ui);border-radius:3px}
+.crumb{color:var(--band-ink);opacity:.88;font-family:var(--ui)}
+.crumb b{color:var(--band-ink)}
+.toc-btn{background:var(--band-ink);color:var(--lapis);border-color:var(--band-ink);font-family:var(--ui);font-weight:700;border-radius:3px}
+.stepbar button{border-radius:1px}
+.stepbar button.k-book{background:var(--tb)} .stepbar button.k-book.visited{background:var(--tbv)}
+.stepbar button.k-ours{background:var(--to)} .stepbar button.k-ours.visited{background:var(--tov)}
+.stepbar button.k-task{background:var(--tt)} .stepbar button.k-task.visited{background:var(--ttv)}
+.stepbar button.visited.done{background:var(--tdone)}
+.stepbar button.current{box-shadow:0 0 0 1.5px var(--band-ink)}
+.eyebrow{font-family:var(--ui);color:var(--muted);letter-spacing:.08em}
+.tess{display:none}
+.term{font-weight:700;font-style:italic;color:var(--ink);border-bottom:0}
+.kind-tag{border-radius:0;padding:6px 0 0;border-top:2px solid currentColor;font-family:var(--ui);align-items:center}
+.kind-tag.book,.kind-tag.task,.kind-tag.ours{background:transparent}
+.kind-tag .ic{display:flex}
+.kind-tag b{font-size:12.5px;letter-spacing:.08em}
+.kind-tag small{font-family:var(--body);font-style:italic;font-size:14.5px}
+details{border-radius:0}
+details summary{font-family:var(--ui)}
+details.book{border:0;border-top:3px solid var(--lapis);background:var(--surface-2)}
+details.book summary{color:var(--lapis)}
+details.book summary::before,details.book[open] summary::before{background:var(--lapis)}
+details.book .body{font-size:16px}
+.aside{border-radius:0}
+.aside .k{font-family:var(--ui)}
+.dom{border-radius:0;box-shadow:none;border-top:3px solid var(--lapis)}
+.dom .n{font-family:var(--display);font-weight:700;color:var(--lapis)}
+.dom .t{font-family:var(--ui)}
+.rung{border-radius:0}
+.tl-btn .y{font-family:var(--display);font-weight:700;color:var(--lapis)}
+.tl-btn .era{font-family:var(--ui)}
+.fig img{border-radius:0;box-shadow:none}
+.fig figcaption{font-family:var(--ui)}
+.org .box{border-radius:0}
+.qi{border-radius:0}
+.qi .qn{font-family:var(--display);font-weight:700;color:var(--terra)}
+.qi a{border-radius:0;font-family:var(--ui)}
+.game{border-radius:0;box-shadow:none;border-top:4px solid var(--terra)}
+.game h3{color:var(--terra)}
+.badge{border-radius:0;font-family:var(--ui)}
+.btn{border-radius:3px;font-family:var(--ui);font-weight:700}
+.opt{border-radius:0;background:var(--surface);border-color:var(--line);font-family:var(--body)}
+.feedback{border-radius:0}
+.progress{font-family:var(--ui)}
+.q{font-family:var(--body);font-weight:700}
+.face{border-radius:0}
+.face.f .w{font-family:var(--display);font-weight:700}
+.seq,.seq .slot,.sort-card,.brick,.qtext,.way,.six span,.mosaic .tile,.score-tiles i,.toc-panel,.toc-item{border-radius:0}
+.brick button{font-family:var(--ui)}
+.pager{background:var(--surface)}
+.count{font-family:var(--ui)}
+.toc-panel h3{font-family:var(--display)}
+.toc-head{font-family:var(--ui)}
+.toc-head .ic{display:flex}
+.score .big{font-family:var(--display);font-weight:700;color:var(--lapis)}
+/* переносы длинных слов на узком экране (14.09.2026) */
+.match{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+.opt,.face,.qi p,.ans-table td,.ans-table th{overflow-wrap:anywhere;hyphens:auto}
+.ans-table.fit td:first-child{white-space:normal}
+</style>
+</head>
+<body>
+
+
+<header class="top">
+  <div class="top-inner">
+    <a class="back" href="./">← Темы</a>
+    <div class="crumb">География · § 28 · <b>Литосфера и человек</b></div>
+    <button class="toc-btn" id="toc-btn" type="button">Содержание</button>
+  </div>
+  <div class="stepbar" id="stepbar" aria-label="Шаги темы"></div>
+</header>
+
+<main id="deck">
+
+<!-- 1 -->
+<section class="step" data-step="za-minutu" data-name="За минуту" data-part="Самое главное" data-kind="ours">
+  <div class="kind-tag ours"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 6h14"></path><path d="M5 12h14"></path><path d="M5 18h9"></path></svg></span><div><b>Коротко о главном</b><small>Пересказ для разгона. Подробно, как в учебнике, — в следующих шагах.</small></div></div>
+  <div class="eyebrow"><span class="tess"><i></i><i></i><i></i></span> География · 6 класс · § 28</div>
+  <h1>Литосфера и человек</h1>
+  <p class="lede">Амина, это тема про то, что человек берёт у каменной оболочки Земли, что он с ней при этом делает и как её нужно беречь.</p>
+  <div id="resume" hidden></div>
+  <div class="prose">
+    <p>Оглянись вокруг. Дом стоит на земле, дорога лежит на земле, во дворе земля, за городом поля и горы. Всё это — литосфера, твёрдая оболочка Земли. Мы живём прямо на её крыше.</p>
+    <p>А теперь посмотри на телефон в руке. Металл в нём когда-то был рудой в горе, стекло — песком, провода — медью. Всё это достали из глубины Земли, из <b>недр</b>.</p>
+    <p>Но у такого соседства есть и другая сторона. Земля под ногами иногда вздрагивает, со склонов сползают породы, а там, где человек выкопал огромную яму, потом ничего не растёт.</p>
+    <p>Поэтому весь параграф — про две вещи: <b>что литосфера даёт человеку</b> и <b>что человек делает с литосферой</b>. Вот четыре части темы:</p>
+  </div>
+  <div class="steps4">
+    <div class="dom"><div class="n">1</div><div class="t">Территория и недра</div><div class="d">Где мы живём, что берём из глубины и какие опасности рядом.</div></div>
+    <div class="dom"><div class="n">2</div><div class="t">Как добывают</div><div class="d">Шахты, карьеры, скважины — и 100 млрд т пород за год.</div></div>
+    <div class="dom"><div class="n">3</div><div class="t">Что портится</div><div class="d">Отвалы, овраги, грязная вода и воздух.</div></div>
+    <div class="dom"><div class="n">4</div><div class="t">Как беречь</div><div class="d">Рекультивация: карьер превращают в пруд, отвалы — в лес.</div></div>
+  </div>
+  <div class="aside">
+    <div class="k">Как этим пользоваться</div>
+    <p>У каждого шага написано, на какой странице учебника искать. Внизу шага есть «Подробнее, как в учебнике»: там всё, что есть на этих страницах, ничего не пропущено. Сначала учи по коротким шагам, а перед уроком открой «подробнее».</p>
+    <p>Надпись вверху шага подскажет, откуда он: синяя — из учебника, золотая — задание учебника, оранжевая — сверх учебника (пересказ, словарик, игры, самопроверка). В «Содержании» шаги так же разбиты на группы.</p>
+  </div>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 94</summary>
+    <div class="body"><ul>
+      <li>§ 28 «Литосфера и человек» — последний параграф раздела «Литосфера — твёрдая оболочка Земли» (название раздела написано наверху с. 95).</li>
+      <li>Наверху с. 94 — заставка параграфа: широкая фотография, слева горячий источник с ярко-синей водой и цветными краями, справа извержение вулкана с потоками раскалённой лавы. Прямо на ней напечатано название: «§ 28. Литосфера и человек».</li>
+      <li class="pic">В левом верхнем углу с. 94 — надпись «Полярная звезда»: так называется серия, по которой сделан учебник.</li>
+      <li>Параграф открывается строкой курсивом — это вопросы подтем: «Что значит литосфера для человека. Как человек влияет на литосферу». Дальше каждый такой вопрос становится заголовком.</li>
+      <li>Все факты с. 94 разобраны на шагах 2—5, с. 95 — на шагах 4—8, с. 96 — на шагах 8, 16 и 17.</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 2 -->
+<section class="step" data-step="territoriya" data-name="Территория и недра" data-part="Что значит литосфера для человека" data-kind="book" data-pages="с. 94">
+  <div class="kind-tag book"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.5c2.6-1 5.6-.8 9 1.2v13c-3.4-2-6.4-2.2-9-1.2z"></path><path d="M21 5.5c-2.6-1-5.6-.8-9 1.2v13c3.4-2 6.4-2.2 9-1.2z"></path></svg></span><div><b>Из учебника</b><span class="pg">с. 94</span></div></div>
+  <div class="eyebrow">Что значит литосфера для человека?</div>
+  <h2>Территория и недра</h2>
+  <div class="prose">
+    <p>Учебник отвечает по пунктам. <b>Во-первых, литосфера — это территория.</b> На земной поверхности проходит практически вся жизнь и хозяйственная деятельность людей. Здесь люди строят дома и дороги, пашут землю и пасут скот.</p>
+    <p><b>Во-вторых, человеку доступны недра.</b> <span class="term">Недра</span> — это то, что лежит под поверхностью, в глубине Земли. Люди издавна использовали <span class="term">минеральное сырьё</span> — камень, глину, руду, уголь, нефть.</p>
+    <p>Причём не просто использовали: освоение многих районов Земли <b>начиналось</b> с поиска мест, богатых полезными ископаемыми. Сначала находили руду — потом рядом вырастал посёлок, а из него город.</p>
+    <p>Добыча полезных ископаемых, или <span class="term">горное дело</span>, — один из старейших видов человеческой деятельности. Старше, чем письменность: люди копали кремень и медную руду ещё в каменном веке.</p>
+  </div>
+  <div class="aside">
+    <div class="k">Два слова, которые легко перепутать</div>
+    <p><b>Литосфера</b> — вся твёрдая оболочка Земли. <b>Недра</b> — её глубина, то, что скрыто под поверхностью и откуда достают сырьё. Территория — сверху, недра — снизу.</p>
+  </div>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 94 (начало)</summary>
+    <div class="body"><ul>
+      <li>Заголовок подтемы: «Что значит литосфера для человека?»</li>
+      <li>Литосфера для человека — это, во-первых, территория. На земной поверхности проходит практически вся жизнь и хозяйственная деятельность людей. Здесь они строят дома и дороги, пашут землю и пасут скот.</li>
+      <li>Во-вторых, человеку доступны недра. Люди издавна использовали минеральное сырьё.</li>
+      <li>Освоение многих районов Земли начиналось с поиска мест, богатых полезными ископаемыми.</li>
+      <li>Их добыча, или горное дело, — один из старейших видов человеческой деятельности. Слова «горное дело» в учебнике выделены курсивом.</li>
+      <li>Дальше на этой странице идёт абзац про грозные опасности — он разобран на следующем шаге.</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 3 -->
+<section class="step" data-step="opasnosti" data-name="Грозные опасности" data-part="Что значит литосфера для человека" data-kind="book" data-pages="с. 94">
+  <div class="kind-tag book"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.5c2.6-1 5.6-.8 9 1.2v13c-3.4-2-6.4-2.2-9-1.2z"></path><path d="M21 5.5c-2.6-1-5.6-.8-9 1.2v13c3.4-2 6.4-2.2 9-1.2z"></path></svg></span><div><b>Из учебника</b><span class="pg">с. 94</span></div></div>
+  <div class="eyebrow">Что значит литосфера для человека?</div>
+  <h2>Грозные опасности</h2>
+  <div class="prose">
+    <p>С литосферой связаны не только богатства, но и грозные опасности. Ты уже знаешь из прошлых параграфов, к каким катастрофам могут привести <b>землетрясения</b> и <b>извержения вулканов</b>.</p>
+    <p>Учебник говорит спокойно и по делу: люди <b>обязаны думать о мерах защиты</b>. Например, в Японии, где угроза землетрясений велика, строят <span class="term">сейсмостойкие здания</span> — такие, которые выдерживают подземные толчки. Учёные всего мира изобретают новые материалы и технологии для строительства в таких районах.</p>
+    <h3>Почему важно, что под домом</h3>
+    <p>Любое здание начинается с фундамента. А <b>закладка фундаментов</b> всех сооружений зависит от двух вещей: какими <b>горными породами</b> сложена территория и каков <b>рельеф</b>. На скале и на рыхлом песке дом ставят по-разному.</p>
+    <p>Дальше учебник называет примеры:</p>
+    <ul>
+      <li>на <b>крутых склонах</b> подстерегает опасность <span class="term">оползней</span> — породы могут поехать вниз вместе с тем, что на них стоит;</li>
+      <li>у <b>подножий гор</b> нужно считаться с возможностью схода <b>лавин</b> и <b>селей</b> и с другими стихийными явлениями.</li>
+    </ul>
+  </div>
+  <div class="aside">
+    <div class="k">Вывод в учебнике (с. 94)</div>
+    <p>Литосфера для человека — источник полезных ископаемых и территория для жизни и ведения хозяйства. Вместе с тем с процессами в литосфере связаны многие катастрофические явления.</p>
+  </div>
+  <div class="aside home">
+    <div class="k">Ближе к дому</div>
+    <p>Дагестан тоже лежит в сейсмоактивном районе: подземные толчки у нас случаются, самое сильное землетрясение произошло 14 мая 1970 года, и после него в республике многое отстраивали заново. Поэтому правило учебника — «люди обязаны думать о мерах защиты» — про нас с тобой тоже.</p>
+    <p>Дома в таких районах проектируют с запасом прочности, как в Японии из учебника. А ещё у нас рядом горы: там, где склон крутой, дорогу и дом ставят с оглядкой на оползни и сели.</p>
+  </div>
+  <details>
+    <summary>Чем сель отличается от лавины и оползня</summary>
+    <div class="body"><p><b>Лавина</b> — вниз по склону сходит снег. <b>Сель</b> — вниз по горному руслу идёт поток из воды, грязи и камней, обычно после сильного дождя или бурного таяния снега. <b>Оползень</b> — вниз сползает сам грунт вместе с тем, что на нём лежит. Общее у всех трёх одно: сила тяжести тянет вниз то, что лежит на крутом склоне.</p></div>
+  </details>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 94 (продолжение)</summary>
+    <div class="body"><ul>
+      <li>С литосферой связаны и грозные опасности. «Вы уже знаете, к каким катастрофам могут привести землетрясения и извержения вулканов».</li>
+      <li>Люди обязаны думать о мерах защиты. Например, в Японии, где угроза землетрясений велика, строят сейсмостойкие здания.</li>
+      <li>Учёные всего мира изобретают новые материалы и технологии для строительства в таких районах.</li>
+      <li>Закладка фундаментов всех сооружений, которые строят люди, зависит от того, какими горными породами сложена территория и каков рельеф.</li>
+      <li>Например, на крутых склонах подстерегает опасность оползней.</li>
+      <li>У подножий гор нужно считаться с возможностью схода лавин и селей и с другими стихийными явлениями.</li>
+      <li>Розовая полоса-вывод в конце подтемы: «ЛИТОСФЕРА ДЛЯ ЧЕЛОВЕКА — ИСТОЧНИК ПОЛЕЗНЫХ ИСКОПАЕМЫХ И ТЕРРИТОРИЯ ДЛЯ ЖИЗНИ И ВЕДЕНИЯ ХОЗЯЙСТВА. ВМЕСТЕ С ТЕМ С ПРОЦЕССАМИ В ЛИТОСФЕРЕ СВЯЗАНЫ МНОГИЕ КАТАСТРОФИЧЕСКИЕ ЯВЛЕНИЯ».</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 4 -->
+<section class="step" data-step="dobycha" data-name="Шахты, карьеры, скважины" data-part="Как человек влияет на литосферу" data-kind="book" data-pages="с. 94–95">
+  <div class="kind-tag book"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.5c2.6-1 5.6-.8 9 1.2v13c-3.4-2-6.4-2.2-9-1.2z"></path><path d="M21 5.5c-2.6-1-5.6-.8-9 1.2v13c3.4-2 6.4-2.2 9-1.2z"></path></svg></span><div><b>Из учебника</b><span class="pg">с. 94–95</span></div></div>
+  <div class="eyebrow">Как человек влияет на литосферу?</div>
+  <h2>Шахты, карьеры, скважины</h2>
+  <div class="prose">
+    <p>С развитием хозяйства люди стали <b>вторгаться в глубины Земли</b>. Способ выбирают по тому, что и как глубоко лежит.</p>
+  </div>
+  <div class="steps4">
+    <div class="dom"><div class="n">1</div><div class="t">Шахта</div><div class="d">Чтобы извлечь из недр руды или уголь, роют шахты — уходят под землю.</div></div>
+    <div class="dom"><div class="n">2</div><div class="t">Карьер</div><div class="d">Если богатые пласты залегают неглубоко, дешевле вырыть карьер — это добыча открытым способом.</div></div>
+    <div class="dom"><div class="n">3</div><div class="t">Скважина</div><div class="d">Для добычи нефти и газа бурят скважины — узкие глубокие каналы.</div></div>
+    <div class="dom"><div class="n">4</div><div class="t">Переработка</div><div class="d">Извлечённые полезные ископаемые доставляют на заводы и фабрики.</div></div>
+  </div>
+  <div class="prose">
+    <p>Запомнить легко по одному вопросу: <b>как глубоко лежит?</b> Глубоко и твёрдое — шахта. Неглубоко и твёрдое — карьер, потому что так дешевле. Жидкое или газ — скважина.</p>
+  </div>
+  <figure class="fig wide"><img src="img/2026-09-18-p28/01-dobycha-karyer-more.jpg" width="638" height="422" loading="lazy" alt="Две фотографии рядом: слева огромный карьер-воронка со ступенями-уступами, на дне зеленоватая вода; справа морская буровая платформа на стальных опорах посреди синего моря"><figcaption>Рис. 67. Добыча полезных ископаемых в карьере и на море (с. 95).</figcaption></figure>
+  <div class="prose">
+    <p>Посмотри на левый снимок: карьер — это гигантская воронка со ступенями. По этим ступеням-уступам ездят самосвалы, и каждый из них размером с дом, хотя отсюда кажется точкой. На правом снимке — платформа в море: скважину можно бурить и прямо со дна моря.</p>
+  </div>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 94–95</summary>
+    <div class="body"><ul>
+      <li>Заголовок подтемы: «Как человек влияет на литосферу?»</li>
+      <li>С развитием хозяйства люди стали вторгаться в глубины Земли.</li>
+      <li>Чтобы извлечь из недр руды или уголь, роют шахты.</li>
+      <li>Если богатые пласты залегают неглубоко, гораздо дешевле вырыть карьер и вести добычу открытым способом (рис. 67).</li>
+      <li>Для добычи нефти и газа бурят скважины.</li>
+      <li>Извлечённые из недр полезные ископаемые доставляют на заводы и фабрики для промышленной переработки.</li>
+      <li class="pic">Подпись к фотографиям на с. 95: «Рис. 67. Добыча полезных ископаемых в карьере и на море». Слева — снимок огромного ступенчатого карьера, справа — морской буровой платформы.</li>
+      <li class="pic">Наверху с. 95 — колонтитул «ЛИТОСФЕРА — ТВЁРДАЯ ОБОЛОЧКА ЗЕМЛИ»: так называется весь раздел учебника, в который входит § 28.</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 5 -->
+<section class="step" data-step="skolko" data-name="Сколько человек берёт у Земли" data-part="Как человек влияет на литосферу" data-kind="book" data-pages="с. 94–95">
+  <div class="kind-tag book"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.5c2.6-1 5.6-.8 9 1.2v13c-3.4-2-6.4-2.2-9-1.2z"></path><path d="M21 5.5c-2.6-1-5.6-.8-9 1.2v13c3.4-2 6.4-2.2 9-1.2z"></path></svg></span><div><b>Из учебника</b><span class="pg">с. 94–95</span></div></div>
+  <div class="eyebrow">Как человек влияет на литосферу?</div>
+  <h2>Сколько человек берёт у Земли</h2>
+  <div class="prose">
+    <p>А теперь главное число параграфа. Добывая полезные ископаемые с помощью современных машин, человек ежегодно извлекает из недр Земли <b>около 100 млрд т горных пород</b>.</p>
+    <p>Сто миллиардов тонн — это не укладывается в голове, поэтому переведи на людей. Нас на Земле примерно 8 миллиардов. Значит, на каждого человека, включая тебя и меня, приходится больше <b>десяти тонн</b> камня в год — как десять легковых машин.</p>
+    <p>И ещё одно сравнение, уже из учебника: <b>только за один прошлый век</b> из недр Земли пород извлечено <b>больше, чем за всю предшествующую историю человечества</b>. То есть за сто лет — больше, чем за все тысячи лет до этого.</p>
+    <h3>Чем это оборачивается</h3>
+    <p>При добыче полезных ископаемых происходит:</p>
+    <ul>
+      <li><span class="term">истощение минеральных ресурсов</span> — запасы в недрах уменьшаются, ведь новые руда и уголь так быстро не образуются;</li>
+      <li><b>нарушение земель</b> и отведение их под <span class="term">отвалы</span> — насыпи пустой породы, которую вынули вместе с рудой;</li>
+      <li><b>загрязнение</b>: загрязняются воды, воздух, почвы.</li>
+    </ul>
+    <p>Есть и ещё одно, неожиданное. Порой в подземных пустотах <span class="term">горных выработок</span> происходит <b>обрушение</b>, и это может стать <b>даже причиной землетрясения</b>. Получается, что толчок под ногами иногда устраивает не сама Земля, а человек.</p>
+  </div>
+  <details>
+    <summary>Почему из-за обрушения трясёт</summary>
+    <div class="body"><p>Когда из-под земли вынули породу, на её месте остаётся пустота, а сверху давит вся толща. Рано или поздно свод не выдерживает и рушится вниз. Огромная масса камня падает разом — и по округе расходятся такие же колебания земной коры, как при обычном землетрясении, только слабее.</p></div>
+  </details>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 94 (конец) и с. 95 (начало)</summary>
+    <div class="body"><ul>
+      <li>Добывая с помощью современных машин полезные ископаемые, человек ежегодно извлекает из недр Земли около 100 млрд т горных пород.</li>
+      <li>Только за один прошлый век из недр Земли их извлечено больше, чем за всю предшествующую историю человечества.</li>
+      <li>При добыче полезных ископаемых происходит истощение минеральных ресурсов, нарушение земель, отведение их под отвалы.</li>
+      <li>Загрязняются воды, воздух, почвы.</li>
+      <li>Порой в подземных пустотах горных выработок происходит обрушение, что может стать даже причиной землетрясения.</li>
+      <li>Сравнение «больше десяти тонн на каждого человека» — наше, в учебнике его нет: оно только чтобы легче было представить 100 млрд т.</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 6 -->
+<section class="step" data-step="ohrana" data-name="Как беречь и восстанавливать" data-part="Как человек влияет на литосферу" data-kind="book" data-pages="с. 95">
+  <div class="kind-tag book"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.5c2.6-1 5.6-.8 9 1.2v13c-3.4-2-6.4-2.2-9-1.2z"></path><path d="M21 5.5c-2.6-1-5.6-.8-9 1.2v13c3.4-2 6.4-2.2 9-1.2z"></path></svg></span><div><b>Из учебника</b><span class="pg">с. 95</span></div></div>
+  <div class="eyebrow">Как человек влияет на литосферу?</div>
+  <h2>Как беречь и восстанавливать</h2>
+  <div class="prose">
+    <p>Учебник не пугает, а сразу говорит, что делать. Люди обязаны чувствовать <b>ответственность за сохранение природных богатств</b>. Добываемое сырьё нужно бережно использовать, а нарушенные земли — восстанавливать.</p>
+    <p>Для этого проводят специальные работы — <span class="term">рекультивацию</span>. Слово длинное, а смысл простой: <b>вернуть земле нормальный вид</b> после того, как из неё всё взяли.</p>
+  </div>
+  <div class="ladder">
+    <div class="rung r1">Карьер выработан, рядом отвалы<small>земля нарушена</small></div>
+    <div class="rung r2">Отвалы выравнивают<small>вместо гор пустой породы — ровное место</small></div>
+    <div class="rung r3">Сажают деревья и кустарники<small>на месте отвалов поднимается лес</small></div>
+    <div class="rung r4">Карьер превращают в пруд<small>получается зона отдыха для людей</small></div>
+  </div>
+  <div class="prose">
+    <h3>Вторая беда — овраги</h3>
+    <p>Портится земля не только от добычи. <b>Распашка земель и вырубка лесов на склонах</b> часто приводят к образованию и росту <span class="term">оврагов</span> и к нарушению почв. Дождь на голом склоне не встречает корней, стекает ручьём и промывает канаву, а канава год за годом становится глубже.</p>
+    <p>Это значит, что <b>площадь земель, пригодных для сельского хозяйства, уменьшается</b>: там, где был овраг, пахать уже нельзя.</p>
+    <p>Для борьбы с оврагами создают <b>лесные полосы</b>, специальные <b>подпорные стенки</b>, <b>валы</b> и другое. Корни держат землю, а стенки и валы гасят силу воды.</p>
+  </div>
+  <div class="aside">
+    <div class="k">Вывод в учебнике (с. 95)</div>
+    <p>Человек изменяет литосферу своей хозяйственной деятельностью и обязан заботиться о её охране.</p>
+  </div>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 95</summary>
+    <div class="body"><ul>
+      <li>Люди обязаны чувствовать ответственность за сохранение природных богатств.</li>
+      <li>Добываемое сырьё нужно бережно использовать.</li>
+      <li>Нарушенные земли следует восстанавливать. Для этого проводят специальные работы — рекультивацию. Слово «рекультивация» в учебнике выделено курсивом.</li>
+      <li>Например, отвалы выравнивают и на этом месте сажают деревья и кустарники.</li>
+      <li>Выработанные карьеры превращают в пруды. Так можно создавать зоны отдыха для людей.</li>
+      <li>Распашка земель и вырубка лесов на склонах часто приводят к образованию и росту оврагов, нарушению почв.</li>
+      <li>Это значит, что площадь земель, пригодных для сельского хозяйства, уменьшается.</li>
+      <li>Для борьбы с оврагами создают лесные полосы, специальные подпорные стенки, валы и др.</li>
+      <li>Розовая полоса-вывод: «ЧЕЛОВЕК ИЗМЕНЯЕТ ЛИТОСФЕРУ СВОЕЙ ХОЗЯЙСТВЕННОЙ ДЕЯТЕЛЬНОСТЬЮ И ОБЯЗАН ЗАБОТИТЬСЯ О ЕЁ ОХРАНЕ».</li>
+      <li>Объяснение про дождь на голом склоне — наше, чтобы было понятно, откуда берётся овраг; в учебнике сказано короче.</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 7 -->
+<section class="step" data-step="seysmograf" data-name="Стоп-кадр: первый сейсмограф" data-part="Стоп-кадр" data-kind="book" data-pages="с. 95">
+  <div class="kind-tag book"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.5c2.6-1 5.6-.8 9 1.2v13c-3.4-2-6.4-2.2-9-1.2z"></path><path d="M21 5.5c-2.6-1-5.6-.8-9 1.2v13c3.4-2 6.4-2.2 9-1.2z"></path></svg></span><div><b>Из учебника</b><span class="pg">с. 95</span></div></div>
+  <div class="eyebrow">Стоп-кадр · Разрушительные землетрясения на Земле</div>
+  <h2>Первый сейсмограф</h2>
+  <div class="prose">
+    <p>В учебнике здесь идёт рубрика <b>«Стоп-кадр»</b> — это как пауза в фильме, чтобы рассмотреть кадр подробнее. Называется она «Разрушительные землетрясения на Земле».</p>
+    <p>Начинается с прибора. <span class="term">Сейсмограф</span> — прибор, способный улавливать колебания земной коры. Первый такой прибор был изобретён <b>в Китае</b>.</p>
+    <p>Выглядел он не как прибор, а как произведение искусства: большой <b>бронзовый сосуд</b> с <b>маятником</b> внутри. Снаружи — <b>восемь голов дракона</b>, и у каждого дракона в пасти был шар. Вокруг сосуда сидели <b>восемь жаб</b> с открытыми ртами.</p>
+  </div>
+  <figure class="fig wide"><img src="img/2026-09-18-p28/02-pervyy-seysmograf.jpg" width="637" height="378" loading="lazy" alt="Фотография в музее: большой бронзовый сосуд-кувшин, по бокам восемь голов драконов, а на круглом столе вокруг него сидят бронзовые жабы с открытыми ртами"><figcaption>Рис. 68. Первый сейсмограф, изготовленный в Китае (с. 95).</figcaption></figure>
+  <div class="prose">
+    <h3>Как он работал</h3>
+    <p>При подземном толчке маятник внутри приходил в движение. Шар из пасти дракона выпадал — и падал точно в открытый рот одной из восьми жаб. Раздавался звон, и по тому, у какой жабы оказался шар, люди понимали, <b>в какой стороне света случилось землетрясение</b>.</p>
+    <p>Заметь: прибор не считал силу толчка и не предсказывал беду. Он отвечал только на один вопрос — <b>откуда тряхнуло</b>. Этого хватало, чтобы отправить помощь в нужную сторону.</p>
+  </div>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 95 (рубрика «Стоп-кадр»)</summary>
+    <div class="body"><ul>
+      <li>Рубрика «Стоп-кадр», заголовок: «Разрушительные землетрясения на Земле».</li>
+      <li>Первый сейсмограф — прибор, способный улавливать колебания земной коры, — был изобретён в начале прошлого тысячелетия в Китае (рис. 68). Слово «сейсмограф» в учебнике выделено курсивом.</li>
+      <li>Это был большой бронзовый сосуд с маятником внутри.</li>
+      <li>Снаружи находились восемь голов дракона, и у каждого в пасти был шар.</li>
+      <li>При подземном толчке маятник приходил в движение, шар из пасти дракона выпадал в открытый рот одной из восьми жаб, сидящих вокруг сосуда.</li>
+      <li>Это показывало, в какой стороне света случилось землетрясение.</li>
+      <li class="pic">Подпись к фотографии: «Рис 68. Первый сейсмограф, изготовленный в Китае» (в книге после слова «Рис» точка не напечатана).</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 8 -->
+<section class="step" data-step="zemletryaseniya" data-name="Стоп-кадр: землетрясения в истории" data-part="Стоп-кадр" data-kind="book" data-pages="с. 95–96">
+  <div class="kind-tag book"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.5c2.6-1 5.6-.8 9 1.2v13c-3.4-2-6.4-2.2-9-1.2z"></path><path d="M21 5.5c-2.6-1-5.6-.8-9 1.2v13c3.4-2 6.4-2.2 9-1.2z"></path></svg></span><div><b>Из учебника</b><span class="pg">с. 95–96</span></div></div>
+  <div class="eyebrow">Стоп-кадр · Разрушительные землетрясения на Земле</div>
+  <h2>Землетрясения, которые запомнили</h2>
+  <div class="prose">
+    <p>Первое, что говорит учебник, неожиданно успокаивает: <b>землетрясения происходят на Земле ежедневно</b>. Прямо сегодня их случилось несколько десятков. Просто сила большинства из них очень мала, и проходят они для нас незаметно.</p>
+    <p>Зато другие остаются в истории <b>трагическими памятниками природных катастроф</b> — о них люди помнят веками. Вот те, которые называет учебник.</p>
+  </div>
+  <p class="task">Нажми на дату, чтобы прочитать, что случилось. Справа — страница учебника.</p>
+  <div class="tl-v" id="tl"></div>
+  <p class="hint">Все эти события собраны в рубрике «Стоп-кадр» на с. 95–96.</p>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 95–96</summary>
+    <div class="body"><ul>
+      <li>Землетрясения происходят на Земле ежедневно. Только сила большинства из них очень мала, и проходят они для нас незаметно.</li>
+      <li>Зато другие остаются в истории трагическими памятниками природных катастроф.</li>
+      <li>Так, в 1556 г. Великое китайское землетрясение унесло больше жизней, чем любое другое. Тогда погибло около 830 000 человек. Некоторые районы совершенно обезлюдели. Фундаменты уцелевших пагод ушли под землю на 2 м.</li>
+      <li>Землетрясение, произошедшее в 1897 г. в Ассаме (Индия), изменило облик территории на огромной площади, большей, чем у нынешнего государства Израиль.</li>
+      <li>Не менее сильными оказались землетрясения в 1948 г. в Ашхабаде (Туркмения), в 2004 г. на острове Суматра (Индонезия), в 2011 г. в Японии.</li>
+      <li>На этом рубрика «Стоп-кадр» заканчивается. Дальше на с. 96 идут вопросы и задания к параграфу (они собраны на шаге 16) и «Обобщение по теме» (оно на шаге 17).</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 9 -->
+<section class="step" data-step="slovar-1" data-name="Словарик: недра и добыча" data-part="Словарик" data-kind="ours">
+  <div class="kind-tag ours"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="6" width="12" height="14" rx="1.5"></rect><path d="M8.5 3.5h10.5a1.5 1.5 0 0 1 1.5 1.5v12.5"></path></svg></span><div><b>Словарик</b><small>Сверх учебника — чтобы запомнить слова параграфа.</small></div></div>
+  <div class="game">
+    <div class="g-head"><h3>Словарик: недра и добыча</h3><span class="badge" id="b-terms">Игра</span></div>
+    <p class="task">Нажми на карточку, и она перевернётся. Словарик из двух частей, открой все карточки.</p>
+    <div class="progress" id="terms-progress"></div>
+    <div class="cards" data-terms="0"></div>
+  </div>
+</section>
+
+<!-- 10 -->
+<section class="step" data-step="slovar-2" data-name="Словарик: что портится и как чинят" data-part="Словарик" data-kind="ours">
+  <div class="kind-tag ours"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="6" width="12" height="14" rx="1.5"></rect><path d="M8.5 3.5h10.5a1.5 1.5 0 0 1 1.5 1.5v12.5"></path></svg></span><div><b>Словарик</b><small>Сверх учебника — чтобы запомнить слова параграфа.</small></div></div>
+  <div class="game">
+    <div class="g-head"><h3>Словарик: что портится и как чинят</h3><span class="badge" id="b-terms2">Игра</span></div>
+    <p class="task">Вторая часть: отвалы, овраги, рекультивация и опасные явления.</p>
+    <div class="progress" id="terms-progress2"></div>
+    <div class="cards" data-terms="1"></div>
+  </div>
+</section>
+
+<!-- 11 -->
+<section class="step" data-step="chisla" data-name="Числа и даты" data-part="Игры" data-kind="ours">
+  <div class="kind-tag ours"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="3"></rect><circle cx="9" cy="9" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="15" cy="15" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="15" cy="9" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="9" cy="15" r="1.3" fill="currentColor" stroke="none"></circle></svg></span><div><b>Игра</b><small>Сверх учебника — чтобы закрепить тему.</small></div></div>
+  <div class="game" id="g-match">
+    <div class="g-head"><h3>Числа и даты</h3><span class="badge" id="b-match">Игра</span></div>
+    <p class="task">В параграфе много чисел, и за каждым что-то прячется. Нажми на число слева, потом на его разгадку справа.</p>
+    <div class="match">
+      <div class="col"><div class="lbl">Число</div><div class="col" id="foes"></div></div>
+      <div class="col"><div class="lbl">Что это</div><div class="col" id="outcomes"></div></div>
+    </div>
+    <div id="match-fb"></div>
+  </div>
+</section>
+
+<!-- 12 -->
+<section class="step" data-step="razlozhi" data-name="Добыть, испортить, вернуть" data-part="Игры" data-kind="ours">
+  <div class="kind-tag ours"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="3"></rect><circle cx="9" cy="9" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="15" cy="15" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="15" cy="9" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="9" cy="15" r="1.3" fill="currentColor" stroke="none"></circle></svg></span><div><b>Игра</b><small>Сверх учебника — чтобы закрепить тему.</small></div></div>
+  <div class="game">
+    <div class="g-head"><h3>Добыть, испортить, вернуть</h3><span class="badge" id="b-sort">Игра</span></div>
+    <p class="task">Прочитай карточку и выбери, о чём она: как человек добывает, что при этом портится или как землю восстанавливают.</p>
+    <div class="progress" id="sort-progress"></div>
+    <div id="sort-box"></div>
+  </div>
+</section>
+
+<!-- 13 -->
+<section class="step" data-step="karyer" data-name="От карьера к пруду" data-part="Игры" data-kind="ours">
+  <div class="kind-tag ours"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="3"></rect><circle cx="9" cy="9" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="15" cy="15" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="15" cy="9" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="9" cy="15" r="1.3" fill="currentColor" stroke="none"></circle></svg></span><div><b>Игра</b><small>Сверх учебника — чтобы закрепить тему.</small></div></div>
+  <div class="game">
+    <div class="g-head"><h3>От карьера к пруду</h3><span class="badge" id="b-order">Игра</span></div>
+    <p class="task">Что за чем происходит с одним куском земли — от поиска руды до зоны отдыха? Нажимай по порядку, от первого к последнему.</p>
+    <div class="pool" id="pool"></div>
+    <div class="seq" id="seq"></div>
+    <div class="row">
+      <button class="btn" id="order-check" type="button" disabled>Проверить</button>
+      <button class="btn ghost" id="order-reset" type="button">Сначала</button>
+    </div>
+    <div id="order-fb"></div>
+  </div>
+</section>
+
+<!-- 14 -->
+<section class="step" data-step="lishnee" data-name="Найди лишнее" data-part="Игры" data-kind="ours">
+  <div class="kind-tag ours"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="3"></rect><circle cx="9" cy="9" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="15" cy="15" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="15" cy="9" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="9" cy="15" r="1.3" fill="currentColor" stroke="none"></circle></svg></span><div><b>Игра</b><small>Сверх учебника — чтобы закрепить тему.</small></div></div>
+  <div class="game">
+    <div class="g-head"><h3>Найди лишнее</h3><span class="badge" id="b-odd">Игра</span></div>
+    <p class="task">Три из одной компании, одно чужое. Найди чужое.</p>
+    <div class="progress" id="odd-progress"></div>
+    <div class="odd-grid" id="odd-grid"></div>
+    <div id="odd-fb"></div>
+    <div class="row"><button class="btn" id="odd-next" type="button" hidden>Дальше</button></div>
+  </div>
+</section>
+
+<!-- 15 -->
+<section class="step" data-step="test" data-name="Проверь себя" data-part="Финал" data-kind="ours">
+  <div class="kind-tag ours"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"></circle><path d="M8 12.3l2.8 2.8L16.2 9.6"></path></svg></span><div><b>Самопроверка</b><small>Сверх учебника — вопросы, чтобы проверить себя. Задания из учебника — дальше.</small></div></div>
+  <div class="eyebrow">Финал</div>
+  <h2>Проверь себя</h2>
+  <div class="game">
+    <div class="progress" id="quiz-progress"></div>
+    <div id="quiz-box"></div>
+  </div>
+</section>
+
+<!-- 16 -->
+<section class="step" data-step="voprosy" data-name="Вопросы учебника" data-part="Финал" data-kind="task" data-pages="с. 96">
+  <div class="kind-tag task"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l4.2-1L19 8.2 15.8 5 5 15.8z"></path><path d="M13.8 7l3.2 3.2"></path></svg></span><div><b>Задание учебника</b><span class="pg">с. 96</span><small>Вопросы из книги. Где искать ответ и подсказки — наши.</small></div></div>
+  <div class="eyebrow">Финал · Вопросы и задания в конце § 28</div>
+  <h2>Вопросы из учебника</h2>
+  <div class="prose">
+    <p>Это все вопросы и задания в конце параграфа, с теми же номерами и по тем же группам, что в твоём учебнике. Рядом с каждым написано, на каком шаге искать ответ. Отвечай своими словами: так лучше запоминается, и учитель услышит, что ты поняла, а не заучила.</p>
+    <h3>Это я знаю</h3>
+  </div>
+  <div class="qlist">
+<div class="qi"><span class="qn">1</span><div><p>Какое значение для человека имеет литосфера?</p><p class="src">Подсказка: у учебника ответ построен по счёту — «во-первых» и «во-вторых». Не забудь третье, про что в книге сказано отдельным абзацем: с литосферой связаны и опасности. А проверить себя можно по розовой полосе-выводу на с. 94.</p><a href="#territoriya">Шаг 2 · Территория и недра</a> <a href="#opasnosti">Шаг 3 · Грозные опасности</a></div></div>
+<div class="qi"><span class="qn">2</span><div><p>Как человек изменяет литосферу?</p><p class="src">Подсказка: сначала назови, как человек вторгается в глубины Земли (три способа добычи), потом — что при этом происходит с землёй, водой и воздухом, и не забудь про овраги от распашки и вырубки. Три шага — три части ответа.</p><a href="#dobycha">Шаг 4 · Шахты, карьеры, скважины</a> <a href="#skolko">Шаг 5 · Сколько человек берёт</a> <a href="#ohrana">Шаг 6 · Как беречь</a></div></div>
+<div class="qi"><span class="qn">3</span><div><p>Какими полезными ископаемыми богата ваша местность?</p><p class="src">Подсказка: этот вопрос про Дагестан, и в параграфе ответа нет — искать надо самой. Загляни в атлас: на карте полезных ископаемых каждое обозначено своим значком, найди значки на территории республики и посмотри, что они означают, в условных знаках карты. Ещё спроси взрослых, что добывают у нас рядом. А слова, которыми это описать — карьер, шахта, скважина, — на шаге 4.</p><a href="#dobycha">Шаг 4 · Шахты, карьеры, скважины</a></div></div>
+<div class="qi"><span class="qn">4</span><div><p>Зачем человеку нужны знания о литосфере? В каких областях человеческой деятельности они особенно нужны? Приведите примеры.</p><p class="src">Подсказка: подумай, кому без этих знаний никак. Строителю — он закладывает фундамент и должен знать породы и рельеф. Горняку и геологу — они ищут и добывают сырьё. Тем, кто строит в опасных районах, — вспомни пример Японии. Земледельцу — из-за оврагов. Все эти примеры есть на шагах 2, 3 и 6.</p><a href="#territoriya">Шаг 2</a> <a href="#opasnosti">Шаг 3</a> <a href="#ohrana">Шаг 6</a></div></div>
+<div class="qi"><span class="qn">5</span><div><p>Почему человек должен нести ответственность за преображение литосферы? Свой ответ аргументируйте.</p><p class="src">Подсказка: «аргументируйте» — значит привести доводы, по одному на каждую мысль. Четыре готовых довода-кирпичика ждут тебя на последнем шаге, но сначала попробуй назвать их сама.</p><a href="#itog">Шаг 17 · Главный вопрос</a> <a href="#skolko">Шаг 5</a> <a href="#ohrana">Шаг 6</a></div></div>
+  </div>
+  <div class="prose"><h3>Это я могу</h3></div>
+  <div class="qlist">
+<div class="qi"><span class="qn">6</span><div><p>Сформулируйте правила поведения во время: а) землетрясения; б) извержения вулкана. Чем обоснованы предложенные вами правила?</p><p class="src">Подсказка: правила придумываешь ты сама, готовых в параграфе нет — вернись к прошлым параграфам про землетрясения и вулканы. Пиши каждое правило парой: что делать — и от чего это защищает («чем обосновано»). Помни главную мысль этого параграфа: люди обязаны думать о мерах защиты.</p><a href="#opasnosti">Шаг 3 · Грозные опасности</a></div></div>
+  </div>
+  <div class="prose"><h3>Это мне интересно</h3></div>
+  <div class="qlist">
+<div class="qi"><span class="qn">7</span><div><p>На образование нефти в земной коре уходит 250 млн лет. Человек интенсивно использует нефть в хозяйстве. Подготовьте сообщение на тему «Меры, необходимые для эффективного использования нефти».</p><p class="src">Подсказка: сравни два числа — сколько лет нефть образуется и сколько человек живёт. Отсюда и главная мысль сообщения. План может быть такой: зачем нужна нефть → как её добывают (шаг 4) → почему её нельзя тратить как попало (шаг 5, про истощение) → какие меры предложишь ты. Слово «меры» подсказывает: нужен список конкретных дел.</p><a href="#dobycha">Шаг 4</a> <a href="#skolko">Шаг 5</a> <a href="#ohrana">Шаг 6</a></div></div>
+  </div>
+  <div class="prose"><h3>Задание после «Обобщения по теме» (без номера)</h3></div>
+  <div class="qlist">
+<div class="qi"><span class="qn">·</span><div><p>Из журналов выберите статьи, посвящённые исследованиям недр или рельефу Земли. Какая статья вас больше всего заинтересовала? Дайте краткую характеристику её содержания — аннотацию.</p><p class="src">Подсказка: аннотация — это короткий пересказ, три-пять предложений: о чём статья, что в ней самое интересное и кому её стоит прочитать. Пересказывать всю статью не нужно. Само «Обобщение по теме», к которому относится это задание, целиком есть на последнем шаге.</p><a href="#itog">Шаг 17 · Главный вопрос</a></div></div>
+  </div>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 96</summary>
+    <div class="body"><ul>
+      <li>Все вопросы и задания с. 96 перечислены выше, в том же порядке и с теми же номерами, что в книге.</li>
+      <li>Группы отмечены красными значками на полях: «Это я знаю» — задания 1—5; «Это я могу» — задание 6; «Это мне интересно» — задание 7.</li>
+      <li>Ниже вопросов на с. 96 — рубрика «Обобщение по теме»: короткий пересказ всего раздела «Литосфера — твёрдая оболочка Земли». Он целиком приведён на последнем шаге.</li>
+      <li>После обобщения напечатано задание без номера: «Из журналов выберите статьи, посвящённые исследованиям недр или рельефу Земли. Какая статья вас больше всего заинтересовала? Дайте краткую характеристику её содержания — аннотацию».</li>
+      <li>В самом низу с. 96 — рубрика «Не забудьте отметить свои достижения».</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 17 -->
+<section class="step" data-step="itog" data-name="Главный вопрос" data-part="Финал" data-kind="task" data-pages="с. 96">
+  <div class="kind-tag task"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l4.2-1L19 8.2 15.8 5 5 15.8z"></path><path d="M13.8 7l3.2 3.2"></path></svg></span><div><b>Задание учебника</b><span class="pg">с. 96</span><small>Вопрос 5 из книги, кирпичики-подсказки — наши.</small></div></div>
+  <div class="eyebrow">Финал · Вопрос 5 «Это я знаю»</div>
+  <h2>Почему человек должен нести ответственность за преображение литосферы?</h2>
+  <div class="prose">
+    <p>Это вопрос 5 из конца параграфа, и он собирает всю тему вместе. «Аргументируйте» значит: не просто сказать «потому что надо», а привести доводы. Вот четыре «кирпичика». Открой их, а потом попробуй ответить своими словами, не подглядывая.</p>
+  </div>
+  <div class="bricks">
+    <div class="brick"><button type="button" aria-expanded="false"><span>Литосфера даёт нам всё сразу</span><span>+</span></button><div class="b-body" hidden>Это и территория, где проходит практически вся жизнь и хозяйственная деятельность людей, и недра, откуда берут минеральное сырьё. Портить то, на чём живёшь и чем кормишься, неразумно.</div></div>
+    <div class="brick"><button type="button" aria-expanded="false"><span>Человек берёт очень много</span><span>+</span></button><div class="b-body" hidden>Около 100 млрд т горных пород в год, а за один прошлый век — больше, чем за всю предшествующую историю человечества. Такая сила меняет литосферу быстрее, чем природа успевает восстановиться.</div></div>
+    <div class="brick"><button type="button" aria-expanded="false"><span>Вред не остаётся на месте добычи</span><span>+</span></button><div class="b-body" hidden>Происходит истощение минеральных ресурсов, земли нарушают и отводят под отвалы, загрязняются воды, воздух и почвы. А обрушение в подземных пустотах горных выработок может стать даже причиной землетрясения.</div></div>
+    <div class="brick"><button type="button" aria-expanded="false"><span>Испорченное можно вернуть — но только нарочно</span><span>+</span></button><div class="b-body" hidden>Само не зарастёт: нужны специальные работы — рекультивация. Отвалы выравнивают и засаживают деревьями, карьеры превращают в пруды, против оврагов сажают лесные полосы и ставят подпорные стенки и валы. Всё это делают люди, значит, им и отвечать.</div></div>
+  </div>
+  <div class="aside">
+    <div class="k">Ответ одной строкой, как в учебнике</div>
+    <p>Человек изменяет литосферу своей хозяйственной деятельностью и обязан заботиться о её охране.</p>
+  </div>
+  <details>
+    <summary>Обобщение по теме · учебник, с. 96</summary>
+    <div class="body"><p>После вопросов в учебнике идёт рубрика «Обобщение по теме» — весь раздел «Литосфера — твёрдая оболочка Земли» в одном абзаце. Вот он:</p><p>«Земной шар — многослойный. Он состоит из земной коры, мантии и ядра. Литосфера — наружная твёрдая оболочка Земли, состоящая из малоподвижных блоков — плит. Земная кора — верхняя часть литосферы, сложенная горными породами и минералами разного происхождения. Поверхность земной коры неровная, с чередованием гор и равнин — крупных форм рельефа. Рельеф — все формы твёрдой земной поверхности — образуется под совместным влиянием внутренних и внешних сил Земли. Под действием внутренних сил происходят движения земной коры, землетрясения, извержения вулканов. Внешние силы Земли разрушают и изменяют горные породы, переносят их и накапливают. Вода, ветер, живые организмы и хозяйственная деятельность людей — мощные внешние силы, преобразующие поверхность планеты. Внутренние силы Земли создают в основном крупные формы рельефа, а внешние силы — мелкие».</p><p>Обрати внимание на последнюю мысль: <b>хозяйственная деятельность людей</b> стоит в одном ряду с водой и ветром. Получается, весь § 28 — про то, что человек сам стал внешней силой Земли.</p></div>
+  </details>
+  <div class="aside">
+    <div class="k">Главное в одном предложении</div>
+    <p>Литосфера даёт человеку и место для жизни, и богатства недр, но человек, добывая около 100 млрд т пород в год, сам стал силой, которая меняет земную поверхность, — поэтому он обязан беречь сырьё и восстанавливать нарушенные земли.</p>
+  </div>
+  <div class="game">
+    <div class="g-head"><h3>Твоя мозаика</h3></div>
+    <div class="mosaic" id="mosaic"></div>
+    <div class="mosaic-list" id="mosaic-list"></div>
+    <div class="row"><a class="btn" href="./">К списку тем</a></div>
+  </div>
+</section>
+
+</main>
+
+<nav class="pager" aria-label="Навигация по шагам">
+  <div class="pager-inner">
+    <button class="btn ghost" id="prev" type="button">Назад</button>
+    <div class="count" id="count"></div>
+    <button class="btn" id="next" type="button">Дальше</button>
+  </div>
+</nav>
+
+<div class="toc" id="toc" hidden>
+  <div class="toc-panel" role="dialog" aria-label="Содержание">
+    <h3>Содержание <button class="toc-close" id="toc-close" type="button">Закрыть</button></h3>
+    <div id="toc-list" style="display:flex;flex-direction:column;gap:2px"></div>
+  </div>
+</div>
+
+<script>
+(function(){
+  'use strict';
+  var $ = function(s, r){ return (r||document).querySelector(s); };
+  var el = function(tag, cls, html){ var e=document.createElement(tag); if(cls) e.className=cls; if(html!=null) e.innerHTML=html; return e; };
+  var shuffle = function(a){ a=a.slice(); for(var i=a.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=a[i]; a[i]=a[j]; a[j]=t; } return a; };
+
+  /* ---------- state ---------- */
+  var KEY='geo-p28-v1';
+  var state={visited:{},done:{},last:0};
+  try{ var s=JSON.parse(localStorage.getItem(KEY)||'null'); if(s && typeof s==='object'){ state.visited=s.visited||{}; state.done=s.done||{}; state.last=s.last||0; } }catch(e){}
+  function save(){ try{ localStorage.setItem(KEY, JSON.stringify(state)); }catch(e){} }
+
+  var GAMES=[
+    {k:'terms', name:'Словарик, обе части', step:'slovar-1'},
+    {k:'match', name:'Числа и даты', step:'chisla'},
+    {k:'sort', name:'Добыть, испортить, вернуть', step:'razlozhi'},
+    {k:'order', name:'От карьера к пруду', step:'karyer'},
+    {k:'odd', name:'Найди лишнее', step:'lishnee'},
+    {k:'quiz', name:'Проверь себя', step:'test'}
+  ];
+  var GAME_STEPS={'slovar-1':'terms','slovar-2':'terms','chisla':'match','razlozhi':'sort','karyer':'order','lishnee':'odd','test':'quiz'};
+
+  /* ---------- steps ---------- */
+  var steps=Array.prototype.slice.call(document.querySelectorAll('.step'));
+  var N=steps.length, cur=0;
+  var stepbar=$('#stepbar'), count=$('#count'), prevB=$('#prev'), nextB=$('#next'), tocList=$('#toc-list');
+
+  /* содержание по группам: из учебника / задания учебника / сверх учебника */
+  var KIND={book:['<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.5c2.6-1 5.6-.8 9 1.2v13c-3.4-2-6.4-2.2-9-1.2z"></path><path d="M21 5.5c-2.6-1-5.6-.8-9 1.2v13c3.4-2 6.4-2.2 9-1.2z"></path></svg>','Из учебника'],task:['<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l4.2-1L19 8.2 15.8 5 5 15.8z"></path><path d="M13.8 7l3.2 3.2"></path></svg>','Задания учебника'],ours:['<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="3"></rect><circle cx="9" cy="9" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="15" cy="15" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="15" cy="9" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="9" cy="15" r="1.3" fill="currentColor" stroke="none"></circle></svg>','Сверх учебника']};
+  var tocItems=[], groups=[], prevKind=null, grp=null;
+  steps.forEach(function(s,i){
+    var kind=s.getAttribute('data-kind')||'book', pg=(s.getAttribute('data-pages')||'').replace(/,\s*п\..*$/,'');
+    var start=kind!==prevKind;
+    var b=el('button'); b.type='button'; b.setAttribute('aria-label','Шаг '+(i+1)+': '+s.getAttribute('data-name'));
+    b.setAttribute('data-base','k-'+kind+(start&&i>0?' gstart':'')); b.className=b.getAttribute('data-base');
+    b.addEventListener('click', function(){ go(i); });
+    stepbar.appendChild(b);
+    if(start){
+      var label = kind==='ours' ? (i===0?'Коротко о главном':'Словарик и игры · сверх учебника') : KIND[kind][1];
+      grp=el('div','toc-group k-'+kind,'<div class="toc-head"><span class="ic">'+KIND[kind][0]+'</span><span>'+label+'</span></div>');
+      grp.pages=[]; groups.push(grp); tocList.appendChild(grp); prevKind=kind;
+    }
+    var t=el('button','toc-item','<span class="n">'+(i+1)+'</span><span>'+s.getAttribute('data-name')+'</span>'+(pg?'<span class="pg">'+pg+'</span>':'')+'<span class="m"></span>');
+    t.type='button'; t.addEventListener('click', function(){ closeToc(); go(i); });
+    grp.appendChild(t); tocItems.push(t);
+    (pg.match(/\d+/g)||[]).forEach(function(n){ grp.pages.push(+n); });
+  });
+  groups.forEach(function(g){ if(g.pages.length){ var a=Math.min.apply(null,g.pages), z=Math.max.apply(null,g.pages); g.firstChild.lastChild.textContent+=' · с. '+(a===z?a:a+'–'+z); } });
+
+  function paint(){
+    var bars=stepbar.children, items=tocItems;
+    for(var i=0;i<N;i++){
+      var key=steps[i].getAttribute('data-step'), g=GAME_STEPS[key];
+      var done = g && state.done[g];
+      bars[i].className=bars[i].getAttribute('data-base')+(i===cur?' current':'')+(state.visited[i]?' visited':'')+(done?' done':'');
+      items[i].className='toc-item'+(i===cur?' current':'');
+      items[i].lastElementChild.textContent = done ? 'пройдено' : (state.visited[i] ? '✓' : '');
+    }
+    count.textContent=(cur+1)+' / '+N;
+    prevB.disabled = cur===0;
+    if(cur===N-1){ nextB.textContent='Это последний шаг'; nextB.disabled=true; }
+    else { nextB.textContent='Дальше: '+steps[cur+1].getAttribute('data-name'); nextB.disabled=false; }
+    var badges={terms:['b-terms','b-terms2'],match:['b-match'],sort:['b-sort'],order:['b-order'],odd:['b-odd']};
+    for(var k in badges){ badges[k].forEach(function(id){ var b=document.getElementById(id); if(b && state.done[k]){ b.textContent='Пройдено'; b.classList.add('done'); } }); }
+    paintMosaic();
+  }
+  function go(i, silent){
+    if(i<0||i>=N) return;
+    cur=i; steps.forEach(function(s,j){ s.hidden = j!==i; });
+    state.visited[i]=true; state.last=i; save();
+    if(!silent){ var h='#'+steps[i].getAttribute('data-step'); if(location.hash!==h) history.pushState(null,'',h); }
+    window.scrollTo(0,0);
+    paint();
+  }
+  function idxFromHash(){ var h=location.hash.replace('#',''); for(var i=0;i<N;i++) if(steps[i].getAttribute('data-step')===h) return i; return -1; }
+  function onHash(){ var i=idxFromHash(); if(i>=0 && i!==cur) go(i, true); }
+  window.addEventListener('popstate', onHash);
+  window.addEventListener('hashchange', onHash);
+  prevB.addEventListener('click', function(){ go(cur-1); });
+  nextB.addEventListener('click', function(){ go(cur+1); });
+  document.addEventListener('keydown', function(e){ if(e.target && /INPUT|TEXTAREA/.test(e.target.tagName)) return; if(e.key==='ArrowRight') go(cur+1); if(e.key==='ArrowLeft') go(cur-1); if(e.key==='Escape') closeToc(); });
+
+  var toc=$('#toc');
+  function openToc(){ toc.hidden=false; }
+  function closeToc(){ toc.hidden=true; }
+  $('#toc-btn').addEventListener('click', openToc);
+  $('#toc-close').addEventListener('click', closeToc);
+  toc.addEventListener('click', function(e){ if(e.target===toc) closeToc(); });
+
+  function markDone(k){ if(!state.done[k]){ state.done[k]=true; save(); } paint(); }
+
+  /* resume button on step 1 */
+  (function(){
+    var r=$('#resume');
+    if(state.last>0 && idxFromHash()<0){
+      r.hidden=false;
+      r.innerHTML='<button class="btn ghost" type="button">Продолжить с шага '+(state.last+1)+': '+steps[state.last].getAttribute('data-name')+'</button>';
+      r.firstChild.addEventListener('click', function(){ go(state.last); });
+    }
+  })();
+
+  /* ---------- mosaic on final step ---------- */
+  var mosaic=$('#mosaic'), mosaicList=$('#mosaic-list');
+  function paintMosaic(){
+    mosaic.innerHTML=''; mosaicList.innerHTML='';
+    GAMES.forEach(function(g){
+      var t=el('span','tile'+(state.done[g.k]?' on':'')); t.title=g.name; mosaic.appendChild(t);
+      var li=el('span', state.done[g.k]?'':'off', (state.done[g.k]?'★ ':'☆ ')+g.name);
+      if(!state.done[g.k]){ li.style.cursor='pointer'; li.addEventListener('click', function(){ for(var i=0;i<N;i++) if(steps[i].getAttribute('data-step')===g.step){ go(i); break; } }); }
+      mosaicList.appendChild(li);
+    });
+  }
+
+  /* ---------- лента времени: разрушительные землетрясения ---------- */
+  var TL=[
+    {y:'нач. тыс.', era:'с. 95', t:'В Китае изобретён первый сейсмограф', d:'Прибор, способный улавливать колебания земной коры: бронзовый сосуд с маятником, восемь голов дракона с шарами в пастях и восемь жаб вокруг. Он показывал, в какой стороне света случилось землетрясение. Учебник пишет: изобретён в начале прошлого тысячелетия.'},
+    {y:'1556 г.', era:'с. 95', t:'Великое китайское землетрясение', d:'Оно унесло больше жизней, чем любое другое землетрясение в истории: погибло около 830 000 человек. Некоторые районы совершенно обезлюдели. Фундаменты уцелевших пагод ушли под землю на 2 м.'},
+    {y:'1897 г.', era:'с. 95–96', t:'Землетрясение в Ассаме (Индия)', d:'Оно изменило облик территории на огромной площади — большей, чем у нынешнего государства Израиль. То есть после толчков целая страна выглядела иначе: где-то поднялась земля, где-то опустилась, реки поменяли русла.'},
+    {y:'1948 г.', era:'с. 96', t:'Землетрясение в Ашхабаде (Туркмения)', d:'Учебник называет его не менее сильным, чем землетрясение в Ассаме. Ашхабад — столица Туркмении, и город пришлось отстраивать заново.'},
+    {y:'2004 г.', era:'с. 96', t:'Землетрясение на острове Суматра (Индонезия)', d:'Одно из самых сильных за всю историю наблюдений. Учебник ставит его в один ряд с землетрясениями в Ассаме и Ашхабаде.'},
+    {y:'2011 г.', era:'с. 96', t:'Землетрясение в Японии', d:'Самое недавнее из названных в учебнике. Япония — как раз та страна, про которую в начале параграфа сказано, что там строят сейсмостойкие здания, потому что угроза землетрясений велика.'}
+  ];
+  var tl=$('#tl');
+  TL.forEach(function(e,i){
+    var it=el('div','tl-item');
+    var b=el('button','tl-btn'); b.type='button';
+    b.innerHTML='<span class="dot"></span><span class="y">'+e.y+'</span><span class="t">'+e.t+'</span><span class="era">'+e.era+'</span>';
+    var d=el('div','tl-d',e.d); d.hidden=(i!==0); if(i===0) it.classList.add('open');
+    b.setAttribute('aria-expanded', i===0?'true':'false');
+    b.addEventListener('click', function(){ var open=d.hidden; d.hidden=!open; it.classList.toggle('open',open); b.setAttribute('aria-expanded',open?'true':'false'); });
+    it.appendChild(b); it.appendChild(d); tl.appendChild(it);
+  });
+
+  /* ---------- glossary ---------- */
+  var TERMS=[
+    [
+      {t:'Литосфера', d:'Наружная твёрдая оболочка Земли, состоящая из малоподвижных блоков — плит.', e:'Мы живём прямо на её поверхности.'},
+      {t:'Недра', d:'То, что находится под земной поверхностью, в глубине Земли. Оттуда берут сырьё.', e:'«Человеку доступны недра».'},
+      {t:'Минеральное сырьё', d:'Полезные ископаемые, которые достают из недр и отправляют на переработку.', e:'Люди использовали его издавна.'},
+      {t:'Горное дело', d:'Добыча полезных ископаемых. Один из старейших видов человеческой деятельности.', e:'Освоение многих районов Земли начиналось с поиска мест, богатых ископаемыми.'},
+      {t:'Шахта', d:'Подземная выработка. Её роют, чтобы извлечь из недр руды или уголь.', e:''},
+      {t:'Карьер', d:'Открытая яма-воронка с уступами. Её выгодно вырыть, если богатые пласты залегают неглубоко.', e:'Это и есть добыча открытым способом.'},
+      {t:'Скважина', d:'Узкий глубокий канал, который бурят для добычи нефти и газа.', e:'Бурить можно и в море, с платформы (рис. 67).'},
+      {t:'Сейсмостойкие здания', d:'Дома, построенные так, чтобы выдержать подземные толчки.', e:'Их строят в Японии, где угроза землетрясений велика.'}
+    ],
+    [
+      {t:'Истощение минеральных ресурсов', d:'Запасы полезных ископаемых в недрах уменьшаются, потому что их добывают.', e:'Происходит при добыче.'},
+      {t:'Отвалы', d:'Насыпи пустой породы, под которые при добыче отводят земли.', e:'Их выравнивают и засаживают деревьями и кустарниками.'},
+      {t:'Горные выработки', d:'Подземные пустоты, которые остаются после добычи.', e:'Порой в них происходит обрушение, что может стать даже причиной землетрясения.'},
+      {t:'Рекультивация', d:'Специальные работы, чтобы восстановить нарушенные земли.', e:'Например, выработанные карьеры превращают в пруды.'},
+      {t:'Овраг', d:'Промоина, которая год за годом растёт на склоне.', e:'Овраги появляются от распашки земель и вырубки лесов на склонах.'},
+      {t:'Лесные полосы', d:'Посадки деревьев, которыми борются с оврагами. Ещё делают подпорные стенки и валы.', e:'Корни держат землю, а стенки и валы гасят силу воды.'},
+      {t:'Оползень', d:'Горные породы сползают вниз по крутому склону вместе с тем, что на них стоит.', e:'На крутых склонах подстерегает опасность оползней.'},
+      {t:'Сейсмограф', d:'Прибор, способный улавливать колебания земной коры.', e:'Первый изобрели в Китае (рис. 68).'}
+    ]
+  ];
+  var flipped={}, total=0; TERMS.forEach(function(g){ total+=g.length; });
+  var progEls=[$('#terms-progress'),$('#terms-progress2')];
+  function termsProgress(){
+    var n=Object.keys(flipped).length;
+    progEls.forEach(function(p,gi){ var got=0; TERMS[gi].forEach(function(t,i){ if(flipped[gi+'-'+i]) got++; }); p.textContent='Открыто '+got+' из '+TERMS[gi].length+' здесь, всего '+n+' из '+total; });
+    if(n===total) markDone('terms');
+  }
+  document.querySelectorAll('.cards').forEach(function(box){
+    var gi=+box.getAttribute('data-terms');
+    TERMS[gi].forEach(function(t,i){
+      var b=el('button','card'); b.type='button'; b.setAttribute('aria-label',t.t+'. Нажми, чтобы увидеть значение');
+      b.innerHTML='<div class="in"><div class="face f"><div class="w">'+t.t+'</div><div class="tap">Нажми</div></div><div class="face b"><div class="w">'+t.t+'</div><div>'+t.d+'</div>'+(t.e?'<div class="e">'+t.e+'</div>':'')+'</div></div>';
+      b.addEventListener('click', function(){ b.classList.toggle('flip'); flipped[gi+'-'+i]=true; termsProgress(); });
+      box.appendChild(b);
+    });
+  });
+  termsProgress();
+
+  /* ---------- matching: числа и даты ---------- */
+  var PAIRS=[
+    {foe:'около 100 млрд т', res:'Столько горных пород человек извлекает из недр за год', why:'И только за один прошлый век их извлечено больше, чем за всю предшествующую историю человечества.'},
+    {foe:'8', res:'Столько голов дракона было на первом сейсмографе', why:'И столько же жаб сидело вокруг сосуда — по одной на каждую сторону света.'},
+    {foe:'2 м', res:'На столько ушли под землю фундаменты уцелевших пагод', why:'Это случилось при Великом китайском землетрясении 1556 года.'},
+    {foe:'250 млн лет', res:'Столько уходит на образование нефти в земной коре', why:'Об этом говорится в задании 7 в конце параграфа.'},
+    {foe:'1556 г.', res:'Великое китайское землетрясение', why:'Оно унесло больше жизней, чем любое другое.'},
+    {foe:'1897 г.', res:'Землетрясение в Ассаме (Индия)', why:'Оно изменило облик территории на площади большей, чем у нынешнего государства Израиль.'},
+    {foe:'1948 г.', res:'Землетрясение в Ашхабаде (Туркмения)', why:'Учебник называет его не менее сильным, чем землетрясение в Ассаме.'},
+    {foe:'2004 г.', res:'Землетрясение на острове Суматра (Индонезия)', why:'Это самое сильное из землетрясений нашего века, названных в параграфе.'},
+    {foe:'2011 г.', res:'Землетрясение в Японии', why:'Самое недавнее из тех, что названы в учебнике.'}
+  ];
+  var foesBox=$('#foes'), outBox=$('#outcomes'), matchFb=$('#match-fb'), selFoe=null, matched=0;
+  PAIRS.forEach(function(p){
+    var b=el('button','opt',p.foe); b.type='button'; b.setAttribute('data-foe',p.foe);
+    b.addEventListener('click', function(){
+      if(b.classList.contains('ok')) return;
+      var all=foesBox.querySelectorAll('.opt'); for(var i=0;i<all.length;i++) all[i].classList.remove('sel');
+      b.classList.add('sel'); selFoe=p; matchFb.innerHTML='';
+    });
+    foesBox.appendChild(b);
+  });
+  shuffle(PAIRS).forEach(function(p){
+    var b=el('button','opt',p.res); b.type='button';
+    b.addEventListener('click', function(){
+      if(b.classList.contains('ok')) return;
+      if(!selFoe){ matchFb.innerHTML='<div class="feedback bad"><span class="k">Сначала выбери число слева.</span></div>'; return; }
+      if(selFoe.res===p.res){
+        b.classList.add('ok'); b.disabled=true;
+        var fb=foesBox.querySelector('[data-foe="'+selFoe.foe+'"]'); fb.classList.remove('sel'); fb.classList.add('ok'); fb.disabled=true;
+        matchFb.innerHTML='<div class="feedback ok"><span class="k">Верно! '+selFoe.foe+' — '+selFoe.res.toLowerCase()+'.</span><span>'+selFoe.why+'</span></div>';
+        selFoe=null; matched++;
+        if(matched===PAIRS.length){ matchFb.innerHTML='<div class="feedback ok"><span class="k">Все девять чисел разгаданы!</span><span>Теперь на уроке ты вспомнишь их сразу.</span></div>'; markDone('match'); }
+      } else {
+        b.classList.add('bad'); setTimeout(function(){ b.classList.remove('bad'); },400);
+        matchFb.innerHTML='<div class="feedback bad"><span class="k">Не то.</span><span>Это разгадка другого числа. Попробуй ещё.</span></div>';
+      }
+    });
+    outBox.appendChild(b);
+  });
+
+  /* ---------- sort: добыть, испортить, вернуть ---------- */
+  var ROLES=['Как добывают','Что портится','Как возвращают'];
+  var SORT=[
+    {t:'Роют шахту, чтобы достать руду или уголь', c:'Как добывают', why:'Шахта — это подземная выработка: за рудой и углём приходится уходить в глубину.'},
+    {t:'Вырывают карьер и ведут добычу открытым способом', c:'Как добывают', why:'Так делают, если богатые пласты залегают неглубоко: это гораздо дешевле.'},
+    {t:'Бурят скважину', c:'Как добывают', why:'Скважины бурят для добычи нефти и газа.'},
+    {t:'Земли отводят под отвалы', c:'Что портится', why:'При добыче происходит нарушение земель и отведение их под отвалы.'},
+    {t:'Загрязняются воды, воздух и почвы', c:'Что портится', why:'Это прямо названо в учебнике среди последствий добычи.'},
+    {t:'Запасы полезных ископаемых в недрах уменьшаются', c:'Что портится', why:'Это называется истощением минеральных ресурсов.'},
+    {t:'На склонах растут овраги, и полей становится меньше', c:'Что портится', why:'Овраги растут из-за распашки земель и вырубки лесов на склонах, а площадь земель для сельского хозяйства уменьшается.'},
+    {t:'Отвалы выравнивают и сажают деревья и кустарники', c:'Как возвращают', why:'Это и есть рекультивация — специальные работы по восстановлению нарушенных земель.'},
+    {t:'Выработанный карьер превращают в пруд', c:'Как возвращают', why:'Так можно создавать зоны отдыха для людей.'},
+    {t:'Сажают лесные полосы, ставят подпорные стенки и валы', c:'Как возвращают', why:'Так борются с оврагами.'}
+  ];
+  var sortBox=$('#sort-box'), sortP=$('#sort-progress'), sortList=shuffle(SORT), si=0;
+  function renderSort(){
+    if(si>=sortList.length){ return sortDone(); }
+    var it=sortList[si];
+    sortP.textContent='Карточка '+(si+1)+' из '+sortList.length;
+    sortBox.innerHTML='';
+    sortBox.appendChild(el('div','sort-card',it.t));
+    var tri=el('div','tri'); sortBox.appendChild(tri);
+    var fb=el('div'); sortBox.appendChild(fb);
+    var rowN=el('div','row'); sortBox.appendChild(rowN);
+    ROLES.forEach(function(c){
+      var b=el('button','opt',c); b.type='button';
+      b.addEventListener('click', function(){
+        if(c===it.c){
+          var all=tri.querySelectorAll('.opt'); for(var k=0;k<all.length;k++) all[k].disabled=true;
+          b.classList.add('ok');
+          fb.innerHTML='<div class="feedback ok"><span class="k">Верно: '+c.toLowerCase()+'.</span><span>'+it.why+'</span></div>';
+          var n=el('button','btn', si<sortList.length-1?'Следующая карточка':'Показать итог'); n.type='button';
+          n.addEventListener('click', function(){ si++; renderSort(); });
+          rowN.appendChild(n);
+        } else {
+          b.classList.add('bad'); b.disabled=true;
+          fb.innerHTML='<div class="feedback bad"><span class="k">Нет, это про другое.</span><span>Перечитай карточку и попробуй ещё.</span></div>';
+        }
+      });
+      tri.appendChild(b);
+    });
+  }
+  function sortDone(){
+    sortP.textContent='Все карточки разложены';
+    var html='<div class="feedback ok"><span class="k">Готово! Вот что получилось:</span></div><div class="sort-sum">';
+    ROLES.forEach(function(c){
+      var items=SORT.filter(function(x){ return x.c===c; }).map(function(x){ return x.t.toLowerCase(); });
+      html+='<div><b>'+c+':</b> '+items.join('; ')+'.</div>';
+    });
+    html+='</div><p>Получилась вся вторая половина параграфа: человек добывает, земля страдает, человек восстанавливает.</p><div class="row"><button class="btn ghost" type="button" id="sort-again">Ещё раз</button></div>';
+    sortBox.innerHTML=html;
+    $('#sort-again').addEventListener('click', function(){ sortList=shuffle(SORT); si=0; renderSort(); });
+    markDone('sort');
+  }
+  renderSort();
+
+  /* ---------- ordering ---------- */
+  var EVENTS=[
+    {y:1, t:'Люди ищут место, богатое полезными ископаемыми', ys:'1'},
+    {y:2, t:'Пласты залегают неглубоко — роют карьер', ys:'2'},
+    {y:3, t:'Добытое сырьё везут на заводы и фабрики', ys:'3'},
+    {y:4, t:'Пустую породу ссыпают в отвалы, земли нарушены', ys:'4'},
+    {y:5, t:'Отвалы выравнивают и сажают деревья — это рекультивация', ys:'5'},
+    {y:6, t:'Выработанный карьер превращают в пруд, тут зона отдыха', ys:'6'}
+  ];
+  var pool=$('#pool'), seq=$('#seq'), orderCheck=$('#order-check'), orderFb=$('#order-fb'), picked=[], shuffledEvents=shuffle(EVENTS);
+  function renderOrder(){
+    pool.innerHTML='';
+    shuffledEvents.forEach(function(e){
+      if(picked.indexOf(e)>=0) return;
+      var b=el('button','opt',e.t); b.type='button';
+      b.addEventListener('click', function(){ picked.push(e); renderOrder(); });
+      pool.appendChild(b);
+    });
+    seq.innerHTML='';
+    if(!picked.length){ seq.appendChild(el('div','empty','Сюда встанут шаги по порядку')); }
+    picked.forEach(function(e,i){ seq.appendChild(el('div','slot','<span class="i">'+(i+1)+'</span><span>'+e.t+'</span>')); });
+    orderCheck.disabled = picked.length!==EVENTS.length;
+    orderFb.innerHTML='';
+  }
+  renderOrder();
+  orderCheck.addEventListener('click', function(){
+    var slots=seq.querySelectorAll('.slot'), wrong=0;
+    picked.forEach(function(e,i){
+      var ok = e.y===EVENTS[i].y;
+      slots[i].classList.add(ok?'ok':'bad');
+      slots[i].insertAdjacentHTML('beforeend','<span class="yr">'+e.ys+'</span>');
+      if(!ok) wrong++;
+    });
+    if(!wrong){ orderFb.innerHTML='<div class="feedback ok"><span class="k">Всё по порядку!</span><span>Сначала добыча, потом нарушенная земля, потом рекультивация. Так испорченное место снова становится живым.</span></div>'; markDone('order'); }
+    else orderFb.innerHTML='<div class="feedback bad"><span class="k">Не совсем. Красные шаги стоят не на своих местах.</span><span>Теперь справа видны правильные номера. Нажми «Сначала» и попробуй ещё раз.</span></div>';
+    orderCheck.disabled=true;
+  });
+  $('#order-reset').addEventListener('click', function(){ picked=[]; shuffledEvents=shuffle(EVENTS); renderOrder(); });
+
+  /* ---------- odd one out ---------- */
+  var ODD=[
+    {items:['Шахта','Карьер','Скважина','Отвал'], odd:'Отвал', why:'Шахта, карьер и скважина — способы добраться до полезных ископаемых. А отвал — насыпь пустой породы, под которую отводят земли.'},
+    {items:['Оползень','Лавина','Сель','Карьер'], odd:'Карьер', why:'Оползни, лавины и сели — стихийные явления, с которыми надо считаться при строительстве. А карьер человек копает сам.'},
+    {items:['Отвалы выравнивают и засаживают','Карьер превращают в пруд','Вдоль оврагов сажают лесные полосы','Роют новую шахту'], odd:'Роют новую шахту', why:'Первые три — восстановление нарушенных земель, рекультивация и борьба с оврагами. А шахту роют, чтобы добывать.'},
+    {items:['1556 г.','1897 г.','1948 г.','100 млрд т'], odd:'100 млрд т', why:'Три даты — разрушительные землетрясения из рубрики «Стоп-кадр». А 100 млрд т — сколько пород человек извлекает из недр за год.'}
+  ];
+  var oddGrid=$('#odd-grid'), oddFb=$('#odd-fb'), oddNext=$('#odd-next'), oddP=$('#odd-progress'), oddRound=0;
+  function renderOdd(){
+    var r=ODD[oddRound]; oddGrid.innerHTML=''; oddFb.innerHTML=''; oddNext.hidden=true;
+    oddP.textContent='Раунд '+(oddRound+1)+' из '+ODD.length;
+    shuffle(r.items).forEach(function(w){
+      var b=el('button','opt',w); b.type='button';
+      b.addEventListener('click', function(){
+        var all=oddGrid.querySelectorAll('.opt');
+        if(w===r.odd){
+          for(var i=0;i<all.length;i++) all[i].disabled=true;
+          b.classList.add('ok');
+          oddFb.innerHTML='<div class="feedback ok"><span class="k">Точно, лишнее — «'+w+'».</span><span>'+r.why+'</span></div>';
+          if(oddRound<ODD.length-1) oddNext.hidden=false;
+          else { oddP.textContent='Все четыре раунда пройдены'; markDone('odd'); }
+        } else {
+          b.classList.add('bad'); b.disabled=true;
+          oddFb.innerHTML='<div class="feedback bad"><span class="k">«'+w+'» из той же компании, что и остальные.</span><span>Подумай, что здесь про другое.</span></div>';
+        }
+      });
+      oddGrid.appendChild(b);
+    });
+  }
+  oddNext.addEventListener('click', function(){ oddRound++; renderOdd(); });
+  renderOdd();
+
+  /* ---------- quiz ---------- */
+  var QUIZ=[
+    {q:'Чем литосфера является для человека «во-первых», как говорит учебник?', o:['территорией','воздухом для дыхания','запасом пресной воды'], a:0, why:'На земной поверхности проходит практически вся жизнь и хозяйственная деятельность людей: здесь строят дома и дороги, пашут землю и пасут скот.'},
+    {q:'Как в учебнике называется добыча полезных ископаемых?', o:['земледелие','горное дело','рекультивация'], a:1, why:'Горное дело — один из старейших видов человеческой деятельности.'},
+    {q:'Что делают, если богатые пласты залегают неглубоко?', o:['роют глубокую шахту','бурят скважину','вырывают карьер и ведут добычу открытым способом'], a:2, why:'Так гораздо дешевле, чем уходить под землю.'},
+    {q:'Для чего бурят скважины?', o:['для добычи нефти и газа','для добычи угля','чтобы измерять силу землетрясений'], a:0, why:'За углём и рудой идут в шахту, а скважину бурят, чтобы достать нефть и газ.'},
+    {q:'Сколько горных пород человек извлекает из недр Земли за год?', o:['около 100 млн т','около 100 млрд т','около 100 тыс. т'], a:1, why:'Около 100 млрд т. И за один прошлый век их извлечено больше, чем за всю предшествующую историю человечества.'},
+    {q:'Что такое рекультивация?', o:['добыча открытым способом','поиск новых месторождений','специальные работы, чтобы восстановить нарушенные земли'], a:2, why:'Например, отвалы выравнивают и сажают деревья, а выработанные карьеры превращают в пруды.'},
+    {q:'Из-за чего на склонах образуются и растут овраги?', o:['из-за распашки земель и вырубки лесов','из-за подземных толчков','из-за морского прибоя'], a:0, why:'И это значит, что площадь земель, пригодных для сельского хозяйства, уменьшается.'},
+    {q:'Чем в учебнике предлагают бороться с оврагами?', o:['отвалами','лесными полосами, подпорными стенками и валами','новыми карьерами'], a:1, why:'Корни деревьев держат землю, а стенки и валы гасят силу стекающей воды.'},
+    {q:'Где, по учебнику, строят сейсмостойкие здания?', o:['в Японии, где угроза землетрясений велика','на берегах больших рек','в жарких пустынях'], a:0, why:'Учёные всего мира изобретают новые материалы и технологии для строительства в таких районах.'},
+    {q:'Что показывал первый сейсмограф?', o:['силу землетрясения в баллах','в какой стороне света случилось землетрясение','сколько лет назад было землетрясение'], a:1, why:'Шар выпадал из пасти одного из восьми драконов в рот жабы — и по этому было видно направление.'}
+  ];
+  var qBox=$('#quiz-box'), qP=$('#quiz-progress'), qi=0, score=0;
+  function renderQ(){
+    if(qi>=QUIZ.length) return renderScore();
+    var q=QUIZ[qi];
+    qP.textContent='Вопрос '+(qi+1)+' из '+QUIZ.length;
+    qBox.innerHTML='';
+    qBox.appendChild(el('div','q',q.q));
+    var opts=el('div','q-opts'); qBox.appendChild(opts);
+    var fb=el('div'); qBox.appendChild(fb);
+    var rowN=el('div','row'); qBox.appendChild(rowN);
+    var answered=false;
+    q.o.forEach(function(o,i){
+      var b=el('button','opt',o); b.type='button';
+      b.addEventListener('click', function(){
+        if(answered) return; answered=true;
+        var all=opts.querySelectorAll('.opt');
+        for(var k=0;k<all.length;k++){ all[k].disabled=true; if(k===q.a) all[k].classList.add('ok'); }
+        if(i===q.a){ score++; fb.innerHTML='<div class="feedback ok"><span class="k">Правильно!</span><span>'+q.why+'</span></div>'; }
+        else { b.classList.add('bad'); fb.innerHTML='<div class="feedback bad"><span class="k">Нет, правильный ответ подсвечен зелёным.</span><span>'+q.why+'</span></div>'; }
+        var n=el('button','btn', qi<QUIZ.length-1?'Следующий вопрос':'Показать результат'); n.type='button';
+        n.addEventListener('click', function(){ qi++; renderQ(); window.scrollTo(0,0); });
+        rowN.appendChild(n);
+      });
+      opts.appendChild(b);
+    });
+  }
+  function renderScore(){
+    qP.textContent='Результат';
+    var tiles=''; for(var i=0;i<QUIZ.length;i++) tiles+='<i class="'+(i<score?'on':'')+'"></i>';
+    var msg = score===QUIZ.length ? 'Идеально, Амина! Ни одной ошибки.' : score>=8 ? 'Отлично! Ещё раз взгляни на вопросы, где ошиблась, и будет полный набор.' : score>=6 ? 'Хорошо. Перечитай шаги, где было трудно, и пройди тест снова.' : 'Ничего страшного, Амина. Вернись к словарику и к игре «Добыть, испортить, вернуть», а потом попробуй ещё раз.';
+    qBox.innerHTML='<div class="score"><div class="big">'+score+' из '+QUIZ.length+'</div><div class="score-tiles">'+tiles+'</div><p>'+msg+'</p><button class="btn ghost" type="button" id="quiz-again">Пройти ещё раз</button></div>';
+    $('#quiz-again').addEventListener('click', function(){ qi=0; score=0; renderQ(); });
+    markDone('quiz');
+  }
+  renderQ();
+
+  /* ---------- bricks ---------- */
+  Array.prototype.forEach.call(document.querySelectorAll('.brick button'), function(b){
+    b.addEventListener('click', function(){
+      var body=b.nextElementSibling, open=body.hidden;
+      body.hidden=!open; b.setAttribute('aria-expanded', open?'true':'false');
+      b.lastElementChild.textContent = open?'−':'+';
+    });
+  });
+
+  /* ---------- start ---------- */
+  var start=idxFromHash(); go(start<0?0:start, true);
+})();
+</script>
+
+</body>
+</html>
