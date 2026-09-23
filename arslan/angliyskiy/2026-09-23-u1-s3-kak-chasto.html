@@ -1,0 +1,1601 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Кто? Где? Как часто?</title>
+<meta name="paragraph" content="Unit 1 · Step 3">
+<meta name="description" content="Unit 1, Step 3: вопросительные слова who, what, when, where, why и слова always, never, often, sometimes, usually">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=PT+Sans+Narrow:wght@400;700&family=PT+Sans:wght@400;700&display=swap">
+<style>
+:root{
+  --bg:#EBE8DF; --surface:#F8F6F0; --surface-2:#E2DED2; --ink:#1B2233; --ink-2:#4A5163; --muted:#7A8093;
+  --lapis:#23448A; --on-lapis:#FFFFFF; --lapis-soft:#D9E1F3;
+  --gold:#B08A2E; --gold-soft:#F1E6C2; --on-gold:#2A2107;
+  --terra:#B4552F; --terra-soft:#F3DCD2;
+  --moss:#4E7A3B; --moss-soft:#DCE8D2;
+  --line:#D2CDBF; --tile:#CFC9B9;
+  --shadow:0 1px 2px rgba(27,34,51,.08),0 10px 28px rgba(27,34,51,.07);
+  --display:"Oranienbaum","Georgia","Times New Roman",serif;
+  --body:"Golos Text","Segoe UI",system-ui,-apple-system,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0F1728; --surface:#182338; --surface-2:#21304B; --ink:#EDE8DC; --ink-2:#C2BFB4; --muted:#8B93A8;
+    --lapis:#7EA0E6; --on-lapis:#0F1728; --lapis-soft:#22345A;
+    --gold:#E0B84A; --gold-soft:#3E3419; --on-gold:#0F1728;
+    --terra:#E0825C; --terra-soft:#4A2A1D;
+    --moss:#8DBF74; --moss-soft:#243B1F;
+    --line:#2E3B57; --tile:#2A3856;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 28px rgba(0,0,0,.35);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0F1728; --surface:#182338; --surface-2:#21304B; --ink:#EDE8DC; --ink-2:#C2BFB4; --muted:#8B93A8;
+  --lapis:#7EA0E6; --on-lapis:#0F1728; --lapis-soft:#22345A;
+  --gold:#E0B84A; --gold-soft:#3E3419; --on-gold:#0F1728;
+  --terra:#E0825C; --terra-soft:#4A2A1D;
+  --moss:#8DBF74; --moss-soft:#243B1F;
+  --line:#2E3B57; --tile:#2A3856;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 28px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+@media (prefers-reduced-motion: reduce){ *{transition:none!important;animation:none!important} }
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.55;-webkit-text-size-adjust:100%}
+h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1.1;text-wrap:balance;margin:0}
+p{margin:0}
+a{color:var(--lapis)}
+button{font:inherit;color:inherit;cursor:pointer}
+button:focus-visible,summary:focus-visible,a:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+[hidden]{display:none!important}
+
+/* ---------- top bar ---------- */
+.top{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+.top-inner{max-width:720px;margin:0 auto;padding:10px 16px;display:flex;align-items:center;gap:12px}
+.back{text-decoration:none;color:var(--ink-2);font-size:14px;white-space:nowrap;padding:6px 10px;border-radius:8px;background:var(--surface);border:1px solid var(--line)}
+.crumb{flex:1;min-width:0;font-size:14px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.crumb b{color:var(--ink);font-weight:600}
+.toc-btn{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:6px 10px;font-size:14px;color:var(--lapis);font-weight:600;white-space:nowrap}
+.stepbar{max-width:720px;margin:0 auto;padding:0 16px 10px;display:flex;gap:4px}
+.stepbar button{flex:1;height:8px;min-width:6px;padding:0;border:0;border-radius:2px;background:var(--tile);transition:background .3s,transform .3s}
+.stepbar button.visited{background:var(--lapis)}
+.stepbar button.done{background:var(--gold)}
+.stepbar button.current{transform:scaleY(1.6);background:var(--gold)}
+
+/* ---------- steps ---------- */
+main{max-width:720px;margin:0 auto;padding:20px 16px 120px}
+.step{display:flex;flex-direction:column;gap:16px}
+.eyebrow{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);font-weight:700;display:flex;align-items:center;gap:10px}
+.tess{display:inline-flex;gap:3px}
+.tess i{width:8px;height:8px;display:block;border-radius:1px}
+.tess i:nth-child(1){background:var(--lapis)} .tess i:nth-child(2){background:var(--gold)} .tess i:nth-child(3){background:var(--terra)}
+.step h1{font-size:clamp(36px,8vw,56px)}
+.step h2{font-size:clamp(28px,6vw,38px)}
+.step h3{font-size:22px;color:var(--lapis);margin-top:4px}
+.lede{font-size:19px;color:var(--ink-2);max-width:34ch}
+.prose{display:flex;flex-direction:column;gap:12px;max-width:66ch}
+.prose ul{margin:0;padding-left:22px;display:flex;flex-direction:column;gap:6px}
+.prose li::marker{color:var(--gold)}
+b,strong{font-weight:600}
+.term{font-weight:600;color:var(--lapis);border-bottom:2px solid var(--gold-soft)}
+.aside{background:var(--lapis-soft);border-left:4px solid var(--lapis);padding:12px 16px;border-radius:0 8px 8px 0;font-size:16px;display:flex;flex-direction:column;gap:6px}
+.aside .k{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--lapis);font-weight:700}
+.home{background:var(--gold-soft);border-left-color:var(--gold)}
+.home .k{color:var(--gold)}
+details{border:1px solid var(--line);border-radius:10px;background:var(--surface)}
+details summary{cursor:pointer;list-style:none;padding:12px 16px;font-weight:600;color:var(--lapis);display:flex;align-items:center;gap:10px}
+details summary::-webkit-details-marker{display:none}
+details summary::before{content:"";width:9px;height:9px;background:var(--gold);transform:rotate(45deg);flex:none;transition:transform .2s}
+details[open] summary::before{transform:rotate(45deg) scale(.6);background:var(--lapis)}
+details .body{padding:0 16px 14px;display:flex;flex-direction:column;gap:8px;color:var(--ink-2)}
+
+.steps4{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+@media (min-width:600px){ .steps4{grid-template-columns:repeat(4,1fr)} }
+.dom{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px;display:flex;flex-direction:column;gap:4px;box-shadow:var(--shadow)}
+.dom .n{font-family:var(--display);font-size:28px;color:var(--gold);line-height:1}
+.dom .t{font-weight:600;font-size:15px;line-height:1.25}
+.dom .d{font-size:13.5px;color:var(--ink-2);line-height:1.35}
+
+.ladder{display:flex;flex-direction:column;align-items:center;gap:6px}
+.rung{background:var(--lapis);color:var(--on-lapis);padding:9px 12px;border-radius:8px;text-align:center;font-size:15px;line-height:1.3}
+.rung small{display:block;opacity:.85;font-size:12.5px}
+.rung.r1{width:60%} .rung.r2{width:74%} .rung.r3{width:88%} .rung.r4{width:100%;background:var(--surface-2);color:var(--ink)}
+
+/* timeline (вертикальная, все даты видны сразу) */
+.tl-v{display:flex;flex-direction:column;position:relative;padding-left:4px}
+.tl-v::before{content:"";position:absolute;left:16px;top:16px;bottom:16px;width:3px;background:var(--line);border-radius:2px}
+.tl-item{position:relative;padding-left:36px;display:flex;flex-direction:column}
+.tl-btn{background:none;border:0;padding:8px 0;text-align:left;display:flex;align-items:baseline;gap:8px 12px;flex-wrap:wrap;color:var(--ink);width:100%}
+.tl-btn .dot{position:absolute;left:5px;top:12px;width:17px;height:17px;background:var(--surface);border:3px solid var(--lapis);border-radius:50%;transition:transform .2s,background .2s}
+.tl-item.ru .dot{border-color:var(--terra)}
+.tl-item.open .dot{background:var(--gold);border-color:var(--gold);transform:scale(1.2)}
+.tl-btn .y{font-family:var(--display);font-size:26px;line-height:1;font-variant-numeric:tabular-nums;min-width:96px}
+.tl-btn .t{font-weight:600;font-size:16px}
+.tl-btn .era{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--lapis);font-weight:700;margin-left:auto}
+.tl-item.ru .era{color:var(--terra)}
+.tl-d{color:var(--ink-2);font-size:15.5px;padding:0 0 12px;line-height:1.45}
+.hint{font-size:14px;color:var(--muted)}
+
+/* «как в учебнике» и вопросы учебника */
+details.book{border-color:var(--gold-soft)}
+details.book summary{color:var(--gold)}
+details.book summary::before{background:var(--gold)}
+details.book[open] summary::before{background:var(--gold)}
+details.book .body{font-size:15px;color:var(--ink)}
+details.book .body ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:7px}
+details.book .body li::marker{color:var(--gold)}
+details.book .body .pic{color:var(--ink-2);font-style:italic}
+.qlist{display:flex;flex-direction:column;gap:10px}
+.qi{display:grid;grid-template-columns:auto 1fr;gap:12px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.qi .qn{font-family:var(--display);font-size:24px;color:var(--gold);line-height:1;min-width:20px}
+.qi p{font-size:15.5px}
+.qi .src{font-size:14.5px;color:var(--ink-2);margin-top:6px}
+.qi a{font-size:13.5px;font-weight:600;text-decoration:none;display:inline-block;margin-top:8px;background:var(--lapis-soft);padding:4px 10px;border-radius:999px}
+
+/* games */
+.game{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:12px}
+.g-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.game h3{margin:0}
+.task{color:var(--ink-2)}
+.badge{font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;padding:4px 10px;border-radius:999px;background:var(--gold-soft);color:var(--gold)}
+.badge.done{background:var(--moss-soft);color:var(--moss)}
+.btn{background:var(--lapis);color:var(--on-lapis);border:0;border-radius:10px;padding:10px 18px;font-weight:600;font-size:15px;text-decoration:none;display:inline-block}
+.btn.ghost{background:transparent;color:var(--lapis);border:2px solid var(--lapis)}
+.btn:disabled{opacity:.45;cursor:default}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.feedback{padding:12px 14px;border-radius:10px;font-size:15px;display:flex;flex-direction:column;gap:4px}
+.feedback.ok{background:var(--moss-soft);border-left:4px solid var(--moss)}
+.feedback.bad{background:var(--terra-soft);border-left:4px solid var(--terra)}
+.feedback .k{font-weight:700}
+.progress{font-size:13px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.card{perspective:900px;height:150px;background:none;border:0;padding:0;text-align:left}
+.card .in{position:relative;width:100%;height:100%;transition:transform .5s;transform-style:preserve-3d}
+.card.flip .in{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;border-radius:12px;padding:12px;display:flex;flex-direction:column;justify-content:center;gap:6px;overflow:hidden}
+.face.f{background:var(--lapis);color:var(--on-lapis)}
+.face.f .w{font-family:var(--display);font-size:21px;line-height:1.05}
+.face.f .tap{font-size:11px;opacity:.75;letter-spacing:.08em;text-transform:uppercase}
+.face.b{background:var(--surface-2);color:var(--ink);transform:rotateY(180deg);font-size:12.5px;line-height:1.3;justify-content:flex-start;overflow:auto}
+.face.b .w{font-weight:700;color:var(--lapis);font-size:13px}
+.face.b .e{color:var(--ink-2);font-style:italic}
+
+.match{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.col{display:flex;flex-direction:column;gap:8px}
+.col .lbl{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.opt{background:var(--surface-2);border:2px solid transparent;border-radius:10px;padding:10px 12px;text-align:left;font-weight:500;font-size:15px;transition:border-color .15s,background .15s}
+.opt:hover{border-color:var(--lapis)}
+.opt.sel{border-color:var(--gold);background:var(--gold-soft)}
+.opt.ok{background:var(--moss-soft);border-color:var(--moss)}
+.opt.bad{animation:shake .35s}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+
+.pool{display:flex;flex-direction:column;gap:8px}
+.seq{display:flex;flex-direction:column;gap:8px;min-height:44px;padding:10px;border:2px dashed var(--line);border-radius:12px}
+.seq .slot{display:flex;align-items:center;gap:10px;background:var(--lapis-soft);border-radius:8px;padding:8px 12px;font-size:15px}
+.seq .slot .i{font-family:var(--display);font-size:20px;color:var(--lapis);width:22px;font-variant-numeric:tabular-nums}
+.seq .slot.ok{background:var(--moss-soft)} .seq .slot.bad{background:var(--terra-soft)}
+.seq .slot .yr{margin-left:auto;font-weight:700;color:var(--ink-2);font-variant-numeric:tabular-nums}
+.seq .empty{color:var(--muted);font-size:14px}
+
+.odd-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.odd-grid .opt{text-align:center;padding:16px 10px;font-size:16px}
+.odd-grid .opt.bad{background:var(--terra-soft);border-color:var(--terra)}
+
+.q{font-size:19px;font-weight:600;line-height:1.35}
+.q-opts{display:flex;flex-direction:column;gap:8px}
+.q-opts .opt{font-size:15.5px;line-height:1.35}
+.q-opts .opt.bad{background:var(--terra-soft);border-color:var(--terra)}
+.score{display:flex;flex-direction:column;gap:12px;align-items:flex-start}
+.score .big{font-family:var(--display);font-size:56px;line-height:1;color:var(--gold)}
+.score-tiles{display:flex;gap:5px;flex-wrap:wrap}
+.score-tiles i{width:22px;height:22px;border-radius:3px;background:var(--tile)}
+.score-tiles i.on{background:var(--gold)}
+
+.bricks{display:flex;flex-direction:column;gap:10px}
+.brick{background:var(--surface-2);border-radius:10px;overflow:hidden}
+.brick button{width:100%;background:none;border:0;padding:12px 14px;text-align:left;font-weight:600;color:var(--lapis);display:flex;justify-content:space-between;gap:10px}
+.brick .b-body{padding:0 14px 12px;color:var(--ink-2);font-size:15.5px}
+
+.mosaic{display:flex;gap:6px;align-items:center}
+.mosaic .tile{width:26px;height:26px;background:var(--tile);border-radius:3px;transition:background .4s,transform .4s}
+.mosaic .tile.on{background:var(--gold);transform:rotate(45deg) scale(.8)}
+.mosaic-list{display:flex;flex-direction:column;gap:6px;font-size:15px}
+.mosaic-list span.off{color:var(--muted)}
+
+/* pager */
+.pager{position:fixed;left:0;right:0;bottom:0;z-index:5;background:var(--bg);border-top:1px solid var(--line)}
+.pager-inner{max-width:720px;margin:0 auto;padding:10px 16px;display:flex;align-items:center;gap:10px}
+.pager .count{font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+.pager .btn{flex:1;text-align:center;padding:12px 14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pager .btn.ghost{flex:0 0 auto}
+
+/* toc overlay */
+.toc{position:fixed;inset:0;z-index:10;background:rgba(0,0,0,.35);display:flex;justify-content:flex-end}
+.toc-panel{width:min(360px,90vw);height:100%;background:var(--surface);overflow:auto;padding:16px;display:flex;flex-direction:column;gap:8px;box-shadow:var(--shadow)}
+.toc-panel h3{font-size:24px;margin-bottom:6px;display:flex;justify-content:space-between;align-items:center}
+.toc-close{background:none;border:1px solid var(--line);border-radius:8px;padding:4px 10px;font-size:14px}
+.toc-item{display:flex;align-items:center;gap:10px;background:none;border:0;border-radius:8px;padding:8px 10px;text-align:left;font-size:15px;color:var(--ink)}
+.toc-item:hover{background:var(--surface-2)}
+.toc-item.current{background:var(--gold-soft);font-weight:600}
+.toc-item .n{font-family:var(--display);font-size:18px;color:var(--muted);width:24px;font-variant-numeric:tabular-nums}
+.toc-item .m{margin-left:auto;font-size:12px;color:var(--moss);font-weight:700}
+
+/* схема управления (§ 2) */
+.org{display:flex;flex-direction:column;gap:8px}
+.org .lvl{display:grid;gap:8px;grid-template-columns:repeat(2,1fr)}
+@media (min-width:600px){ .org .lvl{grid-template-columns:repeat(4,1fr)} }
+.org .box{background:var(--surface-2);border-radius:8px;padding:9px 10px;font-size:14px;text-align:center;line-height:1.3}
+.org .box small{display:block;font-size:12px;color:var(--ink-2)}
+.org .box.top{background:var(--lapis);color:var(--on-lapis);font-weight:600;font-size:16px}
+.org .box.sub{background:var(--gold-soft)}
+.org .lbl{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:700;text-align:center}
+
+/* иллюстрации (§ 3) */
+.fig{margin:0;display:flex;flex-direction:column;gap:6px;align-items:flex-start}
+.fig img{width:100%;max-width:360px;height:auto;border-radius:10px;border:1px solid var(--line);background:var(--surface);box-shadow:var(--shadow)}
+.fig.wide img{max-width:100%}
+.fig figcaption{font-size:14px;color:var(--ink-2);line-height:1.35;max-width:60ch}
+.fig-row{display:flex;gap:12px;flex-wrap:wrap;align-items:flex-start}
+.fig-row .fig{flex:1 1 150px;max-width:220px}
+
+/* § 4: «каждый шестой», два пути крещения, игра «Где это было?» */
+.six{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;max-width:380px}
+.six span{height:64px;border-radius:8px;background:var(--surface-2);color:var(--ink-2);display:flex;align-items:flex-end;justify-content:center;padding-bottom:6px;font-size:11.5px;font-weight:600;position:relative}
+.six span::before{content:"";position:absolute;top:10px;left:50%;width:14px;height:14px;margin-left:-7px;border-radius:50%;background:var(--tile)}
+.six span::after{content:"";position:absolute;top:27px;left:50%;width:22px;height:14px;margin-left:-11px;border-radius:8px 8px 3px 3px;background:var(--tile)}
+.six span.w{background:var(--lapis);color:var(--on-lapis)}
+.six span.w::before,.six span.w::after{background:var(--gold)}
+.ways{display:grid;grid-template-columns:1fr;gap:10px}
+@media (min-width:560px){ .ways{grid-template-columns:1fr 1fr} }
+.way{background:var(--surface);border:1px solid var(--line);border-top:5px solid var(--lapis);border-radius:12px;padding:12px 14px;display:flex;flex-direction:column;gap:6px;box-shadow:var(--shadow)}
+.way.const{border-top-color:var(--terra)}
+.way.const h3{color:var(--terra)}
+.way .cn{font-weight:600;font-size:17px}
+.way p{font-size:15.5px;color:var(--ink-2)}
+.sort-card{background:var(--lapis-soft);border-radius:12px;padding:16px;font-size:18px;font-weight:600;line-height:1.35}
+.tri{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.tri .opt{text-align:center;padding:12px 4px;font-size:15px}
+.tri .opt.bad{background:var(--terra-soft);border-color:var(--terra)}
+.sort-sum{display:flex;flex-direction:column;gap:8px;font-size:15px}
+.sort-sum b{color:var(--lapis)}
+/* § 4: разбор вопросов учебника с подсказками и ответом */
+.qtext{font-size:18px;font-weight:600;line-height:1.35;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.aside ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:5px}
+.aside.ans{background:var(--moss-soft);border-left-color:var(--moss)}
+.aside.ans .k{color:var(--moss)}
+.answer{display:flex;flex-direction:column;gap:12px;align-items:stretch}
+.answer .btn{text-align:center}
+.ans-body{display:flex;flex-direction:column;gap:12px}
+.ans-table{width:100%;border-collapse:collapse;font-size:15px;background:var(--surface)}
+.ans-table th,.ans-table td{border:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top;line-height:1.3}
+.ans-table th{font-size:13px;color:var(--ink-2);font-weight:700}
+.ans-table td:first-child{white-space:nowrap}
+
+/* виды шагов: из учебника / задания учебника / сверх учебника */
+.kind-tag{display:flex;gap:10px;align-items:flex-start;border-radius:10px;padding:8px 12px;font-size:13px;line-height:1.35}
+.kind-tag .ic{font-size:18px;line-height:1.1}
+.kind-tag b{font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:700}
+.kind-tag .pg{font-weight:600;margin-left:6px;font-size:13px}
+.kind-tag small{display:block;font-size:13px;color:var(--ink-2);margin-top:2px}
+.kind-tag.book{background:var(--lapis-soft);color:var(--lapis)}
+.kind-tag.task{background:var(--gold-soft);color:var(--gold)}
+.kind-tag.ours{background:var(--terra-soft);color:var(--terra)}
+.stepbar button.k-book{background:var(--lapis-soft)} .stepbar button.k-task{background:var(--gold-soft)} .stepbar button.k-ours{background:var(--terra-soft)}
+.stepbar button.k-book.visited{background:var(--lapis)} .stepbar button.k-task.visited{background:var(--gold)} .stepbar button.k-ours.visited{background:var(--terra)}
+.stepbar button.visited.done{background:var(--moss)}
+.stepbar{gap:3px} .stepbar button{min-width:3px}
+.stepbar button.gstart{margin-left:5px}
+.stepbar button.current{transform:scaleY(1.9);box-shadow:0 0 0 1.5px var(--ink)}
+.toc-group{display:flex;flex-direction:column;gap:2px;border-left:4px solid var(--lapis);padding-left:8px;margin-top:10px}
+.toc-group.k-task{border-left-color:var(--gold)} .toc-group.k-ours{border-left-color:var(--terra)}
+.toc-head{display:flex;align-items:center;gap:8px;font-size:12px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;color:var(--lapis);padding:4px 2px}
+.toc-group.k-task .toc-head{color:var(--gold)} .toc-group.k-ours .toc-head{color:var(--terra)}
+.toc-head .ic{font-size:15px;letter-spacing:0}
+.toc-item .pg{margin-left:auto;font-size:12px;color:var(--muted);white-space:nowrap;font-variant-numeric:tabular-nums}
+.toc-item .pg + .m{margin-left:8px}
+
+/* ===== Книжное оформление (выбрано 14.09.2026): как учебник — синяя шапка, PT Serif / PT Sans Narrow / PT Sans ===== */
+:root{
+  --bg:#FBFAF6; --surface:#FFFFFF; --surface-2:#EAF0F8; --ink:#1A1A1A; --ink-2:#393939; --muted:#6B6B6B;
+  --lapis:#2D63A6; --on-lapis:#FFFFFF; --lapis-soft:#DCE7F5; --gold:#8B6B22; --gold-soft:#F3EBD3; --on-gold:#1A1A1A;
+  --terra:#C24E1E; --terra-soft:#FBE3D6; --moss:#3E7A3A; --moss-soft:#E1EEDC; --line:#D9DDE3; --tile:#D5DCE6; --shadow:none;
+  --band-ink:#FFFFFF; --tb:rgba(255,255,255,.32); --tbv:#FFFFFF; --to:rgba(255,190,160,.5); --tov:#F6A37E; --tt:rgba(255,230,160,.5); --ttv:#F2D27A; --tdone:#A6DB93;
+  --display:"PT Sans Narrow","Arial Narrow",sans-serif; --body:"PT Serif",Georgia,serif; --ui:"PT Sans","Segoe UI",system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){ --bg:#141516; --surface:#1C1E21; --surface-2:#1E2936; --ink:#EDEBE6; --ink-2:#CFCBC3; --muted:#9A968F;
+    --lapis:#79A6E0; --on-lapis:#10141A; --lapis-soft:#1F3350; --gold:#D9B45A; --gold-soft:#3A3120; --on-gold:#10141A;
+    --terra:#F0875A; --terra-soft:#43261A; --moss:#8CC47F; --moss-soft:#22381F; --line:#30343A; --tile:#2C3440; --shadow:none;
+    --band-ink:#10141A; --tb:rgba(16,20,26,.28); --tbv:#10141A; --to:rgba(120,40,10,.4); --tov:#8A2E0C; --tt:rgba(110,80,10,.4); --ttv:#6B4E0E; --tdone:#1F5A1A; } }
+:root[data-theme="dark"]{ --bg:#141516; --surface:#1C1E21; --surface-2:#1E2936; --ink:#EDEBE6; --ink-2:#CFCBC3; --muted:#9A968F;
+    --lapis:#79A6E0; --on-lapis:#10141A; --lapis-soft:#1F3350; --gold:#D9B45A; --gold-soft:#3A3120; --on-gold:#10141A;
+    --terra:#F0875A; --terra-soft:#43261A; --moss:#8CC47F; --moss-soft:#22381F; --line:#30343A; --tile:#2C3440; --shadow:none;
+    --band-ink:#10141A; --tb:rgba(16,20,26,.28); --tbv:#10141A; --to:rgba(120,40,10,.4); --tov:#8A2E0C; --tt:rgba(110,80,10,.4); --ttv:#6B4E0E; --tdone:#1F5A1A; }
+body{font-family:var(--body);font-size:18px;line-height:1.62}
+h1,h2,h3{font-family:var(--display);font-weight:700}
+.step h1{color:var(--lapis);font-size:clamp(34px,8.5vw,52px);line-height:1.02}
+.step h2{color:var(--lapis);font-size:clamp(28px,7vw,36px);line-height:1.08}
+.step h3{font-size:23px}
+.pnum{display:inline-flex;align-items:center;justify-content:center;background:var(--lapis);color:var(--on-lapis);font:700 .72em/1 var(--display);width:1.08em;height:1.08em;margin-right:.3em;vertical-align:.08em}
+.lede{font-size:20px}
+.top{background:var(--lapis);border-bottom:0}
+.back{background:transparent;border-color:var(--band-ink);color:var(--band-ink);font-family:var(--ui);border-radius:3px}
+.crumb{color:var(--band-ink);opacity:.88;font-family:var(--ui)}
+.crumb b{color:var(--band-ink)}
+.toc-btn{background:var(--band-ink);color:var(--lapis);border-color:var(--band-ink);font-family:var(--ui);font-weight:700;border-radius:3px}
+.stepbar button{border-radius:1px}
+.stepbar button.k-book{background:var(--tb)} .stepbar button.k-book.visited{background:var(--tbv)}
+.stepbar button.k-ours{background:var(--to)} .stepbar button.k-ours.visited{background:var(--tov)}
+.stepbar button.k-task{background:var(--tt)} .stepbar button.k-task.visited{background:var(--ttv)}
+.stepbar button.visited.done{background:var(--tdone)}
+.stepbar button.current{box-shadow:0 0 0 1.5px var(--band-ink)}
+.eyebrow{font-family:var(--ui);color:var(--muted);letter-spacing:.08em}
+.tess{display:none}
+.term{font-weight:700;font-style:italic;color:var(--ink);border-bottom:0}
+.kind-tag{border-radius:0;padding:6px 0 0;border-top:2px solid currentColor;font-family:var(--ui);align-items:center}
+.kind-tag.book,.kind-tag.task,.kind-tag.ours{background:transparent}
+.kind-tag .ic{display:flex}
+.kind-tag b{font-size:12.5px;letter-spacing:.08em}
+.kind-tag small{font-family:var(--body);font-style:italic;font-size:14.5px}
+details{border-radius:0}
+details summary{font-family:var(--ui)}
+details.book{border:0;border-top:3px solid var(--lapis);background:var(--surface-2)}
+details.book summary{color:var(--lapis)}
+details.book summary::before,details.book[open] summary::before{background:var(--lapis)}
+details.book .body{font-size:16px}
+.aside{border-radius:0}
+.aside .k{font-family:var(--ui)}
+.dom{border-radius:0;box-shadow:none;border-top:3px solid var(--lapis)}
+.dom .n{font-family:var(--display);font-weight:700;color:var(--lapis)}
+.dom .t{font-family:var(--ui)}
+.rung{border-radius:0}
+.tl-btn .y{font-family:var(--display);font-weight:700;color:var(--lapis)}
+.tl-btn .era{font-family:var(--ui)}
+.fig img{border-radius:0;box-shadow:none}
+.fig figcaption{font-family:var(--ui)}
+.org .box{border-radius:0}
+.qi{border-radius:0}
+.qi .qn{font-family:var(--display);font-weight:700;color:var(--terra)}
+.qi a{border-radius:0;font-family:var(--ui)}
+.game{border-radius:0;box-shadow:none;border-top:4px solid var(--terra)}
+.game h3{color:var(--terra)}
+.badge{border-radius:0;font-family:var(--ui)}
+.btn{border-radius:3px;font-family:var(--ui);font-weight:700}
+.opt{border-radius:0;background:var(--surface);border-color:var(--line);font-family:var(--body)}
+.feedback{border-radius:0}
+.progress{font-family:var(--ui)}
+.q{font-family:var(--body);font-weight:700}
+.face{border-radius:0}
+.face.f .w{font-family:var(--display);font-weight:700}
+.seq,.seq .slot,.sort-card,.brick,.qtext,.way,.six span,.mosaic .tile,.score-tiles i,.toc-panel,.toc-item{border-radius:0}
+.brick button{font-family:var(--ui)}
+.pager{background:var(--surface)}
+.count{font-family:var(--ui)}
+.toc-panel h3{font-family:var(--display)}
+.toc-head{font-family:var(--ui)}
+.toc-head .ic{display:flex}
+.score .big{font-family:var(--display);font-weight:700;color:var(--lapis)}
+/* переносы длинных слов на узком экране (14.09.2026) */
+.match{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+.opt,.face,.qi p,.ans-table td,.ans-table th{overflow-wrap:anywhere;hyphens:auto}
+.ans-table.fit td:first-child{white-space:normal}
+/* ===== Английский (23.09.2026): голос, перевод по нажатию, правило-паровозик, игры «выбери», «собери», «послушай» ===== */
+.en{font-family:var(--body)}
+.say{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;margin:0 2px 0 6px;vertical-align:middle;border:1px solid var(--line);background:var(--surface);color:var(--lapis);border-radius:50%;cursor:pointer;padding:0;flex:none;line-height:1}
+.say.on{background:var(--lapis);color:var(--on-lapis);border-color:var(--lapis)}
+.say:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.no-voice{font-family:var(--ui);font-size:14.5px;color:var(--muted);margin:6px 0}
+.tsc{font-family:var(--ui);color:var(--muted);font-size:15px;margin-left:4px;white-space:nowrap}
+.wlist{list-style:none;padding:0;margin:12px 0;display:grid;gap:8px}
+.wlist li{background:var(--surface);border-left:4px solid var(--lapis);padding:8px 12px}
+.wlist li>.en{font-weight:700;font-size:21px}
+.wlist .ru{display:block;margin-top:2px}
+.wlist .wex{display:block;font-size:16px;color:var(--ink-2);margin-top:4px}
+.reading{background:var(--surface);border-top:3px solid var(--lapis);margin:12px 0;padding:4px 0}
+.reading h3{padding:0 12px;margin:8px 0 4px;color:var(--lapis)}
+.reading .hint-tap{padding:0 12px;font-family:var(--ui);font-size:13.5px;color:var(--muted);margin:0 0 4px}
+.ln{padding:8px 12px;margin:0;border-bottom:1px dashed var(--line);cursor:pointer}
+.ln:last-child{border-bottom:0}
+.ln.open{background:var(--surface-2)}
+.ln .lru{display:block;font-family:var(--ui);font-size:15.5px;color:var(--ink-2);margin-top:3px}
+.ln:focus-visible{outline:3px solid var(--gold);outline-offset:-3px}
+.rule{background:var(--gold-soft);border-left:4px solid var(--gold);padding:12px 14px;margin:14px 0}
+.rule .k{display:block;font-family:var(--ui);font-weight:700;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);margin-bottom:4px}
+.train{display:flex;flex-wrap:wrap;gap:8px 4px;margin:14px 0;align-items:stretch}
+.train .w{display:inline-flex;flex-direction:column;align-items:center;justify-content:space-between;padding:6px 8px;border:1px solid var(--line);font-family:var(--body);font-weight:700;font-size:19px;min-width:52px}
+.train .w small{font:400 11.5px/1.2 var(--ui);color:var(--ink-2);margin-top:4px;text-align:center;max-width:90px}
+.r-qw{background:var(--terra-soft)!important}.r-aux{background:var(--gold-soft)!important}.r-subj{background:var(--lapis-soft)!important}.r-verb{background:var(--moss-soft)!important}.r-rest{background:var(--surface-2)!important}
+.exl{list-style:none;padding:0;margin:10px 0;display:grid;gap:2px}
+.exl li{padding:7px 0;border-bottom:1px solid var(--line)}
+.exl .ru{display:block;font-family:var(--ui);font-size:15px;color:var(--muted)}
+.exl b{color:var(--terra)}
+.vs{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:8px;margin:12px 0}
+.vs>div{padding:10px 12px;border-top:3px solid}
+.vs .no{border-color:var(--terra);background:var(--terra-soft)}
+.vs .yes{border-color:var(--moss);background:var(--moss-soft)}
+.vs>div>b:first-child{display:block;font-family:var(--ui);font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px}
+.vs .no .en{text-decoration:line-through;text-decoration-thickness:1.5px}
+.chs{font-size:21px;font-weight:700;margin:4px 0;line-height:1.5}
+.gap{display:inline-block;min-width:64px;border-bottom:2px solid var(--terra);text-align:center;color:var(--terra);padding:0 4px}
+.gap.ok{color:var(--moss);border-color:var(--moss)}
+.chopts{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0}
+.chopts .opt{min-width:92px;flex:0 1 auto;padding:12px 14px;text-align:center}
+.feedback .lru{font-family:var(--ui);color:var(--ink-2)}
+.btask{margin:4px 0}
+.bline{min-height:58px;display:flex;flex-wrap:wrap;gap:6px;padding:8px;border:2px dashed var(--line);background:var(--surface);margin:6px 0;align-items:center}
+.bline.good{border-style:solid;border-color:var(--moss)}
+.bempty{font-family:var(--ui);font-size:14px;color:var(--muted)}
+.bpool{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0;min-height:10px}
+.wt{font-family:var(--body);font-size:19px;font-weight:700;padding:8px 12px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer;min-height:44px;border-radius:0}
+.bpool .wt{background:var(--surface-2)}
+.wt.bad{border-color:var(--terra);background:var(--terra-soft)}
+.wt.fix{cursor:default}
+.lctl .btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;flex:0 1 auto}
+/* Unit 1 · Step 3: слово «как часто» в паровозике и в игре «собери» */
+.r-freq{background:var(--surface)!important;border:2px solid var(--terra)!important;color:var(--terra)}
+</style>
+</head>
+<body>
+
+
+<header class="top">
+  <div class="top-inner">
+    <a class="back" href="./">← Темы</a>
+    <div class="crumb">Английский · Unit 1 · Step 3 · <b>Кто? Где? Как часто?</b></div>
+    <button class="toc-btn" id="toc-btn" type="button">Содержание</button>
+  </div>
+  <div class="stepbar" id="stepbar" aria-label="Шаги темы"></div>
+</header>
+
+<main id="deck">
+
+<!-- 1 -->
+<section class="step" data-step="za-minutu" data-name="За минуту" data-part="Коротко о главном" data-kind="ours">
+  <div class="kind-tag ours"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 6h14"></path><path d="M5 12h14"></path><path d="M5 18h9"></path></svg></span><div><b>Коротко о главном</b><small>Пересказ для разгона. Подробно, как в учебнике, — в следующих шагах.</small></div></div>
+  <div class="eyebrow">Английский · 4 класс · Rainbow English</div>
+  <h1>Unit 1 · Step 3<br>Кто? Где? Как часто?</h1>
+  <p class="lede">Арслан, в этом уроке ты научишься задавать вопросы, как настоящий журналист, и рассказывать, как часто ты что-то делаешь.</p>
+  <div id="resume" hidden></div>
+  <div class="prose">
+    <p>Представь журналиста школьной газеты. Он идёт брать интервью, а в блокноте у него пять главных вопросов: <b>Кто? Что? Когда? Где? Почему?</b> С ними можно узнать о человеке почти всё.</p>
+    <p>По-английски эти вопросы — пять коротких слов: <span class="en" data-say>who, what, when, where, why</span>. Все они начинаются с букв <b>wh</b>. В учебнике про них есть даже рифмовка.</p>
+    <p>А ещё журналист может спросить: «Как часто ты играешь в футбол?» Для ответа нужны слова «всегда», «никогда», «часто», «иногда», «обычно». Их ты тоже выучишь.</p>
+    <p>Что ты узнаешь:</p>
+    <ul>
+      <li>пять слов-вопросов и как выбрать нужное по ответу;</li>
+      <li>почему <span class="en">what</span> перед существительным значит «какой»;</li>
+      <li>слова <span class="en">always, never, often, sometimes, usually</span> и куда их ставить в предложении.</li>
+    </ul>
+  </div>
+  <p class="no-voice" hidden>На этом телефоне нет английского голоса, поэтому кнопок «послушать» не будет. Слушай записи на уроке или из аудиоприложения к учебнику.</p>
+  <div class="aside">
+    <div class="k">Как этим пользоваться</div>
+    <p>Рядом с английскими словами есть кнопка с динамиком: нажми, и телефон прочитает их по-английски. В текстах из учебника нажми на строчку, и под ней появится перевод.</p>
+    <p>Надпись вверху шага подскажет, откуда он: синяя — из учебника, золотая — задание учебника, оранжевая — сверх учебника (правила подробнее, словарик, игры). За игры ты соберёшь мозаику на последнем шаге.</p>
+  </div>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 12–15</summary>
+    <div class="body"><ul>
+      <li>Это раздел Unit 1 «Meet John Barker and His Family» — «Познакомься с Джоном Баркером и его семьёй». Урок называется Step 3, он на с. 12–15. На полях каждой страницы написано «Unit 1».</li>
+      <li>Урок делится на две части. <b>DO IT TOGETHER</b> — «делаем вместе», это в классе: упражнения 1–7. <b>DO IT ON YOUR OWN</b> — «делай сам», это дома: упражнение 8.</li>
+      <li>У упражнений 1, 4 и 5 нарисован значок диска с номером записи: (8), (9) и (10). Эти записи включают на уроке, они есть и в аудиоприложении к учебнику.</li>
+      <li>Упражнения 1 и 2 — на с. 12, 3 — на с. 13, 4 — на с. 13–14, 5 и 6 — на с. 14, 7 — на с. 14–15, 8 — на с. 15. После него на с. 15 начинается Step 4, его здесь нет.</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 2 -->
+<section class="step" data-step="o-salli" data-name="Вопросы о Салли" data-part="Упражнение 1" data-kind="task" data-pages="с. 12, упр. 1">
+  <div class="kind-tag task"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l4.2-1L19 8.2 15.8 5 5 15.8z"></path><path d="M13.8 7l3.2 3.2"></path></svg></span><div><b>Задание учебника</b><span class="pg">с. 12, упр. 1</span><small>Задание из книги, подсказки наши.</small></div></div>
+  <h2>Вопросы о Салли</h2>
+  <div class="prose">
+    <p>Салли — сестра Джона Баркера. На уроке включат запись (8): это рассказ о ней. Нужно послушать и ответить на пять вопросов.</p>
+    <p>Самого рассказа в учебнике нет, он только на записи. Поэтому прочитай вопросы заранее: так ты будешь знать, что ловить.</p>
+  </div>
+  <figure class="fig"><img src="img/2026-09-23-u1-s3-kak-chasto/01-salli.jpg" width="238" height="352" style="max-width:150px" loading="lazy" alt="Рисунок: девочка Салли с рыжеватыми волосами до плеч, в розовой кофточке с белым воротничком"><figcaption>Салли, сестра Джона (с. 12)</figcaption></figure>
+  <div class="reading">
+    <h3>Вопросы о Салли</h3>
+    <p class="hint-tap">Нажми на строчку — появится перевод.</p>
+    <p class="ln" data-tr="Сколько лет Салли? Она ходит в школу?"><b>1)</b> <span class="en" data-say>How old is Sally? Does she go to school?</span></p>
+    <p class="ln" data-tr="Что она любит?"><b>2)</b> <span class="en" data-say>What does she like?</span></p>
+    <p class="ln" data-tr="Где она поёт?"><b>3)</b> <span class="en" data-say>Where does she sing?</span></p>
+    <p class="ln" data-tr="Когда она читает?"><b>4)</b> <span class="en" data-say>When does she read?</span></p>
+    <p class="ln" data-tr="Где Джон и Салли играют летом?"><b>5)</b> <span class="en" data-say>Where do John and Sally play in summer?</span></p>
+  </div>
+  <div class="prose">
+    <h3>Что ловить в рассказе</h3>
+    <p>Первое слово вопроса подсказывает, какой нужен ответ:</p>
+  </div>
+  <ul class="exl">
+    <li><span class="en">How old…?</span><span class="ru">«Сколько лет?» — лови число.</span></li>
+    <li><span class="en">Does she…?</span><span class="ru">Слова-вопроса нет, ответ «да» или «нет»: Yes, she does. / No, she doesn't.</span></li>
+    <li><span class="en">What…?</span><span class="ru">«Что?» — лови, что она любит.</span></li>
+    <li><span class="en">Where…?</span><span class="ru">«Где?» — лови место.</span></li>
+    <li><span class="en">When…?</span><span class="ru">«Когда?» — лови время: утром, вечером, летом…</span></li>
+  </ul>
+  <div class="aside">
+    <div class="k">Подсказки</div>
+    <p>Отвечай полным предложением и начинай с <span class="en">She</span>. Посмотри, куда уходит -s: в вопросе <span class="en">Where does she sing?</span>, а в ответе <span class="en">She sings …</span></p>
+    <p>В вопросе 1 про возраст отвечают так: <span class="en">She is …</span> и число.</p>
+    <p>Вопрос 5 про двоих, про Джона и Салли. Ответ начинай с <span class="en">They</span>, и -s у глагола уже не будет.</p>
+  </div>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 12</summary>
+    <div class="body"><ul>
+      <li>Страница начинается с заголовка «Step 3» и надписи «DO IT TOGETHER».</li>
+      <li>Упражнение 1: «Послушай текст о сестре Джона Баркера, (8), и ответь на вопросы». Рядом значок диска — запись номер 8.</li>
+      <li>1) How old is Sally? Does she go to school? 2) What does she like? 3) Where does she sing? 4) When does she read? 5) Where do John and Sally play in summer?</li>
+      <li class="pic">Справа от вопросов нарисована Салли: девочка с рыжеватыми волосами до плеч, в кофточке с белым воротничком.</li>
+      <li>Самого текста про Салли в учебнике нет — он только на записи.</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 3 -->
+<section class="step" data-step="slova-voprosy" data-name="Вставь слово-вопрос" data-part="Упражнение 2" data-kind="task" data-pages="с. 12, упр. 2">
+  <div class="kind-tag task"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l4.2-1L19 8.2 15.8 5 5 15.8z"></path><path d="M13.8 7l3.2 3.2"></path></svg></span><div><b>Задание учебника</b><span class="pg">с. 12, упр. 2</span><small>Задание и правило из книги, подсказки наши.</small></div></div>
+  <h2>Вставь слово-вопрос</h2>
+  <div class="prose">
+    <p>В упражнении 2 восемь коротких разговоров. В каждом вопросе потерялось первое слово — слово-вопрос. Его надо выбрать из рамки: <span class="en">where, when, why, what, who</span>.</p>
+    <h3>Секрет: смотри на ответ</h3>
+    <p>Ответ сам подсказывает, о чём спрашивали. Сначала прочитай ответ и спроси себя: что в нём — место, время, причина, человек или предмет?</p>
+    <p>Вот как это работает на других разговорах, не из учебника:</p>
+  </div>
+  <ul class="exl">
+    <li><span class="en" data-say="Where does your brother live? In Moscow.">— <b>Where</b> does your brother live? — In Moscow.</span><span class="ru">In Moscow — «в Москве», это место → where</span></li>
+    <li><span class="en" data-say="When do you draw? In the evening.">— <b>When</b> do you draw? — In the evening.</span><span class="ru">In the evening — «вечером», это время → when</span></li>
+    <li><span class="en" data-say="What does Ann like? Cats.">— <b>What</b> does Ann like? — Cats.</span><span class="ru">Cats — «кошек», это не человек → what</span></li>
+    <li><span class="en" data-say="Who do you see? My cousin.">— <b>Who</b> do you see? — My cousin.</span><span class="ru">My cousin — «двоюродного брата», это человек → who</span></li>
+    <li><span class="en" data-say="Why do you like winter? I can ski and skate.">— <b>Why</b> do you like winter? — I can ski and skate.</span><span class="ru">«Я умею кататься на лыжах и коньках» — это причина → why</span></li>
+  </ul>
+  <div class="rule"><span class="k">Правило из учебника · с. 12</span>
+    <p>Если вопросительное слово <b>what</b> стоит перед существительным, то оно означает <b><i>какой, какая, какие</i></b>.</p>
+    <ul class="exl">
+      <li><span class="en" data-say="What books?">What books …?</span><span class="ru">Какие книги …?</span></li>
+      <li><span class="en" data-say="What films?">What films …?</span><span class="ru">Какие фильмы …?</span></li>
+    </ul>
+  </div>
+  <div class="prose">
+    <p><span class="term">Существительное</span> — это слово-предмет: <span class="en">books</span> (книги), <span class="en">films</span> (фильмы), <span class="en">games</span> (игры). Если <span class="en">what</span> стоит прямо перед таким словом, переводи не «что», а «какие».</p>
+  </div>
+  <div class="aside">
+    <div class="k">Подсказки</div>
+    <p>Слов в рамке пять, а пропусков восемь: некоторые слова понадобятся дважды.</p>
+    <p>Посмотри на слово сразу после пропуска. Если там <span class="en">do</span> или <span class="en">does</span> — выбирай по ответу. Если там существительное — прочитай правило в рамке.</p>
+    <p>Ответ, который объясняет «потому что», — это ответ на «почему?», даже если слова «потому что» в нём нет.</p>
+  </div>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 12</summary>
+    <div class="body"><ul>
+      <li>Упражнение 2: «Заполни пропуски вопросительными словами, чтобы получились законченные предложения». В рамке слова: where, when, why, what, who.</li>
+      <li>1) — … do the children read in English? — Texts.</li>
+      <li>2) — … do they go in the morning? — To school.</li>
+      <li>3) — … does Rex play in the park? — In the afternoon.</li>
+      <li>4) — … do the boys ride bikes? — In the street.</li>
+      <li>5) — … does Johnny go to the shops? — He helps his mother.</li>
+      <li>6) — … does Sally meet at school? — Her friends.</li>
+      <li>7) — … does he speak English? — He loves it and knows English very well.</li>
+      <li>8) — … colours do you like? — I like blue and purple.</li>
+      <li>Правило в жёлтой рамке внизу страницы: «Если вопросительное слово what стоит перед существительным, то оно означает какой, какая, какие. What books …? — Какие книги …? What films …? — Какие фильмы …?»</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 4 -->
+<section class="step" data-step="pravilo-voprosy" data-name="Правило: пять слов-вопросов" data-part="Правило" data-kind="ours" data-group="Правило подробнее · сверх учебника">
+  <div class="kind-tag ours"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6"></path><path d="M10 21h4"></path><path d="M12 3a6 6 0 0 0-3.6 10.8c.7.5 1.1 1.3 1.1 2.1V16h5v-.1c0-.8.4-1.6 1.1-2.1A6 6 0 0 0 12 3z"></path></svg></span><div><b>Правило подробнее</b><small>Сверх учебника — разбираем правило подробно, с примерами.</small></div></div>
+  <h2>Пять слов-вопросов</h2>
+  <div class="rule"><span class="k">Правило</span><p>Слово-вопрос выбирают по тому, что хотят узнать: человека, предмет, время, место или причину. В вопросе оно всегда стоит первым.</p></div>
+  <div class="prose">
+    <p>Слово-вопрос похоже на дорожный указатель: оно сразу показывает, какой ответ ты ждёшь. Спросил <span class="en">where</span> — жди место. Спросил <span class="en">when</span> — жди время.</p>
+  </div>
+  <ul class="wlist">
+    <li><b class="en" data-say>who</b><span class="ru">кто? кого? Ответ — человек.</span><span class="wex"><span class="en" data-say>Who do you see in the park? — My brother.</span><span class="ru">Кого ты видишь в парке? — Своего брата.</span></span></li>
+    <li><b class="en" data-say>what</b><span class="ru">что? Ответ — предмет или занятие.</span><span class="wex"><span class="en" data-say>What does Kate draw? — Flowers.</span><span class="ru">Что рисует Кейт? — Цветы.</span></span></li>
+    <li><b class="en" data-say="what games">what + существительное</b><span class="ru">какой? какая? какие?</span><span class="wex"><span class="en" data-say>What games do you play? — Chess and football.</span><span class="ru">В какие игры ты играешь? — В шахматы и футбол.</span></span></li>
+    <li><b class="en" data-say>when</b><span class="ru">когда? Ответ — время.</span><span class="wex"><span class="en" data-say>When does Tom read? — In the evening.</span><span class="ru">Когда Том читает? — Вечером.</span></span></li>
+    <li><b class="en" data-say>where</b><span class="ru">где? куда? Ответ — место.</span><span class="wex"><span class="en" data-say>Where do you swim in summer? — In the Caspian Sea.</span><span class="ru">Где ты плаваешь летом? — В Каспийском море.</span></span></li>
+    <li><b class="en" data-say>why</b><span class="ru">почему? Ответ — причина.</span><span class="wex"><span class="en" data-say>Why do you like summer? — I can swim in the sea.</span><span class="ru">Почему ты любишь лето? — Я могу плавать в море.</span></span></li>
+  </ul>
+  <div class="aside home">
+    <div class="k">Ближе к дому</div>
+    <p>Каспийск стоит на берегу Каспийского моря. Поэтому на вопрос <span class="en">Where do you swim in summer?</span> у нас многие ответят: <span class="en">In the Caspian Sea.</span></p>
+  </div>
+  <div class="prose">
+    <p>А в каком порядке строить сам вопрос — на следующем шаге.</p>
+  </div>
+</section>
+
+<!-- 5 -->
+<section class="step" data-step="paravozik" data-name="Правило: паровозик вопроса" data-part="Правило" data-kind="ours">
+  <div class="kind-tag ours"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6"></path><path d="M10 21h4"></path><path d="M12 3a6 6 0 0 0-3.6 10.8c.7.5 1.1 1.3 1.1 2.1V16h5v-.1c0-.8.4-1.6 1.1-2.1A6 6 0 0 0 12 3z"></path></svg></span><div><b>Правило подробнее</b><small>Сверх учебника — разбираем правило подробно, с примерами.</small></div></div>
+  <h2>Паровозик вопроса</h2>
+  <div class="rule"><span class="k">Правило</span><p>Вопрос строится так: слово-вопрос, потом do или does, потом кто, потом что делает, потом всё остальное.</p></div>
+  <div class="prose">
+    <p>Ты уже знаешь этот паровозик из Step 2 (с. 9). Слово-вопрос — паровоз, он всегда впереди, а за ним цепляются вагоны.</p>
+  </div>
+  <div class="train"><span class="w r-qw">When<small>вопросительное слово</small></span><span class="w r-aux">does<small>do / does</small></span><span class="w r-subj">Kate<small>кто</small></span><span class="w r-verb">play<small>что делает</small></span><span class="w r-rest">tennis?<small>остальное</small></span></div>
+  <p><span data-say="When does Kate play tennis?">Когда Кейт играет в теннис?</span></p>
+  <div class="prose">
+    <p><span class="en">What</span> и существительное едут вместе, в одном паровозе. Их не разрывают:</p>
+  </div>
+  <div class="train"><span class="w r-qw">What games<small>какие игры</small></span><span class="w r-aux">do<small>do / does</small></span><span class="w r-subj">you<small>кто</small></span><span class="w r-verb">like<small>что делает</small></span><span class="w r-rest">?</span></div>
+  <p><span data-say="What games do you like?">Какие игры ты любишь?</span></p>
+  <div class="vs"><div class="no"><b>Так нельзя</b><span class="en">What do you like games?</span></div><div class="yes"><b>Так правильно</b><span class="en" data-say>What games do you like?</span></div></div>
+  <div class="vs"><div class="no"><b>Так нельзя</b><span class="en">Where you live?</span></div><div class="yes"><b>Так правильно</b><span class="en" data-say>Where do you live?</span></div></div>
+  <div class="vs"><div class="no"><b>Так нельзя</b><span class="en">When does Tom plays?</span></div><div class="yes"><b>Так правильно</b><span class="en" data-say>When does Tom play?</span></div></div>
+  <details>
+    <summary>А почему?</summary>
+    <div class="body">
+      <p><b>Почему who — то «кто», то «кого»?</b> В вопросе <span class="en">Who do you see?</span> видит тот, кто стоит после do, — <span class="en">you</span>. А <span class="en">who</span> — тот, кого видят. Поэтому здесь who значит «кого». Об этом была сноска в Step 2 (с. 9).</p>
+      <p><b>Почему where — и «где», и «куда»?</b> В английском на оба вопроса одно слово: <span class="en">Where do you live?</span> — Где ты живёшь? <span class="en">Where do you go on Sunday?</span> — Куда ты ходишь в воскресенье?</p>
+      <p><b>Почему do забыть нельзя?</b> Без do получается не вопрос, а обрывок. В русском мы спрашиваем голосом, а в английском вопрос строят вагончиками, и do — обязательный вагон.</p>
+      <p><b>Почему после does нет -s?</b> Окончание уже «уехало» в does. Два раза его не пишут: <span class="en">does Tom play</span>.</p>
+    </div>
+  </details>
+  <div class="game">
+    <div class="g-head"><h3>Проверь себя: 4 вопроса</h3></div>
+    <div id="ch-pv"></div>
+  </div>
+</section>
+
+<!-- 6 -->
+<section class="step" data-step="intervyu" data-name="Интервью Салли" data-part="Упражнение 3" data-kind="book" data-pages="с. 13, упр. 3">
+  <div class="kind-tag book"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.5c2.6-1 5.6-.8 9 1.2v13c-3.4-2-6.4-2.2-9-1.2z"></path><path d="M21 5.5c-2.6-1-5.6-.8-9 1.2v13c3.4-2 6.4-2.2 9-1.2z"></path></svg></span><div><b>Из учебника</b><span class="pg">с. 13, упр. 3</span></div></div>
+  <h2>Интервью для школьной газеты</h2>
+  <div class="prose">
+    <p>К Салли пришёл корреспондент школьной газеты — тот самый журналист. Он задал ей пять вопросов. Прочитай, как она ответила.</p>
+  </div>
+  <figure class="fig"><img src="img/2026-09-23-u1-s3-kak-chasto/02-intervyu.jpg" width="560" height="500" loading="lazy" alt="Рисунок: юноша-корреспондент держит микрофон перед Салли, девочкой в розовой кофточке, и слушает её ответ"><figcaption>Sally Barker — Салли Баркер отвечает корреспонденту (с. 13)</figcaption></figure>
+  <div class="reading">
+    <h3>Sally Barker</h3>
+    <p class="hint-tap">Нажми на строчку — появится перевод.</p>
+    <p class="ln" data-tr="Каких животных ты любишь?"><b>1)</b> <span class="en" data-say>— What animals do you like?</span></p>
+    <p class="ln" data-tr="Я люблю овец."><span class="en" data-say>— I like sheep.</span></p>
+    <p class="ln" data-tr="Каких диких животных ты любишь?"><b>2)</b> <span class="en" data-say>— What wild animals do you like?</span></p>
+    <p class="ln" data-tr="Я люблю львов."><span class="en" data-say>— I like lions.</span></p>
+    <p class="ln" data-tr="Какие книги ты читаешь?"><b>3)</b> <span class="en" data-say>— What books do you read?</span></p>
+    <p class="ln" data-tr="Я читаю хорошие книги."><span class="en" data-say>— I read good books.</span></p>
+    <p class="ln" data-tr="Какие фильмы ты смотришь?"><b>4)</b> <span class="en" data-say>— What films do you watch?</span></p>
+    <p class="ln" data-tr="Я смотрю старые и новые фильмы."><span class="en" data-say>— I watch old and new films.</span></p>
+    <p class="ln" data-tr="В какие игры ты любишь играть?"><b>5)</b> <span class="en" data-say>— What games do you like to play?</span></p>
+    <p class="ln" data-tr="Я играю в футбол, но я не очень хороший футболист."><span class="en" data-say>— I play football, but I'm not a good footballer.</span></p>
+  </div>
+  <div class="prose">
+    <p>Заметил? Все пять вопросов начинаются с <span class="en">what</span>, и сразу за ним стоит существительное: <span class="en">animals, books, films, games</span>. Значит, везде what — «какие», как в правиле на с. 12.</p>
+    <p>В вопросе 2 между what и animals встало ещё слово <span class="en">wild</span> — «дикие». Всё равно это «каких животных».</p>
+  </div>
+  <div class="aside">
+    <div class="k">Слово с секретом</div>
+    <p><span class="en" data-say>sheep</span> — овца. Одна овца — <span class="en">a sheep</span>, много овец — тоже <span class="en">sheep</span>, без -s. Поэтому Салли и говорит <span class="en">I like sheep.</span></p>
+  </div>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 13</summary>
+    <div class="body"><ul>
+      <li>Упражнение 3: «Прочитай, как отвечает на вопросы корреспондента школьной газеты Салли Баркер. А как бы ответил на эти вопросы ты?» Вторая часть задания — на следующем шаге.</li>
+      <li class="pic">Слева рисунок: юноша-корреспондент с микрофоном берёт интервью у Салли, подпись «Sally Barker».</li>
+      <li>1) — What animals do you like? — I like sheep.</li>
+      <li>2) — What wild animals do you like? — I like lions.</li>
+      <li>3) — What books do you read? — I read good books.</li>
+      <li>4) — What films do you watch? — I watch old and new films.</li>
+      <li>5) — What games do you like to play? — I play football, but I'm not a good footballer.</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 7 -->
+<section class="step" data-step="intervyu-ty" data-name="А как бы ответил ты?" data-part="Упражнение 3" data-kind="task" data-pages="с. 13, упр. 3">
+  <div class="kind-tag task"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l4.2-1L19 8.2 15.8 5 5 15.8z"></path><path d="M13.8 7l3.2 3.2"></path></svg></span><div><b>Задание учебника</b><span class="pg">с. 13, упр. 3</span><small>Задание из книги, подсказки наши.</small></div></div>
+  <h2>А как бы ответил ты?</h2>
+  <div class="prose">
+    <p>Вторая часть упражнения 3 — ответить на те же пять вопросов корреспондента про себя. В учебнике для этого нарисован силуэт с подписью <span class="en">You</span> — «ты», а рядом с каждым вопросом пустая линейка.</p>
+    <p>Строй ответ по образцу Салли: <b>I + глагол из вопроса + твой ответ</b>. Глагол бери прямо из вопроса: спросили <span class="en">do you read</span> — отвечай <span class="en">I read</span>.</p>
+  </div>
+  <div class="train"><span class="w r-subj">I<small>я</small></span><span class="w r-verb">read<small>глагол из вопроса</small></span><span class="w r-rest">…<small>твой ответ</small></span></div>
+  <div class="prose">
+    <p>Вот так это выглядит на других вопросах, не из учебника:</p>
+  </div>
+  <ul class="exl">
+    <li><span class="en" data-say>— What songs do you sing? — I sing funny songs.</span><span class="ru">— Какие песни ты поёшь? — Я пою смешные песни.</span></li>
+    <li><span class="en" data-say>— What sweets do you like? — I like chocolate.</span><span class="ru">— Какие сладости ты любишь? — Я люблю шоколад.</span></li>
+  </ul>
+  <div class="aside">
+    <div class="k">Подсказки</div>
+    <p>Отвечай честно, про себя: правильных ответов тут много.</p>
+    <p>В вопросе 5 спрашивают про игры, в которые ты любишь играть. Салли ответила про футбол и добавила, что играет не очень хорошо. Ты можешь ответить коротко: <span class="en">I play …</span></p>
+    <p>Если не знаешь, как сказать какое-то слово по-английски, спроси учителя или родителей.</p>
+  </div>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 13</summary>
+    <div class="body"><ul>
+      <li>Вторая часть задания 3: «А как бы ответил на эти вопросы ты?»</li>
+      <li class="pic">Справа на с. 13 — контур головы и плеч человека без лица, подпись «You». Под ним пустые линейки для твоих ответов, по одной напротив каждого из пяти вопросов.</li>
+      <li>Вопросы те же, что задавали Салли: What animals do you like? What wild animals do you like? What books do you read? What films do you watch? What games do you like to play?</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 8 -->
+<section class="step" data-step="rifmovka" data-name="Рифмовка" data-part="Упражнение 4" data-kind="book" data-pages="с. 13–14, упр. 4">
+  <div class="kind-tag book"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.5c2.6-1 5.6-.8 9 1.2v13c-3.4-2-6.4-2.2-9-1.2z"></path><path d="M21 5.5c-2.6-1-5.6-.8-9 1.2v13c3.4-2 6.4-2.2 9-1.2z"></path></svg></span><div><b>Из учебника</b><span class="pg">с. 13–14, упр. 4</span></div></div>
+  <h2>Рифмовка «Who? What? When? Where? Why?»</h2>
+  <div class="prose">
+    <p>Задание: разучить рифмовку, послушать и повторить её за диктором. Запись (9) включат на уроке, она есть и в аудиоприложении. Наши кнопки помогут потренироваться дома, но запись с диктором они не заменяют.</p>
+    <p>Секрет рифмовки: одни и те же вопросы задают сначала тебе — с <span class="en">you</span> и <span class="en">do</span>. А потом про него или про неё — с <span class="en">he</span>, <span class="en">she</span> и <span class="en">does</span>. В учебнике эти строчки сдвинуты вправо, здесь тоже.</p>
+  </div>
+  <div class="reading">
+    <h3>Who? What? When? Where? Why?</h3>
+    <p class="hint-tap">Нажми на строчку — появится перевод. Вся рифмовка целиком: <span data-say="Who? What? When? Where? Why? Who? What? When? Where? Why? Who do you see? What do you like? Where do you go on Sunday? Who does he see? What does he like? Where does he go on Sunday? When do you play? When do you swim? Why do you run in the morning? When does she play? When does she swim? Why does she run in the morning? What books do they read? What films do they watch? Why do they read and speak English?"></span></p>
+    <p class="ln" data-tr="Кто? Что? Когда? Где? Почему?"><span class="en" data-say>Who? What? When? Where? Why?</span></p>
+    <p class="ln" data-tr="Кто? Что? Когда? Где? Почему?"><span class="en" data-say>Who? What? When? Where? Why?</span></p>
+    <p class="ln" data-tr="Кого ты видишь?"><span class="en" data-say>Who do you see?</span></p>
+    <p class="ln" data-tr="Что ты любишь?"><span class="en" data-say>What do you like?</span></p>
+    <p class="ln" data-tr="Куда ты ходишь в воскресенье?"><span class="en" data-say>Where do you go on Sunday?</span></p>
+    <p class="ln" style="padding-left:40px" data-tr="Кого он видит?"><span class="en" data-say>Who does he see?</span></p>
+    <p class="ln" style="padding-left:40px" data-tr="Что он любит?"><span class="en" data-say>What does he like?</span></p>
+    <p class="ln" style="padding-left:40px" data-tr="Куда он ходит в воскресенье?"><span class="en" data-say>Where does he go on Sunday?</span></p>
+    <p class="ln" data-tr="Когда ты играешь?"><span class="en" data-say>When do you play?</span></p>
+    <p class="ln" data-tr="Когда ты плаваешь?"><span class="en" data-say>When do you swim?</span></p>
+    <p class="ln" data-tr="Почему ты бегаешь по утрам?"><span class="en" data-say>Why do you run in the morning?</span></p>
+    <p class="ln" style="padding-left:40px" data-tr="Когда она играет?"><span class="en" data-say>When does she play?</span></p>
+    <p class="ln" style="padding-left:40px" data-tr="Когда она плавает?"><span class="en" data-say>When does she swim?</span></p>
+    <p class="ln" style="padding-left:40px" data-tr="Почему она бегает по утрам?"><span class="en" data-say>Why does she run in the morning?</span></p>
+    <p class="ln" data-tr="Какие книги они читают?"><span class="en" data-say>What books do they read?</span></p>
+    <p class="ln" data-tr="Какие фильмы они смотрят?"><span class="en" data-say>What films do they watch?</span></p>
+    <p class="ln" data-tr="Почему они читают и говорят по-английски?"><span class="en" data-say>Why do they read and speak English?</span></p>
+  </div>
+  <div class="aside">
+    <div class="k">Как выучить быстрее</div>
+    <p>Учи по три строчки. Строчки про <span class="en">he</span> и <span class="en">she</span> — это те же вопросы, только <span class="en">do</span> меняется на <span class="en">does</span>. Выучил строчку про you — считай, выучил и строчку про he.</p>
+  </div>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 13–14</summary>
+    <div class="body"><ul>
+      <li>Упражнение 4: «Разучи рифмовку; послушай и повтори её за диктором, (9)». Рядом значок диска — запись номер 9.</li>
+      <li>Заголовок рифмовки жирным: «Who? What? When? Where? Why?»</li>
+      <li>С. 13: Who? What? When? Where? Why? / Who? What? When? Where? Why? / Who do you see? / What do you like? / Where do you go on Sunday? — и со сдвигом вправо: Who does he see? / What does he like? / Where does he go on Sunday?</li>
+      <li>С. 14: When do you play? / When do you swim? / Why do you run in the morning? — со сдвигом вправо: When does she play? / When does she swim? / Why does she run in the morning? — и дальше: What books do they read? / What films do they watch? / Why do they read and speak English?</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 9 -->
+<section class="step" data-step="slova-chastoty" data-name="Новые слова: как часто?" data-part="Упражнение 5" data-kind="book" data-pages="с. 14, упр. 5">
+  <div class="kind-tag book"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.5c2.6-1 5.6-.8 9 1.2v13c-3.4-2-6.4-2.2-9-1.2z"></path><path d="M21 5.5c-2.6-1-5.6-.8-9 1.2v13c3.4-2 6.4-2.2 9-1.2z"></path></svg></span><div><b>Из учебника</b><span class="pg">с. 14, упр. 5</span></div></div>
+  <h2>Новые слова: как часто?</h2>
+  <div class="prose">
+    <p>В упражнении 5 пять новых слов. Все они отвечают на вопрос «как часто?». На уроке их слушают и повторяют за диктором — запись (10).</p>
+    <h3>A. Слова</h3>
+  </div>
+  <ul class="wlist">
+    <li><b class="en" data-say>always</b><span class="tsc">[ˈɔːlweɪz]</span><span class="ru">всегда</span></li>
+    <li><b class="en" data-say>never</b><span class="tsc">[ˈnevə]</span><span class="ru">никогда</span></li>
+    <li><b class="en" data-say>often</b><span class="tsc">[ˈɒfn]</span><span class="ru">часто</span></li>
+    <li><b class="en" data-say>sometimes</b><span class="tsc">[ˈsʌmtaɪmz]</span><span class="ru">иногда</span></li>
+    <li><b class="en" data-say>usually</b><span class="tsc">[ˈjuːʒʊəli]</span><span class="ru">обычно</span></li>
+  </ul>
+  <div class="prose">
+    <p>В квадратных скобках — <span class="term">транскрипция</span>, как в учебнике. Это запись того, как слово звучит. Послушай каждое слово кнопкой-динамиком и сравни с транскрипцией.</p>
+    <p>Обрати внимание: в слове <span class="en">often</span> буква t не читается, в транскрипции её нет.</p>
+  </div>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 14</summary>
+    <div class="body"><ul>
+      <li>Упражнение 5: «Познакомься с новыми словами. Послушай и повтори новые слова и предложения с ними за диктором, (10)». Рядом значок диска — запись номер 10.</li>
+      <li>A. always [ˈɔːlweɪz] — всегда; never [ˈnevə] — никогда; often [ˈɒfn] — часто; sometimes [ˈsʌmtaɪmz] — иногда; usually [ˈjuːʒʊəli] — обычно.</li>
+      <li>Часть B — предложения с этими словами — на следующем шаге.</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 10 -->
+<section class="step" data-step="predlozheniya" data-name="Предложения с новыми словами" data-part="Упражнение 5" data-kind="book" data-pages="с. 14, упр. 5">
+  <div class="kind-tag book"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.5c2.6-1 5.6-.8 9 1.2v13c-3.4-2-6.4-2.2-9-1.2z"></path><path d="M21 5.5c-2.6-1-5.6-.8-9 1.2v13c3.4-2 6.4-2.2 9-1.2z"></path></svg></span><div><b>Из учебника</b><span class="pg">с. 14, упр. 5</span></div></div>
+  <h2>Предложения с новыми словами</h2>
+  <div class="prose">
+    <p>Часть B упражнения 5: к каждому новому слову по три предложения. На уроке их повторяют за диктором — это тоже запись (10). Посмотри, где в предложении стоит новое слово: чаще всего прямо перед действием.</p>
+  </div>
+  <div class="reading">
+    <h3>B. Предложения с новыми словами</h3>
+    <p class="hint-tap">Нажми на строчку — появится перевод.</p>
+    <p class="hint-tap"><b>always</b></p>
+    <p class="ln" data-tr="Мы всегда ходим в магазины по субботам."><span class="en" data-say>We always go to the shops on Saturdays.</span></p>
+    <p class="ln" data-tr="Майк всегда ездит в город на своей машине."><span class="en" data-say>Mike always drives to town in his car.</span></p>
+    <p class="ln" data-tr="Они всегда ходят в школу утром."><span class="en" data-say>They always go to school in the morning.</span></p>
+    <p class="hint-tap"><b>never</b></p>
+    <p class="ln" data-tr="Ты никогда не играешь в теннис."><span class="en" data-say>You never play tennis.</span></p>
+    <p class="ln" data-tr="Почему ты никогда не катаешься на своём велосипеде?"><span class="en" data-say>Why do you never ride your bike?</span></p>
+    <p class="ln" data-tr="Мэри никогда не играет со своими куклами, она играет со своим плюшевым мишкой."><span class="en" data-say>Mary never plays with her dolls, she plays with her teddy bear.</span></p>
+    <p class="hint-tap"><b>often</b></p>
+    <p class="ln" data-tr="Ты часто ходишь в кино?"><span class="en" data-say>Do you often go to the cinema?</span></p>
+    <p class="ln" data-tr="Я нечасто играю в волейбол."><span class="en" data-say>I don't often play volleyball.</span></p>
+    <p class="ln" data-tr="Лиззи часто поёт?"><span class="en" data-say>Does Lizzy often sing?</span></p>
+    <p class="hint-tap"><b>sometimes</b></p>
+    <p class="ln" data-tr="Фред иногда ездит в парк."><span class="en" data-say>Fred sometimes drives to the park.</span></p>
+    <p class="ln" data-tr="Салли иногда говорит по-французски."><span class="en" data-say>Sally sometimes speaks French.</span></p>
+    <p class="ln" data-tr="Иногда Джон смотрит телевизор с родителями."><span class="en" data-say>Sometimes John watches television with his parents.</span></p>
+    <p class="hint-tap"><b>usually</b></p>
+    <p class="ln" data-tr="Ты обычно ходишь в школу в выходные?"><span class="en" data-say>Do you usually go to school at the weekend?</span></p>
+    <p class="ln" data-tr="Салли обычно не поёт по утрам."><span class="en" data-say>Sally doesn't usually sing in the morning.</span></p>
+    <p class="ln" data-tr="Я обычно помогаю маме по дому."><span class="en" data-say>I usually help my mother about the house.</span></p>
+  </div>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 14</summary>
+    <div class="body"><ul>
+      <li>Упражнение 5, часть B — предложения с новыми словами, их тоже повторяют за диктором (запись 10). Перед каждой группой жирным написано слово.</li>
+      <li>always: We always go to the shops on Saturdays. Mike always drives to town in his car. They always go to school in the morning.</li>
+      <li>never: You never play tennis. Why do you never ride your bike? Mary never plays with her dolls, she plays with her teddy bear.</li>
+      <li>often: Do you often go to the cinema? I don't often play volleyball. Does Lizzy often sing?</li>
+      <li>sometimes: Fred sometimes drives to the park. Sally sometimes speaks French. Sometimes John watches television with his parents.</li>
+      <li>usually: Do you usually go to school at the weekend? Sally doesn't usually sing in the morning. I usually help my mother about the house.</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 11 -->
+<section class="step" data-step="pravilo-kak-chasto" data-name="Правило: как часто?" data-part="Правило" data-kind="ours" data-group="Правило подробнее · сверх учебника">
+  <div class="kind-tag ours"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6"></path><path d="M10 21h4"></path><path d="M12 3a6 6 0 0 0-3.6 10.8c.7.5 1.1 1.3 1.1 2.1V16h5v-.1c0-.8.4-1.6 1.1-2.1A6 6 0 0 0 12 3z"></path></svg></span><div><b>Правило подробнее</b><small>Сверх учебника — разбираем правило подробно, с примерами.</small></div></div>
+  <h2>Как часто?</h2>
+  <div class="rule"><span class="k">Правило</span><p>Слова <b>always, never, often, sometimes, usually</b> отвечают на вопрос «как часто?»: как часто человек что-то делает.</p></div>
+  <div class="prose">
+    <p>Представь, что ты отмечаешь в календаре дни, когда что-то делал. По такому календарю сразу видно, «как часто». Разберём каждое слово по очереди, в том же порядке, что в учебнике.</p>
+  </div>
+  <ul class="wlist">
+    <li><b class="en" data-say>always</b><span class="ru">всегда — каждый раз, без пропусков.</span>
+      <div class="score-tiles" role="img" aria-label="Календарь недели: отмечены все семь дней" style="margin:8px 0 2px"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></div>
+      <span class="wex">Отмечен каждый день недели.<br><span class="en" data-say>My granny always drinks tea in the morning.</span><span class="ru">Моя бабушка всегда пьёт чай утром.</span></span></li>
+    <li><b class="en" data-say>never</b><span class="ru">никогда — ни разу.</span>
+      <div class="score-tiles" role="img" aria-label="Календарь недели: не отмечен ни один день" style="margin:8px 0 2px"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      <span class="wex">Ни одного отмеченного дня.<br><span class="en" data-say>My cat never swims.</span><span class="ru">Моя кошка никогда не плавает.</span></span></li>
+    <li><b class="en" data-say>often</b><span class="ru">часто — много раз.</span>
+      <span class="wex">Если ты любишь футбол, ты часто в него играешь.<br><span class="en" data-say>We often play football after school.</span><span class="ru">Мы часто играем в футбол после школы.</span></span></li>
+    <li><b class="en" data-say>sometimes</b><span class="ru">иногда — время от времени: бывает, а бывает и нет.</span>
+      <span class="wex">Иногда к вам приходят гости, а иногда вечер проходит тихо.<br><span class="en" data-say>Ben sometimes plays computer games.</span><span class="ru">Бен иногда играет в компьютерные игры.</span></span></li>
+    <li><b class="en" data-say>usually</b><span class="ru">обычно — так заведено, так бывает, если не случилось ничего особенного.</span>
+      <span class="wex">Обычно ты ходишь в школу одной и той же дорогой.<br><span class="en" data-say>Kate usually reads in the evening.</span><span class="ru">Кейт обычно читает вечером.</span></span></li>
+  </ul>
+  <div class="aside">
+    <div class="k">Запомни</div>
+    <p>Слово <span class="en">never</span> уже значит «никогда не». В русском мы говорим два «не»-слова: «никогда <b>не</b> плавает». А в английском хватает одного: <span class="en">My cat never swims.</span></p>
+  </div>
+  <div class="prose">
+    <p>А куда эти слова ставить в предложении — на следующем шаге.</p>
+  </div>
+</section>
+
+<!-- 12 -->
+<section class="step" data-step="kuda-stavit" data-name="Правило: куда ставить слово" data-part="Правило" data-kind="ours">
+  <div class="kind-tag ours"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6"></path><path d="M10 21h4"></path><path d="M12 3a6 6 0 0 0-3.6 10.8c.7.5 1.1 1.3 1.1 2.1V16h5v-.1c0-.8.4-1.6 1.1-2.1A6 6 0 0 0 12 3z"></path></svg></span><div><b>Правило подробнее</b><small>Сверх учебника — разбираем правило подробно, с примерами.</small></div></div>
+  <h2>Куда поставить «как часто»</h2>
+  <div class="rule"><span class="k">Правило</span><p>Слово «как часто» ставят прямо перед глаголом-действием. После he, she или имени глагол всё равно получает -s.</p></div>
+  <div class="prose">
+    <p>Слово «как часто» — как репейник: оно цепляется к действию и встаёт прямо перед ним. Смотри, как это выглядит в трёх разных предложениях.</p>
+    <h3>В обычном предложении</h3>
+  </div>
+  <div class="train"><span class="w r-subj">Tom<small>кто</small></span><span class="w r-freq">always<small>как часто</small></span><span class="w r-verb">plays<small>что делает</small></span><span class="w r-rest">football.<small>остальное</small></span></div>
+  <p><span data-say="Tom always plays football.">Том всегда играет в футбол.</span></p>
+  <div class="prose"><p>Tom — он один, поэтому <span class="en">plays</span> с -s, как и без always.</p><h3>В вопросе</h3></div>
+  <div class="train"><span class="w r-aux">Do<small>do / does</small></span><span class="w r-subj">you<small>кто</small></span><span class="w r-freq">often<small>как часто</small></span><span class="w r-verb">swim<small>что делает</small></span><span class="w r-rest">in the river?<small>остальное</small></span></div>
+  <p><span data-say="Do you often swim in the river?">Ты часто плаваешь в реке?</span></p>
+  <div class="prose"><p>Сначала do или does, потом кто, потом «как часто», потом действие. Со словом-вопросом так же: <span class="en" data-say>Where do you usually play?</span> — Где ты обычно играешь?</p><h3>С don't и doesn't</h3></div>
+  <div class="train"><span class="w r-subj">Ann<small>кто</small></span><span class="w r-aux">doesn't<small>don't / doesn't</small></span><span class="w r-freq">usually<small>как часто</small></span><span class="w r-verb">watch<small>что делает</small></span><span class="w r-rest">TV.<small>остальное</small></span></div>
+  <p><span data-say="Ann doesn't usually watch TV.">Энн обычно не смотрит телевизор.</span></p>
+  <div class="prose">
+    <p>Слово встаёт между doesn't и действием. После doesn't глагол без -s.</p>
+    <p>А <span class="en">sometimes</span> может встать и в самое начало: <span class="en">Sometimes John watches television…</span> — так в учебнике на с. 14.</p>
+    <p>Примеры и частые ошибки — на следующем шаге.</p>
+  </div>
+</section>
+
+<!-- 13 -->
+<section class="step" data-step="kuda-primery" data-name="Правило: примеры и ошибки" data-part="Правило" data-kind="ours">
+  <div class="kind-tag ours"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6"></path><path d="M10 21h4"></path><path d="M12 3a6 6 0 0 0-3.6 10.8c.7.5 1.1 1.3 1.1 2.1V16h5v-.1c0-.8.4-1.6 1.1-2.1A6 6 0 0 0 12 3z"></path></svg></span><div><b>Правило подробнее</b><small>Сверх учебника — разбираем правило подробно, с примерами.</small></div></div>
+  <h2>Примеры и ошибки</h2>
+  <div class="prose">
+    <p>Посмотри, где стоит слово «как часто» в каждом примере. Оно выделено цветом. Нажми на динамик и повтори вслух.</p>
+  </div>
+  <ul class="exl">
+    <li><span class="en" data-say="My sister always helps our granny.">My sister <b>always</b> helps our granny.</span><span class="ru">Моя сестра всегда помогает бабушке.</span></li>
+    <li><span class="en" data-say="I never drink coffee.">I <b>never</b> drink coffee.</span><span class="ru">Я никогда не пью кофе.</span></li>
+    <li><span class="en" data-say="Do your friends often play chess?">Do your friends <b>often</b> play chess?</span><span class="ru">Твои друзья часто играют в шахматы?</span></li>
+    <li><span class="en" data-say="We sometimes skate in winter.">We <b>sometimes</b> skate in winter.</span><span class="ru">Мы иногда катаемся на коньках зимой.</span></li>
+    <li><span class="en" data-say="Max doesn't usually read in the evening.">Max doesn't <b>usually</b> read in the evening.</span><span class="ru">Макс обычно не читает вечером.</span></li>
+    <li><span class="en" data-say="Nick never watches TV in the morning.">Nick <b>never</b> watches TV in the morning.</span><span class="ru">Ник никогда не смотрит телевизор утром.</span></li>
+    <li><span class="en" data-say="Where do you usually play? In the park.">Where do you <b>usually</b> play? — In the park.</span><span class="ru">Где ты обычно играешь? — В парке.</span></li>
+  </ul>
+  <div class="vs"><div class="no"><b>Так нельзя</b><span class="en">I don't never drink coffee.</span></div><div class="yes"><b>Так правильно</b><span class="en" data-say>I never drink coffee.</span></div></div>
+  <div class="vs"><div class="no"><b>Так нельзя</b><span class="en">Tom always play football.</span></div><div class="yes"><b>Так правильно</b><span class="en" data-say>Tom always plays football.</span></div></div>
+  <div class="vs"><div class="no"><b>Так нельзя</b><span class="en">I play always chess.</span></div><div class="yes"><b>Так правильно</b><span class="en" data-say>I always play chess.</span></div></div>
+  <div class="vs"><div class="no"><b>Так нельзя</b><span class="en">Do often you swim?</span></div><div class="yes"><b>Так правильно</b><span class="en" data-say>Do you often swim?</span></div></div>
+  <details>
+    <summary>А почему?</summary>
+    <div class="body">
+      <p><b>Почему нельзя «don't never»?</b> В английском в предложении бывает только одно слово-«нет». <span class="en">never</span> уже значит «никогда не», и второе «нет» (don't) всё портит.</p>
+      <p><b>Почему после always есть -s, а после doesn't usually нет?</b> Слово «как часто» ничего не меняет. Окончание -s уходит туда, где есть does или doesn't. Если их нет, -s остаётся у глагола: <span class="en">Tom always plays</span>, но <span class="en">Tom doesn't usually play</span>.</p>
+    </div>
+  </details>
+  <div class="game">
+    <div class="g-head"><h3>Проверь себя: 5 вопросов</h3></div>
+    <div id="ch-kc"></div>
+  </div>
+</section>
+
+<!-- 14 -->
+<section class="step" data-step="shkala" data-name="Шкала и «а ты как часто?»" data-part="Упражнения 6 и 7" data-kind="task" data-pages="с. 14–15, упр. 6 и 7">
+  <div class="kind-tag task"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l4.2-1L19 8.2 15.8 5 5 15.8z"></path><path d="M13.8 7l3.2 3.2"></path></svg></span><div><b>Задание учебника</b><span class="pg">с. 14–15, упр. 6 и 7</span><small>Задания из книги, подсказки наши.</small></div></div>
+  <h2>Шкала и «а ты как часто?»</h2>
+  <div class="prose">
+    <h3>Упражнение 6: шкала</h3>
+    <p>Нужно подумать, в каком порядке расставить новые слова на шкале. Концы уже подписаны: слева never, справа always. Три места посередине — твои.</p>
+  </div>
+  <div style="display:flex;justify-content:space-between;gap:8px;border-top:3px solid var(--line);padding-top:8px;font-weight:700;font-size:19px" role="img" aria-label="Шкала из учебника: never, три вопросительных знака, always"><span class="en">never</span><span>?</span><span>?</span><span>?</span><span class="en">always</span></div>
+  <div class="aside">
+    <div class="k">Подсказки</div>
+    <p>Сначала переведи каждое слово на русский: перевод есть в упражнении 5 (шаг 9).</p>
+    <p>Потом сравнивай по два. Что бывает чаще — «часто» или «иногда»? Кто чаще, тот ближе к always.</p>
+  </div>
+  <div class="prose">
+    <h3>Упражнение 7: а ты?</h3>
+    <p>Здесь нужно рассказать о себе: что из списка ты делаешь всегда, часто, обычно, иногда, а чего никогда не делаешь. В списке десять действий.</p>
+    <p>Строй предложение так: <b>I + слово «как часто» + действие из списка</b>.</p>
+  </div>
+  <div class="train"><span class="w r-subj">I<small>я</small></span><span class="w r-freq">…<small>как часто</small></span><span class="w r-verb">play tennis<small>действие из списка</small></span><span class="w r-rest">.</span></div>
+  <div class="prose">
+    <p>Пример с действием, которого в списке нет: <span class="en" data-say>I often draw pictures.</span> — Я часто рисую картинки.</p>
+  </div>
+  <div class="aside">
+    <div class="k">Подсказки</div>
+    <p>Если ты этого никогда не делаешь, скажи просто <span class="en">never</span>, без don't: <span class="en">I never …</span></p>
+    <p>Отвечай честно, про себя: правильных ответов много. Главное, чтобы слово стояло прямо перед действием.</p>
+  </div>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 14–15</summary>
+    <div class="body"><ul>
+      <li>Упражнение 6: «Подумай, в каком порядке можно было бы расположить новые слова на этой шкале». Нарисована линия, под ней: never — ? — ? — ? — always.</li>
+      <li>Упражнение 7: «Скажи, что из перечисленного ниже ты делаешь всегда, часто, обычно, иногда или чего никогда не делаешь». В рамке слова: always, often, usually, sometimes, never.</li>
+      <li>1) I … play tennis. 2) I … watch television. 3) I … go to school on Sundays. 4) I … read books. 5) I … eat ice cream.</li>
+      <li>6) I … help my parents. 7) I … ride a bike. 8) I … drive a car. 9) I … go to the bank. 10) I … ski in spring.</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 15 -->
+<section class="step" data-step="slovar-1" data-name="Словарик: слова-вопросы" data-part="Словарик" data-kind="ours">
+  <div class="kind-tag ours"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="6" width="12" height="14" rx="1.5"></rect><path d="M8.5 3.5h10.5a1.5 1.5 0 0 1 1.5 1.5v12.5"></path></svg></span><div><b>Словарик</b><small>Сверх учебника — чтобы запомнить слова урока.</small></div></div>
+  <div class="game">
+    <div class="g-head"><h3>Словарик: слова-вопросы</h3><span class="badge" id="b-terms">Игра</span></div>
+    <p class="task">Нажми на карточку: она перевернётся, и телефон скажет слово. Словарик из двух частей, открой все карточки.</p>
+    <div class="progress" id="terms-progress"></div>
+    <div class="cards" data-terms="0"></div>
+  </div>
+</section>
+
+<!-- 16 -->
+<section class="step" data-step="slovar-2" data-name="Словарик: как часто?" data-part="Словарик" data-kind="ours">
+  <div class="kind-tag ours"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="6" width="12" height="14" rx="1.5"></rect><path d="M8.5 3.5h10.5a1.5 1.5 0 0 1 1.5 1.5v12.5"></path></svg></span><div><b>Словарик</b><small>Сверх учебника — чтобы запомнить слова урока.</small></div></div>
+  <div class="game">
+    <div class="g-head"><h3>Словарик: как часто?</h3><span class="badge" id="b-terms2">Игра</span></div>
+    <p class="task">Вторая часть: новые слова из упражнения 5 и полезные выражения из предложений к ним.</p>
+    <div class="progress" id="terms-progress2"></div>
+    <div class="cards" data-terms="1"></div>
+  </div>
+</section>
+
+<!-- 17 -->
+<section class="step" data-step="kakoe-slovo" data-name="Угадай слово-вопрос" data-part="Игры" data-kind="ours">
+  <div class="kind-tag ours"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="3"></rect><circle cx="9" cy="9" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="15" cy="15" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="15" cy="9" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="9" cy="15" r="1.3" fill="currentColor" stroke="none"></circle></svg></span><div><b>Игра</b><small>Сверх учебника — чтобы закрепить тему.</small></div></div>
+  <div class="game">
+    <div class="g-head"><h3>Угадай слово-вопрос</h3><span class="badge" id="bg-ks">Игра</span></div>
+    <p class="task">В каждом вопросе потерялось первое слово. Прочитай ответ после тире и выбери, какое слово-вопрос было.</p>
+    <div id="ch-ks"></div>
+  </div>
+</section>
+
+<!-- 18 -->
+<section class="step" data-step="vopros-otvet" data-name="Вопрос и ответ" data-part="Игры" data-kind="ours">
+  <div class="kind-tag ours"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="3"></rect><circle cx="9" cy="9" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="15" cy="15" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="15" cy="9" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="9" cy="15" r="1.3" fill="currentColor" stroke="none"></circle></svg></span><div><b>Игра</b><small>Сверх учебника — чтобы закрепить тему.</small></div></div>
+  <div class="game" id="g-match">
+    <div class="g-head"><h3>Вопрос и ответ</h3><span class="badge" id="b-match">Игра</span></div>
+    <p class="task">Нажми на вопрос слева, потом на подходящий ответ справа. Смотри на первое слово вопроса.</p>
+    <div class="match">
+      <div class="col"><div class="lbl">Вопрос</div><div class="col" id="foes"></div></div>
+      <div class="col"><div class="lbl">Ответ</div><div class="col" id="outcomes"></div></div>
+    </div>
+    <div id="match-fb"></div>
+  </div>
+</section>
+
+<!-- 19 -->
+<section class="step" data-step="kuda-slovo" data-name="Поставь слово на место" data-part="Игры" data-kind="ours">
+  <div class="kind-tag ours"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="3"></rect><circle cx="9" cy="9" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="15" cy="15" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="15" cy="9" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="9" cy="15" r="1.3" fill="currentColor" stroke="none"></circle></svg></span><div><b>Игра</b><small>Сверх учебника — чтобы закрепить тему.</small></div></div>
+  <div class="game">
+    <div class="g-head"><h3>Поставь слово на место</h3><span class="badge" id="bg-build">Игра</span></div>
+    <p class="task">Собери английское предложение: нажимай на слова по порядку. Главное — поставить слово «как часто» на правильное место. Нажмёшь на слово в строке — оно вернётся вниз.</p>
+    <div id="b-kuda"></div>
+  </div>
+</section>
+
+<!-- 20 -->
+<section class="step" data-step="poslushay" data-name="Послушай и найди" data-part="Игры" data-kind="ours">
+  <div class="kind-tag ours"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="3"></rect><circle cx="9" cy="9" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="15" cy="15" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="15" cy="9" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="9" cy="15" r="1.3" fill="currentColor" stroke="none"></circle></svg></span><div><b>Игра</b><small>Сверх учебника — чтобы закрепить тему.</small></div></div>
+  <div class="game">
+    <div class="g-head"><h3>Послушай и найди</h3><span class="badge" id="bg-listen">Игра</span></div>
+    <p class="task">Нажми «Послушать»: телефон скажет фразу. Выбери, какую именно. Фразы отличаются одним словом, так что слушай внимательно.</p>
+    <div id="l-slushay"></div>
+  </div>
+</section>
+
+<!-- 21 -->
+<section class="step" data-step="test" data-name="Проверь себя" data-part="Финал" data-kind="ours">
+  <div class="kind-tag ours"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"></circle><path d="M8 12.3l2.8 2.8L16.2 9.6"></path></svg></span><div><b>Самопроверка</b><small>Сверх учебника — вопросы, чтобы проверить себя. Задания из учебника — дальше.</small></div></div>
+  <div class="eyebrow">Финал</div>
+  <h2>Проверь себя</h2>
+  <div class="game">
+    <div class="progress" id="quiz-progress"></div>
+    <div id="quiz-box"></div>
+  </div>
+</section>
+
+<!-- 22 -->
+<section class="step" data-step="zadaniya" data-name="Задания учебника" data-part="Финал" data-kind="task" data-pages="с. 12–15">
+  <div class="kind-tag task"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l4.2-1L19 8.2 15.8 5 5 15.8z"></path><path d="M13.8 7l3.2 3.2"></path></svg></span><div><b>Задание учебника</b><span class="pg">с. 12–15</span><small>Все задания Step 3 из книги. Подсказки и ссылки на шаги — наши.</small></div></div>
+  <h2>Все задания Step 3</h2>
+  <div class="prose">
+    <p>Здесь все упражнения урока по порядку, как в учебнике. У каждого — подсказка и ссылка на шаг, где это разобрано. Ответов тут нет: их ты найдёшь сам.</p>
+    <h3>DO IT TOGETHER — делаем вместе</h3>
+  </div>
+  <div class="qlist">
+<div class="qi"><span class="qn">1</span><div><p>С. 12. Послушай текст о сестре Джона Баркера (запись 8) и ответь на вопросы.</p><p class="src">Подсказка: прочитай пять вопросов заранее. Первое слово вопроса говорит, что ловить: число, место, время. Отвечай полным предложением: She …</p><a href="#o-salli">Шаг 2 · Вопросы о Салли</a></div></div>
+<div class="qi"><span class="qn">2</span><div><p>С. 12. Заполни пропуски вопросительными словами: where, when, why, what, who.</p><p class="src">Подсказка: сначала читай ответ. Место, время, причина, человек или предмет? Если после пропуска стоит существительное — вспомни правило про what.</p><a href="#slova-voprosy">Шаг 3 · Вставь слово-вопрос</a> <a href="#pravilo-voprosy">Шаг 4 · Пять слов-вопросов</a></div></div>
+<div class="qi"><span class="qn">3</span><div><p>С. 13. Прочитай, как Салли Баркер отвечает корреспонденту школьной газеты. А как бы ответил ты?</p><p class="src">Подсказка: ответ строй по образцу Салли — I + глагол из вопроса + твой ответ.</p><a href="#intervyu">Шаг 6 · Интервью Салли</a> <a href="#intervyu-ty">Шаг 7 · А как бы ответил ты?</a></div></div>
+<div class="qi"><span class="qn">4</span><div><p>С. 13–14. Разучи рифмовку, послушай и повтори её за диктором (запись 9).</p><p class="src">Подсказка: учи по три строчки. Строчки про he и she — те же вопросы, только с does.</p><a href="#rifmovka">Шаг 8 · Рифмовка</a></div></div>
+<div class="qi"><span class="qn">5</span><div><p>С. 14. Познакомься с новыми словами, послушай и повтори слова и предложения за диктором (запись 10).</p><p class="src">Подсказка: сначала послушай слово, потом посмотри на транскрипцию. В often буква t не читается.</p><a href="#slova-chastoty">Шаг 9 · Новые слова</a> <a href="#predlozheniya">Шаг 10 · Предложения</a></div></div>
+<div class="qi"><span class="qn">6</span><div><p>С. 14. Подумай, в каком порядке расположить новые слова на шкале от never до always.</p><p class="src">Подсказка: переведи слова и сравнивай по два — что бывает чаще?</p><a href="#shkala">Шаг 14 · Шкала</a> <a href="#pravilo-kak-chasto">Шаг 11 · Как часто?</a></div></div>
+<div class="qi"><span class="qn">7</span><div><p>С. 14–15. Скажи, что из списка ты делаешь всегда, часто, обычно, иногда, а чего никогда не делаешь.</p><p class="src">Подсказка: I + слово «как часто» + действие. С never не нужно don't.</p><a href="#shkala">Шаг 14 · Упражнение 7</a> <a href="#kuda-stavit">Шаг 12 · Куда ставить слово</a></div></div>
+  </div>
+  <div class="prose"><h3>DO IT ON YOUR OWN — делай сам</h3></div>
+  <div class="qlist">
+<div class="qi"><span class="qn">8</span><div><p>С. 15. Выполни задания 1–5 в рабочей тетради.</p><p class="src">Подсказка: рабочей тетради у нас здесь нет, но задания в ней на то же, что в этом уроке. Если что-то непонятно, вернись к шагам с правилами.</p><a href="#pravilo-voprosy">Шаг 4 · Слова-вопросы</a> <a href="#kuda-stavit">Шаг 12 · Куда ставить слово</a></div></div>
+  </div>
+  <details class="book">
+    <summary>Подробнее, как в учебнике · с. 12–15</summary>
+    <div class="body"><ul>
+      <li>В части DO IT TOGETHER семь упражнений: 1 и 2 — на с. 12, 3 — на с. 13, 4 — на с. 13–14, 5 и 6 — на с. 14, 7 — на с. 14–15.</li>
+      <li>Часть DO IT ON YOUR OWN — одно упражнение 8 на с. 15: «Выполни задания 1—5 в рабочей тетради».</li>
+      <li>Записи к упражнениям 1, 4 и 5 — номера 8, 9 и 10.</li>
+    </ul></div>
+  </details>
+</section>
+
+<!-- 23 -->
+<section class="step" data-step="itog" data-name="Главное" data-part="Финал" data-kind="ours" data-group="Коротко о главном">
+  <div class="kind-tag ours"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 6h14"></path><path d="M5 12h14"></path><path d="M5 18h9"></path></svg></span><div><b>Коротко о главном</b><small>Сверх учебника — всё главное из урока в одном месте.</small></div></div>
+  <h2>Главное из Step 3</h2>
+  <div class="prose">
+    <p>Вот четыре «кирпичика» — правила этого урока. Сначала вспомни каждое сам, потом открой и проверь.</p>
+  </div>
+  <div class="bricks">
+    <div class="brick"><button type="button" aria-expanded="false"><span>Слово-вопрос выбирают по ответу</span><span>+</span></button><div class="b-body" hidden>who — кто, кого (ответ — человек); what — что (предмет или занятие); when — когда (время); where — где, куда (место); why — почему (причина).</div></div>
+    <div class="brick"><button type="button" aria-expanded="false"><span>What + существительное = какой</span><span>+</span></button><div class="b-body" hidden>Если what стоит прямо перед существительным, оно значит «какой, какая, какие»: What books? — Какие книги? What и существительное не разрывают.</div></div>
+    <div class="brick"><button type="button" aria-expanded="false"><span>Паровозик вопроса</span><span>+</span></button><div class="b-body" hidden>Слово-вопрос, потом do или does, потом кто, потом что делает: When does Kate play tennis? После does глагол без -s.</div></div>
+    <div class="brick"><button type="button" aria-expanded="false"><span>Как часто: перед действием</span><span>+</span></button><div class="b-body" hidden>always, never, often, sometimes, usually ставят прямо перед действием: Tom always plays. В вопросе — после того, кто делает: Do you often swim? never уже значит «никогда не», don't с ним не нужно.</div></div>
+  </div>
+  <div class="aside">
+    <div class="k">Главное в одном предложении</div>
+    <p>Слово-вопрос выбирают по ответу и ставят первым, а слово «как часто» ставят прямо перед действием.</p>
+  </div>
+  <div class="game">
+    <div class="g-head"><h3>Твоя мозаика</h3></div>
+    <div class="mosaic" id="mosaic"></div>
+    <div class="mosaic-list" id="mosaic-list"></div>
+    <div class="row"><a class="btn" href="./">К списку тем</a></div>
+  </div>
+</section>
+
+</main>
+
+<nav class="pager" aria-label="Навигация по шагам">
+  <div class="pager-inner">
+    <button class="btn ghost" id="prev" type="button">Назад</button>
+    <div class="count" id="count"></div>
+    <button class="btn" id="next" type="button">Дальше</button>
+  </div>
+</nav>
+
+<div class="toc" id="toc" hidden>
+  <div class="toc-panel" role="dialog" aria-label="Содержание">
+    <h3>Содержание <button class="toc-close" id="toc-close" type="button">Закрыть</button></h3>
+    <div id="toc-list" style="display:flex;flex-direction:column;gap:2px"></div>
+  </div>
+</div>
+
+<script>
+(function(){
+  'use strict';
+  var $ = function(s, r){ return (r||document).querySelector(s); };
+  var el = function(tag, cls, html){ var e=document.createElement(tag); if(cls) e.className=cls; if(html!=null) e.innerHTML=html; return e; };
+  var shuffle = function(a){ a=a.slice(); for(var i=a.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=a[i]; a[i]=a[j]; a[j]=t; } return a; };
+
+  /* ---------- state ---------- */
+  var KEY='eng-u1s3-v1';
+  var state={visited:{},done:{},last:0};
+  try{ var s=JSON.parse(localStorage.getItem(KEY)||'null'); if(s && typeof s==='object'){ state.visited=s.visited||{}; state.done=s.done||{}; state.last=s.last||0; } }catch(e){}
+  function save(){ try{ localStorage.setItem(KEY, JSON.stringify(state)); }catch(e){} }
+
+  var GAMES=[
+    {k:'terms', name:'Словарик, обе части', step:'slovar-1'},
+    {k:'kakoe-slovo', name:'Угадай слово-вопрос', step:'kakoe-slovo'},
+    {k:'match', name:'Вопрос и ответ', step:'vopros-otvet'},
+    {k:'build', name:'Поставь слово на место', step:'kuda-slovo'},
+    {k:'listen', name:'Послушай и найди', step:'poslushay'},
+    {k:'quiz', name:'Проверь себя', step:'test'}
+  ];
+  var GAME_STEPS={'slovar-1':'terms','slovar-2':'terms','kakoe-slovo':'kakoe-slovo','vopros-otvet':'match','kuda-slovo':'build','poslushay':'listen','test':'quiz'};
+
+  /* ---------- steps ---------- */
+  var steps=Array.prototype.slice.call(document.querySelectorAll('.step'));
+  var N=steps.length, cur=0;
+  var stepbar=$('#stepbar'), count=$('#count'), prevB=$('#prev'), nextB=$('#next'), tocList=$('#toc-list');
+
+  /* содержание по группам: из учебника / задания учебника / сверх учебника */
+  var KIND={book:['<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.5c2.6-1 5.6-.8 9 1.2v13c-3.4-2-6.4-2.2-9-1.2z"></path><path d="M21 5.5c-2.6-1-5.6-.8-9 1.2v13c3.4-2 6.4-2.2 9-1.2z"></path></svg>','Из учебника'],task:['<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l4.2-1L19 8.2 15.8 5 5 15.8z"></path><path d="M13.8 7l3.2 3.2"></path></svg>','Задания учебника'],ours:['<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="3"></rect><circle cx="9" cy="9" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="15" cy="15" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="15" cy="9" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="9" cy="15" r="1.3" fill="currentColor" stroke="none"></circle></svg>','Сверх учебника']};
+  var tocItems=[], groups=[], prevKind=null, grp=null;
+  steps.forEach(function(s,i){
+    var kind=s.getAttribute('data-kind')||'book', pg=(s.getAttribute('data-pages')||'').replace(/,\s*(п|упр)\..*$/,'');
+    var start=kind!==prevKind;
+    var b=el('button'); b.type='button'; b.setAttribute('aria-label','Шаг '+(i+1)+': '+s.getAttribute('data-name'));
+    b.setAttribute('data-base','k-'+kind+(start&&i>0?' gstart':'')); b.className=b.getAttribute('data-base');
+    b.addEventListener('click', function(){ go(i); });
+    stepbar.appendChild(b);
+    if(start){
+      var label = s.getAttribute('data-group') || (kind==='ours' ? (i===0?'Коротко о главном':'Словарик и игры · сверх учебника') : KIND[kind][1]);
+      grp=el('div','toc-group k-'+kind,'<div class="toc-head"><span class="ic">'+KIND[kind][0]+'</span><span>'+label+'</span></div>');
+      grp.pages=[]; groups.push(grp); tocList.appendChild(grp); prevKind=kind;
+    }
+    var t=el('button','toc-item','<span class="n">'+(i+1)+'</span><span>'+s.getAttribute('data-name')+'</span>'+(pg?'<span class="pg">'+pg+'</span>':'')+'<span class="m"></span>');
+    t.type='button'; t.addEventListener('click', function(){ closeToc(); go(i); });
+    grp.appendChild(t); tocItems.push(t);
+    (pg.match(/\d+/g)||[]).forEach(function(n){ grp.pages.push(+n); });
+  });
+  groups.forEach(function(g){ if(g.pages.length){ var a=Math.min.apply(null,g.pages), z=Math.max.apply(null,g.pages); g.firstChild.lastChild.textContent+=' · с. '+(a===z?a:a+'–'+z); } });
+
+  function paint(){
+    var bars=stepbar.children, items=tocItems;
+    for(var i=0;i<N;i++){
+      var key=steps[i].getAttribute('data-step'), g=GAME_STEPS[key];
+      var done = g && state.done[g];
+      bars[i].className=bars[i].getAttribute('data-base')+(i===cur?' current':'')+(state.visited[i]?' visited':'')+(done?' done':'');
+      items[i].className='toc-item'+(i===cur?' current':'');
+      items[i].lastElementChild.textContent = done ? 'пройдено' : (state.visited[i] ? '✓' : '');
+    }
+    count.textContent=(cur+1)+' / '+N;
+    prevB.disabled = cur===0;
+    if(cur===N-1){ nextB.textContent='Это последний шаг'; nextB.disabled=true; }
+    else { nextB.textContent='Дальше: '+steps[cur+1].getAttribute('data-name'); nextB.disabled=false; }
+    var badges={terms:['b-terms','b-terms2'],'kakoe-slovo':['bg-ks'],match:['b-match'],build:['bg-build'],listen:['bg-listen']};
+    for(var k in badges){ badges[k].forEach(function(id){ var b=document.getElementById(id); if(b && state.done[k]){ b.textContent='Пройдено'; b.classList.add('done'); } }); }
+    paintMosaic();
+  }
+  function go(i, silent){
+    if(i<0||i>=N) return;
+    cur=i; steps.forEach(function(s,j){ s.hidden = j!==i; });
+    state.visited[i]=true; state.last=i; save();
+    if(!silent){ var h='#'+steps[i].getAttribute('data-step'); if(location.hash!==h) history.pushState(null,'',h); }
+    window.scrollTo(0,0);
+    paint();
+  }
+  function idxFromHash(){ var h=location.hash.replace('#',''); for(var i=0;i<N;i++) if(steps[i].getAttribute('data-step')===h) return i; return -1; }
+  function onHash(){ var i=idxFromHash(); if(i>=0 && i!==cur) go(i, true); }
+  window.addEventListener('popstate', onHash);
+  window.addEventListener('hashchange', onHash);
+  prevB.addEventListener('click', function(){ go(cur-1); });
+  nextB.addEventListener('click', function(){ go(cur+1); });
+  document.addEventListener('keydown', function(e){ if(e.target && /INPUT|TEXTAREA/.test(e.target.tagName)) return; if(e.key==='ArrowRight') go(cur+1); if(e.key==='ArrowLeft') go(cur-1); if(e.key==='Escape') closeToc(); });
+
+  var toc=$('#toc');
+  function openToc(){ toc.hidden=false; }
+  function closeToc(){ toc.hidden=true; }
+  $('#toc-btn').addEventListener('click', openToc);
+  $('#toc-close').addEventListener('click', closeToc);
+  toc.addEventListener('click', function(e){ if(e.target===toc) closeToc(); });
+
+  function markDone(k){ if(!state.done[k]){ state.done[k]=true; save(); } paint(); }
+
+  /* resume button on step 1 */
+  (function(){
+    var r=$('#resume');
+    if(state.last>0 && idxFromHash()<0){
+      r.hidden=false;
+      r.innerHTML='<button class="btn ghost" type="button">Продолжить с шага '+(state.last+1)+': '+steps[state.last].getAttribute('data-name')+'</button>';
+      r.firstChild.addEventListener('click', function(){ go(state.last); });
+    }
+  })();
+
+  /* ---------- mosaic on final step ---------- */
+  var mosaic=$('#mosaic'), mosaicList=$('#mosaic-list');
+  function paintMosaic(){
+    mosaic.innerHTML=''; mosaicList.innerHTML='';
+    GAMES.forEach(function(g){
+      var t=el('span','tile'+(state.done[g.k]?' on':'')); t.title=g.name; mosaic.appendChild(t);
+      var li=el('span', state.done[g.k]?'':'off', (state.done[g.k]?'★ ':'☆ ')+g.name);
+      if(!state.done[g.k]){ li.style.cursor='pointer'; li.addEventListener('click', function(){ for(var i=0;i<N;i++) if(steps[i].getAttribute('data-step')===g.step){ go(i); break; } }); }
+      mosaicList.appendChild(li);
+    });
+  }
+
+  /* ---------- glossary (карточка при перевороте говорит английское слово) ---------- */
+  var TERMS=[
+    [
+      {t:'who', d:'кто? кого? Спрашивает про человека.', e:'Who do you see? — My friend.'},
+      {t:'what', d:'что? Спрашивает про предмет или занятие.', e:'What do you like? — I like sport.'},
+      {t:'What books?', d:'what перед существительным значит «какой, какая, какие»: Какие книги?', e:'What songs do you sing?'},
+      {t:'when', d:'когда? Ответ — время.', e:'When does Kate swim? — In summer.'},
+      {t:'where', d:'где? куда? Ответ — место.', e:'Where does Tom play? — In the garden.'},
+      {t:'why', d:'почему? Ответ — причина.', e:'Why do you like summer? — I can swim.'},
+      {t:'wild', d:'дикий. wild animals — дикие животные.', e:'Lions are wild animals.'},
+      {t:'sheep', d:'овца, овцы. Много овец — тоже sheep, без -s.', e:'Sally likes sheep.'}
+    ],
+    [
+      {t:'always', d:'всегда: каждый раз, без пропусков.', e:'My dog always sleeps on the sofa.'},
+      {t:'never', d:'никогда: ни разу. don\'t с ним не нужно.', e:'Fish never sing.'},
+      {t:'often', d:'часто: много раз.', e:'We often play in the park.'},
+      {t:'sometimes', d:'иногда: время от времени.', e:'I sometimes help my dad.'},
+      {t:'usually', d:'обычно: так заведено.', e:'Tom usually walks to school.'},
+      {t:'at the weekend', d:'в выходные — в субботу и воскресенье.', e:'We often go to the park at the weekend.'},
+      {t:'about the house', d:'по дому. help about the house — помогать по дому.', e:'Kate helps her granny about the house.'}
+    ]
+  ];
+  var flipped={}, total=0; TERMS.forEach(function(g){ total+=g.length; });
+  var progEls=[$('#terms-progress'),$('#terms-progress2')];
+  function termsProgress(){
+    var n=Object.keys(flipped).length;
+    progEls.forEach(function(p,gi){ var got=0; TERMS[gi].forEach(function(t,i){ if(flipped[gi+'-'+i]) got++; }); p.textContent='Открыто '+got+' из '+TERMS[gi].length+' здесь, всего '+n+' из '+total; });
+    if(n===total) markDone('terms');
+  }
+  document.querySelectorAll('.cards').forEach(function(box){
+    var gi=+box.getAttribute('data-terms');
+    TERMS[gi].forEach(function(t,i){
+      var b=el('button','card'); b.type='button'; b.setAttribute('aria-label',t.t+'. Нажми, чтобы увидеть значение');
+      b.innerHTML='<div class="in"><div class="face f"><div class="w">'+t.t+'</div><div class="tap">Нажми</div></div><div class="face b"><div class="w">'+t.t+'</div><div>'+t.d+'</div>'+(t.e?'<div class="e">'+t.e+'</div>':'')+'</div></div>';
+      b.addEventListener('click', function(){ b.classList.toggle('flip'); if(b.classList.contains('flip')) speak(t.say||t.t); flipped[gi+'-'+i]=true; termsProgress(); });
+      box.appendChild(b);
+    });
+  });
+  termsProgress();
+
+  /* ---------- matching: вопрос и ответ ---------- */
+  var PAIRS=[
+    {foe:'Who does Tim help?', res:'His grandfather.', why:'Дедушка — это человек. Про людей спрашивает who.'},
+    {foe:'What does Lena drink in the morning?', res:'Milk.', why:'Молоко — это «что». Спрашиваем what.'},
+    {foe:'What colours does Max like?', res:'Red and green.', why:'What colours — «какие цвета». Ответ — цвета.'},
+    {foe:'When do the children skate?', res:'In winter.', why:'In winter — «зимой», это время. Ответ на when.'},
+    {foe:'Where does Kate swim?', res:'In the river.', why:'In the river — «в реке», это место. Ответ на where.'},
+    {foe:'Why does Dan run every morning?', res:'He likes sport.', why:'Ответ объясняет причину: он любит спорт. Ответ на why.'},
+    {foe:'How old is your brother?', res:'He is nine.', why:'How old — «сколько лет». Ответ — число.'}
+  ];
+  var foesBox=$('#foes'), outBox=$('#outcomes'), matchFb=$('#match-fb'), selFoe=null, matched=0;
+  PAIRS.forEach(function(p,idx){
+    var b=el('button','opt',p.foe); b.type='button'; b.setAttribute('data-foe',String(idx)); p.idx=idx;
+    b.addEventListener('click', function(){
+      if(b.classList.contains('ok')) return;
+      var all=foesBox.querySelectorAll('.opt'); for(var i=0;i<all.length;i++) all[i].classList.remove('sel');
+      b.classList.add('sel'); selFoe=p; matchFb.innerHTML='';
+    });
+    foesBox.appendChild(b);
+  });
+  shuffle(PAIRS).forEach(function(p){
+    var b=el('button','opt',p.res); b.type='button';
+    b.addEventListener('click', function(){
+      if(b.classList.contains('ok')) return;
+      if(!selFoe){ matchFb.innerHTML='<div class="feedback bad"><span class="k">Сначала выбери вопрос слева.</span></div>'; return; }
+      if(selFoe.res===p.res){
+        b.classList.add('ok'); b.disabled=true;
+        var fb=foesBox.querySelector('[data-foe="'+selFoe.idx+'"]'); fb.classList.remove('sel'); fb.classList.add('ok'); fb.disabled=true;
+        matchFb.innerHTML='<div class="feedback ok"><span class="k">Верно! '+selFoe.foe+' — '+selFoe.res+'</span><span>'+selFoe.why+'</span></div>';
+        speak(selFoe.foe+' '+selFoe.res);
+        selFoe=null; matched++;
+        if(matched===PAIRS.length){ matchFb.innerHTML='<div class="feedback ok"><span class="k">Все семь пар собраны!</span><span>Ты смотрел на первое слово вопроса и искал ответ того же вида. Так и надо.</span></div>'; markDone('match'); }
+      } else {
+        b.classList.add('bad'); setTimeout(function(){ b.classList.remove('bad'); },400);
+        matchFb.innerHTML='<div class="feedback bad"><span class="k">Не то.</span><span>Этот ответ к другому вопросу. Посмотри ещё раз на первое слово вопроса.</span></div>';
+      }
+    });
+    outBox.appendChild(b);
+  });
+
+  /* ---------- quiz ---------- */
+  var QUIZ=[
+    {q:'Какое слово-вопрос спрашивает про место — «где?», «куда?»', o:['when','where','why'], a:1, why:'where — где, куда. when — когда, why — почему.'},
+    {q:'На какой вопрос подходит ответ «In the evening»?', o:['Who do you read?','Where do you read?','When do you read?'], a:2, why:'In the evening — «вечером», это время. Про время спрашивает when.'},
+    {q:'Как перевести «What games do you like?»', o:['Что игры ты любишь?','Какие игры ты любишь?','Где ты любишь игры?'], a:1, why:'what стоит прямо перед существительным games, значит это «какие».'},
+    {q:'«Who do you see in the park?» Что здесь значит who?', o:['кого','кто','что'], a:0, why:'Видит тот, кто стоит после do, — you. А who — тот, кого видят. Значит, «кого».'},
+    {q:'Что значит usually?', o:['иногда','никогда','обычно'], a:2, why:'usually — обычно. Иногда — sometimes, никогда — never.'},
+    {q:'Какое предложение правильное?', o:['I don\'t never eat fish.','I never eat fish.','I never don\'t eat fish.'], a:1, why:'never уже значит «никогда не». Второе «не» — don\'t — не нужно.'},
+    {q:'Какой вопрос построен правильно?', o:['Often do you go to the zoo?','Do often you go to the zoo?','Do you often go to the zoo?'], a:2, why:'В вопросе слово «как часто» идёт после того, кто делает (you), прямо перед действием (go).'},
+    {q:'«Моя сестра всегда пьёт чай». Как правильно?', o:['My sister always drinks tea.','My sister always drink tea.','My sister drinks always tea.'], a:0, why:'Сестра — она одна, поэтому drinks с -s. А always стоит перед действием.'}
+  ];
+  var qBox=$('#quiz-box'), qP=$('#quiz-progress'), qi=0, score=0;
+  function renderQ(){
+    if(qi>=QUIZ.length) return renderScore();
+    var q=QUIZ[qi];
+    qP.textContent='Вопрос '+(qi+1)+' из '+QUIZ.length;
+    qBox.innerHTML='';
+    qBox.appendChild(el('div','q',q.q));
+    var opts=el('div','q-opts'); qBox.appendChild(opts);
+    var fb=el('div'); qBox.appendChild(fb);
+    var rowN=el('div','row'); qBox.appendChild(rowN);
+    var answered=false;
+    q.o.forEach(function(o,i){
+      var b=el('button','opt',o); b.type='button';
+      b.addEventListener('click', function(){
+        if(answered) return; answered=true;
+        var all=opts.querySelectorAll('.opt');
+        for(var k=0;k<all.length;k++){ all[k].disabled=true; if(k===q.a) all[k].classList.add('ok'); }
+        if(i===q.a){ score++; fb.innerHTML='<div class="feedback ok"><span class="k">Правильно!</span><span>'+q.why+'</span></div>'; }
+        else { b.classList.add('bad'); fb.innerHTML='<div class="feedback bad"><span class="k">Нет, правильный ответ подсвечен зелёным.</span><span>'+q.why+'</span></div>'; }
+        var n=el('button','btn', qi<QUIZ.length-1?'Следующий вопрос':'Показать результат'); n.type='button';
+        n.addEventListener('click', function(){ qi++; renderQ(); window.scrollTo(0,0); });
+        rowN.appendChild(n);
+      });
+      opts.appendChild(b);
+    });
+  }
+  function renderScore(){
+    qP.textContent='Результат';
+    var tiles=''; for(var i=0;i<QUIZ.length;i++) tiles+='<i class="'+(i<score?'on':'')+'"></i>';
+    var msg = score===QUIZ.length ? 'Отлично, Арслан! Ни одной ошибки.' : score>=6 ? 'Хорошо! Посмотри ещё раз вопросы, где ошибся, и будет полный набор.' : score>=4 ? 'Неплохо. Перечитай шаги с правилами и пройди тест снова.' : 'Тема новая, Арслан, так бывает. Открой словарик и шаги с правилами, а потом попробуй ещё раз.';
+    qBox.innerHTML='<div class="score"><div class="big">'+score+' из '+QUIZ.length+'</div><div class="score-tiles">'+tiles+'</div><p>'+msg+'</p><button class="btn ghost" type="button" id="quiz-again">Пройти ещё раз</button></div>';
+    $('#quiz-again').addEventListener('click', function(){ qi=0; score=0; renderQ(); });
+    markDone('quiz');
+  }
+  renderQ();
+
+  /* ===== Английский (23.09.2026): голос, перевод по нажатию, игры «выбери» (CHOICES), «собери» (BUILDS), «послушай» (LISTENS) ===== */
+  /* Данные страницы. Ключ — id контейнера в разметке. game — ключ из GAMES (тогда игра идёт в мозаику); без game — мини-проверка внутри шага. */
+  var CHOICES={
+    'ch-pv':{end:'Слово-вопрос ты выбираешь по ответу. Дальше — интервью Салли для школьной газеты.', hint:'Посмотри на ответ: это человек, предмет, время, место или причина?', rounds:[
+      {s:'___ does your cat sleep? — On the sofa.', o:['When','Where','Who'], a:1, why:'On the sofa — «на диване», это место. Про место спрашивает where.', tr:'Где спит твоя кошка? — На диване.'},
+      {s:'___ songs do you sing? — English songs.', o:['Who','Why','What'], a:2, why:'Сразу после пропуска стоит существительное songs. What перед ним значит «какие».', tr:'Какие песни ты поёшь? — Английские песни.'},
+      {s:'When ___ Max ski? — In winter.', o:['do','does'], a:1, why:'Max — он один, значит does. Как в паровозике: слово-вопрос, потом do или does.', tr:'Когда Макс катается на лыжах? — Зимой.', hint:'Max — это он. Какое слово нужно для he: do или does?'},
+      {s:'___ do the girls see? — Their teacher.', o:['Who','What','When'], a:0, why:'Their teacher — «свою учительницу», это человек. Who здесь значит «кого».', tr:'Кого видят девочки? — Свою учительницу.'}
+    ]},
+    'ch-kc':{end:'Слово «как часто» стоит прямо перед действием, а never живёт без don\'t. Дальше — упражнения 6 и 7.', hint:'Вспомни правило: слово «как часто» — прямо перед действием, never — без don\'t.', rounds:[
+      {s:'My brother often ___ to the park.', o:['go','goes'], a:1, why:'My brother — он один, поэтому goes с -es. often ничего не меняет.', tr:'Мой брат часто ходит в парк.', hint:'Брат — это he. Что бывает с глаголом после he?'},
+      {s:'I ___ eat fish.', o:['never','don\'t never'], a:0, why:'never уже значит «никогда не». don\'t с ним не нужно.', tr:'Я никогда не ем рыбу.'},
+      {s:'___ you usually read in the evening?', o:['Does','Do'], a:1, why:'you — значит do. А usually стоит после you, прямо перед read.', tr:'Ты обычно читаешь вечером?'},
+      {s:'Kate ___ in the morning.', o:['sings always','always sings'], a:1, why:'always стоит перед действием sings. А -s у sings остаётся: Kate — она одна.', tr:'Кейт всегда поёт по утрам.'},
+      {s:'Sam doesn\'t ___ watch TV.', o:['often','never'], a:0, why:'После doesn\'t never не ставят: never уже «никогда не». А often можно: doesn\'t often — «нечасто».', tr:'Сэм нечасто смотрит телевизор.'}
+    ]},
+    'ch-ks':{game:'kakoe-slovo', end:'Ты выбирал слово-вопрос по ответу. Так же делай и в упражнении 2 учебника.', hint:'Посмотри на ответ после тире: это человек, предмет, время, место или причина?', rounds:[
+      {s:'___ do you play chess? — On Sundays.', o:['Where','When','Who'], a:1, why:'On Sundays — «по воскресеньям», это время. Про время спрашивает when.', tr:'Когда ты играешь в шахматы? — По воскресеньям.'},
+      {s:'___ does Ben live? — In London.', o:['When','Why','Where'], a:2, why:'In London — «в Лондоне», это место. Где? — where.', tr:'Где живёт Бен? — В Лондоне.'},
+      {s:'___ do you see in the picture? — My granny.', o:['Who','What','Where'], a:0, why:'My granny — «мою бабушку», это человек. Who здесь значит «кого».', tr:'Кого ты видишь на картинке? — Мою бабушку.'},
+      {s:'___ does Kate eat in the morning? — Eggs and bread.', o:['Who','What','When'], a:1, why:'Яйца и хлеб — это «что», не человек и не время. Спрашиваем what.', tr:'Что Кейт ест утром? — Яйца и хлеб.'},
+      {s:'___ does Liz sing every day? — She loves music.', o:['Where','Why','Who'], a:1, why:'Ответ объясняет причину: она любит музыку. Про причину спрашивает why.', tr:'Почему Лиз поёт каждый день? — Она любит музыку.'},
+      {s:'___ animals does Tom like? — Cats and dogs.', o:['Who','Where','What'], a:2, why:'Сразу после пропуска стоит существительное animals. What перед ним значит «каких».', tr:'Каких животных любит Том? — Кошек и собак.'},
+      {s:'___ do you ski? — In winter.', o:['When','Where','Why'], a:0, why:'In winter — «зимой», это время. Значит when.', tr:'Когда ты катаешься на лыжах? — Зимой.'},
+      {s:'___ does Max love? — His little sister.', o:['What','Who','Why'], a:1, why:'His little sister — «свою младшую сестрёнку», это человек. Про людей спрашивает who.', tr:'Кого любит Макс? — Свою младшую сестрёнку.'}
+    ]}
+  };
+  var BUILDS={
+    'b-kuda':{game:'build', hint:'Вспомни правило: слово «как часто» стоит прямо перед действием. В вопросе — после того, кто делает.', rounds:[
+      {w:['I','usually','read','in the evening','.'], roles:['subj','freq','verb','rest','rest'], ru:'Я обычно читаю вечером.', why:'usually стоит прямо перед действием read.'},
+      {w:['Nick','often','rides','his bike','.'], roles:['subj','freq','verb','rest','rest'], ru:'Ник часто катается на велосипеде.', why:'Nick — он один, поэтому rides с -s. often — перед действием.'},
+      {w:['My granny','never','drinks','coffee','.'], roles:['subj','freq','verb','rest','rest'], ru:'Моя бабушка никогда не пьёт кофе.', why:'never уже значит «никогда не», поэтому doesn\'t не нужно.'},
+      {w:['Do','you','sometimes','sing','English songs','?'], roles:['aux','subj','freq','verb','rest','rest'], ru:'Ты иногда поёшь английские песни?', why:'В вопросе: do, потом you, потом «как часто», потом действие.'},
+      {w:['We','don\'t','often','go','to the zoo','.'], roles:['subj','aux','freq','verb','rest','rest'], ru:'Мы нечасто ходим в зоопарк.', why:'Слово «как часто» встаёт между don\'t и действием.'},
+      {w:['Does','Ann','always','help','her mother','?'], roles:['aux','subj','freq','verb','rest','rest'], ru:'Энн всегда помогает маме?', why:'Ann — одна, значит does. После does глагол help без -s.'}
+    ]}
+  };
+  var LISTENS={
+    'l-slushay':{game:'listen', rounds:[
+      {say:'Where does Tom read?', o:['Where does Tom read?','When does Tom read?'], a:0, why:'where — где, when — когда. В конце when слышно n.', tr:'Где Том читает?'},
+      {say:'When do you ski?', o:['Where do you ski?','When do you ski?'], a:1, why:'Здесь было when — «когда».', tr:'Когда ты катаешься на лыжах?'},
+      {say:'Who does Ann draw?', o:['Who does Ann draw?','What does Ann draw?'], a:0, why:'who — кого, what — что. what кончается на t, а who — нет.', tr:'Кого рисует Энн?'},
+      {say:'I usually swim in the river.', o:['I sometimes swim in the river.','I usually swim in the river.','I never swim in the river.'], a:1, why:'Прозвучало usually — «обычно».', tr:'Я обычно плаваю в реке.'},
+      {say:'Why does Max sing?', o:['Why does Max sing?','Where does Max sing?'], a:0, why:'why — почему, where — где. Если не уверен, послушай ещё раз медленно.', tr:'Почему Макс поёт?'},
+      {say:'Does she often dance?', o:['Does she always dance?','Does she often dance?'], a:1, why:'Прозвучало often — «часто».', tr:'Она часто танцует?'}
+    ]}
+  };
+
+  /* ---------- английский голос (встроен в телефон; интернет и сервер не нужны) ---------- */
+  var SPEECH=('speechSynthesis' in window) && ('SpeechSynthesisUtterance' in window);
+  var enVoice=null;
+  function pickVoice(){
+    try{
+      var vs=window.speechSynthesis.getVoices()||[];
+      var lg=function(v){ return (v.lang||'').replace('_','-').toLowerCase(); };
+      /* британский голос; на маке мимо «игрушечных» (Eddy, Grandma…), на Android — Google UK English */
+      var good=/google uk english|daniel|serena|kate|arthur|martha|libby|sonia|ryan|stephanie|oliver|english \(united kingdom\)/i;
+      var toy=/eddy|flo|grandma|grandpa|reed|rocko|sandy|shelley|albert|bad news|good news|bahh|bells|boing|bubbles|cellos|jester|organ|superstar|trinoids|whisper|wobble|zarvox|fred|junior|kathy|ralph/i;
+      var score=function(v){ var l=lg(v); return (l==='en-gb'?4:l.indexOf('en')===0?1:-99)+(good.test(v.name)?3:0)-(toy.test(v.name)?6:0); };
+      enVoice=vs.filter(function(v){ return score(v)>-50; }).sort(function(a,b){ return score(b)-score(a); })[0] || null;
+    }catch(e){ enVoice=null; }
+  }
+  if(SPEECH){ pickVoice(); try{ window.speechSynthesis.addEventListener('voiceschanged', pickVoice); }catch(e){ window.speechSynthesis.onvoiceschanged=pickVoice; } }
+  function speak(text, slow){
+    if(!SPEECH || !text) return;
+    try{
+      window.speechSynthesis.cancel();
+      var u=new SpeechSynthesisUtterance(text);
+      u.lang=enVoice ? enVoice.lang.replace('_','-') : 'en-GB';
+      if(enVoice) u.voice=enVoice;
+      u.rate=slow ? 0.6 : 0.85;
+      window.speechSynthesis.speak(u);
+    }catch(e){}
+  }
+  var SAY_ICON='<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.2L12 5.5v13l-4.8-4H4z"></path><path d="M15.5 9a4 4 0 0 1 0 6"></path><path d="M18 6.5a7.5 7.5 0 0 1 0 11"></path></svg>';
+  function sayBtn(text){
+    var b=el('button','say',SAY_ICON); b.type='button'; b.setAttribute('aria-label','Послушать: '+text);
+    b.addEventListener('click', function(e){ e.stopPropagation(); speak(text); b.classList.add('on'); setTimeout(function(){ b.classList.remove('on'); },900); });
+    return b;
+  }
+  /* любой элемент с data-say получает кнопку «послушать» сразу после себя; data-say="" — читать сам текст элемента */
+  Array.prototype.forEach.call(document.querySelectorAll('[data-say]'), function(n){
+    if(!SPEECH) return;
+    var text=n.getAttribute('data-say') || n.textContent.replace(/\s+/g,' ').trim();
+    n.insertAdjacentElement('afterend', sayBtn(text));
+  });
+  if(!SPEECH) Array.prototype.forEach.call(document.querySelectorAll('.no-voice'), function(n){ n.hidden=false; });
+
+  /* ---------- перевод по нажатию: <p class="ln" data-tr="перевод"><span class="en" data-say>English</span></p> ---------- */
+  Array.prototype.forEach.call(document.querySelectorAll('.ln[data-tr]'), function(p){
+    var ru=el('span','lru',p.getAttribute('data-tr')); ru.hidden=true; p.appendChild(ru);
+    p.tabIndex=0; p.setAttribute('aria-expanded','false');
+    function t(){ ru.hidden=!ru.hidden; p.classList.toggle('open',!ru.hidden); p.setAttribute('aria-expanded', ru.hidden?'false':'true'); }
+    p.addEventListener('click', function(e){ if(e.target.closest && e.target.closest('.say')) return; t(); });
+    p.addEventListener('keydown', function(e){ if(e.target!==p) return; if(e.key==='Enter'||e.key===' '){ e.preventDefault(); t(); } });
+  });
+
+  function finish(box, set, first, n, again){
+    box.innerHTML='<div class="feedback ok"><span class="k">Готово! С первой попытки: '+first+' из '+n+'.</span>'+(set.end?'<span>'+set.end+'</span>':'')+'</div>';
+    var row=el('div','row'), b=el('button','btn ghost','Ещё раз'); b.type='button';
+    b.addEventListener('click', again); row.appendChild(b); box.appendChild(row);
+    if(set.game) markDone(set.game);
+  }
+
+  /* ---------- «выбери»: пропуск ___ в предложении и 2–3 варианта ---------- */
+  Object.keys(CHOICES).forEach(function(id){
+    var box=document.getElementById(id); if(!box) return;
+    var set=CHOICES[id], ri=0, first=0;
+    function render(){
+      var r=set.rounds[ri], missed=false; box.innerHTML='';
+      box.appendChild(el('p','progress','Задание '+(ri+1)+' из '+set.rounds.length));
+      var s=el('div','chs', r.s.replace('___','<span class="gap">…</span>')); box.appendChild(s);
+      var opts=el('div','chopts'); box.appendChild(opts);
+      var fb=el('div'); box.appendChild(fb);
+      var row=el('div','row'); box.appendChild(row);
+      r.o.forEach(function(o,i){
+        var b=el('button','opt',o); b.type='button';
+        b.addEventListener('click', function(){
+          if(i===r.a){
+            var all=opts.querySelectorAll('.opt'); for(var k=0;k<all.length;k++) all[k].disabled=true;
+            b.classList.add('ok'); if(!missed) first++;
+            s.innerHTML=r.s.replace('___','<span class="gap ok">'+o+'</span>');
+            if(SPEECH) s.appendChild(sayBtn(r.s.replace('___',o)));
+            fb.innerHTML='<div class="feedback ok"><span class="k">Верно!</span>'+(r.why?'<span>'+r.why+'</span>':'')+(r.tr?'<span class="lru">'+r.tr+'</span>':'')+'</div>';
+            var n=el('button','btn', ri<set.rounds.length-1?'Дальше':'Итог'); n.type='button';
+            n.addEventListener('click', function(){ ri++; if(ri<set.rounds.length) render(); else finish(box,set,first,set.rounds.length,function(){ ri=0; first=0; render(); }); });
+            row.appendChild(n);
+          } else {
+            missed=true; b.classList.add('bad'); b.disabled=true;
+            fb.innerHTML='<div class="feedback bad"><span class="k">Не то.</span><span>'+(r.hint||set.hint||'Подумай ещё и попробуй другой вариант.')+'</span></div>';
+          }
+        });
+        opts.appendChild(b);
+      });
+    }
+    render();
+  });
+
+  /* ---------- «собери»: нажимай на слова по порядку ---------- */
+  Object.keys(BUILDS).forEach(function(id){
+    var box=document.getElementById(id); if(!box) return;
+    var set=BUILDS[id], ri=0, first=0;
+    function render(){
+      var r=set.rounds[ri], placed=[], tries=0;
+      var bank=r.w.map(function(w,i){ return {w:w,i:i}; });
+      for(var guard=0; guard<10; guard++){ bank=shuffle(bank); if(bank.map(function(t){ return t.w; }).join(' ')!==r.w.join(' ')) break; }
+      box.innerHTML='';
+      box.appendChild(el('p','progress','Предложение '+(ri+1)+' из '+set.rounds.length));
+      if(r.ru) box.appendChild(el('p','btask','Собери по-английски: <b>'+r.ru+'</b>'));
+      var line=el('div','bline'); box.appendChild(line);
+      var pool=el('div','bpool'); box.appendChild(pool);
+      var fb=el('div'); box.appendChild(fb);
+      var row=el('div','row'); box.appendChild(row);
+      var check=el('button','btn','Проверить'); check.type='button';
+      var reset=el('button','btn ghost','Сначала'); reset.type='button';
+      row.appendChild(check); row.appendChild(reset);
+      function paintB(){
+        line.innerHTML=''; pool.innerHTML='';
+        if(!placed.length) line.appendChild(el('span','bempty','Нажимай на слова внизу по порядку'));
+        placed.forEach(function(t,k){ var b=el('button','wt',t.w); b.type='button'; b.setAttribute('aria-label','Убрать: '+t.w); b.addEventListener('click', function(){ placed.splice(k,1); fb.innerHTML=''; paintB(); }); line.appendChild(b); });
+        bank.forEach(function(t){ if(placed.indexOf(t)>=0) return; var b=el('button','wt',t.w); b.type='button'; b.addEventListener('click', function(){ placed.push(t); fb.innerHTML=''; paintB(); }); pool.appendChild(b); });
+        check.disabled = placed.length!==r.w.length;
+      }
+      check.addEventListener('click', function(){
+        var got=placed.map(function(t){ return t.w; });
+        var ok=[r.w].concat(r.alt||[]).some(function(a){ return a.join(' ')===got.join(' '); });
+        if(ok){
+          if(!tries) first++;
+          line.innerHTML=''; line.classList.add('good');
+          placed.forEach(function(t){ line.appendChild(el('span','wt fix'+(r.roles?' r-'+r.roles[t.i]:''),t.w)); });
+          pool.innerHTML=''; row.innerHTML='';
+          var sentence=got.join(' ').replace(/ ([?.!,])/g,'$1');
+          fb.innerHTML='<div class="feedback ok"><span class="k">Верно! '+sentence+'</span>'+(r.ru?'<span class="lru">'+r.ru+'</span>':'')+(r.why?'<span>'+r.why+'</span>':'')+'</div>';
+          if(SPEECH){ fb.firstChild.firstChild.appendChild(sayBtn(sentence)); speak(sentence); }
+          var n=el('button','btn', ri<set.rounds.length-1?'Следующее':'Итог'); n.type='button';
+          n.addEventListener('click', function(){ ri++; if(ri<set.rounds.length) render(); else finish(box,set,first,set.rounds.length,function(){ ri=0; first=0; render(); }); });
+          row.appendChild(n);
+        } else {
+          tries++;
+          var k0=-1; for(var k=0;k<got.length;k++){ if(got[k]!==r.w[k]){ k0=k; break; } }
+          var tiles=line.querySelectorAll('.wt'); if(k0>=0 && tiles[k0]) tiles[k0].classList.add('bad');
+          fb.innerHTML='<div class="feedback bad"><span class="k">Пока не так. Первое слово не на своём месте подсвечено.</span><span>'+(r.hint||set.hint||'Вспомни паровозик: вопросительное слово, потом do или does, потом кто, потом что делает.')+'</span></div>';
+        }
+      });
+      reset.addEventListener('click', function(){ placed=[]; fb.innerHTML=''; paintB(); });
+      paintB();
+    }
+    render();
+  });
+
+  /* ---------- «послушай»: какую фразу сказал голос ---------- */
+  Object.keys(LISTENS).forEach(function(id){
+    var box=document.getElementById(id); if(!box) return;
+    var set=LISTENS[id], ri=0, first=0;
+    if(!SPEECH){
+      box.innerHTML='<div class="feedback bad"><span class="k">На этом устройстве нет английского голоса.</span><span>Эту игру можно пропустить: в мозаике её не будет.</span></div>';
+      if(set.game) GAMES=GAMES.filter(function(g){ return g.k!==set.game; });
+      return;
+    }
+    function render(auto){
+      var r=set.rounds[ri], missed=false; box.innerHTML='';
+      box.appendChild(el('p','progress','Фраза '+(ri+1)+' из '+set.rounds.length));
+      var ctl=el('div','row lctl'); box.appendChild(ctl);
+      var play=el('button','btn',SAY_ICON+'<span>Послушать</span>'); play.type='button'; play.addEventListener('click', function(){ speak(r.say); });
+      var slow=el('button','btn ghost','Медленно'); slow.type='button'; slow.addEventListener('click', function(){ speak(r.say,true); });
+      ctl.appendChild(play); ctl.appendChild(slow);
+      var opts=el('div','q-opts'); box.appendChild(opts);
+      var fb=el('div'); box.appendChild(fb);
+      var row=el('div','row'); box.appendChild(row);
+      r.o.forEach(function(o,i){
+        var b=el('button','opt',o); b.type='button';
+        b.addEventListener('click', function(){
+          if(i===r.a){
+            var all=opts.querySelectorAll('.opt'); for(var k=0;k<all.length;k++) all[k].disabled=true;
+            b.classList.add('ok'); if(!missed) first++;
+            fb.innerHTML='<div class="feedback ok"><span class="k">Верно, это «'+o+'»</span>'+(r.why?'<span>'+r.why+'</span>':'')+(r.tr?'<span class="lru">'+r.tr+'</span>':'')+'</div>';
+            var n=el('button','btn', ri<set.rounds.length-1?'Следующая фраза':'Итог'); n.type='button';
+            n.addEventListener('click', function(){ ri++; if(ri<set.rounds.length) render(true); else finish(box,set,first,set.rounds.length,function(){ ri=0; first=0; render(true); }); });
+            row.appendChild(n);
+          } else {
+            missed=true; b.classList.add('bad'); b.disabled=true;
+            fb.innerHTML='<div class="feedback bad"><span class="k">Не то.</span><span>'+(r.hint||'Послушай ещё раз, можно медленно. Смотри на слово, которым фразы отличаются.')+'</span></div>';
+          }
+        });
+        opts.appendChild(b);
+      });
+      if(auto) speak(r.say);
+    }
+    render(false);
+  });
+
+  /* ---------- bricks ---------- */
+  Array.prototype.forEach.call(document.querySelectorAll('.brick button'), function(b){
+    b.addEventListener('click', function(){
+      var body=b.nextElementSibling, open=body.hidden;
+      body.hidden=!open; b.setAttribute('aria-expanded', open?'true':'false');
+      b.lastElementChild.textContent = open?'−':'+';
+    });
+  });
+
+  /* ---------- start ---------- */
+  var start=idxFromHash(); go(start<0?0:start, true);
+})();
+</script>
+
+</body>
+</html>
